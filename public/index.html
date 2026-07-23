@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyberpunk Video Generator</title>
+  <!-- Load Tailwind CSS v3 via CDN for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@600;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #07070d;
+    }
+    .font-orbitron {
+      font-family: 'Orbitron', sans-serif;
+    }
+    /* Neon glow styles */
+    .glow-cyan {
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+    }
+    .glow-cyan-hover:hover {
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.45);
+    }
+    .glow-text-cyan {
+      text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+    }
+  </style>
+</head>
+<body class="text-white min-h-screen flex flex-col items-center justify-between p-6 md:p-12 overflow-x-hidden relative">
+
+  <!-- Background Neon Glow Circles -->
+  <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#00f0ff]/10 blur-[150px] pointer-events-none z-0"></div>
+  <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[#ff007f]/10 blur-[150px] pointer-events-none z-0"></div>
+
+  <!-- Header -->
+  <header class="w-full max-w-5xl text-center mb-8 relative z-10">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#00f0ff]/30 bg-[#00f0ff]/5 mb-4 text-[#00f0ff] text-xs uppercase tracking-widest font-mono">
+      <span class="w-2 h-2 rounded-full bg-[#00f0ff] animate-pulse"></span>
+      Self-Contained Rendering Service
+    </div>
+    <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-[#00f0ff] bg-clip-text text-transparent font-orbitron">
+      AI VIDEO GENERATION HUB
+    </h1>
+    <p class="mt-2 text-slate-400 max-w-xl mx-auto text-xs md:text-sm">
+      Input your key and visual concept, adjust aesthetic variables, and compile vertical MP4 stories dynamically.
+    </p>
+  </header>
+
+  <!-- Main Grid Container -->
+  <main class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10 flex-1">
+    
+    <!-- Left Controls Panel -->
+    <section class="lg:col-span-7 bg-slate-900/40 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 md:p-8 flex flex-col gap-6 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+      <h2 class="text-md font-mono text-[#00f0ff] flex items-center gap-2 border-b border-slate-800/60 pb-3">
+        <span>//</span> PARAMETERS_INPUT
+      </h2>
+
+      <!-- Inputs Form -->
+      <form id="renderForm" class="flex flex-col gap-5">
+        <!-- Server Admin Key (for authentication) -->
+        <div class="flex flex-col gap-1.5">
+          <label class="text-[10px] uppercase font-mono tracking-wider text-[#ff007f] font-bold">Server Access Key (Admin Key)</label>
+          <input 
+            type="password" 
+            id="serverAdminKey" 
+            placeholder="Enter RENDERER_ADMIN_KEY (only if authentication is enabled)" 
+            class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-black/60 text-white placeholder-slate-600 focus:outline-none focus:border-[#ff007f]/50 focus:ring-1 focus:ring-[#ff007f]/50 transition duration-200 text-sm font-mono"
+          />
+        </div>
+
+        <!-- API Keys -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] uppercase font-mono tracking-wider text-slate-400 font-bold">Text Generation API Key</label>
+            <input 
+              type="password" 
+              id="textGenKey" 
+              placeholder="nvapi-..." 
+              required
+              class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-black/60 text-white placeholder-slate-600 focus:outline-none focus:border-[#00f0ff]/50 focus:ring-1 focus:ring-[#00f0ff]/50 transition duration-200 text-sm font-mono"
+            />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] uppercase font-mono tracking-wider text-slate-400 font-bold">Image Generation API Key</label>
+            <input 
+              type="password" 
+              id="imageGenKey" 
+              placeholder="Leave empty to use Text Gen Key" 
+              class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-black/60 text-white placeholder-slate-600 focus:outline-none focus:border-[#00f0ff]/50 focus:ring-1 focus:ring-[#00f0ff]/50 transition duration-200 text-sm font-mono"
+            />
+          </div>
+        </div>
+        <span class="text-[9px] text-slate-500 font-mono -mt-2">Keys are passed strictly to API endpoints and are never stored.</span>
+
+        <!-- Prompt -->
+        <div class="flex flex-col gap-1.5">
+          <label class="text-[10px] uppercase font-mono tracking-wider text-slate-400 font-bold">Video Concept Prompt</label>
+          <textarea 
+            id="prompt" 
+            rows="3" 
+            placeholder="e.g. Deep forest shrine under starry sky, mystical neon lanterns, soft wind blowing..." 
+            required
+            class="w-full px-4 py-3 rounded-xl border border-slate-800 bg-black/60 text-white placeholder-slate-600 focus:outline-none focus:border-[#00f0ff]/50 focus:ring-1 focus:ring-[#00f0ff]/50 transition duration-200 text-sm resize-none"
+          ></textarea>
+        </div>
+
+        <!-- Target Resolution Selector -->
+        <div class="flex flex-col gap-2">
+          <label class="text-[10px] uppercase font-mono tracking-wider text-slate-400 font-bold">Video Resolution & Target Platform</label>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+            <button 
+              type="button" 
+              data-aspect="9:16" 
+              class="aspect-btn px-2 py-3 rounded-xl border border-[#00f0ff] bg-[#00f0ff]/10 text-white font-mono text-center flex flex-col items-center justify-center gap-1 cursor-pointer transition-all duration-200"
+            >
+              <span class="font-bold text-xs">Portrait (9:16)</span>
+              <span class="text-[8px] text-slate-400 uppercase tracking-tight">Shorts/Reels/TikTok</span>
+              <span class="text-[9px] text-[#00f0ff] font-bold">1080 x 1920</span>
+            </button>
+            <button 
+              type="button" 
+              data-aspect="16:9" 
+              class="aspect-btn px-2 py-3 rounded-xl border border-slate-800 bg-black/60 text-slate-400 font-mono text-center flex flex-col items-center justify-center gap-1 cursor-pointer transition-all duration-200 hover:border-slate-700 hover:bg-slate-900/40"
+            >
+              <span class="font-bold text-xs">Landscape (16:9)</span>
+              <span class="text-[8px] text-slate-400 uppercase tracking-tight">YouTube Widescreen</span>
+              <span class="text-[9px] text-[#ff007f] font-bold">1920 x 1080</span>
+            </button>
+            <button 
+              type="button" 
+              data-aspect="1:1" 
+              class="aspect-btn px-2 py-3 rounded-xl border border-slate-800 bg-black/60 text-slate-400 font-mono text-center flex flex-col items-center justify-center gap-1 cursor-pointer transition-all duration-200 hover:border-slate-700 hover:bg-slate-900/40"
+            >
+              <span class="font-bold text-xs">Square (1:1)</span>
+              <span class="text-[8px] text-slate-400 uppercase tracking-tight">Instagram Post</span>
+              <span class="text-[9px] text-[#00f0ff] font-bold">1080 x 1080</span>
+            </button>
+            <button 
+              type="button" 
+              data-aspect="4:5" 
+              class="aspect-btn px-2 py-3 rounded-xl border border-slate-800 bg-black/60 text-slate-400 font-mono text-center flex flex-col items-center justify-center gap-1 cursor-pointer transition-all duration-200 hover:border-slate-700 hover:bg-slate-900/40"
+            >
+              <span class="font-bold text-xs">Portrait (4:5)</span>
+              <span class="text-[8px] text-slate-400 uppercase tracking-tight">Instagram Portrait</span>
+              <span class="text-[9px] text-[#ff007f] font-bold">1080 x 1350</span>
+            </button>
+          </div>
+          <input type="hidden" id="aspectRatioInput" value="9:16" />
+        </div>
+
+        <!-- Advanced Accordion Trigger -->
+        <button 
+          type="button" 
+          onclick="toggleAccordion()"
+          class="text-left text-xs font-mono text-[#ff007f] hover:text-[#ff007f]/80 transition flex justify-between items-center bg-slate-950/40 p-3 rounded-xl border border-slate-800/40"
+        >
+          <span>[ ADVANCED_AESTHETICS_PANEL ]</span>
+          <span id="accordionArrow">&darr;</span>
+        </button>
+
+        <!-- Advanced Panel Body -->
+        <div id="advancedPanel" class="hidden border border-slate-800/80 bg-black/45 rounded-xl p-4 flex flex-col gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <!-- Glow Colors -->
+            <div class="flex flex-col gap-1.5">
+              <span class="text-[10px] uppercase font-mono text-slate-400">Primary Color</span>
+              <div class="flex gap-2">
+                <input type="color" id="primaryColor" value="#00f0ff" class="w-8 h-8 rounded border border-slate-800 bg-transparent cursor-pointer" />
+                <input type="text" id="primaryColorHex" value="#00f0ff" class="flex-1 px-3 py-1 text-xs border border-slate-800 rounded bg-black/60 text-white font-mono uppercase focus:outline-none" />
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <span class="text-[10px] uppercase font-mono text-slate-400">Accent Color</span>
+              <div class="flex gap-2">
+                <input type="color" id="secondaryColor" value="#ff007f" class="w-8 h-8 rounded border border-slate-800 bg-transparent cursor-pointer" />
+                <input type="text" id="secondaryColorHex" value="#ff007f" class="flex-1 px-3 py-1 text-xs border border-slate-800 rounded bg-black/60 text-white font-mono uppercase focus:outline-none" />
+              </div>
+            </div>
+
+            <!-- Overlay Type -->
+            <div class="flex flex-col gap-1.5">
+              <span class="text-[10px] uppercase font-mono text-slate-400">HUD Overlay</span>
+              <select id="overlayType" class="w-full px-3 py-2 text-xs border border-slate-800 rounded bg-black text-white font-mono focus:outline-none">
+                <option value="grid-hud">Sci-Fi Grid HUD</option>
+                <option value="particles">Floating Forest Dust</option>
+                <option value="vhs-glitch">Analog VHS Glitch</option>
+                <option value="fantasy-sparks">Cosmic Aurora Sparks</option>
+                <option value="clean">Minimal (No Overlays)</option>
+              </select>
+            </div>
+
+            <!-- Font Selector -->
+            <div class="flex flex-col gap-1.5">
+              <span class="text-[10px] uppercase font-mono text-slate-400">Typography Font</span>
+              <select id="fontFamilyName" class="w-full px-3 py-2 text-xs border border-slate-800 rounded bg-black text-white font-mono focus:outline-none">
+                <option value="Share Tech Mono">Share Tech Mono</option>
+                <option value="Orbitron">Orbitron</option>
+                <option value="Inter">Inter (Sans-Serif)</option>
+                <option value="Playfair Display">Playfair Display</option>
+                <option value="Courier New">Courier New</option>
+              </select>
+            </div>
+
+            <!-- Music Selector -->
+            <div class="flex flex-col gap-1.5">
+              <span class="text-[10px] uppercase font-mono text-slate-400">Music Audio Track</span>
+              <select id="musicTrack" class="w-full px-3 py-2 text-xs border border-slate-800 rounded bg-black text-white font-mono focus:outline-none">
+                <option value="none">No Audio (Silent)</option>
+                <option value="ambient-tech">Ambient Tech Synth</option>
+                <option value="lofi-chill">Lofi Chill Vibes</option>
+                <option value="cosmic-synth">Deep Cosmic Arp</option>
+              </select>
+            </div>
+
+            <!-- Camera Motion -->
+            <div class="flex flex-col gap-1.5">
+              <span class="text-[10px] uppercase font-mono text-slate-400">Camera Motion</span>
+              <select id="cameraMotion" class="w-full px-3 py-2 text-xs border border-slate-800 rounded bg-black text-white font-mono focus:outline-none">
+                <option value="ken-burns">Ken Burns (Zoom + Pan)</option>
+                <option value="pan-horizontal">Horizontal Pan</option>
+                <option value="zoom-slow">Slow Inward Zoom</option>
+                <option value="static">Static (No Motion)</option>
+              </select>
+            </div>
+
+            <!-- Subtitle Alignment -->
+            <div class="flex flex-col gap-1.5">
+              <span class="text-[10px] uppercase font-mono text-slate-400">Subtitle Position</span>
+              <select id="subtitlePosition" class="w-full px-3 py-2 text-xs border border-slate-800 rounded bg-black text-white font-mono focus:outline-none">
+                <option value="bottom">Lower Third (Bottom)</option>
+                <option value="center">Dead Center</option>
+                <option value="top">Title Header (Top)</option>
+              </select>
+            </div>
+
+            <!-- Overlay Opacity -->
+            <div class="flex flex-col gap-1.5">
+              <span class="text-[10px] uppercase font-mono text-slate-400" id="opacityLabel">HUD Opacity: 100%</span>
+              <input type="range" id="overlayOpacity" min="0" max="1" step="0.05" value="1" class="w-full accent-[#00f0ff] bg-slate-800 rounded-lg cursor-pointer" />
+            </div>
+
+            <!-- Image Sourcing Mode -->
+            <div class="flex flex-col gap-1.5 md:col-span-2 border-t border-slate-800/80 pt-3 mt-2">
+              <span class="text-[10px] uppercase font-mono text-slate-400">Image Sourcing Mode</span>
+              <select id="imageSource" class="w-full px-3 py-2 text-xs border border-[#ff007f]/30 rounded bg-black text-white font-mono focus:outline-none focus:border-[#ff007f]/50">
+                <option value="ai">Dynamic Stock (Openverse keyless keyword search)</option>
+                <option value="stock">Stock Presets (Offline theme-matched fallbacks)</option>
+              </select>
+            </div>
+
+            <!-- Stock Images Selectors -->
+            <div id="stockSelectorsContainer" class="hidden grid grid-cols-1 md:grid-cols-3 gap-3 md:col-span-2 bg-slate-950/45 p-3 rounded-lg border border-slate-800/60 mt-1">
+              <div class="flex flex-col gap-1">
+                <span class="text-[9px] uppercase font-mono text-slate-400 font-bold">Scene 1 Stock Image</span>
+                <select id="scene1Image" class="w-full px-2 py-1.5 text-[10px] border border-slate-800 rounded bg-[#040408] text-white font-mono focus:outline-none">
+                </select>
+              </div>
+              <div class="flex flex-col gap-1">
+                <span class="text-[9px] uppercase font-mono text-slate-400 font-bold">Scene 2 Stock Image</span>
+                <select id="scene2Image" class="w-full px-2 py-1.5 text-[10px] border border-slate-800 rounded bg-[#040408] text-white font-mono focus:outline-none">
+                </select>
+              </div>
+              <div class="flex flex-col gap-1">
+                <span class="text-[9px] uppercase font-mono text-slate-400 font-bold">Scene 3 Stock Image</span>
+                <select id="scene3Image" class="w-full px-2 py-1.5 text-[10px] border border-slate-800 rounded bg-[#040408] text-white font-mono focus:outline-none">
+                </select>
+              </div>
+            </div>
+
+            <!-- Custom API Endpoints Overrides -->
+            <div class="col-span-1 md:col-span-2 border-t border-slate-800/80 pt-3 mt-2">
+              <span class="text-[11px] uppercase font-mono text-[#ff007f] font-bold">[ API_ENDPOINT_AND_MODEL_OVERRIDES ]</span>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <span class="text-[10px] uppercase font-mono text-slate-400">Text Model Name</span>
+              <select id="textModelName" class="w-full px-3 py-2 text-xs border border-slate-800 rounded bg-black text-white font-mono focus:outline-none">
+                <option value="">Default (Llama 3.3 70B / Fallbacks)</option>
+                <option value="meta/llama-3.3-70b-instruct">Llama 3.3 70B Instruct</option>
+                <option value="meta/llama-3.1-70b-instruct">Llama 3.1 70B Instruct</option>
+                <option value="meta/llama-3.1-405b-instruct">Llama 3.1 405B Instruct</option>
+                <option value="meta/llama-3.1-8b-instruct">Llama 3.1 8B Instruct</option>
+                <option value="meta/llama-3.1-nemotron-70b-instruct">Llama Nemotron 70B Instruct</option>
+                <option value="nvidia/llama-3.1-nemotron-70b-instruct">Nvidia Llama 3.1 Nemotron 70B Instruct</option>
+                <option value="meta/llama-3.2-3b-instruct">Llama 3.2 3B Instruct</option>
+                <option value="meta/llama-3.2-11b-vision-instruct">Llama 3.2 11B Vision Instruct</option>
+                <option value="meta/llama-3.2-90b-vision-instruct">Llama 3.2 90B Vision Instruct</option>
+                <option value="meta/llama3-70b-instruct">Llama 3 70B Instruct</option>
+                <option value="meta/llama3-8b-instruct">Llama 3 8B Instruct</option>
+                <option value="deepseek-ai/deepseek-r1">DeepSeek R1</option>
+                <option value="deepseek-ai/deepseek-v3">DeepSeek V3</option>
+                <option value="moonshotai/kimi-k2.6">Kimi K2.6</option>
+                <option value="moonshotai/kimi-k2.5">Kimi K2.5</option>
+                <option value="minimaxai/minimax-m3">MiniMax M3</option>
+                <option value="minimaxai/minimax-m2.7">MiniMax M2.7</option>
+                <option value="google/gemma-2-27b-it">Gemma 2 27B Instruct</option>
+                <option value="google/gemma-2-9b-it">Gemma 2 9B Instruct</option>
+                <option value="microsoft/phi-4">Phi-4 Instruct</option>
+                <option value="qwen/qwen2.5-72b-instruct">Qwen 2.5 72B Instruct</option>
+                <option value="qwen/qwen2.5-coder-32b-instruct">Qwen 2.5 Coder 32B Instruct</option>
+                <option value="mistralai/mistral-large-2-instruct">Mistral Large 2</option>
+                <option value="mistralai/mixtral-8x22b-instruct-v0.1">Mixtral 8x22B</option>
+                <option value="mistralai/mixtral-8x7b-instruct-v0.1">Mixtral 8x7B</option>
+                <option value="mistralai/mistral-7b-instruct-v0.3">Mistral 7B Instruct</option>
+                <option value="mistralai/codestral-22b-instruct-v0.1">Codestral 22B</option>
+                <option value="mistralai/mistral-small-4-119b-2603">Mistral Small 4 (119B)</option>
+                <option value="mistralai/ministral-14b-instruct-2512">Ministral 14B Instruct</option>
+                <option value="mistralai/mistral-medium-3.5-128b">Mistral Medium 3.5 (128B)</option>
+                <option value="mistralai/mistral-large-3-675b-instruct-2512">Mistral Large 3 (675B Instruct)</option>
+                <option value="nvidia/nv-embedcode-7b-v1">NV-EmbedCode 7B (Embedding)</option>
+                <option value="mistralai/mistral-nemotron">Mistral Nemotron</option>
+                <option value="nvidia/rerank-qa-mistral-4b">Rerank QA Mistral 4B (Reranking)</option>
+                <option value="qwen/qwen3-next-80b-a3b-instruct">Qwen3-Next Instruct (80B)</option>
+                <option value="qwen/qwen3.5-397b-a17b">Qwen 3.5 397B MoE</option>
+                <option value="qwen/qwen3.5-122b-a10b">Qwen 3.5 122B MoE</option>
+              </select>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <span class="text-[10px] uppercase font-mono text-slate-400">Text API Base URL</span>
+              <input type="text" id="textApiBase" placeholder="e.g. https://integrate.api.nvidia.com/v1" class="px-3 py-2 text-xs border border-slate-800 rounded bg-black text-white font-mono focus:outline-none placeholder-slate-700" />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <span class="text-[10px] uppercase font-mono text-slate-400">Image Model Name</span>
+              <select id="imageModelName" class="w-full px-3 py-2 text-xs border border-slate-800 rounded bg-black text-white font-mono focus:outline-none">
+                <option value="">Default (Stable Diffusion XL / Fallbacks)</option>
+                <option value="stabilityai/stable-diffusion-xl">Stable Diffusion XL</option>
+                <option value="stabilityai/stable-diffusion-3-medium">Stable Diffusion 3 Medium</option>
+                <option value="stabilityai/stable-diffusion-3.5-large">Stable Diffusion 3.5 Large</option>
+                <option value="black-forest-labs/flux.1-schnell">Flux.1 Schnell</option>
+              </select>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <span class="text-[10px] uppercase font-mono text-slate-400">Image API Base URL</span>
+              <input type="text" id="imageApiBase" placeholder="e.g. https://dashscope.aliyuncs.com/compatible-mode/v1" class="px-3 py-2 text-xs border border-slate-800 rounded bg-black text-white font-mono focus:outline-none placeholder-slate-700" />
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button 
+          type="submit" 
+          id="submitBtn"
+          class="w-full py-4 mt-2 bg-gradient-to-r from-[#00f0ff] to-[#ff007f] hover:from-[#00f0ff]/90 hover:to-[#ff007f]/90 text-black font-extrabold text-sm uppercase tracking-wider rounded-xl transition duration-300 transform active:scale-[0.98] glow-cyan glow-cyan-hover cursor-pointer"
+        >
+          Generate & Render Video
+        </button>
+      </form>
+
+      <!-- Status Loader Panel -->
+      <div id="loaderPanel" class="hidden p-4 rounded-xl border border-[#00f0ff]/20 bg-[#00f0ff]/5 flex flex-col gap-2 font-mono">
+        <div class="flex justify-between items-center text-xs text-[#00f0ff]">
+          <span id="loaderPhase">PROCESSING...</span>
+          <span id="loaderPercent">0%</span>
+        </div>
+        <div class="w-full h-2 bg-slate-950 rounded-full overflow-hidden mt-1">
+          <div id="loaderBar" class="h-full bg-gradient-to-r from-[#00f0ff] to-[#ff007f] transition-all duration-300 w-0 shadow-[0_0_10px_#00f0ff]"></div>
+        </div>
+        <span id="loaderSubtitle" class="text-[10px] text-slate-400 mt-1 italic">Initializing pipeline...</span>
+      </div>
+
+      <!-- Error Panel -->
+      <div id="errorPanel" class="hidden p-4 rounded-xl border border-red-500/20 bg-red-950/20 text-red-400 text-xs font-mono break-all">
+        <div class="font-bold mb-1">[ GENERATION_ERROR ]</div>
+        <span id="errorMsg"></span>
+      </div>
+
+      <!-- Real-time System Log Console -->
+      <div id="logsPanel" class="hidden mt-6 border-t border-slate-800/80 pt-4 font-mono text-[10px]">
+        <div class="text-[#00f0ff] uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#00f0ff] animate-pulse"></span>
+          [ Under_The_Hood_System_Logs ]
+        </div>
+        <div id="logsConsole" class="bg-black/60 border border-slate-800/60 rounded-xl p-3 max-h-[140px] overflow-y-auto flex flex-col gap-1.5 text-slate-400 select-all leading-normal">
+          <!-- Dynamically populated log rows -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Preview Player Panel -->
+    <section class="lg:col-span-5 flex flex-col gap-4 items-center w-full">
+      <div id="previewCard" class="relative border border-[#00f0ff]/20 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,240,255,0.1)] bg-black/80 aspect-[9/16] w-full max-w-[320px] md:max-w-[350px] transition-all duration-300">
+        
+        <!-- CRT-like Bezel Bevels -->
+        <div class="absolute inset-0 border border-slate-900 rounded-3xl pointer-events-none z-20"></div>
+        <div class="absolute top-2.5 left-1/2 transform -translate-x-1/2 w-28 h-3.5 rounded-full bg-slate-900/80 z-20 flex justify-center items-center gap-1 border border-slate-800/40">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#00f0ff] animate-ping"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#ff007f] animate-pulse"></span>
+        </div>
+
+        <!-- Video Render Output Container -->
+        <div class="w-full h-full flex items-center justify-center relative">
+          <!-- Placeholder Screen -->
+          <div id="playerPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 bg-[#04040a]">
+            <svg class="w-12 h-12 text-slate-700 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+            <div class="text-xs uppercase font-mono text-slate-500 tracking-wider">Awaiting Generation...</div>
+            <div class="text-[10px] font-mono text-slate-600 mt-2">Enter your prompt on the left and trigger compilation.</div>
+          </div>
+
+          <!-- Video Tag (hidden initially) -->
+          <video 
+            id="videoPlayer" 
+            class="hidden w-full h-full object-cover relative z-10" 
+            controls 
+            autoplay 
+            loop
+          ></video>
+        </div>
+      </div>
+      
+      <!-- Video Metadata Details -->
+      <div id="videoMeta" class="hidden text-center font-mono text-[10px] text-slate-500 mt-1">
+        RENDERED OUTPUT // <span id="metaResolution">1080 x 1920 (9:16)</span> // <span id="metaSize">0.00</span> MB
+        <div class="mt-2">
+          <a id="downloadLink" href="#" download class="inline-block px-4 py-1.5 border border-[#00f0ff]/30 rounded-full text-[#00f0ff] hover:bg-[#00f0ff]/10 hover:border-[#00f0ff] transition uppercase font-bold text-[9px] tracking-wider">
+            Download MP4 File
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Video Library Section -->
+  <section class="w-full max-w-5xl mt-12 bg-slate-900/40 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 md:p-8 flex flex-col gap-6 shadow-[0_0_50px_rgba(0,0,0,0.5)] z-10 relative">
+    <div class="flex justify-between items-center border-b border-slate-800/60 pb-3">
+      <h2 class="text-md font-mono text-[#00f0ff] flex items-center gap-2">
+        <span>//</span> VIDEO_ARCHIVE
+      </h2>
+      <button type="button" onclick="fetchVideos()" class="text-[10px] uppercase font-mono text-slate-400 hover:text-[#00f0ff] transition flex items-center gap-1 cursor-pointer">
+        <span>[ REFRESH_ARCHIVE ]</span>
+      </button>
+    </div>
+    
+    <div id="videoLibraryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <!-- Video cards will be injected here -->
+      <div class="text-[10px] font-mono text-slate-500 col-span-full text-center py-8">Fetching video archive...</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="w-full max-w-5xl mt-12 pt-6 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-mono text-slate-600">
+    <div>CONTAINER STATUS: ACTIVE // NO DEPLOY WAIT</div>
+    <div class="flex gap-4">
+      <span>NVIDIA LLAMA 3.1</span>
+      <span>•</span>
+      <span>STABLE DIFFUSION XL</span>
+      <span>•</span>
+      <span>REMOTION ENGINE</span>
+    </div>
+  </footer>
+
+  <!-- Script Logic -->
+  <script>
+    const STOCK_IMAGES = [
+      { name: "Cyberpunk Alley", url: "/public/stock/cyberpunk_alley_scene1.jpg" },
+      { name: "Neon City skyline", url: "/public/stock/neon_city_scene1.jpg" },
+      { name: "Misty Pine Forest", url: "/public/stock/misty_forest_scene1.jpg" },
+      { name: "Deep Space Nebula", url: "/public/stock/deep_space_scene1.jpg" },
+      { name: "Cosmic Aurora Stars", url: "/public/stock/cosmic_aurora_scene1.jpg" },
+      { name: "Synthwave Sunset Beach", url: "/public/stock/synthwave_sunset_scene1.jpg" },
+      { name: "Cozy Misty Mountain", url: "/public/stock/misty_mountain_scene1.jpg" },
+      { name: "Vintage Retro Tech", url: "/public/stock/retro_tech_scene1.jpg" },
+      { name: "Ancient Mystic Temple", url: "/public/stock/mystic_temple_scene1.jpg" },
+      { name: "Coding Digital Matrix", url: "/public/stock/digital_matrix_scene1.jpg" },
+    ];
+
+    const STOCK_THEME_MAP = {
+      "/public/stock/cyberpunk_alley_scene1.jpg": {
+        scene2: [
+          { name: "Cyberpunk Rain Street", url: "/public/stock/cyberpunk_alley_scene2_opt0.jpg" },
+          { name: "Neon Vendor Alley", url: "/public/stock/cyberpunk_alley_scene2_opt1.jpg" },
+          { name: "Cyber-clinic Alley", url: "/public/stock/cyberpunk_alley_scene2_opt2.jpg" }
+        ],
+        scene3: [
+          { name: "Neon Hologram Alley", url: "/public/stock/cyberpunk_alley_scene3_opt0.jpg" },
+          { name: "Alleyway Rooftop View", url: "/public/stock/cyberpunk_alley_scene3_opt1.jpg" },
+          { name: "Neon Night Traffic", url: "/public/stock/cyberpunk_alley_scene3_opt2.jpg" }
+        ]
+      },
+      "/public/stock/neon_city_scene1.jpg": {
+        scene2: [
+          { name: "Futuristic Megastructure", url: "/public/stock/neon_city_scene2_opt0.jpg" },
+          { name: "Neon Skyscrapers", url: "/public/stock/neon_city_scene2_opt1.jpg" },
+          { name: "Cyberpunk Tower", url: "/public/stock/neon_city_scene2_opt2.jpg" }
+        ],
+        scene3: [
+          { name: "Flying Cars Highway", url: "/public/stock/neon_city_scene3_opt0.jpg" },
+          { name: "Rooftop Edge View", url: "/public/stock/neon_city_scene3_opt1.jpg" },
+          { name: "Neon Drizzle Over City", url: "/public/stock/neon_city_scene3_opt2.jpg" }
+        ]
+      },
+      "/public/stock/misty_forest_scene1.jpg": {
+        scene2: [
+          { name: "Foggy Forest Pathway", url: "/public/stock/misty_forest_scene2_opt0.jpg" },
+          { name: "Sunbeams Through Trees", url: "/public/stock/misty_forest_scene2_opt1.jpg" },
+          { name: "Misty Mountain Pines", url: "/public/stock/misty_forest_scene2_opt2.jpg" }
+        ],
+        scene3: [
+          { name: "Deep Forest River", url: "/public/stock/misty_forest_scene3_opt0.jpg" },
+          { name: "Mystical Woodland Cabin", url: "/public/stock/misty_forest_scene3_opt1.jpg" },
+          { name: "Snowy Forest Trees", url: "/public/stock/misty_forest_scene3_opt2.jpg" }
+        ]
+      },
+      "/public/stock/deep_space_scene1.jpg": {
+        scene2: [
+          { name: "Orion Nebula Glow", url: "/public/stock/deep_space_scene2_opt0.jpg" },
+          { name: "Cosmic Spiral Galaxy", url: "/public/stock/deep_space_scene2_opt1.jpg" },
+          { name: "Supernova Explosion", url: "/public/stock/deep_space_scene2_opt2.jpg" }
+        ],
+        scene3: [
+          { name: "Interstellar Dust Cloud", url: "/public/stock/deep_space_scene3_opt0.jpg" },
+          { name: "Milky Way Galaxy Core", url: "/public/stock/deep_space_scene3_opt1.jpg" },
+          { name: "Astro Nebula Purple", url: "/public/stock/deep_space_scene3_opt2.jpg" }
+        ]
+      },
+      "/public/stock/cosmic_aurora_scene1.jpg": {
+        scene2: [
+          { name: "Green Aurora Borealis", url: "/public/stock/cosmic_aurora_scene2_opt0.jpg" },
+          { name: "Starry Night Sky Tent", url: "/public/stock/cosmic_aurora_scene2_opt1.jpg" },
+          { name: "Aurora Reflection Lake", url: "/public/stock/cosmic_aurora_scene2_opt2.jpg" }
+        ],
+        scene3: [
+          { name: "Mountain Under Stars", url: "/public/stock/cosmic_aurora_scene3_opt0.jpg" },
+          { name: "Milky Way Arch", url: "/public/stock/cosmic_aurora_scene3_opt1.jpg" },
+          { name: "Cosmic Star Trails", url: "/public/stock/cosmic_aurora_scene3_opt2.jpg" }
+        ]
+      },
+      "/public/stock/synthwave_sunset_scene1.jpg": {
+        scene2: [
+          { name: "Vibrant Sunset Palms", url: "/public/stock/synthwave_sunset_scene2_opt0.jpg" },
+          { name: "Retro Surfboard Dunes", url: "/public/stock/synthwave_sunset_scene2_opt1.jpg" },
+          { name: "Pink Neon Horizon", url: "/public/stock/synthwave_sunset_scene2_opt2.jpg" }
+        ],
+        scene3: [
+          { name: "Synthwave Grid Ocean", url: "/public/stock/synthwave_sunset_scene3_opt0.jpg" },
+          { name: "Retro Neon Sun Beach", url: "/public/stock/synthwave_sunset_scene3_opt1.jpg" },
+          { name: "Dreamy Tropical Sunset", url: "/public/stock/synthwave_sunset_scene3_opt2.jpg" }
+        ]
+      },
+      "/public/stock/misty_mountain_scene1.jpg": {
+        scene2: [
+          { name: "Foggy Mountain Peak", url: "/public/stock/misty_mountain_scene2_opt0.jpg" },
+          { name: "Alpine Lake Reflection", url: "/public/stock/misty_mountain_scene2_opt1.jpg" },
+          { name: "Cozy Mountain Cabin", url: "/public/stock/misty_mountain_scene2_opt2.jpg" }
+        ],
+        scene3: [
+          { name: "Snowy Ridge Sunset", url: "/public/stock/misty_mountain_scene3_opt0.jpg" },
+          { name: "Pine Valley Mist", url: "/public/stock/misty_mountain_scene3_opt1.jpg" },
+          { name: "Mountain Sunrise Clouds", url: "/public/stock/misty_mountain_scene3_opt2.jpg" }
+        ]
+      },
+      "/public/stock/retro_tech_scene1.jpg": {
+        scene2: [
+          { name: "Classic Cassette Tapes", url: "/public/stock/retro_tech_scene2_opt0.jpg" },
+          { name: "Retro CRT Television", url: "/public/stock/retro_tech_scene2_opt1.jpg" },
+          { name: "Vintage Arcade Cabinet", url: "/public/stock/retro_tech_scene2_opt2.jpg" }
+        ],
+        scene3: [
+          { name: "Retro Floppy Disks", url: "/public/stock/retro_tech_scene3_opt0.jpg" },
+          { name: "Vintage Synth Keyboard", url: "/public/stock/retro_tech_scene3_opt1.jpg" },
+          { name: "Nostalgic Neon Diner", url: "/public/stock/retro_tech_scene3_opt2.jpg" }
+        ]
+      },
+      "/public/stock/mystic_temple_scene1.jpg": {
+        scene2: [
+          { name: "Jungle Ruins Entrance", url: "/public/stock/mystic_temple_scene2_opt0.jpg" },
+          { name: "Golden Buddha Statue", url: "/public/stock/mystic_temple_scene2_opt1.jpg" },
+          { name: "Mist Covered Pagoda", url: "/public/stock/mystic_temple_scene2_opt2.jpg" }
+        ],
+        scene3: [
+          { name: "Sacred Stone Lantern", url: "/public/stock/mystic_temple_scene3_opt0.jpg" },
+          { name: "Torii Gate Sunset", url: "/public/stock/mystic_temple_scene3_opt1.jpg" },
+          { name: "Mystical Temple Cave", url: "/public/stock/mystic_temple_scene3_opt2.jpg" }
+        ]
+      },
+      "/public/stock/digital_matrix_scene1.jpg": {
+        scene2: [
+          { name: "Green Code Terminal", url: "/public/stock/digital_matrix_scene2_opt0.jpg" },
+          { name: "Cyber Security Lock", url: "/public/stock/digital_matrix_scene2_opt1.jpg" },
+          { name: "Abstract Data Streams", url: "/public/stock/digital_matrix_scene2_opt2.jpg" }
+        ],
+        scene3: [
+          { name: "Futuristic Circuits Glow", url: "/public/stock/digital_matrix_scene3_opt0.jpg" },
+          { name: "Server Rack Neon Lights", url: "/public/stock/digital_matrix_scene3_opt1.jpg" },
+          { name: "Binary Code Overlay", url: "/public/stock/digital_matrix_scene3_opt2.jpg" }
+        ]
+      }
+    };
+
+    const select1 = document.getElementById('scene1Image');
+    const select2 = document.getElementById('scene2Image');
+    const select3 = document.getElementById('scene3Image');
+
+    const populateSubSelectors = (themeUrl) => {
+      select2.innerHTML = '';
+      select3.innerHTML = '';
+      const themeData = STOCK_THEME_MAP[themeUrl] || { scene2: [], scene3: [] };
+      
+      themeData.scene2.forEach((img) => {
+        const opt = document.createElement('option');
+        opt.value = img.url;
+        opt.textContent = img.name;
+        select2.appendChild(opt);
+      });
+
+      themeData.scene3.forEach((img) => {
+        const opt = document.createElement('option');
+        opt.value = img.url;
+        opt.textContent = img.name;
+        select3.appendChild(opt);
+      });
+    };
+
+    // Populate stock image select dropdowns
+    const populateStockSelectors = () => {
+      select1.innerHTML = '';
+      STOCK_IMAGES.forEach((img, index) => {
+        const opt = document.createElement('option');
+        opt.value = img.url;
+        opt.textContent = img.name;
+        if (index === 0) opt.selected = true;
+        select1.appendChild(opt);
+      });
+      populateSubSelectors(STOCK_IMAGES[0].url);
+    };
+
+    select1.addEventListener('change', (e) => {
+      populateSubSelectors(e.target.value);
+    });
+
+    // Toggle stock selectors visibility based on mode
+    const imageSourceSelect = document.getElementById('imageSource');
+    imageSourceSelect.addEventListener('change', (e) => {
+      const container = document.getElementById('stockSelectorsContainer');
+      if (e.target.value === 'stock') {
+        container.classList.remove('hidden');
+      } else {
+        container.classList.add('hidden');
+      }
+    });
+
+    // Run population on load
+    populateStockSelectors();
+
+    // Aspect Ratio Selector logic
+    const aspectBtns = document.querySelectorAll('.aspect-btn');
+    const aspectInput = document.getElementById('aspectRatioInput');
+    const previewCard = document.getElementById('previewCard');
+    
+    const RESOLUTION_LABELS = {
+      "9:16": "1080 x 1920 (9:16)",
+      "16:9": "1920 x 1080 (16:9)",
+      "1:1": "1080 x 1080 (1:1)",
+      "4:5": "1080 x 1350 (4:5)"
+    };
+
+    const adjustPreviewAspect = (aspect) => {
+      if (!previewCard) return;
+      
+      // Remove all possible aspect and max-width classes
+      previewCard.classList.remove(
+        'aspect-[9/16]', 'aspect-[16/9]', 'aspect-[1/1]', 'aspect-[4/5]',
+        'max-w-[320px]', 'md:max-w-[350px]', 'max-w-[550px]', 'md:max-w-[640px]',
+        'max-w-[400px]', 'max-w-[350px]'
+      );
+      
+      if (aspect === '9:16') {
+        previewCard.classList.add('aspect-[9/16]', 'max-w-[320px]', 'md:max-w-[350px]');
+      } else if (aspect === '16:9') {
+        previewCard.classList.add('aspect-[16/9]', 'max-w-[550px]', 'md:max-w-[640px]');
+      } else if (aspect === '1:1') {
+        previewCard.classList.add('aspect-[1/1]', 'max-w-[400px]');
+      } else if (aspect === '4:5') {
+        previewCard.classList.add('aspect-[4/5]', 'max-w-[350px]');
+      }
+      
+      const metaRes = document.getElementById('metaResolution');
+      if (metaRes) {
+        metaRes.innerText = RESOLUTION_LABELS[aspect];
+      }
+    };
+
+    aspectBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Deselect others
+        aspectBtns.forEach(b => {
+          b.classList.remove('border-[#00f0ff]', 'bg-[#00f0ff]/10', 'text-white');
+          b.classList.add('border-slate-800', 'bg-black/60', 'text-slate-400');
+        });
+        // Select this one
+        btn.classList.remove('border-slate-800', 'bg-black/60', 'text-slate-400');
+        btn.classList.add('border-[#00f0ff]', 'bg-[#00f0ff]/10', 'text-white');
+        
+        const aspect = btn.getAttribute('data-aspect');
+        aspectInput.value = aspect;
+        adjustPreviewAspect(aspect);
+      });
+    });
+
+    // Bind Hex input text changes to Color pickers and vice-versa
+    const bindColorPicker = (pickerId, inputId) => {
+      const picker = document.getElementById(pickerId);
+      const input = document.getElementById(inputId);
+      picker.addEventListener('input', (e) => input.value = e.target.value.toUpperCase());
+      input.addEventListener('change', (e) => {
+        let val = e.target.value;
+        if (!val.startsWith('#')) val = '#' + val;
+        picker.value = val;
+      });
+    };
+    bindColorPicker('primaryColor', 'primaryColorHex');
+    bindColorPicker('secondaryColor', 'secondaryColorHex');
+
+    // Opacity label update
+    const opacitySlider = document.getElementById('overlayOpacity');
+    opacitySlider.addEventListener('input', (e) => {
+      document.getElementById('opacityLabel').innerText = `HUD Opacity: ${Math.round(e.target.value * 100)}%`;
+    });
+
+    // Toggle Advanced Accordion
+    const toggleAccordion = () => {
+      const panel = document.getElementById('advancedPanel');
+      const arrow = document.getElementById('accordionArrow');
+      if (panel.classList.contains('hidden')) {
+        panel.classList.remove('hidden');
+        arrow.innerHTML = '&uarr;';
+      } else {
+        panel.classList.add('hidden');
+        arrow.innerHTML = '&darr;';
+      }
+    };
+
+    // Helper to log developer/network operations to the screen
+    const logsPanel = document.getElementById('logsPanel');
+    const logsConsole = document.getElementById('logsConsole');
+    const addLog = (message) => {
+      logsPanel.classList.remove('hidden');
+      const row = document.createElement('div');
+      row.className = 'flex gap-2 items-start break-all';
+      row.innerHTML = `<span class="text-[#ff007f] shrink-0 font-bold">&gt;&gt;</span><span>${message}</span>`;
+      logsConsole.appendChild(row);
+      logsConsole.scrollTop = logsConsole.scrollHeight;
+    };
+
+    // Form Submit Handler
+    document.getElementById('renderForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Clean accidental quotes and whitespaces
+      const cleanVal = (val) => val.trim().replace(/^['"]|['"]$/g, '');
+      const serverAdminKey = cleanVal(document.getElementById('serverAdminKey').value);
+      const textGenKey = cleanVal(document.getElementById('textGenKey').value);
+      const imageGenKey = cleanVal(document.getElementById('imageGenKey').value) || textGenKey;
+      
+      // Save credentials to localStorage
+      localStorage.setItem('serverAdminKey', serverAdminKey);
+      localStorage.setItem('textGenKey', textGenKey);
+      localStorage.setItem('imageGenKey', imageGenKey === textGenKey ? '' : imageGenKey);
+
+      const prompt = document.getElementById('prompt').value.trim();
+      document.getElementById('prompt').value = '';
+      
+      const textModelName = cleanVal(document.getElementById('textModelName').value) || null;
+      const textApiBase = cleanVal(document.getElementById('textApiBase').value) || null;
+      const imageModelName = cleanVal(document.getElementById('imageModelName').value) || null;
+      const imageApiBase = cleanVal(document.getElementById('imageApiBase').value) || null;
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const loaderPanel = document.getElementById('loaderPanel');
+      const errorPanel = document.getElementById('errorPanel');
+      const playerPlaceholder = document.getElementById('playerPlaceholder');
+      const videoPlayer = document.getElementById('videoPlayer');
+      const videoMeta = document.getElementById('videoMeta');
+
+      // Hide results and errors, show loader, clear logs
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'GENERATING VIDEO...';
+      errorPanel.classList.add('hidden');
+      loaderPanel.classList.remove('hidden');
+      logsConsole.innerHTML = '';
+      
+      addLog('Initiating request...');
+      addLog(`Prompt context: "${prompt}"`);
+      addLog(`Text Gen Config -> model: ${textModelName || 'Llama 3 fallbacks'}, endpoint: ${textApiBase || 'https://integrate.api.nvidia.com/v1'}`);
+      
+      const imageSource = document.getElementById('imageSource').value;
+      if (imageSource === 'stock') {
+        addLog(`Image Gen Config -> Bypassed. Using Stock Images Library.`);
+      } else {
+        addLog(`Image Gen Config -> model: ${imageModelName || 'SD/Flux fallbacks'}, endpoint: ${imageApiBase || 'ai.api.nvidia.com'}`);
+      }
+
+      // Update progress bar helper
+      const updateProgress = (phase, progress, subtitle = '') => {
+        document.getElementById('loaderPhase').innerText = phase.toUpperCase();
+        document.getElementById('loaderPercent').innerText = `${Math.round(progress * 100)}%`;
+        document.getElementById('loaderBar').style.width = `${progress * 100}%`;
+        document.getElementById('loaderSubtitle').innerText = subtitle;
+        addLog(`[Progress ${Math.round(progress * 100)}%] ${phase} - ${subtitle}`);
+      };
+
+      updateProgress('Initiating request...', 0.05, 'Contacting backend...');
+
+      // Build theme overrides
+      const theme_overrides = {
+        primaryColor: document.getElementById('primaryColorHex').value,
+        secondaryColor: document.getElementById('secondaryColorHex').value,
+        overlayType: document.getElementById('overlayType').value,
+        fontFamilyName: document.getElementById('fontFamilyName').value,
+        musicTrack: document.getElementById('musicTrack').value,
+        cameraMotion: document.getElementById('cameraMotion').value,
+        subtitlePosition: document.getElementById('subtitlePosition').value,
+        overlayOpacity: parseFloat(document.getElementById('overlayOpacity').value),
+        aspectRatio: document.getElementById('aspectRatioInput').value
+      };
+
+      const imageUrls = imageSource === 'stock'
+        ? [
+            document.getElementById('scene1Image').value,
+            document.getElementById('scene2Image').value,
+            document.getElementById('scene3Image').value
+          ]
+        : null;
+
+      try {
+        // Send render call to FastAPI endpoint
+        updateProgress('Connecting to NIM APIs...', 0.15, 'Running script & styling analysis...');
+        addLog('POST /render request dispatched to python container...');
+
+        const headers = {
+          'Content-Type': 'application/json'
+        };
+        if (serverAdminKey) {
+          headers['X-API-Key'] = serverAdminKey;
+        }
+
+        const response = await fetch('/render', {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify({
+            prompt,
+            text_gen_key: textGenKey,
+            image_gen_key: imageGenKey,
+            theme_overrides,
+            text_api_base: textApiBase,
+            text_model_name: textModelName,
+            image_api_base: imageApiBase,
+            image_model_name: imageModelName,
+            image_urls: imageUrls
+          })
+        });
+
+        if (!response.ok) {
+          const errData = await response.json();
+          addLog(`API request failed with status code ${response.status}`);
+          throw new Error(errData.detail || 'Rendering request failed.');
+        }
+
+        const data = await response.json();
+        
+        if (data.status === 'queued') {
+          addLog(`Render job queued successfully. Session ID: ${data.session_id}`);
+          
+           const pollInterval = 2000; // 2 seconds
+           const maxErrors = 25;
+           let errorCount = 0;
+          let lastLoggedStatus = '';
+          let lastLoggedProgress = -1;
+          
+          const checkStatus = async () => {
+            try {
+              const statusHeaders = {};
+              if (serverAdminKey) {
+                statusHeaders['X-API-Key'] = serverAdminKey;
+              }
+              const statusResponse = await fetch(`/render/status/${data.session_id}`, {
+                headers: statusHeaders
+              });
+              if (!statusResponse.ok) {
+                errorCount++;
+                if (errorCount > maxErrors) {
+                  throw new Error(`Failed to check render status after ${maxErrors} attempts.`);
+                }
+                setTimeout(checkStatus, pollInterval);
+                return;
+              }
+              
+              errorCount = 0;
+              const statusData = await statusResponse.json();
+              const status = statusData.status;
+              const progress = statusData.progress || 0.0;
+              const errorMsgText = statusData.error || 'Unknown error occurred during background render.';
+              
+              if (status !== lastLoggedStatus || progress !== lastLoggedProgress) {
+                addLog(`[System Status] ${status.toUpperCase()} // Progress: ${Math.round(progress * 100)}%`);
+                lastLoggedStatus = status;
+                lastLoggedProgress = progress;
+              }
+              
+              if (status === 'complete') {
+                updateProgress('Video Completed!', 1.0, 'Rendering successful!');
+                addLog(`Video compilation complete! File path: ${statusData.video_url}`);
+                
+                // Display Video Player
+                playerPlaceholder.classList.add('hidden');
+                videoPlayer.src = statusData.video_url;
+                videoPlayer.classList.remove('hidden');
+                videoPlayer.play();
+                
+                // Display metadata
+                document.getElementById('metaSize').innerText = '1.8'; // Mock display size
+                document.getElementById('downloadLink').href = statusData.video_url;
+                videoMeta.classList.remove('hidden');
+                
+                // Refresh library
+                if (typeof fetchVideos === 'function') fetchVideos();
+                
+                // Auto-download the generated video
+                const autoDownloadLink = document.createElement('a');
+                autoDownloadLink.href = statusData.video_url;
+                autoDownloadLink.target = '_blank';
+                autoDownloadLink.download = statusData.video_url.split('/').pop() || 'generated_video.mp4';
+                document.body.appendChild(autoDownloadLink);
+                autoDownloadLink.click();
+                document.body.removeChild(autoDownloadLink);
+                addLog('Triggered automatic download prompt for the video.');
+                
+                // Clean up UI state
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Generate & Render Video';
+                setTimeout(() => loaderPanel.classList.add('hidden'), 2000);
+              } else if (status === 'error') {
+                throw new Error(errorMsgText);
+              } else {
+                // Map status to friendly message
+                let phaseMsg = 'Processing...';
+                if (status === 'queued') phaseMsg = 'Queued in background...';
+                else if (status === 'generating_script') phaseMsg = 'Generating video script...';
+                else if (status === 'parsing_script') phaseMsg = 'Parsing LLM prompt script...';
+                else if (status === 'sourcing_assets') phaseMsg = 'Sourcing stock and voice assets...';
+                else if (status === 'rendering') phaseMsg = 'Compiling video frames...';
+                else if (status === 'uploading') phaseMsg = 'Finalizing and uploading video...';
+                
+                updateProgress(phaseMsg, progress, 'Running background video generation...');
+                setTimeout(checkStatus, pollInterval);
+              }
+            } catch (pollErr) {
+              console.error(pollErr);
+              addLog(`PIPELINE FAILURE: ${pollErr.message}`);
+              document.getElementById('errorMsg').innerText = pollErr.message;
+              errorPanel.classList.remove('hidden');
+              
+              // Clean up UI state on error
+              submitBtn.disabled = false;
+              submitBtn.innerText = 'Generate & Render Video';
+              setTimeout(() => loaderPanel.classList.add('hidden'), 2000);
+            }
+          };
+          
+          // Start polling
+          setTimeout(checkStatus, pollInterval);
+        } else {
+          throw new Error('Could not queue the render job.');
+        }
+
+      } catch (err) {
+        console.error(err);
+        addLog(`PIPELINE FAILURE: ${err.message}`);
+        document.getElementById('errorMsg').innerText = err.message;
+        errorPanel.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Generate & Render Video';
+        setTimeout(() => loaderPanel.classList.add('hidden'), 2000);
+      }
+    });
+
+    // Auto-load credentials from localStorage
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedAdminKey = localStorage.getItem('serverAdminKey');
+      const savedTextGenKey = localStorage.getItem('textGenKey');
+      const savedImageGenKey = localStorage.getItem('imageGenKey');
+      if (savedAdminKey) document.getElementById('serverAdminKey').value = savedAdminKey;
+      if (savedTextGenKey) document.getElementById('textGenKey').value = savedTextGenKey;
+      if (savedImageGenKey) document.getElementById('imageGenKey').value = savedImageGenKey;
+      
+      fetchVideos();
+    });
+
+    async function fetchVideos() {
+      const grid = document.getElementById('videoLibraryGrid');
+      if (!grid) return;
+      const adminKey = localStorage.getItem('serverAdminKey') || '';
+      try {
+        grid.innerHTML = '<div class="text-[10px] font-mono text-slate-500 col-span-full text-center py-8">Loading videos...</div>';
+        const res = await fetch('/videos', {
+          headers: { 'X-Admin-Key': adminKey }
+        });
+        if (!res.ok) throw new Error('Failed to fetch videos');
+        const data = await res.json();
+        
+        if (!data.videos || data.videos.length === 0) {
+          grid.innerHTML = '<div class="text-[10px] font-mono text-slate-500 col-span-full text-center py-8">No videos found. Generate your first video above!</div>';
+          return;
+        }
+
+        grid.innerHTML = '';
+        data.videos.forEach(v => {
+          const card = document.createElement('div');
+          card.className = 'bg-black/60 border border-[#00f0ff]/20 rounded-xl overflow-hidden flex flex-col hover:border-[#00f0ff]/50 transition-all duration-300';
+          
+          card.innerHTML = `
+            <video src="${v.url}" class="w-full h-40 object-cover bg-slate-950" preload="metadata" muted onmouseover="this.play()" onmouseout="this.pause(); this.currentTime = 0;"></video>
+            <div class="p-3 flex flex-col gap-2 flex-1 justify-between">
+              <div>
+                <div class="text-[9px] font-mono text-[#00f0ff] truncate" title="${v.filename}">${v.filename}</div>
+                <div class="text-[8px] font-mono text-slate-500 mt-1">${v.size_mb} MB • ${new Date(v.created_at * 1000).toLocaleString()}</div>
+              </div>
+              <div class="flex gap-2 mt-2">
+                <a href="${v.url}" download class="flex-1 text-center py-1.5 border border-[#00f0ff]/30 rounded text-[#00f0ff] hover:bg-[#00f0ff]/10 transition uppercase font-bold text-[8px] tracking-wider">Download</a>
+                <button type="button" onclick="deleteVideo('${v.filename}')" class="flex-1 text-center py-1.5 border border-[#ff007f]/30 rounded text-[#ff007f] hover:bg-[#ff007f]/10 transition uppercase font-bold text-[8px] tracking-wider">Delete</button>
+              </div>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      } catch (err) {
+        grid.innerHTML = '<div class="text-[10px] font-mono text-[#ff007f] col-span-full text-center py-8">Failed to load video library.</div>';
+      }
+    }
+
+    async function deleteVideo(filename) {
+      if (!confirm(`Are you sure you want to delete ${filename}?`)) return;
+      const adminKey = localStorage.getItem('serverAdminKey') || '';
+      try {
+        const res = await fetch(`/videos/${encodeURIComponent(filename)}`, {
+          method: 'DELETE',
+          headers: { 'X-Admin-Key': adminKey }
+        });
+        if (res.ok) {
+          fetchVideos(); // Refresh list
+        } else {
+          alert('Failed to delete video.');
+        }
+      } catch (err) {
+        alert('Error deleting video: ' + err.message);
+      }
+    }
+  </script>
+</body>
+</html>

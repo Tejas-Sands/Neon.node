@@ -1,0 +1,77 @@
+{
+ "version": 1,
+ "entries": [
+  {
+   "ts": 1784799890,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "Are AI labs pelicanmaxxing?",
+    "subject": "Are AI labs pelicanmaxxing?",
+    "url": "https://dylancastillo.co/posts/pelicanmaxxing.html",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 8.94
+   },
+   "style_pack": "terracotta-earth",
+   "seed": 241842663,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "NEGATIVE WARNING",
+   "scene_count": 5,
+   "video_seconds": 29.0,
+   "session": "gh-29b139",
+   "platforms": {
+    "instagram": {
+     "id": "17918131911419901",
+     "posted_at": 1784799952
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1784809450,
+   "posted_hour_utc": 12,
+   "channel": "news",
+   "topic": {
+    "title": "Quality non-fiction books are the antithesis of AI slop",
+    "subject": "Quality non-fiction books are the antithesis of AI slop",
+    "url": "https://resobscura.substack.com/p/quality-non-fiction-books-are-the",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 8.54
+   },
+   "style_pack": "cosmic-fantasy",
+   "seed": 1008036357,
+   "voice": "en-US-ChristopherNeural",
+   "hook_type": "BOLD PROMISE",
+   "scene_count": 6,
+   "video_seconds": 34.3,
+   "session": "gh-ecda7d",
+   "platforms": {
+    "instagram": {
+     "id": "17979975054025839",
+     "posted_at": 1784809521
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  }
+ ]
+}

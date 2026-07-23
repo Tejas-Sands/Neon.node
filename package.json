@@ -1,0 +1,33 @@
+{
+  "name": "huggingface-renderer",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@remotion/cli": "4.0.482",
+    "@remotion/google-fonts": "4.0.482",
+    "@remotion/paths": "4.0.482",
+    "@remotion/shapes": "4.0.482",
+    "@remotion/tailwind-v4": "4.0.482",
+    "@theatre/core": "^0.7.2",
+    "@theatre/studio": "^0.7.2",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.482",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.2.0",
+    "@types/node": "20.12.14",
+    "@types/react": "19.2.7",
+    "autoprefixer": "10.4.20",
+    "postcss": "8.5.10",
+    "tailwindcss": "4.2.0",
+    "typescript": "5.9.3"
+  },
+  "optionalDependencies": {
+    "@tailwindcss/oxide-linux-arm64-gnu": "4.2.0",
+    "@tailwindcss/oxide-linux-arm64-musl": "4.2.0",
+    "@tailwindcss/oxide-linux-x64-gnu": "4.2.0",
+    "@tailwindcss/oxide-linux-x64-musl": "4.2.0"
+  }
+}

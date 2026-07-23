@@ -1,0 +1,82 @@
+[
+ {
+  "id": "48979269",
+  "title": "China\u2019s open-weights AI strategy is winning",
+  "norm": "china s open weights ai strategy is winning",
+  "subject_norm": null,
+  "ts": 1784649972,
+  "session": "gh-90e8e8"
+ },
+ {
+  "id": "48993414",
+  "title": "Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber",
+  "norm": "gemini 3 6 flash 3 5 flash lite and 3 5 flash cyber",
+  "subject_norm": null,
+  "ts": 1784656282,
+  "session": "gh-09e14a"
+ },
+ {
+  "id": "48996571",
+  "title": "Advertise in ChatGPT",
+  "norm": "advertise in chatgpt",
+  "subject_norm": null,
+  "ts": 1784701947,
+  "session": "gh-3e2d13"
+ },
+ {
+  "id": "48996652",
+  "title": "Judge approves $1.5B Anthropic settlement for pirated books used to train Claude",
+  "norm": "judge approves 1 5b anthropic settlement for pirated books used to train claude",
+  "subject_norm": null,
+  "ts": 1784713056,
+  "session": "gh-c5e287"
+ },
+ {
+  "id": "48997548",
+  "title": "OpenAI and Hugging Face address security incident during model evaluation",
+  "norm": "openai and hugging face address security incident during model evaluation",
+  "subject_norm": null,
+  "ts": 1784722966,
+  "session": "gh-d73532"
+ },
+ {
+  "id": "48998404",
+  "title": "\"Drawing\" the Mona Lisa with GPT-5.6, Claude, Gemini, and Grok",
+  "norm": "drawing the mona lisa with gpt 5 6 claude gemini and grok",
+  "subject_norm": null,
+  "ts": 1784735755,
+  "session": "gh-bae51b"
+ },
+ {
+  "id": "49007374",
+  "title": "Passkeys were invented by engineers with zero understanding of consumer brain",
+  "norm": "passkeys were invented by engineers with zero understanding of consumer brain",
+  "subject_norm": null,
+  "ts": 1784741766,
+  "session": "gh-e5e066"
+ },
+ {
+  "id": "49010345",
+  "title": "Terence Tao's ChatGPT conversation about the Jacobian Conjecture counterexample",
+  "norm": "terence tao s chatgpt conversation about the jacobian conjecture counterexample",
+  "subject_norm": null,
+  "ts": 1784788606,
+  "session": "gh-bc9ce6"
+ },
+ {
+  "id": "49010129",
+  "title": "Are AI labs pelicanmaxxing?",
+  "norm": "are ai labs pelicanmaxxing",
+  "subject_norm": null,
+  "ts": 1784799967,
+  "session": "gh-29b139"
+ },
+ {
+  "id": "49007247",
+  "title": "Quality non-fiction books are the antithesis of AI slop",
+  "norm": "quality non fiction books are the antithesis of ai slop",
+  "subject_norm": null,
+  "ts": 1784809601,
+  "session": "gh-ecda7d"
+ }
+]

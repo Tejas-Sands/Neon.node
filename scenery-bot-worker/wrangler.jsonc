@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "scenery-bot",
+  "main": "worker.js",
+  "compatibility_date": "2026-07-19",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "logs": { "head_sampling_rate": 1 }
+  },
+  // Non-secret settings. Secrets (BOT_TOKEN, WEBHOOK_SECRET, GITHUB_TOKEN,
+  // ALLOWED_CHAT_ID) are set with `wrangler secret put` — never here.
+  "vars": {
+    "GITHUB_REPO": "Tejas-Sands/Neon.node",
+    "GITHUB_REF": "main"
+  }
+}

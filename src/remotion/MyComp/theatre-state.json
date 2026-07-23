@@ -1,0 +1,24 @@
+{
+  "revision": "1",
+  "sheetsById": {
+    "Scene": {
+      "staticOverrides": {
+        "byObject": {
+          "Camera": {
+            "scale": 1,
+            "panX": 0,
+            "panY": 0,
+            "rotation": 0
+          }
+        }
+      },
+      "sequence": {
+        "type": "PositionalSequence",
+        "length": 35,
+        "subUnitsPerUnit": 30,
+        "tracksByObject": {}
+      }
+    }
+  },
+  "definitionVersion": "0.4.0"
+}

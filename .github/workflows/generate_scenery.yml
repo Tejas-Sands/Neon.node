@@ -1,0 +1,179 @@
+name: Artistic Scenery Generator
+
+on:
+  # Bot-only while the look is being tuned: every render is one the user asked
+  # for (Telegram /scenery via the scenery-bot-worker, or the Run-workflow
+  # button). Re-enable the schedule by uncommenting the block below — the two
+  # slots are deliberately offset from the news workflow's (3:23, 6:47, 10:11,
+  # 13:36, 16:02 UTC) so the pipelines never contend for a runner window.
+  # schedule:
+  #   - cron: '31 8 * * *'
+  #   - cron: '57 17 * * *'
+  workflow_dispatch:
+    inputs:
+      concept:
+        description: 'Optional exact place to film (e.g. "Faroe Islands storm"). Empty = autonomous pick.'
+        required: false
+        type: string
+        default: ''
+
+permissions:
+  contents: write   # the job commits the scenery concept-history file back
+
+concurrency:
+  # Serialized against ITSELF only (separate group from video-generation):
+  # a scenery failure or queue must never delay a news post. The state-file
+  # commit uses rebase-and-retry, so a push race with the news workflow's
+  # history commit resolves itself.
+  group: scenery-generation
+  cancel-in-progress: false
+
+jobs:
+  generate-and-post:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Random jitter (anti-pattern-detection)
+        if: github.event_name == 'schedule'
+        run: |
+          DELAY=$((RANDOM % 900))
+          echo "Sleeping ${DELAY}s..."
+          sleep $DELAY
+
+      # NOTE: no ffmpeg install step on purpose — the main workflow needs
+      # system ffmpeg only for the voiceover MIXER, and this branch is
+      # music-only (no TTS, no mixing). Remotion renders audio with its own
+      # bundled ffmpeg. If a voiceover path is ever added here, copy the
+      # install step from generate_video.yml — do not let audio degrade
+      # silently (run #106 lesson).
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+          cache: 'pip'
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Cache Python virtualenv
+        id: venv-cache
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-py39-${{ hashFiles('requirements.txt') }}
+
+      - name: Install Python Dependencies
+        if: steps.venv-cache.outputs.cache-hit != 'true'
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install --upgrade pip
+          .venv/bin/pip install -r requirements.txt
+
+      - name: Add virtualenv to PATH
+        run: echo "$GITHUB_WORKSPACE/.venv/bin" >> "$GITHUB_PATH"
+
+      - name: Cache node_modules (incl. Remotion's Chrome Headless Shell)
+        id: node-modules-cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}-node24-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Node Dependencies
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+        run: |
+          npm ci
+          npm install --no-save @tailwindcss/oxide-linux-x64-gnu
+          npx remotion browser ensure
+
+      - name: Run Scenery Generation Pipeline
+        env:
+          # Forced place from the Telegram bot / manual dispatch. Passed as an
+          # env var, NEVER interpolated into the shell command — workflow
+          # inputs are user text (classic Actions injection vector).
+          SCENERY_FORCED_CONCEPT: ${{ inputs.concept }}
+          # Dedicated scenery bot + channel; generate_scenery.py falls back to
+          # the base TELEGRAM_* pair until the new bot secrets exist.
+          TELEGRAM_BOT_TOKEN_SCENERY: ${{ secrets.TELEGRAM_BOT_TOKEN_SCENERY }}
+          TELEGRAM_CHAT_ID_SCENERY: ${{ secrets.TELEGRAM_CHAT_ID_SCENERY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # Branch-specific LLM quota; generate_scenery.py maps these onto the
+          # base key names before importing main, falling back to the base
+          # secrets below when unset.
+          GEMINI_API_KEY_SCENERY: ${{ secrets.GEMINI_API_KEY_SCENERY }}
+          GROQ_API_KEY_SCENERY: ${{ secrets.GROQ_API_KEY_SCENERY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TEXT_GEN_KEY: ${{ secrets.TEXT_GEN_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          NVIDIA_NIM_KEY: ${{ secrets.NVIDIA_NIM_KEY }}
+          # --- Footage + AI stills ---
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          POLLINATIONS_API_TOKEN: ${{ secrets.POLLINATIONS_API_TOKEN }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          python generate_scenery.py
+
+      - name: Persist scenery concept history (state across runs)
+        # Without this commit the ephemeral runner forgets which places aired
+        # and the next cron re-picks the same famous spot — the scenery
+        # equivalent of the "same news 4 times in a row" bug.
+        id: commit_history
+        run: |
+          STATE_FILES="public/processed_scenery_concepts.json"
+          if [ -z "$(git status --porcelain -- $STATE_FILES)" ]; then
+            echo "Scenery history unchanged; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add $STATE_FILES
+          git commit -m "chore: record scenery concept (run ${{ github.run_number }}) [skip ci]"
+          for i in 1 2 3; do
+            if git pull --rebase --autostash origin main && git push origin main; then
+              echo "Scenery history pushed."
+              exit 0
+            fi
+            echo "Push attempt $i failed; retrying after a short jitter..."
+            git rebase --abort 2>/dev/null || true
+            sleep $((RANDOM % 20 + 5))
+          done
+          echo "::error::Could not push scenery history after 3 attempts — state will not persist"
+          exit 1
+
+      - name: Alert Telegram if history commit failed (video WAS posted)
+        if: failure() && steps.commit_history.outcome == 'failure'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN_SCENERY || secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID_SCENERY || secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+            curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+              --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+              --data-urlencode "text=⚠️ Scenery video POSTED OK but the concept-history commit failed (run #${{ github.run_number }}) — the next run may repeat this place. Logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+              >/dev/null || echo "Telegram alert delivery failed"
+          fi
+
+      - name: Alert Telegram if any step failed
+        # generate_scenery.py alerts on ITS failures; this catches checkout /
+        # setup / cache failures that would otherwise die as a silent red X.
+        if: failure() && steps.commit_history.outcome != 'failure'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN_SCENERY || secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID_SCENERY || secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+            curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+              --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+              --data-urlencode "text=❌ Scenery workflow FAILED (run #${{ github.run_number }}) — no video was posted. Logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+              >/dev/null || echo "Telegram alert delivery failed"
+          fi

@@ -1,0 +1,214 @@
+name: Scheduled Video Generator
+
+on:
+  schedule:
+    # 5 posts/day at IRREGULAR, spread-out times (UTC) — a fixed every-N-hours
+    # cadence is a classic bot fingerprint; odd minutes + the jitter step below
+    # make posting times look human. (≈ 08:53, 12:17, 15:41, 19:06, 21:32 IST)
+    - cron: '23 3 * * *'
+    - cron: '47 6 * * *'
+    - cron: '11 10 * * *'
+    - cron: '36 13 * * *'
+    - cron: '2 16 * * *'
+  workflow_dispatch:
+    # Allow manual triggers from the GitHub UI (use this for the optional 6th post)
+
+permissions:
+  contents: write   # the job commits the topic-history file back to the repo
+
+concurrency:
+  # Serialize runs: two overlapping videos would break the anti-bot posting
+  # cadence, and serialization also makes the topic-history commit race-free
+  # (a queued run checks out the file the previous run just pushed).
+  group: video-generation
+  cancel-in-progress: false
+
+jobs:
+  generate-and-post:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Random posting jitter (anti-pattern-detection)
+        # Skip the wait on manual runs so you can test quickly
+        if: github.event_name == 'schedule'
+        run: |
+          DELAY=$((RANDOM % 1500))
+          echo "Sleeping ${DELAY}s so posts never land at the exact same minute..."
+          sleep $DELAY
+
+      # NOTE: no chromium apt-get step — Remotion 4 never uses a system browser
+      # (it renders with its own Chrome Headless Shell, cached below inside
+      # node_modules/.remotion). ffmpeg, however, is NOT preinstalled on
+      # ubuntu-latest: dropping this install once made the Python audio mixer
+      # silently fall back to a single-scene voiceover (narration died ~5s in,
+      # run #106), so it must stay.
+      - name: Install ffmpeg (required by the voiceover mixer)
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update -y -o Acquire::Retries=3
+            sudo apt-get install -y --no-install-recommends -o Acquire::Retries=3 ffmpeg
+          fi
+          # Bare invocation first: under `bash -e` (no pipefail) a piped
+          # `ffmpeg -version | head` could never fail the step.
+          ffmpeg -version >/dev/null
+          ffmpeg -version | head -n 1
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+          cache: 'pip'
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Cache Python virtualenv
+        id: venv-cache
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-py39-${{ hashFiles('requirements.txt') }}
+
+      - name: Install Python Dependencies
+        if: steps.venv-cache.outputs.cache-hit != 'true'
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install --upgrade pip
+          .venv/bin/pip install -r requirements.txt
+
+      - name: Add virtualenv to PATH
+        run: echo "$GITHUB_WORKSPACE/.venv/bin" >> "$GITHUB_PATH"
+
+      - name: Cache node_modules (incl. Remotion's Chrome Headless Shell)
+        id: node-modules-cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}-node24-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Node Dependencies
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+        run: |
+          npm ci
+          # npm ci skips platform-specific optionalDependencies resolved on
+          # another OS (npm/cli#4828); --no-save keeps the lockfile untouched
+          # so the cache key above stays stable.
+          npm install --no-save @tailwindcss/oxide-linux-x64-gnu
+          # Download Chrome Headless Shell now so it lands in the cached
+          # node_modules instead of being re-downloaded at render time.
+          npx remotion browser ensure
+
+      - name: Run Video Generation Pipeline
+        env:
+          # Inject secrets from GitHub Repository Settings
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TEXT_GEN_KEY: ${{ secrets.TEXT_GEN_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          NVIDIA_NIM_KEY: ${{ secrets.NVIDIA_NIM_KEY }}
+          # --- Instagram & Facebook Official Meta Graph API ---
+          ENABLE_INSTAGRAM_AUTOPOST: ${{ secrets.ENABLE_INSTAGRAM_AUTOPOST }}
+          INSTAGRAM_TECH_METHOD: official
+          INSTAGRAM_BUSINESS_ACCOUNT_ID: ${{ secrets.INSTAGRAM_TECH_BUSINESS_ACCOUNT_ID || secrets.INSTAGRAM_BUSINESS_ACCOUNT_ID }}
+          INSTAGRAM_TECH_BUSINESS_ACCOUNT_ID: ${{ secrets.INSTAGRAM_TECH_BUSINESS_ACCOUNT_ID || secrets.INSTAGRAM_BUSINESS_ACCOUNT_ID }}
+          FB_ACCESS_TOKEN: ${{ secrets.FB_ACCESS_TOKEN_TECH || secrets.FB_PAGE_ACCESS_TOKEN || secrets.FB_ACCESS_TOKEN }}
+          FB_ACCESS_TOKEN_TECH: ${{ secrets.FB_ACCESS_TOKEN_TECH || secrets.FB_PAGE_ACCESS_TOKEN || secrets.FB_ACCESS_TOKEN }}
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_ACCESS_TOKEN_TECH || secrets.FB_PAGE_ACCESS_TOKEN || secrets.FB_ACCESS_TOKEN }}
+          # --- Facebook Page Reels (Disabled by default: set secret to true to enable) ---
+          ENABLE_FACEBOOK_AUTOPOST: ${{ secrets.ENABLE_FACEBOOK_AUTOPOST || 'false' }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+
+
+          # --- YouTube Shorts (official Data API v3) ---
+          ENABLE_YOUTUBE_AUTOPOST: ${{ secrets.ENABLE_YOUTUBE_AUTOPOST }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          YT_PRIVACY_STATUS: ${{ secrets.YT_PRIVACY_STATUS }}
+          # --- Feedback loop (post ledger + metrics reads) ---
+          # Plain Data API key for videos.list stats reads — the upload OAuth
+          # token has upload-only scope and may 403 on reads.
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: |
+          python generate_now.py
+
+      - name: Persist topic history + post ledger (state across runs)
+        # Without this commit the runner's state files evaporate with the
+        # runner: the next cron re-picks the same top story (the exact
+        # "same news 4 times in a row" bug) and the feedback loop loses its
+        # post/metrics ledger. Files may legitimately be absent (HN
+        # unreachable -> generic-prompt fallback records nothing; posting
+        # disabled -> no ledger entry).
+        id: commit_history
+        run: |
+          # Only stage files that exist: post_ledger.json is not created
+          # until the first successful post, and git add on a missing
+          # pathspec is fatal (exit 128).
+          STATE_FILES=""
+          for f in public/processed_news_stories.json public/post_ledger.json; do
+            [ -f "$f" ] && STATE_FILES="$STATE_FILES $f"
+          done
+          if [ -z "$STATE_FILES" ] || [ -z "$(git status --porcelain -- $STATE_FILES)" ]; then
+            echo "Topic history + post ledger unchanged; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add $STATE_FILES
+          git commit -m "chore: record topic + post ledger (run ${{ github.run_number }}) [skip ci]"
+          # Rebase-and-retry: concurrency serializes scheduled runs, but a
+          # manual push from the dev machine can still land in between.
+          # --autostash tolerates any stray tracked-file changes the pipeline
+          # left behind.
+          for i in 1 2 3; do
+            if git pull --rebase --autostash origin main && git push origin main; then
+              echo "Topic history + post ledger pushed."
+              exit 0
+            fi
+            echo "Push attempt $i failed; retrying after a short jitter..."
+            git rebase --abort 2>/dev/null || true
+            sleep $((RANDOM % 20 + 5))
+          done
+          echo "::error::Could not push topic history / post ledger after 3 attempts — state will not persist"
+          exit 1
+
+      - name: Alert Telegram if history commit failed (video WAS posted)
+        # A history-push failure must not masquerade as "no video was posted"
+        # (the video went out before this step) — send a precise message.
+        if: failure() && steps.commit_history.outcome == 'failure'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+            curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+              --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+              --data-urlencode "text=⚠️ Video POSTED OK but the topic-history/post-ledger commit failed (run #${{ github.run_number }}) — the next run may repeat this story and the feedback ledger lost this post. Logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+              >/dev/null || echo "Telegram alert delivery failed"
+          fi
+
+      - name: Alert Telegram if any step failed
+        # generate_now.py alerts on ITS failures, but a failure in checkout /
+        # setup / cache / apt above would otherwise die as a silent red X on a
+        # dashboard nobody watches — Telegram is the channel that gets seen.
+        if: failure() && steps.commit_history.outcome != 'failure'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+            curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+              --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+              --data-urlencode "text=❌ Scheduled video workflow FAILED (run #${{ github.run_number }}) — no video was posted. Logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+              >/dev/null || echo "Telegram alert delivery failed"
+          fi
