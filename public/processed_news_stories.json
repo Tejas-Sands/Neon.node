@@ -78,5 +78,13 @@
   "subject_norm": null,
   "ts": 1784809601,
   "session": "gh-ecda7d"
+ },
+ {
+  "id": "49015639",
+  "title": "OpenAI\u2019s accidental attack against Hugging Face is science fiction that happened",
+  "norm": "openai s accidental attack against hugging face is science fiction that happened",
+  "subject_norm": null,
+  "ts": 1784824368,
+  "session": "gh-1bde4f"
  }
 ]

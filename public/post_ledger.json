@@ -72,6 +72,43 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1784824109,
+   "posted_hour_utc": 16,
+   "channel": "news",
+   "topic": {
+    "title": "OpenAI\u2019s accidental attack against Hugging Face is science fiction that happened",
+    "subject": "OpenAI\u2019s accidental attack against Hugging Face is science fiction that happened",
+    "url": "https://simonwillison.net/2026/Jul/22/openai-cyberattack/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "openai"
+    ],
+    "viral_score": 9.73
+   },
+   "style_pack": "ember-gold",
+   "seed": 1290509625,
+   "voice": "en-US-AndrewNeural",
+   "hook_type": "PAIN-POINT 'YOU'",
+   "scene_count": 6,
+   "video_seconds": 35.0,
+   "session": "gh-1bde4f",
+   "platforms": {
+    "instagram": {
+     "id": "18107958476085700",
+     "posted_at": 1784824336
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }
