@@ -6047,8 +6047,13 @@ async def generate_voiceover_and_alignment(
     # is forced, rotate one per video (seeded) from the narrator pool.
     resolved_voice = (voice or os.environ.get("VOICEOVER_VOICE", "")).strip()
     if not resolved_voice:
-        resolved_voice = random.Random(_derive_seed(session_id)).choice(VOICE_POOL)
-        print(f"[{session_id}] Seeded narrator voice for this video: {resolved_voice}")
+        # Feedback-weighted rotation: identical to the legacy rnd.choice on
+        # cold start; with enough scored posts, better-performing narrators get
+        # picked more often (epsilon floor keeps every voice in rotation).
+        rnd = random.Random(_derive_seed(session_id))
+        resolved_voice, voice_mode = _feedback_weighted_choice(
+            VOICE_POOL, lambda v: v, "voices", rnd, get_feedback_stats())
+        print(f"[{session_id}] Seeded narrator voice for this video: {resolved_voice} ({voice_mode})")
     # Recorded so the post ledger can attribute performance to the narrator.
     render_status_store.setdefault(session_id, {})["resolved_voice"] = resolved_voice
     resolved_rate = rate or os.environ.get("VOICEOVER_RATE", "+10%")
@@ -7172,15 +7177,26 @@ def collect_ledger_metrics(session_id: str = "Metrics") -> dict:
                     target.setdefault("metrics", {})[platform] = new_m
             save_post_ledger(ledger)
 
-    # Posting-hour learning is REPORT-ONLY: the CI cron times are fixed in the
-    # workflow file, so surface the best blocks for a human to act on.
+    # Surface what the loop has learned so the newly-live IG signal is visible
+    # rather than trusted blind. Posting-hour learning stays REPORT-ONLY (CI
+    # cron times are fixed in the workflow), but the creative buckets that DO
+    # steer selection (voices, styles) are worth logging too.
     try:
         stats = get_feedback_stats()
-        if stats and stats.get("hours4"):
-            best = sorted(stats["hours4"].items(), key=lambda kv: -kv[1]["m"])[:3]
-            blocks = ", ".join(f"{int(k) * 4:02d}-{int(k) * 4 + 4:02d}h UTC "
-                               f"(m={v['m']}, n={v['n']})" for k, v in best)
-            print(f"[{session_id}] [Metrics] Best-performing posting blocks so far: {blocks}")
+        if stats:
+            if stats.get("hours4"):
+                best = sorted(stats["hours4"].items(), key=lambda kv: -kv[1]["m"])[:3]
+                blocks = ", ".join(f"{int(k) * 4:02d}-{int(k) * 4 + 4:02d}h UTC "
+                                   f"(m={v['m']}, n={v['n']})" for k, v in best)
+                print(f"[{session_id}] [Metrics] Best-performing posting blocks so far: {blocks}")
+            for bucket_name in ("voices", "styles"):
+                rated = [(k, v) for k, v in (stats.get(bucket_name) or {}).items()
+                         if v.get("n", 0) >= FEEDBACK_MIN_BUCKET]
+                if not rated:
+                    continue
+                rated.sort(key=lambda kv: -kv[1]["m"])
+                top = ", ".join(f"{k} (m={v['m']}, n={v['n']})" for k, v in rated[:3])
+                print(f"[{session_id}] [Metrics] Top {bucket_name} by performance: {top}")
     except Exception:
         pass
 
@@ -7216,6 +7232,10 @@ FEEDBACK_MIN_BUCKET = int(os.environ.get("FEEDBACK_MIN_BUCKET", "3"))
 FEEDBACK_EPSILON = float(os.environ.get("FEEDBACK_EPSILON", "0.2"))
 FEEDBACK_KW_ALPHA = float(os.environ.get("FEEDBACK_KW_ALPHA", "0.6"))
 FEEDBACK_HALF_LIFE_DAYS = float(os.environ.get("FEEDBACK_HALF_LIFE_DAYS", "14"))
+# Engagement-rate weights (likes always count 1). Saves and shares signal
+# intent to revisit / redistribute, so they weigh heaviest — the single knob
+# most worth tuning once the newly-live IG insights accumulate.
+FEEDBACK_ENG_WEIGHTS = {"comments": 2, "shares": 3, "saved": 3}
 
 
 def _entry_perf_snapshot(entry: dict, platform: str) -> Optional[dict]:
@@ -7258,12 +7278,14 @@ def compute_feedback_stats(ledger: dict) -> dict:
         likes = int(snap.get("likes") or 0)
         comments = int(snap.get("comments") or 0)
         if platform == "instagram":
-            eng = likes + 2 * comments + 3 * int(snap.get("shares") or 0) \
-                + 3 * int(snap.get("saved") or 0)
+            eng = likes \
+                + FEEDBACK_ENG_WEIGHTS["comments"] * comments \
+                + FEEDBACK_ENG_WEIGHTS["shares"] * int(snap.get("shares") or 0) \
+                + FEEDBACK_ENG_WEIGHTS["saved"] * int(snap.get("saved") or 0)
             if views == 0:
                 views = int(snap.get("reach") or 0)
         else:
-            eng = likes + 2 * comments
+            eng = likes + FEEDBACK_ENG_WEIGHTS["comments"] * comments
         return {"v": math.log1p(views), "er": eng / max(views, 1)}
 
     comp_by_group: Dict[tuple, list] = {}
