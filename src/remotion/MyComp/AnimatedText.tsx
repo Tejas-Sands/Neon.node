@@ -108,7 +108,7 @@ const EMPH_STOPWORDS = new Set([
   "her", "our", "one", "two", "about", "over", "under", "more", "most",
 ]);
 
-const pickEmphasisIndices = (words: string[]): Set<number> => {
+export const pickEmphasisIndices = (words: string[]): Set<number> => {
   const out = new Set<number>();
   // Emphasizing a 1-2 word line is just shouting the whole line.
   if (words.length < 3) return out;

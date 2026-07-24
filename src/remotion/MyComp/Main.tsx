@@ -38,6 +38,8 @@ import { springCfg } from "./motion";
 import { deriveCutPlan, WHOOSH_CUTS } from "./transitions";
 import { derivePolish } from "./polish";
 import { PolishStack, CutCover } from "./PolishLayers";
+import { derivePrism, prismSceneStrength, type PrismConfig } from "./prism";
+import { PrismMedia, GiantWord, PrismFrame } from "./PrismLayers";
 import {
   BarChart,
   DonutChart,
@@ -220,10 +222,15 @@ const DynamicScene: React.FC<{
   look: LookConfig;
   palette: Palette;
   finish: Finish;
+  prism: PrismConfig;
   textAnimation?: string;
   // Scene context for impact frame
   sceneIndex: number;
   totalScenes: number;
+  // Whether the cut plan dresses this scene's entering/exiting boundary —
+  // the prism treatment flares briefly on those edges so its peaks land on cuts.
+  flareIn?: boolean;
+  flareOut?: boolean;
   // Scene-type-specific fields
   leftLabel?: string;
   rightLabel?: string;
@@ -249,9 +256,12 @@ const DynamicScene: React.FC<{
   look,
   palette,
   finish,
+  prism,
   textAnimation,
   sceneIndex,
   totalScenes,
+  flareIn,
+  flareOut,
   leftLabel,
   rightLabel,
   listItems,
@@ -390,6 +400,10 @@ const DynamicScene: React.FC<{
   // Design tokens for this video's finish (radii / panel fills / glow policy).
   const ft = FINISH_TOKENS[finish] ?? FINISH_TOKENS.neon;
 
+  // Prism family strength for this scene: full on poster scenes (hero/outro/
+  // cta), the milder bodyMode elsewhere, 0 when the seed didn't draw it.
+  const prismBase = prismSceneStrength(prism, type);
+
   const BackgroundLayer = (
     <>
       {/* Brand-tinted base field UNDER the photo: when the image is dim, dark
@@ -401,38 +415,61 @@ const DynamicScene: React.FC<{
           background: `radial-gradient(140% 90% at 50% 8%, ${palette.bgStops[0]} 0%, ${palette.ink} 55%, #05060a 100%)`,
         }}
       />
-      {/* Dynamic Background visual */}
-      <img
-        src={imageUrl}
-        style={{
-          width: "115%",
-          height: "115%",
-          objectFit: "cover",
-          transform: `scale(${scale}) translate(${panX}px, ${panY}px) rotate(${rotation}deg)`,
-          filter: imgFilter,
-          opacity: look.background === "gradient-wash" ? 0.38 : 1,
-        }}
-        alt="scenic landscape"
-      />
-
-      {/* Stock motion clip over the still (hook scene). The footage carries
-          its own motion, so only a gentle fixed zoom is applied — layering the
-          full camera move on real video reads as double-motion. */}
-      {videoSrc && (
-        <OffthreadVideo
-          muted
-          src={videoSrc}
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            transform: "scale(1.06)",
-            filter: imgFilter,
-            opacity: look.background === "gradient-wash" ? 0.38 : 1,
-          }}
+      {/* Dynamic Background visual — when this scene carries the prism
+          treatment the media block (and ONLY the media block) is rendered
+          through PrismMedia; every layer around it (base gradient, washes,
+          vignette, bottom scrim) is shared by both paths, so text contrast is
+          identical and prism-disabled seeds render the exact original DOM. */}
+      {prismBase > 0 ? (
+        <PrismMedia
+          imageUrl={imageUrl}
+          videoSrc={videoSrc}
+          cameraTransform={`scale(${scale}) translate(${panX}px, ${panY}px) rotate(${rotation}deg)`}
+          imgFilter={imgFilter}
+          mediaOpacity={look.background === "gradient-wash" ? 0.38 : 1}
+          prism={prism}
+          baseStrength={prismBase}
+          flareIn={flareIn}
+          flareOut={flareOut}
+          durationInFrames={durationInFrames}
+          palette={palette}
+          neon={finish === "neon"}
         />
+      ) : (
+        <>
+          <img
+            src={imageUrl}
+            style={{
+              width: "115%",
+              height: "115%",
+              objectFit: "cover",
+              transform: `scale(${scale}) translate(${panX}px, ${panY}px) rotate(${rotation}deg)`,
+              filter: imgFilter,
+              opacity: look.background === "gradient-wash" ? 0.38 : 1,
+            }}
+            alt="scenic landscape"
+          />
+
+          {/* Stock motion clip over the still (hook scene). The footage carries
+              its own motion, so only a gentle fixed zoom is applied — layering the
+              full camera move on real video reads as double-motion. */}
+          {videoSrc && (
+            <OffthreadVideo
+              muted
+              src={videoSrc}
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                transform: "scale(1.06)",
+                filter: imgFilter,
+                opacity: look.background === "gradient-wash" ? 0.38 : 1,
+              }}
+            />
+          )}
+        </>
       )}
 
       {/* --- Treatment: DUOTONE color wash (blends photo into brand colors) ---
@@ -624,6 +661,17 @@ const DynamicScene: React.FC<{
       <AbsoluteFill>
         {BackgroundLayer}
         {SharedLayers}
+        {/* Prism giant masked word — footage shows through the letterforms;
+            sits under the contact shadow + title stack so the hook stays legible. */}
+        {prismBase > 0 && prism.giantWord && title && (
+          <GiantWord
+            title={title}
+            imageUrl={imageUrl}
+            fontFamilyName={theme.fontFamilyName}
+            palette={palette}
+            durationInFrames={durationInFrames}
+          />
+        )}
         {/* Soft contact shadow behind the text stack — pre-blurred radial
             gradient (no filter:blur), buys separation on the lighter grades. */}
         <div
@@ -1278,6 +1326,16 @@ const DynamicScene: React.FC<{
       <AbsoluteFill>
         {BackgroundLayer}
         {SharedLayers}
+        {/* Prism giant masked word behind the outro logo/CTA stack */}
+        {prismBase > 0 && prism.giantWord && (
+          <GiantWord
+            title={title || "FOLLOW"}
+            imageUrl={imageUrl}
+            fontFamilyName={theme.fontFamilyName}
+            palette={palette}
+            durationInFrames={durationInFrames}
+          />
+        )}
         {/* Celebratory particle burst radiating from behind the logo */}
         <ParticleBurst
           originX={50}
@@ -2277,6 +2335,13 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
     [activeTheme.seed, look, activeTheme.overlayType],
   );
 
+  // Prism family (kaleidoscope / blend layers / giant type) — independent
+  // seeded stream like polish; most seeds never draw it.
+  const prism = React.useMemo(
+    () => derivePrism((activeTheme.seed ?? 0) >>> 0, look, activeTheme.overlayType ?? "clean"),
+    [activeTheme.seed, look, activeTheme.overlayType],
+  );
+
   const cutBoundaries = React.useMemo(
     () =>
       sceneStarts
@@ -2355,6 +2420,9 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
                 look={look}
                 palette={palette}
                 finish={finish}
+                prism={prism}
+                flareIn={!!cutPlan[index] && cutPlan[index].style !== "none" && cutPlan[index].style !== "punch-in"}
+                flareOut={!!cutPlan[index + 1] && cutPlan[index + 1].style !== "none" && cutPlan[index + 1].style !== "punch-in"}
                 textAnimation={scene.textAnimation}
                 sceneIndex={index}
                 totalScenes={totalScenes}
@@ -2395,6 +2463,16 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
         totalFrames={sceneStarts[scenes.length]}
         seed={(activeTheme.seed ?? 0) >>> 0}
       />
+
+      {/* Prism thin border frame — gated in derivePrism so it never doubles
+          with the polish edge frame / letterbox / cinema bars. */}
+      {prism.enabled && prism.borderFrame && (
+        <PrismFrame
+          primaryColor={activeTheme.primaryColor}
+          secondaryColor={activeTheme.secondaryColor}
+          neon={finish === "neon"}
+        />
+      )}
 
       {/* Global Karaoke Subtitles Overlay */}
       {subtitles && subtitles.length > 0 && (
