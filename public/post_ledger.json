@@ -219,6 +219,42 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1784895809,
+   "posted_hour_utc": 12,
+   "channel": "news",
+   "topic": {
+    "title": "Writing by hand is good for your brain",
+    "subject": "Writing by hand is good for your brain",
+    "url": "https://nealstephenson.substack.com/p/writing-by-hand-is-good-for-your",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 9.81
+   },
+   "style_pack": "mint-aqua",
+   "seed": 483934355,
+   "voice": "en-US-AndrewNeural",
+   "hook_type": "MISTAKE CALLOUT",
+   "scene_count": 6,
+   "video_seconds": 36.5,
+   "session": "gh-e95eff",
+   "platforms": {
+    "instagram": {
+     "id": "18209201419345115",
+     "posted_at": 1784895883
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }
