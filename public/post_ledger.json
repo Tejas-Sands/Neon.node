@@ -30,7 +30,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 101,
+      "reach": 99,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1784907213
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -66,7 +75,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 103,
+      "reach": 103,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1784907213
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -245,6 +263,40 @@
     "instagram": {
      "id": "18209201419345115",
      "posted_at": 1784895883
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1784907142,
+   "posted_hour_utc": 15,
+   "channel": "news",
+   "topic": {
+    "title": "It's getting harder to focus every day",
+    "subject": "It's getting harder to focus every day",
+    "url": "https://glyphack.com/attention/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 7.65
+   },
+   "style_pack": "sunset-peach",
+   "seed": 166801755,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "HIGH-STAKES BENCHMARK",
+   "scene_count": 6,
+   "video_seconds": 35.7,
+   "session": "gh-479297",
+   "platforms": {
+    "instagram": {
+     "id": "17900771634493579",
+     "posted_at": 1784907201
     }
    },
    "metrics": {
