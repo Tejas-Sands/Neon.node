@@ -94,5 +94,13 @@
   "subject_norm": null,
   "ts": 1784832994,
   "session": "gh-26be20"
+ },
+ {
+  "id": "49023019",
+  "title": "Why Software Factories Fail (or: harness engineering is not enough)",
+  "norm": "why software factories fail or harness engineering is not enough",
+  "subject_norm": null,
+  "ts": 1784871177,
+  "session": "gh-9ae043"
  }
 ]

@@ -109,6 +109,44 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1784871120,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Why Software Factories Fail (or: harness engineering is not enough)",
+    "subject": "Why Software Factories Fail (or: harness engineering is not enough)",
+    "url": "https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "war",
+     "why"
+    ],
+    "viral_score": 10.24
+   },
+   "style_pack": "synth-sunset",
+   "seed": 1890807076,
+   "voice": "en-US-BrianNeural",
+   "hook_type": "SHOCK-STAT",
+   "scene_count": 7,
+   "video_seconds": 43.0,
+   "session": "gh-9ae043",
+   "platforms": {
+    "instagram": {
+     "id": "18126535126593863",
+     "posted_at": 1784871172
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }
