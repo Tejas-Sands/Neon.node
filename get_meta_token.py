@@ -44,12 +44,17 @@ META_GRAPH_VER = os.environ.get("FB_GRAPH_VERSION", "v21.0")
 
 # Standard permissions required for automated Instagram Graph API Reels publishing
 # (Supported by Instagram Use Case Apps)
+# pages_manage_posts is intentionally NOT requested: Meta's use-case dashboard
+# no longer offers it to this app (2026-07-24), and requesting an unoffered
+# scope hard-fails the OAuth dialog with "Invalid Scopes". The original grant
+# persists on the user+app pair, so derived Page tokens still carry it —
+# verify via the "Granted Scopes" printout before confirming the .env write.
 REQUIRED_SCOPES = [
     "instagram_basic",
     "instagram_content_publish",
+    "instagram_manage_insights",
     "pages_show_list",
-    "pages_read_engagement",
-    "pages_manage_posts"
+    "pages_read_engagement"
 ]
 
 
