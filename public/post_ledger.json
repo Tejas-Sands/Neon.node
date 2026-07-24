@@ -147,6 +147,42 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1784874259,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Startup founders urge U.S. government not to shut off Chinese open weight AI",
+    "subject": "Startup founders urge U.S. government not to shut off Chinese open weight AI",
+    "url": "https://www.politico.com/news/2026/07/22/startup-founders-urge-trump-not-to-shut-off-chinese-open-weight-ai-01008992",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 9.34
+   },
+   "style_pack": "aurora-teal",
+   "seed": 108173874,
+   "voice": "en-US-ChristopherNeural",
+   "hook_type": "TIMEFRAME-COMPRESSION",
+   "scene_count": 6,
+   "video_seconds": 34.8,
+   "session": "gh-b7118e",
+   "platforms": {
+    "instagram": {
+     "id": "18442534042192771",
+     "posted_at": 1784874315
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }
