@@ -183,6 +183,42 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1784885206,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "Software rendering in 500 lines of bare C++",
+    "subject": "Software rendering in 500 lines of bare C++",
+    "url": "https://haqr.eu/tinyrenderer/",
+    "source": "hn",
+    "keywords": [
+     "war"
+    ],
+    "viral_score": 8.14
+   },
+   "style_pack": "rosewood-vintage",
+   "seed": 322010795,
+   "voice": "en-US-BrianNeural",
+   "hook_type": "PATTERN-INTERRUPT",
+   "scene_count": 5,
+   "video_seconds": 30.7,
+   "session": "gh-576bfe",
+   "platforms": {
+    "instagram": {
+     "id": "17995446353972777",
+     "posted_at": 1784885267
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }
