@@ -134,5 +134,13 @@
   "subject_norm": null,
   "ts": 1784907213,
   "session": "gh-479297"
+ },
+ {
+  "id": "49038433",
+  "title": "Claude Opus 5",
+  "norm": "claude opus 5",
+  "subject_norm": null,
+  "ts": 1784915512,
+  "session": "gh-7e5b47"
  }
 ]

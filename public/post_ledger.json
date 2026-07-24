@@ -121,7 +121,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 109,
+      "reach": 99,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "fetched_at": 1784915512
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -297,6 +306,42 @@
     "instagram": {
      "id": "17900771634493579",
      "posted_at": 1784907201
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1784915456,
+   "posted_hour_utc": 17,
+   "channel": "news",
+   "topic": {
+    "title": "Claude Opus 5",
+    "subject": "Claude Opus 5",
+    "url": "https://www.anthropic.com/claude-opus-5-system-card",
+    "source": "hn",
+    "keywords": [
+     "claude"
+    ],
+    "viral_score": 9.4
+   },
+   "style_pack": "synth-sunset",
+   "seed": 2114135365,
+   "voice": "en-US-BrianNeural",
+   "hook_type": "SHOCK-STAT",
+   "scene_count": 6,
+   "video_seconds": 35.5,
+   "session": "gh-7e5b47",
+   "platforms": {
+    "instagram": {
+     "id": "18098399183611306",
+     "posted_at": 1784915506
     }
    },
    "metrics": {
