@@ -38,9 +38,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1784907213
+      "fetched_at": 1784999217
      },
-     "snap72": null,
+     "snap72": {
+      "views": 101,
+      "reach": 99,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1784999217
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -83,9 +92,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1784907213
+      "fetched_at": 1784999217
      },
-     "snap72": null,
+     "snap72": {
+      "views": 103,
+      "reach": 103,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1784999217
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -346,7 +364,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 151,
+      "reach": 137,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1784999217
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -489,6 +516,40 @@
     "instagram": {
      "id": "18069073322443480",
      "posted_at": 1784991958
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1784999147,
+   "posted_hour_utc": 17,
+   "channel": "news",
+   "topic": {
+    "title": "Hannah Fry Wins the Leelavati Prize in 2026 for Mathematics Outreach",
+    "subject": "Hannah Fry Wins the Leelavati Prize in 2026 for Mathematics Outreach",
+    "url": "https://www.maths.cam.ac.uk/features/professor-hannah-fry-wins-leelavati-prize",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 7.53
+   },
+   "style_pack": "clean-cobalt",
+   "seed": 742959224,
+   "voice": "en-US-ChristopherNeural",
+   "hook_type": "URGENCY",
+   "scene_count": 5,
+   "video_seconds": 28.7,
+   "session": "gh-f3290c",
+   "platforms": {
+    "instagram": {
+     "id": "18084719453207743",
+     "posted_at": 1784999203
     }
    },
    "metrics": {
