@@ -303,7 +303,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 114,
+      "reach": 99,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 1,
+      "total_interactions": 1,
+      "fetched_at": 1784991983
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -446,6 +455,40 @@
     "instagram": {
      "id": "18325103461272363",
      "posted_at": 1784981005
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1784991900,
+   "posted_hour_utc": 15,
+   "channel": "news",
+   "topic": {
+    "title": "Android May Soon Restrict On-Device ADB",
+    "subject": "Android May Soon Restrict On-Device ADB",
+    "url": "https://kitsumed.github.io/blog/posts/android-may-soon-restrict-on-device-adb/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 7.81
+   },
+   "style_pack": "cosmic-fantasy",
+   "seed": 1773572990,
+   "voice": "en-US-ChristopherNeural",
+   "hook_type": "BOLD PROMISE",
+   "scene_count": 6,
+   "video_seconds": 36.0,
+   "session": "gh-5c8d89",
+   "platforms": {
+    "instagram": {
+     "id": "18069073322443480",
+     "posted_at": 1784991958
     }
    },
    "metrics": {

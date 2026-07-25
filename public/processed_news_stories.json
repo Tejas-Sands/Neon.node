@@ -158,5 +158,13 @@
   "subject_norm": null,
   "ts": 1784981115,
   "session": "gh-edc87e"
+ },
+ {
+  "id": "49045159",
+  "title": "Android May Soon Restrict On-Device ADB",
+  "norm": "android may soon restrict on device adb",
+  "subject_norm": null,
+  "ts": 1784991983,
+  "session": "gh-5c8d89"
  }
 ]
