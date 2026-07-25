@@ -142,5 +142,13 @@
   "subject_norm": null,
   "ts": 1784915512,
   "session": "gh-7e5b47"
+ },
+ {
+  "id": "49035303",
+  "title": "Nvidia, Microsoft, Meta warn against overregulating open-weight models",
+  "norm": "nvidia microsoft meta warn against overregulating open weight models",
+  "subject_norm": null,
+  "ts": 1784959681,
+  "session": "gh-b7057d"
  }
 ]

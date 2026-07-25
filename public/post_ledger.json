@@ -168,7 +168,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 119,
+      "reach": 113,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 1,
+      "total_interactions": 1,
+      "fetched_at": 1784959681
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -342,6 +351,47 @@
     "instagram": {
      "id": "18098399183611306",
      "posted_at": 1784915506
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1784959616,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Nvidia, Microsoft, Meta warn against overregulating open-weight models",
+    "subject": "Nvidia, Microsoft, Meta warn against overregulating open-weight models",
+    "url": "https://www.cnbc.com/2026/07/24/nvidia-microsoft-meta-open-weight-ai-models.html",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "model",
+     "war",
+     "microsoft",
+     "meta",
+     "nvidia"
+    ],
+    "viral_score": 11.66
+   },
+   "style_pack": "crimson-mono",
+   "seed": 423242639,
+   "voice": "en-US-AndrewNeural",
+   "hook_type": "INSIDER SECRET",
+   "scene_count": 6,
+   "video_seconds": 35.3,
+   "session": "gh-b7057d",
+   "platforms": {
+    "instagram": {
+     "id": "18331984957264320",
+     "posted_at": 1784959676
     }
    },
    "metrics": {
