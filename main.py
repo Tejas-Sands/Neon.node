@@ -177,13 +177,21 @@ if not PIXABAY_API_KEY:
 # every post; the pool doubles as the FAILOVER list — if a voice errors or
 # returns empty audio mid-video, the next one takes over for the remaining
 # scenes (a scene silently losing its voiceover was a recurring failure mode).
+#
+# These are Microsoft's NEWER generation ("Multilingual") voices. They are
+# noticeably more natural than the older *Neural set that shipped here first —
+# less announcer, more person — which is the whole reason for the swap. All four
+# emit full WordBoundary events (verified 20/20 words), so karaoke subtitle
+# alignment is unaffected; a voice without them would silently break subtitles.
+#
+# Pool changed => the feedback loop's "voices" bucket cold-starts on these names.
+# That is expected: the epsilon floor keeps every voice in rotation until enough
+# posts are scored to bias selection again.
 VOICE_POOL = [
-    "en-US-BrianNeural",        # warm, conversational — the classic narrator
-    "en-US-AndrewNeural",       # confident, most popular "AI narrator" voice
-    "en-US-ChristopherNeural",  # deep, authoritative
-    "en-US-GuyNeural",          # energetic news-style
-    "en-US-EmmaNeural",         # bright, friendly
-    "en-US-AriaNeural",         # crisp, professional
+    "en-US-AndrewMultilingualNeural",  # warm, confident, authentic
+    "en-US-BrianMultilingualNeural",   # approachable, casual, sincere
+    "en-US-AvaMultilingualNeural",     # expressive, pleasant, friendly
+    "en-US-EmmaMultilingualNeural",    # cheerful, clear, conversational
 ]
 
 # A video must never ship with partial or missing narration. When on (default),
@@ -2757,10 +2765,21 @@ def get_next_video_number() -> int:
 def _estimate_spoken_seconds(scenes: List[dict]) -> float:
     """Estimate how long the script's narration runs when spoken.
 
-    Edge-TTS at the +10% narration rate averages ~2.75 words/sec, and every
-    spoken scene gets a 0.35s tail pad. Same inputs the TTS step later uses
-    (voiceover, falling back to text), so the estimate tracks the real
-    auto-synced video length closely (run #106: est 24.3s vs actual 24.7s).
+    CALIBRATED against real scripts, not a synthetic sentence. Synthesising two
+    production props files scene-by-scene with all four pool voices at +5% fits
+    `words/2.33 + 0.35*scenes` to within 2.2%:
+
+        props-force-post-6533  8 scenes,  81 words -> est 37.6s, actual 38.4s
+        props-force-post-385b  6 scenes, 128 words -> est 57.0s, actual 56.0s
+
+    Measuring one long block instead gives 2.42 wps and under-reads by up to
+    5.6%, because real scenes are short (~10 words) and per-utterance lead-in
+    costs more than a single block implies. The old 2.75 under-read by 13-16%,
+    so MIN/MAX_SPOKEN_SEC were gating on a length the video never had.
+
+    THIS CONSTANT IS COUPLED TO VOICE_POOL AND VOICEOVER_RATE — re-measure it
+    whenever either changes, or the gates drift and scripts get expanded or
+    trimmed for the wrong reason.
     """
     total_words = 0
     spoken_scenes = 0
@@ -2772,7 +2791,7 @@ def _estimate_spoken_seconds(scenes: List[dict]) -> float:
         total_words += words
         if words:
             spoken_scenes += 1
-    return total_words / 2.75 + 0.35 * spoken_scenes
+    return total_words / 2.33 + 0.35 * spoken_scenes
 
 
 def _execute_render(req: RenderRequest, session_id: str) -> dict:
@@ -6144,7 +6163,9 @@ async def generate_voiceover_and_alignment(
         print(f"[{session_id}] Seeded narrator voice for this video: {resolved_voice} ({voice_mode})")
     # Recorded so the post ledger can attribute performance to the narrator.
     render_status_store.setdefault(session_id, {})["resolved_voice"] = resolved_voice
-    resolved_rate = rate or os.environ.get("VOICEOVER_RATE", "+10%")
+    # +10% read as hurried, which is most of what "sounds like a robot"
+    # actually is. +5% keeps the pace tight for a Reel without the rush.
+    resolved_rate = rate or os.environ.get("VOICEOVER_RATE", "+5%")
     resolved_pitch = pitch or os.environ.get("VOICEOVER_PITCH", "+0Hz")
     
     temp_audio_files = []
