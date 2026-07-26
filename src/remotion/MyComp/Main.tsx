@@ -25,6 +25,7 @@ import {
   derivePalette,
   deriveFinish,
   gradeFilter,
+  clampAccentLuminance,
   makeRng,
   withAlpha,
   inkOn,
@@ -35,7 +36,13 @@ import {
   type Finish,
 } from "./looks";
 import { springCfg } from "./motion";
-import { readableGlow, haloShadow } from "./contrast";
+import {
+  busynessFor,
+  deriveContrastBudget,
+  haloShadow,
+  readableGlow,
+  videoZones,
+} from "./contrast";
 import { deriveCutPlan, WHOOSH_CUTS } from "./transitions";
 import { derivePolish } from "./polish";
 import { PolishStack, CutCover } from "./PolishLayers";
@@ -387,7 +394,37 @@ const DynamicScene: React.FC<{
   const rotation = theatreValues.rotation !== 0.0 ? theatreValues.rotation : baseRotation;
 
   // ---- Shared background + vignette layer (look-driven treatment) ----
-  const imgFilter = gradeFilter(look);
+  // How much brighter this video's photo may be, solved from the text-zone
+  // contrast budget (contrast.ts). Every grade crushes the photo to 0.60-0.76
+  // EVERYWHERE to protect text that covers a fraction of the frame; now that
+  // plates and halos are solved per surface, that tax is paid locally instead.
+  //
+  // prismStrength is pinned to the video's WORST case rather than this scene's
+  // value on purpose: prismSceneStrength returns 1 on poster scenes and 0.7 on
+  // body scenes, so solving per scene would make the photo's brightness step
+  // visibly at every cut.
+  const contrastBudget = React.useMemo(
+    () =>
+      deriveContrastBudget(
+        {
+          look,
+          palette,
+          lift: 0,
+          prismStrength: prism.enabled ? 1 : 0,
+          prismBloom: prism.bloom,
+          busyness: busynessFor(look, theme.overlayType, prism.blendCopies),
+        },
+        videoZones({
+          palette,
+          plateHex: (FINISH_TOKENS[finish] ?? FINISH_TOKENS.neon).panelBgBase(palette),
+          heroAnchorPct: look.heroAnchor,
+          primaryColor: theme.primaryColor,
+          secondaryColor: theme.secondaryColor,
+        }),
+      ),
+    [look, palette, prism, theme.overlayType, theme.primaryColor, theme.secondaryColor, finish],
+  );
+  const imgFilter = gradeFilter(look, 0, contrastBudget.brightnessLift);
   const vignettePx = Math.round(90 + look.vignette * 90); // ~90..180px inner shadow
   const washAngle = look.bgAngle + Math.sin(frame * 0.01) * 20;
 
@@ -777,7 +814,7 @@ const DynamicScene: React.FC<{
         {/* bottom 32%: the caption band tops out near 30%, and 28% used to
             clip the quote's last line under the caption box */}
         <div style={{ position: "absolute", bottom: "32%", left: "8%", right: "8%", zIndex: 20, opacity: quoteOpacity, transform: `translateX(${quoteX}px)` }}>
-          {title && <div style={{ fontSize: `${fs(28)}px`, color: theme.secondaryColor, fontWeight: FONT_METRICS[theme.fontFamilyName].bodyWeight, fontFamily: getFontFamily(theme.fontFamilyName), marginBottom: "12px", textTransform: "uppercase", letterSpacing: "0.1em", textShadow: haloShadow(fs(28)) }}>{title}</div>}
+          {title && <div style={{ fontSize: `${fs(28)}px`, color: clampAccentLuminance(theme.secondaryColor), fontWeight: FONT_METRICS[theme.fontFamilyName].bodyWeight, fontFamily: getFontFamily(theme.fontFamilyName), marginBottom: "12px", textTransform: "uppercase", letterSpacing: "0.1em", textShadow: haloShadow(fs(28), 1.2) }}>{title}</div>}
           {text && (
             <div style={{
               fontSize: "32px",
@@ -786,7 +823,7 @@ const DynamicScene: React.FC<{
               paddingLeft: "24px",
               color: "#fff",
               lineHeight: 1.4,
-              textShadow: "0 2px 16px rgba(0,0,0,0.8)",
+              textShadow: readableGlow("", 32, 1.4),
               boxShadow: `inset 4px 0 12px ${theme.primaryColor}20`,
             }}>
               "{text}"
@@ -873,8 +910,8 @@ const DynamicScene: React.FC<{
                   // family except Orbitron and rendered fuzzy.
                   fontWeight: FONT_METRICS[theme.fontFamilyName].displayWeight,
                   fontFamily: getFontFamily(theme.fontFamilyName),
-                  color: theme.primaryColor,
-                  textShadow: readableGlow(ft.textGlow(theme.primaryColor), fs(80)),
+                  color: clampAccentLuminance(theme.primaryColor),
+                  textShadow: readableGlow(ft.textGlow(theme.primaryColor), fs(80), 1.35),
                   fontVariantNumeric: "tabular-nums",
                   textAlign: "center",
                   whiteSpace: "nowrap",
@@ -898,7 +935,7 @@ const DynamicScene: React.FC<{
             )}
           </div>
           {secondaryText && (
-            <div style={{ fontSize: `${fs(28)}px`, color: theme.secondaryColor, fontWeight: FONT_METRICS[theme.fontFamilyName].bodyWeight, fontFamily: getFontFamily(theme.fontFamilyName), textTransform: "uppercase", letterSpacing: "0.1em", textShadow: readableGlow(ft.textGlow(theme.secondaryColor), fs(28)), opacity: labelIn, transform: `translateY(${interpolate(labelIn, [0, 1], [16, 0])}px)` }}>
+            <div style={{ fontSize: `${fs(28)}px`, color: clampAccentLuminance(theme.secondaryColor), fontWeight: FONT_METRICS[theme.fontFamilyName].bodyWeight, fontFamily: getFontFamily(theme.fontFamilyName), textTransform: "uppercase", letterSpacing: "0.1em", textShadow: readableGlow(ft.textGlow(theme.secondaryColor), fs(28), 1.2), opacity: labelIn, transform: `translateY(${interpolate(labelIn, [0, 1], [16, 0])}px)` }}>
               {secondaryText}
             </div>
           )}
@@ -986,8 +1023,8 @@ const DynamicScene: React.FC<{
                 fontWeight: FONT_METRICS[theme.fontFamilyName].displayWeight,
                 fontFamily: getFontFamily(theme.fontFamilyName),
                 fontVariantNumeric: "tabular-nums",
-                color: theme.primaryColor,
-                textShadow: readableGlow(ft.textGlow(theme.primaryColor), fs(80)),
+                color: clampAccentLuminance(theme.primaryColor),
+                textShadow: readableGlow(ft.textGlow(theme.primaryColor), fs(80), 1.35),
                 transform: `scale(${pulseScale})`,
                 textAlign: "center",
                 whiteSpace: "nowrap",
@@ -1524,7 +1561,7 @@ const DynamicScene: React.FC<{
               textAlign: "center",
               maxWidth: "92%",
               lineHeight: 1.3,
-              textShadow: "0 2px 10px rgba(0,0,0,0.7)",
+              textShadow: readableGlow("", 26, 1.4),
             }}
           >
             {opts.caption}
@@ -1819,7 +1856,7 @@ const DynamicScene: React.FC<{
             color: theme.secondaryColor,
             fontFamily: getFontFamily(theme.fontFamilyName),
             fontWeight: FONT_METRICS[theme.fontFamilyName].bodyWeight,
-            textShadow: readableGlow(ft.textGlow(theme.secondaryColor), fs(28)),
+            textShadow: readableGlow(ft.textGlow(theme.secondaryColor), fs(28), 1.2),
             backgroundColor: ft.panelBg(palette),
             backdropFilter: "blur(8px)",
             padding: "10px 20px",

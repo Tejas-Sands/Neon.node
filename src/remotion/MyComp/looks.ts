@@ -199,17 +199,48 @@ const GRADE_FILTERS: Record<ColorGrade, string> = {
   faded: "brightness(0.76) contrast(1.0) saturate(0.84)",
 };
 
-/** CSS filter for the main background image, honoring the look's grade. */
-export function gradeFilter(look: LookConfig, brightnessFloor = 0): string {
+/**
+ * Multiply the `brightness()` term of a filter string, leaving every other
+ * function untouched. String surgery rather than a parallel table so
+ * GRADE_FILTERS stays the single source of truth; a grade written without a
+ * brightness() simply falls through unchanged.
+ */
+const applyLift = (filter: string, lift: number): string => {
+  if (!lift || lift <= 0) return filter;
+  return filter.replace(/brightness\(([0-9.]+)\)/, (_m, v) => {
+    // Never past 1.0. The goal is to stop CRUSHING the photo, not to
+    // over-expose it: above 1.0 the grade starts blowing out highlights that
+    // were fine in the source, which looks like a mistake rather than a
+    // brighter photograph. The contrast solver already treats a blown highlight
+    // as its worst case, so capping here only ever makes the frame safer than
+    // the budget assumed.
+    const lifted = Math.min(1, Number(v) * (1 + lift));
+    return `brightness(${lifted.toFixed(3)})`;
+  });
+};
+
+/**
+ * CSS filter for the main background image, honoring the look's grade.
+ *
+ * `lift` raises the photo's brightness by the amount the contrast solver says
+ * the video can afford (see contrast.ts). It defaults to 0, so every existing
+ * call site is bit-identical. The point of the lift is that these grades crush
+ * the photo to 0.60-0.76 EVERYWHERE to protect text that occupies a fraction of
+ * the frame — once plates and halos are solved rather than assumed, that tax
+ * only needs to be paid locally.
+ */
+export function gradeFilter(look: LookConfig, brightnessFloor = 0, lift = 0): string {
   const base = GRADE_FILTERS[look.grade] ?? GRADE_FILTERS.neutral;
-  // For duotone we desaturate first so the color layer reads cleanly.
+  // For duotone we desaturate first so the color layer reads cleanly. Half the
+  // lift only: the duotone wash re-darkens the frame on top of this, so the
+  // full amount overshoots.
   if (look.background === "duotone") {
-    return "brightness(0.7) contrast(1.25) saturate(0.15)";
+    return applyLift("brightness(0.7) contrast(1.25) saturate(0.15)", lift * 0.5);
   }
   if (brightnessFloor > 0 && look.grade === "noir") {
-    return "brightness(0.62) contrast(1.35) saturate(0.3)";
+    return applyLift("brightness(0.62) contrast(1.35) saturate(0.3)", lift);
   }
-  return base;
+  return applyLift(base, lift);
 }
 
 // ============================================================================
@@ -255,6 +286,83 @@ export const relLuminance = (hex: string): number => {
 /** Near-white or near-black ink, whichever actually contrasts with `bg`. */
 export const inkOn = (bg: string): string =>
   relLuminance(bg) > 0.35 ? "#0b0e14" : "#f8fafc";
+
+// --- Accent luminance clamp -------------------------------------------------
+// Style-pack accents are chosen to look good as PANEL fills and accent bars,
+// where their luminance does not matter. Used as TEXT directly on the media
+// they are a different problem: `clean-cobalt`'s #3b82f6 sits at luminance
+// 0.235, and a lifted backdrop sits near 0.5 — so the giant metric number was
+// DARK text on a LIGHT field, which is also the one case where the dark halo
+// added for legibility makes things worse rather than better.
+//
+// This lifts an accent to a floor while preserving its hue and saturation, so
+// the pack still reads as itself. The floor sits entirely ABOVE inkOn's 0.35
+// switch point, which matters for a second reason: the "boxed" title treatment
+// (1 in 4 seeds) paints `backgroundColor: accent; color: inkOn(accent)`, and an
+// accent that straddles 0.35 would flip that ink between seeds unpredictably.
+// Above the floor, boxed titles always resolve to dark ink.
+export const ACCENT_TEXT_LUMA_MIN = 0.55;
+
+const hexToHsl = (hex: string): [number, number, number] => {
+  const { r, g, b } = hexToRgb(hex);
+  const [rn, gn, bn] = [r / 255, g / 255, b / 255];
+  const max = Math.max(rn, gn, bn);
+  const min = Math.min(rn, gn, bn);
+  const l = (max + min) / 2;
+  if (max === min) return [0, 0, l];
+  const d = max - min;
+  const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+  let h: number;
+  if (max === rn) h = ((gn - bn) / d + (gn < bn ? 6 : 0)) / 6;
+  else if (max === gn) h = ((bn - rn) / d + 2) / 6;
+  else h = ((rn - gn) / d + 4) / 6;
+  return [h, s, l];
+};
+
+const hslToHex = (h: number, s: number, l: number): string => {
+  if (s === 0) {
+    const v = Math.round(l * 255);
+    return rgbToHex(v, v, v);
+  }
+  const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+  const p = 2 * l - q;
+  const chan = (t: number) => {
+    let x = t;
+    if (x < 0) x += 1;
+    if (x > 1) x -= 1;
+    if (x < 1 / 6) return p + (q - p) * 6 * x;
+    if (x < 1 / 2) return q;
+    if (x < 2 / 3) return p + (q - p) * (2 / 3 - x) * 6;
+    return p;
+  };
+  return rgbToHex(chan(h + 1 / 3) * 255, chan(h) * 255, chan(h - 1 / 3) * 255);
+};
+
+/**
+ * Raise `hex` until its relative luminance reaches `min`, keeping hue and
+ * saturation. Returns the colour untouched when it already clears the floor —
+ * most packs do, so this is a no-op for the majority of the catalogue.
+ *
+ * Binary search on HSL lightness: relative luminance is not linear in L, and
+ * solving it in closed form per hue is not worth the code.
+ */
+export function clampAccentLuminance(hex: string, min = ACCENT_TEXT_LUMA_MIN): string {
+  if (relLuminance(hex) >= min) return hex;
+  const [h, s] = hexToHsl(hex);
+  let lo = 0;
+  let hi = 1;
+  let out = hex;
+  for (let i = 0; i < 18; i++) {
+    const mid = (lo + hi) / 2;
+    const candidate = hslToHex(h, s, mid);
+    if (relLuminance(candidate) < min) lo = mid;
+    else {
+      hi = mid;
+      out = candidate;
+    }
+  }
+  return out;
+}
 
 /** 8-digit hex with alpha 0..1 — replaces ad-hoc `${color}55` suffixing. */
 export const withAlpha = (hex: string, alpha: number): string => {

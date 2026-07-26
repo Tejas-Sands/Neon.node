@@ -26,6 +26,7 @@
 // ============================================================================
 
 import {
+  clampAccentLuminance,
   gradeFilter,
   relLuminance,
   type ColorGrade,
@@ -155,6 +156,24 @@ export function parseFilter(filter: string): { brightness: number; contrast: num
 }
 
 // --- The zone model ---------------------------------------------------------
+/**
+ * How a surface is protected.
+ *  - "plate": sits on a panel whose alpha we can SOLVE, so it absorbs a lift by
+ *    thickening.
+ *  - "halo": carries a dark shadow ring instead (giant numbers, chart labels —
+ *    anywhere a rectangular panel would become the design). A halo has a FIXED
+ *    strength, so it cannot absorb a lift; it can only be checked.
+ */
+export type Substrate = "plate" | "halo";
+
+/**
+ * Effective alpha credited to a halo. Deliberately below `haloShadow`'s own
+ * 0.55/0.62 layers: the halo is blurred and sits around the glyph rather than
+ * covering a solid area behind it, so crediting its nominal alpha would
+ * overstate the protection and licence too large a lift.
+ */
+export const HALO_EFFECTIVE_ALPHA = 0.45;
+
 export interface ZoneInput {
   /** Frame height percentage where the text sits (0 = top). */
   yPct: number;
@@ -164,6 +183,20 @@ export interface ZoneInput {
   targetCR: number;
   /** Opaque plate colour available to this zone. */
   plateHex: string;
+  /** Which kind of substrate this surface has. Defaults to "plate". */
+  substrate?: Substrate;
+  /**
+   * Protection this surface had BEFORE the halo work — 0 for the many that had
+   * literally none. Used as the non-regression baseline (see below).
+   */
+  legacyAlpha?: number;
+  /**
+   * Effective halo alpha for this surface. Giant display type can carry a much
+   * heavier halo than body copy before it reads as clutter, and it needs to:
+   * a halo only darkens what is already there, so protecting light text over a
+   * BRIGHTENED backdrop takes real weight.
+   */
+  haloAlpha?: number;
 }
 
 export interface MediaInput {
@@ -273,63 +306,207 @@ export interface ZoneVerdict {
   achievedCR: number;
   /** True when the zone cannot be made to pass within PLATE_CEILING. */
   unsatisfiable: boolean;
+  /**
+   * True when the zone still sits below its WCAG target after its substrate.
+   * Reported rather than gated: several surfaces have been below target since
+   * long before any of this, so blocking the lift on them would punish the
+   * lift for a problem it neither caused nor can fix. Keeping the flag means
+   * the debt stays visible instead of being laundered into a pass.
+   */
+  belowTarget?: boolean;
 }
 
 export interface ContrastBudget {
   /**
-   * Extra photo brightness this look can afford. HARD-WIRED TO 0 for now.
-   *
-   * The solver is correct but the catalogue is not ready: a lift is GLOBAL and
-   * brightens the photo behind every text surface, while only the plated zones
-   * below are protected. Several surfaces — the metric giant number, countdown
-   * digits, VideoFX chart labels, and karaoke variants that strip the caption
-   * plate entirely — currently rely on the photo being dark and have no plate
-   * to thicken. Granting a lift before those are hardened would trade a
-   * readable video for a prettier one, which is exactly backwards.
-   *
-   * Unblocking this needs, in order: the text-zone inventory, a substrate for
-   * every unplated surface it finds, then a binary search here for the largest
-   * lift where EVERY zone still solves at or under PLATE_CEILING.
+   * Extra photo brightness this look can afford, solved by binary search
+   * against the two criteria below. 0 means the look is already spending its
+   * whole contrast budget on legibility.
    */
   brightnessLift: number;
   zones: ZoneVerdict[];
-  /** Highest alpha any zone needed — the plate strength a shared band must use. */
+  /** Highest alpha any plated zone needed. */
   maxAlpha: number;
   /** True when any zone cannot pass within PLATE_CEILING at this lift. */
   anyUnsatisfiable: boolean;
 }
 
 /**
- * Solve every registered zone for one video.
+ * Evaluate every zone at one lift. Returns null verdicts plus whether this lift
+ * is ACCEPTABLE, judged by two different rules depending on the substrate.
+ *
+ * PLATED zones get an ABSOLUTE rule: the solved alpha must stay at or under
+ * PLATE_CEILING and actually clear the WCAG floor. Plates can absorb a lift by
+ * thickening, so holding them to the real standard is fair.
+ *
+ * HALO zones get a NON-REGRESSION rule: contrast after the lift must be at
+ * least what the surface had BEFORE any of this work. They cannot be held to an
+ * absolute floor, and pretending otherwise would make the whole exercise fail
+ * for the wrong reason — accent-coloured text at body size cannot reach 4.5:1
+ * over ANY mid-tone backdrop, lift or no lift. `theme.secondaryColor` on a
+ * cyan pack sits near luminance 0.55, which needs a backdrop under 0.08 to
+ * clear 4.5:1, and no photograph survives being crushed that far. That is a
+ * pre-existing property of colouring small text with a brand accent, not
+ * something a brightness decision created or can fix — changing it means
+ * changing the text colour, which is a design call, not a contrast one.
+ *
+ * So the honest question for those surfaces is "does the lift make this worse
+ * than it already was?" and the honest answer has to be no. The halo added
+ * ahead of this buys real headroom: it is what the lift then spends.
+ */
+function evaluateAt(
+  media: MediaInput,
+  zones: ReadonlyArray<ZoneInput & { name: string }>,
+  lift: number,
+): { verdicts: ZoneVerdict[]; acceptable: boolean } {
+  const verdicts: ZoneVerdict[] = [];
+  let acceptable = true;
+
+  for (const z of zones) {
+    const substrate = z.substrate ?? "plate";
+    const Ltext = relLuminance(z.textHex);
+    const Lbg = zoneLuminance({ ...media, lift }, z.yPct);
+
+    if (substrate === "plate") {
+      const alpha = solvePlateAlpha(Lbg, z.plateHex, z.textHex, z.targetCR);
+      const Lresult = alpha * relLuminance(z.plateHex) + (1 - alpha) * Lbg;
+      const ok = zonePasses(Lbg, z.plateHex, z.textHex, z.targetCR, alpha) && alpha <= PLATE_CEILING;
+      if (!ok) acceptable = false;
+      verdicts.push({
+        name: z.name,
+        yPct: z.yPct,
+        backdropLuminance: Lbg,
+        requiredAlpha: alpha,
+        achievedCR: contrastRatio(Ltext, Lresult),
+        unsatisfiable: !ok,
+      });
+      continue;
+    }
+
+    // Halo: fixed strength, so compare against the pre-halo baseline at lift 0.
+    const halo = z.haloAlpha ?? HALO_EFFECTIVE_ALPHA;
+    const Lnow = halo * 0 + (1 - halo) * Lbg;
+    const Lbase = zoneLuminance({ ...media, lift: 0 }, z.yPct);
+    const legacy = z.legacyAlpha ?? 0;
+    const Lwas = legacy * 0 + (1 - legacy) * Lbase;
+    const crNow = contrastRatio(Ltext, Lnow);
+    const crWas = contrastRatio(Ltext, Lwas);
+    // NON-REGRESSION is the gate. Holding halo surfaces to an absolute WCAG
+    // target instead sounds stricter but is actually wrong: several of them sit
+    // below their target at lift 0 and always have, so an absolute gate blocks
+    // the lift for a reason the lift did not cause and cannot fix. Whether a
+    // surface clears its target is reported separately (belowTarget) so it stays
+    // visible instead of being silently laundered into a pass.
+    const ok = crNow >= crWas - 1e-9;
+    if (!ok) acceptable = false;
+    verdicts.push({
+      name: z.name,
+      yPct: z.yPct,
+      backdropLuminance: Lbg,
+      requiredAlpha: halo,
+      achievedCR: crNow,
+      unsatisfiable: !ok,
+      belowTarget: crNow < z.targetCR,
+    });
+  }
+
+  return { verdicts, acceptable };
+}
+
+/** Largest lift this look can afford. Binary search; 0 when it can afford none. */
+export function solveBrightnessLift(
+  media: MediaInput,
+  zones: ReadonlyArray<ZoneInput & { name: string }>,
+  maxLift = MAX_BRIGHTNESS_LIFT,
+): number {
+  if (!evaluateAt(media, zones, 0).acceptable) return 0;
+  let lo = 0;
+  let hi = maxLift;
+  for (let i = 0; i < 14; i++) {
+    const mid = (lo + hi) / 2;
+    if (evaluateAt(media, zones, mid).acceptable) lo = mid;
+    else hi = mid;
+  }
+  // Round DOWN to a hundredth: a lift is a visual decision, and reporting
+  // 0.2734 implies a precision the worst-case model does not have.
+  return Math.floor(lo * 100) / 100;
+}
+
+/**
+ * Ceiling on the search. Past ~35% the grade stops reading as "a brighter
+ * photograph" and starts reading as an unfinished grade, whatever the numbers
+ * say — so this is a taste bound, not a contrast one.
+ */
+export const MAX_BRIGHTNESS_LIFT = 0.35;
+
+/**
+ * Solve the lift and every zone for one video.
  *
  * `zones` is passed in rather than hardcoded so the caller owns the inventory —
- * the set of text surfaces is still being enumerated, and a table baked in here
- * would quietly go stale as scene types are added.
+ * a table baked in here would quietly go stale as scene types are added.
  */
 export function deriveContrastBudget(
   media: MediaInput,
   zones: ReadonlyArray<ZoneInput & { name: string }>,
 ): ContrastBudget {
-  const verdicts: ZoneVerdict[] = zones.map((z) => {
-    const Lbg = zoneLuminance(media, z.yPct);
-    const alpha = solvePlateAlpha(Lbg, z.plateHex, z.textHex, z.targetCR);
-    const Lresult = alpha * relLuminance(z.plateHex) + (1 - alpha) * Lbg;
-    return {
-      name: z.name,
-      yPct: z.yPct,
-      backdropLuminance: Lbg,
-      requiredAlpha: alpha,
-      achievedCR: contrastRatio(relLuminance(z.textHex), Lresult),
-      unsatisfiable: !zonePasses(Lbg, z.plateHex, z.textHex, z.targetCR, alpha),
-    };
-  });
-
+  const lift = solveBrightnessLift(media, zones);
+  const { verdicts } = evaluateAt(media, zones, lift);
   return {
-    brightnessLift: 0,
+    brightnessLift: lift,
     zones: verdicts,
     maxAlpha: verdicts.reduce((m, v) => Math.max(m, v.requiredAlpha), 0),
     anyUnsatisfiable: verdicts.some((v) => v.unsatisfiable),
   };
+}
+
+// ============================================================================
+// The zone table — the surfaces the lift is answerable to
+// ----------------------------------------------------------------------------
+// Drawn from TEXT_ZONES.md, which inventoried all 103 text surfaces drawn over
+// the media. This is not all of them: it is the ones that BIND, i.e. the worst
+// case in each (position, colour, substrate) class. Adding a surface that is
+// strictly better protected than one already here would not change the answer.
+//
+// `legacyAlpha` records what protection the surface had BEFORE the halo work,
+// which is the non-regression baseline. A same-hue coloured glow counts as ZERO:
+// it shares the text's own hue and so adds no luminance separation whatsoever.
+// ============================================================================
+export interface ZoneContext {
+  palette: Palette;
+  /** Opaque plate colour from the finish, i.e. ft.panelBgBase(palette). */
+  plateHex: string;
+  /** look.heroAnchor — where the headline stack sits. */
+  heroAnchorPct: number;
+  primaryColor: string;
+  secondaryColor: string;
+}
+
+export function videoZones(ctx: ZoneContext): Array<ZoneInput & { name: string }> {
+  const P = ctx.plateHex;
+  return [
+    // --- plated: absorb a lift by thickening ---------------------------------
+    { name: "caption band", yPct: 74, textHex: "#ffffff", targetCR: CR_BODY, plateHex: P, substrate: "plate" },
+    { name: "headline", yPct: ctx.heroAnchorPct, textHex: "#f8fafc", targetCR: CR_DISPLAY, plateHex: P, substrate: "plate" },
+    { name: "body copy", yPct: ctx.heroAnchorPct + 14, textHex: "#f8fafc", targetCR: CR_BODY, plateHex: P, substrate: "plate" },
+
+    // --- halo only: fixed strength, judged on non-regression -----------------
+    // Giant display numbers. A rectangular plate behind a 180px count-up would
+    // become the design, so these carry a halo instead — a heavy one, because
+    // a halo only darkens what is already there and these sit over the
+    // brightest part of the frame. The accent is luminance-clamped so the text
+    // stays reliably LIGHTER than its own halo; unclamped, `clean-cobalt` at
+    // 0.235 was dark text on a light field and the halo made it worse.
+    { name: "metric giant number", yPct: 45, textHex: clampAccentLuminance(ctx.primaryColor), targetCR: CR_DISPLAY, plateHex: P, substrate: "halo", legacyAlpha: 0, haloAlpha: 0.72 },
+    { name: "countdown number", yPct: 45, textHex: clampAccentLuminance(ctx.primaryColor), targetCR: CR_DISPLAY, plateHex: P, substrate: "halo", legacyAlpha: 0, haloAlpha: 0.72 },
+    { name: "metric label", yPct: 55, textHex: clampAccentLuminance(ctx.secondaryColor), targetCR: CR_DISPLAY, plateHex: P, substrate: "halo", legacyAlpha: 0, haloAlpha: 0.62 },
+    { name: "testimonial eyebrow", yPct: 62, textHex: clampAccentLuminance(ctx.secondaryColor), targetCR: CR_BODY, plateHex: P, substrate: "halo", legacyAlpha: 0, haloAlpha: 0.62 },
+    // 70%/75% white composites, approximated as their flat greys.
+    { name: "chart axis label", yPct: 60, textHex: "#b3b3b3", targetCR: CR_BODY, plateHex: P, substrate: "halo", legacyAlpha: 0, haloAlpha: 0.62 },
+    { name: "outro handle", yPct: 60, textHex: "#bfbfbf", targetCR: CR_DISPLAY, plateHex: P, substrate: "halo", legacyAlpha: 0, haloAlpha: 0.62 },
+    // These already carried a genuine dark blurred shadow, so they get credit
+    // for it — crediting them zero would overstate the headroom the halo buys.
+    { name: "lower-third minimal", yPct: 82, textHex: "#ffffff", targetCR: CR_DISPLAY, plateHex: P, substrate: "halo", legacyAlpha: 0.25, haloAlpha: 0.62 },
+    { name: "testimonial quote", yPct: 66, textHex: "#ffffff", targetCR: CR_DISPLAY, plateHex: P, substrate: "halo", legacyAlpha: 0.25, haloAlpha: 0.68 },
+  ];
 }
 
 /**
