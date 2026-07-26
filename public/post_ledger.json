@@ -147,9 +147,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1784915512
+      "fetched_at": 1785048914
      },
-     "snap72": null,
+     "snap72": {
+      "views": 109,
+      "reach": 99,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "fetched_at": 1785048914
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -194,9 +203,18 @@
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "fetched_at": 1784959681
+      "fetched_at": 1785048914
      },
-     "snap72": null,
+     "snap72": {
+      "views": 119,
+      "reach": 113,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 1,
+      "total_interactions": 1,
+      "fetched_at": 1785048914
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -409,7 +427,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 125,
+      "reach": 113,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "fetched_at": 1785048914
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -450,7 +477,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 118,
+      "reach": 106,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785048914
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
