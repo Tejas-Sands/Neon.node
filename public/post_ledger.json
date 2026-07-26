@@ -632,6 +632,43 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1785066677,
+   "posted_hour_utc": 11,
+   "channel": "news",
+   "topic": {
+    "title": "The new rules of context engineering for Claude 5 generation models",
+    "subject": "The new rules of context engineering for Claude 5 generation models",
+    "url": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models",
+    "source": "hn",
+    "keywords": [
+     "claude",
+     "model"
+    ],
+    "viral_score": 9.89
+   },
+   "style_pack": "sage-botanical",
+   "seed": 1208334348,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "BREAKING-NEWS",
+   "scene_count": 6,
+   "video_seconds": 37.3,
+   "session": "gh-6a92ae",
+   "platforms": {
+    "instagram": {
+     "id": "18106597351859978",
+     "posted_at": 1785066749
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }
