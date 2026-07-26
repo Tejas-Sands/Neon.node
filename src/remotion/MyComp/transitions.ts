@@ -76,11 +76,32 @@ export const WHOOSH_CUTS: ReadonlySet<CutStyleName> = new Set([
 // Cut-style pools flavored by the look's motion personality — the same
 // pattern as MOTION_PROFILES' camera pools. A calm video never whip-pans;
 // a snappy one never slow-burns.
+//
+// The vocabulary is deliberately narrowed to four families — dissolves, whip
+// pans, wipes/blinds/irises and film burns. The zoom/punch and glitch/chromatic
+// families were removed on purpose: they are the loudest styles in the set and
+// the ones that most disrupt reading, and the news has to be legible before it
+// is exciting. Pool LENGTH stays 4 in every row so the accent pick
+// (`pool[floor(rng()*len) % len]`) consumes exactly one draw as before — only
+// the contents change, never the draw count.
 const TRANSITION_POOLS: Record<MotionFeel, readonly CutStyleName[]> = {
   calm: ["crossfade", "blur-dissolve", "skew-peel", "luma-radial"],
-  snappy: ["whip-pan", "stutter-zoom", "chromatic-punch", "venetian-blinds"],
-  bouncy: ["push-up", "zoom-through", "stutter-zoom", "venetian-blinds"],
+  snappy: ["whip-pan", "venetian-blinds", "luma-radial", "diamond-iris"],
+  bouncy: ["push-up", "venetian-blinds", "whip-pan", "diamond-iris"],
   cinematic: ["film-burn", "luma-radial", "diamond-iris", "crossfade"],
+};
+
+// Anchors the Python side may still send that are no longer in the vocabulary,
+// each mapped to the nearest survivor in a family we keep. Applied to the
+// ANCHOR only — `theme.transitionStyle` is schema-bound (ALLOWED_TRANSITIONS in
+// main.py), so the enum cannot shrink without a 4-point sync. Remapping here is
+// render-side and needs no sync, which is the same precedent as the
+// render-side-only styles above.
+const BANNED_ANCHORS: Partial<Record<CutStyleName, CutStyleName>> = {
+  "zoom-through": "blur-dissolve",
+  "glitch-cut": "whip-pan",
+  "spin-blur": "blur-dissolve",
+  "scale-rotate": "iris-open",
 };
 
 const LEGACY_STYLES: readonly CutStyleName[] = [
@@ -114,12 +135,16 @@ export function deriveCutPlan(
   anchor: string,
   motion: MotionFeel,
 ): CutSpec[] {
-  const safeAnchor: CutStyleName =
+  const validAnchor: CutStyleName =
     anchor === "none"
       ? "none"
       : LEGACY_STYLES.includes(anchor as CutStyleName)
         ? (anchor as CutStyleName)
         : "crossfade";
+  // Retired families are swapped for the nearest kept one BEFORE the plan is
+  // built, so the signature style and every dressed cut that reuses it inherit
+  // the substitution together.
+  const safeAnchor: CutStyleName = BANNED_ANCHORS[validAnchor] ?? validAnchor;
 
   const rng = makeRng(((seed ^ 0x51ed270b) >>> 0) || 1);
   const plan: CutSpec[] = [];

@@ -298,12 +298,36 @@ const useBlurIn = (text: string, frame: number, fps: number, springMul = 1) => {
   };
 };
 
+// ============================================================================
+// READ LOCK — the staggered modes must finish ARRIVING quickly.
+// ----------------------------------------------------------------------------
+// Every staggered mode below spreads its entrance over `stagger * (n - 1)`
+// frames. Those staggers are per-item constants, so the spread grows without
+// bound as text gets longer: rise-mask at 4 frames/word takes 2.4s to finish a
+// 19-word line, and wave's 1.5-frame floor takes 3s over a 60-character one.
+// For that whole time the line is still assembling — which is the one state a
+// viewer cannot read, and the state a scroll-away happens in.
+//
+// So the SPREAD is capped rather than the per-item duration: the last item
+// still animates with its own spring, it just starts sooner. Below the cap
+// nothing changes, which is why short copy (the common case — production
+// titles run 1-4 words) renders exactly as before.
+// ============================================================================
+const READ_LOCK_FRAMES = 18;
+
+/** Per-item stagger, shrunk so the whole entrance spread fits the read lock. */
+const readLocked = (base: number, itemCount: number) =>
+  itemCount > 1 ? Math.min(base, READ_LOCK_FRAMES / (itemCount - 1)) : base;
+
 /** 8. Wave — letters ripple in on a staggered sine wave.
  * Letters are grouped per word so a line can only wrap BETWEEN words,
  * never in the middle of one. */
 const useWave = (text: string, frame: number, fps: number, springMul = 1) => {
   const totalChars = text.length;
-  const framesPerLetter = Math.max(1.5, Math.min(3, 24 / Math.max(1, totalChars)));
+  const framesPerLetter = readLocked(
+    Math.max(1.5, Math.min(3, 24 / Math.max(1, totalChars))),
+    totalChars,
+  );
 
   let globalIndex = 0;
   const words = text.split(" ").map((word) => {
@@ -332,7 +356,7 @@ const useWave = (text: string, frame: number, fps: number, springMul = 1) => {
 /** 5. Word-by-word — staggered word appearance */
 const useWordByWord = (text: string, frame: number, fps: number, springMul = 1) => {
   const words = text.split(" ");
-  const framesPerWord = 3;
+  const framesPerWord = readLocked(3, words.length);
 
   const rendered = words.map((word, i) => {
     const wordStart = i * framesPerWord;
@@ -354,7 +378,7 @@ const useWordByWord = (text: string, frame: number, fps: number, springMul = 1) 
  * overflow-hidden wrapper hugs a single word, so wrapping stays word-safe. */
 const useRiseMask = (text: string, frame: number, fps: number, springMul = 1) => {
   const words = text.split(" ");
-  const framesPerWord = 4;
+  const framesPerWord = readLocked(4, words.length);
   const rendered = words.map((word, i) => {
     const localFrame = Math.max(0, frame - i * framesPerWord);
     const progress = spring({
@@ -371,7 +395,7 @@ const useRiseMask = (text: string, frame: number, fps: number, springMul = 1) =>
 /** 10. Flip-in — words flip down from 90° like a departures board. */
 const useFlipIn = (text: string, frame: number, fps: number, springMul = 1) => {
   const words = text.split(" ");
-  const framesPerWord = 3.5;
+  const framesPerWord = readLocked(3.5, words.length);
   const rendered = words.map((word, i) => {
     const localFrame = Math.max(0, frame - Math.round(i * framesPerWord));
     const progress = spring({
@@ -394,7 +418,7 @@ const useFlipIn = (text: string, frame: number, fps: number, springMul = 1) => {
  * (Pain Point 6: wrapping only ever happens BETWEEN slots). */
 const useClipWipe = (text: string, frame: number, fps: number, springMul = 1) => {
   const words = text.split(" ");
-  const framesPerWord = 3.5;
+  const framesPerWord = readLocked(3.5, words.length);
   const rendered = words.map((word, i) => {
     const localFrame = Math.max(0, frame - Math.round(i * framesPerWord));
     const progress = spring({

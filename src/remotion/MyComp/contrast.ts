@@ -1,0 +1,357 @@
+// ============================================================================
+// contrast.ts — the legibility budget
+// ----------------------------------------------------------------------------
+// The news has to be readable before it is exciting. Today that is bought
+// bluntly: every background photo is crushed to brightness 0.60-0.76 by
+// GRADE_FILTERS so text survives whatever is behind it. The cost is that the
+// photo is dim EVERYWHERE, including the ~80% of the frame with no text on it.
+//
+// This module replaces that global dimming with arithmetic. It models the
+// worst-case luminance arriving at each text zone and solves, in closed form,
+// the MINIMUM plate alpha that still clears a WCAG contrast floor. Once plates
+// are solved rather than guessed, the photo can be brightened by exactly as
+// much as the plates can pay for — and no more.
+//
+// WHY THERE IS NO SAMPLING HERE. The obvious design is to measure the actual
+// backdrop and adapt. That is not implementable: the background is usually a
+// moving stock clip (main.py sets SCENE_VIDEO_MODE default "all", so every
+// scene fetches a Pexels/Pixabay clip and paints it over the still), and
+// Remotion renders frames in parallel worker processes with no pixel readback.
+// So this solves against a WORST CASE instead. The result is a per-video
+// constant — never time-varying, which also avoids a plate that visibly
+// breathes, and keeps caption box metrics stable while a word is animating.
+//
+// Everything here is pure math. No RNG, no draws, no seed stream — this is the
+// derivePalette class of module, so it carries zero draw-order risk.
+// ============================================================================
+
+import {
+  gradeFilter,
+  relLuminance,
+  type ColorGrade,
+  type LookConfig,
+  type Palette,
+} from "./looks";
+
+// --- WCAG floors ------------------------------------------------------------
+// 4.5:1 is the standard floor for body text. It is applied to the caption band
+// and to body copy, which are the surfaces that actually carry the reporting.
+// 3.0:1 is the large-text floor and is applied at display sizes — which lands
+// exactly on AnimatedText's existing `effectiveFontSize >= 42` split, so the
+// two tiers need no new threshold.
+export const CR_BODY = 4.5;
+export const CR_DISPLAY = 3.0;
+export const DISPLAY_SIZE_PX = 42;
+
+/**
+ * Hard cap on plate alpha. Past this a "plate" is just an opaque box and the
+ * photo behind it is gone — at which point the honest move is to refuse the
+ * brightness lift, not to keep thickening.
+ */
+export const PLATE_CEILING = 0.82;
+
+const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v);
+
+/** sRGB channel value (0..1) -> its linear-light contribution. */
+const linearize = (v: number) =>
+  v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+
+/** Relative luminance of a NEUTRAL grey at sRGB value v — the r=g=b case. */
+export const greyLuminance = (v: number) => linearize(clamp01(v));
+
+/** WCAG contrast ratio between two relative luminances, order-independent. */
+export const contrastRatio = (a: number, b: number) => {
+  const hi = Math.max(a, b);
+  const lo = Math.min(a, b);
+  return (hi + 0.05) / (lo + 0.05);
+};
+
+// --- The bottom scrim -------------------------------------------------------
+// Main.tsx renders a bottom scrim as a 45%-tall, bottom-anchored div carrying
+//   linear-gradient(to bottom,
+//     transparent 0%, ink@0.12 30%, ink@0.42 55%, ink@0.74 78%, ink@0.88 100%)
+//
+// The gradient percentages are LOCAL TO THAT 45% BOX, not to the frame. Frame
+// y=55% is the box's 0% and frame y=100% is its 100%. Reading the stops as
+// frame percentages — the easy mistake — overstates protection at the caption
+// by roughly 2x and invents protection for the headline that does not exist.
+//
+// The consequence worth stating plainly: ABOVE 55% OF FRAME HEIGHT THE SCRIM
+// CONTRIBUTES NOTHING. Headlines sit at heroAnchor 24-44%, so they are
+// currently protected by the global grade dimming alone. They are the surfaces
+// that a brightness lift would hurt first.
+const SCRIM_TOP_PCT = 55;
+const SCRIM_SPAN_PCT = 45;
+const SCRIM_STOPS: ReadonlyArray<readonly [number, number]> = [
+  [0, 0],
+  [30, 0.12],
+  [55, 0.42],
+  [78, 0.74],
+  [100, 0.88],
+];
+
+/** Scrim alpha at a given FRAME height percentage (0 = top, 100 = bottom). */
+export function scrimAlphaAt(yPct: number): number {
+  const local = ((yPct - SCRIM_TOP_PCT) / SCRIM_SPAN_PCT) * 100;
+  if (local <= 0) return 0;
+  if (local >= 100) return SCRIM_STOPS[SCRIM_STOPS.length - 1][1];
+  for (let i = 1; i < SCRIM_STOPS.length; i++) {
+    const [p0, a0] = SCRIM_STOPS[i - 1];
+    const [p1, a1] = SCRIM_STOPS[i];
+    if (local <= p1) {
+      const t = (local - p0) / (p1 - p0);
+      return a0 + (a1 - a0) * t;
+    }
+  }
+  return SCRIM_STOPS[SCRIM_STOPS.length - 1][1];
+}
+
+// --- Prism bloom veils ------------------------------------------------------
+// PrismLayers paints three screen-blended radial veils over the media. Their
+// alphas scale with prism.bloom (0..1, a raw rng draw) and the scene strength
+// (0, 0.7 or 1 from prismSceneStrength). Centres and peak alphas, from source:
+//   y=24%  white          (0.09 + 0.06*bloom) * strength
+//   y=30%  primarySoft    (0.10 + 0.08*bloom) * strength
+//   y=78%  secondary      (0.08 + 0.06*bloom) * strength   <- over the caption
+// Each falls off to transparent by ~60-65% of its radius; a triangular falloff
+// over +-26 frame-% is a deliberately generous approximation of that.
+const BLOOM_VEILS: ReadonlyArray<{ y: number; base: number; perBloom: number }> = [
+  { y: 24, base: 0.09, perBloom: 0.06 },
+  { y: 30, base: 0.1, perBloom: 0.08 },
+  { y: 78, base: 0.08, perBloom: 0.06 },
+];
+const BLOOM_REACH_PCT = 26;
+
+/** Combined screen-veil alpha reaching a frame-y, worst case across veils. */
+export function bloomAlphaAt(yPct: number, bloom: number, strength: number): number {
+  if (strength <= 0) return 0;
+  let total = 0;
+  for (const v of BLOOM_VEILS) {
+    const d = Math.abs(yPct - v.y);
+    if (d >= BLOOM_REACH_PCT) continue;
+    const falloff = 1 - d / BLOOM_REACH_PCT;
+    total += (v.base + v.perBloom * clamp01(bloom)) * strength * falloff;
+  }
+  return clamp01(total);
+}
+
+// --- Reading the grade ------------------------------------------------------
+/**
+ * Pull `brightness()` and `contrast()` out of a CSS filter string.
+ *
+ * gradeFilter() stays the single source of truth for the grade — parsing its
+ * output means a future edit to GRADE_FILTERS propagates here automatically
+ * instead of silently desyncing a duplicated table. Missing functions default
+ * to 1 (identity), so a grade written without a brightness() is handled rather
+ * than throwing.
+ */
+export function parseFilter(filter: string): { brightness: number; contrast: number } {
+  const read = (name: string) => {
+    const m = new RegExp(`${name}\\(([0-9.]+)\\)`).exec(filter);
+    const v = m ? Number(m[1]) : NaN;
+    return Number.isFinite(v) ? v : 1;
+  };
+  return { brightness: read("brightness"), contrast: read("contrast") };
+}
+
+// --- The zone model ---------------------------------------------------------
+export interface ZoneInput {
+  /** Frame height percentage where the text sits (0 = top). */
+  yPct: number;
+  /** Colour the text is painted in. */
+  textHex: string;
+  /** Contrast floor: CR_BODY for reading copy, CR_DISPLAY at >= 42px. */
+  targetCR: number;
+  /** Opaque plate colour available to this zone. */
+  plateHex: string;
+}
+
+export interface MediaInput {
+  look: LookConfig;
+  palette: Palette;
+  /** Extra brightness granted to the photo. 0 = today's behaviour. */
+  lift: number;
+  /** prismSceneStrength() for the scene: 0, 0.7 or 1. */
+  prismStrength: number;
+  /** PrismConfig.bloom, a raw 0..1 draw. */
+  prismBloom: number;
+  /**
+   * Risk margin for backdrops that are worse than a flat field: heavy overlays,
+   * multi-copy blend layers, high-contrast grades. Folded in at the end as
+   * `L + busyness*(1 - L)` so it pushes toward white, never toward black.
+   */
+  busyness: number;
+  /**
+   * Worst-case sRGB value of the incoming media before grading. 1.0 is a fully
+   * blown highlight. 0.92 is used by default: a genuine 1.0 is rare enough that
+   * solving for it thickens every plate in the catalogue to protect a handful
+   * of frames. Raise it if white-sky footage shows problems.
+   */
+  worstMediaValue?: number;
+}
+
+/**
+ * Worst-case relative luminance arriving at one zone, after the whole stack:
+ * grade brightness -> grade contrast -> prism media lift -> bloom veils ->
+ * scrim -> busyness margin.
+ *
+ * The first four steps run in sRGB VALUE space because that is what CSS filters
+ * and screen blends operate on; the result is linearised once, and the scrim
+ * composite and busyness margin are then applied in luminance space. Mixing the
+ * two is an approximation, but a conservative one — alpha compositing a dark
+ * scrim is close to linear over this range, and erring high only thickens
+ * plates.
+ */
+export function zoneLuminance(media: MediaInput, yPct: number): number {
+  const { brightness, contrast } = parseFilter(gradeFilter(media.look));
+
+  let v = clamp01(media.worstMediaValue ?? 0.92);
+  v = clamp01(v * brightness * (1 + Math.max(0, media.lift)));
+  v = clamp01((v - 0.5) * contrast + 0.5);
+  v = clamp01(v * (1 + 0.28 * Math.max(0, media.prismStrength)));
+
+  const veil = bloomAlphaAt(yPct, media.prismBloom, media.prismStrength);
+  v = clamp01(v + veil * (1 - v));
+
+  let L = greyLuminance(v);
+
+  const aScrim = scrimAlphaAt(yPct);
+  if (aScrim > 0) L = aScrim * relLuminance(media.palette.ink) + (1 - aScrim) * L;
+
+  return clamp01(L + clamp01(media.busyness) * (1 - L));
+}
+
+/**
+ * Minimum plate alpha that brings `Lbg` down to where `textHex` clears
+ * `targetCR`. Returns 0 when the zone already passes unaided.
+ *
+ * Closed form. Light text over a dark plate needs
+ *   (Ltext + 0.05) / (Lresult + 0.05) >= CR
+ * so the highest luminance the text tolerates is
+ *   need = (Ltext + 0.05)/CR - 0.05
+ * and compositing the plate at alpha a gives Lresult = a*Lplate + (1-a)*Lbg,
+ * which solves to a = (Lbg - need) / (Lbg - Lplate).
+ */
+export function solvePlateAlpha(
+  Lbg: number,
+  plateHex: string,
+  textHex: string,
+  targetCR: number,
+): number {
+  const Ltext = relLuminance(textHex);
+  const need = (Ltext + 0.05) / targetCR - 0.05;
+  if (need <= 0) return PLATE_CEILING; // text too dark to ever pass on a dark plate
+  if (Lbg <= need) return 0;
+
+  const Lplate = relLuminance(plateHex);
+  // A plate no darker than the backdrop cannot help; cap rather than divide by
+  // a non-positive denominator.
+  if (Lplate >= Lbg) return PLATE_CEILING;
+
+  const a = (Lbg - need) / (Lbg - Lplate);
+  return Math.max(0, Math.min(PLATE_CEILING, a));
+}
+
+/** Does this zone clear its floor at the given plate alpha? */
+export function zonePasses(
+  Lbg: number,
+  plateHex: string,
+  textHex: string,
+  targetCR: number,
+  alpha: number,
+): boolean {
+  const Lresult = alpha * relLuminance(plateHex) + (1 - alpha) * Lbg;
+  return contrastRatio(relLuminance(textHex), Lresult) >= targetCR - 1e-9;
+}
+
+export interface ZoneVerdict {
+  name: string;
+  yPct: number;
+  backdropLuminance: number;
+  requiredAlpha: number;
+  /** Contrast ratio actually achieved at `requiredAlpha`. */
+  achievedCR: number;
+  /** True when the zone cannot be made to pass within PLATE_CEILING. */
+  unsatisfiable: boolean;
+}
+
+export interface ContrastBudget {
+  /**
+   * Extra photo brightness this look can afford. HARD-WIRED TO 0 for now.
+   *
+   * The solver is correct but the catalogue is not ready: a lift is GLOBAL and
+   * brightens the photo behind every text surface, while only the plated zones
+   * below are protected. Several surfaces — the metric giant number, countdown
+   * digits, VideoFX chart labels, and karaoke variants that strip the caption
+   * plate entirely — currently rely on the photo being dark and have no plate
+   * to thicken. Granting a lift before those are hardened would trade a
+   * readable video for a prettier one, which is exactly backwards.
+   *
+   * Unblocking this needs, in order: the text-zone inventory, a substrate for
+   * every unplated surface it finds, then a binary search here for the largest
+   * lift where EVERY zone still solves at or under PLATE_CEILING.
+   */
+  brightnessLift: number;
+  zones: ZoneVerdict[];
+  /** Highest alpha any zone needed — the plate strength a shared band must use. */
+  maxAlpha: number;
+  /** True when any zone cannot pass within PLATE_CEILING at this lift. */
+  anyUnsatisfiable: boolean;
+}
+
+/**
+ * Solve every registered zone for one video.
+ *
+ * `zones` is passed in rather than hardcoded so the caller owns the inventory —
+ * the set of text surfaces is still being enumerated, and a table baked in here
+ * would quietly go stale as scene types are added.
+ */
+export function deriveContrastBudget(
+  media: MediaInput,
+  zones: ReadonlyArray<ZoneInput & { name: string }>,
+): ContrastBudget {
+  const verdicts: ZoneVerdict[] = zones.map((z) => {
+    const Lbg = zoneLuminance(media, z.yPct);
+    const alpha = solvePlateAlpha(Lbg, z.plateHex, z.textHex, z.targetCR);
+    const Lresult = alpha * relLuminance(z.plateHex) + (1 - alpha) * Lbg;
+    return {
+      name: z.name,
+      yPct: z.yPct,
+      backdropLuminance: Lbg,
+      requiredAlpha: alpha,
+      achievedCR: contrastRatio(relLuminance(z.textHex), Lresult),
+      unsatisfiable: !zonePasses(Lbg, z.plateHex, z.textHex, z.targetCR, alpha),
+    };
+  });
+
+  return {
+    brightnessLift: 0,
+    zones: verdicts,
+    maxAlpha: verdicts.reduce((m, v) => Math.max(m, v.requiredAlpha), 0),
+    anyUnsatisfiable: verdicts.some((v) => v.unsatisfiable),
+  };
+}
+
+/**
+ * Busyness margin for a look — how much worse than a flat field its backdrop
+ * is likely to be. Kept small and additive; it is a safety margin, not a model.
+ */
+export function busynessFor(
+  look: LookConfig,
+  overlayType: string,
+  blendCopies: number,
+): number {
+  const { contrast } = parseFilter(gradeFilter(look));
+  let b = 0.1 * Math.max(0, contrast - 1);
+  b += 0.06 * Math.max(0, blendCopies);
+  if (overlayType === "aurora" || overlayType === "particles" || overlayType === "fantasy-sparks") {
+    b += 0.08;
+  }
+  return clamp01(b);
+}
+
+/** Contrast floor appropriate to a rendered font size. */
+export const targetForSize = (px: number) => (px >= DISPLAY_SIZE_PX ? CR_DISPLAY : CR_BODY);
+
+/** Grades whose brightness is already low enough to be doing contrast work. */
+export const DIM_GRADES: ReadonlySet<ColorGrade> = new Set(["noir", "neutral", "cool"]);

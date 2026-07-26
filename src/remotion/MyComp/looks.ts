@@ -321,6 +321,21 @@ export interface FinishTokens {
   radiusChip: number;
   radiusPill: number;
   panelBg: (p: Palette) => string;
+  /**
+   * The same panel fill as `panelBg`, split into an OPAQUE 6-digit hex and its
+   * alpha. Nothing renders from these — they exist so the contrast solver can
+   * do colour math on the plate, which `panelBg` alone does not allow: the neon
+   * and soft sets return `rgba(...)` string literals, and `withAlpha` (which
+   * slices a hex) silently corrupts those.
+   *
+   * INVARIANT: `panelBgBase(p)` at `panelBgAlpha` must describe the same colour
+   * `panelBg(p)` paints. `panelBg` is deliberately left as its own literal
+   * rather than derived from these, because deriving it would round neon's 0.55
+   * to 0x8c (0.549) and change shipped output for no benefit. If you edit one,
+   * edit the other.
+   */
+  panelBgBase: (p: Palette) => string;
+  panelBgAlpha: number;
   panelBorder: (p: Palette) => string;
   panelShadow: string;
   /** Text glow policy — "none" for print/soft, single soft layer for neon. */
@@ -334,6 +349,9 @@ export const FINISH_TOKENS: Record<Finish, FinishTokens> = {
     radiusChip: 12,
     radiusPill: 999,
     panelBg: (p) => p.surface,
+    // p.surface === withAlpha(mixHex("#07080d", primaryDeep, 0.28), 0.62)
+    panelBgBase: (p) => mixHex("#07080d", p.primaryDeep, 0.28),
+    panelBgAlpha: 0.62,
     panelBorder: (p) => `1px solid ${p.edge}`,
     panelShadow: "0 24px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.07)",
     textGlow: () => "none",
@@ -344,6 +362,8 @@ export const FINISH_TOKENS: Record<Finish, FinishTokens> = {
     radiusChip: 2,
     radiusPill: 6,
     panelBg: (p) => withAlpha(p.ink, 0.78),
+    panelBgBase: (p) => p.ink,
+    panelBgAlpha: 0.78,
     panelBorder: () => "none",
     panelShadow: "0 12px 40px rgba(0,0,0,0.35)",
     textGlow: () => "none",
@@ -354,6 +374,8 @@ export const FINISH_TOKENS: Record<Finish, FinishTokens> = {
     radiusChip: 8,
     radiusPill: 999,
     panelBg: () => "rgba(0,0,0,0.55)",
+    panelBgBase: () => "#000000",
+    panelBgAlpha: 0.55,
     panelBorder: (p) => `1px solid ${withAlpha(p.primary, 0.25)}`,
     panelShadow: "0 10px 40px rgba(0,0,0,0.5)",
     textGlow: (c) => `0 0 8px ${withAlpha(c, 0.8)}, 0 0 24px ${withAlpha(c, 0.4)}`,
@@ -364,6 +386,8 @@ export const FINISH_TOKENS: Record<Finish, FinishTokens> = {
     radiusChip: 8,
     radiusPill: 999,
     panelBg: () => "rgba(0,0,0,0.45)",
+    panelBgBase: () => "#000000",
+    panelBgAlpha: 0.45,
     panelBorder: () => "1px solid rgba(255,255,255,0.08)",
     panelShadow: "0 14px 44px rgba(0,0,0,0.4)",
     textGlow: () => "0 2px 12px rgba(0,0,0,0.5)",
