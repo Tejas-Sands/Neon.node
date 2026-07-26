@@ -154,6 +154,52 @@ if (!/const\s+READ_LOCK_FRAMES\s*=/.test(animatedSrc)) {
   }
 }
 
+// --- Rule 5: every text surface keeps a substrate ----------------------------
+// The failure these prevent is not a crash, it is text that is fine on the dark
+// footage you tested and invisible on the bright footage you did not.
+// A surface is allowed to skip a halo when it demonstrably has a plate, or when
+// a deliberate exception is recorded inline as `legibility-ok: <reason>`. The
+// annotation is the point: a silent exception is indistinguishable from an
+// oversight six months later, and this rule exists precisely to catch oversights.
+const OPT_OUT = /legibility-ok:/;
+const PLATE = /background(Color|Image)?:\s*(?!["']?none)/;
+
+for (const file of files) {
+  const lines = readFileSync(file, "utf8").split("\n");
+  const context = (i, before, after) =>
+    lines.slice(Math.max(0, i - before), i + after + 1).join("\n");
+  // Annotations are written above the whole style block, so they need a wider
+  // window than the plate/filter lookups do.
+  const optedOut = (i) => OPT_OUT.test(context(i, 18, 4));
+
+  lines.forEach((text, i) => {
+    // 5a. ft.textGlow() returns the literal string "none" on the glass and
+    // print finishes, so using it raw as the only shadow protects nothing on
+    // half the catalogue — unless the same style object also paints a plate.
+    if (/textShadow:\s*(ft|finishTokens)\.textGlow\(/.test(text)) {
+      const near = context(i, 6, 8);
+      if (!PLATE.test(near) && !optedOut(i)) {
+        fail(file, i + 1, 'raw ft.textGlow() as textShadow — returns "none" on glass/print; wrap in readableGlow()', text);
+      }
+    }
+    // 5b. SVG <text> ignores text-shadow entirely; it needs a painted stroke.
+    if (/<text\s/.test(text) && !/svgHalo/.test(text) && !/stroke=/.test(text)) {
+      if (!optedOut(i)) {
+        fail(file, i + 1, "SVG <text> without svgHalo() — text-shadow does not apply to SVG text", text);
+      }
+    }
+    // 5c. background-clip:text clips the element's OWN background to the glyphs,
+    // so a plate declared on the same element is never painted. It needs either
+    // a drop-shadow filter or a plate on an ancestor.
+    if (/backgroundClip:\s*["']text["']/.test(text)) {
+      const near = context(i, 8, 8);
+      if (!/filter:/.test(near) && !optedOut(i)) {
+        fail(file, i + 1, "backgroundClip:'text' with no filter — the plate is clipped away, leaving no substrate", text);
+      }
+    }
+  });
+}
+
 console.log(`\n${atomCount} unbreakable-atom style declarations found (informational)`);
 console.log(failures === 0 ? "\nALL PASS — no word-splitting hazards found" : `\n${failures} FAILURE(S)`);
 process.exit(failures === 0 ? 0 : 1);

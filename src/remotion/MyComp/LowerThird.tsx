@@ -1,4 +1,5 @@
 import React from "react";
+import { haloShadow, readableGlow } from "./contrast";
 import { useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
 import { EASE, SPRINGS } from "./motion";
 
@@ -116,7 +117,10 @@ export const LowerThird: React.FC<LowerThirdProps> = ({
             color: "#ffffff",
             fontFamily,
             letterSpacing: "1px",
-            textShadow: `0 2px 20px rgba(0,0,0,0.8), 0 0 10px ${accentColor}40`,
+            // The "minimal" variant has no panel by design, so the halo IS
+            // its substrate — the old single 20px blur had no tight layer to
+            // define the glyph edge against bright footage.
+            textShadow: readableGlow(`0 0 10px ${accentColor}40`, 36),
           }}
         >
           {title}
@@ -128,6 +132,7 @@ export const LowerThird: React.FC<LowerThirdProps> = ({
               color: "rgba(255,255,255,0.7)",
               fontFamily,
               marginTop: "6px",
+              textShadow: haloShadow(28),
               opacity: subOpacity,
               transform: `translateY(${subY}px)`,
             }}

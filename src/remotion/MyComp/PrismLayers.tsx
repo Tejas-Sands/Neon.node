@@ -502,6 +502,11 @@ export const GiantWord: React.FC<{
         backgroundSize: "cover",
         backgroundPosition: `50% ${bgY.toFixed(2)}%`,
         WebkitBackgroundClip: "text",
+        // legibility-ok: GiantWord is DECORATIVE background typography — it
+        // sits at zIndex 12, beneath the text stack (zIndex 20), at <=0.92
+        // opacity, and carries no reporting. A dark halo would pull it forward
+        // and make it compete with the copy it sits behind, which is the
+        // opposite of what a substrate is for.
         backgroundClip: "text",
         color: "transparent",
         WebkitTextStroke: `1px ${withAlpha(palette.primarySoft, 0.35)}`,

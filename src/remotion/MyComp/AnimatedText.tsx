@@ -5,6 +5,7 @@ import { loadFont as loadOrbitron } from "@remotion/google-fonts/Orbitron";
 import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
 import { loadFont as loadPlayfair } from "@remotion/google-fonts/PlayfairDisplay";
 import { FINISH_TOKENS, inkOn, withAlpha, type Finish } from "./looks";
+import { haloFilter } from "./contrast";
 
 // Load all fonts so they are available in memory.
 // Weights listed here are the ONLY real weights available at render time —
@@ -636,6 +637,11 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
           color: "transparent",
           WebkitTextStroke: "2px #ffffff",
           textShadow: `0 0 18px ${glowColor}88`,
+          // The stroke is WHITE and the glow shares the accent's hue, so over
+          // bright footage this treatment had nothing separating it from the
+          // backdrop. text-shadow cannot help once `color` is transparent —
+          // drop-shadow follows the stroked glyph outline instead.
+          filter: haloFilter(effectiveFontSize, 0.9),
         }
       : treatment === "gradient-fill" && animResult.mode === "inline"
       ? {
@@ -644,6 +650,11 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
           backgroundClip: "text",
           color: "transparent",
           textShadow: "none",
+          // background-clip:text clips the DECORATION PLATE to the glyph shapes
+          // too, so the panel this text is supposed to sit on is never painted —
+          // on ~25% of seeds the title was floating on bare footage. Restoring a
+          // plate would fight the treatment's whole point, so it gets a halo.
+          filter: haloFilter(effectiveFontSize),
         }
       : treatment === "boxed"
       ? {
@@ -663,6 +674,21 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
     ...baseStyle,
     ...decorationStyle,
     ...treatmentStyle,
+  };
+
+  /**
+   * Spread that COMPOSES `filter` instead of letting the later object win.
+   * blur-in returns `filter: blur(Npx)` in its wrapperStyle, and the treatment
+   * halo is also a filter — a plain spread silently drops one of them, which is
+   * exactly the invisible legibility regression this work exists to stop.
+   */
+  const mergeStyles = (
+    a: React.CSSProperties,
+    b: React.CSSProperties,
+  ): React.CSSProperties => {
+    const merged = { ...a, ...b };
+    if (a.filter && b.filter) merged.filter = `${a.filter} ${b.filter}`;
+    return merged;
   };
 
   const flexJustify = align === "left" ? "flex-start" : "center";
@@ -850,7 +876,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   // gradient-fill never reaches here with emphasis (emphasis is solid-only).
   if (emphasisIndices.size > 0 && displayedText === text) {
     return (
-      <div style={{ ...combinedStyle, ...wrapperStyle }}>
+      <div style={mergeStyles(combinedStyle, wrapperStyle)}>
         {text.split(" ").map((word, i) => (
           <React.Fragment key={i}>
             {i > 0 ? " " : null}
@@ -872,7 +898,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   }
 
   return (
-    <div style={{ ...combinedStyle, ...wrapperStyle }}>
+    <div style={mergeStyles(combinedStyle, wrapperStyle)}>
       {displayedText}
     </div>
   );

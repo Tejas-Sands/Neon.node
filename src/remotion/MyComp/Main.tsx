@@ -35,6 +35,7 @@ import {
   type Finish,
 } from "./looks";
 import { springCfg } from "./motion";
+import { readableGlow, haloShadow } from "./contrast";
 import { deriveCutPlan, WHOOSH_CUTS } from "./transitions";
 import { derivePolish } from "./polish";
 import { PolishStack, CutCover } from "./PolishLayers";
@@ -776,7 +777,7 @@ const DynamicScene: React.FC<{
         {/* bottom 32%: the caption band tops out near 30%, and 28% used to
             clip the quote's last line under the caption box */}
         <div style={{ position: "absolute", bottom: "32%", left: "8%", right: "8%", zIndex: 20, opacity: quoteOpacity, transform: `translateX(${quoteX}px)` }}>
-          {title && <div style={{ fontSize: `${fs(28)}px`, color: theme.secondaryColor, fontWeight: FONT_METRICS[theme.fontFamilyName].bodyWeight, fontFamily: getFontFamily(theme.fontFamilyName), marginBottom: "12px", textTransform: "uppercase", letterSpacing: "0.1em" }}>{title}</div>}
+          {title && <div style={{ fontSize: `${fs(28)}px`, color: theme.secondaryColor, fontWeight: FONT_METRICS[theme.fontFamilyName].bodyWeight, fontFamily: getFontFamily(theme.fontFamilyName), marginBottom: "12px", textTransform: "uppercase", letterSpacing: "0.1em", textShadow: haloShadow(fs(28)) }}>{title}</div>}
           {text && (
             <div style={{
               fontSize: "32px",
@@ -873,7 +874,7 @@ const DynamicScene: React.FC<{
                   fontWeight: FONT_METRICS[theme.fontFamilyName].displayWeight,
                   fontFamily: getFontFamily(theme.fontFamilyName),
                   color: theme.primaryColor,
-                  textShadow: ft.textGlow(theme.primaryColor),
+                  textShadow: readableGlow(ft.textGlow(theme.primaryColor), fs(80)),
                   fontVariantNumeric: "tabular-nums",
                   textAlign: "center",
                   whiteSpace: "nowrap",
@@ -897,7 +898,7 @@ const DynamicScene: React.FC<{
             )}
           </div>
           {secondaryText && (
-            <div style={{ fontSize: `${fs(28)}px`, color: theme.secondaryColor, fontWeight: FONT_METRICS[theme.fontFamilyName].bodyWeight, fontFamily: getFontFamily(theme.fontFamilyName), textTransform: "uppercase", letterSpacing: "0.1em", textShadow: ft.textGlow(theme.secondaryColor), opacity: labelIn, transform: `translateY(${interpolate(labelIn, [0, 1], [16, 0])}px)` }}>
+            <div style={{ fontSize: `${fs(28)}px`, color: theme.secondaryColor, fontWeight: FONT_METRICS[theme.fontFamilyName].bodyWeight, fontFamily: getFontFamily(theme.fontFamilyName), textTransform: "uppercase", letterSpacing: "0.1em", textShadow: readableGlow(ft.textGlow(theme.secondaryColor), fs(28)), opacity: labelIn, transform: `translateY(${interpolate(labelIn, [0, 1], [16, 0])}px)` }}>
               {secondaryText}
             </div>
           )}
@@ -986,7 +987,7 @@ const DynamicScene: React.FC<{
                 fontFamily: getFontFamily(theme.fontFamilyName),
                 fontVariantNumeric: "tabular-nums",
                 color: theme.primaryColor,
-                textShadow: ft.textGlow(theme.primaryColor),
+                textShadow: readableGlow(ft.textGlow(theme.primaryColor), fs(80)),
                 transform: `scale(${pulseScale})`,
                 textAlign: "center",
                 whiteSpace: "nowrap",
@@ -1289,7 +1290,7 @@ const DynamicScene: React.FC<{
             </div>
           </div>
           {subtitle && !ctaText && (
-            <div style={{ fontSize: "28px", color: "rgba(255,255,255,0.6)", textAlign: "center" }}>
+            <div style={{ fontSize: "28px", color: "rgba(255,255,255,0.6)", textAlign: "center", textShadow: haloShadow(28) }}>
               {subtitle}
             </div>
           )}
@@ -1435,7 +1436,7 @@ const DynamicScene: React.FC<{
                 fontFamily: theme.fontFamilyName === "Share Tech Mono" ? "monospace" : "sans-serif",
                 letterSpacing: "5px",
                 textTransform: "uppercase",
-                textShadow: `0 0 10px ${theme.primaryColor}40`
+                textShadow: readableGlow(`0 0 10px ${theme.primaryColor}40`, 28),
               }}
             >
               {/* The props carry the real handle in `text` (from
@@ -1818,7 +1819,7 @@ const DynamicScene: React.FC<{
             color: theme.secondaryColor,
             fontFamily: getFontFamily(theme.fontFamilyName),
             fontWeight: FONT_METRICS[theme.fontFamilyName].bodyWeight,
-            textShadow: ft.textGlow(theme.secondaryColor),
+            textShadow: readableGlow(ft.textGlow(theme.secondaryColor), fs(28)),
             backgroundColor: ft.panelBg(palette),
             backdropFilter: "blur(8px)",
             padding: "10px 20px",
@@ -2177,7 +2178,11 @@ const KaraokeSubtitles: React.FC<{
             // the active word's pill is the accent color. Every span always
             // occupies layout (opacity/transform only), so nothing reflows.
             wordStyle = {
-              color: "#ffffff",
+              // The ACTIVE pill is filled with the accent itself, so hardcoded
+              // white failed on every light/pastel style pack. inkOn picks the
+              // ink that actually contrasts — same fix the "boxed" title
+              // treatment already carries.
+              color: isActive ? inkOn(theme.primaryColor) : "#ffffff",
               fontSize: phraseFontSize,
               opacity: wordT,
               padding: "6px 14px",
@@ -2198,6 +2203,12 @@ const KaraokeSubtitles: React.FC<{
             if (isActive) {
               const wordSpan = Math.max(0.001, word.end - word.start);
               const wp = Math.min(1, Math.max(0, (currentTime - word.start) / wordSpan));
+              // legibility-ok: the shared caption plate is on the CONTAINER
+              // (getSubtitleBoxStyle), not this span, so clipping this span's
+              // own background to the glyphs costs nothing — the substrate is
+              // still painted behind the whole phrase. Style 5 is the only
+              // variant that drops the container plate, and it gives every word
+              // its own pill instead.
               wordStyle = {
                 fontSize: phraseFontSize,
                 backgroundImage: `linear-gradient(90deg, ${theme.primaryColor} ${wp * 100}%, rgba(255,255,255,0.38) ${wp * 100}%)`,

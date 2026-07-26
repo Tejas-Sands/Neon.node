@@ -24,6 +24,7 @@ import {
   Easing,
 } from "remotion";
 import { makeRng } from "./looks";
+import { readableGlow, haloShadow, svgHalo } from "./contrast";
 
 // ----------------------------------------------------------------------------
 // Color helpers — small, dependency-free hex utilities so charts can build a
@@ -209,7 +210,7 @@ export const AnimatedBar: React.FC<{
           fontWeight: 900,
           color: color2,
           fontFamily,
-          textShadow: `0 0 10px ${color2}40`,
+          textShadow: readableGlow(`0 0 10px ${color2}40`, 24),
           whiteSpace: "nowrap",
         }}
       >
@@ -343,10 +344,10 @@ export const DonutChart: React.FC<{
           transform: `scale(${interpolate(labelReveal, [0, 1], [0.9, 1])})`,
         }}
       >
-        <div style={{ fontSize: "56px", fontWeight: 900, color: active.color, fontFamily, fontVariantNumeric: "tabular-nums", textShadow: `0 0 14px ${active.color}55` }}>
+        <div style={{ fontSize: "56px", fontWeight: 900, color: active.color, fontFamily, fontVariantNumeric: "tabular-nums", textShadow: readableGlow(`0 0 14px ${active.color}55`, 56) }}>
           {active.pct}%
         </div>
-        <div style={{ fontSize: "22px", fontWeight: 700, color: "#fff", fontFamily, textTransform: "uppercase", letterSpacing: "2px", maxWidth: 180, textAlign: "center", lineHeight: 1.2 }}>
+        <div style={{ fontSize: "22px", fontWeight: 700, color: "#fff", fontFamily, textTransform: "uppercase", letterSpacing: "2px", maxWidth: 180, textAlign: "center", lineHeight: 1.2, textShadow: haloShadow(22) }}>
           {active.label}
         </div>
       </div>
@@ -446,7 +447,7 @@ export const LineChart: React.FC<{
         return (
           <g key={i} opacity={interpolate(frame, [dotDelay, dotDelay + 4], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })}>
             <circle cx={p.x} cy={p.y} r={5 * pop} fill="#fff" stroke={secondaryColor} strokeWidth={2} />
-            <text x={p.x} y={baseY + 26} textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize={18} fontFamily={fontFamily}>
+            <text x={p.x} y={baseY + 26} textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize={18} fontFamily={fontFamily} {...svgHalo(3)}>
               {p.label}
             </text>
           </g>
@@ -539,9 +540,9 @@ export const StarRating: React.FC<{
         })}
       </div>
       {showValue && (
-        <div style={{ fontSize: "44px", fontWeight: 900, color: primaryColor, fontFamily, fontVariantNumeric: "tabular-nums", textShadow: `0 0 14px ${primaryColor}50` }}>
+        <div style={{ fontSize: "44px", fontWeight: 900, color: primaryColor, fontFamily, fontVariantNumeric: "tabular-nums", textShadow: readableGlow(`0 0 14px ${primaryColor}50`, 44) }}>
           <CountUp value={value} startFrame={startFrame + 6} durationInFrames={34} decimals={value % 1 === 0 ? 0 : 1} separator={false} />
-          <span style={{ fontSize: "26px", color: "rgba(255,255,255,0.6)" }}> / {clampedMax}</span>
+          <span style={{ fontSize: "26px", color: "rgba(255,255,255,0.6)", textShadow: haloShadow(26) }}> / {clampedMax}</span>
         </div>
       )}
     </div>

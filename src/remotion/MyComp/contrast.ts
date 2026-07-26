@@ -353,5 +353,79 @@ export function busynessFor(
 /** Contrast floor appropriate to a rendered font size. */
 export const targetForSize = (px: number) => (px >= DISPLAY_SIZE_PX ? CR_DISPLAY : CR_BODY);
 
+// ============================================================================
+// Halos — the substrate for text that cannot carry a plate
+// ----------------------------------------------------------------------------
+// A rectangular plate is wrong behind a 180px count-up number or a chart axis
+// label: it becomes the design instead of supporting it. Those surfaces get a
+// dark halo instead — two shadow layers, one tight for edge definition and one
+// soft for separation.
+//
+// The property this relies on: a dark halo is nearly INVISIBLE over a dark
+// backdrop and decisive over a bright one. So it costs nothing on the footage
+// where text was already fine, and rescues the footage where it was not. That
+// is what makes it safe to apply broadly.
+//
+// It also fixes a specific trap. FINISH_TOKENS.textGlow returns the literal
+// string "none" on the glass and print finishes and a SAME-HUE glow on neon —
+// so surfaces whose only protection is `ft.textGlow(color)` have nothing on
+// half the catalogue, and on neon they have a glow that shares the text's own
+// hue and therefore adds no luminance separation at all.
+// ============================================================================
+
+/**
+ * Dark halo sized to the text it sits behind. `strength` scales both layers;
+ * 1 is the default weight, below ~0.6 it stops doing useful work.
+ */
+export function haloShadow(sizePx = 40, strength = 1): string {
+  const s = Math.max(0, strength);
+  const tight = Math.max(1, Math.round(sizePx * 0.035));
+  const soft = Math.max(6, Math.round(sizePx * 0.3));
+  return (
+    `0 ${tight}px ${tight * 2}px rgba(0,0,0,${(0.55 * s).toFixed(2)}), ` +
+    `0 ${Math.round(tight * 1.6)}px ${soft}px rgba(0,0,0,${(0.62 * s).toFixed(2)})`
+  );
+}
+
+/**
+ * A finish's decorative glow with a guaranteed dark halo layered under it.
+ * Pass whatever `ft.textGlow(color)` returned; "none" is handled.
+ */
+export function readableGlow(decorative: string, sizePx = 40, strength = 1): string {
+  const halo = haloShadow(sizePx, strength);
+  return !decorative || decorative === "none" ? halo : `${decorative}, ${halo}`;
+}
+
+/**
+ * The same halo as a `filter`, for text where `text-shadow` cannot reach:
+ * `background-clip: text` fills (the shadow composites against the clipped
+ * background rather than the glyphs) and `-webkit-text-stroke` outlines.
+ * drop-shadow applies to the RENDERED result, so it follows the glyph shapes
+ * in both cases.
+ */
+export function haloFilter(sizePx = 40, strength = 1): string {
+  const s = Math.max(0, strength);
+  const tight = Math.max(1, Math.round(sizePx * 0.03));
+  const soft = Math.max(4, Math.round(sizePx * 0.16));
+  return (
+    `drop-shadow(0 ${tight}px ${tight * 2}px rgba(0,0,0,${(0.5 * s).toFixed(2)})) ` +
+    `drop-shadow(0 ${Math.round(tight * 1.5)}px ${soft}px rgba(0,0,0,${(0.6 * s).toFixed(2)}))`
+  );
+}
+
+/**
+ * Halo for SVG `<text>`, where `text-shadow` does not apply at all. Painting
+ * the stroke UNDER the fill (`paint-order: stroke`) gives a clean outline that
+ * never thins the glyph.
+ */
+export function svgHalo(strokeWidth = 3) {
+  return {
+    stroke: "rgba(0,0,0,0.72)",
+    strokeWidth,
+    paintOrder: "stroke" as const,
+    strokeLinejoin: "round" as const,
+  };
+}
+
 /** Grades whose brightness is already low enough to be doing contrast work. */
 export const DIM_GRADES: ReadonlySet<ColorGrade> = new Set(["noir", "neutral", "cool"]);

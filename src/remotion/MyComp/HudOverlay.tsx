@@ -1,5 +1,6 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, interpolate, Easing } from "remotion";
+import { readableGlow, haloShadow } from "./contrast";
 
 type GradientOverlay = "none" | "top-to-bottom" | "radial-center" | "diagonal";
 
@@ -235,19 +236,19 @@ export const HudOverlay: React.FC<HudOverlayProps> = ({
         />
 
         {/* VHS Text Details */}
-        <div style={{ position: "absolute", top: 50, left: 50, fontFamily: monospaceFont, color: "#fff", fontSize: "14px", textShadow: `2px 0 0 ${secondaryColor}, -2px 0 0 ${primaryColor}` }}>
+        <div style={{ position: "absolute", top: 50, left: 50, fontFamily: monospaceFont, color: "#fff", fontSize: "14px", textShadow: readableGlow(`2px 0 0 ${secondaryColor}, -2px 0 0 ${primaryColor}`, 14) }}>
           <div>PLAY ▶</div>
           <div style={{ fontSize: "10px", marginTop: "4px", opacity: 0.8 }}>
             {String(Math.floor(frame / (fps * 60))).padStart(2, "0")}:{String(Math.floor((frame / fps) % 60)).padStart(2, "0")}:{String(frame % fps).padStart(2, "0")}
           </div>
         </div>
-        <div style={{ position: "absolute", top: 50, right: 50, fontFamily: monospaceFont, color: "#fff", fontSize: "12px" }}>
+        <div style={{ position: "absolute", top: 50, right: 50, fontFamily: monospaceFont, color: "#fff", fontSize: "12px", textShadow: haloShadow(12) }}>
           <div>CH 04</div>
         </div>
         {/* REC indicator */}
         <div style={{ position: "absolute", top: 50, right: 120, display: "flex", alignItems: "center", gap: "6px" }}>
           <div style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#ff0000", opacity: frame % 40 < 25 ? 1 : 0.3, boxShadow: "0 0 6px #ff0000" }} />
-          <div style={{ fontFamily: monospaceFont, color: "#fff", fontSize: "11px", opacity: 0.7 }}>REC</div>
+          <div style={{ fontFamily: monospaceFont, color: "#fff", fontSize: "11px", opacity: 0.7, textShadow: haloShadow(11) }}>REC</div>
         </div>
 
         {GradientLayer}
