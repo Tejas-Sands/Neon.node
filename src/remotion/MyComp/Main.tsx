@@ -36,6 +36,7 @@ import {
   type Finish,
 } from "./looks";
 import { springCfg } from "./motion";
+import { fitStackScale, stackHeightAt, textWidthFor } from "./fitStack";
 import {
   busynessFor,
   deriveContrastBudget,
@@ -282,7 +283,7 @@ const DynamicScene: React.FC<{
   ratingMax,
 }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, width: frameW, height: frameH } = useVideoConfig();
   // Per-video seed folded into every pseudo-random choice so no two videos
   // share the same camera / text-animation sequence (render-safe, deterministic).
   const seed = (theme.seed ?? 0) >>> 0;
@@ -320,6 +321,47 @@ const DynamicScene: React.FC<{
   // their own from these so blocks never collide with subtitles (bottom 24%).
   const heroTop =
     textLayout === "banner-low" ? 52 : textLayout === "top-ticker" ? 10 : look.heroAnchor;
+
+  // The caption band is pinned at bottom:24% (zIndex 40) and always paints over
+  // the text stack, so the stack has to end above it. 70% leaves ~2% of air
+  // below the last line and the top of the caption plate.
+  //
+  // Without this the column simply grew downward: four populated blocks, or a
+  // title long enough to wrap to three lines, pushed the final block underneath
+  // the caption and it was silently covered.
+  const heroStackInput = {
+    slots: [
+      ...(title ? [{ text: title, basePx: theme.overlayType === "vhs-glitch" ? 54 : 62 }] : []),
+      // AnimatedText's own default when no fontSize is passed.
+      ...(text ? [{ text, basePx: theme.overlayType === "vhs-glitch" ? 36 : 40 }] : []),
+      ...(subtitle ? [{ text: subtitle, basePx: theme.overlayType === "vhs-glitch" ? 26 : 30 }] : []),
+    ],
+    fontScale: fscale,
+    availablePx: ((HERO_BOTTOM_LIMIT_PCT - heroTop) / 100) * frameH,
+    // Matches the stack's own horizontal padding (0 8%, or 0 14% 0 7% left-rail).
+    widthPx: textWidthFor(frameW * (isLeftLayout ? 0.79 : 0.84)),
+    lineHeight: FONT_METRICS[theme.fontFamilyName].lineHeight,
+    gapPx: 16,
+    fixedPx: 3, // the accent rule
+    slotPaddingPx: 24, // AnimatedText baseStyle padding: 12px top + 12px bottom
+  };
+
+  // RAISE THE STACK BEFORE SHRINKING IT. A tall stack at a low anchor
+  // ("banner-low" sits at 52%) cannot fit above the caption at any honest type
+  // size — solving it by scale alone drove the hero title from 57px to 32px,
+  // which trades a covered line for an unreadable one. Comprehension first:
+  // move the block up, keep the type.
+  const heroNeedPct = (100 * stackHeightAt(heroStackInput, 1)) / frameH;
+  const heroTopFit = Math.min(
+    heroTop,
+    Math.max(HERO_TOP_MIN_PCT, HERO_BOTTOM_LIMIT_PCT - heroNeedPct),
+  );
+  // Scale is the LAST resort, and only for a stack so tall it overflows even
+  // from the highest anchor.
+  const heroFit = fitStackScale({
+    ...heroStackInput,
+    availablePx: ((HERO_BOTTOM_LIMIT_PCT - heroTopFit) / 100) * frameH,
+  });
 
   // Dynamic Camera Motion (Programmatic base)
   let baseScale = 1.0;
@@ -715,7 +757,7 @@ const DynamicScene: React.FC<{
         <div
           style={{
             position: "absolute",
-            top: `${heroTop - 6}%`,
+            top: `${heroTopFit - 6}%`,
             left: "5%",
             right: "5%",
             height: "42%",
@@ -724,7 +766,7 @@ const DynamicScene: React.FC<{
             pointerEvents: "none",
           }}
         />
-        <div style={{ position: "absolute", top: `${heroTop}%`, left: 0, right: 0, display: "flex", flexDirection: "column", gap: "16px", zIndex: 20, textTransform: look.titleCase === "upper" ? "uppercase" : "none", transform: parallax || undefined, ...stackStyle }}>
+        <div style={{ position: "absolute", top: `${heroTopFit}%`, left: 0, right: 0, display: "flex", flexDirection: "column", gap: "16px", zIndex: 20, textTransform: look.titleCase === "upper" ? "uppercase" : "none", transform: parallax || undefined, ...stackStyle }}>
           {title && (
             <div style={{ transform: `translateY(${titleY}px) scale(${titleScale * titleDrift})`, opacity: titleOpacity }}>
               <AnimatedText
@@ -736,7 +778,7 @@ const DynamicScene: React.FC<{
                 // hide the text during the exact frames that decide the scroll
                 animationMode={sceneIndex === 0 ? "none" : animMode}
                 fontSize={theme.overlayType === "vhs-glitch" ? 54 : 62}
-                fontScale={fscale}
+                fontScale={fscale * heroFit}
                 textCase={look.titleCase}
                 align={textAlignMode}
                 treatment={titleTreatment}
@@ -759,7 +801,7 @@ const DynamicScene: React.FC<{
           />
           {text && (
             <div style={{ opacity: bodyEntrance, transform: `translateY(${bodyY}px)` }}>
-              <AnimatedText text={text} glowColor={theme.primaryColor} fontFamilyName={theme.fontFamilyName} overlayType={theme.overlayType} animationMode={animMode} fontScale={fscale} textCase={look.titleCase} align={textAlignMode} springMul={sMul} finish={finish} />
+              <AnimatedText text={text} glowColor={theme.primaryColor} fontFamilyName={theme.fontFamilyName} overlayType={theme.overlayType} animationMode={animMode} fontScale={fscale * heroFit} textCase={look.titleCase} align={textAlignMode} springMul={sMul} finish={finish} />
             </div>
           )}
           {subtitle && (
@@ -771,7 +813,7 @@ const DynamicScene: React.FC<{
                 overlayType={theme.overlayType}
                 animationMode={animMode}
                 fontSize={theme.overlayType === "vhs-glitch" ? 26 : 30}
-                fontScale={fscale}
+                fontScale={fscale * heroFit}
                 textCase={look.titleCase}
                 align={textAlignMode}
                 springMul={sMul}
@@ -1878,6 +1920,16 @@ const DynamicScene: React.FC<{
 // numbers and "top" on list/comparison/data headers, and at zIndex 40 the
 // caption always wins. All positions therefore clamp to the bottom band; the
 // parameter survives only for props-JSON compatibility.
+/**
+ * Bottom edge the hero stack must stay above. The caption wrapper sits at
+ * bottom:24% and its box adds 16px of padding, putting its top edge near 71%;
+ * 67% leaves room for that plus the entrance transforms that shift blocks
+ * during the first second, when the collision is most visible.
+ */
+const HERO_BOTTOM_LIMIT_PCT = 67;
+/** Highest the stack may be raised to. Above this it collides with the HUD. */
+const HERO_TOP_MIN_PCT = 12;
+
 const getSubtitleWrapperStyle = (_position?: "top" | "center" | "bottom"): React.CSSProperties => {
   return {
     position: "absolute",
