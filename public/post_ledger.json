@@ -596,6 +596,42 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1785058219,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "LLM Usage in Debian: Three Proposals",
+    "subject": "LLM Usage in Debian: Three Proposals",
+    "url": "https://www.debian.org/vote/2026/vote_002",
+    "source": "hn",
+    "keywords": [
+     "llm"
+    ],
+    "viral_score": 8.07
+   },
+   "style_pack": "lavender-haze",
+   "seed": 364093209,
+   "voice": "en-US-AndrewNeural",
+   "hook_type": "INSIDER SECRET",
+   "scene_count": 6,
+   "video_seconds": 37.0,
+   "session": "gh-6ec7c9",
+   "platforms": {
+    "instagram": {
+     "id": "18091192478101049",
+     "posted_at": 1785058280
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }
