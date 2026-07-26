@@ -4514,22 +4514,108 @@ def _caption_tag_candidates(script_data: Optional[dict], session_id: str) -> lis
         + [str(s.get("voiceover") or "") for s in scenes]
     ).lower()
 
-    candidates: list = []
+    # ORDER IS REACH. The backfill stops at min_tags, so whatever sits at the
+    # front is what ships. Two things used to go wrong here:
+    #   * single words split out of the subject outranked the curated map and
+    #     the pools, so a real post went out tagged #model #rules #generation —
+    #     slugs nobody searches or follows;
+    #   * whichever tier came first filled the whole line, so a caption could
+    #     end up all-category or all-specific.
+    # The line is now built as a MIX — roughly 3 specific, 3 category, 2 broad,
+    # which is the same shape the LLM prompt asks for. A tag that describes the
+    # video but reaches nobody is worth less than a category tag with an
+    # audience behind it.
+    def _ok(tag: str) -> bool:
+        # Slugs over ~22 chars are whole sentences ("contextengineeringforclaude5")
+        # — they describe the video and reach precisely nobody.
+        return bool(tag) and 3 <= len(tag) <= 22
+
+    specific: list = []
     for kw in topic["keywords"]:
-        candidates.append(_slugify_hashtag(str(kw)))
-    if topic["subject"]:
-        candidates.append(_slugify_hashtag(topic["subject"]))
-        candidates.extend(_slugify_hashtag(w) for w in topic["subject"].split() if len(w) >= 4)
+        specific.append(_slugify_hashtag(str(kw)))
+    # The whole subject only works as a tag when it is already short enough to
+    # be a phrase people actually search ("rust async closures"). Longer than
+    # that and it slugs into a sentence nobody has ever typed.
+    if topic["subject"] and len(topic["subject"].split()) <= 3:
+        specific.append(_slugify_hashtag(topic["subject"]))
     for needle, tag in _KEYWORD_TAG_MAP.items():
         if _kw_matches(needle, haystack):
-            candidates.append(tag)
-    # Raw title words are the weakest signal — take at most 3, after the
-    # curated matches, and only reasonably specific ones (>=5 chars).
-    title_words = [_slugify_hashtag(w) for w in topic["title"].split() if len(w) >= 5]
-    candidates.extend([w for w in title_words if w][:3])
-    candidates.extend(_CATEGORY_TAG_POOL)
-    candidates.extend(_EVERGREEN_TAG_POOL)
+            specific.append(tag)
+    specific = [t for t in specific if _ok(t)]
+
+    category = [t for t in _CATEGORY_TAG_POOL if _ok(t)]
+    broad = [t for t in _EVERGREEN_TAG_POOL if _ok(t)]
+
+    # Weakest signal — single words from the subject/title. Filler only.
+    filler: list = []
+    if topic["subject"]:
+        filler.extend(_slugify_hashtag(w) for w in topic["subject"].split() if len(w) >= 5)
+    filler.extend(_slugify_hashtag(w) for w in topic["title"].split() if len(w) >= 5)
+    filler = [t for t in filler if _ok(t)]
+
+    candidates = specific[:3] + category[:3] + broad[:2]
+    # Everything not used by the quota still follows, so the line can always be
+    # filled when a tier came up short.
+    candidates += specific[3:] + category[3:] + broad[2:] + filler
     return [c for c in candidates if c]
+
+
+# --- Caption sanity gate ----------------------------------------------------
+# Captions are requested with json_format=False, so they never pass through
+# _coerce_llm_json — which means the <think>-block stripping that lives there
+# has never applied to them. A reasoning model's raw chain-of-thought therefore
+# shipped verbatim as the caption. Observed in production 2026-07-26:
+#   media 18091192478101049 -> caption was literally "->"
+#   media 18106597351859978 -> '75 chars) * Value 2: "..." (81 chars) * Value'
+# Both went out with the hashtag backfill attached, so they looked "fine" to
+# every check that only asked whether a caption existed.
+#
+# The caption is the single biggest reach lever on a Reel, so an unusable one
+# must fall back to the deterministic caption, never ship as-is.
+_THINK_PAIRED_RE = re.compile(r"<think>[\s\S]*?</think>", re.IGNORECASE)
+_THINK_ORPHAN_RE = re.compile(r"^[\s\S]*?</think>", re.IGNORECASE)
+
+# Tells that the model drafted instead of answering.
+_CAPTION_SCAFFOLD_RE = re.compile(
+    r"\(\s*\d+\s*chars?\s*\)"                      # "(81 chars)" length bookkeeping
+    r"|^\s*[\*\-]\s+\w"                            # markdown bullet lines
+    r"|\b(?:HOOK|VALUE|CTA|HASHTAGS?)\s*\d*\s*:"   # echoed section labels
+    r"|\b(?:let me|I should|I'll write|first,? I|okay,? so)\b",  # reasoning voice
+    re.IGNORECASE | re.MULTILINE,
+)
+
+
+def _sanitize_caption(caption: str, session_id: str = "") -> str:
+    """Strip reasoning chatter; return "" when what's left is not a caption.
+
+    Returning "" is the point — it hands control to the caller's fallback chain
+    rather than letting a fragment reach the publish path.
+    """
+    if not caption or not isinstance(caption, str):
+        return ""
+    text = _THINK_PAIRED_RE.sub("", caption)
+    text = _THINK_ORPHAN_RE.sub("", text)
+    # Strip wrapping quotes/fences the model sometimes adds.
+    text = re.sub(r"^\s*```[a-z]*\s*|\s*```\s*$", "", text).strip()
+    if text.startswith('"') and text.endswith('"') and len(text) > 2:
+        text = text[1:-1].strip()
+
+    reason = ""
+    body = _HASHTAG_RE.sub("", text).strip()
+    if _CAPTION_SCAFFOLD_RE.search(text):
+        reason = "contains drafting scaffolding"
+    elif len(body) < 40:
+        # A real caption has a hook and at least a line of value. Anything this
+        # short is a fragment — "->" was 2 characters.
+        reason = f"only {len(body)} chars of non-hashtag text"
+    elif re.match(r"^[\)\],;:]|^\d+\s*chars?\)", body):
+        # Starts mid-sentence: the front was lost somewhere upstream.
+        reason = "starts mid-sentence"
+
+    if reason:
+        print(f"[{session_id}] [Caption] REJECTED generated caption ({reason}): {text[:160]!r}")
+        return ""
+    return text
 
 
 def _enforce_caption_hashtags(caption: str, script_data: Optional[dict] = None,
@@ -4655,6 +4741,7 @@ Provide ONLY the final caption text. Do not include quotes, markdown headers, or
             json_format=False,
             session_id=session_id or "Instagram"
         )
+        caption = _sanitize_caption(caption, session_id or "Instagram")
         if caption:
             caption = _scrub_fabricated_people(caption, source_prompt, session_id or "Instagram", "ig_caption")
             return _enforce_caption_hashtags(caption, script_data, session_id or "Instagram")
@@ -4693,10 +4780,11 @@ Provide ONLY the final caption text. Do not include quotes, markdown headers, or
         )
         if response.status_code == 200:
             caption = response.json()["choices"][0]["message"]["content"].strip()
-            if caption.startswith('"') and caption.endswith('"'):
-                caption = caption[1:-1].strip()
-            caption = _scrub_fabricated_people(caption, source_prompt, session_id or "Instagram", "ig_caption")
-            return _enforce_caption_hashtags(caption, script_data, session_id or "Instagram")
+            caption = _sanitize_caption(caption, session_id or "Instagram")
+            if caption:
+                caption = _scrub_fabricated_people(caption, source_prompt, session_id or "Instagram", "ig_caption")
+                return _enforce_caption_hashtags(caption, script_data, session_id or "Instagram")
+            print(f"[{session_id or 'Instagram'}] [Caption] Direct-request caption also unusable; using deterministic fallback.")
         else:
             print(f"[Instagram] LLM caption gen direct request failed: {response.text}")
     except Exception as e:
