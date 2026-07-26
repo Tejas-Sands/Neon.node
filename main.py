@@ -1427,14 +1427,23 @@ def _scrub_fabricated_people(text: str, source_prompt: str = "", session_id: str
 
     # Any known-fake entity that survived (e.g. "John Doe's framework") — neutralize.
     text = _FAKE_ENTITY_RE.sub("the team", text)
+    scrubbed = text  # everything above is the guard; everything below is cosmetic
 
     # Tidy up: collapse spaces, fix orphaned punctuation, recapitalize sentence starts.
-    text = re.sub(r"\s{2,}", " ", text).strip()
+    # Newlines are PRESERVED. This used to be a blanket `\s{2,}` collapse, which also
+    # ate "\n\n" — so every multi-line caption (hook / value lines / CTA) reached
+    # Instagram as one run-on paragraph, and any bullet the model emitted was folded
+    # onto a single line where the line-anchored scaffold check could not see it.
+    text = re.sub(r"[ \t]{2,}", " ", text)
+    text = re.sub(r"[ \t]+\n", "\n", text)
+    text = re.sub(r"\n{3,}", "\n\n", text).strip()
     text = re.sub(r"^[,:;\s]+", "", text)
     if text and text[0].islower():
         text = text[0].upper() + text[1:]
 
-    if text != original:
+    # Only announce a block when the GUARD changed something; whitespace tidying
+    # used to trip this log and made clean captions look like caught fabrications.
+    if scrubbed != original:
         print(f"[{session_id}] FABRICATION BLOCKED in {field or 'text'}: {original!r} -> {text!r}")
     return text
 
@@ -4524,6 +4533,35 @@ def _slugify_hashtag(text: str) -> str:
     return slug
 
 
+def _tag_stem(tag: str) -> str:
+    """Crude English stem, only for near-duplicate detection.
+
+    A real post shipped "#deepseek #leak #leaked" — leak and leaked are the same
+    word, and they burned two of the three high-value specific slots. Suffixes are
+    stripped longest-first so "leaked" -> "leak" rather than "leake".
+    """
+    t = (tag or "").lower()
+    for suf in ("ings", "ing", "ers", "er", "ies", "ed", "es", "s"):
+        if len(t) - len(suf) >= 4 and t.endswith(suf):
+            base = t[: -len(suf)]
+            if suf == "ies":
+                base += "y"
+            return base
+    return t
+
+
+def _dedupe_by_stem(tags: list) -> list:
+    """Keep the first tag of each stem family, preserving order."""
+    seen, out = set(), []
+    for tag in tags:
+        stem = _tag_stem(tag)
+        if stem in seen:
+            continue
+        seen.add(stem)
+        out.append(tag)
+    return out
+
+
 def _caption_tag_candidates(script_data: Optional[dict], session_id: str) -> list:
     """Ordered, deduped backfill candidates: topic slugs -> curated -> pools."""
     topic = _get_caption_topic_context(script_data or {}, session_id)
@@ -4560,7 +4598,8 @@ def _caption_tag_candidates(script_data: Optional[dict], session_id: str) -> lis
     for needle, tag in _KEYWORD_TAG_MAP.items():
         if _kw_matches(needle, haystack):
             specific.append(tag)
-    specific = [t for t in specific if _ok(t)]
+    # Stem-dedupe so "leak"/"leaked" can't both occupy the 3 specific slots.
+    specific = _dedupe_by_stem([t for t in specific if _ok(t)])
 
     category = [t for t in _CATEGORY_TAG_POOL if _ok(t)]
     broad = [t for t in _EVERGREEN_TAG_POOL if _ok(t)]
@@ -4576,7 +4615,8 @@ def _caption_tag_candidates(script_data: Optional[dict], session_id: str) -> lis
     # Everything not used by the quota still follows, so the line can always be
     # filled when a tier came up short.
     candidates += specific[3:] + category[3:] + broad[2:] + filler
-    return [c for c in candidates if c]
+    # Final stem pass so a filler word can't re-duplicate a specific tag.
+    return _dedupe_by_stem([c for c in candidates if c])
 
 
 # --- Caption sanity gate ----------------------------------------------------
@@ -4595,22 +4635,53 @@ _THINK_PAIRED_RE = re.compile(r"<think>[\s\S]*?</think>", re.IGNORECASE)
 _THINK_ORPHAN_RE = re.compile(r"^[\s\S]*?</think>", re.IGNORECASE)
 
 # Tells that the model drafted instead of answering.
+#
+# 2026-07-26, second incident (media 18608323627060667): a three-draft list shipped
+# as the caption — 'Progress? * *Draft 2:* Will hardware bottlenecks ... * *Draft 3:*'.
+# It cleared the original version of this regex on two counts, both fixed below:
+#   * the bullet tell was `^\s*[\*\-]\s+\w` — `^`-anchored under MULTILINE, so an
+#     INLINE bullet was invisible, and it demanded \w right after the bullet, so
+#     `* *Draft 2:*` (bullet then markdown emphasis) missed even at line start;
+#   * the label tell knew only this prompt's own labels, not "Draft"/"Option"/etc.
 _CAPTION_SCAFFOLD_RE = re.compile(
     r"\(\s*\d+\s*chars?\s*\)"                      # "(81 chars)" length bookkeeping
-    r"|^\s*[\*\-]\s+\w"                            # markdown bullet lines
+    r"|\*"                                         # ANY asterisk: the prompt bans it,
+                                                   # so its presence means the format
+                                                   # contract was ignored outright
+    r"|^\s*[\*\-]\s*\S"                            # markdown bullet lines
+    r"|(?:^|[^\S\n])[\*•‣◦]\s*\S"   # ...and inline bullets (* and •);
+                                                   # "-" stays line-anchored above so a
+                                                   # mid-sentence hyphen is still safe
     r"|\b(?:HOOK|VALUE|CTA|HASHTAGS?)\s*\d*\s*:"   # echoed section labels
+    r"|(?:^|[\*\-•]\s*)(?:draft|option|variant|version|alternative|attempt)s?"
+    r"\s*\d*\s*[:.\)]"                             # generic drafting labels. Anchored to
+                                                   # a line start or a bullet, because
+                                                   # that is what separates a LABEL from
+                                                   # prose — unanchored, this ate real
+                                                   # captions ("...told the version.",
+                                                   # "Python version 3.12")
     r"|\b(?:let me|I should|I'll write|first,? I|okay,? so)\b",  # reasoning voice
     re.IGNORECASE | re.MULTILINE,
 )
 
+# A caption ends on a sentence, an emoji, or its hashtag line. Ending on a bare letter
+# or comma means the completion was cut off at max_tokens — which for captions is never
+# detected upstream, because query_llm_with_failover only checks finish_reason ==
+# "length" inside its `if json_format:` branch and captions pass json_format=False.
+_CAPTION_TRUNCATED_RE = re.compile(r"[A-Za-z,]$")
 
-def _sanitize_caption(caption: str, session_id: str = "") -> str:
+
+def _sanitize_caption(caption: str, session_id: str = "",
+                      reasons: Optional[list] = None) -> str:
     """Strip reasoning chatter; return "" when what's left is not a caption.
 
     Returning "" is the point — it hands control to the caller's fallback chain
-    rather than letting a fragment reach the publish path.
+    rather than letting a fragment reach the publish path. Pass `reasons` to
+    collect the rejection text so the caller can quote it back to the model.
     """
     if not caption or not isinstance(caption, str):
+        if reasons is not None:
+            reasons.append("empty response")
         return ""
     text = _THINK_PAIRED_RE.sub("", caption)
     text = _THINK_ORPHAN_RE.sub("", text)
@@ -4630,11 +4701,53 @@ def _sanitize_caption(caption: str, session_id: str = "") -> str:
     elif re.match(r"^[\)\],;:]|^\d+\s*chars?\)", body):
         # Starts mid-sentence: the front was lost somewhere upstream.
         reason = "starts mid-sentence"
+    elif body.count("?") >= 3:
+        # A caption is a hook, some value, and ONE closing question. Three or more
+        # means the model listed candidate hooks instead of picking one.
+        reason = f"{body.count('?')} questions — reads as a list of hook options"
+    elif _CAPTION_TRUNCATED_RE.search(body):
+        # Cut off at max_tokens; see _CAPTION_TRUNCATED_RE.
+        reason = "ends mid-sentence (truncated)"
 
     if reason:
         print(f"[{session_id}] [Caption] REJECTED generated caption ({reason}): {text[:160]!r}")
+        if reasons is not None:
+            reasons.append(reason)
         return ""
     return text
+
+
+INSTAGRAM_CAPTION_LIMIT = 2200  # Graph API hard-rejects longer captions.
+
+
+def _clamp_ig_caption(caption: str, session_id: str = "",
+                      limit: int = INSTAGRAM_CAPTION_LIMIT) -> str:
+    """Keep a caption inside Instagram's limit, hashtag line intact.
+
+    Nothing on this path capped length before, so an over-long caption was only
+    discovered as a Graph API rejection at publish time. Trims the BODY and keeps
+    the tags, because the tags are the reach.
+    """
+    caption = (caption or "").strip()
+    if len(caption) <= limit:
+        return caption
+
+    body, sep, tail = caption.rpartition("\n\n")
+    if not sep or not _HASHTAG_RE.search(tail) or len(tail) >= limit:
+        body, sep, tail = caption, "", ""
+
+    room = limit - len(tail) - len(sep)
+    words = body[:max(room, 0)].split()
+    if words and not body[:max(room, 0)].endswith(tuple(" \n\t")):
+        words.pop()  # drop the word the cut landed inside
+    trimmed = " ".join(words).rstrip(" ,;:-—") or body[:max(room - 1, 0)]
+    if trimmed and trimmed[-1] not in ".!?":
+        trimmed += "…"
+
+    out = (trimmed + sep + tail)[:limit].strip()
+    print(f"[{session_id}] [Caption] Clamped {len(caption)} chars -> {len(out)} "
+          f"(IG limit {limit}); hashtag line preserved.")
+    return out
 
 
 def _enforce_caption_hashtags(caption: str, script_data: Optional[dict] = None,
@@ -4654,7 +4767,7 @@ def _enforce_caption_hashtags(caption: str, script_data: Optional[dict] = None,
         caption = re.sub(r"[ \t]{2,}", " ", caption).strip()
         existing = existing[:28]
     if len(existing) >= min_tags:
-        return caption
+        return _clamp_ig_caption(caption, session_id)
 
     seen = {t.lower() for t in existing}
     target = min(min_tags, max_tags)
@@ -4668,11 +4781,12 @@ def _enforce_caption_hashtags(caption: str, script_data: Optional[dict] = None,
         added.append(tag)
 
     if not added:
-        return caption
+        return _clamp_ig_caption(caption, session_id)
     print(f"[{session_id}] [Hashtags] Backfilled {len(added)} tags: "
           + " ".join("#" + t for t in added))
     tag_line = " ".join("#" + t for t in added)
-    return (caption + "\n\n" + tag_line).strip() if caption else tag_line
+    joined = (caption + "\n\n" + tag_line).strip() if caption else tag_line
+    return _clamp_ig_caption(joined, session_id)
 
 
 def _backfill_youtube_tags(tags: list, script_data: dict, session_id: str,
@@ -4692,9 +4806,84 @@ def _backfill_youtube_tags(tags: list, script_data: dict, session_id: str,
     return tags[:cap]
 
 
+# Words that must never end a line — cutting on one reads as a truncated caption.
+_DANGLING_WORDS = {
+    "a", "an", "the", "and", "or", "but", "of", "to", "in", "on", "at", "for",
+    "from", "with", "by", "into", "out", "as", "that", "which", "who", "is",
+    "are", "was", "were", "be", "been", "than", "then", "so", "if", "when",
+    "while", "its", "their", "this", "these", "those", "not", "no",
+}
+
+
+def _first_sentence(text: str, max_words: int = 26) -> str:
+    """First complete sentence of a narration line, word-capped, punctuation kept."""
+    text = re.sub(r"\s+", " ", (text or "").strip())
+    if not text:
+        return ""
+    m = re.match(r"^(.{20,}?[.!?])(?:\s|$)", text)
+    if m:
+        text = m.group(1)
+    words = text.split()
+    if len(words) > max_words:
+        # Cut on a word boundary, back off any dangling connector, and close the
+        # sentence — so the result never LOOKS truncated, which is the exact fault
+        # this whole change exists to stop shipping.
+        words = words[:max_words]
+        while words and words[-1].strip(".,;:!?").lower() in _DANGLING_WORDS:
+            words.pop()
+        if not words:
+            return ""
+        text = " ".join(words).rstrip(",;:-— ")
+    if text and text[-1] not in ".!?":
+        text += "."
+    return text
+
+
+def _build_narration_caption(script_data: Optional[dict], topic: dict) -> str:
+    """Deterministic caption composed from what the video actually says.
+
+    The old fallback was "🚀 {topic} — the 60-second breakdown.", which is exactly
+    the generic filler this pipeline is supposed to avoid: it shipped whenever the
+    LLM misbehaved, so a caption failure became a bland post rather than a visible
+    one. Every line here is narration reused VERBATIM, so it invents nothing and
+    _scrub_fabricated_people stays exactly as strong.
+    """
+    scenes = (script_data or {}).get("scenes") or []
+    lines = []
+    for s in scenes:
+        vo = _first_sentence(str(s.get("voiceover") or "").strip())
+        if vo and vo not in lines:
+            lines.append(vo)
+
+    subject = (topic.get("subject") or topic.get("title") or "").strip()
+    if lines:
+        hook = lines[0]
+    elif subject:
+        # No narration to draw on — make the subject a sentence rather than
+        # shipping a bare noun phrase.
+        hook = _first_sentence(f"{subject.rstrip('.')} — here's what actually changed.")
+    else:
+        hook = "Today's tech story, in 60 seconds."
+
+    # Concrete beats vague: prefer narration carrying a number.
+    rest = lines[1:]
+    value = [ln for ln in rest if re.search(r"\d", ln)][:2]
+    for ln in rest:
+        if len(value) >= 2:
+            break
+        if ln not in value:
+            value.append(ln)
+
+    parts = [hook]
+    if value:
+        parts.append("\n".join(f"{e} {ln}" for e, ln in zip(("⚡", "🧠"), value)))
+    parts.append("Worth your time? Tell us below 👇")
+    return "\n\n".join(parts)
+
+
 def generate_instagram_caption(
-    script_data: dict, 
-    text_gen_key: str, 
+    script_data: dict,
+    text_gen_key: str,
     text_api_base: Optional[str] = None, 
     text_model_name: Optional[str] = None,
     session_id: Optional[str] = None
@@ -4730,22 +4919,20 @@ def generate_instagram_caption(
 {topic_block}WHAT THE VIDEO ACTUALLY SAYS (scene narration — the ONLY source of facts you may use):
 {scenes_text}
 
-Write the caption with this structure (no headings, no labels — just the caption text):
+Open with one punchy line, max 14 words, about THIS specific topic — name the actual subject or its sharpest concrete claim from the narration. Avoid generic templates ("90% of developers...", "This changes everything...", "You won't believe..."), and any percentage, benchmark or statistic that does not appear verbatim in the narration above.
 
-1. HOOK (first line): one punchy line, max 14 words, about THIS specific topic — name the actual subject or its sharpest concrete claim from the narration. Banned: generic templates ("90% of developers...", "This changes everything...", "You won't believe..."), and any percentage, benchmark or statistic that does not appear verbatim in the narration above.
+Then two to four short lines carrying the most concrete, surprising specifics from the narration — real numbers, mechanisms, comparisons that were actually spoken. One idea per line, each may start with one fitting emoji. Do not restate the opening line. Do not pad with adjectives.
 
-2. VALUE (2-4 short lines): the most concrete, surprising specifics FROM THE NARRATION — real numbers, mechanisms, comparisons that were actually spoken. One idea per line, each may start with one fitting emoji. Do not restate the hook. Do not pad with adjectives.
+Close with a single natural question or nudge tied to the topic ("Would you run this in prod?", "Tag the dev who still does X by hand"). Never beg ("like and follow"). Ask at most one question in the whole caption.
 
-3. CTA (one line): a natural question or nudge tied to the topic ("Would you run this in prod?", "Tag the dev who still does X by hand"). Never beg ("like and follow").
-
-4. HASHTAGS (final line): 8-12 hashtags in ONE line — 3-4 specific to the subject/keywords above, 3-4 category tags (e.g. #softwareengineering #devops #webdevelopment), 2-3 broad reach tags (#tech #coding #developer). Lowercase, letters/numbers only.
+End with 8-12 hashtags on ONE final line — 3-4 specific to the subject/keywords above, 3-4 category tags (e.g. #softwareengineering #devops #webdevelopment), 2-3 broad reach tags (#tech #coding #developer). Lowercase, letters/numbers only.
 
 HARD RULES:
-- Everything BEFORE the hashtag line must stay under 500 characters.
+- Keep it tight: roughly 3-5 short lines before the hashtag line. Do not count or report the character length.
 - NEVER invent people, quotes, company names, benchmarks or numbers — only reuse facts present in the narration above.
-- Plain text with emojis only. No markdown, no bullet symbols like "*" or "-".
+- Plain text with emojis only. No markdown, no bold, no bullet symbols like "*" or "-".
 
-Provide ONLY the final caption text. Do not include quotes, markdown headers, or introductory conversational text.
+Output exactly ONE finished caption and nothing else. Do not write drafts, options, alternatives, numbered variants, or commentary about your choices. Do not include quotes, markdown headers, section labels, or introductory conversational text.
 """
 
     
@@ -4753,6 +4940,7 @@ Provide ONLY the final caption text. Do not include quotes, markdown headers, or
 
     # 1. Try using the failover query chain which has correct API keys and endpoints mapped dynamically
     try:
+        rejections: list = []
         caption = query_llm_with_failover(
             system_prompt="You are a social media copywriter specializing in viral Instagram captions.",
             user_prompt=prompt,
@@ -4760,7 +4948,30 @@ Provide ONLY the final caption text. Do not include quotes, markdown headers, or
             json_format=False,
             session_id=session_id or "Instagram"
         )
-        caption = _sanitize_caption(caption, session_id or "Instagram")
+        caption = _sanitize_caption(caption, session_id or "Instagram", rejections)
+
+        # One corrective re-ask before giving up on the LLM. A rejected caption used
+        # to fall straight through to the deterministic fallback, so a single bad
+        # completion cost the post its whole caption; naming the specific fault is
+        # usually enough for the model to return a clean one.
+        if not caption and rejections:
+            print(f"[{session_id or 'Instagram'}] [Caption] Retrying once "
+                  f"({rejections[-1]})...")
+            retry_prompt = (
+                f"{prompt}\n"
+                f"Your previous attempt was rejected: {rejections[-1]}.\n"
+                f"Return ONE finished caption only — no drafts, no options, no "
+                f"asterisks, no section labels, no notes about your own writing. "
+                f"Finish every sentence.")
+            caption = query_llm_with_failover(
+                system_prompt="You are a social media copywriter specializing in viral Instagram captions.",
+                user_prompt=retry_prompt,
+                max_tokens=1000,
+                json_format=False,
+                session_id=session_id or "Instagram"
+            )
+            caption = _sanitize_caption(caption, session_id or "Instagram")
+
         if caption:
             caption = _scrub_fabricated_people(caption, source_prompt, session_id or "Instagram", "ig_caption")
             return _enforce_caption_hashtags(caption, script_data, session_id or "Instagram")
@@ -4809,14 +5020,12 @@ Provide ONLY the final caption text. Do not include quotes, markdown headers, or
     except Exception as e:
         print(f"[Instagram] Exception in direct request fallback: {e}")
     
-    # Fallback caption if both fail — topic-aware, and the deterministic
+    # Fallback caption if both fail — built from the narration, and the deterministic
     # backfill guarantees a full hashtag line even with zero LLM availability.
-    fallback_title = scenes[0].get("title", "Awesome Tech Video!") if scenes else "Awesome Video!"
-    topic_line = topic.get("subject") or topic.get("title") or fallback_title
-    fallback = (f"🚀 {topic_line} — the 60-second breakdown.\n\n"
-                f"Full story in the reel. 🎥\n\n"
-                f"Would you ship this? Tell us below 👇")
-    return _enforce_caption_hashtags(fallback, script_data, session_id or "Instagram")
+    print(f"[{session_id or 'Instagram'}] [Caption] Using deterministic narration fallback.")
+    return _enforce_caption_hashtags(
+        _build_narration_caption(script_data, topic),
+        script_data, session_id or "Instagram")
 
 
 def test_instagram_official_connection(business_account_id: str, access_token: str, session_id: str = "") -> bool:
@@ -5269,8 +5478,18 @@ def dispatch_telegram_post(
         status_dict_ref["telegram_status"] = "posting_telegram"
         
     try:
+        # Prefer the caption Instagram actually published. This message reports a
+        # publish that already happened, so generating a SECOND caption here made it
+        # quote text that was never live — and doubled the chances of an LLM miss.
+        # Under sync_delivery (CLI/GitHub Actions) the IG dispatch runs inline first,
+        # so this is populated; in threaded mode it may not be, hence the fallback.
         caption = ""
-        if config.auto_generate_caption:
+        if status_dict_ref:
+            caption = (status_dict_ref.get("published_caption") or "").strip()
+            if caption:
+                print(f"{prefix}[Caption] Reporting the caption published to Instagram.")
+
+        if not caption and config.auto_generate_caption:
             if script_data and text_gen_key:
                 try:
                     caption = generate_instagram_caption(
@@ -5280,7 +5499,7 @@ def dispatch_telegram_post(
                     )
                 except Exception as ex:
                     print(f"{prefix}Failed to auto-generate caption for Telegram: {ex}")
-            
+
         if not caption:
             caption = "Check out this automatically generated video! 🚀\n\n#remotion #ai #automation"
 
@@ -5374,6 +5593,12 @@ def dispatch_instagram_post(
             
             if not caption:
                 caption = "Check out this automatically generated video! 🚀\n\n#remotion #ai #automation"
+
+        # Publish the exact text so the Telegram confirmation can REPORT what went
+        # live instead of generating a second, different caption of its own. Record
+        # only — nothing below reads it, so the posting path is unchanged.
+        if status_dict_ref is not None and caption:
+            status_dict_ref["published_caption"] = caption
 
         method = (config.method or "official").lower()
         if method == "official":
