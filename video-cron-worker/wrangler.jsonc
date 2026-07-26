@@ -1,0 +1,38 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "video-cron",
+  "main": "worker.js",
+  "compatibility_date": "2026-07-26",
+  "observability": {
+    "enabled": true,
+    "logs": { "head_sampling_rate": 1 }
+  },
+  "triggers": {
+    // ONE trigger, deliberately: the Workers Free plan allows 5 cron triggers
+    // PER ACCOUNT, so a cron-per-post would eat the whole budget. The Worker
+    // rebuilds today's plan on every tick and dispatches only when a slot is
+    // due, which also lets the daily times move around (see worker.js).
+    // 10 min granularity => a post lands within 10 min of its planned slot.
+    "crons": ["*/10 * * * *"]
+  },
+  // Non-secret settings. Secrets (GITHUB_TOKEN, DEBUG_KEY) are set with
+  // `wrangler secret put` — never here.
+  "vars": {
+    "GITHUB_REPO": "Tejas-Sands/Neon.node",
+    "GITHUB_REF": "main",
+    "WORKFLOW_FILE": "generate_video.yml",
+
+    // ---- the cadence dial ----------------------------------------------
+    // Change POSTS_PER_DAY alone to go 6 / 7 / 8; everything else re-spaces
+    // itself. MIN_GAP_MIN is the floor between two posts — keep it well above
+    // the observed worst-case run duration (58 min) so renders never queue.
+    "POSTS_PER_DAY": "7",
+    "WINDOW_START_IST": "07:30",
+    "WINDOW_END_IST": "22:45",
+    "MIN_GAP_MIN": "75",
+
+    // How stale a missed slot may be before it is written off. Stops a long
+    // Cloudflare/GitHub outage from dumping a backlog post at 02:00 IST.
+    "GRACE_MIN": "90"
+  }
+}

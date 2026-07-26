@@ -1,17 +1,31 @@
 name: Scheduled Video Generator
 
 on:
-  schedule:
-    # 5 posts/day at IRREGULAR, spread-out times (UTC) — a fixed every-N-hours
-    # cadence is a classic bot fingerprint; odd minutes + the jitter step below
-    # make posting times look human. (≈ 08:53, 12:17, 15:41, 19:06, 21:32 IST)
-    - cron: '23 3 * * *'
-    - cron: '47 6 * * *'
-    - cron: '11 10 * * *'
-    - cron: '36 13 * * *'
-    - cron: '2 16 * * *'
+  # SCHEDULING LIVES IN CLOUDFLARE NOW — see video-cron-worker/.
+  #
+  # GitHub's scheduled-run queue is best-effort and was chronically late here:
+  # measured 2026-07-22..26, EVERY scheduled run fired 52-175 min after its
+  # cron, worst in the 03:00-07:00 UTC band (the 03:23 cron averaged +166 min).
+  # That turned the intended 08:53-21:32 IST spread into 11:40-22:50 IST with a
+  # 12-13.5 h overnight hole, and delivered 3-6 posts/day instead of 5.
+  #
+  # The `video-cron` Worker (Cloudflare Cron Triggers fire within seconds) now
+  # dispatches this workflow via the API instead. Re-enabling the block below
+  # WITHOUT disabling that Worker double-schedules the pipeline — both fire and
+  # you get 12+ runs/day.
+  #
+  # schedule:
+  #   - cron: '23 3 * * *'
+  #   - cron: '47 6 * * *'
+  #   - cron: '11 10 * * *'
+  #   - cron: '36 13 * * *'
+  #   - cron: '2 16 * * *'
   workflow_dispatch:
-    # Allow manual triggers from the GitHub UI (use this for the optional 6th post)
+    # How the Worker triggers each post, and how you trigger one by hand from
+    # the GitHub UI. Note the jitter step below is gated on `schedule`, so
+    # dispatched runs start immediately — intentional: the anti-fingerprint
+    # randomisation now lives in the Worker's slot planner, and an in-job sleep
+    # would only re-add the drift the Worker exists to remove.
 
 permissions:
   contents: write   # the job commits the topic-history file back to the repo
