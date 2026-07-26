@@ -365,9 +365,18 @@
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "fetched_at": 1784991983
+      "fetched_at": 1785082451
      },
-     "snap72": null,
+     "snap72": {
+      "views": 114,
+      "reach": 99,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 1,
+      "total_interactions": 1,
+      "fetched_at": 1785082451
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -583,7 +592,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 116,
+      "reach": 110,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785082451
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -725,6 +743,42 @@
     "instagram": {
      "id": "18608323627060667",
      "posted_at": 1785073668
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785082373,
+   "posted_hour_utc": 16,
+   "channel": "news",
+   "topic": {
+    "title": "GrapheneOS protections against data extraction from locked devices",
+    "subject": "GrapheneOS protections against data extraction from locked devices",
+    "url": "https://discuss.grapheneos.org/d/40700-grapheneos-protections-against-data-extraction-from-locked-devices",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 8.95
+   },
+   "style_pack": "ember-gold",
+   "seed": 45665908,
+   "voice": "en-US-AndrewMultilingualNeural",
+   "hook_type": "CURIOSITY GAP",
+   "scene_count": 6,
+   "video_seconds": 35.3,
+   "session": "gh-6b6623",
+   "platforms": {
+    "instagram": {
+     "id": "18088823819396137",
+     "posted_at": 1785082438
     }
    },
    "metrics": {
