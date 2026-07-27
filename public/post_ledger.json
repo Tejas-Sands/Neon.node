@@ -843,6 +843,42 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1785130648,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "US citizen charged after GrapheneOS phone wipes during airport search",
+    "subject": "US citizen charged after GrapheneOS phone wipes during airport search",
+    "url": "https://www.techspot.com/news/113236-us-prosecutors-charge-atlanta-man-after-grapheneos-phone.html",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 9.63
+   },
+   "style_pack": "editorial-serif",
+   "seed": 448790177,
+   "voice": "en-US-EmmaMultilingualNeural",
+   "hook_type": "HYPER-SPECIFIC RELATABILITY",
+   "scene_count": 5,
+   "video_seconds": 29.0,
+   "session": "gh-bf8954",
+   "platforms": {
+    "instagram": {
+     "id": "17930311080127147",
+     "posted_at": 1785130716
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }
