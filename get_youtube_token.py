@@ -5,11 +5,15 @@ which needs a long-lived refresh token. Run this ONCE on your local machine:
 
     python get_youtube_token.py
 
-Prerequisites (5 minutes, one time):
+Prerequisites (10 minutes, one time):
   1. https://console.cloud.google.com → create a project (or reuse one).
   2. "APIs & Services" → Library → enable "YouTube Data API v3".
   3. "APIs & Services" → OAuth consent screen → External → add yourself as a
-     test user (the app can stay in "Testing" mode for personal use).
+     test user, then **click "PUBLISH APP" so the publishing status reads
+     "In production"**. Do NOT leave it on "Testing": Google issues Testing-mode
+     projects a refresh token that EXPIRES AFTER 7 DAYS, which breaks unattended
+     CI every week. Production status does not require completing verification —
+     you just click through an "unverified app" warning once, as the developer.
   4. "APIs & Services" → Credentials → Create credentials → OAuth client ID →
      Application type: "Desktop app". Copy the client ID + secret.
   5. Run this script, paste them, approve in the browser window.
@@ -17,12 +21,25 @@ Prerequisites (5 minutes, one time):
 The script prints YT_CLIENT_ID / YT_CLIENT_SECRET / YT_REFRESH_TOKEN lines —
 put them in .env (local) or the HF Space / GitHub Actions secrets.
 
-NOTE on API quota: uploads cost 1,600 units of the default 10,000/day quota,
-so ~6 uploads/day max — which matches the 5-6 posts/day target.
-NOTE on visibility: while your OAuth app is unverified, YouTube may lock
-API-uploaded videos to PRIVATE. If that happens, request the (free) API audit
-/ app verification in the Cloud Console, or start with YT_PRIVACY_STATUS=private
-and flip videos public manually until verification lands.
+NOTE on API quota: `videos.insert` has its own bucket — 100 uploads/day at
+1 unit each, separate from the shared 10,000-unit/day pool. The 5-6 posts/day
+target is well under that.
+
+🚫 NOTE on visibility — READ THIS BEFORE ENABLING AUTOPOST:
+Any Cloud project created after 2020-07-28 that has not passed YouTube's
+compliance audit has EVERY API upload force-locked to private. Per YouTube
+support this lock "cannot be appealed" and cannot be undone in Studio — the
+video must be re-uploaded by hand to ever go public. So the sequence is:
+
+    set up creds → 1-2 throwaway uploads with YT_PRIVACY_STATUS=private
+    (the screen recording of this OAuth flow is what the audit form wants)
+    → submit the Audit and Quota Extension Form → wait
+    → only once it clears: ENABLE_YOUTUBE_AUTOPOST=true, YT_PRIVACY_STATUS=public
+
+Enabling autopost before the audit clears does not just waste the uploads: the
+pipeline records them in the post ledger as real posts, and the metrics loop
+then reads back permanent zeroes and teaches the learned selection bias that
+those topics/style packs failed.
 """
 import http.server
 import json
@@ -65,7 +82,11 @@ def main():
         "response_type": "code",
         "scope": SCOPE,
         "access_type": "offline",   # <- this is what yields a refresh_token
-        "prompt": "consent",        # <- force refresh_token even on re-auth
+        # "consent" forces a refresh_token even on re-auth; "select_account"
+        # forces the account chooser so the token can never silently bind to
+        # whichever Google account happens to be signed in — the channel owner
+        # is often NOT the account that owns the Cloud project.
+        "prompt": "select_account consent",
     })
 
     server = http.server.HTTPServer(("localhost", REDIRECT_PORT), _CodeCatcher)

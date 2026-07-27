@@ -344,9 +344,18 @@ class YouTubeConfig(BaseModel):
     """YouTube Shorts upload via the official Data API v3 (OAuth refresh token).
 
     Uses the TOS-compliant official API — automation through it carries no
-    shadowban risk, unlike browser/scraping uploaders. Note the default API
-    quota (10,000 units/day) allows ~6 uploads/day (1,600 units each), which
-    matches the 5-6 posts/day target exactly.
+    shadowban risk, unlike browser/scraping uploaders.
+
+    Quota: `videos.insert` has its own bucket — 100 calls/day at 1 unit each,
+    separate from the 10,000-unit/day pool the other endpoints share. The
+    5-6 posts/day target is far below that ceiling.
+
+    ⚠️ COMPLIANCE AUDIT GATE: a Cloud project created after 2020-07-28 that has
+    not passed YouTube's compliance audit gets EVERY upload force-locked to
+    private — unappealable, and not reversible from Studio (the video has to be
+    re-uploaded by hand). Keep ENABLE_YOUTUBE_AUTOPOST=false until the audit
+    clears, otherwise the ledger fills with "posted" videos nobody can watch and
+    the metrics feedback loop learns from their permanent zeroes.
     """
     enabled: bool = False
     client_id: Optional[str] = None
