@@ -707,7 +707,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 111,
+      "reach": 100,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785148178
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -923,6 +932,40 @@
     "instagram": {
      "id": "17981541051045175",
      "posted_at": 1785137541
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785148120,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "Htmx 4.0, the first JavaScript library to release exclusively on the Game Boy",
+    "subject": "Htmx 4.0, the first JavaScript library to release exclusively on the Game Boy",
+    "url": "https://swag.htmx.org/en-cad/products/htmx-4-the-game",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 7.19
+   },
+   "style_pack": "cosmic-fantasy",
+   "seed": 914394461,
+   "voice": "en-US-BrianMultilingualNeural",
+   "hook_type": "MISTAKE CALLOUT",
+   "scene_count": 6,
+   "video_seconds": 36.0,
+   "session": "gh-110123",
+   "platforms": {
+    "instagram": {
+     "id": "18132601606622806",
+     "posted_at": 1785148174
     }
    },
    "metrics": {
