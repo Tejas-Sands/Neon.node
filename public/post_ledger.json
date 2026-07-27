@@ -753,7 +753,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 112,
+      "reach": 103,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785155901
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -966,6 +975,40 @@
     "instagram": {
      "id": "18132601606622806",
      "posted_at": 1785148174
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785155834,
+   "posted_hour_utc": 12,
+   "channel": "news",
+   "topic": {
+    "title": "Scriptc by Vercel: TypeScript-to-Native compiler, no JavaScript engine in binary",
+    "subject": "Scriptc by Vercel: TypeScript-to-Native compiler, no JavaScript engine in binary",
+    "url": "https://github.com/vercel-labs/scriptc",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 6.79
+   },
+   "style_pack": "desert-dune",
+   "seed": 951273321,
+   "voice": "en-US-EmmaMultilingualNeural",
+   "hook_type": "CHALLENGE-DARE",
+   "scene_count": 5,
+   "video_seconds": 30.7,
+   "session": "gh-504af6",
+   "platforms": {
+    "instagram": {
+     "id": "17895475044560201",
+     "posted_at": 1785155897
     }
    },
    "metrics": {

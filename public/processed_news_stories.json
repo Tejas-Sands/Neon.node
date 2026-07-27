@@ -246,5 +246,13 @@
   "subject_norm": null,
   "ts": 1785148178,
   "session": "gh-110123"
+ },
+ {
+  "id": "49063175",
+  "title": "Scriptc by Vercel: TypeScript-to-Native compiler, no JavaScript engine in binary",
+  "norm": "scriptc by vercel typescript to native compiler no javascript engine in binary",
+  "subject_norm": null,
+  "ts": 1785155901,
+  "session": "gh-504af6"
  }
 ]
