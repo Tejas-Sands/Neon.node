@@ -230,5 +230,13 @@
   "subject_norm": null,
   "ts": 1785130720,
   "session": "gh-bf8954"
+ },
+ {
+  "id": "49057175",
+  "title": "Kill The Cookie Banner",
+  "norm": "kill the cookie banner",
+  "subject_norm": null,
+  "ts": 1785137545,
+  "session": "gh-192c57"
  }
 ]

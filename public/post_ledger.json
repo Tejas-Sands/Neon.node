@@ -147,7 +147,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785048914
+      "fetched_at": 1785137545
      },
      "snap72": {
       "views": 109,
@@ -203,7 +203,7 @@
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "fetched_at": 1785048914
+      "fetched_at": 1785137545
      },
      "snap72": {
       "views": 119,
@@ -471,9 +471,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785048914
+      "fetched_at": 1785137545
      },
-     "snap72": null,
+     "snap72": {
+      "views": 125,
+      "reach": 113,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "fetched_at": 1785137545
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -521,9 +530,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785048914
+      "fetched_at": 1785137545
      },
-     "snap72": null,
+     "snap72": {
+      "views": 118,
+      "reach": 106,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785137545
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -869,6 +887,42 @@
     "instagram": {
      "id": "17930311080127147",
      "posted_at": 1785130716
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785137481,
+   "posted_hour_utc": 7,
+   "channel": "news",
+   "topic": {
+    "title": "Kill The Cookie Banner",
+    "subject": "Kill The Cookie Banner",
+    "url": "https://killthecookiebanner.eu/",
+    "source": "hn",
+    "keywords": [
+     "ban"
+    ],
+    "viral_score": 9.62
+   },
+   "style_pack": "golden-hour",
+   "seed": 347803876,
+   "voice": "en-US-AvaMultilingualNeural",
+   "hook_type": "HYPER-SPECIFIC RELATABILITY",
+   "scene_count": 6,
+   "video_seconds": 35.7,
+   "session": "gh-192c57",
+   "platforms": {
+    "instagram": {
+     "id": "17981541051045175",
+     "posted_at": 1785137541
     }
    },
    "metrics": {
