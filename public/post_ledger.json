@@ -257,7 +257,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785073800
+      "fetched_at": 1785162623
      },
      "snap72": {
       "views": 119,
@@ -311,7 +311,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785073800
+      "fetched_at": 1785162623
      },
      "snap72": {
       "views": 120,
@@ -584,9 +584,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 2,
-      "fetched_at": 1785073800
+      "fetched_at": 1785162623
      },
-     "snap72": null,
+     "snap72": {
+      "views": 120,
+      "reach": 107,
+      "likes": 2,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 2,
+      "fetched_at": 1785162623
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -801,7 +810,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 124,
+      "reach": 121,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "fetched_at": 1785162623
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -1009,6 +1027,42 @@
     "instagram": {
      "id": "17895475044560201",
      "posted_at": 1785155897
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785162529,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "How is the Bun Rewrite in Rust going?",
+    "subject": "How is the Bun Rewrite in Rust going?",
+    "url": "https://lockwood.dev/ai/2026/07/27/how-is-the-bun-rewrite-in-rust-going.html",
+    "source": "hn",
+    "keywords": [
+     "how"
+    ],
+    "viral_score": 7.69
+   },
+   "style_pack": "cherry-blossom",
+   "seed": 1465898498,
+   "voice": "en-US-AvaMultilingualNeural",
+   "hook_type": "HYPER-SPECIFIC RELATABILITY",
+   "scene_count": 5,
+   "video_seconds": 28.2,
+   "session": "gh-448753",
+   "platforms": {
+    "instagram": {
+     "id": "18609954919007993",
+     "posted_at": 1785162620
     }
    },
    "metrics": {
