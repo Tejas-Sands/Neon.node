@@ -38,7 +38,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1784999217
+      "fetched_at": 1785124247
      },
      "snap72": {
       "views": 101,
@@ -92,7 +92,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1784999217
+      "fetched_at": 1785124247
      },
      "snap72": {
       "views": 103,
@@ -417,9 +417,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1784999217
+      "fetched_at": 1785124247
      },
-     "snap72": null,
+     "snap72": {
+      "views": 151,
+      "reach": 137,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785124247
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -635,7 +644,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 159,
+      "reach": 148,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785124247
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -779,6 +797,42 @@
     "instagram": {
      "id": "18088823819396137",
      "posted_at": 1785082438
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785124171,
+   "posted_hour_utc": 3,
+   "channel": "news",
+   "topic": {
+    "title": "The New AI Superpowers: Focus and Followthrough",
+    "subject": "The New AI Superpowers: Focus and Followthrough",
+    "url": "https://www.rickmanelius.com/p/the-new-ai-superpowers-focus-and",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 8.21
+   },
+   "style_pack": "clean-cobalt",
+   "seed": 2108638777,
+   "voice": "en-US-BrianMultilingualNeural",
+   "hook_type": "MISTAKE CALLOUT",
+   "scene_count": 5,
+   "video_seconds": 30.3,
+   "session": "gh-5ac7c2",
+   "platforms": {
+    "instagram": {
+     "id": "18336666493250638",
+     "posted_at": 1785124244
     }
    },
    "metrics": {
