@@ -262,5 +262,13 @@
   "subject_norm": null,
   "ts": 1785162623,
   "session": "gh-448753"
+ },
+ {
+  "id": "49070985",
+  "title": "Kimi-K3 Technical Report [pdf]",
+  "norm": "kimi k3 technical report pdf",
+  "subject_norm": null,
+  "ts": 1785170345,
+  "session": "gh-6727fb"
  }
 ]

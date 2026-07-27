@@ -365,7 +365,7 @@
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "fetched_at": 1785082451
+      "fetched_at": 1785170345
      },
      "snap72": {
       "views": 114,
@@ -636,9 +636,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785082451
+      "fetched_at": 1785170345
      },
-     "snap72": null,
+     "snap72": {
+      "views": 116,
+      "reach": 110,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785170345
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -855,7 +864,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 125,
+      "reach": 104,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785170345
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -1063,6 +1081,40 @@
     "instagram": {
      "id": "18609954919007993",
      "posted_at": 1785162620
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785170288,
+   "posted_hour_utc": 16,
+   "channel": "news",
+   "topic": {
+    "title": "Kimi-K3 Technical Report [pdf]",
+    "subject": "Kimi-K3 Technical Report [pdf]",
+    "url": "https://github.com/MoonshotAI/Kimi-K3/blob/main/k3_tech_report.pdf",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 6.96
+   },
+   "style_pack": "crimson-mono",
+   "seed": 1608124691,
+   "voice": "en-US-BrianMultilingualNeural",
+   "hook_type": "PAIN-POINT 'YOU'",
+   "scene_count": 6,
+   "video_seconds": 36.0,
+   "session": "gh-6727fb",
+   "platforms": {
+    "instagram": {
+     "id": "18115061489301640",
+     "posted_at": 1785170342
     }
    },
    "metrics": {
