@@ -257,7 +257,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785162623
+      "fetched_at": 1785257197
      },
      "snap72": {
       "views": 119,
@@ -311,7 +311,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785162623
+      "fetched_at": 1785257197
      },
      "snap72": {
       "views": 120,
@@ -365,7 +365,7 @@
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "fetched_at": 1785170345
+      "fetched_at": 1785257197
      },
      "snap72": {
       "views": 114,
@@ -577,14 +577,14 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 120,
+      "views": 121,
       "reach": 107,
       "likes": 2,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 2,
-      "fetched_at": 1785162623
+      "fetched_at": 1785257197
      },
      "snap72": {
       "views": 120,
@@ -636,7 +636,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785170345
+      "fetched_at": 1785257197
      },
      "snap72": {
       "views": 116,
@@ -854,9 +854,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785162623
+      "fetched_at": 1785257197
      },
-     "snap72": null,
+     "snap72": {
+      "views": 124,
+      "reach": 121,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "fetched_at": 1785257197
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -899,9 +908,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785170345
+      "fetched_at": 1785257197
      },
-     "snap72": null,
+     "snap72": {
+      "views": 125,
+      "reach": 104,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785257197
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1157,7 +1175,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 126,
+      "reach": 112,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 1,
+      "total_interactions": 1,
+      "fetched_at": 1785257197
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -1191,7 +1218,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 122,
+      "reach": 109,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785257197
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -1401,6 +1437,43 @@
     "instagram": {
      "id": "17979011337108127",
      "posted_at": 1785248451
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785257116,
+   "posted_hour_utc": 16,
+   "channel": "news",
+   "topic": {
+    "title": "Google's Beyond Zero: Enterprise Security for the AI Era",
+    "subject": "Google's Beyond Zero: Enterprise Security for the AI Era",
+    "url": "https://spawn-queue.acm.org/doi/10.1145/3819083",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "google"
+    ],
+    "viral_score": 9.03
+   },
+   "style_pack": "mint-aqua",
+   "seed": 600537624,
+   "voice": "en-US-AndrewMultilingualNeural",
+   "hook_type": "CURIOSITY GAP",
+   "scene_count": 6,
+   "video_seconds": 34.2,
+   "session": "gh-6b5040",
+   "platforms": {
+    "instagram": {
+     "id": "18124489051784246",
+     "posted_at": 1785257193
     }
    },
    "metrics": {
