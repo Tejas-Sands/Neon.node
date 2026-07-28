@@ -742,9 +742,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785148178
+      "fetched_at": 1785239820
      },
-     "snap72": null,
+     "snap72": {
+      "views": 111,
+      "reach": 100,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785239820
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1051,7 +1060,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 117,
+      "reach": 101,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785239820
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -1294,6 +1312,40 @@
     "instagram": {
      "id": "18124302247742726",
      "posted_at": 1785231812
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785239656,
+   "posted_hour_utc": 11,
+   "channel": "news",
+   "topic": {
+    "title": "Benchmarking Opus 5 on SlopCodeBench",
+    "subject": "Benchmarking Opus 5 on SlopCodeBench",
+    "url": "https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/benchmarking-opus-5-on-slop-code-bench.md",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 7.28
+   },
+   "style_pack": "burgundy-luxe",
+   "seed": 688631266,
+   "voice": "en-US-EmmaMultilingualNeural",
+   "hook_type": "CHALLENGE-DARE",
+   "scene_count": 7,
+   "video_seconds": 41.3,
+   "session": "gh-a32893",
+   "platforms": {
+    "instagram": {
+     "id": "18149818468512935",
+     "posted_at": 1785239816
     }
    },
    "metrics": {

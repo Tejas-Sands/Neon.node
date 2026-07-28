@@ -302,5 +302,13 @@
   "subject_norm": null,
   "ts": 1785231816,
   "session": "gh-93f160"
+ },
+ {
+  "id": "49076391",
+  "title": "Benchmarking Opus 5 on SlopCodeBench",
+  "norm": "benchmarking opus 5 on slopcodebench",
+  "subject_norm": null,
+  "ts": 1785239820,
+  "session": "gh-a32893"
  }
 ]
