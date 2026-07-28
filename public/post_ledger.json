@@ -1270,6 +1270,40 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1785231753,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "A missing underscore sent innocent man to prison for 18 months",
+    "subject": "A missing underscore sent innocent man to prison for 18 months",
+    "url": "https://arstechnica.com/tech-policy/2026/07/police-missed-one-underscore-and-sent-the-wrong-man-to-prison/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 7.61
+   },
+   "style_pack": "forest-moss",
+   "seed": 1569896421,
+   "voice": "en-US-AvaMultilingualNeural",
+   "hook_type": "NEGATIVE WARNING",
+   "scene_count": 5,
+   "video_seconds": 28.7,
+   "session": "gh-93f160",
+   "platforms": {
+    "instagram": {
+     "id": "18124302247742726",
+     "posted_at": 1785231812
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }
