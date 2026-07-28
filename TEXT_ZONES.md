@@ -163,7 +163,7 @@ Substrates: {'shadow-only': 12, 'none': 22, 'alpha-plate': 59, 'scrim-only': 4, 
 - **substrate** `none` — textShadow: ft.textGlow(theme.primaryColor) (Main.tsx:989) → "none" on glass/print. The 280px ring behind it is SVG with fill="none" (Main.tsx:968-980) — stroke-only arcs plus rgba(255,255,255,0.12) tick marks; the ring's interior is fully transparent, so the number sits directly on the moving clip.
 - Element 982-998. Identical exposure to the metric number. The ring reads as a plate in mockups but has no fill — a solid or alpha disc inside r=126 would be the natural substrate here.
 
-### PrismLayers GiantWord — oversized masked display word
+### PrismLayers GiantWord — oversized masked display word (DISABLED 2026-07-28 — prism gate hard-off in prism.ts)
 
 - **at** `src/remotion/MyComp/PrismLayers.tsx:506` — scenes: hero scenes (Main.tsx:667) and outro/cta scenes (Main.tsx:1331), gated on `prism
 - **colour** `"transparent" — the fill is `backgroundImage: linear-gradient(160deg, withAlpha(palette.primarySoft,0.9), withAlpha(palette.secondary,0.75)), url("${i`
@@ -243,7 +243,7 @@ Substrates: {'shadow-only': 12, 'none': 22, 'alpha-plate': 59, 'scrim-only': 4, 
 - **substrate** `alpha-plate` — Same panel as the BEFORE label: background ft.panelBg(palette) (Main.tsx:1040) + backdropFilter blur(12px) + border ft.panelBorder(palette), all under opacity: slideInLeft * 0.9 (Main.tsx:1046). Effective plate alpha 0.40-0.70 depending on finish; no textShadow of any kind on this div.
 - Carries the actual 'before' claim — the most content-bearing text in the scene — at 0.85 white × 0.9 opacity with zero text shadow.
 
-### Outro prism GiantWord (masked display word behind the logo stack)
+### Outro prism GiantWord (masked display word behind the logo stack) (DISABLED 2026-07-28 — prism gate hard-off)
 
 - **at** `src/remotion/MyComp/Main.tsx:1330` — scenes: outro, only when prismBase > 0 && prism.giantWord
 - **colour** `color: "transparent" + backgroundImage: `linear-gradient(160deg, withAlpha(palette.primarySoft,0.9), withAlpha(palette.secondary,0.75)), url(imageUrl)`
@@ -285,7 +285,7 @@ Substrates: {'shadow-only': 12, 'none': 22, 'alpha-plate': 59, 'scrim-only': 4, 
 - **substrate** `alpha-plate` — shared caption plate only; no shadow, no pill, no border in this branch (lines 2210-2213)
 - An arbitrary brand hex at 100% alpha with zero local substrate. Light primaries (yellow/lime/pastel packs) already sit near the plate's interior luminance; a brightness lift pushes them past it.
 
-### GiantWord — oversized prism hook word (media masked through letterforms)
+### GiantWord — oversized prism hook word (media masked through letterforms) (DISABLED 2026-07-28 — prism gate hard-off)
 
 - **at** `src/remotion/MyComp/Main.tsx:667` — scenes: hero scenes where prismSceneStrength > 0 AND prism.giantWord is set (Main.tsx:66
 - **colour** `color: "transparent" with the fill supplied by `linear-gradient(160deg, ${withAlpha(palette.primarySoft, 0.9)} 0%, ${withAlpha(palette.secondary, 0.75`

@@ -120,15 +120,18 @@ export function derivePrism(
   const driftPhase = rng() * Math.PI * 2;
   const bloom = rng();
 
-  // Mirrored-footage language belongs to the cyber worlds; fantasy-sparks is
-  // a soft ambient pack, and gradient-wash fades the media to 0.38 opacity —
-  // there is nothing worth mirroring.
-  let p = 0.26;
-  if (overlayType === "grid-hud" || overlayType === "vhs-glitch") p = 0.38;
-  else if (overlayType === "aurora") p = 0.1;
-  else if (overlayType === "fantasy-sparks") p = 0;
-  if (look.background === "gradient-wash") p = 0;
-  const enabled = enableRoll < p;
+  // 2026-07-28: prism family disabled — the mirrored/kaleidoscope copies look
+  // broken over stock-footage backgrounds. All draws above are kept untouched
+  // so the RNG stream layout is preserved if this is ever re-enabled. To
+  // restore, bring back the probability gate:
+  //   let p = 0.26;
+  //   if (overlayType === "grid-hud" || overlayType === "vhs-glitch") p = 0.38;
+  //   else if (overlayType === "aurora") p = 0.1;
+  //   else if (overlayType === "fantasy-sparks") p = 0;
+  //   if (look.background === "gradient-wash") p = 0;
+  //   const enabled = enableRoll < p;
+  void enableRoll;
+  const enabled = false;
 
   const mode = weightedFromRoll(modeRoll, MODE_WEIGHTS[look.motion]);
 
