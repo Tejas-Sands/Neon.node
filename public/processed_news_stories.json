@@ -270,5 +270,13 @@
   "subject_norm": null,
   "ts": 1785170345,
   "session": "gh-6727fb"
+ },
+ {
+  "id": "49076923",
+  "title": "Netflix employee fired for sharing personal details in retreat trust exercise",
+  "norm": "netflix employee fired for sharing personal details in retreat trust exercise",
+  "subject_norm": null,
+  "ts": 1785209646,
+  "session": "gh-f1166f"
  }
 ]

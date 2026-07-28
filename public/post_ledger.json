@@ -1125,6 +1125,43 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1785209568,
+   "posted_hour_utc": 3,
+   "channel": "news",
+   "topic": {
+    "title": "Netflix employee fired for sharing personal details in retreat trust exercise",
+    "subject": "Netflix employee fired for sharing personal details in retreat trust exercise",
+    "url": "https://nypost.com/2026/07/26/us-news/netflix-exec-goes-ballistic-after-being-fired-for-stunning-trust-exercise-confession-at-retreat-suit/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "fired"
+    ],
+    "viral_score": 10.4
+   },
+   "style_pack": "terracotta-earth",
+   "seed": 2002934825,
+   "voice": "en-US-BrianMultilingualNeural",
+   "hook_type": "URGENCY",
+   "scene_count": 6,
+   "video_seconds": 35.3,
+   "session": "gh-f1166f",
+   "platforms": {
+    "instagram": {
+     "id": "18132487660622468",
+     "posted_at": 1785209643
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }
