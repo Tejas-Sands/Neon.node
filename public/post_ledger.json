@@ -797,9 +797,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785155901
+      "fetched_at": 1785248454
      },
-     "snap72": null,
+     "snap72": {
+      "views": 112,
+      "reach": 103,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785248454
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1103,7 +1112,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 121,
+      "reach": 108,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 1,
+      "total_interactions": 1,
+      "fetched_at": 1785248454
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -1346,6 +1364,43 @@
     "instagram": {
      "id": "18149818468512935",
      "posted_at": 1785239816
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785248364,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "A $500 RL fine-tune of a 9B open model beat frontier models on catalog review",
+    "subject": "A $500 RL fine-tune of a 9B open model beat frontier models on catalog review",
+    "url": "https://fermisense.com/when-machines-take-the-wheel/",
+    "source": "hn",
+    "keywords": [
+     "model",
+     "$"
+    ],
+    "viral_score": 8.52
+   },
+   "style_pack": "citrus-fresh",
+   "seed": 2123161343,
+   "voice": "en-US-EmmaMultilingualNeural",
+   "hook_type": "FORBIDDEN ARCHITECTURE",
+   "scene_count": 5,
+   "video_seconds": 30.0,
+   "session": "gh-53c09e",
+   "platforms": {
+    "instagram": {
+     "id": "17979011337108127",
+     "posted_at": 1785248451
     }
    },
    "metrics": {

@@ -310,5 +310,13 @@
   "subject_norm": null,
   "ts": 1785239820,
   "session": "gh-a32893"
+ },
+ {
+  "id": "49078454",
+  "title": "A $500 RL fine-tune of a 9B open model beat frontier models on catalog review",
+  "norm": "a 500 rl fine tune of a 9b open model beat frontier models on catalog review",
+  "subject_norm": null,
+  "ts": 1785248454,
+  "session": "gh-53c09e"
  }
 ]
