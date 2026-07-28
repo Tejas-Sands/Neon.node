@@ -13,7 +13,13 @@
     // rebuilds today's plan on every tick and dispatches only when a slot is
     // due, which also lets the daily times move around (see worker.js).
     // 10 min granularity => a post lands within 10 min of its planned slot.
-    "crons": ["*/10 * * * *"]
+    //
+    // PAUSED 2026-07-28 (account cool-down after flat/zero-reach streak).
+    // The empty array is REQUIRED — omitting `crons` entirely would leave the
+    // previously deployed trigger live. To resume (~2026-07-30):
+    //   "crons": ["*/10 * * * *"]
+    // then `npx wrangler deploy` from this directory.
+    "crons": []
   },
   // Non-secret settings. Secrets (GITHUB_TOKEN, DEBUG_KEY) are set with
   // `wrangler secret put` — never here.
@@ -26,7 +32,9 @@
     // Change POSTS_PER_DAY alone to go 6 / 7 / 8; everything else re-spaces
     // itself. MIN_GAP_MIN is the floor between two posts — keep it well above
     // the observed worst-case run duration (58 min) so renders never queue.
-    "POSTS_PER_DAY": "7",
+    // Dropped 7 → 3 on 2026-07-28: 7/day exceeded the 5-6 strategy target and
+    // is the prime throttle suspect. Hold at 3 until reach recovers.
+    "POSTS_PER_DAY": "3",
     "WINDOW_START_IST": "07:30",
     "WINDOW_END_IST": "22:45",
     "MIN_GAP_MIN": "75",
