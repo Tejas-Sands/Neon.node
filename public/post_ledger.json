@@ -38,7 +38,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785124247
+      "fetched_at": 1785216580
      },
      "snap72": {
       "views": 101,
@@ -92,7 +92,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785124247
+      "fetched_at": 1785216580
      },
      "snap72": {
       "views": 103,
@@ -417,7 +417,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785124247
+      "fetched_at": 1785216580
      },
      "snap72": {
       "views": 151,
@@ -688,9 +688,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785124247
+      "fetched_at": 1785216580
      },
-     "snap72": null,
+     "snap72": {
+      "views": 159,
+      "reach": 148,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785216580
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -909,7 +918,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 116,
+      "reach": 106,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785216580
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -1152,6 +1170,42 @@
     "instagram": {
      "id": "18132487660622468",
      "posted_at": 1785209643
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785216474,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Self-contained highly-portable Python distributions",
+    "subject": "Self-contained highly-portable Python distributions",
+    "url": "https://gregoryszorc.com/docs/python-build-standalone/main/",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 7.95
+   },
+   "style_pack": "mint-aqua",
+   "seed": 240022366,
+   "voice": "en-US-AndrewMultilingualNeural",
+   "hook_type": "CURIOSITY GAP",
+   "scene_count": 6,
+   "video_seconds": 35.2,
+   "session": "gh-d2147a",
+   "platforms": {
+    "instagram": {
+     "id": "18473943340108953",
+     "posted_at": 1785216576
     }
    },
    "metrics": {
