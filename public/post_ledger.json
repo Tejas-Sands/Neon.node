@@ -147,7 +147,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785137545
+      "fetched_at": 1785224497
      },
      "snap72": {
       "views": 109,
@@ -203,7 +203,7 @@
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "fetched_at": 1785137545
+      "fetched_at": 1785224497
      },
      "snap72": {
       "views": 119,
@@ -471,7 +471,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785137545
+      "fetched_at": 1785224497
      },
      "snap72": {
       "views": 125,
@@ -530,7 +530,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785137545
+      "fetched_at": 1785224497
      },
      "snap72": {
       "views": 118,
@@ -963,7 +963,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 106,
+      "reach": 101,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "fetched_at": 1785224497
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -999,7 +1008,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 86,
+      "reach": 83,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785224497
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -1206,6 +1224,42 @@
     "instagram": {
      "id": "18473943340108953",
      "posted_at": 1785216576
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785224436,
+   "posted_hour_utc": 7,
+   "channel": "news",
+   "topic": {
+    "title": "Using an open model feels surprisingly good",
+    "subject": "Using an open model feels surprisingly good",
+    "url": "https://matthewsaltz.com/blog/using-an-open-model-feels-surprisingly-good/",
+    "source": "hn",
+    "keywords": [
+     "model"
+    ],
+    "viral_score": 7.51
+   },
+   "style_pack": "cosmic-fantasy",
+   "seed": 1690986713,
+   "voice": "en-US-BrianMultilingualNeural",
+   "hook_type": "MISTAKE CALLOUT",
+   "scene_count": 6,
+   "video_seconds": 34.3,
+   "session": "gh-7d829e",
+   "platforms": {
+    "instagram": {
+     "id": "17976966162070696",
+     "posted_at": 1785224494
     }
    },
    "metrics": {
