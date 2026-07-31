@@ -14,12 +14,11 @@
     // due, which also lets the daily times move around (see worker.js).
     // 10 min granularity => a post lands within 10 min of its planned slot.
     //
-    // PAUSED 2026-07-28 (account cool-down after flat/zero-reach streak).
-    // The empty array is REQUIRED — omitting `crons` entirely would leave the
-    // previously deployed trigger live. To resume (~2026-07-30):
-    //   "crons": ["*/10 * * * *"]
-    // then `npx wrangler deploy` from this directory.
-    "crons": []
+    // Paused 2026-07-28..30 (account cool-down after flat/zero-reach streak),
+    // resumed 2026-07-31 at 3/day. To pause again set "crons": [] — the empty
+    // array is REQUIRED, omitting `crons` entirely would leave the previously
+    // deployed trigger live — then `npx wrangler deploy` from this directory.
+    "crons": ["*/10 * * * *"]
   },
   // Non-secret settings. Secrets (GITHUB_TOKEN, DEBUG_KEY) are set with
   // `wrangler secret put` — never here.
