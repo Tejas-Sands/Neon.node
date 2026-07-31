@@ -38,7 +38,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785261692
+      "fetched_at": 1785509446
      },
      "snap72": {
       "views": 101,
@@ -92,7 +92,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785261692
+      "fetched_at": 1785509446
      },
      "snap72": {
       "views": 103,
@@ -147,7 +147,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785261692
+      "fetched_at": 1785509446
      },
      "snap72": {
       "views": 109,
@@ -203,7 +203,7 @@
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "fetched_at": 1785261692
+      "fetched_at": 1785509446
      },
      "snap72": {
       "views": 119,
@@ -358,14 +358,14 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 114,
-      "reach": 99,
+      "views": 115,
+      "reach": 100,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "fetched_at": 1785261692
+      "fetched_at": 1785509446
      },
      "snap72": {
       "views": 114,
@@ -417,7 +417,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785261692
+      "fetched_at": 1785509446
      },
      "snap72": {
       "views": 151,
@@ -629,14 +629,14 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 116,
+      "views": 118,
       "reach": 110,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785261692
+      "fetched_at": 1785509446
      },
      "snap72": {
       "views": 116,
@@ -688,7 +688,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785261692
+      "fetched_at": 1785509446
      },
      "snap72": {
       "views": 159,
@@ -908,7 +908,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785261692
+      "fetched_at": 1785509446
      },
      "snap72": {
       "views": 125,
@@ -962,9 +962,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785261692
+      "fetched_at": 1785509446
      },
-     "snap72": null,
+     "snap72": {
+      "views": 116,
+      "reach": 106,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785509446
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1007,9 +1016,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785261692
+      "fetched_at": 1785509446
      },
-     "snap72": null,
+     "snap72": {
+      "views": 106,
+      "reach": 101,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "fetched_at": 1785509446
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1052,9 +1070,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785261692
+      "fetched_at": 1785509446
      },
-     "snap72": null,
+     "snap72": {
+      "views": 86,
+      "reach": 83,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785509446
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1095,9 +1122,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785261692
+      "fetched_at": 1785509446
      },
-     "snap72": null,
+     "snap72": {
+      "views": 117,
+      "reach": 101,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785509446
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1131,16 +1167,25 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 121,
-      "reach": 108,
+      "views": 122,
+      "reach": 109,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "fetched_at": 1785261692
+      "fetched_at": 1785509446
      },
-     "snap72": null,
+     "snap72": {
+      "views": 122,
+      "reach": 109,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 1,
+      "total_interactions": 1,
+      "fetched_at": 1785509446
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1226,9 +1271,18 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785257197
+      "fetched_at": 1785509446
      },
-     "snap72": null,
+     "snap72": {
+      "views": 122,
+      "reach": 109,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785509446
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1638,6 +1692,45 @@
     "instagram": {
      "id": "17859339717676599",
      "posted_at": 1785492554
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785509354,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "DeepSeek-V4-Flash Update",
+    "subject": "DeepSeek-V4-Flash API",
+    "url": "https://api-docs.deepseek.com/updates/",
+    "source": "hn",
+    "keywords": [
+     "deepseek"
+    ],
+    "viral_score": 9.17,
+    "angle": "DeepSeek is streamlining its API ecosystem by launching the V4-Flash model and setting a clear expiration date for legacy naming conventions.",
+    "insight": "Developers must migrate away from 'deepseek-chat' and 'deepseek-reasoner' names before July 2026 to avoid service disruption.",
+    "judge": "plan"
+   },
+   "style_pack": "slate-editorial",
+   "seed": 963895289,
+   "voice": "en-US-EmmaMultilingualNeural",
+   "hook_type": "FORBIDDEN ARCHITECTURE",
+   "scene_count": 6,
+   "video_seconds": 34.8,
+   "session": "gh-1787df",
+   "platforms": {
+    "instagram": {
+     "id": "17950085763236246",
+     "posted_at": 1785509443
     }
    },
    "metrics": {
