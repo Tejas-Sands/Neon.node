@@ -81,8 +81,26 @@ def make_pop(duration=0.16, seed=11) -> list:
     return out
 
 
+def make_tick(duration=0.09, seed=17) -> list:
+    """Tight two-oscillator click — the stat-hit landing marker. Shorter and
+    drier than pop.wav so the two never read as the same event."""
+    rnd = random.Random(seed)
+    n = int(SR * duration)
+    out, p1, p2 = [], 0.0, 0.0
+    for i in range(n):
+        t = i / SR
+        prog = i / n
+        p1 += 2 * math.pi * 1850.0 / SR
+        p2 += 2 * math.pi * 923.0 / SR
+        env = math.exp(-prog * 22.0)
+        click = rnd.uniform(-1, 1) * math.exp(-t * 900.0) * 0.35
+        out.append((math.sin(p1) * 0.6 + math.sin(p2) * 0.4) * env + click)
+    return out
+
+
 if __name__ == "__main__":
     os.makedirs(OUT_DIR, exist_ok=True)
     _write_wav(os.path.join(OUT_DIR, "whoosh.wav"), make_whoosh())
     _write_wav(os.path.join(OUT_DIR, "impact.wav"), make_impact())
     _write_wav(os.path.join(OUT_DIR, "pop.wav"), make_pop())
+    _write_wav(os.path.join(OUT_DIR, "tick.wav"), make_tick())

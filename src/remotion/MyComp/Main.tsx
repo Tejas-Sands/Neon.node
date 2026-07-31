@@ -2,6 +2,8 @@ import React from "react";
 import {
   AbsoluteFill,
   Series,
+  Sequence,
+  Loop,
   useCurrentFrame,
   interpolate,
   Audio,
@@ -45,6 +47,8 @@ import {
   videoZones,
 } from "./contrast";
 import { deriveCutPlan, WHOOSH_CUTS } from "./transitions";
+import { deriveEnergy, type SceneEnergy } from "./energy";
+import { deriveMicroDetails, type MicroDetailConfig } from "./microDetails";
 import { derivePolish } from "./polish";
 import { PolishStack, CutCover } from "./PolishLayers";
 import { derivePrism, prismSceneStrength, type PrismConfig } from "./prism";
@@ -221,6 +225,10 @@ const HookPunch: React.FC<{ primaryColor: string; secondaryColor: string; seed?:
 const DynamicScene: React.FC<{
   imageUrl: string;
   videoUrl?: string;
+  // Backend-set b-roll clips (Part A contract): [0] mirrors videoUrl and covers
+  // the whole post-TTS scene; [1] (when present) covers any cut point >= 50%
+  // of the scene. durationSec = SOURCE clip length for <Loop> freeze protection.
+  brollClips?: { src: string; durationSec?: number }[];
   text: string;
   title?: string;
   subtitle?: string;
@@ -233,6 +241,11 @@ const DynamicScene: React.FC<{
   finish: Finish;
   prism: PrismConfig;
   textAnimation?: string;
+  // Per-scene energy schedule (energy.ts) — camera intensity, spring scale,
+  // beat timing, still-scene gates.
+  energy: SceneEnergy;
+  // The video's two seeded micro-details (microDetails.ts).
+  micro: MicroDetailConfig;
   // Scene context for impact frame
   sceneIndex: number;
   totalScenes: number;
@@ -240,6 +253,9 @@ const DynamicScene: React.FC<{
   // the prism treatment flares briefly on those edges so its peaks land on cuts.
   flareIn?: boolean;
   flareOut?: boolean;
+  // Text-reacts-to-cut (Q14f): the entering boundary is a punch-in connector,
+  // so the text plane takes a smaller sympathetic punch (depth via parallax).
+  enterPunch?: boolean;
   // Scene-type-specific fields
   leftLabel?: string;
   rightLabel?: string;
@@ -255,6 +271,7 @@ const DynamicScene: React.FC<{
 }> = ({
   imageUrl,
   videoUrl,
+  brollClips,
   text,
   title,
   subtitle,
@@ -267,10 +284,13 @@ const DynamicScene: React.FC<{
   finish,
   prism,
   textAnimation,
+  energy,
+  micro,
   sceneIndex,
   totalScenes,
   flareIn,
   flareOut,
+  enterPunch,
   leftLabel,
   rightLabel,
   listItems,
@@ -299,8 +319,10 @@ const DynamicScene: React.FC<{
   const animMode = (textAnimation ?? textAnimPool[sceneIndex % textAnimPool.length]) as any;
 
   // Motion-personality stiffness multiplier (calm 0.8 .. snappy 1.3) — applied
-  // to every scene spring so a calm video actually settles more softly.
-  const sMul = look.springMul;
+  // to every scene spring so a calm video actually settles more softly. The
+  // energy schedule scales it per scene (hook stays at exactly look.springMul
+  // so frame-2 hook readability is bit-comparable to the pre-energy renderer).
+  const sMul = look.springMul * energy.springScale;
 
   // --- Look-driven TEXT SYSTEM (layout / type scale / title dressing) -------
   // fontScale multiplies every AnimatedText size (word-fit cap still applies
@@ -424,6 +446,35 @@ const DynamicScene: React.FC<{
     basePanY = inBurst ? rng() * 16 - 8 : 0;
   }
 
+  // Energy schedule: scale the camera move by this scene's energy. 0 on the
+  // still final scene = a locked-off frame (the strongest close a kinetic
+  // feed can make); the hook runs at 0.8 so the type lands on a calmer plate.
+  {
+    const camK = energy.camera;
+    baseScale = 1 + (baseScale - 1) * camK;
+    basePanX *= camK;
+    basePanY *= camK;
+    baseRotation *= camK;
+  }
+
+  // Text-reacts-to-cut (Q14f): on a punch-in connector the background punches
+  // ~8%; the text plane takes 3.5% over the same first 7 frames from a seeded
+  // off-center origin — two planes moving different amounts reads as depth
+  // (Q2d) and the type "settles as the scene lands". Scene 0 is exempt (hook
+  // readability is frame-critical).
+  const punchT =
+    enterPunch && sceneIndex > 0 && frame < 7
+      ? Easing.out(Easing.cubic)(Math.min(1, frame / 7))
+      : 1;
+  const textPunch =
+    punchT < 1
+      ? {
+          scale: 1 + 0.035 * (1 - punchT),
+          origin: `${42 + ((seed + sceneIndex * 31) % 17)}% ${38 + ((seed >>> 3) + sceneIndex * 13) % 21}%`,
+        }
+      : null;
+  const textPunchTransform = textPunch ? ` scale(${textPunch.scale.toFixed(4)})` : "";
+
   // Theatre.js override — scrub the sequence synchronously during render so
   // every frame stays a pure function of `frame` (state + effects lag under
   // Remotion's parallel frame rendering), and respect the composition fps.
@@ -471,11 +522,28 @@ const DynamicScene: React.FC<{
   const washAngle = look.bgAngle + Math.sin(frame * 0.01) * 20;
 
   // Stock video hook clip: relative paths come from the backend's public/ dir
-  const videoSrc = videoUrl
-    ? videoUrl.startsWith("http://") || videoUrl.startsWith("https://") || videoUrl.startsWith("data:")
-      ? videoUrl
-      : staticFile(videoUrl)
-    : undefined;
+  const resolveMedia = (u: string) =>
+    u.startsWith("http://") || u.startsWith("https://") || u.startsWith("data:")
+      ? u
+      : staticFile(u);
+  const videoSrc = videoUrl ? resolveMedia(videoUrl) : undefined;
+
+  // Normalized clip list: brollClips (Part A) when present, else the legacy
+  // single videoUrl. durFrames = source length, for <Loop> freeze protection
+  // (OffthreadVideo has no loop prop — a short clip would hold its last frame).
+  const clips = React.useMemo(
+    () =>
+      brollClips?.length
+        ? brollClips.map((c) => ({
+            src: resolveMedia(c.src),
+            durFrames: c.durationSec ? Math.floor(c.durationSec * fps) : undefined,
+          }))
+        : videoSrc
+          ? [{ src: videoSrc, durFrames: undefined as number | undefined }]
+          : [],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [brollClips, videoSrc, fps],
+  );
 
   // Design tokens for this video's finish (radii / panel fills / glow policy).
   const ft = FINISH_TOKENS[finish] ?? FINISH_TOKENS.neon;
@@ -530,25 +598,73 @@ const DynamicScene: React.FC<{
             alt="scenic landscape"
           />
 
-          {/* Stock motion clip over the still (hook scene). The footage carries
-              its own motion, so only a gentle fixed zoom is applied — layering the
-              full camera move on real video reads as double-motion. */}
-          {videoSrc && (
-            <OffthreadVideo
-              muted
-              src={videoSrc}
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                transform: "scale(1.06)",
-                filter: imgFilter,
-                opacity: look.background === "gradient-wash" ? 0.38 : 1,
-              }}
-            />
-          )}
+          {/* Stock motion clip(s) over the still. The footage carries its own
+              motion, so only a gentle fixed zoom is applied — layering the full
+              camera move on real video reads as double-motion.
+
+              Two clips + an energy-approved scene = a MID-SCENE CUT at
+              energy.midCutFrame (>= 50% of the scene, which Part A's clip-B
+              duration contract covers): butted Sequences, so only ONE
+              OffthreadVideo is ever mounted per frame (the ≤2-copies-per-scene
+              guardrail holds with margin). Clips shorter than their window are
+              wrapped in <Loop> instead of freeze-framing on their last frame. */}
+          {clips.length > 0 && (() => {
+            const clipStyle = (extraTransform = "", extraFilter = ""): React.CSSProperties => ({
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              transform: extraTransform || "scale(1.06)",
+              filter: extraFilter ? `${imgFilter} ${extraFilter}` : imgFilter,
+              opacity: look.background === "gradient-wash" ? 0.38 : 1,
+            });
+            const loopWrapped = (
+              clip: { src: string; durFrames?: number },
+              windowFrames: number,
+              style: React.CSSProperties,
+              key: string,
+            ) =>
+              clip.durFrames && clip.durFrames < windowFrames ? (
+                <Loop key={key} durationInFrames={Math.max(1, clip.durFrames)} layout="none">
+                  <OffthreadVideo muted src={clip.src} style={style} />
+                </Loop>
+              ) : (
+                <OffthreadVideo key={key} muted src={clip.src} style={style} />
+              );
+
+            const midCut = Math.min(energy.midCutFrame, Math.max(1, durationInFrames - 12));
+            if (clips.length >= 2 && energy.allowMidCut && midCut > 8) {
+              // Clip B enters with the connector vocabulary: a 7-frame punch
+              // settle (seeded off-center origin) + a 1-frame brightness lift;
+              // high-energy scenes take a 2-frame transform-only whip instead.
+              const bLocal = frame - midCut;
+              const bT = Easing.out(Easing.cubic)(Math.min(1, Math.max(0, bLocal) / 7));
+              const whip = energy.level >= 0.8;
+              const whipDir = (seed + sceneIndex * 7) % 2 === 0 ? 1 : -1;
+              const bTransform = whip
+                ? `translateX(${(bLocal < 2 ? (1 - bLocal / 2) * 4 * whipDir : 0).toFixed(2)}%) scale(1.06)`
+                : `scale(${(1.06 * (1 + 0.05 * (1 - bT))).toFixed(4)})`;
+              const bFilter = bLocal >= 0 && bLocal < 1 ? "brightness(1.08)" : "";
+              const bStyle: React.CSSProperties = {
+                ...clipStyle(bTransform, bFilter),
+                transformOrigin: whip
+                  ? undefined
+                  : `${40 + ((seed + sceneIndex * 11) % 21)}% ${36 + ((seed >>> 4) + sceneIndex * 5) % 25}%`,
+              };
+              return (
+                <>
+                  <Sequence from={0} durationInFrames={midCut} layout="none">
+                    {loopWrapped(clips[0], midCut, clipStyle(), "clip-a")}
+                  </Sequence>
+                  <Sequence from={midCut} layout="none">
+                    {loopWrapped(clips[1], durationInFrames - midCut, bStyle, "clip-b")}
+                  </Sequence>
+                </>
+              );
+            }
+            return loopWrapped(clips[0], durationInFrames, clipStyle(), "clip-single");
+          })()}
         </>
       )}
 
@@ -654,17 +770,21 @@ const DynamicScene: React.FC<{
         seed={seed}
         showProgressBar={look.showProgressBar}
         showSceneCounter={look.showSceneCounter}
+        comet={micro.has("progress-comet")}
       />
+      {/* The still final scene freezes its decoration — rings/floating shapes
+          orbiting a "dead still" close would give the game away. Captions keep
+          running (they're content, not energy). */}
       <ShapeAccents
         primaryColor={theme.primaryColor}
         secondaryColor={theme.secondaryColor}
         durationInFrames={durationInFrames}
-        intensity={look.accentDensity === "high" && (type === "hero" || type === "cta") ? "high" : look.accentDensity}
+        intensity={energy.still ? "subtle" : look.accentDensity === "high" && (type === "hero" || type === "cta") ? "high" : look.accentDensity}
         sceneIndex={sceneIndex}
         videoSeed={seed}
-        showRings={look.showRings}
+        showRings={look.showRings && !energy.still}
         showBrackets={look.showCornerBrackets}
-        showFloating={look.showFloatingShapes}
+        showFloating={look.showFloatingShapes && !energy.still}
       />
       {/* Scroll-stopping hook punch on the opening scene only */}
       {sceneIndex === 0 && (
@@ -699,7 +819,9 @@ const DynamicScene: React.FC<{
     // +1.5% scale over the scene keeps the type alive without fighting the
     // camera. Calm looks stay truly still (motion mood matches).
     const titleDrift =
-      look.motion === "calm" ? 1 : 1 + (frame / Math.max(1, durationInFrames)) * 0.015;
+      look.motion === "calm" || energy.still
+        ? 1
+        : 1 + (frame / Math.max(1, durationInFrames)) * 0.015;
 
     // Accent line under title
     const lineWidth = spring({
@@ -733,7 +855,7 @@ const DynamicScene: React.FC<{
     // Text counter-parallax: the type plane drifts subtly AGAINST the camera
     // pan, separating foreground from background. Calm looks stay planar.
     const parallax =
-      look.motion === "calm"
+      look.motion === "calm" || energy.still
         ? ""
         : ` translate(${(-basePanX * 0.15).toFixed(2)}px, ${(-basePanY * 0.15).toFixed(2)}px)`;
 
@@ -766,7 +888,7 @@ const DynamicScene: React.FC<{
             pointerEvents: "none",
           }}
         />
-        <div style={{ position: "absolute", top: `${heroTopFit}%`, left: 0, right: 0, display: "flex", flexDirection: "column", gap: "16px", zIndex: 20, textTransform: look.titleCase === "upper" ? "uppercase" : "none", transform: parallax || undefined, ...stackStyle }}>
+        <div style={{ position: "absolute", top: `${heroTopFit}%`, left: 0, right: 0, display: "flex", flexDirection: "column", gap: "16px", zIndex: 20, textTransform: look.titleCase === "upper" ? "uppercase" : "none", transform: `${parallax}${textPunchTransform}` || undefined, transformOrigin: textPunch?.origin, ...stackStyle }}>
           {title && (
             <div style={{ transform: `translateY(${titleY}px) scale(${titleScale * titleDrift})`, opacity: titleOpacity }}>
               <AnimatedText
@@ -784,24 +906,58 @@ const DynamicScene: React.FC<{
                 treatment={titleTreatment}
                 springMul={sMul}
                 finish={finish}
+                landingPop={micro.has("landing-pop")}
+                emphasisSweep={micro.has("emphasis-sweep")}
+                sweepFrame={energy.kineticStart}
+                statHitFrame={energy.kineticStart}
               />
             </div>
           )}
-          {/* Accent line */}
-          <div
-            style={{
-              width: `${lineW}%`,
-              maxWidth: "200px",
-              height: "3px",
-              background: `linear-gradient(90deg, transparent, ${theme.primaryColor}, ${theme.secondaryColor}, transparent)`,
-              boxShadow: `0 0 12px ${theme.primaryColor}60`,
-              borderRadius: "2px",
-              ...(isLeftLayout ? { alignSelf: "flex-start", marginLeft: "24px" } : {}),
-            }}
-          />
+          {/* Accent line. Micro-detail "hairline-draw" swaps it for a 1.5px
+              editorial hairline that draws itself in with a dot riding (and
+              overshooting) its leading edge — the arrival IS the detail. */}
+          {micro.has("hairline-draw") ? (
+            <div
+              style={{
+                position: "relative",
+                width: `${lineW}%`,
+                maxWidth: "220px",
+                height: "1.5px",
+                background: `linear-gradient(90deg, ${theme.primaryColor}, ${theme.secondaryColor})`,
+                borderRadius: "1px",
+                ...(isLeftLayout ? { alignSelf: "flex-start", marginLeft: "24px" } : {}),
+              }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  right: `${-Math.max(0, (lineWidth - 0.85) * 40)}px`,
+                  top: "50%",
+                  width: "6px",
+                  height: "6px",
+                  borderRadius: "50%",
+                  background: theme.secondaryColor,
+                  boxShadow: `0 0 8px ${theme.secondaryColor}`,
+                  transform: "translate(50%, -50%)",
+                }}
+              />
+            </div>
+          ) : (
+            <div
+              style={{
+                width: `${lineW}%`,
+                maxWidth: "200px",
+                height: "3px",
+                background: `linear-gradient(90deg, transparent, ${theme.primaryColor}, ${theme.secondaryColor}, transparent)`,
+                boxShadow: `0 0 12px ${theme.primaryColor}60`,
+                borderRadius: "2px",
+                ...(isLeftLayout ? { alignSelf: "flex-start", marginLeft: "24px" } : {}),
+              }}
+            />
+          )}
           {text && (
             <div style={{ opacity: bodyEntrance, transform: `translateY(${bodyY}px)` }}>
-              <AnimatedText text={text} glowColor={theme.primaryColor} fontFamilyName={theme.fontFamilyName} overlayType={theme.overlayType} animationMode={animMode} fontScale={fscale * heroFit} textCase={look.titleCase} align={textAlignMode} springMul={sMul} finish={finish} />
+              <AnimatedText text={text} glowColor={theme.primaryColor} fontFamilyName={theme.fontFamilyName} overlayType={theme.overlayType} animationMode={animMode} fontScale={fscale * heroFit} textCase={look.titleCase} align={textAlignMode} springMul={sMul} finish={finish} landingPop={micro.has("landing-pop")} emphasisSweep={micro.has("emphasis-sweep")} sweepFrame={energy.kineticStart} statHitFrame={energy.kineticStart} />
             </div>
           )}
           {subtitle && (
@@ -896,6 +1052,17 @@ const DynamicScene: React.FC<{
     const ringPulse = Math.sin(frame * 0.06) * 0.1 + 1;
     const ringGlow = 16;
 
+    // Stat-hit (Q27a): the count LANDS at frame 48 — mark the landing with a
+    // physical hit (scale pop that settles at +3%, a ring flash, a small
+    // accent burst) instead of an unmarked stop. Transform/opacity only.
+    const hitT = frame - 48;
+    const hitPulse =
+      hitT < 0 ? 1
+      : hitT <= 3 ? 1 + 0.09 * (hitT / 3)
+      : hitT <= 10 ? 1.09 - 0.06 * ((hitT - 3) / 7)
+      : 1.03;
+    const ringFlash = hitT >= 0 && hitT <= 6 ? 1 - hitT / 6 : 0;
+
     // Label follows the number instead of popping in unanimated at frame 0
     const labelIn = spring({
       fps,
@@ -944,6 +1111,38 @@ const DynamicScene: React.FC<{
                 boxShadow: `0 0 ${ringGlow}px ${theme.primaryColor}30`,
               }} />
             </div>
+            {/* Ring flash on the count landing */}
+            {ringFlash > 0.01 && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "-40px",
+                  left: "-40px",
+                  right: "-40px",
+                  bottom: "-40px",
+                  borderRadius: "50%",
+                  border: `2px solid ${theme.primaryColor}`,
+                  boxShadow: `0 0 24px ${withAlpha(theme.primaryColor, 0.5)}`,
+                  opacity: 0.7 * ringFlash,
+                  pointerEvents: "none",
+                }}
+              />
+            )}
+            {/* Accent burst behind the landed number (seeded, 10 particles) */}
+            {numericValue !== null && hitT >= 0 && hitT <= 26 && (
+              <div style={{ position: "absolute", inset: "-60px", pointerEvents: "none" }}>
+                <ParticleBurst
+                  originX={50}
+                  originY={50}
+                  count={10}
+                  startFrame={48}
+                  durationInFrames={26}
+                  seed={(seed >>> 0) + 307}
+                  colors={[theme.primaryColor, theme.secondaryColor]}
+                  maxRadius={22}
+                />
+              </div>
+            )}
             {numericValue !== null ? (
               <div
                 style={{
@@ -957,6 +1156,7 @@ const DynamicScene: React.FC<{
                   fontVariantNumeric: "tabular-nums",
                   textAlign: "center",
                   whiteSpace: "nowrap",
+                  transform: `scale(${hitPulse.toFixed(3)})`,
                 }}
               >
                 {hasDecimals
@@ -977,11 +1177,29 @@ const DynamicScene: React.FC<{
             )}
           </div>
           {secondaryText && (
-            <div style={{ fontSize: `${fs(28)}px`, color: clampAccentLuminance(theme.secondaryColor), fontWeight: FONT_METRICS[theme.fontFamilyName].bodyWeight, fontFamily: getFontFamily(theme.fontFamilyName), textTransform: "uppercase", letterSpacing: "0.1em", textShadow: readableGlow(ft.textGlow(theme.secondaryColor), fs(28), 1.2), opacity: labelIn, transform: `translateY(${interpolate(labelIn, [0, 1], [16, 0])}px)` }}>
-              {secondaryText}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "6px", opacity: labelIn, transform: `translateY(${interpolate(labelIn, [0, 1], [16, 0])}px)` }}>
+              <div style={{ fontSize: `${fs(28)}px`, color: clampAccentLuminance(theme.secondaryColor), fontWeight: FONT_METRICS[theme.fontFamilyName].bodyWeight, fontFamily: getFontFamily(theme.fontFamilyName), textTransform: "uppercase", letterSpacing: "0.1em", textShadow: readableGlow(ft.textGlow(theme.secondaryColor), fs(28), 1.2) }}>
+                {secondaryText}
+              </div>
+              {/* The label's underline draws in as the label lands */}
+              <DrawnUnderline
+                width={180}
+                color1={theme.primaryColor}
+                color2={theme.secondaryColor}
+                startFrame={22}
+                thickness={3}
+              />
             </div>
           )}
         </div>
+        {/* Stat-hit tick: a short click as the count lands. Calm looks stay
+            silent; low-energy scenes skip it (the pop.wav at scene start
+            already carries the type's arrival). */}
+        {look.motion !== "calm" && energy.level > 0.5 && (
+          <Sequence from={44} layout="none">
+            <Audio src={staticFile("sfx/tick.wav")} volume={0.3} />
+          </Sequence>
+        )}
       </AbsoluteFill>
     );
   }
@@ -1081,6 +1299,12 @@ const DynamicScene: React.FC<{
             <AnimatedText text={text} glowColor={theme.primaryColor} fontFamilyName={theme.fontFamilyName} overlayType={theme.overlayType} animationMode={animMode} fontSize={28} fontScale={fscale} textCase={look.titleCase} springMul={sMul} finish={finish} />
           )}
         </div>
+        {/* Stat-hit tick on the countdown landing (matches the metric scene) */}
+        {look.motion !== "calm" && energy.level > 0.5 && (
+          <Sequence from={Math.max(1, Math.round(landedAt))} layout="none">
+            <Audio src={staticFile("sfx/tick.wav")} volume={0.3} />
+          </Sequence>
+        )}
       </AbsoluteFill>
     );
   }
@@ -1861,7 +2085,7 @@ const DynamicScene: React.FC<{
       )}
       {/* Main text stack — anchor + alignment follow the look's text layout.
           Counter-parallax against the camera pan (calm looks stay planar). */}
-      <div style={{ position: "absolute", top: textLayout === "banner-low" ? "48%" : textLayout === "top-ticker" ? "16%" : "35%", left: 0, right: 0, display: "flex", flexDirection: "column", gap: "16px", zIndex: 20, transform: look.motion === "calm" ? undefined : `translate(${(-basePanX * 0.15).toFixed(2)}px, ${(-basePanY * 0.15).toFixed(2)}px)`, ...stackStyle }}>
+      <div style={{ position: "absolute", top: textLayout === "banner-low" ? "48%" : textLayout === "top-ticker" ? "16%" : "35%", left: 0, right: 0, display: "flex", flexDirection: "column", gap: "16px", zIndex: 20, transform: `${look.motion === "calm" ? "" : `translate(${(-basePanX * 0.15).toFixed(2)}px, ${(-basePanY * 0.15).toFixed(2)}px)`}${textPunchTransform}` || undefined, transformOrigin: textPunch?.origin, ...stackStyle }}>
         {text && (
           <AnimatedText
             text={text}
@@ -1875,6 +2099,10 @@ const DynamicScene: React.FC<{
             treatment={titleTreatment === "gradient-fill" ? "gradient-fill" : "solid"}
             springMul={sMul}
             finish={finish}
+            landingPop={micro.has("landing-pop")}
+            emphasisSweep={micro.has("emphasis-sweep")}
+            sweepFrame={energy.kineticStart}
+            statHitFrame={energy.kineticStart}
           />
         )}
         {!title && subtitle && (
@@ -2428,6 +2656,18 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
     return starts;
   }, [scenes]);
 
+  // Per-scene energy schedule — "energy is a schedule, not a level". Uses the
+  // POST-TTS durations from props, so beat frames are real reading time.
+  const energyPlan = React.useMemo(
+    () =>
+      deriveEnergy(
+        (activeTheme.seed ?? 0) >>> 0,
+        scenes.length,
+        scenes.map((s) => s.durationInFrames),
+      ),
+    [activeTheme.seed, scenes],
+  );
+
   // Seed-driven finishing layers (grain, leaks, letterbox, edge frame, ...)
   // matched to the look so they read as designed, not random.
   const polish = React.useMemo(
@@ -2440,6 +2680,13 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
   const prism = React.useMemo(
     () => derivePrism((activeTheme.seed ?? 0) >>> 0, look, activeTheme.overlayType ?? "clean"),
     [activeTheme.seed, look, activeTheme.overlayType],
+  );
+
+  // The video's two micro-details ("the little effects") — seeded, eligibility
+  // gated by the polish/chrome the video actually has.
+  const micro = React.useMemo(
+    () => deriveMicroDetails((activeTheme.seed ?? 0) >>> 0, look, polish),
+    [activeTheme.seed, look, polish],
   );
 
   const cutBoundaries = React.useMemo(
@@ -2510,6 +2757,7 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
               <DynamicScene
                 imageUrl={scene.imageUrl}
                 videoUrl={scene.videoUrl}
+                brollClips={scene.brollClips}
                 text={scene.text}
                 title={scene.title}
                 subtitle={scene.subtitle}
@@ -2523,7 +2771,10 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
                 prism={prism}
                 flareIn={!!cutPlan[index] && cutPlan[index].style !== "none" && cutPlan[index].style !== "punch-in"}
                 flareOut={!!cutPlan[index + 1] && cutPlan[index + 1].style !== "none" && cutPlan[index + 1].style !== "punch-in"}
+                enterPunch={cutPlan[index]?.style === "punch-in"}
                 textAnimation={scene.textAnimation}
+                energy={energyPlan.scenes[index]}
+                micro={micro}
                 sceneIndex={index}
                 totalScenes={totalScenes}
                 leftLabel={scene.leftLabel}
@@ -2562,6 +2813,12 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
         secondaryColor={activeTheme.secondaryColor}
         totalFrames={sceneStarts[scenes.length]}
         seed={(activeTheme.seed ?? 0) >>> 0}
+        stillFrom={
+          energyPlan.scenes[scenes.length - 1]?.still
+            ? sceneStarts[scenes.length - 1]
+            : undefined
+        }
+        grainBreath={micro.has("grain-breath")}
       />
 
       {/* Prism thin border frame — gated in derivePrism so it never doubles
@@ -2581,7 +2838,11 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
 
       {/* Cross-cut cover: carries each cut's peak ACROSS the boundary —
           the one thing butted sequences can't do from inside a scene. */}
-      <CutCover boundaries={cutBoundaries} primaryColor={activeTheme.primaryColor} />
+      <CutCover
+        boundaries={cutBoundaries}
+        primaryColor={activeTheme.primaryColor}
+        fringe={micro.has("cut-fringe")}
+      />
 
       {/* Watermark overlay (from pipeline config) */}
       {watermarkText && (

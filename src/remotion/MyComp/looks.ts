@@ -90,6 +90,13 @@ export interface LookConfig {
 
 // Map a chrome personality -> which decorative layers are visible. This is what
 // actually breaks the "every video is the same template" feeling.
+//
+// 2026-07-31 (design-brief Q29): the scene counter and corner brackets were
+// retired on every row — the user kept the progress bar, rings, floating
+// shapes and lower-thirds; the "02/05" badge and registration brackets read
+// as template chrome. Derived table, no RNG draw — freely editable. The
+// props/render paths in SceneImpactFrame/ShapeAccents stay intact, so
+// re-enabling is a one-line row edit.
 const CHROME_TOGGLES: Record<
   ChromeStyle,
   {
@@ -102,11 +109,11 @@ const CHROME_TOGGLES: Record<
     mutedHud: boolean;
   }
 > = {
-  "hud-heavy": { bar: true, counter: true, brackets: true, rings: true, floating: true, density: "high", mutedHud: false },
+  "hud-heavy": { bar: true, counter: false, brackets: false, rings: true, floating: true, density: "high", mutedHud: false },
   minimal: { bar: false, counter: false, brackets: false, rings: false, floating: true, density: "subtle", mutedHud: true },
-  editorial: { bar: false, counter: true, brackets: false, rings: false, floating: true, density: "subtle", mutedHud: true },
-  broadcast: { bar: true, counter: true, brackets: true, rings: false, floating: false, density: "subtle", mutedHud: false },
-  kinetic: { bar: false, counter: false, brackets: true, rings: true, floating: true, density: "high", mutedHud: false },
+  editorial: { bar: false, counter: false, brackets: false, rings: false, floating: true, density: "subtle", mutedHud: true },
+  broadcast: { bar: true, counter: false, brackets: false, rings: false, floating: false, density: "subtle", mutedHud: false },
+  kinetic: { bar: false, counter: false, brackets: false, rings: true, floating: true, density: "high", mutedHud: false },
 };
 
 const MOTION_PROFILES: Record<

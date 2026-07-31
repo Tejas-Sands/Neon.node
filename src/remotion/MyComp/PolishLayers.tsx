@@ -27,9 +27,20 @@ const GRAIN_JITTER: ReadonlyArray<readonly [number, number]> = [
   [-3, -8],
 ];
 
-const FilmGrain: React.FC<{ opacity: number; seed: number }> = ({ opacity, seed }) => {
-  const frame = useCurrentFrame();
+const FilmGrain: React.FC<{
+  opacity: number;
+  seed: number;
+  /** Freeze the jitter cycle (and any breathing) from this global frame on —
+   *  the energy schedule's dead-still final scene. */
+  stillFrom?: number;
+  /** Micro-detail "grain-breath": slow sine on opacity so texture breathes
+   *  instead of sitting static. Sub-threshold by design. */
+  breath?: boolean;
+}> = ({ opacity, seed, stillFrom, breath }) => {
+  const rawFrame = useCurrentFrame();
+  const frame = stillFrom !== undefined && rawFrame >= stillFrom ? stillFrom : rawFrame;
   const [jx, jy] = GRAIN_JITTER[(frame + (seed % 4)) % 4];
+  const breathK = breath ? 1 + 0.3 * Math.sin(frame * 0.04 + (seed % 7)) : 1;
   return (
     <div
       style={{
@@ -38,7 +49,7 @@ const FilmGrain: React.FC<{ opacity: number; seed: number }> = ({ opacity, seed 
         backgroundImage: `url("${GRAIN_TILE}")`,
         backgroundRepeat: "repeat",
         transform: `translate(${jx}px, ${jy}px)`,
-        opacity,
+        opacity: opacity * breathK,
         mixBlendMode: "overlay",
         pointerEvents: "none",
       }}
@@ -180,11 +191,15 @@ const Letterbox: React.FC<{ totalFrames: number }> = ({ totalFrames }) => {
 // --- Pulse glow -------------------------------------------------------------
 // A beat-like inset glow. Opacity-only triangular pulse — no transforms, so
 // it can never fight camera moves or subtitle legibility.
-const PulseGlow: React.FC<{ primaryColor: string; period: number }> = ({
+const PulseGlow: React.FC<{ primaryColor: string; period: number; stillFrom?: number }> = ({
   primaryColor,
   period,
+  stillFrom,
 }) => {
-  const frame = useCurrentFrame();
+  const rawFrame = useCurrentFrame();
+  // The still final scene holds the pulse at its frozen phase (opacity-only,
+  // so a held value reads as a constant glow, not a stopped animation).
+  const frame = stillFrom !== undefined && rawFrame >= stillFrom ? stillFrom : rawFrame;
   const ph = (frame % period) / period;
   const tri = ph < 0.5 ? ph * 2 : 2 - ph * 2;
   return (
@@ -245,7 +260,13 @@ export const PolishStack: React.FC<{
   secondaryColor: string;
   totalFrames: number;
   seed: number;
-}> = ({ polish, primaryColor, secondaryColor, totalFrames, seed }) => {
+  /** Global frame where the energy schedule's dead-still final scene begins —
+   *  grain jitter and pulse hold their phase from here (EndSettle still runs;
+   *  its slow deepen IS the close). Undefined = no still scene. */
+  stillFrom?: number;
+  /** Micro-detail: grain opacity breathes on a slow sine. */
+  grainBreath?: boolean;
+}> = ({ polish, primaryColor, secondaryColor, totalFrames, seed, stillFrom, grainBreath }) => {
   return (
     <AbsoluteFill style={{ zIndex: 45, pointerEvents: "none" }}>
       {polish.leaks && (
@@ -256,7 +277,14 @@ export const PolishStack: React.FC<{
         />
       )}
       {polish.halftone && <Halftone />}
-      {polish.grain && <FilmGrain opacity={polish.grainOpacity} seed={seed} />}
+      {polish.grain && (
+        <FilmGrain
+          opacity={polish.grainOpacity}
+          seed={seed}
+          stillFrom={stillFrom}
+          breath={grainBreath}
+        />
+      )}
       {polish.edgeFrame !== "none" && (
         <EdgeFrame
           kind={polish.edgeFrame}
@@ -264,7 +292,9 @@ export const PolishStack: React.FC<{
           secondaryColor={secondaryColor}
         />
       )}
-      {polish.pulse && <PulseGlow primaryColor={primaryColor} period={polish.pulsePeriod} />}
+      {polish.pulse && (
+        <PulseGlow primaryColor={primaryColor} period={polish.pulsePeriod} stillFrom={stillFrom} />
+      )}
       {polish.letterbox && <Letterbox totalFrames={totalFrames} />}
       {polish.endSettle && <EndSettle totalFrames={totalFrames} />}
     </AbsoluteFill>
@@ -278,7 +308,11 @@ export const PolishStack: React.FC<{
 export const CutCover: React.FC<{
   boundaries: ReadonlyArray<{ frame: number; spec: CutSpec }>;
   primaryColor: string;
-}> = ({ boundaries, primaryColor }) => {
+  /** Micro-detail "cut-fringe": chromatic edge glows on CUTS ONLY (±2 frames)
+   *  — never a constant treatment. Stays inside CutCover's null-on-most-frames
+   *  budget; no content copies, no filters. */
+  fringe?: boolean;
+}> = ({ boundaries, primaryColor, fringe }) => {
   const frame = useCurrentFrame();
   const { width } = useVideoConfig();
   const hit = boundaries.find((b) => Math.abs(frame - b.frame) <= 5);
@@ -286,6 +320,22 @@ export const CutCover: React.FC<{
   const { spec } = hit;
   const d = frame - hit.frame;
   const progress = 1 - Math.abs(d) / 5; // triangular, peaks exactly at the cut
+
+  // Chromatic fringe rides UNDER whatever the style itself paints, so it
+  // composes with streaks/burns instead of replacing them.
+  const fringeLayer =
+    fringe && spec.style !== "none" && Math.abs(d) <= 2 ? (
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          boxShadow:
+            "inset 6px 0 18px rgba(0,255,240,0.18), inset -6px 0 18px rgba(255,40,90,0.18)",
+          opacity: 1 - Math.abs(d) / 2,
+          pointerEvents: "none",
+        }}
+      />
+    ) : null;
 
   if (spec.style === "whip-pan") {
     const slide = spec.dir * d * 0.12 * width;
@@ -309,6 +359,7 @@ export const CutCover: React.FC<{
     );
     return (
       <AbsoluteFill style={{ zIndex: 55, pointerEvents: "none" }}>
+        {fringeLayer}
         {streak("30%", 3, 0, "s1")}
         {streak("50%", 2, 1, "s2")}
         {streak("68%", 4, 2, "s3")}
@@ -320,6 +371,7 @@ export const CutCover: React.FC<{
     const side = spec.flavor < 0.5 ? "20% 15%" : "80% 80%";
     return (
       <AbsoluteFill style={{ zIndex: 55, pointerEvents: "none" }}>
+        {fringeLayer}
         <div
           style={{
             position: "absolute",
@@ -341,9 +393,12 @@ export const CutCover: React.FC<{
   ) {
     // 2-frame white veil right at the cut — sells the impact.
     const veil = Math.max(0, 1 - Math.abs(d) / 2);
-    if (veil <= 0) return null;
+    if (veil <= 0) return fringeLayer ? (
+      <AbsoluteFill style={{ zIndex: 55, pointerEvents: "none" }}>{fringeLayer}</AbsoluteFill>
+    ) : null;
     return (
       <AbsoluteFill style={{ zIndex: 55, pointerEvents: "none" }}>
+        {fringeLayer}
         <div
           style={{
             position: "absolute",
@@ -356,5 +411,7 @@ export const CutCover: React.FC<{
     );
   }
 
-  return null;
+  return fringeLayer ? (
+    <AbsoluteFill style={{ zIndex: 55, pointerEvents: "none" }}>{fringeLayer}</AbsoluteFill>
+  ) : null;
 };

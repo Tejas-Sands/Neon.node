@@ -11,6 +11,17 @@ export const SceneSchema = z.object({
    * 3-second-hold ranking signal. imageUrl remains the fallback.
    */
   videoUrl: z.string().optional(),
+  /**
+   * Backend-set b-roll clips for this scene (clip 0 mirrors videoUrl). The
+   * backend guarantees clip 0's source covers the whole (post-TTS) scene and
+   * clip 1 — when present — covers any cut point >= 50% of the scene, so the
+   * renderer can switch clips mid-scene. durationSec is the SOURCE clip length
+   * so a <Loop> can protect against running off a clip's end. Backend-only
+   * like videoUrl — no prompt/ALLOWED_* sync. Safely ignored when absent.
+   */
+  brollClips: z
+    .array(z.object({ src: z.string(), durationSec: z.number().optional() }))
+    .optional(),
   text: z.string(),
   durationInFrames: z.number(),
   type: z

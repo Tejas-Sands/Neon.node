@@ -18,6 +18,10 @@ interface SceneImpactFrameProps {
   showProgressBar?: boolean;
   /** Look-driven: whether to show the "02 / 05" scene counter badge */
   showSceneCounter?: boolean;
+  /** Micro-detail "progress-comet": a glowing dot leads the progress bar's tip
+   *  on each scene entry (overshoots and settles) — animated progress + the
+   *  traveling accent dot from the design brief in one element. */
+  comet?: boolean;
 }
 
 /**
@@ -38,6 +42,7 @@ export const SceneImpactFrame: React.FC<SceneImpactFrameProps> = ({
   seed = 0,
   showProgressBar = true,
   showSceneCounter = true,
+  comet = false,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -168,6 +173,35 @@ export const SceneImpactFrame: React.FC<SceneImpactFrameProps> = ({
             borderRadius: "0 2px 2px 0",
           }}
         />
+        {/* Progress comet: the dot LEADS the bar tip — the under-damped
+            spring overshoots the new position and settles back onto the tip,
+            so progress is an animated move instead of a silent width jump. */}
+        {comet && (() => {
+          const cometSpring = spring({
+            fps,
+            frame: Math.max(0, frame - 3),
+            config: { damping: 9, stiffness: 170, mass: 0.6 },
+            durationInFrames: 24,
+          });
+          const from = (sceneIndex / totalScenes) * 100;
+          const to = progressFraction * 100;
+          const cometX = from + (to - from) * cometSpring;
+          return (
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: `${Math.min(cometX, 100)}%`,
+                width: "8px",
+                height: "8px",
+                borderRadius: "50%",
+                background: "#ffffff",
+                boxShadow: `0 0 10px 2px ${secondaryColor}, 0 0 22px 6px ${primaryColor}80`,
+                transform: "translate(-50%, -50%)",
+              }}
+            />
+          );
+        })()}
       </div>
       )}
 

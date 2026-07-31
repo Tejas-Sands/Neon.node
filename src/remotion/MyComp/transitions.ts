@@ -85,7 +85,7 @@ export const WHOOSH_CUTS: ReadonlySet<CutStyleName> = new Set([
 // (`pool[floor(rng()*len) % len]`) consumes exactly one draw as before — only
 // the contents change, never the draw count.
 const TRANSITION_POOLS: Record<MotionFeel, readonly CutStyleName[]> = {
-  calm: ["crossfade", "blur-dissolve", "skew-peel", "luma-radial"],
+  calm: ["crossfade", "blur-dissolve", "film-burn", "luma-radial"],
   snappy: ["whip-pan", "venetian-blinds", "luma-radial", "diamond-iris"],
   bouncy: ["push-up", "venetian-blinds", "whip-pan", "diamond-iris"],
   cinematic: ["film-burn", "luma-radial", "diamond-iris", "crossfade"],
@@ -117,14 +117,18 @@ const LEGACY_STYLES: readonly CutStyleName[] = [
  *   plan[i]            — the boundary between scene i-1 and scene i,
  *   plan[sceneCount]   — the closing exit of the last scene.
  *
- * Editing rhythm (the thing that separates a pro edit from a template): most
- * boundaries are CONNECTOR cuts — a hard cut or a punch-in — and a dressed
- * transition lands at most every third boundary. Each video's dressed
- * vocabulary is exactly two styles: the Python-chosen `anchor`
- * (theme.transitionStyle) as the signature, plus ONE accent drawn from the
- * motion-personality pool. A grab-bag of five styles in 40 seconds is the
- * "PowerPoint effect"; two used sparingly read as intent. anchor "none"
- * disables everything (bit-identical to the pre-cut-plan behavior).
+ * Editing rhythm (the thing that separates a pro edit from a template): the
+ * boundaries alternate between CONNECTOR cuts — a hard cut or a punch-in —
+ * and dressed transitions, which land roughly every other boundary (raised
+ * from every third, 2026-07-31: the brief asked for a more dressed edit; the
+ * connectors keep the rhythm honest). Each video's dressed vocabulary is
+ * three styles: the Python-chosen `anchor` (theme.transitionStyle) as the
+ * dominant signature, plus TWO accents drawn from the motion-personality
+ * pool. A grab-bag of five styles in 40 seconds is still the "PowerPoint
+ * effect"; three with a dominant signature read as intent. The final boundary
+ * is always a soft dissolve/burn INTO the dead-still last scene (energy
+ * schedule Q9b) — and neither is in WHOOSH_CUTS, so the close is silent.
+ * anchor "none" disables everything (bit-identical to pre-cut-plan).
  *
  * Uses an independent re-seeded RNG stream (seed ^ 0x51ed270b) so existing
  * seeds keep the exact look deriveLook already gave them.
@@ -153,10 +157,16 @@ export function deriveCutPlan(
   // style — viewers judge a Reel in its first frames; no fancy cut here.
   plan.push({ style: safeAnchor, dir: 1, axis: "x", flavor: 0.5, intensity: 0.5 });
 
-  // The single accent style for this video, fixed up front so every dressed
-  // non-signature cut reuses it (one signature + one accent per video).
+  // The two accent styles for this video, fixed up front so every dressed
+  // non-signature cut reuses them (one signature + two accents per video).
+  // accent2 shifts one pool slot when its draw collides with accent — a
+  // deterministic dodge that keeps the draw count fixed.
   const pool = TRANSITION_POOLS[motion];
-  const accent: CutStyleName = pool[Math.floor(rng() * pool.length) % pool.length];
+  const accentIdx = Math.floor(rng() * pool.length) % pool.length;
+  const accent: CutStyleName = pool[accentIdx];
+  const accent2Idx = Math.floor(rng() * pool.length) % pool.length;
+  const accent2: CutStyleName =
+    pool[accent2Idx === accentIdx ? (accent2Idx + 1) % pool.length : accent2Idx];
 
   let sinceDressed = 0; // interior boundaries since the last dressed cut
   let dir: 1 | -1 = rng() < 0.5 ? 1 : -1;
@@ -176,9 +186,16 @@ export function deriveCutPlan(
     let style: CutStyleName;
     if (safeAnchor === "none") {
       style = "none";
-    } else if (sinceDressed >= 2 && (dressRoll < 0.65 || sinceDressed >= 3)) {
-      // Dressed cut: signature ~70%, the one accent ~30%.
-      style = styleRoll < 0.7 ? safeAnchor : accent;
+    } else if (i === sceneCount - 1) {
+      // The boundary INTO the still final scene: always a soft landing —
+      // a heavy cut into a dead-still frame reads as a broken render, and
+      // neither style whooshes. Draws above are consumed either way.
+      style = motion === "cinematic" ? "film-burn" : "blur-dissolve";
+      sinceDressed = 0;
+    } else if (sinceDressed >= 1 && (dressRoll < 0.55 || sinceDressed >= 2)) {
+      // Dressed cut roughly every other boundary: signature ~55%,
+      // first accent ~25%, second accent ~20%.
+      style = styleRoll < 0.55 ? safeAnchor : styleRoll < 0.8 ? accent : accent2;
       sinceDressed = 0;
     } else {
       // Connector: punch-in most of the time, plain hard cut otherwise.
@@ -194,7 +211,8 @@ export function deriveCutPlan(
       // Snappy cuts read best horizontally; others mix it up.
       axis: motion === "snappy" ? (axisRoll < 0.8 ? "x" : "y") : axisRoll < 0.55 ? "x" : "y",
       flavor,
-      intensity,
+      // The landing into the still scene stays gentle regardless of the roll.
+      intensity: i === sceneCount - 1 ? 0.5 : intensity,
     });
   }
 

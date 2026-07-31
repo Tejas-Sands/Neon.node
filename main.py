@@ -149,6 +149,22 @@ PIXABAY_API_KEY = os.environ.get("PIXABAY_API_KEY", "").strip()
 # Safety cap so a 4K clip can't blow up render memory/disk
 HOOK_VIDEO_MAX_BYTES = 40 * 1024 * 1024
 
+# Cross-video b-roll variety: a persistent rolling history of stock clip IDs
+# used by recent videos (public/used_broll_history.json, committed back by CI
+# like the topic history). Pickers PREFER clips outside the cooldown window but
+# never hard-fail to stills over it — repetition beats a static background.
+BROLL_HISTORY_FILE = os.path.join(PUBLIC_DIR, "used_broll_history.json")
+BROLL_HISTORY_CAP = int(os.environ.get("BROLL_HISTORY_CAP", "400"))
+BROLL_REUSE_COOLDOWN_DAYS = float(os.environ.get("BROLL_REUSE_COOLDOWN_DAYS", "14"))
+# Seeded pick pool: choose among the top-K relevance-sorted candidates instead
+# of always the best match, so similar queries stop converging on one clip.
+BROLL_TOP_K = int(os.environ.get("BROLL_TOP_K", "6"))
+# Scenes at/above this post-TTS length get a SECOND clip so the renderer can
+# cut mid-scene (energy schedule decides whether/where); capped per video to
+# bound API requests and transient disk.
+BROLL_DUAL_MIN_FRAMES = int(os.environ.get("BROLL_DUAL_MIN_FRAMES", "210"))
+BROLL_DUAL_MAX_PER_VIDEO = int(os.environ.get("BROLL_DUAL_MAX_PER_VIDEO", "3"))
+
 # AI-generated imagery: a QUERY-AWARE last resort that runs only after every
 # real stock search missed, and above the generic theme fallback (it consumes
 # the scene query, so it respects the "no query-blind provider above the theme
@@ -722,7 +738,7 @@ F6. CHARTS/RATINGS/COUNTERS SHOW NUMBERS AS FACT. Only use "bar-chart", "chart",
     - security / breach → "terminal hacking code green", "server room dark lights", "padlock circuit motion"
     - crypto / finance → "trading chart screen moving", "stock ticker numbers", "server racks blinking"
     - hardware / gadget → "circuit board macro motion", "chip manufacturing closeup", "device screen ui"
-    Keep it topic-relevant and concrete — NOT a generic abstract loop. Give each scene a different videoQuery. For non-tech topics, still match the topic's real domain in motion (fitness → "person running sunrise", food → "chef plating dish closeup").
+    Keep it topic-relevant and concrete — NOT a generic abstract loop. Give each scene a different videoQuery. Never reuse the same main noun in two videoQuery values within one video. For non-tech topics, still match the topic's real domain in motion (fitness → "person running sunrise", food → "chef plating dish closeup").
 
 === COLOR RULES ===
 
@@ -1602,11 +1618,18 @@ def _prune_redundant_scene_text(scenes: list, session_id: str = "") -> None:
 
 # Tech-motion b-roll fallback: if the model didn't provide a topic-relevant
 # videoQuery, at least pull TECH footage (not a random abstract loop) on the
-# automated tech/news channels. Indexed by scene so clips stay varied.
+# automated tech/news channels. Drawn seeded per scene so clips stay varied
+# across videos too (the old idx % 8 walk made every video's fallback scenes
+# search the exact same terms in the exact same order).
 _TECH_BROLL_TERMS = [
     "data center servers motion", "code on screen scrolling", "terminal typing commands",
     "network data flowing", "circuit board macro", "software dashboard ui",
     "server room lights", "developer coding laptop",
+    "fiber optic cables lights", "robotic arm assembly", "motherboard closeup pan",
+    "typing keyboard closeup night", "wall of data screens", "3d printer printing timelapse",
+    "cloud server cables closeup", "smartphone app scrolling hand",
+    "microchip production line", "code review dark monitor",
+    "blinking router leds closeup", "satellite dish rotating dusk",
 ]
 _TECH_SIGNAL_WORDS = {
     "code", "coding", "developer", "server", "servers", "data", "terminal", "screen",
@@ -1617,12 +1640,15 @@ _TECH_SIGNAL_WORDS = {
 
 
 def _build_broll_query(video_query: Optional[str], photo_query: str, idx: int,
-                       is_tech_channel: bool) -> str:
+                       is_tech_channel: bool,
+                       rng: Optional[random.Random] = None) -> str:
     """Pick the search query for a scene's motion b-roll.
 
     Prefers the model's topic-relevant `videoQuery`; falls back to the (generic,
     photo-oriented) searchQuery, and on tech channels appends a tech-motion term
     so a missing videoQuery still yields tech footage instead of a stock loop.
+    When `rng` (per-video seeded) is given, the tech term is a seeded draw so
+    fallback scenes stop searching identical terms across videos.
     """
     vq = (video_query or "").strip()
     if len(_dedup_tokens(vq)) >= 2:
@@ -1631,7 +1657,11 @@ def _build_broll_query(video_query: Optional[str], photo_query: str, idx: int,
     if is_tech_channel:
         toks = {w for w in re.split(r"\W+", base.lower()) if w}
         if not (toks & _TECH_SIGNAL_WORDS):
-            base = f"{base} {_TECH_BROLL_TERMS[idx % len(_TECH_BROLL_TERMS)]}".strip()
+            if rng is not None:
+                term = _TECH_BROLL_TERMS[rng.randrange(len(_TECH_BROLL_TERMS))]
+            else:
+                term = _TECH_BROLL_TERMS[idx % len(_TECH_BROLL_TERMS)]
+            base = f"{base} {term}".strip()
     return base
 
 
@@ -3151,6 +3181,15 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
     _used_image_hashes: set = set()
     # Track used stock-video clip IDs so no two scenes share the same b-roll
     _used_video_ids: set = set()
+    # Cross-VIDEO clip memory: ids used by recent renders (soft skip-list — the
+    # pickers prefer unused clips but never fall back to stills over history).
+    try:
+        _recent_broll_ids = recent_broll_ids(load_broll_history())
+        if _recent_broll_ids:
+            print(f"[{session_id}] B-roll history: avoiding {len(_recent_broll_ids)} recently used clips.")
+    except Exception as e:
+        print(f"[{session_id}] WARNING: b-roll history load failed ({e}) — cross-video dedup off this run.")
+        _recent_broll_ids = set()
 
     def _hash_image(img_bytes: bytes) -> str:
         """Fast hash of image bytes for dedup."""
@@ -3268,42 +3307,73 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
             print(f"[{session_id}] {provider} video download failed: {e}")
             return None
 
-    def _fetch_hook_video_from_pexels(query: str, pexels_key: str, min_duration_sec: float) -> Optional[bytes]:
-        """Fetch a stock VIDEO clip from the free Pexels Video API for the hook scene.
+    def _pick_from_broll_pool(eligible: list, id_of, rng: random.Random) -> list:
+        """Shared variety policy for both video providers.
+
+        `eligible` is already relevance-sorted (best match first). Prefer clips
+        not used by recent videos (cross-video history), fall back to the full
+        eligible list when everything is recent — repetition beats a stills
+        fallback. Then rotate through the top-K from a seeded start so similar
+        queries stop converging on the same clip while relevance stays dominant.
+        """
+        fresh = [v for v in eligible if id_of(v) not in _recent_broll_ids]
+        if eligible and not fresh:
+            print(f"[{session_id}] B-roll: all top candidates recently used — allowing repeats")
+        pool = (fresh or eligible)[:BROLL_TOP_K]
+        if not pool:
+            return []
+        start = rng.randrange(len(pool))
+        return pool[start:] + pool[:start]
+
+    def _fetch_hook_video_from_pexels(query: str, pexels_key: str, min_duration_sec: float,
+                                      rng: random.Random) -> Optional[dict]:
+        """Fetch a stock VIDEO clip from the free Pexels Video API.
 
         Same API key as photo search. Free for commercial use, no attribution.
         Orientation-aware; prefers ~1080p files (enough for a 1080x1920 render
         without 4K download cost) and clips long enough to cover the scene.
+        Returns {"bytes", "id", "duration", "provider"} or None. All randomness
+        comes from the per-scene seeded `rng` — same session, same result set,
+        same pick.
         """
         import urllib.request
         import urllib.parse
         orientation = _get_pexels_orientation()
         encoded = urllib.parse.quote(query)
-        page = random.randint(1, 3)
-        url = f"https://api.pexels.com/videos/search?query={encoded}&per_page=12&page={page}&orientation={orientation}&size=medium"
-        print(f"[{session_id}] Pexels VIDEO search (page {page}): {url}")
-        try:
+
+        def _search(page: int) -> list:
+            url = (f"https://api.pexels.com/videos/search?query={encoded}"
+                   f"&per_page=30&page={page}&orientation={orientation}&size=medium")
+            print(f"[{session_id}] Pexels VIDEO search (page {page}): {url}")
             api_req = urllib.request.Request(url, headers={
                 "User-Agent": user_agent,
                 "Authorization": pexels_key,
             })
             with urllib.request.urlopen(api_req, timeout=12) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
-            videos = data.get("videos", [])
+            return data.get("videos", [])
+
+        try:
+            page = rng.randint(1, 2)
+            videos = _search(page)
+            if not videos and page > 1:
+                # Niche queries often have <30 results — all on page 1.
+                videos = _search(1)
             if not videos:
                 print(f"[{session_id}] Pexels VIDEO returned 0 results for '{query}'")
                 return None
-            # Shuffle for variety, then prefer clips whose URL slug shares
-            # words with the query (the slug is the only text Pexels gives us
-            # for videos) — keeps owls out of database explainers.
-            random.shuffle(videos)
-            videos.sort(key=lambda v: -_relevance_overlap(query, v.get("url", "")))
-            for video in videos:
-                if float(video.get("duration", 0)) < min_duration_sec:
-                    continue
+            eligible = [
+                v for v in videos
+                if float(v.get("duration", 0)) >= min_duration_sec
+                and f"pexels-{v.get('id')}" not in _used_video_ids
+            ]
+            # Seeded shuffle for variety, then prefer clips whose URL slug
+            # shares words with the query (the slug is the only text Pexels
+            # gives us for videos) — keeps owls out of database explainers.
+            rng.shuffle(eligible)
+            eligible.sort(key=lambda v: -_relevance_overlap(query, v.get("url", "")))
+            for video in _pick_from_broll_pool(eligible, lambda v: f"pexels-{v.get('id')}", rng):
                 vid_id = f"pexels-{video.get('id')}"
-                if vid_id in _used_video_ids:
-                    continue
                 files = [
                     f for f in video.get("video_files", [])
                     if f.get("file_type") == "video/mp4" and f.get("link") and f.get("width") and f.get("height")
@@ -3314,32 +3384,39 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
                     content = _download_video_capped(vf["link"], "Pexels")
                     if content:
                         _used_video_ids.add(vid_id)
-                        return content
+                        return {"bytes": content, "id": vid_id,
+                                "duration": float(video.get("duration", 0)),
+                                "provider": "pexels"}
         except Exception as e:
             print(f"[{session_id}] Pexels VIDEO API error: {e}")
         return None
 
-    def _fetch_hook_video_from_pixabay(query: str, min_duration_sec: float) -> Optional[bytes]:
+    def _fetch_hook_video_from_pixabay(query: str, min_duration_sec: float,
+                                       rng: random.Random) -> Optional[dict]:
         """Fallback stock video from the free Pixabay video API (needs PIXABAY_API_KEY)."""
         import urllib.request
         import urllib.parse
         if not PIXABAY_API_KEY:
             return None
         encoded = urllib.parse.quote(query)
-        url = f"https://pixabay.com/api/videos/?key={PIXABAY_API_KEY}&q={encoded}&per_page=20&safesearch=true"
+        url = f"https://pixabay.com/api/videos/?key={PIXABAY_API_KEY}&q={encoded}&per_page=50&safesearch=true"
         print(f"[{session_id}] Pixabay VIDEO search for '{query}'")
         try:
             api_req = urllib.request.Request(url, headers={"User-Agent": user_agent})
             with urllib.request.urlopen(api_req, timeout=12) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
             hits = data.get("hits", [])
-            random.shuffle(hits)
-            for hit in hits:
-                if float(hit.get("duration", 0)) < min_duration_sec:
-                    continue
+            eligible = [
+                h for h in hits
+                if float(h.get("duration", 0)) >= min_duration_sec
+                and f"pixabay-{h.get('id')}" not in _used_video_ids
+            ]
+            # Same policy as Pexels; Pixabay's comma-tag string is its only
+            # descriptive text, so use it for the relevance preference.
+            rng.shuffle(eligible)
+            eligible.sort(key=lambda h: -_relevance_overlap(query, h.get("tags", "")))
+            for hit in _pick_from_broll_pool(eligible, lambda h: f"pixabay-{h.get('id')}", rng):
                 vid_id = f"pixabay-{hit.get('id')}"
-                if vid_id in _used_video_ids:
-                    continue
                 sizes = hit.get("videos", {})
                 for size_key in ("large", "medium", "small"):
                     vf = sizes.get(size_key) or {}
@@ -3347,23 +3424,29 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
                         content = _download_video_capped(vf["url"], "Pixabay")
                         if content:
                             _used_video_ids.add(vid_id)
-                            return content
+                            return {"bytes": content, "id": vid_id,
+                                    "duration": float(hit.get("duration", 0)),
+                                    "provider": "pixabay"}
         except Exception as e:
             print(f"[{session_id}] Pixabay VIDEO API error: {e}")
         return None
 
-    def fetch_hook_video(query: str, pexels_key: str, min_duration_sec: float) -> Optional[bytes]:
-        """Source a motion clip for the opening hook scene: Pexels → Pixabay."""
+    def fetch_hook_video(query: str, pexels_key: str, min_duration_sec: float,
+                         rng: random.Random) -> Optional[dict]:
+        """Source a motion clip for a scene: Pexels → simplified Pexels → Pixabay.
+
+        Returns {"bytes", "id", "duration", "provider"} or None.
+        """
         if pexels_key:
-            content = _fetch_hook_video_from_pexels(query, pexels_key, min_duration_sec)
-            if content:
-                return content
+            got = _fetch_hook_video_from_pexels(query, pexels_key, min_duration_sec, rng)
+            if got:
+                return got
             simple = _simplify_query(query)
             if simple != query.lower().strip():
-                content = _fetch_hook_video_from_pexels(simple, pexels_key, min_duration_sec)
-                if content:
-                    return content
-        return _fetch_hook_video_from_pixabay(query, min_duration_sec)
+                got = _fetch_hook_video_from_pexels(simple, pexels_key, min_duration_sec, rng)
+                if got:
+                    return got
+        return _fetch_hook_video_from_pixabay(query, min_duration_sec, rng)
 
     # NOTE: the old `_fetch_from_unsplash_direct` tier was deleted on purpose:
     # despite its name it fetched a RANDOM picsum.photos image (query ignored)
@@ -3685,13 +3768,15 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
         # (the 3-second-hold decides reach, and a visual change every scene
         # keeps mid-video retention up). The still image above always stays as
         # the fallback/poster, so a failed fetch just means a static scene.
+        # Only the QUERY is decided here — the actual fetch runs AFTER TTS
+        # (see the sourcing_broll pass below), because scene durations are
+        # rewritten to the spoken length there and the clip's min-duration
+        # check against the PLANNED length let short clips freeze-frame on
+        # their last frame for the rest of the scene.
         want_broll = HOOK_VIDEO_ENABLED and SCENE_VIDEO_MODE != "off" and (
             SCENE_VIDEO_MODE == "all" or idx == 0
         )
         if want_broll:
-            pexels_key = (req.pexels_api_key or "").strip().strip("'\"") or PEXELS_API_KEY
-            # Scene length later auto-syncs to speech; require a comfortable margin
-            planned_sec = scene.get("durationInFrames", 175) / 30.0
             # Prefer the LLM's topic-relevant motion query; auto-tech channels
             # get a tech-motion fallback so a missing videoQuery still pulls
             # tech footage, not a random loop (is_tech_channel hoisted above).
@@ -3699,22 +3784,10 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
             # query — the anchor adds tech-photo words that suppress
             # _build_broll_query's motion-specific term, and an "abstract ..."
             # lead word then dominates Pexels video ranking (bubble-clip case).
-            broll_query = _build_broll_query(
-                scene.get("videoQuery"), raw_search_query, idx, is_tech_channel
+            scene_data["_brollQuery"] = _build_broll_query(
+                scene.get("videoQuery"), raw_search_query, idx, is_tech_channel,
+                rng=random.Random(f"brollq:{video_seed}:{idx}"),
             )
-            print(f"[{session_id}] Scene {idx + 1} b-roll query: '{broll_query}'")
-            video_bytes = fetch_hook_video(broll_query, pexels_key, min_duration_sec=max(6.0, planned_sec + 1.0))
-            if video_bytes:
-                broll_dir = os.path.join(PUBLIC_DIR, "hook-videos")
-                os.makedirs(broll_dir, exist_ok=True)
-                broll_name = f"broll-{session_id}-{idx}.mp4"
-                with open(os.path.join(broll_dir, broll_name), "wb") as vf:
-                    vf.write(video_bytes)
-                # Relative path — resolved via staticFile() in the Remotion layer
-                scene_data["videoUrl"] = f"hook-videos/{broll_name}"
-                print(f"[{session_id}] Scene {idx + 1} will use stock VIDEO: {scene_data['videoUrl']}")
-            else:
-                print(f"[{session_id}] No suitable clip for scene {idx + 1}; falling back to still image")
 
         scenes_with_images.append(scene_data)
 
@@ -3858,6 +3931,77 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
         render_status_store[session_id]["status"] = "error"
         render_status_store[session_id]["error"] = "Voiceover missing after synthesis."
         raise Exception("Voiceover track is missing after synthesis — aborting render so no silent video is posted.")
+
+    # === STOCK VIDEO B-ROLL SOURCING (post-TTS, so durations are FINAL) ===
+    # generate_voiceover_and_alignment rewrote each scene's durationInFrames to
+    # the spoken length in place; fetching here lets the min-duration check use
+    # the real scene length, so a clip never ends before its scene does (the
+    # renderer's OffthreadVideo freeze-framed on the last frame otherwise).
+    # The longest scenes also get a SECOND distinct clip (brollClips[1]) so the
+    # render side can cut mid-scene: clip A covers the whole scene, clip B
+    # covers any cut point >= 50% of it.
+    session_broll_used: list = []
+    if HOOK_VIDEO_ENABLED and SCENE_VIDEO_MODE != "off":
+        render_status_store[session_id]["status"] = "sourcing_broll"
+        broll_pexels_key = (req.pexels_api_key or "").strip().strip("'\"") or PEXELS_API_KEY
+        broll_dir = os.path.join(PUBLIC_DIR, "hook-videos")
+        _dual_eligible = sorted(
+            (i for i, s in enumerate(scenes_with_images)
+             if s.get("_brollQuery") and s.get("durationInFrames", 0) >= BROLL_DUAL_MIN_FRAMES),
+            key=lambda i: -scenes_with_images[i]["durationInFrames"],
+        )
+        dual_scene_idxs = set(_dual_eligible[:BROLL_DUAL_MAX_PER_VIDEO])
+        for idx, scene_data in enumerate(scenes_with_images):
+            broll_query = scene_data.pop("_brollQuery", None)
+            if not broll_query:
+                continue
+            try:
+                scene_sec = scene_data.get("durationInFrames", 175) / 30.0
+                print(f"[{session_id}] Scene {idx + 1} b-roll query: '{broll_query}' "
+                      f"({scene_sec:.1f}s{', dual' if idx in dual_scene_idxs else ''})")
+                got = fetch_hook_video(
+                    broll_query, broll_pexels_key,
+                    min_duration_sec=max(6.0, scene_sec + 1.0),
+                    rng=random.Random(f"broll:{video_seed}:{idx}:a"),
+                )
+                if not got:
+                    print(f"[{session_id}] No suitable clip for scene {idx + 1}; falling back to still image")
+                    continue
+                os.makedirs(broll_dir, exist_ok=True)
+                broll_name = f"broll-{session_id}-{idx}-a.mp4"
+                with open(os.path.join(broll_dir, broll_name), "wb") as vf:
+                    vf.write(got["bytes"])
+                # Relative path — resolved via staticFile() in the Remotion layer
+                scene_data["videoUrl"] = f"hook-videos/{broll_name}"
+                scene_data["brollClips"] = [
+                    {"src": scene_data["videoUrl"], "durationSec": got["duration"]}
+                ]
+                session_broll_used.append({"id": got["id"], "query": broll_query, "scene": idx})
+                print(f"[{session_id}] Scene {idx + 1} will use stock VIDEO: {scene_data['videoUrl']} ({got['id']})")
+                if idx in dual_scene_idxs:
+                    # Distinct id is guaranteed by the _used_video_ids hard skip.
+                    got_b = fetch_hook_video(
+                        broll_query, broll_pexels_key,
+                        min_duration_sec=max(4.0, scene_sec * 0.5 + 1.0),
+                        rng=random.Random(f"broll:{video_seed}:{idx}:b"),
+                    )
+                    if got_b:
+                        broll_name_b = f"broll-{session_id}-{idx}-b.mp4"
+                        with open(os.path.join(broll_dir, broll_name_b), "wb") as vf:
+                            vf.write(got_b["bytes"])
+                        scene_data["brollClips"].append(
+                            {"src": f"hook-videos/{broll_name_b}", "durationSec": got_b["duration"]}
+                        )
+                        session_broll_used.append({"id": got_b["id"], "query": broll_query, "scene": idx})
+                        print(f"[{session_id}] Scene {idx + 1} second clip: {broll_name_b} ({got_b['id']})")
+            except Exception as broll_err:
+                # One provider hiccup must never kill the render — the still
+                # image is always present as the fallback.
+                print(f"[{session_id}] B-roll sourcing failed for scene {idx + 1}: {broll_err}")
+    else:
+        # Mode off — drop the stashed queries so they never reach props.
+        for scene_data in scenes_with_images:
+            scene_data.pop("_brollQuery", None)
 
     # Update status
     render_status_store[session_id]["status"] = "rendering"
@@ -4075,6 +4219,17 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
     render_status_store[session_id]["progress"] = 1.0
     render_status_store[session_id]["video_url"] = video_url
     render_status_store[session_id]["completed_at"] = time.time()
+
+    # Persist which stock clips this video used, so the NEXT videos avoid them
+    # (cross-video variety). Render success only — a failed render never burns
+    # a clip. Loud on failure, never fatal (same contract as the topic history).
+    if session_broll_used:
+        try:
+            record_broll_use(session_id, session_broll_used)
+            print(f"[{session_id}] Recorded {len(session_broll_used)} b-roll clip ids to {BROLL_HISTORY_FILE}.")
+        except Exception as broll_hist_err:
+            print(f"[{session_id}] WARNING: b-roll history save failed — "
+                  f"future videos may repeat these clips: {broll_hist_err}")
 
     # Assemble the metadata the posting dispatchers write to the post ledger.
     # Auto channels only — manual/API renders join the feedback loop solely
@@ -6866,7 +7021,7 @@ SCENE OUTLINE (follow this structure, but write ORIGINAL, specific copy):
 - Core Instruction: Tell this as a STORY that escalates — hook, why it matters, the surprising detail, then a satisfying takeaway — not a list of facts.
 {outline}
 - Give EACH scene a different textAnimation. Keep on-screen "text" to a short label (a keyword or number); put the actual sentence in the "voiceover" — never the same words in both.
-- Give EACH scene a "videoQuery": 2-4 keywords for a TECH MOTION b-roll clip that shows this story's real subject in action (a terminal, code on screen, a dashboard, data-center racks, a chip, a robot, network traffic) — topic-relevant motion, never a generic abstract loop. Use a different videoQuery per scene.
+- Give EACH scene a "videoQuery": 2-4 keywords for a TECH MOTION b-roll clip that shows this story's real subject in action (a terminal, code on screen, a dashboard, data-center racks, a chip, a robot, network traffic) — topic-relevant motion, never a generic abstract loop. Use a different videoQuery per scene, and never reuse the same main noun in two videoQuery values within one video.
 
 NO-REPETITION (this is the #1 thing that makes these videos feel cheap): name the product/company from the headline in the HOOK scene ONLY. After that, refer to it as "it" / "the tool" / "the team" — do NOT restate the headline in later scenes. The subtitles show every spoken word for the whole video, so a repeated line is read and heard 5-6 times. Every scene must add information the earlier scenes did NOT state.
 
@@ -7054,6 +7209,72 @@ def record_topic_use(filepath: str, story_id=None, title: str = "",
         "session": session_id or "",
     })
     history = history[-cap:]
+    tmp = filepath + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(history, f, indent=1)
+    os.replace(tmp, filepath)
+
+
+def load_broll_history(filepath: str = None) -> dict:
+    """Load the cross-video b-roll clip history (used_broll_history.json).
+
+    Same contract as load_topic_history: missing file = quiet first-run
+    bootstrap; corrupt file = LOUD warning + empty (a silently reset history
+    would quietly resurrect the repeated-clip problem). Never raises. A legacy
+    bare list is wrapped into the versioned envelope in-memory and self-heals
+    on next save.
+    """
+    filepath = filepath or BROLL_HISTORY_FILE
+    empty = {"version": 1, "entries": []}
+    if not os.path.exists(filepath):
+        print(f"[BrollHistory] No history at {filepath} — starting fresh (first run).")
+        return empty
+    try:
+        with open(filepath, "r") as f:
+            raw = json.load(f)
+        if isinstance(raw, list):
+            raw = {"version": 1, "entries": raw}
+        if not isinstance(raw, dict) or not isinstance(raw.get("entries"), list):
+            raise ValueError(f"expected {{version, entries[]}}, got {type(raw).__name__}")
+    except Exception as e:
+        print(f"[BrollHistory] WARNING: corrupt history file {filepath} ({e}) — "
+              f"treating as EMPTY; cross-video clip dedup restarts this run.")
+        return empty
+    raw["entries"] = [e for e in raw["entries"] if isinstance(e, dict)]
+    return raw
+
+
+def recent_broll_ids(history: dict, cooldown_days: float = None) -> set:
+    """Clip ids used within the cooldown window — the pickers' soft skip-list."""
+    if cooldown_days is None:
+        cooldown_days = BROLL_REUSE_COOLDOWN_DAYS
+    cutoff = time.time() - cooldown_days * 86400
+    return {
+        e["id"] for e in history.get("entries", [])
+        if e.get("id") and e.get("ts", 0) >= cutoff
+    }
+
+
+def record_broll_use(session_id: str, clips: list, filepath: str = None) -> None:
+    """Append this render's used clip ids, trim to cap, write atomically.
+
+    RAISES on write failure — the caller prints loudly but never fails the
+    render over it (same split as record_topic_use).
+    """
+    filepath = filepath or BROLL_HISTORY_FILE
+    history = load_broll_history(filepath)
+    now = int(time.time())
+    for clip in clips:
+        if not clip.get("id"):
+            continue
+        history["entries"].append({
+            "id": clip["id"],
+            "ts": now,
+            "session": session_id or "",
+            "query": str(clip.get("query", ""))[:80],
+            "scene": clip.get("scene"),
+        })
+    history["entries"] = history["entries"][-BROLL_HISTORY_CAP:]
     tmp = filepath + ".tmp"
     with open(tmp, "w") as f:
         json.dump(history, f, indent=1)
@@ -8221,7 +8442,7 @@ def build_viral_topic_prompt(plan: dict) -> str:
         "Keep on-screen \"text\" to a short label (keyword or number) that does NOT copy the voiceover wording. "
         "Give each scene a \"videoQuery\": 2-4 keywords for a TECH MOTION b-roll clip that shows the subject in action "
         "(terminal, code on screen, dashboard, data-center racks, chip macro, robot, network traffic) — topic-relevant motion, "
-        "different per scene, never a generic abstract loop. "
+        "different per scene, never the same main noun twice, never a generic abstract loop. "
         "DEMONSTRATE it — at least one scene must show HOW it actually works in practice (what you run/click/type, what it "
         "replaces, or a real spec/benchmark), e.g. a list scene with concrete usage steps or a metric scene with a real number. "
         "BANNED: generic truisms everyone already knows ('good tools make you productive', 'AI is changing everything', "

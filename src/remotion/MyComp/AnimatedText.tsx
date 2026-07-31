@@ -91,6 +91,25 @@ interface AnimatedTextProps {
    * the video. Default "neon" = the historical dressing.
    */
   finish?: Finish;
+  /**
+   * Micro-detail "landing-pop" (microDetails.ts): a soft drop-shadow depth pop
+   * as the text settles (frames ~12-32). Filter-only — composed through
+   * mergeStyles so blur-in / halo filters survive; no transform, no reflow.
+   */
+  landingPop?: boolean;
+  /**
+   * Micro-detail "emphasis-sweep": ONE light sweep across the emphasized words
+   * at `sweepFrame` (scene-local; DynamicScene passes energy.kineticStart).
+   * Absolute overlay inside the emphasis span — zero layout impact.
+   */
+  emphasisSweep?: boolean;
+  sweepFrame?: number;
+  /**
+   * Stat-hit (Q27a): when an emphasized token is numeric, it pulses and draws
+   * an accent underline starting at this scene-local frame. Transform +
+   * absolute overlay only — Pain Point 6 intact.
+   */
+  statHitFrame?: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -493,6 +512,10 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   treatment = "solid",
   springMul = 1,
   finish = "neon",
+  landingPop = false,
+  emphasisSweep = false,
+  sweepFrame,
+  statHitFrame,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -573,6 +596,67 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
     () => (emphasisEnabled ? pickEmphasisIndices(text.split(" ")) : new Set<number>()),
     [text, emphasisEnabled],
   );
+
+  // --- Micro-detail / stat-hit timing (all default-off, deterministic) ------
+  // Emphasized NUMERIC tokens are the stat-hit targets (same digit test as
+  // pickEmphasisIndices, so a hit can only land on an already-accented word).
+  const statIndices = useMemo(() => {
+    const out = new Set<number>();
+    if (statHitFrame === undefined) return out;
+    text.split(" ").forEach((w, i) => {
+      if (emphasisIndices.has(i) && /[\d%$#]/.test(w)) out.add(i);
+    });
+    return out;
+  }, [text, emphasisIndices, statHitFrame]);
+  const statT = statHitFrame === undefined ? -1 : frame - statHitFrame;
+  // 12-frame pulse: up in 5, settle over 7 (rides ON TOP of the 1.05 emphasis
+  // scale — transform-only, zero reflow).
+  const statPulse =
+    statT >= 0 && statT <= 12
+      ? 1 + 0.07 * (statT < 5 ? statT / 5 : 1 - (statT - 5) / 7)
+      : 1;
+  // The accent underline draws over 8 frames and then stays.
+  const statBarW =
+    statHitFrame === undefined
+      ? 0
+      : interpolate(frame, [statHitFrame, statHitFrame + 8], [0, 100], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        });
+
+  // One light sweep across emphasis words (10 frames at sweepFrame).
+  const sweepT =
+    emphasisSweep && sweepFrame !== undefined ? (frame - sweepFrame) / 10 : -1;
+  const sweepActive = sweepT >= 0 && sweepT <= 1;
+  const sweepOverlay = sweepActive ? (
+    <span
+      style={{
+        position: "absolute",
+        inset: 0,
+        pointerEvents: "none",
+        background: `linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.38) 50%, transparent 65%)`,
+        backgroundSize: "300% 100%",
+        backgroundPosition: `${(sweepT * 100).toFixed(1)}% 50%`,
+        mixBlendMode: "screen",
+      }}
+    />
+  ) : null;
+
+  // Landing-pop: drop-shadow swell on the whole plate as the type settles.
+  // Filter-only (drop-shadow follows the plate silhouette) — mergeStyles
+  // composes it with blur-in / halo filters instead of clobbering them.
+  const popK = landingPop
+    ? interpolate(frame, [12, 20, 32], [0, 1, 0], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+      })
+    : 0;
+  const landingStyle: React.CSSProperties =
+    popK > 0.01
+      ? {
+          filter: `drop-shadow(0 ${Math.round(10 * popK)}px ${Math.round(14 * popK)}px rgba(0,0,0,${(0.55 * popK).toFixed(2)}))`,
+        }
+      : {};
 
   // Base style shared by all modes — weight/tracking/line-height come from
   // FONT_METRICS so every family renders its REAL loaded weights (no faux bold).
@@ -691,12 +775,51 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
     return merged;
   };
 
+  // The plate style every render branch actually uses — combinedStyle plus the
+  // (usually empty) landing-pop shadow, filter-composed.
+  const platedStyle = popK > 0.01 ? mergeStyles(combinedStyle, landingStyle) : combinedStyle;
+
   const flexJustify = align === "left" ? "flex-start" : "center";
+
+  // Shared dressing for one emphasis span: color/glow, the stat-hit pulse
+  // scale, sweep positioning context. `extraTransform` is the mode's own
+  // per-word transform so everything stays a single transform value.
+  const emphasisSpanStyle = (
+    i: number,
+    extraTransform: string,
+  ): React.CSSProperties => {
+    const emph = emphasisIndices.has(i);
+    if (!emph) return {};
+    const pulse = statIndices.has(i) ? statPulse : 1;
+    return {
+      ...emphasisColorStyle(glowColor),
+      transform: `${extraTransform} scale(${(1.05 * pulse).toFixed(3)})`.trim(),
+      position: "relative",
+    };
+  };
+
+  // Stat-hit underline: draws under a numeric emphasis token and stays.
+  const statUnderline = (i: number) =>
+    statIndices.has(i) && statBarW > 0 ? (
+      <span
+        style={{
+          position: "absolute",
+          left: 0,
+          bottom: -3,
+          height: 3,
+          width: `${statBarW.toFixed(1)}%`,
+          background: glowColor,
+          borderRadius: 2,
+          boxShadow: `0 0 10px ${withAlpha(glowColor, 0.5)}`,
+          pointerEvents: "none",
+        }}
+      />
+    ) : null;
 
   // Word-by-word mode renders individual spans
   if (animResult.mode === "words" && "words" in animResult) {
     return (
-      <div style={{ ...combinedStyle, display: "flex", flexWrap: "wrap", justifyContent: flexJustify, gap: "8px" }}>
+      <div style={{ ...platedStyle, display: "flex", flexWrap: "wrap", justifyContent: flexJustify, gap: "8px" }}>
         {(animResult as any).words.map(
           (w: { word: string; opacity: number; translateY: number }, i: number) => {
             const emph = emphasisIndices.has(i);
@@ -705,13 +828,15 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
                 key={i}
                 style={{
                   opacity: w.opacity,
-                  transform: `translateY(${w.translateY}px)${emph ? " scale(1.05)" : ""}`,
+                  transform: `translateY(${w.translateY}px)`,
                   display: "inline-block",
                   whiteSpace: "nowrap",
-                  ...(emph ? emphasisColorStyle(glowColor) : {}),
+                  ...emphasisSpanStyle(i, `translateY(${w.translateY}px)`),
                 }}
               >
                 {w.word}
+                {emph ? sweepOverlay : null}
+                {statUnderline(i)}
               </span>
             );
           }
@@ -724,7 +849,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   // Wrapping still only happens BETWEEN slots (whole words) — Pain Point 6.
   if (animResult.mode === "mask" && "maskWords" in animResult) {
     return (
-      <div style={{ ...combinedStyle, display: "flex", flexWrap: "wrap", justifyContent: flexJustify, gap: "0 10px" }}>
+      <div style={{ ...platedStyle, display: "flex", flexWrap: "wrap", justifyContent: flexJustify, gap: "0 10px" }}>
         {(animResult as any).maskWords.map(
           (w: { word: string; riseY: number }, i: number) => {
             const emph = emphasisIndices.has(i);
@@ -751,7 +876,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   // Flip-in: words rotate down from ~90° like a departures board.
   if (animResult.mode === "flip" && "flipWords" in animResult) {
     return (
-      <div style={{ ...combinedStyle, display: "flex", flexWrap: "wrap", justifyContent: flexJustify, gap: "8px", perspective: "600px" }}>
+      <div style={{ ...platedStyle, display: "flex", flexWrap: "wrap", justifyContent: flexJustify, gap: "8px", perspective: "600px" }}>
         {(animResult as any).flipWords.map(
           (w: { word: string; rotateX: number; opacity: number }, i: number) => {
             const emph = emphasisIndices.has(i);
@@ -781,7 +906,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   // the word slides in behind it. Slots are unbreakable (Pain Point 6).
   if (animResult.mode === "wipe" && "wipeWords" in animResult) {
     return (
-      <div style={{ ...combinedStyle, display: "flex", flexWrap: "wrap", justifyContent: flexJustify, gap: "2px 10px" }}>
+      <div style={{ ...platedStyle, display: "flex", flexWrap: "wrap", justifyContent: flexJustify, gap: "2px 10px" }}>
         {(animResult as any).wipeWords.map(
           (
             w: { word: string; slideX: number; barX: number; barOpacity: number },
@@ -836,7 +961,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   // Wave mode renders per-letter spans grouped inside unbreakable word blocks
   if (animResult.mode === "letters" && "waveWords" in animResult) {
     return (
-      <div style={{ ...combinedStyle, display: "flex", flexWrap: "wrap", justifyContent: flexJustify, columnGap: "0.35em" }}>
+      <div style={{ ...platedStyle, display: "flex", flexWrap: "wrap", justifyContent: flexJustify, columnGap: "0.35em" }}>
         {(animResult as any).waveWords.map(
           (letters: { ch: string; opacity: number; translateY: number }[], wi: number) => (
             <span
@@ -876,7 +1001,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   // gradient-fill never reaches here with emphasis (emphasis is solid-only).
   if (emphasisIndices.size > 0 && displayedText === text) {
     return (
-      <div style={mergeStyles(combinedStyle, wrapperStyle)}>
+      <div style={mergeStyles(platedStyle, wrapperStyle)}>
         {text.split(" ").map((word, i) => (
           <React.Fragment key={i}>
             {i > 0 ? " " : null}
@@ -884,12 +1009,12 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
               style={{
                 whiteSpace: "nowrap",
                 display: "inline-block",
-                ...(emphasisIndices.has(i)
-                  ? { ...emphasisColorStyle(glowColor), transform: "scale(1.05)" }
-                  : {}),
+                ...emphasisSpanStyle(i, ""),
               }}
             >
               {word}
+              {emphasisIndices.has(i) ? sweepOverlay : null}
+              {statUnderline(i)}
             </span>
           </React.Fragment>
         ))}
@@ -898,7 +1023,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   }
 
   return (
-    <div style={mergeStyles(combinedStyle, wrapperStyle)}>
+    <div style={mergeStyles(platedStyle, wrapperStyle)}>
       {displayedText}
     </div>
   );

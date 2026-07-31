@@ -169,7 +169,7 @@ jobs:
           # until the first successful post, and git add on a missing
           # pathspec is fatal (exit 128).
           STATE_FILES=""
-          for f in public/processed_news_stories.json public/post_ledger.json; do
+          for f in public/processed_news_stories.json public/post_ledger.json public/used_broll_history.json; do
             [ -f "$f" ] && STATE_FILES="$STATE_FILES $f"
           done
           if [ -z "$STATE_FILES" ] || [ -z "$(git status --porcelain -- $STATE_FILES)" ]; then
