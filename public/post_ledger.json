@@ -257,7 +257,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785257197
+      "fetched_at": 1785492558
      },
      "snap72": {
       "views": 119,
@@ -311,7 +311,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785257197
+      "fetched_at": 1785492558
      },
      "snap72": {
       "views": 120,
@@ -471,7 +471,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785224497
+      "fetched_at": 1785492558
      },
      "snap72": {
       "views": 125,
@@ -530,7 +530,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785224497
+      "fetched_at": 1785492558
      },
      "snap72": {
       "views": 118,
@@ -577,14 +577,14 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 121,
-      "reach": 107,
+      "views": 122,
+      "reach": 108,
       "likes": 2,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 2,
-      "fetched_at": 1785257197
+      "fetched_at": 1785492558
      },
      "snap72": {
       "views": 120,
@@ -742,7 +742,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785239820
+      "fetched_at": 1785492558
      },
      "snap72": {
       "views": 111,
@@ -797,7 +797,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785248454
+      "fetched_at": 1785492558
      },
      "snap72": {
       "views": 112,
@@ -854,7 +854,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785257197
+      "fetched_at": 1785492558
      },
      "snap72": {
       "views": 124,
@@ -1264,8 +1264,26 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
-     "snap72": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785492558
+     },
+     "snap72": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785492558
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1300,8 +1318,26 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
-     "snap72": null,
+     "latest": {
+      "views": 16,
+      "reach": 14,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785492558
+     },
+     "snap72": {
+      "views": 16,
+      "reach": 14,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785492558
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1336,8 +1372,26 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
-     "snap72": null,
+     "latest": {
+      "views": 4,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785492558
+     },
+     "snap72": {
+      "views": 4,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785492558
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1370,8 +1424,26 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
-     "snap72": null,
+     "latest": {
+      "views": 3,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785492558
+     },
+     "snap72": {
+      "views": 3,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785492558
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1404,8 +1476,26 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
-     "snap72": null,
+     "latest": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785492558
+     },
+     "snap72": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785492558
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1441,8 +1531,26 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
-     "snap72": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785492558
+     },
+     "snap72": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785492558
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1474,6 +1582,62 @@
     "instagram": {
      "id": "18124489051784246",
      "posted_at": 1785257193
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": {
+      "views": 14,
+      "reach": 14,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785492558
+     },
+     "snap72": {
+      "views": 14,
+      "reach": 14,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785492558
+     },
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785492500,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "Show HN: Distilling DeepSeek into GPT-OSS doesn't transfer censorship. Try it",
+    "subject": "Show HN: Distilling DeepSeek into GPT-OSS doesn't transfer censorship. Try it",
+    "url": "https://www.ctgt.ai/research/distillation-censorship-transfer",
+    "source": "hn",
+    "keywords": [
+     "gpt",
+     "deepseek",
+     "how"
+    ],
+    "viral_score": 9.26
+   },
+   "style_pack": "desert-dune",
+   "seed": 1280130583,
+   "voice": "en-US-AvaMultilingualNeural",
+   "hook_type": "BREAKING-NEWS",
+   "scene_count": 5,
+   "video_seconds": 29.7,
+   "session": "gh-5b65c8",
+   "platforms": {
+    "instagram": {
+     "id": "17859339717676599",
+     "posted_at": 1785492554
     }
    },
    "metrics": {

@@ -326,5 +326,13 @@
   "subject_norm": null,
   "ts": 1785257197,
   "session": "gh-6b5040"
+ },
+ {
+  "id": "49113599",
+  "title": "Show HN: Distilling DeepSeek into GPT-OSS doesn't transfer censorship. Try it",
+  "norm": "show hn distilling deepseek into gpt oss doesn t transfer censorship try it",
+  "subject_norm": null,
+  "ts": 1785492558,
+  "session": "gh-5b65c8"
  }
 ]
