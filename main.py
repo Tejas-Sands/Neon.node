@@ -226,6 +226,15 @@ MIN_SPOKEN_SEC = float(os.environ.get("MIN_SPOKEN_SEC", "38"))
 MAX_SPOKEN_SEC = float(os.environ.get("MAX_SPOKEN_SEC", "70"))
 SCRIPT_EXPAND_RETRIES = int(os.environ.get("SCRIPT_EXPAND_RETRIES", "2"))
 
+# Deterministic script insight gate (_script_vagueness_reasons): rejects
+# platitude/advice scripts with one corrective re-ask; auto channels abort
+# rather than post one (peer of the unparseable-script abort). Setting
+# ENABLE_SCRIPT_GATE=false restores the legacy retry loop bit-for-bit.
+# SCRIPT_GATE_RETRIES = extra attempts reserved for gate-only failures
+# (runtime retries stay governed by SCRIPT_EXPAND_RETRIES).
+ENABLE_SCRIPT_GATE = os.environ.get("ENABLE_SCRIPT_GATE", "true").strip().lower() not in ("0", "false", "no")
+SCRIPT_GATE_RETRIES = int(os.environ.get("SCRIPT_GATE_RETRIES", "1"))
+
 # Session-id prefixes that get the branded tech-channel treatment. "gh-" is the
 # scheduled GitHub Actions pipeline (generate_now.py) — it was missing from
 # these checks originally, so CI posts silently skipped the outro, the tech
@@ -691,6 +700,10 @@ Each scene has a "type" that controls its visual layout. Choose the type that be
 14b. NO PLATITUDE VIDEOS. The video must center on ONE named, concrete subject (a specific tool, product, release, event, or technique) and teach specifics about it: what it is, a real number/spec, and how it's actually used.
     BAD: "Using good tools makes you more productive"  →  GOOD: "Zed just hit 1.0 — it opens files 5x faster than VS Code. Here's the setting that does it."
     Every sentence must carry information specific to the subject — if a sentence would be true of any topic, cut it.
+14c. INSIGHT, NOT INSTRUCTIONS. The video EXPLAINS one real development end-to-end; it never hands out generic advice.
+    Cover this arc across the scenes: WHAT happened (the named subject, scene 1) → HOW it actually works (the mechanism or cause behind the headline — the "oh, THAT'S how" beat) → the REAL numbers from the topic brief → WHY it matters (who is affected, what changes now).
+    Imperative advice to the viewer ("do this", "you should", "try these", "start using X to be productive") is BANNED outside the HOOK and the final CTA scene — and even there it must be about THIS subject, never about life in general.
+    BAD: "Use AI tools to write code faster."  →  GOOD: "Its new planner applies multi-file edits from one prompt — the launch demo rewrote 14 files in 40 seconds."
 
 === NO-REPETITION & STORY FLOW (this is what makes a video watchable instead of redundant) ===
 
@@ -885,89 +898,91 @@ Topic: "SaaS product launch — 10x faster API"
   "pipeline": {{ "outputFormat": "mp4", "quality": "standard" }}
 }}
 
-=== EXAMPLE 2 (Lifestyle/Tips topic) ===
-Topic: "5 morning habits that changed my life"
+=== EXAMPLE 2 (Science/Hardware news topic) ===
+Topic: "Lab's sodium-ion battery retains 92% capacity after 3,000 charge cycles"
 
 {{
   "theme": {{
     "primaryColor": "#10b981",
-    "secondaryColor": "#f59e0b",
+    "secondaryColor": "#06b6d4",
     "overlayType": "particles",
     "fontFamilyName": "Inter",
-    "musicTrack": "lofi-chill",
+    "musicTrack": "ambient-tech",
     "cameraMotion": "ken-burns",
     "subtitlePosition": "bottom",
     "overlayOpacity": 0.7,
-    "transitionStyle": "slide-left",
+    "transitionStyle": "crossfade",
     "aspectRatio": "9:16",
     "gradientOverlay": "top-to-bottom"
   }},
   "scenes": [
     {{
       "type": "hero",
-      "title": "5 MORNING HABITS",
-      "text": "before 8am",
-      "subtitle": "the two-week reset",
-      "voiceover": "Five small moves before eight a.m. rewired my focus in about two weeks — steal them.",
-      "searchQuery": "sunrise golden light bedroom window",
-      "videoQuery": "sunrise bedroom window morning light",
+      "title": "THE SALT BATTERY",
+      "text": "92% after 3,000 cycles",
+      "subtitle": "no lithium inside",
+      "voiceover": "A battery built on table-salt chemistry just survived three thousand charges nearly untouched.",
+      "searchQuery": "battery cells laboratory closeup",
+      "videoQuery": "battery testing lab equipment",
       "durationInFrames": 130,
+      "textAnimation": "glitch-decode"
+    }},
+    {{
+      "type": "split",
+      "title": "HOW IT SURVIVES",
+      "text": "sodium swaps in",
+      "secondaryText": "same factory lines",
+      "voiceover": "It swaps lithium ions for sodium ones — heavier, but the team's new electrode stops them from cracking the structure as they cycle.",
+      "searchQuery": "electrode microscope material science",
+      "videoQuery": "microscope material research motion",
+      "durationInFrames": 190,
       "textAnimation": "fade-up"
     }},
     {{
-      "type": "split",
-      "title": "COLD SHOWER",
-      "text": "2 minutes",
-      "secondaryText": "+alertness",
-      "voiceover": "First one is brutal: two minutes under cold water wakes you up harder than any coffee.",
-      "searchQuery": "water droplets shower close up",
-      "videoQuery": "cold shower water splash slow motion",
-      "durationInFrames": 165,
-      "textAnimation": "slide-in"
-    }},
-    {{
-      "type": "split",
-      "title": "GRATITUDE, 3 LINES",
-      "text": "before you touch the phone",
-      "voiceover": "Then, before your thumb ever finds the phone, write down three specific things you're grateful for.",
-      "searchQuery": "notebook pen coffee morning table",
-      "videoQuery": "hand writing journal notebook closeup",
-      "durationInFrames": 165,
-      "textAnimation": "typewriter"
-    }},
-    {{
       "type": "countdown",
-      "title": "MINUTES THAT COUNT",
-      "text": "of quiet breathing",
+      "title": "ENDURANCE TEST",
+      "text": "full charge cycles",
       "countFrom": 0,
-      "countTo": 10,
-      "countSuffix": " min",
-      "voiceover": "Next, sit and breathe — ten slow minutes drops your stress baseline for the entire day.",
-      "searchQuery": "person meditating peaceful nature",
-      "videoQuery": "person meditating breathing calm",
-      "durationInFrames": 190,
+      "countTo": 3000,
+      "voiceover": "Three thousand full charges — roughly eight years of daily use — and it kept ninety-two percent of its capacity.",
+      "searchQuery": "battery charging indicator closeup",
+      "videoQuery": "charging cable plug battery macro",
+      "durationInFrames": 210,
       "textAnimation": "none"
     }},
     {{
-      "type": "list",
-      "title": "THE FULL STACK",
-      "text": "Cold shower|Gratitude|10-min sit|Phone-free hour|Real breakfast",
-      "voiceover": "Add a phone-free first hour and a breakfast with actual protein, and the five lock together into one routine.",
-      "searchQuery": "healthy breakfast fruit table bright",
-      "videoQuery": "healthy breakfast table morning hands",
-      "durationInFrames": 210,
+      "type": "comparison",
+      "title": "THE COST GAP",
+      "text": "$135/kWh",
+      "secondaryText": "$87/kWh",
+      "leftLabel": "LITHIUM",
+      "rightLabel": "SODIUM",
+      "voiceover": "Sodium is dirt cheap and everywhere, cutting the projected pack cost by about a third.",
+      "searchQuery": "salt crystals macro white",
+      "videoQuery": "mining salt industrial machinery",
+      "durationInFrames": 185,
       "textAnimation": "slide-in"
     }},
     {{
-      "type": "cta",
-      "title": "START TOMORROW",
-      "text": "day 1 of 14",
-      "ctaText": "SAVE & TRY",
-      "voiceover": "Save this, run it for fourteen days, and watch your mornings stop running you.",
-      "searchQuery": "happy person stretching morning sun",
-      "videoQuery": "person stretching sunrise energetic",
-      "durationInFrames": 170,
+      "type": "testimonial",
+      "title": "FROM THE PUBLISHED PAPER",
+      "text": "92.3% retention at cycle 3,000",
+      "subtitle": "the sodium-ion cell",
+      "voiceover": "That retention figure comes straight from the peer-reviewed results, not a press release.",
+      "searchQuery": "scientific journal research data screen",
+      "videoQuery": "data charts screen scrolling",
+      "durationInFrames": 175,
       "textAnimation": "word-by-word"
+    }},
+    {{
+      "type": "split",
+      "title": "WHY IT MATTERS",
+      "text": "grid storage, not phones",
+      "voiceover": "Cheap cells that refuse to die are exactly what solar farms need at night — that's the market it lands in first.",
+      "searchQuery": "solar farm dusk wide",
+      "videoQuery": "solar panels field drone motion",
+      "durationInFrames": 180,
+      "textAnimation": "blur-in"
     }}
   ],
   "pipeline": {{ "outputFormat": "mp4", "quality": "standard" }}
@@ -1066,7 +1081,7 @@ STYLE_PACKS = [
 # from frame one, and be specific rather than general. Each pattern below
 # includes a fill-in-the-blank template the LLM can adapt to the topic.
 HOOK_PATTERNS = [
-    "PATTERN-INTERRUPT: open with an unexpected, punchy 2-4 word statement that makes viewers stop scrolling (template: 'This changes everything' / 'Delete this app').",
+    "PATTERN-INTERRUPT: open with an unexpected, punchy 2-4 word statement that makes viewers stop scrolling (template: 'Delete this app' / 'Docker just broke').",
     "SHOCK-STAT: open with a surprising, concrete number that sounds almost unbelievable but is plausible (template: '92% of devs miss this').",
     "PROVOCATIVE QUESTION: open with a bold question that challenges the viewer's assumptions and demands an answer (template: 'Why is nobody using ___?').",
     "CONTRARIAN CLAIM: open with a confident, against-the-grain statement that contradicts common belief (template: '___ is dead. Here's what replaced it').",
@@ -2842,6 +2857,175 @@ def _estimate_spoken_seconds(scenes: List[dict]) -> float:
     return total_words / 2.33 + 0.35 * spoken_scenes
 
 
+# ---------------------------------------------------------------------------
+# Script insight/concreteness gate (deterministic, LLM-free)
+# ---------------------------------------------------------------------------
+# Code-level backstop for SYSTEM_PROMPT rules 14b/14c: catches scripts that
+# came out as platitude/advice videos instead of concrete stories. Peer of the
+# caption sanity gate (_sanitize_caption): it never invents or rewrites
+# content — it only returns rejection reasons; the retry loop quotes them back
+# to the model for a corrective re-ask, and auto channels abort rather than
+# post a vague video (same policy as the unparseable-script abort).
+#
+# Two tiers:
+#   HARD — precision-first "this is a platitude video" signals; after all
+#          retries these ABORT auto channels.
+#   SOFT — recall-first nudges; they trigger a corrective re-ask but can NEVER
+#          abort (a legit no-stats policy story must always stay shippable).
+
+_PLATITUDE_RES = [re.compile(p, re.IGNORECASE) for p in (
+    r"\bchang(?:e[sd]?|ing)\s+everything\b",
+    r"\bgame[- ]?chang(?:er|ing)\b",
+    r"\bchang(?:e[sd]?|ing)\s+the\s+game\b",
+    r"\brevolutioniz\w*\s+(?:the\s+)?(?:industry|world|way\s+we)\b",
+    r"\bboost(?:s|ing)?\s+(?:your\s+)?productivity\b",
+    r"\bmakes?\s+(?:your\s+)?life\s+easier\b",
+    r"\btools?\s+make\s+(?:your\s+)?life\s+easier\b",
+    r"\bin\s+today'?s\s+(?:fast[- ]paced\s+|digital\s+)?world\b",
+    r"\btake\s+(?:your|it)\s+\w{0,20}\s*to\s+the\s+next\s+level\b",
+    r"\bwork\s+smarter,?\s+not\s+harder\b",
+    r"\bstay\s+ahead\s+of\s+the\s+curve\b",
+    r"\bthe\s+future\s+is\s+(?:here|now)\b",
+    r"\bunlock\s+(?:your|the|its)\s+(?:full\s+)?potential\b",
+    r"\bwill\s+never\s+be\s+the\s+same\b",
+    r"\bsav(?:e[sd]?|ing)\s+(?:you\s+)?(?:tons?|hours|loads)\s+of\s+time\b",
+    r"\bai\s+is\s+(?:taking\s+over|the\s+future)\b",
+)]
+
+# Sentence-initial imperative advice ("Start time-blocking...", "You should...").
+# Deliberately anchored to the START of the voiceover: "Researchers use it to
+# scan..." mid-sentence must not count.
+_IMPERATIVE_ADVICE_RE = re.compile(
+    r"^(?:so\s+|now\s+|just\s+)?(?:you\s+(?:should|need\s+to|must|have\s+to)\b"
+    r"|(?:start|stop|try|use|avoid|remember|consider|embrace|focus\s+on|make\s+sure|don'?t\s+forget|learn)\b)",
+    re.IGNORECASE)
+
+# The few-shots write numbers out ("twenty milliseconds"), so a bare \d check
+# on voiceovers would call a perfectly concrete script number-free.
+_SPELLED_NUM_RE = re.compile(
+    r"\b(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|twenty|thirty|forty|fifty"
+    r"|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|trillion|half|double|triple|percent)\b",
+    re.IGNORECASE)
+
+_SUBJECT_STOPWORDS = frozenset((
+    "the", "this", "that", "with", "from", "just", "your", "into", "over",
+    "after", "before", "about", "what", "when", "will", "have", "been",
+    "release", "releases", "released", "launch", "launches", "launched",
+    "update", "updates", "announces", "announcement", "version", "their",
+))
+
+
+def _scene_has_number(scene: dict) -> bool:
+    """True when the scene carries a real figure: a digit in an on-screen
+    field, count/chart/rating data, or a spelled-out number in the voiceover."""
+    for field in ("text", "title", "subtitle", "secondaryText"):
+        if re.search(r"\d", str(scene.get(field) or "")):
+            return True
+    if scene.get("countFrom") is not None or scene.get("countTo") is not None:
+        return True
+    if isinstance(scene.get("chartData"), list) and scene.get("chartData"):
+        return True
+    if scene.get("ratingValue") is not None:
+        return True
+    vo = str(scene.get("voiceover") or "")
+    return bool(re.search(r"\d", vo) or _SPELLED_NUM_RE.search(vo))
+
+
+def _subject_tokens(topic_meta) -> list:
+    """Lowercased content tokens (len >= 4, stopwords dropped) of the topic's
+    subject/title. [] when unknown — subject checks are then skipped entirely.
+    NOT _extract_topic_keywords: that returns VIRAL_KEYWORDS matches ("ai",
+    "gpt"), not the subject's own name."""
+    if not isinstance(topic_meta, dict):
+        return []
+    raw = str(topic_meta.get("subject") or topic_meta.get("title") or "")
+    return [w for w in re.findall(r"[a-z0-9][\w.-]*", raw.lower())
+            if len(w) >= 4 and w not in _SUBJECT_STOPWORDS]
+
+
+def _script_vagueness_reasons(script: dict, source_prompt: str = "",
+                              topic_meta: Optional[dict] = None) -> tuple:
+    """Returns (hard_reasons, soft_reasons) as human-readable strings the retry
+    loop quotes back to the model. Read-only: never mutates the script.
+
+    Runs on the POST-scrub script (after parse_and_validate_script), so the
+    fabrication scrub and redundancy pruning have already done their work —
+    this only judges what is left for vagueness.
+    """
+    hard: list = []
+    soft: list = []
+    scenes = [s for s in (script.get("scenes") or []) if isinstance(s, dict)]
+    if len(scenes) < 2:
+        return hard, soft
+
+    def _fields(s: dict) -> list:
+        return [str(s.get(f) or "") for f in ("voiceover", "text", "title", "subtitle", "secondaryText")]
+
+    number_scenes = sum(1 for s in scenes if _scene_has_number(s))
+
+    # H1 — banned platitude phrases. >=2 hits (or 1 hit in a numbers-free
+    # script) = a platitude video; a single stray phrase in an otherwise
+    # concrete script only earns a soft re-ask.
+    platitude_hits = []
+    for i, s in enumerate(scenes):
+        blob = " ".join(_fields(s))
+        for rx in _PLATITUDE_RES:
+            m = rx.search(blob)
+            if m:
+                platitude_hits.append((i, m.group(0)))
+    if platitude_hits:
+        listing = ", ".join(f"scene {i + 1}: '{p}'" for i, p in platitude_hits[:3])
+        if len(platitude_hits) >= 2 or number_scenes == 0:
+            hard.append(f"banned platitude phrasing ({listing})")
+        else:
+            soft.append(f"one platitude phrase slipped in ({listing}) — replace it with a specific detail")
+
+    # H2 — the named subject must appear in the hook scene. Prefix-match on the
+    # first 5 chars so "Postgres" matches "PostgreSQL". Skipped when the
+    # subject is unknown (manual sessions without topic_meta).
+    subj_tokens = _subject_tokens(topic_meta)
+    script_blob = " ".join(" ".join(_fields(s)) for s in scenes).lower()
+    subject_anywhere = any(t[:5] in script_blob for t in subj_tokens)
+    if subj_tokens:
+        subj_label = str(topic_meta.get("subject") or topic_meta.get("title") or "")
+        hook_blob = " ".join(_fields(scenes[0])).lower()
+        if not any(t[:5] in hook_blob for t in subj_tokens):
+            hard.append(f"the subject '{subj_label}' is never named in the hook scene")
+
+    # H3 / S2 — imperative-advice density over the middle scenes (hook and
+    # closer are legitimately imperative: "Delete this app", "Try it today").
+    mid = scenes[1:-1] if len(scenes) > 2 else []
+    imp_count = sum(
+        1 for s in mid
+        if str(s.get("voiceover") or "").strip()
+        and _IMPERATIVE_ADVICE_RE.search(str(s.get("voiceover") or "").strip())
+    )
+    if mid and imp_count * 2 >= len(mid):
+        if not subject_anywhere and number_scenes == 0:
+            hard.append("most scenes give generic imperative advice with no named subject "
+                        "and no real numbers — a platitude video, not a story")
+        else:
+            soft.append("scenes open with 'do this' advice — explain what happened and how it works instead")
+
+    # S1 — the source carried real figures but the script barely uses any.
+    corpus = (source_prompt or "").lower()
+    if len(set(re.findall(r"\d[\d,.]*", corpus))) >= 3 and number_scenes < 2:
+        soft.append("the source contains real figures but the script uses almost none")
+
+    # S3 — grounding: middle scenes should share specifics with the source.
+    # Skipped for short prompts (e.g. the HN-unreachable free-form fallback).
+    if len(corpus) >= 600 and mid:
+        corpus_words = set(re.findall(r"[a-z0-9]{5,}", corpus))
+        grounded_scenes = sum(
+            1 for s in mid
+            if len(set(re.findall(r"[a-z0-9]{5,}", str(s.get("voiceover") or "").lower())) & corpus_words) >= 2
+        )
+        if grounded_scenes * 2 < len(mid):
+            soft.append("most scenes use no specifics from the source article")
+
+    return hard, soft
+
+
 def _execute_render(req: RenderRequest, session_id: str) -> dict:
     """Execute the full render pipeline with a global sequential lock."""
     with render_lock:
@@ -2923,9 +3107,19 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
     best_script = None
     best_est_sec = 0.0
     best_band_dist = None
+    best_key = None
+    best_hard: List[str] = []
+    best_soft: List[str] = []
     last_est_sec = None
+    last_gate_reasons: List[str] = []
     llm_error = None
-    for attempt in range(1 + SCRIPT_EXPAND_RETRIES):
+    attempt = 0
+    max_attempts = 1 + SCRIPT_EXPAND_RETRIES
+    # Extra attempts reserved for insight-gate failures only, so a vague-but-
+    # well-timed script still gets its own corrective re-ask even when the
+    # runtime retries are used up.
+    gate_extension_left = SCRIPT_GATE_RETRIES if ENABLE_SCRIPT_GATE else 0
+    while attempt < max_attempts:
         prompt_for_attempt = user_prompt
         if attempt > 0:
             if last_est_sec is None:
@@ -2940,11 +3134,20 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
                     f"20-35 words (two full sentences is ideal) so the summed narration lasts 40-55 seconds. Do NOT pad "
                     f"with repetition or filler — every added sentence must contribute a new concrete fact or detail."
                 )
-            else:
+            elif last_est_sec > MAX_SPOKEN_SEC:
                 prompt_for_attempt += (
                     f"\n\nCRITICAL REVISION: the previous script's narration ran ~{int(last_est_sec)} seconds when "
                     f"spoken — too long for a Reel. Cut the weakest scenes and tighten every \"voiceover\" so the "
                     f"summed narration lasts 40-55 seconds, keeping only the strongest concrete facts."
+                )
+            if last_gate_reasons:
+                prompt_for_attempt += (
+                    "\n\nCRITICAL REVISION: the previous script was rejected as too vague/generic: "
+                    + "; ".join(last_gate_reasons[:3]) +
+                    ". Rewrite about the SAME topic: name the exact subject in scene 1, explain HOW it "
+                    "actually works (the mechanism), use only real figures that appear in the brief above, "
+                    "and end with why it matters and who is affected. Never give generic advice like "
+                    "\"do this\" or \"you should\"."
                 )
         try:
             raw_text = query_llm_with_failover(
@@ -2963,6 +3166,8 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
         except Exception as e:
             print(f"[{session_id}] WARN: Parse failed on attempt {attempt + 1} ({e})")
             last_est_sec = None
+            last_gate_reasons = []
+            attempt += 1
             continue
         if candidate.get("_isFallback"):
             # parse_and_validate_script swallows garbage output and returns the
@@ -2970,23 +3175,59 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
             # as a real candidate here.
             print(f"[{session_id}] WARN: attempt {attempt + 1} produced no parseable script (fallback returned)")
             last_est_sec = None
+            last_gate_reasons = []
+            attempt += 1
             continue
         est_sec = _estimate_spoken_seconds(candidate.get("scenes", []))
         last_est_sec = est_sec
         band_dist = max(MIN_SPOKEN_SEC - est_sec, 0.0) + max(est_sec - MAX_SPOKEN_SEC, 0.0)
+        if ENABLE_SCRIPT_GATE:
+            hard, soft = _script_vagueness_reasons(candidate, req.prompt or "", req.topic_meta)
+        else:
+            hard, soft = [], []
+        last_gate_reasons = hard + soft
         print(f"[{session_id}] Script attempt {attempt + 1}: {len(candidate.get('scenes', []))} scenes, "
               f"estimated spoken runtime {est_sec:.1f}s (target {MIN_SPOKEN_SEC:.0f}-{MAX_SPOKEN_SEC:.0f}s)")
-        if best_band_dist is None or band_dist < best_band_dist:
+        if hard or soft:
+            print(f"[{session_id}] Insight gate on attempt {attempt + 1}: {len(hard)} hard / {len(soft)} soft — "
+                  + "; ".join((hard + soft)[:3]))
+        # Lexicographic best-of: gate-clean beats runtime-perfect-but-vague.
+        # With the gate disabled hard/soft are always empty and this degrades
+        # to the legacy band_dist ordering exactly.
+        key = (len(hard), band_dist, len(soft))
+        if best_key is None or key < best_key:
             best_script, best_est_sec, best_band_dist = candidate, est_sec, band_dist
-        if band_dist == 0.0:
+            best_key, best_hard, best_soft = key, hard, soft
+        if band_dist == 0.0 and not hard and not soft:
             break
-        print(f"[{session_id}] Script outside target runtime — regenerating with revision note...")
+        if hard and attempt == max_attempts - 1 and gate_extension_left > 0:
+            max_attempts += 1
+            gate_extension_left -= 1
+        print(f"[{session_id}] Script needs revision (runtime and/or insight gate) — regenerating...")
+        attempt += 1
 
     if best_script is not None:
+        if ENABLE_SCRIPT_GATE and best_hard and is_auto_channel:
+            # Best attempt is still a vague/platitude script. Posting it would
+            # be worse than skipping the slot — abort loudly (the CI wrapper
+            # telegrams the failure; the story is NOT burned in history, so the
+            # next cron can retry it). Peer of the unparseable-script abort.
+            render_status_store[session_id]["status"] = "error"
+            render_status_store[session_id]["error"] = "Script failed the insight gate on every attempt."
+            raise Exception(
+                "Script generation produced only vague/generic scripts after all retries ("
+                + "; ".join(best_hard[:4]) +
+                ") — aborting so no platitude video is posted."
+            )
         parsed_script = best_script
         if best_band_dist is not None and best_band_dist > 0.0:
             print(f"[{session_id}] WARN: best attempt still outside the target runtime (~{best_est_sec:.0f}s spoken) "
                   f"after {SCRIPT_EXPAND_RETRIES} retries — proceeding with the closest one.")
+        if best_hard:
+            print(f"[{session_id}] WARN: script failed the insight gate ({'; '.join(best_hard[:4])}) — "
+                  f"manual session, shipping anyway.")
+        elif best_soft:
+            print(f"[{session_id}] NOTE: shipping with soft insight-gate notes: {'; '.join(best_soft[:4])}")
     elif llm_error is not None:
         render_status_store[session_id]["status"] = "error"
         render_status_store[session_id]["error"] = "LLM generation failed for all models."
@@ -6959,7 +7200,9 @@ def extract_article_body(url: str) -> str:
         return ""
 
 
-def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None, outro_appended: bool = False) -> str:
+def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None,
+                         outro_appended: bool = False,
+                         plan: Optional[dict] = None) -> str:
     """Builds a fast-paced tech-news prompt with a RANDOMIZED scene flow.
 
     The visual theme is intentionally left to the backend style-director (which
@@ -6972,9 +7215,15 @@ def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None, outr
     card right after it is the only one); when False (news scheduler,
     /render/hn-news) no outro card exists, so the closer keeps the follow CTA
     itself — otherwise those videos end with no follow ask at all.
+
+    `plan` is an optional editorial plan from plan_story_angle (CI topic
+    judge): subject/angle/hook/insight/facts. When absent (or subject-less),
+    the output is identical to the plan-less call — the judge degrading must
+    reproduce today's prompt exactly.
     """
     content_snippet = body.strip() if body else "No article content available."
     rnd = random.Random(seed) if seed is not None else random.Random()
+    plan = plan if (plan and str(plan.get("subject") or "").strip()) else None
 
     hook, _hook_mode = _feedback_weighted_choice(
         HOOK_PATTERNS, lambda h: h.split(":")[0].strip(), "hooks", rnd, get_feedback_stats())
@@ -6996,16 +7245,44 @@ def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None, outr
 
     closer_type = rnd.choice(["cta", "hero", "split"])
 
-    outline_lines = [f'- Scene 1 (HOOK): {hook} Type: "hero". Deliver the news headline in a way that is impossible to scroll past.']
+    # Judge-plan garnish: the seeded HOOK_PATTERNS line governs the hook's
+    # FORM; the judge's hook governs its CONTENT (same coexistence as
+    # build_viral_topic_prompt). The insight lands in the conclusion line
+    # BEFORE the outro/follow clauses, which must stay verbatim (the
+    # outro_appended double-follow-ask contract).
+    judge_hook = f' Open with this energy: "{plan["hook"]}".' if plan and plan.get("hook") else ""
+    takeaway = f' The takeaway to land: {plan["insight"]}' if plan and plan.get("insight") else ""
+
+    outline_lines = [f'- Scene 1 (HOOK): {hook} Type: "hero". Deliver the news headline in a way that is impossible to scroll past.{judge_hook}']
     for i, (beat_type, beat_desc) in enumerate(middle_beats, start=2):
         outline_lines.append(f'- Scene {i}: {beat_desc} Type: "{beat_type}".')
     conclusion_idx = len(middle_beats) + 2
     if outro_appended:
-        outline_lines.append(f'- Scene {conclusion_idx} (CONCLUSION): Land a strong, satisfying takeaway on why this story matters. Type: "{closer_type}". Do NOT ask viewers to follow/subscribe and do NOT mention the channel name — a branded outro card is appended automatically right after this scene.')
+        outline_lines.append(f'- Scene {conclusion_idx} (CONCLUSION): Land a strong, satisfying takeaway on why this story matters.{takeaway} Type: "{closer_type}". Do NOT ask viewers to follow/subscribe and do NOT mention the channel name — a branded outro card is appended automatically right after this scene.')
     else:
-        outline_lines.append(f'- Scene {conclusion_idx} (CONCLUSION): Land a strong, satisfying takeaway on why this story matters. Type: "{closer_type}". End with a clear "Follow Neon Node for more tech" call-to-action.')
+        outline_lines.append(f'- Scene {conclusion_idx} (CONCLUSION): Land a strong, satisfying takeaway on why this story matters.{takeaway} Type: "{closer_type}". End with a clear "Follow Neon Node for more tech" call-to-action.')
 
     outline = "\n".join(outline_lines)
+
+    editorial_block = ""
+    if plan:
+        plan_facts = [str(f).strip() for f in (plan.get("facts") or []) if str(f).strip()]
+        editorial_lines = [
+            "EDITORIAL PLAN (this is the point of the video — follow it):",
+            f"- SUBJECT: {plan['subject']}. The ENTIRE video is about this one thing, end-to-end — no detours.",
+        ]
+        if plan.get("angle"):
+            editorial_lines.append(f"- ANGLE: {plan['angle']}")
+        if plan.get("insight"):
+            editorial_lines.append(f"- PAYOFF: the CONCLUSION scene must land exactly this insight: {plan['insight']}")
+        if plan_facts:
+            editorial_lines.append(
+                "- VERIFIED FACTS (weave at least two into the middle scenes, accurate to the article): "
+                + "; ".join(plan_facts) + ".")
+        else:
+            editorial_lines.append(
+                "- Use ONLY specifics that appear in the article text above — do NOT add numbers, people, or quotes beyond it.")
+        editorial_block = "\n".join(editorial_lines) + "\n\n"
 
     return f"""Create a highly engaging, fast-paced vertical (9:16) tech-news video summarizing this trending Hacker News article.
 
@@ -7014,7 +7291,7 @@ NEWS SOURCE DETAILS:
 - Main Content Text:
 {content_snippet}
 
-PLATFORM: Vertical 9:16 Reels/Shorts. Set "aspectRatio":"9:16".
+{editorial_block}PLATFORM: Vertical 9:16 Reels/Shorts. Set "aspectRatio":"9:16".
 (The visual theme — colors, overlay, font, music — is applied automatically by the renderer, so you may pick any tasteful tech-appropriate values; focus your energy on the writing and structure below.)
 
 SCENE OUTLINE (follow this structure, but write ORIGINAL, specific copy):
@@ -7025,7 +7302,12 @@ SCENE OUTLINE (follow this structure, but write ORIGINAL, specific copy):
 
 NO-REPETITION (this is the #1 thing that makes these videos feel cheap): name the product/company from the headline in the HOOK scene ONLY. After that, refer to it as "it" / "the tool" / "the team" — do NOT restate the headline in later scenes. The subtitles show every spoken word for the whole video, so a repeated line is read and heard 5-6 times. Every scene must add information the earlier scenes did NOT state.
 
-CONCRETENESS CONTRACT: this video is about THIS story only. Pull real specifics (numbers, names, what changed, what it does) from the article text above into the scenes. BANNED: generic filler everyone already knows ('technology is evolving fast', 'this will change everything', 'tools make life easier') — every sentence must carry information specific to this story.
+CONCRETENESS CONTRACT: this video covers THIS story only, END-TO-END. The scenes must together deliver:
+(1) WHAT happened — name the exact subject in the HOOK scene (and only fully there, per the no-repetition rule);
+(2) HOW it actually works — the mechanism or cause behind the headline, pulled from the article text above (the one detail that makes a viewer say "oh, THAT'S how");
+(3) REAL numbers — if the article text contains figures, weave at least two of them into the scenes; NEVER invent any;
+(4) WHY it matters — who is affected and what changes now.
+BANNED: generic filler everyone already knows ('technology is evolving fast', 'this will change everything', 'tools make life easier') AND generic advice to the viewer ('do this', 'you should', 'try these tips') — this is a news story, not a tutorial. Every sentence must carry information specific to THIS story.
 """
 
 
@@ -8037,13 +8319,42 @@ VIRAL_KEYWORDS: Dict[str, float] = {
     # Recognizable brands (searchable subjects)
     "google": 0.9, "apple": 1.0, "microsoft": 0.9, "meta": 0.9, "tesla": 1.1,
     "nvidia": 1.3, "amazon": 0.8, "spacex": 1.2, "x.com": 0.9, "twitter": 0.9,
+    # Concrete events: breakthroughs / releases / incidents / research — the
+    # "something HAPPENED" bias (stems, matching the dict's substring style;
+    # no bare "ships"/"beats"/"paper": those substring-hit "relationships",
+    # "heartbeats", "newspaper").
+    "releas": 1.1, "announc": 0.9, "shipped": 1.0, "open sourc": 1.2, "open-sourc": 1.2,
+    "outage": 1.7, "incident": 1.2, "postmortem": 1.5, "root cause": 1.3,
+    "outperform": 1.3, "benchmark": 1.0, "state of the art": 1.2,
+    "researchers": 1.1, "study finds": 1.2, "discover": 1.2,
+    "deprecat": 1.2, "end of life": 1.2, "sunset": 1.0,
 }
 
 # Topics that rarely translate into a broadly shareable short — softly penalized.
+# These are MULTIPLIERS on the keyword subtotal (kw *= mult), so every value
+# must be < 1.0 to penalize ("ask hn" once sat at 1.2 and silently BOOSTED
+# Ask-HN threads by 20%). They are also a no-op when a title matched zero
+# viral keywords — _ADVICE_TITLE_RE below covers that hole with a flat penalty.
 VIRAL_NEGATIVES: Dict[str, float] = {
-    "show hn": 0.8, "ask hn": 1.2, "my ": 0.5, "i built": 0.6, "i made": 0.6,
+    "show hn": 0.8, "ask hn": 0.5, "my ": 0.5, "i built": 0.6, "i made": 0.6,
     "weekly": 0.6, "roundup": 0.6, "changelog": 0.6, "v0.": 0.4, "rfc": 0.5,
+    # Advice / listicle / how-to / opinion — the channel covers what HAPPENED,
+    # not what the viewer should do.
+    "how to": 0.5, "how i ": 0.5, "tips": 0.5, "ways to": 0.5,
+    "why you should": 0.4, "you should": 0.5, "best practices": 0.4,
+    "guide": 0.6, "getting started": 0.5, "introduction to": 0.5, "beginner": 0.5,
+    "cheat sheet": 0.5, "lessons learned": 0.5, "thoughts on": 0.5, "opinion": 0.6,
+    "poll:": 0.5, "curated": 0.6, "awesome list": 0.5, "habits": 0.5, "productivity": 0.6,
 }
+
+# Flat score penalty for advice/listicle/how-to/poll titles. VIRAL_NEGATIVES
+# only scales the keyword subtotal, so a generic "10 productivity tips" title
+# with zero viral keywords sails through untouched — this closes that hole.
+_ADVICE_TITLE_RE = re.compile(
+    r"(?:^|\b)(?:how to|how i |\d+\s+(?:(?!new\b)\w+\s+)?(?:ways|tips|tricks|lessons|things|habits|tools)\b"
+    r"|why you should|you should|best practices|a guide to|getting started with"
+    r"|ask hn|poll:|thoughts on|an? (?:introduction|intro) to)",
+    re.IGNORECASE)
 
 
 def _normalize_subject(s: str) -> str:
@@ -8212,7 +8523,11 @@ def score_virality(c: dict) -> float:
     if 3 <= wc <= 12:
         punch += 0.4
 
-    return engagement_score + discussion_score + recency_score + kw + punch
+    # Advice/listicle-shaped titles get a flat penalty regardless of keyword
+    # matches (see _ADVICE_TITLE_RE above) — news over advice.
+    class_adj = -1.5 if _ADVICE_TITLE_RE.search(c.get("title", "")) else 0.0
+
+    return engagement_score + discussion_score + recency_score + kw + punch + class_adj
 
 
 def _gather_candidates(kind: str) -> list:
@@ -8232,6 +8547,29 @@ def _gather_candidates(kind: str) -> list:
         candidates += get_reddit_top("technology", "week", 6)
     # Drop empties / obvious junk
     return [c for c in candidates if c.get("title") and len(c["title"]) > 6]
+
+
+def _ground_facts(facts: list, corpus: str, tag: str = "TopicEngine") -> list:
+    """Keep only facts traceable to `corpus`; drop the rest loudly.
+
+    A fact survives when every number it contains literally appears in the
+    corpus AND >=0.5 of its 4+-char words do. LLM-claimed specifics that
+    can't be traced back to the source are guesswork and must never reach a
+    script prompt as "verified". Shared by _llm_rank_and_angle (headline
+    shortlist judge) and plan_story_angle (CI single-story judge).
+    """
+    corpus_norm = corpus.lower().replace(",", "")
+    grounded = []
+    for fact in facts:
+        nums = re.findall(r"\d[\d,.]*", fact)
+        nums_ok = all(n.replace(",", "").rstrip(".") in corpus_norm for n in nums)
+        words = re.findall(r"[a-z0-9]{4,}", fact.lower())
+        overlap = (sum(1 for w in words if w in corpus_norm) / len(words)) if words else 0.0
+        if nums_ok and overlap >= 0.5:
+            grounded.append(fact)
+        else:
+            print(f"[{tag}] Dropped ungrounded fact (overlap={round(overlap, 2)}, nums_ok={nums_ok}): {fact!r}")
+    return grounded
 
 
 def _llm_rank_and_angle(shortlist: list, kind: str, session_id: str) -> Optional[dict]:
@@ -8263,9 +8601,9 @@ def _llm_rank_and_angle(shortlist: list, kind: str, session_id: str) -> Optional
         "You only ever answer with strict JSON."
     )
     user = f"""Below are real trending tech items with engagement data, ranked by an initial virality model.
-Pick the SINGLE best one to turn into a 20-40 second vertical video for {audience}.
+Pick the SINGLE most CONSEQUENTIAL story to turn into a 20-40 second vertical video for {audience}: a breakthrough, a major release, a real incident/outage/breach, or a research result — something that HAPPENED, with a clear "so what" the video can state. A recognizable/searchable subject and a strong curiosity hook still matter, but importance beats debate-bait.
 
-Choose for MAXIMUM viral potential: a recognizable/searchable subject, a strong emotional or curiosity hook, and broad shareability (not niche insider stuff). Prefer timely + debate-worthy over generic.
+REJECT advice, listicles, how-tos, tutorials, roundups and opinion pieces ("how to", "tips", "N ways to", "why you should", "a guide to", "best practices", "thoughts on", "Ask HN", polls) — pick news, not advice. If every candidate is advice-shaped, pick the one closest to a concrete event.
 
 HARD REQUIREMENT — the subject must be ONE named, concrete thing: a specific product, tool, library, release, gadget, company move, or incident. NEVER an abstract theme or life advice ("AI is changing everything", "good tools boost productivity" = instant reject). The viewer must learn something they can name, search, and try.
 
@@ -8273,13 +8611,13 @@ CANDIDATES:
 {listing}
 
 Return ONLY this JSON (no other text):
-{{"pick": <candidate number>, "subject": "<2-5 word searchable topic>", "angle": "<the specific viral angle in one vivid sentence>", "hook": "<a scroll-stopping first line, max 8 words>", "facts": ["<2-4 concrete facts from the item: what it is/does, a real number or spec, what changed>"], "format": "explainer|hot-take|news|listicle|comparison", "title": "<punchy 5-9 word video title>", "why": "<why this will perform, one short phrase>"}}"""
+{{"pick": <candidate number>, "subject": "<2-5 word searchable topic>", "angle": "<the specific viral angle in one vivid sentence>", "hook": "<a scroll-stopping first line, max 8 words>", "facts": ["<2-4 concrete facts from the item: what it is/does, a real number or spec, what changed>"], "insight": "<the one non-obvious takeaway — who is affected and what changes now, one sentence>", "format": "explainer|hot-take|news|comparison", "title": "<punchy 5-9 word video title>", "why": "<why this will perform, one short phrase>"}}"""
 
     try:
         raw = query_llm_with_failover(
             system_prompt=system,
             user_prompt=user,
-            max_tokens=350,
+            max_tokens=420,
             json_format=True,
             session_id=session_id,
         )
@@ -8318,24 +8656,16 @@ Return ONLY this JSON (no other text):
         corpus += " " + (extract_article_body(chosen.get("url") or "") or "")
     except Exception:
         pass
-    corpus_norm = corpus.lower().replace(",", "")
-    grounded = []
-    for fact in facts:
-        nums = re.findall(r"\d[\d,.]*", fact)
-        nums_ok = all(n.replace(",", "").rstrip(".") in corpus_norm for n in nums)
-        words = re.findall(r"[a-z0-9]{4,}", fact.lower())
-        overlap = (sum(1 for w in words if w in corpus_norm) / len(words)) if words else 0.0
-        if nums_ok and overlap >= 0.5:
-            grounded.append(fact)
-        else:
-            print(f"[TopicEngine] Dropped ungrounded fact (overlap={round(overlap, 2)}, nums_ok={nums_ok}): {fact!r}")
-    facts = grounded
+    facts = _ground_facts(facts, corpus)
 
     return {
         "subject": (plan.get("subject") or chosen.get("subject") or chosen.get("title", "")).strip(),
         "angle": (plan.get("angle") or "").strip(),
         "hook": (plan.get("hook") or "").strip(),
         "facts": facts,
+        # Angle-tier trust (the judge's interpretation, like "angle"/"hook") —
+        # never merged into the VERIFIED SOURCE FACTS block.
+        "insight": (plan.get("insight") or "").strip(),
         "format": (plan.get("format") or "explainer").strip(),
         "title": (plan.get("title") or "").strip(),
         "why": (plan.get("why") or "").strip(),
@@ -8345,6 +8675,88 @@ Return ONLY this JSON (no other text):
         "score": round(chosen.get("_score", 0.0), 2),
         "candidate": chosen,
     }
+
+
+def plan_story_angle(title: str, body: str, url: str = "",
+                     session_id: str = "TopicJudge") -> Optional[dict]:
+    """Single-story editorial judge for the CI news path (generate_now.py).
+
+    Unlike _llm_rank_and_angle (which judges a headline shortlist and must
+    guess specifics), this judges the ONE already-picked story WITH its
+    scraped article text in-context, so its facts are copied from the
+    article and survive _ground_facts.
+
+    Contract: returns None ONLY on LLM/parse failure (caller degrades to the
+    plain news prompt — a retry would fail the same way). A parsed reply
+    always returns a dict; {"subject": ""} is the judge's explicit verdict
+    that the story has no nameable concrete subject (caller may re-pick).
+    Never raises, never fetches (body is passed in).
+    Small-model friendly: one article in, strict tiny JSON out.
+    """
+    body_snippet = (body or "").strip()[:3000]
+    system = (
+        "You are a short-form tech video editor. You turn ONE news article into a "
+        "tight 30-second video plan with a real insight. You only ever answer with strict JSON."
+    )
+    user = f"""ARTICLE HEADLINE: {title}
+
+ARTICLE TEXT (scraped; may be partial or empty):
+{body_snippet or "No article text available — judge from the headline only."}
+
+Plan ONE vertical short video that covers this story END-TO-END: what happened, how it actually works, why it matters, and the single most valuable thing a tech viewer learns.
+
+HARD REQUIREMENT — the video's subject must be ONE named, concrete thing: a specific product, release, model, company move, incident, or research result. If this article is a vague think-piece, opinion essay, advice/how-to/listicle, or roundup with no nameable concrete subject, return {{"subject": ""}} and nothing else.
+
+"facts" rules: COPY 2-5 concrete specifics (numbers, versions, names, dates, what changed) accurately from the ARTICLE TEXT above. Never add specifics from memory. Each fact under 20 words.
+
+Return ONLY this JSON (no other text):
+{{"subject": "<2-5 word searchable topic>", "angle": "<one sentence: the story of the video>", "hook": "<scroll-stopping first line, max 8 words>", "insight": "<the one non-obvious takeaway — who is affected and what changes now, one sentence>", "facts": ["..."], "format": "news|explainer|comparison"}}"""
+
+    try:
+        raw = query_llm_with_failover(
+            system_prompt=system,
+            user_prompt=user,
+            max_tokens=450,
+            json_format=True,
+            session_id=session_id,
+        )
+    except Exception as e:
+        print(f"[TopicJudge] LLM judge failed: {e}")
+        return None
+
+    plan = _coerce_llm_json(raw, "TopicJudge", quiet=True)
+    if not isinstance(plan, dict):
+        print(f"[TopicJudge] Could not parse judge JSON: {str(raw)[:200]}")
+        return None
+
+    subject = str(plan.get("subject") or "").strip()
+    if not subject:
+        print(f"[TopicJudge] Vague-story verdict for: {title[:80]!r}")
+        return {"subject": ""}
+
+    facts = plan.get("facts")
+    if not isinstance(facts, list):
+        facts = []
+    facts = [str(f).strip() for f in facts if str(f).strip()][:5]
+    facts = _ground_facts(facts, f"{title} {body or ''}", tag="TopicJudge")
+
+    fmt = str(plan.get("format") or "news").strip()
+    if fmt not in ("news", "explainer", "comparison"):
+        fmt = "news"
+
+    result = {
+        "subject": subject,
+        "angle": str(plan.get("angle") or "").strip(),
+        "hook": str(plan.get("hook") or "").strip(),
+        # Angle-tier trust — the payoff beat, never a VERIFIED SOURCE FACT.
+        "insight": str(plan.get("insight") or "").strip(),
+        "facts": facts,
+        "format": fmt,
+        "url": url,
+    }
+    print(f"[TopicJudge] Plan: subject='{result['subject']}' "
+          f"insight='{result['insight'][:80]}' facts={len(facts)}")
+    return result
 
 
 def select_viral_topic(kind: str, processed: list, session_id: str = "TopicEngine",
@@ -8394,7 +8806,7 @@ def select_viral_topic(kind: str, processed: list, session_id: str = "TopicEngin
         plan = {
             "subject": top.get("subject") or top.get("title"),
             "angle": f"Why {top.get('subject') or top.get('title')} is trending right now.",
-            "hook": "", "format": "explainer", "title": "", "why": "top viral score",
+            "hook": "", "insight": "", "format": "explainer", "title": "", "why": "top viral score",
             "source": top.get("source"), "url": top.get("url"),
             "engagement": top.get("engagement"), "score": round(top.get("_score", 0.0), 2),
             "candidate": top,
@@ -8421,6 +8833,8 @@ def build_viral_topic_prompt(plan: dict) -> str:
     ]
     if angle:
         parts.append(f"ANGLE (this is the whole point of the video): {angle}")
+    if plan.get("insight"):
+        parts.append(f"WHY IT MATTERS (make this the final payoff beat, in your own words): {plan['insight']}")
     if hook:
         parts.append(f'Open on the FIRST scene with this scroll-stopping hook energy: "{hook}".')
     if facts:
@@ -8446,7 +8860,9 @@ def build_viral_topic_prompt(plan: dict) -> str:
         "DEMONSTRATE it — at least one scene must show HOW it actually works in practice (what you run/click/type, what it "
         "replaces, or a real spec/benchmark), e.g. a list scene with concrete usage steps or a metric scene with a real number. "
         "BANNED: generic truisms everyone already knows ('good tools make you productive', 'AI is changing everything', "
-        "'automation saves time') — every sentence must contain information specific to this subject. "
+        "'automation saves time') AND generic advice to the viewer ('do this', 'you should', 'try these tips') — this is "
+        "a story about what happened and how it works, not a tutorial about life. Every sentence must contain "
+        "information specific to this subject. "
         "Structure it as a story that escalates (hook, why it matters, the surprising detail, payoff), not a list of facts. "
         "Make tech enthusiasts and developers stop scrolling, feel a jolt of curiosity or surprise, and want to share it. "
         "End with one punchy takeaway that rewards watching to the end."

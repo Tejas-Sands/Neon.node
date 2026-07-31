@@ -1,6 +1,7 @@
 import os
 import random
 import sys
+import time
 import uuid
 from main import (
     RenderRequest,
@@ -16,6 +17,7 @@ from main import (
     extract_article_body,
     filter_and_pick_story,
     load_topic_history,
+    plan_story_angle,
     record_topic_use,
     send_telegram_message,
     render_status_store,
@@ -23,6 +25,7 @@ from main import (
     AUTO_CHANNEL_PREFIXES,
     _derive_seed,
     _extract_topic_keywords,
+    _normalize_subject,
     collect_ledger_metrics,
 )
 
@@ -109,6 +112,7 @@ def main():
             print(f"Failed to get HN stories: {e}")
 
         best = None
+        plan = None
         if not stories:
             print("Could not fetch HackerNews stories. Falling back to default tech prompt.")
             prompt = (
@@ -150,17 +154,69 @@ def main():
             except Exception as e:
                 print(f"Article scrape failed (continuing with headline only): {e}")
             print(f"Selected story (virality score {best['_score']:.2f}): '{title}' (article body: {len(body)} chars)")
+
+            # Editorial judge: turn the picked story into a concrete end-to-end
+            # plan (subject/angle/insight + facts copied from the article). A
+            # vague-story verdict re-picks once; every failure path degrades to
+            # the plain news prompt — the judge can delay a run, never kill it.
+            if os.environ.get("CI_TOPIC_JUDGE", "true").strip().lower() == "true":
+                repicks = int(os.environ.get("CI_TOPIC_REPICKS", "1"))
+                for _round in range(1 + repicks):
+                    plan = plan_story_angle(
+                        title, body, url=story.get("url", ""), session_id=session_id)
+                    if plan is None:
+                        break  # LLM/parse failure — a retry would fail the same way
+                    if plan.get("subject"):
+                        break  # concrete subject found
+                    if _round >= repicks:
+                        break  # verdicts exhausted — ship this pick, plain prompt
+                    # Vague-story verdict: exclude this pick via a synthetic
+                    # history entry (id + norm, same shape record_topic_use
+                    # writes) and judge the next-best story instead.
+                    history = history + [{
+                        "id": str(best.get("_hn_id")) if best.get("_hn_id") is not None else None,
+                        "title": best.get("title", ""),
+                        "norm": _normalize_subject(best.get("title", "")),
+                        "ts": int(time.time()),
+                    }]
+                    nxt, nxt_fb = filter_and_pick_story(candidates, history, rng, top_n=5)
+                    if nxt_fb:
+                        break  # nothing fresh left — keep the original pick
+                    best, plan = nxt, None
+                    story = next(
+                        (s for s in stories if str(s.get("id")) == str(best.get("_hn_id"))), None
+                    ) or next((s for s in stories if s.get("title") == best["title"]), stories[0])
+                    title = story.get("title", "")
+                    body = ""
+                    try:
+                        body = extract_article_body(story.get("url", ""))
+                    except Exception as e:
+                        print(f"Article scrape failed on re-pick (continuing with headline only): {e}")
+                    print(f"[TopicJudge] Re-picked story (virality score {best['_score']:.2f}): "
+                          f"'{title}' (article body: {len(body)} chars)")
+                if plan is not None and not plan.get("subject"):
+                    plan = None  # still vague — current pick ships with today's prompt
+
             # gh- sessions get the branded outro appended, so the closer must
             # not carry its own follow ask (it would play twice back-to-back).
             prompt = build_hn_news_prompt(
                 title, body, seed=_derive_seed(session_id),
                 outro_appended=session_id.startswith(AUTO_CHANNEL_PREFIXES),
+                plan=plan,
             )
 
         if dry_run:
             print("\n[DRY-RUN] Prompt that would be rendered:\n" + "-" * 50)
             print(prompt[:2000])
             print("-" * 50)
+            if best is not None:
+                if plan:
+                    print(f"[DRY-RUN] Judge plan: subject='{plan.get('subject')}' "
+                          f"angle='{(plan.get('angle') or '')[:80]}' "
+                          f"insight='{(plan.get('insight') or '')[:80]}' "
+                          f"facts={len(plan.get('facts') or [])}")
+                else:
+                    print("[DRY-RUN] Judge plan: none (plain news prompt)")
         else:
             # Define the request — Telegram (archive) + Instagram/YouTube from env secrets
             req = RenderRequest(
@@ -168,11 +224,18 @@ def main():
                 topic_meta=(
                     {
                         "title": best.get("title", ""),
-                        "subject": best.get("subject", "") or best.get("title", ""),
+                        "subject": ((plan or {}).get("subject")
+                                    or best.get("subject", "") or best.get("title", "")),
                         "url": best.get("url", ""),
                         "source": "hn",
                         "keywords": _extract_topic_keywords(best.get("title", "")),
                         "viral_score": round(float(best.get("_score", 0.0)), 2),
+                        # Additive judge fields — the ledger copies this dict
+                        # as-is and the feedback loop reads only "keywords",
+                        # so extra keys are inert to both.
+                        "angle": (plan or {}).get("angle", ""),
+                        "insight": (plan or {}).get("insight", ""),
+                        "judge": "plan" if plan else "none",
                     }
                     if best is not None else None
                 ),
@@ -230,6 +293,7 @@ def main():
                     PROCESSED_NEWS_FILE,
                     story_id=best.get("_hn_id"),
                     title=best.get("title", ""),
+                    subject=(plan or {}).get("subject", ""),
                     session_id=session_id,
                 )
                 print(f"Recorded topic use in {PROCESSED_NEWS_FILE}.")

@@ -18,3 +18,7 @@ All visual/motion/typography work happens in `src/remotion/` (seed-driven, deter
 - Never reintroduce word-splitting in subtitles/headlines (`break-word`, per-letter spans in wrapping flex) — `AI_CONTEXT.md` Pain Point 6.
 - Fabrication guard (no invented people/quotes/numbers), anti-repetition rules, delivery verification, and feedback-loop clamps must never be weakened.
 - CI (ubuntu-latest) has no pre-installed assets: all mp3/mp4 are gitignored and materialized by the pipeline; audio-path failures must abort loudly.
+
+## Rule 4 — Git sync: `git pull --rebase` before every push
+
+CI commits history files (`public/processed_news_stories.json`, `public/post_ledger.json`, `public/used_broll_history.json`) back to `main` after every posting run (3/day), so remote `main` moves constantly and a local push is regularly rejected as non-fast-forward. **Always `git pull --rebase` immediately before `git push`** (repo-local config sets `pull.rebase=true` + `rebase.autoStash=true`, so a plain `git pull` does the right thing). Never merge-commit over the CI ledger commits, and never force-push to `main`.
