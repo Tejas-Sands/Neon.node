@@ -5397,14 +5397,30 @@ _CAPTION_SCAFFOLD_RE = re.compile(
 # "length" inside its `if json_format:` branch and captions pass json_format=False.
 _CAPTION_TRUNCATED_RE = re.compile(r"[A-Za-z,]$")
 
+# [§0 user-approved 2026-08-02] Literal engagement-bait phrasing Meta's
+# classifier demotes (~50% reach) — self-defeating for the sends metric the
+# loop optimizes. SOFT lint: warn loudly, never reject (a good caption with
+# one bait line still beats the deterministic fallback).
+_CAPTION_BAIT_RE = re.compile(
+    r"\b(tag (a|your|some|the)\w* )|\bsend this to\b|\bshare this with\b"
+    r"|\bcomment ['\"]?\w{1,12}['\"]? (below )?(to|for|and)\b|\bdouble.?tap\b"
+    r"|\blike and follow\b|\bfollow for part\b",
+    re.IGNORECASE,
+)
+
 
 def _sanitize_caption(caption: str, session_id: str = "",
-                      reasons: Optional[list] = None) -> str:
+                      reasons: Optional[list] = None,
+                      question_cap: int = 3) -> str:
     """Strip reasoning chatter; return "" when what's left is not a caption.
 
     Returning "" is the point — it hands control to the caller's fallback chain
     rather than letting a fragment reach the publish path. Pass `reasons` to
     collect the rejection text so the caller can quote it back to the model.
+
+    `question_cap` [§0 user-approved 2026-08-02]: quiz-pack captions ASK by
+    design ("Can you guess? A? B?"), so their caller raises the cap to 5;
+    the default 3 keeps every legacy caller byte-identical.
     """
     if not caption or not isinstance(caption, str):
         if reasons is not None:
@@ -5428,9 +5444,10 @@ def _sanitize_caption(caption: str, session_id: str = "",
     elif re.match(r"^[\)\],;:]|^\d+\s*chars?\)", body):
         # Starts mid-sentence: the front was lost somewhere upstream.
         reason = "starts mid-sentence"
-    elif body.count("?") >= 3:
-        # A caption is a hook, some value, and ONE closing question. Three or more
-        # means the model listed candidate hooks instead of picking one.
+    elif body.count("?") >= question_cap:
+        # A caption is a hook, some value, and ONE closing question. Hitting
+        # the cap means the model listed candidate hooks instead of picking
+        # one (quiz captions get a raised cap from their caller).
         reason = f"{body.count('?')} questions — reads as a list of hook options"
     elif _CAPTION_TRUNCATED_RE.search(body):
         # Cut off at max_tokens; see _CAPTION_TRUNCATED_RE.
@@ -5478,21 +5495,31 @@ def _clamp_ig_caption(caption: str, session_id: str = "",
 
 
 def _enforce_caption_hashtags(caption: str, script_data: Optional[dict] = None,
-                              session_id: str = "", min_tags: int = 8,
-                              max_tags: int = 12) -> str:
-    """Guarantee the caption ends with at least min_tags hashtags, deterministically.
+                              session_id: str = "", min_tags: int = 3,
+                              max_tags: int = 5) -> str:
+    """Guarantee the caption ends with min_tags..max_tags hashtags, deterministically.
 
     Runs AFTER _scrub_fabricated_people; curated/slug tags cannot introduce
     people or numbers, so the fabrication guard stays exactly as strong.
+
+    [§0 user-approved 2026-08-02] Policy moved from 8-12 tags to 3-5 NICHE
+    tags: 2026 Instagram treats hashtags as topical classifiers, not reach
+    levers — hashtag-heavy posts measured ~32% FEWER views, while keyword-
+    rich caption text drives search/recommendation. Over-tagged captions are
+    now trimmed DOWN to max_tags (keeping the leading tags — order is reach,
+    the most specific tags sit first). test_caption_gate.py pins this.
     """
     caption = (caption or "").strip()
     existing = _HASHTAG_RE.findall(caption)
-    if len(existing) > 28:
-        # IG hard-rejects captions with >30 tags; trim before the frozen publish path.
-        for tag in existing[28:]:
+    if len(existing) > max_tags:
+        # Trim to policy (and always below IG's >30-tag hard reject) before
+        # the frozen publish path.
+        for tag in existing[max_tags:]:
             caption = re.sub(r"(?<![\w#&])#" + re.escape(tag) + r"\b", "", caption, count=1)
         caption = re.sub(r"[ \t]{2,}", " ", caption).strip()
-        existing = existing[:28]
+        print(f"[{session_id}] [Hashtags] Trimmed {len(existing) - max_tags} tags to the "
+              f"{max_tags}-tag policy cap.")
+        existing = existing[:max_tags]
     if len(existing) >= min_tags:
         return _clamp_ig_caption(caption, session_id)
 
@@ -5576,6 +5603,21 @@ def _build_narration_caption(script_data: Optional[dict], topic: dict) -> str:
     _scrub_fabricated_people stays exactly as strong.
     """
     scenes = (script_data or {}).get("scenes") or []
+
+    # [§0 user-approved 2026-08-02] Quiz packs: the number-preferring value
+    # lines below would quote the REVEAL narration — printing the answer
+    # under the video. Quote the QUESTION and drive guesses to comments
+    # instead (comment-driven, no literal bait phrasing). Ends on an emoji
+    # so the truncation-signature check can never reject it.
+    if ((script_data or {}).get("theme") or {}).get("formatPack") == "quiz-reveal":
+        first = scenes[0] if scenes else {}
+        q = _first_sentence(str(first.get("voiceover") or "").strip()) \
+            or _first_sentence(str(first.get("text") or "").strip())
+        subject_q = (topic.get("subject") or topic.get("title") or "").strip()
+        hook_q = q or (f"Can you guess this one about {subject_q}?" if subject_q
+                       else "Can you guess this one?")
+        return hook_q + "\n\nThe answer's in the video — drop your guess in the comments 👇"
+
     lines = []
     for s in scenes:
         vo = _first_sentence(str(s.get("voiceover") or "").strip())
@@ -5623,8 +5665,13 @@ def generate_instagram_caption(
         
     print("[Instagram] Generating caption via LLM...")
     scenes = script_data.get("scenes", [])
+    # [§0 user-approved 2026-08-02] Quiz packs: the reveal scene's narration
+    # never reaches the caption model AT ALL — the surest way a caption can't
+    # spoil the answer is for the writer to never see it.
+    is_quiz_caption = ((script_data or {}).get("theme") or {}).get("formatPack") == "quiz-reveal"
+    caption_scenes = scenes[:-1] if (is_quiz_caption and len(scenes) > 1) else scenes
     scenes_summary = []
-    for i, s in enumerate(scenes):
+    for i, s in enumerate(caption_scenes):
         label = " / ".join(x for x in (s.get("title", ""), s.get("text", "")) if x)
         vo = (s.get("voiceover") or "").strip()
         line = f"Scene {i+1} ({s.get('type', 'scene')}): {vo or label}"
@@ -5646,17 +5693,20 @@ def generate_instagram_caption(
 {topic_block}WHAT THE VIDEO ACTUALLY SAYS (scene narration — the ONLY source of facts you may use):
 {scenes_text}
 
-Open with one punchy line, max 14 words, about THIS specific topic — name the actual subject or its sharpest concrete claim from the narration. Avoid generic templates ("90% of developers...", "This changes everything...", "You won't believe..."), and any percentage, benchmark or statistic that does not appear verbatim in the narration above.
-
+Open with one punchy, KEYWORD-RICH line, max 14 words, that NAMES the actual subject — Instagram search and recommendation read the first caption line as metadata, so the subject and its sharpest concrete claim belong there in natural language. Avoid generic templates ("90% of developers...", "This changes everything...", "You won't believe..."), and any percentage, benchmark or statistic that does not appear verbatim in the narration above.
+{'''
+THIS IS A QUIZ REEL: the caption must NEVER state, hint at, or narrow down the answer. Tease the question, then invite viewers to drop their guess in the comments. Do not quote any scene beyond the question.
+''' if is_quiz_caption else ''}
 Then two to four short lines carrying the most concrete, surprising specifics from the narration — real numbers, mechanisms, comparisons that were actually spoken. One idea per line, each may start with one fitting emoji. Do not restate the opening line. Do not pad with adjectives.
 
-Close with a single natural question or nudge tied to the topic ("Would you run this in prod?", "Tag the dev who still does X by hand"). Never beg ("like and follow"). Ask at most one question in the whole caption.
+Close with a single natural question or nudge tied to the topic ("Would you run this in prod?"). Never beg ("like and follow"). Ask at most one question in the whole caption{" (the quiz guess-invite counts as that question)" if is_quiz_caption else ""}.
 
-End with 8-12 hashtags on ONE final line — 3-4 specific to the subject/keywords above, 3-4 category tags (e.g. #softwareengineering #devops #webdevelopment), 2-3 broad reach tags (#tech #coding #developer). Lowercase, letters/numbers only.
+End with 3-5 hashtags on ONE final line — 2-3 specific to the subject/keywords above, 1-2 category tags (e.g. #softwareengineering #devops). NO broad filler tags (#tech #viral #fyp): hashtags are topical classifiers now, not reach, and hashtag-heavy captions measurably underperform. Lowercase, letters/numbers only.
 
 HARD RULES:
 - Keep it tight: roughly 3-5 short lines before the hashtag line. Do not count or report the character length.
 - NEVER invent people, quotes, company names, benchmarks or numbers — only reuse facts present in the narration above.
+- NEVER use engagement-bait phrasing ("tag a friend", "send this to", "comment X to get", "double tap") — Instagram demotes it.
 - Plain text with emojis only. No markdown, no bold, no bullet symbols like "*" or "-".
 
 Output exactly ONE finished caption and nothing else. Do not write drafts, options, alternatives, numbered variants, or commentary about your choices. Do not include quotes, markdown headers, section labels, or introductory conversational text.
@@ -5675,7 +5725,8 @@ Output exactly ONE finished caption and nothing else. Do not write drafts, optio
             json_format=False,
             session_id=session_id or "Instagram"
         )
-        caption = _sanitize_caption(caption, session_id or "Instagram", rejections)
+        caption = _sanitize_caption(caption, session_id or "Instagram", rejections,
+                                    question_cap=5 if is_quiz_caption else 3)
 
         # One corrective re-ask before giving up on the LLM. A rejected caption used
         # to fall straight through to the deterministic fallback, so a single bad
@@ -5697,10 +5748,14 @@ Output exactly ONE finished caption and nothing else. Do not write drafts, optio
                 json_format=False,
                 session_id=session_id or "Instagram"
             )
-            caption = _sanitize_caption(caption, session_id or "Instagram")
+            caption = _sanitize_caption(caption, session_id or "Instagram",
+                                        question_cap=5 if is_quiz_caption else 3)
 
         if caption:
             caption = _scrub_fabricated_people(caption, source_prompt, session_id or "Instagram", "ig_caption")
+            if _CAPTION_BAIT_RE.search(caption):
+                print(f"[{session_id or 'Instagram'}] [Caption] WARN: engagement-bait phrasing "
+                      f"detected (Meta demotes it): {_CAPTION_BAIT_RE.search(caption).group(0)!r}")
             return _enforce_caption_hashtags(caption, script_data, session_id or "Instagram")
     except Exception as e:
         print(f"[Instagram] Failover caption generation failed: {e}. Trying direct request fallback...")
@@ -5737,7 +5792,8 @@ Output exactly ONE finished caption and nothing else. Do not write drafts, optio
         )
         if response.status_code == 200:
             caption = response.json()["choices"][0]["message"]["content"].strip()
-            caption = _sanitize_caption(caption, session_id or "Instagram")
+            caption = _sanitize_caption(caption, session_id or "Instagram",
+                                        question_cap=5 if is_quiz_caption else 3)
             if caption:
                 caption = _scrub_fabricated_people(caption, source_prompt, session_id or "Instagram", "ig_caption")
                 return _enforce_caption_hashtags(caption, script_data, session_id or "Instagram")
@@ -5916,11 +5972,29 @@ def post_to_instagram_official(
     else:
         form_data["video_url"] = video_url
         print(f"{prefix}[Instagram-Official] Step 1: Creating container (video_url={video_url[:80]}...)...")
-        
+
+    # [§0 user-approved 2026-08-02] Deliberate cover frame via thumb_offset
+    # (milliseconds into the video) — additive param, flag-gated OFF by
+    # default. cover_url was deliberately NOT used: a hosted cover image
+    # adds an expiring-URL failure mode for near-zero gain over thumb_offset.
+    # Self-degrading below: retry attempts 2/3 drop the param, so a cover
+    # choice can never cost a posting slot. With the flag off (default),
+    # both additions are no-ops and this path is byte-identical.
+    if os.environ.get("IG_COVER_ENABLED", "false").strip().lower() in ("1", "true", "yes"):
+        try:
+            form_data["thumb_offset"] = str(max(0, int(float(
+                os.environ.get("IG_THUMB_OFFSET_MS", "800")))))
+            print(f"{prefix}[Instagram-Official] Cover: thumb_offset={form_data['thumb_offset']}ms")
+        except (TypeError, ValueError):
+            pass
+
     container_id = None
     upload_uri = None
-    
+
     for attempt in range(1, 4):
+        if attempt > 1 and form_data.pop("thumb_offset", None) is not None:
+            print(f"{prefix}[Instagram-Official] Dropping thumb_offset for retry "
+                  f"{attempt} — a cover must never cost the slot.")
         try:
             data = curl_post(container_url, form_data, timeout=120)
             if "error" in data:

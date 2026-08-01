@@ -194,6 +194,57 @@ def _run(verbose: bool = False) -> int:
             failures.append(f"hashtags: {label}")
         print(f"  {'ok  ' if ok else 'FAIL'}  {label}")
 
+    print("\n=== §0-approved 2026-08-02 policy (3-5 niche tags, quiz safety) ===")
+    import inspect as _inspect
+    _script = {"scenes": [{"voiceover": "Postgres sharding cuts p99 latency to 40 milliseconds."}]}
+    _backfilled = main._enforce_caption_hashtags(
+        "A perfectly normal caption about Postgres sharding today.", _script, "test")
+    _n_backfilled = len(main._HASHTAG_RE.findall(_backfilled))
+    _ten_tags = "Solid caption body here about sharding.\n\n" + " ".join(
+        f"#tag{i}" for i in range(10))
+    _trimmed = main._enforce_caption_hashtags(_ten_tags, _script, "test")
+    _kept = main._HASHTAG_RE.findall(_trimmed)
+    _quiz_script = {"theme": {"formatPack": "quiz-reveal"},
+                    "scenes": [
+                        {"voiceover": "How low did Postgres latency go? Guess now."},
+                        {"voiceover": "Is it forty, four hundred, or four thousand?"},
+                        {"voiceover": ""},
+                        {"voiceover": "It dropped to forty milliseconds across twelve shards."}]}
+    _quiz_fb = main._build_narration_caption(_quiz_script, {"subject": "Postgres 18"})
+    _three_q = ("Can you guess the answer? Is it A? Or B? " +
+                "Here is a body line long enough to pass the length check easily.")
+    policy_checks = [
+        ("backfill lands inside the 3-5 policy band", 3 <= _n_backfilled <= 5),
+        ("over-tagged caption trimmed to 5, leading tags kept",
+         _kept == [f"tag{i}" for i in range(5)]),
+        ("quiz fallback never quotes the reveal",
+         "forty milliseconds" not in _quiz_fb and "twelve shards" not in _quiz_fb),
+        ("quiz fallback quotes the question and drives comments",
+         "?" in _quiz_fb and "comments" in _quiz_fb),
+        ("quiz fallback survives the sanitize gate",
+         main._sanitize_caption(_quiz_fb, "test") == _quiz_fb),
+        ("3 questions still rejected at the default cap",
+         main._sanitize_caption(_three_q, "test") == ""),
+        ("3 questions accepted under the quiz cap",
+         main._sanitize_caption(_three_q, "test", question_cap=5) == _three_q),
+        ("5 questions rejected even under the quiz cap",
+         main._sanitize_caption(_three_q + " Or C? Or D?", "test", question_cap=5) == ""),
+        ("bait lint catches literal bait",
+         all(main._CAPTION_BAIT_RE.search(s) for s in
+             ("Tag a friend who codes", "send this to your team lead",
+              "double tap if you agree", "comment YES below to get the link"))),
+        ("bait lint spares normal copy",
+         not any(main._CAPTION_BAIT_RE.search(s) for s in
+                 ("the new tag system ships today", "drop your guess in the comments 👇",
+                  "Would you run this in prod?"))),
+        ("thumb_offset stays flag-gated off by default",
+         'IG_COVER_ENABLED", "false"' in _inspect.getsource(main.post_to_instagram_official)),
+    ]
+    for label, ok in policy_checks:
+        if not ok:
+            failures.append(f"policy: {label}")
+        print(f"  {'ok  ' if ok else 'FAIL'}  {label}")
+
     print("\n=== fabrication guard (must stay exactly as strong) ===")
     multiline = ("DeepSeek's unreleased config leaked from a public repo.\n\n"
                  "⚡ 685B parameters, larger than V3.\n"
@@ -242,7 +293,7 @@ def _run(verbose: bool = False) -> int:
         print(f"  {'ok  ' if ok else 'FAIL'}  {label}")
 
     total = (len(REJECT) + len(ACCEPT) + len(checks)
-             + len(tag_checks) + len(guard_checks) + len(clamp_checks))
+             + len(tag_checks) + len(policy_checks) + len(guard_checks) + len(clamp_checks))
     print()
     if failures:
         print(f"FAILED ({len(failures)}/{total}):")
