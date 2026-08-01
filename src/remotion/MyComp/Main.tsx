@@ -2576,6 +2576,71 @@ const KaraokeSubtitles: React.FC<{
 // ============================================================================
 // Main composition
 // ============================================================================
+// ---------------------------------------------------------------------------
+// FollowChip — the single follow-ask for loop-ending packs (M3). Those videos
+// have no outro card (the last frame is the replay seam and must stay payoff),
+// so one ≤60-frame pill mid-video carries the one ask instead — the
+// follow-ask-once contract's new home. Top-center inside the IG safe zones
+// (top ~150px, right rail and bottom band avoided); one non-wrapping line, so
+// Pain Point 6 (no word splitting) holds by construction. No hardcoded heavy
+// font weights (Chrome synthesizes missing weights into fuzz — §4.5 rule).
+// ---------------------------------------------------------------------------
+const FollowChip: React.FC<{
+  handle: string;
+  startFrame: number;
+  accent: string;
+  fontFamily: string;
+}> = ({ handle, startFrame, accent, fontFamily }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const local = frame - startFrame;
+  const LIFE = 60; // 2s at 30fps — long enough to read, short enough to skip
+  if (local < 0 || local > LIFE) return null;
+  const enter = spring({ frame: local, fps, config: { damping: 14, stiffness: 160 } });
+  const exit = interpolate(local, [LIFE - 10, LIFE], [1, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: "11%",
+        left: 0,
+        right: 0,
+        display: "flex",
+        justifyContent: "center",
+        zIndex: 95,
+        pointerEvents: "none",
+        opacity: enter * exit,
+        transform: `translateY(${interpolate(enter, [0, 1], [-28, 0])}px)`,
+      }}
+    >
+      <div
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 10,
+          whiteSpace: "nowrap",
+          padding: "12px 22px",
+          borderRadius: 999,
+          background: "rgba(10, 12, 18, 0.72)",
+          border: `1.5px solid ${accent}`,
+          boxShadow: "0 4px 24px rgba(0, 0, 0, 0.35)",
+          fontFamily,
+          fontSize: 26,
+          letterSpacing: 1,
+          color: "#ffffff",
+        }}
+      >
+        <span style={{ color: accent }}>+</span>
+        <span>FOLLOW</span>
+        <span style={{ opacity: 0.85 }}>@{handle}</span>
+      </div>
+    </div>
+  );
+};
+
 export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.infer<typeof CompositionProps>) => {
   const resolvedVoiceoverUrl = React.useMemo(() => {
     if (!voiceoverUrl) return "";
@@ -2617,6 +2682,13 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
     seed: theme?.seed ?? defaultTheme.seed ?? 0,
   };
 
+  // Loop-ending pack signals (M3) — read from the RAW props theme: the
+  // activeTheme fallback object above intentionally whitelists the legacy
+  // fields. Both are backend-set and absent on every legacy/manual render,
+  // so every loop treatment below is dead code unless the pack asked for it.
+  const loopEnding = theme?.loopEnding === true;
+  const followHandle = theme?.followHandle ?? "";
+
   // Derive the per-video "look" from the seed. This is the single source of
   // the big, perceptible variety between videos (background treatment, chrome,
   // color grade, motion personality, layout) — computed once, shared by all
@@ -2644,8 +2716,9 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
         scenes.length,
         activeTheme.transitionStyle ?? "crossfade",
         look.motion,
+        { loopEnding },
       ),
-    [activeTheme.seed, scenes.length, activeTheme.transitionStyle, look.motion],
+    [activeTheme.seed, scenes.length, activeTheme.transitionStyle, look.motion, loopEnding],
   );
 
   // Absolute start frame of each scene (prefix sums); sceneStarts[i] is where
@@ -2664,8 +2737,9 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
         (activeTheme.seed ?? 0) >>> 0,
         scenes.length,
         scenes.map((s) => s.durationInFrames),
+        { loopEnding },
       ),
-    [activeTheme.seed, scenes],
+    [activeTheme.seed, scenes, loopEnding],
   );
 
   // Seed-driven finishing layers (grain, leaks, letterbox, edge frame, ...)
@@ -2673,6 +2747,13 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
   const polish = React.useMemo(
     () => derivePolish((activeTheme.seed ?? 0) >>> 0, look, activeTheme.overlayType ?? "clean"),
     [activeTheme.seed, look, activeTheme.overlayType],
+  );
+
+  // Loop-ending kills EndSettle: its last-30-frame vignette deepening would
+  // pop dark->bright across the replay seam. All other polish layers stay.
+  const polishFx = React.useMemo(
+    () => (loopEnding ? { ...polish, endSettle: false } : polish),
+    [polish, loopEnding],
   );
 
   // Prism family (kaleidoscope / blend layers / giant type) — independent
@@ -2807,7 +2888,7 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
       {/* Seed-driven cinematic finishing layers (grain / leaks / letterbox /
           edge frame / pulse) — cohesive with the look, capped at 3 textures. */}
       <PolishStack
-        polish={polish}
+        polish={polishFx}
         look={look}
         primaryColor={activeTheme.primaryColor}
         secondaryColor={activeTheme.secondaryColor}
@@ -2865,6 +2946,22 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
         >
           {watermarkText}
         </div>
+      )}
+
+      {/* The single follow-ask on loop-ending packs (no outro card exists).
+          Placed at the start of a mid-video scene — never the hook, never
+          the payoff — so the ask rides attention without costing the end. */}
+      {loopEnding && followHandle && scenes.length >= 3 && (
+        <FollowChip
+          handle={followHandle}
+          startFrame={
+            sceneStarts[
+              Math.min(Math.max(1, Math.floor(scenes.length / 2)), scenes.length - 2)
+            ] + 8
+          }
+          accent={activeTheme.primaryColor}
+          fontFamily={getFontFamily(activeTheme.fontFamilyName)}
+        />
       )}
     </AbsoluteFill>
   );

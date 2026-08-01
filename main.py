@@ -249,6 +249,13 @@ SCRIPT_EXPAND_RETRIES = int(os.environ.get("SCRIPT_EXPAND_RETRIES", "2"))
 ENABLE_SCRIPT_GATE = os.environ.get("ENABLE_SCRIPT_GATE", "true").strip().lower() not in ("0", "false", "no")
 SCRIPT_GATE_RETRIES = int(os.environ.get("SCRIPT_GATE_RETRIES", "1"))
 
+# Loop-ending mode (M3): for packs with loop_ending=True, drop the branded
+# outro card, end the video the instant the payoff lands, mirror scene 0's
+# background onto the final scene (seamless-loop rhyme), and render the single
+# follow-ask as the FollowChip overlay instead. Master kill switch — with it
+# off (default) every pack renders the legacy ending.
+LOOP_ENDING = os.environ.get("LOOP_ENDING", "false").strip().lower() in ("1", "true", "yes")
+
 # Session-id prefixes that get the branded tech-channel treatment. "gh-" is the
 # scheduled GitHub Actions pipeline (generate_now.py) — it was missing from
 # these checks originally, so CI posts silently skipped the outro, the tech
@@ -3149,9 +3156,13 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
     pack_cfg = resolve_pack(getattr(req, "format_pack", None))
     min_spoken_sec, max_spoken_sec = pack_cfg["band"] or (MIN_SPOKEN_SEC, MAX_SPOKEN_SEC)
     expand_note, tighten_note = runtime_revision_notes(pack_cfg, min_spoken_sec, max_spoken_sec)
+    # Loop ending needs BOTH the env master switch and the pack bit — legacy
+    # renders identically even with the flag on.
+    loop_ending_active = LOOP_ENDING and bool(pack_cfg["loop_ending"])
     if pack_cfg["name"] != LEGACY_PACK:
         print(f"[{session_id}] Format pack: {pack_cfg['name']} "
-              f"(band {min_spoken_sec:.0f}-{max_spoken_sec:.0f}s, broll={pack_cfg['broll']})")
+              f"(band {min_spoken_sec:.0f}-{max_spoken_sec:.0f}s, broll={pack_cfg['broll']}, "
+              f"loop_ending={'on' if loop_ending_active else 'off'})")
 
     # 1. CALL LLM TO GENERATE THE SCRIPT AND THEME CONFIGURATION
     #    Append a seeded creative brief (opening hook + structural variety) so
@@ -3343,6 +3354,11 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
         parsed_script["theme"]["formatPack"] = pack_cfg["name"]
         parsed_script["theme"]["followHandle"] = os.environ.get(
             "INSTAGRAM_TECH_USERNAME", "neon.node").strip().lstrip("@") or "neon.node"
+        if loop_ending_active:
+            # Explicit prop for every render-side loop treatment (energy final
+            # scene, cut plan landing/exit, EndSettle skip, FollowChip) — the
+            # renderer must never infer it from scene shapes.
+            parsed_script["theme"]["loopEnding"] = True
 
     # Merge pipeline config from LLM output with request-level overrides
     llm_pipeline = parsed_script.get("pipeline", {})
@@ -4148,63 +4164,70 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
                     _closer.pop(_fld, None)
                     print(f"[{session_id}] Dropped follow-CTA closer field '{_fld}' (outro card handles the ask)")
 
-        outro_handle = os.environ.get("INSTAGRAM_TECH_USERNAME", "Neon Node").strip()
-        outro_logo_url = os.environ.get("INSTAGRAM_TECH_LOGO_URL")
-        
-        # Formulate handle cleanly
-        if outro_handle.startswith("@") or " " in outro_handle:
-            outro_handle_clean = outro_handle
+        if loop_ending_active:
+            # Loop-ending packs get NO outro card: the video ends the instant
+            # the payoff lands, and the FollowChip overlay carries the single
+            # follow-ask. The closer scrub above still ran, so the script
+            # itself is guaranteed ask-free (follow-ask-once contract intact).
+            print(f"[{session_id}] Loop ending active — outro card skipped; FollowChip carries the follow-ask.")
         else:
-            # Add @ if it is a pure handle username
-            outro_handle_clean = "@" + outro_handle.lstrip("@")
-            
-        # Load or download the logo image
-        logo_data = None
-        logo_mime = "image/png"
-        
-        if outro_logo_url:
-            print(f"[{session_id}] Downloading outro logo image: {outro_logo_url}")
-            try:
-                import urllib.request
-                req_logo = urllib.request.Request(outro_logo_url, headers={"User-Agent": user_agent})
-                with urllib.request.urlopen(req_logo, timeout=15) as response_logo:
-                    logo_data = response_logo.read()
-                    if outro_logo_url.lower().endswith((".jpg", ".jpeg")):
-                        logo_mime = "image/jpeg"
-            except Exception as e:
-                print(f"[{session_id}] Error downloading outro logo: {e}")
-                
-        # If no URL is specified or download fails, try reading the local tech_logo.png
-        if logo_data is None:
-            local_logo_path = os.path.join(PUBLIC_DIR, "tech_logo.png")
-            if os.path.exists(local_logo_path):
-                print(f"[{session_id}] Loading local outro logo image: {local_logo_path}")
-                try:
-                    with open(local_logo_path, "rb") as f:
-                        logo_data = f.read()
-                        logo_mime = "image/png"
-                except Exception as e:
-                    print(f"[{session_id}] Error reading local logo asset: {e}")
-                    
-        if logo_data is None:
-            # Empty transparent 1x1 image as fallback so the React renderer uses the inline vector icon
-            logo_data = base64.b64decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=")
+            outro_handle = os.environ.get("INSTAGRAM_TECH_USERNAME", "Neon Node").strip()
+            outro_logo_url = os.environ.get("INSTAGRAM_TECH_LOGO_URL")
+
+            # Formulate handle cleanly
+            if outro_handle.startswith("@") or " " in outro_handle:
+                outro_handle_clean = outro_handle
+            else:
+                # Add @ if it is a pure handle username
+                outro_handle_clean = "@" + outro_handle.lstrip("@")
+
+            # Load or download the logo image
+            logo_data = None
             logo_mime = "image/png"
-            
-        logo_b64 = base64.b64encode(logo_data).decode("utf-8")
-        
-        outro_scene_data = {
-            "imageUrl": f"data:{logo_mime};base64,{logo_b64}",
-            "text": outro_handle_clean,
-            "voiceover": f"Follow Neon Node for daily tech explainers and concepts.",
-            "title": "NEON NODE",
-            "subtitle": "TECH EXPLAINED",
-            "type": "outro",
-            "durationInFrames": 120, # 4 seconds duration
-            "textAnimation": "glitch-decode"
-        }
-        scenes_with_images.append(outro_scene_data)
-        print(f"[{session_id}] Appended automated Outro scene with handle: {outro_handle_clean}")
+
+            if outro_logo_url:
+                print(f"[{session_id}] Downloading outro logo image: {outro_logo_url}")
+                try:
+                    import urllib.request
+                    req_logo = urllib.request.Request(outro_logo_url, headers={"User-Agent": user_agent})
+                    with urllib.request.urlopen(req_logo, timeout=15) as response_logo:
+                        logo_data = response_logo.read()
+                        if outro_logo_url.lower().endswith((".jpg", ".jpeg")):
+                            logo_mime = "image/jpeg"
+                except Exception as e:
+                    print(f"[{session_id}] Error downloading outro logo: {e}")
+
+            # If no URL is specified or download fails, try reading the local tech_logo.png
+            if logo_data is None:
+                local_logo_path = os.path.join(PUBLIC_DIR, "tech_logo.png")
+                if os.path.exists(local_logo_path):
+                    print(f"[{session_id}] Loading local outro logo image: {local_logo_path}")
+                    try:
+                        with open(local_logo_path, "rb") as f:
+                            logo_data = f.read()
+                            logo_mime = "image/png"
+                    except Exception as e:
+                        print(f"[{session_id}] Error reading local logo asset: {e}")
+
+            if logo_data is None:
+                # Empty transparent 1x1 image as fallback so the React renderer uses the inline vector icon
+                logo_data = base64.b64decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=")
+                logo_mime = "image/png"
+
+            logo_b64 = base64.b64encode(logo_data).decode("utf-8")
+
+            outro_scene_data = {
+                "imageUrl": f"data:{logo_mime};base64,{logo_b64}",
+                "text": outro_handle_clean,
+                "voiceover": f"Follow Neon Node for daily tech explainers and concepts.",
+                "title": "NEON NODE",
+                "subtitle": "TECH EXPLAINED",
+                "type": "outro",
+                "durationInFrames": 120, # 4 seconds duration
+                "textAnimation": "glitch-decode"
+            }
+            scenes_with_images.append(outro_scene_data)
+            print(f"[{session_id}] Appended automated Outro scene with handle: {outro_handle_clean}")
 
     # 4. GENERATE NEURAL VOICEOVER AND SUBTITLES (FREE)
     voiceover_filename = None
@@ -4319,6 +4342,25 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
         # Mode off — drop the stashed queries so they never reach props.
         for scene_data in scenes_with_images:
             scene_data.pop("_brollQuery", None)
+
+    # Loop-ending: the last frames must visually RHYME with frame 0 so the
+    # replay seam reads as intentional (unnoticed replays inflate watch time).
+    # Mirror scene 0's background onto the final scene — image plus clip 0
+    # only (never clip 1: the mid-cut dual-clip contract belongs to the scene
+    # the clips were fetched for; the <Loop> wrapper covers any length gap).
+    if loop_ending_active and len(scenes_with_images) >= 2:
+        _first, _last = scenes_with_images[0], scenes_with_images[-1]
+        if _first.get("imageUrl"):
+            _last["imageUrl"] = _first["imageUrl"]
+        if _first.get("videoUrl"):
+            _last["videoUrl"] = _first["videoUrl"]
+            _clips = _first.get("brollClips") or []
+            if _clips:
+                _last["brollClips"] = [_clips[0]]
+        else:
+            _last.pop("videoUrl", None)
+            _last.pop("brollClips", None)
+        print(f"[{session_id}] Loop ending: mirrored scene 0 background onto the final scene.")
 
     # Update status
     render_status_store[session_id]["status"] = "rendering"
@@ -7379,7 +7421,8 @@ def extract_article_body(url: str) -> str:
 
 def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None,
                          outro_appended: bool = False,
-                         plan: Optional[dict] = None) -> str:
+                         plan: Optional[dict] = None,
+                         ending: Optional[str] = None) -> str:
     """Builds a fast-paced tech-news prompt with a RANDOMIZED scene flow.
 
     The visual theme is intentionally left to the backend style-director (which
@@ -7397,6 +7440,11 @@ def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None,
     judge): subject/angle/hook/insight/facts. When absent (or subject-less),
     the output is identical to the plan-less call — the judge degrading must
     reproduce today's prompt exactly.
+
+    `ending` (M3): None keeps the legacy two-state outro_appended contract
+    byte-for-byte; "no-ask" (loop-ending packs) makes the conclusion land the
+    payoff and stop — no outro card, no closer ask; the render-side
+    FollowChip is the single follow-ask.
     """
     content_snippet = body.strip() if body else "No article content available."
     rnd = random.Random(seed) if seed is not None else random.Random()
@@ -7434,7 +7482,13 @@ def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None,
     for i, (beat_type, beat_desc) in enumerate(middle_beats, start=2):
         outline_lines.append(f'- Scene {i}: {beat_desc} Type: "{beat_type}".')
     conclusion_idx = len(middle_beats) + 2
-    if outro_appended:
+    if ending == "no-ask":
+        # Loop-ending packs (M3): no outro card exists AND the closer carries
+        # no ask either — the FollowChip overlay is the single follow-ask.
+        # Ending on the payoff (not a sign-off) is what makes the loop seam
+        # invisible and keeps the last frame worth rewatching.
+        outline_lines.append(f'- Scene {conclusion_idx} (CONCLUSION): Land the payoff — the single most surprising concrete fact or consequence of the story.{takeaway} Type: "{closer_type}". The video ENDS the instant this line lands: no sign-off, no summary phrase like "so that\'s why...", no follow/subscribe ask, and do NOT mention the channel name.')
+    elif outro_appended:
         outline_lines.append(f'- Scene {conclusion_idx} (CONCLUSION): Land a strong, satisfying takeaway on why this story matters.{takeaway} Type: "{closer_type}". Do NOT ask viewers to follow/subscribe and do NOT mention the channel name — a branded outro card is appended automatically right after this scene.')
     else:
         outline_lines.append(f'- Scene {conclusion_idx} (CONCLUSION): Land a strong, satisfying takeaway on why this story matters.{takeaway} Type: "{closer_type}". End with a clear "Follow Neon Node for more tech" call-to-action.')

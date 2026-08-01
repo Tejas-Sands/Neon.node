@@ -105,6 +105,17 @@ check("pack directive drops structural lines",
 check("pack directive keeps integrity rule", "INTEGRITY" in dq)
 check("pack hook_type is the pack label", mq.get("hook_type") == "PACK-QUIZ-REVEAL")
 
+# --- 3b. build_hn_news_prompt "no-ask" ending (M3) -------------------------------
+print("[no-ask ending]")
+p_default = main.build_hn_news_prompt("T", "B", seed=7, outro_appended=True)
+p_none = main.build_hn_news_prompt("T", "B", seed=7, outro_appended=True, ending=None)
+check("ending=None is byte-identical to the legacy call", p_default == p_none)
+p_noask = main.build_hn_news_prompt("T", "B", seed=7, outro_appended=True, ending="no-ask")
+check("no-ask drops the outro-card clause", "branded outro card is appended" not in p_noask)
+check("no-ask drops the closer follow CTA", "Follow Neon Node for more tech" not in p_noask)
+check("no-ask lands the payoff-and-stop directive",
+      "ENDS the instant" in p_noask and "no follow/subscribe ask" in p_noask)
+
 # --- 4. RenderRequest field ------------------------------------------------------
 print("[RenderRequest]")
 check("format_pack defaults to None", main.RenderRequest(prompt="x").format_pack is None)

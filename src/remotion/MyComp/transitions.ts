@@ -138,7 +138,9 @@ export function deriveCutPlan(
   sceneCount: number,
   anchor: string,
   motion: MotionFeel,
+  opts?: { loopEnding?: boolean },
 ): CutSpec[] {
+  const loopEnding = opts?.loopEnding === true;
   const validAnchor: CutStyleName =
     anchor === "none"
       ? "none"
@@ -187,10 +189,12 @@ export function deriveCutPlan(
     if (safeAnchor === "none") {
       style = "none";
     } else if (i === sceneCount - 1) {
-      // The boundary INTO the still final scene: always a soft landing —
+      // The boundary INTO the final scene. Legacy: always a soft landing —
       // a heavy cut into a dead-still frame reads as a broken render, and
-      // neither style whooshes. Draws above are consumed either way.
-      style = motion === "cinematic" ? "film-burn" : "blur-dissolve";
+      // neither style whooshes. Loop-ending: the opposite — a punchy HARD
+      // landing into the payoff/reveal IS the format; the scene itself stays
+      // quiet. Draws above are consumed either way.
+      style = loopEnding ? "punch-in" : motion === "cinematic" ? "film-burn" : "blur-dissolve";
       sinceDressed = 0;
     } else if (sinceDressed >= 1 && (dressRoll < 0.55 || sinceDressed >= 2)) {
       // Dressed cut roughly every other boundary: signature ~55%,
@@ -211,14 +215,17 @@ export function deriveCutPlan(
       // Snappy cuts read best horizontally; others mix it up.
       axis: motion === "snappy" ? (axisRoll < 0.8 ? "x" : "y") : axisRoll < 0.55 ? "x" : "y",
       flavor,
-      // The landing into the still scene stays gentle regardless of the roll.
-      intensity: i === sceneCount - 1 ? 0.5 : intensity,
+      // Legacy: the landing into the still scene stays gentle regardless of
+      // the roll. Loop-ending: the reveal landing carries real punch.
+      intensity: i === sceneCount - 1 ? (loopEnding ? 0.7 : 0.5) : intensity,
     });
   }
 
-  // Closing: nothing follows the last scene — settle out plainly.
+  // Closing: nothing follows the last scene. Legacy settles out with a
+  // crossfade; loop-ending ends on a FULL-STRENGTH frame (no fade-out — the
+  // last frame is the replay seam and must match frame 0's energy).
   plan.push({
-    style: safeAnchor === "none" ? "none" : "crossfade",
+    style: loopEnding || safeAnchor === "none" ? "none" : "crossfade",
     dir: 1,
     axis: "x",
     flavor: 0.5,

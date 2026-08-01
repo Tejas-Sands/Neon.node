@@ -59,8 +59,10 @@ export function deriveEnergy(
   seed: number,
   sceneCount: number,
   sceneDurations: number[],
+  opts?: { loopEnding?: boolean },
 ): EnergyPlan {
   const rng = makeRng(((seed ^ 0x6d1b9f37) >>> 0) || 1);
+  const loopEnding = opts?.loopEnding === true;
 
   const scenes: SceneEnergy[] = [];
   for (let i = 0; i < sceneCount; i++) {
@@ -70,10 +72,15 @@ export function deriveEnergy(
 
     const D = Math.max(1, Math.round(sceneDurations[i] ?? 150));
     const isHook = i === 0;
-    const isStill = sceneCount > 1 && i === sceneCount - 1;
+    const isFinal = sceneCount > 1 && i === sceneCount - 1;
+    // Loop-ending: the final scene is QUIET BUT ALIVE (a dead-still tail
+    // reads as a broken loop point at the replay seam), never dead-still.
+    const isStill = !loopEnding && isFinal;
+    const isLoopTail = loopEnding && isFinal;
 
     let level: number;
     if (isStill) level = 0;
+    else if (isLoopTail) level = 0.35;
     else if (isHook) level = 0.45 + levelRoll * 0.1;
     else level = 0.55 + levelRoll * 0.35;
 
@@ -87,22 +94,23 @@ export function deriveEnergy(
 
     scenes.push({
       level,
-      camera: isStill ? 0 : isHook ? 0.8 : 0.7 + 0.5 * level,
+      camera: isStill ? 0 : isLoopTail ? 0.3 : isHook ? 0.8 : 0.7 + 0.5 * level,
       landEnd,
       kineticStart,
-      allowMidCut: !isHook && !isStill && level >= 0.55 && D >= 100,
+      allowMidCut: !isHook && !isFinal && level >= 0.55 && D >= 100,
       midCutFrame: Math.min(midCutFrame, Math.max(kineticStart, D - 12)),
       // Hook stays at 1 so frame-2 readability is bit-comparable to before.
-      springScale: isHook ? 1 : isStill ? 0.9 : 0.85 + 0.3 * level,
+      springScale: isHook ? 1 : isFinal ? 0.9 : 0.85 + 0.3 * level,
       still: isStill,
     });
   }
 
   // Guarantee at least one HIGH scene per body triple — a video whose rolls
   // all land mid gets one deliberate spike instead of a flat medium hum.
+  // The final scene never spikes: still (legacy) or the quiet loop tail.
   const bodyIdx = scenes
     .map((_, i) => i)
-    .filter((i) => !scenes[i].still && i > 0);
+    .filter((i) => !scenes[i].still && i > 0 && i !== sceneCount - 1);
   for (let g = 0; g < bodyIdx.length; g += 3) {
     const triple = bodyIdx.slice(g, g + 3);
     if (triple.length === 0 || triple.some((i) => scenes[i].level >= 0.8)) continue;

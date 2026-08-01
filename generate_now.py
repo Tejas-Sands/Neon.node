@@ -208,10 +208,18 @@ def main():
 
             # gh- sessions get the branded outro appended, so the closer must
             # not carry its own follow ask (it would play twice back-to-back).
+            # Loop-ending packs (LOOP_ENDING + pack bit) instead end on the
+            # payoff with NO ask anywhere in the script — the render-side
+            # FollowChip is the single follow-ask.
+            loop_ending = (
+                os.environ.get("LOOP_ENDING", "false").strip().lower() in ("1", "true", "yes")
+                and bool(resolve_pack(format_pack)["loop_ending"])
+            )
             prompt = build_hn_news_prompt(
                 title, body, seed=_derive_seed(session_id),
                 outro_appended=session_id.startswith(AUTO_CHANNEL_PREFIXES),
                 plan=plan,
+                ending="no-ask" if loop_ending else None,
             )
 
         if dry_run:

@@ -161,6 +161,13 @@ export const ThemeSchema = z.object({
    * the single follow-ask replacing the outro card. Absent = no chip.
    */
   followHandle: z.string().optional(),
+  /**
+   * Explicit loop-ending switch (backend-set: LOOP_ENDING env AND the pack
+   * bit). Gates ALL render-side loop treatments — energy final-scene
+   * liveliness, the hard cut into the reveal, the EndSettle skip, and the
+   * FollowChip. Never inferred from scene shapes; absent = legacy ending.
+   */
+  loopEnding: z.boolean().optional(),
 });
 
 export const PipelineSchema = z
