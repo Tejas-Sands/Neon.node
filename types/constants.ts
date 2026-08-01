@@ -149,6 +149,18 @@ export const ThemeSchema = z.object({
    * compatibility; falls back to 0 when absent.
    */
   seed: z.number().optional(),
+  /**
+   * Format-pack name (backend-set, format_packs.py registry — e.g.
+   * "quiz-reveal"). Render-side pack skins and the loop-ending treatments
+   * key off this. Absent (every legacy/manual render) = legacy rendering,
+   * bit-for-bit. Backend-only like seed — no prompt/ALLOWED_* sync.
+   */
+  formatPack: z.string().optional(),
+  /**
+   * Handle (no @) shown by the FollowChip overlay on loop-ending packs —
+   * the single follow-ask replacing the outro card. Absent = no chip.
+   */
+  followHandle: z.string().optional(),
 });
 
 export const PipelineSchema = z

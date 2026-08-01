@@ -28,6 +28,7 @@ from main import (
     _normalize_subject,
     collect_ledger_metrics,
 )
+from format_packs import resolve_pack
 
 
 def _build_env_instagram_config():
@@ -99,6 +100,14 @@ def main():
 
     # We generate a unique session ID for logging
     session_id = f"gh-{str(uuid.uuid4())[:6]}"
+
+    # Format pack for this run: FORMAT_PACK env pin, unset/unknown -> the
+    # legacy news pipeline bit-for-bit. This is how a 12-post format
+    # commitment window is run (pin the pack in the CI env). Seeded/bandit
+    # rotation joins later, once the ledger carries scored pack labels.
+    format_pack = resolve_pack(os.environ.get("FORMAT_PACK"))["name"]
+    if format_pack != "legacy-news":
+        print(f"Format pack: {format_pack}")
 
     # One try covers EVERYTHING after the session id — story ranking and prompt
     # building crash too (e.g. bad API data), and those failures must reach the
@@ -206,6 +215,7 @@ def main():
             )
 
         if dry_run:
+            print(f"[DRY-RUN] Format pack: {format_pack}")
             print("\n[DRY-RUN] Prompt that would be rendered:\n" + "-" * 50)
             print(prompt[:2000])
             print("-" * 50)
@@ -221,6 +231,7 @@ def main():
             # Define the request — Telegram (archive) + Instagram/YouTube from env secrets
             req = RenderRequest(
                 prompt=prompt,
+                format_pack=format_pack,
                 topic_meta=(
                     {
                         "title": best.get("title", ""),

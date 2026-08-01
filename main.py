@@ -217,11 +217,17 @@ VOICE_POOL = [
 # Set REQUIRE_VOICEOVER=0 only for flows where a silent video is acceptable.
 REQUIRE_VOICEOVER = os.environ.get("REQUIRE_VOICEOVER", "1").strip().lower() not in ("0", "false", "no")
 
+# Format packs (format_packs.py): a pack scopes the runtime band, script
+# contract, b-roll mode and ending mode per video. resolve_pack(None) is the
+# legacy pack, which every consumer treats as bit-for-bit today's behavior.
+from format_packs import LEGACY_PACK, resolve_pack, runtime_revision_notes
+
 # Scene lengths sync to spoken narration, so short voiceovers collapse the
 # whole video (a weak fallback LLM writing 10-word lines produced a 24s video
 # that was planned as ~45s). Scripts whose estimated spoken runtime falls below
 # MIN_SPOKEN_SEC are regenerated with an expansion note, up to
-# SCRIPT_EXPAND_RETRIES extra attempts (best attempt wins).
+# SCRIPT_EXPAND_RETRIES extra attempts (best attempt wins). These globals are
+# the LEGACY pack's band; other packs carry their own in format_packs.py.
 MIN_SPOKEN_SEC = float(os.environ.get("MIN_SPOKEN_SEC", "38"))
 MAX_SPOKEN_SEC = float(os.environ.get("MAX_SPOKEN_SEC", "70"))
 SCRIPT_EXPAND_RETRIES = int(os.environ.get("SCRIPT_EXPAND_RETRIES", "2"))
@@ -448,6 +454,10 @@ class RenderRequest(BaseModel):
     # Selection metadata (title/subject/url/source/keywords/viral_score) from
     # the topic engine — recorded into the post ledger for the feedback loop.
     topic_meta: Optional[Dict[str, Any]] = None
+    # Format-pack name (format_packs.py registry). None / "legacy-news" =
+    # the pre-pack pipeline bit-for-bit. Scopes the runtime band + script
+    # contract + ending mode; recorded to the ledger for the feedback loop.
+    format_pack: Optional[str] = None
 
 
 class BatchRenderRequest(BaseModel):
@@ -1106,7 +1116,8 @@ HOOK_PATTERNS = [
 
 
 def build_variety_directive(seed: int, is_auto_channel: bool = False,
-                            meta_out: Optional[dict] = None) -> str:
+                            meta_out: Optional[dict] = None,
+                            format_pack: Optional[str] = None) -> str:
     """Build a seeded 'creative brief' appended to the LLM user prompt.
 
     Injects a rotating opening-hook style plus randomized structural guidance
@@ -1116,7 +1127,26 @@ def build_variety_directive(seed: int, is_auto_channel: bool = False,
 
     When `meta_out` is given, the chosen hook label and scene-count target are
     written into it so the render can record them in the post ledger.
+
+    `format_pack`: non-legacy packs get a slim, hook-quality-only brief — the
+    pack's own prompt outline owns structure, and the full brief's scene-count
+    / closer / pacing lines would contradict it. None or the legacy pack keeps
+    the historical brief byte-for-byte (pinned by test_format_packs.py).
     """
+    if format_pack not in (None, LEGACY_PACK):
+        if meta_out is not None:
+            # The hooks feedback bucket learns each pack contract as its own
+            # key (cold-start by design; the epsilon floor keeps rotation).
+            meta_out["hook_type"] = f"PACK-{format_pack.upper()}"
+        return f"""
+
+=== HOOK QUALITY RULES (format: {format_pack}) ===
+- The FIRST scene is the hook. Its "text" is max 8 words, readable in under 1 second, on screen from the very first frame.
+- The first scene's "voiceover" speaks the hook in max 12 words. NO greetings, NO "welcome", NO "in this video" — start mid-value.
+- Be hyper-specific: real numbers, names, concrete outcomes. Generic openers kill retention.
+- Follow the SCENE OUTLINE in the brief above exactly — it defines this format's structure.
+- ON-SCREEN ≠ SPOKEN: the on-screen "text" is a short label (a keyword or number); the "voiceover" is the sentence. Never put the same words in both.
+- INTEGRITY (overrides everything above): NO invented people, names, quotes, testimonials, or statistics — see the FACT INTEGRITY RULES."""
     rnd = random.Random(seed)
     hook, hook_mode = _feedback_weighted_choice(
         HOOK_PATTERNS, lambda h: h.split(":")[0].strip(), "hooks", rnd, get_feedback_stats())
@@ -3088,12 +3118,24 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
     video_seed = _derive_seed(session_id)
     is_auto_channel = session_id.startswith(AUTO_CHANNEL_PREFIXES)
 
+    # Format pack: scopes the runtime band, creative brief, and (in later
+    # consumers) b-roll + ending mode. None/unknown resolves to the legacy
+    # pack, whose band defers to the env-tunable module globals — so every
+    # pre-pack caller behaves bit-for-bit as before.
+    pack_cfg = resolve_pack(getattr(req, "format_pack", None))
+    min_spoken_sec, max_spoken_sec = pack_cfg["band"] or (MIN_SPOKEN_SEC, MAX_SPOKEN_SEC)
+    expand_note, tighten_note = runtime_revision_notes(pack_cfg, min_spoken_sec, max_spoken_sec)
+    if pack_cfg["name"] != LEGACY_PACK:
+        print(f"[{session_id}] Format pack: {pack_cfg['name']} "
+              f"(band {min_spoken_sec:.0f}-{max_spoken_sec:.0f}s, broll={pack_cfg['broll']})")
+
     # 1. CALL LLM TO GENERATE THE SCRIPT AND THEME CONFIGURATION
     #    Append a seeded creative brief (opening hook + structural variety) so
     #    no two videos — even from the same prompt — follow the same flow.
     variety_meta: Dict[str, Any] = {}
     user_prompt = build_user_prompt(req.prompt) + build_variety_directive(
-        video_seed, is_auto_channel, meta_out=variety_meta)
+        video_seed, is_auto_channel, meta_out=variety_meta,
+        format_pack=pack_cfg["name"])
 
     # Scene lengths auto-sync to speech, so a script with skimpy voiceovers
     # collapses the whole video (weak fallback models writing 10-word lines
@@ -3127,18 +3169,19 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
                     "\n\nCRITICAL REVISION: your previous reply was not a parseable script. Reply with ONLY the raw "
                     "JSON object — no prose, no markdown fences, no <think> blocks."
                 )
-            elif last_est_sec < MIN_SPOKEN_SEC:
+            elif last_est_sec < min_spoken_sec:
+                # Note tails come from runtime_revision_notes(): the legacy
+                # pack's are the historical strings byte-for-byte; other packs
+                # get band-derived guidance (a 20s quiz must never be
+                # "corrected" back to a 45s news video).
                 prompt_for_attempt += (
                     f"\n\nCRITICAL REVISION: the previous script's narration ran only ~{int(last_est_sec)} seconds "
-                    f"when spoken — the video MUST run longer. Write 6-8 scenes and give EVERY scene a \"voiceover\" of "
-                    f"20-35 words (two full sentences is ideal) so the summed narration lasts 40-55 seconds. Do NOT pad "
-                    f"with repetition or filler — every added sentence must contribute a new concrete fact or detail."
+                    + expand_note
                 )
-            elif last_est_sec > MAX_SPOKEN_SEC:
+            elif last_est_sec > max_spoken_sec:
                 prompt_for_attempt += (
                     f"\n\nCRITICAL REVISION: the previous script's narration ran ~{int(last_est_sec)} seconds when "
-                    f"spoken — too long for a Reel. Cut the weakest scenes and tighten every \"voiceover\" so the "
-                    f"summed narration lasts 40-55 seconds, keeping only the strongest concrete facts."
+                    + tighten_note
                 )
             if last_gate_reasons:
                 prompt_for_attempt += (
@@ -3180,14 +3223,14 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
             continue
         est_sec = _estimate_spoken_seconds(candidate.get("scenes", []))
         last_est_sec = est_sec
-        band_dist = max(MIN_SPOKEN_SEC - est_sec, 0.0) + max(est_sec - MAX_SPOKEN_SEC, 0.0)
+        band_dist = max(min_spoken_sec - est_sec, 0.0) + max(est_sec - max_spoken_sec, 0.0)
         if ENABLE_SCRIPT_GATE:
             hard, soft = _script_vagueness_reasons(candidate, req.prompt or "", req.topic_meta)
         else:
             hard, soft = [], []
         last_gate_reasons = hard + soft
         print(f"[{session_id}] Script attempt {attempt + 1}: {len(candidate.get('scenes', []))} scenes, "
-              f"estimated spoken runtime {est_sec:.1f}s (target {MIN_SPOKEN_SEC:.0f}-{MAX_SPOKEN_SEC:.0f}s)")
+              f"estimated spoken runtime {est_sec:.1f}s (target {min_spoken_sec:.0f}-{max_spoken_sec:.0f}s)")
         if hard or soft:
             print(f"[{session_id}] Insight gate on attempt {attempt + 1}: {len(hard)} hard / {len(soft)} soft — "
                   + "; ".join((hard + soft)[:3]))
@@ -3267,6 +3310,15 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
     # Respects any theme dimension the caller explicitly forced.
     chosen_style_pack = apply_style_director(
         parsed_script["theme"], video_seed, is_auto_channel, forced_theme_keys)
+
+    # Render-visible pack signal (ThemeSchema.formatPack/followHandle, both
+    # optional in zod). The legacy pack writes NOTHING, so legacy props — and
+    # therefore legacy renders — stay byte-identical. Render-side pack skins
+    # and the FollowChip key off these fields.
+    if pack_cfg["name"] != LEGACY_PACK:
+        parsed_script["theme"]["formatPack"] = pack_cfg["name"]
+        parsed_script["theme"]["followHandle"] = os.environ.get(
+            "INSTAGRAM_TECH_USERNAME", "neon.node").strip().lstrip("@") or "neon.node"
 
     # Merge pipeline config from LLM output with request-level overrides
     llm_pipeline = parsed_script.get("pipeline", {})
@@ -4488,6 +4540,7 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
             "channel": session_channel,
             "topic": ledger_topic,
             "style_pack": chosen_style_pack,
+            "format_pack": pack_cfg["name"],
             "seed": video_seed,
             "voice": render_status_store[session_id].get("resolved_voice"),
             "hook_type": variety_meta.get("hook_type"),
