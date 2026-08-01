@@ -1228,9 +1228,18 @@
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "fetched_at": 1785261692
+      "fetched_at": 1785556105
      },
-     "snap72": null,
+     "snap72": {
+      "views": 126,
+      "reach": 112,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 1,
+      "total_interactions": 1,
+      "fetched_at": 1785556105
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -1731,6 +1740,45 @@
     "instagram": {
      "id": "17950085763236246",
      "posted_at": 1785509443
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785556035,
+   "posted_hour_utc": 3,
+   "channel": "news",
+   "topic": {
+    "title": "Is AI reasoning right for the wrong reasons?",
+    "subject": "Large Reasoning Models",
+    "url": "https://www.quantamagazine.org/is-ai-reasoning-right-for-the-wrong-reasons-20260731/",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 8.49,
+    "angle": "AI is solving complex math problems, but researchers are split on whether it's actually 'reasoning' or just gaming the system.",
+    "insight": "The 'jagged intelligence' of AI means we can no longer equate high-level output with human-like logical processes, forcing us to rethink how we verify AI-generated solutions.",
+    "judge": "plan"
+   },
+   "style_pack": "slate-editorial",
+   "seed": 766473827,
+   "voice": "en-US-EmmaMultilingualNeural",
+   "hook_type": "FORBIDDEN ARCHITECTURE",
+   "scene_count": 5,
+   "video_seconds": 30.7,
+   "session": "gh-ce342f",
+   "platforms": {
+    "instagram": {
+     "id": "18089977736120632",
+     "posted_at": 1785556101
     }
    },
    "metrics": {

@@ -63,6 +63,62 @@
    "session": "gh-1787df",
    "query": "developer typing on laptop",
    "scene": 5
+  },
+  {
+   "id": "pexels-5473800",
+   "ts": 1785556035,
+   "session": "gh-ce342f",
+   "query": "terminal typing commands code",
+   "scene": 0
+  },
+  {
+   "id": "pexels-7579943",
+   "ts": 1785556035,
+   "session": "gh-ce342f",
+   "query": "data center servers blinking",
+   "scene": 1
+  },
+  {
+   "id": "pexels-15439743",
+   "ts": 1785556035,
+   "session": "gh-ce342f",
+   "query": "data center servers blinking",
+   "scene": 1
+  },
+  {
+   "id": "pexels-38410502",
+   "ts": 1785556035,
+   "session": "gh-ce342f",
+   "query": "math equations screen scrolling",
+   "scene": 2
+  },
+  {
+   "id": "pexels-31362170",
+   "ts": 1785556035,
+   "session": "gh-ce342f",
+   "query": "math equations screen scrolling",
+   "scene": 2
+  },
+  {
+   "id": "pexels-29267591",
+   "ts": 1785556035,
+   "session": "gh-ce342f",
+   "query": "code editor screen scrolling",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35544532",
+   "ts": 1785556035,
+   "session": "gh-ce342f",
+   "query": "dashboard ui data motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-8141707",
+   "ts": 1785556035,
+   "session": "gh-ce342f",
+   "query": "dashboard ui data motion",
+   "scene": 4
   }
  ]
 }

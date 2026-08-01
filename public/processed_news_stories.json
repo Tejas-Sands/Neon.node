@@ -342,5 +342,13 @@
   "subject_norm": "deepseek v4 flash api",
   "ts": 1785509446,
   "session": "gh-1787df"
+ },
+ {
+  "id": "49124358",
+  "title": "Is AI reasoning right for the wrong reasons?",
+  "norm": "is ai reasoning right for the wrong reasons",
+  "subject_norm": "large reasoning models",
+  "ts": 1785556105,
+  "session": "gh-ce342f"
  }
 ]
