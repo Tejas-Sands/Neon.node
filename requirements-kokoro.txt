@@ -1,0 +1,6 @@
+# Kokoro TTS side stack — installed into .venv-kokoro under Python 3.11 in CI
+# (the pipeline interpreter stays on 3.9; see scripts/kokoro_tts_worker.py).
+# torch is installed FIRST from the CPU wheel index by the workflow step —
+# listing it here would pull the multi-GB CUDA bundle from PyPI.
+kokoro>=0.9.4
+soundfile>=0.12

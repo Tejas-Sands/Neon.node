@@ -222,6 +222,14 @@ REQUIRE_VOICEOVER = os.environ.get("REQUIRE_VOICEOVER", "1").strip().lower() not
 # legacy pack, which every consumer treats as bit-for-bit today's behavior.
 from format_packs import LEGACY_PACK, resolve_pack, runtime_revision_notes
 
+# TTS provider seam (tts_providers.py): TTS_PROVIDER=kokoro routes synthesis
+# to the Kokoro-82M worker under a side Python >=3.10 interpreter; default
+# "edge" keeps the historical edge-tts path byte-for-byte. Engines never mix
+# within one video.
+from tts_providers import (KOKORO_VOICE_POOL, edge_rate_to_speed,
+                           is_kokoro_voice, resolve_tts_engine,
+                           synthesize_scenes_kokoro)
+
 # Scene lengths sync to spoken narration, so short voiceovers collapse the
 # whole video (a weak fallback LLM writing 10-word lines produced a 24s video
 # that was planned as ~45s). Scripts whose estimated spoken runtime falls below
@@ -2855,7 +2863,16 @@ def get_next_video_number() -> int:
     return num
 
 
-def _estimate_spoken_seconds(scenes: List[dict]) -> float:
+# Per-engine speech-rate calibration for _estimate_spoken_seconds:
+# (words-per-second, per-scene lead-in seconds). The edge pair is measured
+# (see the docstring below); the kokoro pair is provisional until a CI soak.
+_SPOKEN_RATE_BY_ENGINE = {
+    "edge": (2.33, 0.35),
+    "kokoro": (2.40, 0.40),
+}
+
+
+def _estimate_spoken_seconds(scenes: List[dict], engine: Optional[str] = None) -> float:
     """Estimate how long the script's narration runs when spoken.
 
     CALIBRATED against real scripts, not a synthetic sentence. Synthesising two
@@ -2873,7 +2890,14 @@ def _estimate_spoken_seconds(scenes: List[dict]) -> float:
     THIS CONSTANT IS COUPLED TO VOICE_POOL AND VOICEOVER_RATE — re-measure it
     whenever either changes, or the gates drift and scripts get expanded or
     trimmed for the wrong reason.
+
+    Engine-aware since M2: the kokoro pair is PROVISIONAL (seeded near the
+    edge calibration) — recalibrate from real CI syntheses before trusting
+    the band gate under TTS_PROVIDER=kokoro (compare est vs the mixed-audio
+    length the logs print, same procedure as the edge measurement above).
     """
+    wps, leadin = _SPOKEN_RATE_BY_ENGINE.get(
+        engine or resolve_tts_engine(None), _SPOKEN_RATE_BY_ENGINE["edge"])
     total_words = 0
     spoken_scenes = 0
     for scene in scenes:
@@ -2884,7 +2908,7 @@ def _estimate_spoken_seconds(scenes: List[dict]) -> float:
         total_words += words
         if words:
             spoken_scenes += 1
-    return total_words / 2.33 + 0.35 * spoken_scenes
+    return total_words / wps + leadin * spoken_scenes
 
 
 # ---------------------------------------------------------------------------
@@ -6839,28 +6863,102 @@ async def generate_voiceover_and_alignment(
     rate: Optional[str] = None,
     pitch: Optional[str] = None
 ) -> tuple:
-    """Generates Edge-TTS speech per scene, transcribes timings using native WordBoundary events, auto-adjusts scene durations, and mixes the final track."""
-    print(f"[{session_id}] Starting free neural voiceover and karaoke subtitle alignment...")
+    """Engine-routing wrapper: per-scene speech with word-level timings,
+    auto-adjusted scene durations, and a mixed final track.
+
+    TTS_PROVIDER=kokoro routes to the Kokoro-82M batch worker (native word
+    timestamps, side Python interpreter); ANY kokoro failure restarts the
+    WHOLE video on edge-tts — engines never mix mid-video (a mid-video
+    narrator swap reads as broken, the same lesson as the sticky voice
+    failover). Default engine "edge" is the historical path byte-for-byte."""
+    engine = resolve_tts_engine(voice)
+    if engine == "kokoro":
+        # Snapshot planned durations: a failed kokoro pass may already have
+        # refit some scenes to its own audio; the edge restart must refit
+        # from the same planned baseline, not kokoro leftovers.
+        planned = [s.get("durationInFrames") for s in scenes]
+        try:
+            return await _generate_voiceover_with_engine(
+                "kokoro", scenes, session_id, public_dir, voice, rate, pitch)
+        except Exception as kok_err:
+            print(f"[{session_id}] Kokoro TTS failed ({kok_err}) — restarting the whole "
+                  f"video on edge-tts (engines never mix mid-video).")
+            for s, d in zip(scenes, planned):
+                if d is not None:
+                    s["durationInFrames"] = d
+    return await _generate_voiceover_with_engine(
+        "edge", scenes, session_id, public_dir, voice, rate, pitch)
+
+
+async def _generate_voiceover_with_engine(
+    engine: str,
+    scenes: List[dict],
+    session_id: str,
+    public_dir: str,
+    voice: Optional[str] = None,
+    rate: Optional[str] = None,
+    pitch: Optional[str] = None
+) -> tuple:
+    """One full-video synthesis pass on ONE engine. Everything downstream of
+    synthesis — duration refit, subtitle offsets, empty-audio guard, failure
+    accounting, mixing, REQUIRE_VOICEOVER aborts — is engine-shared and
+    unchanged from the historical edge-tts implementation."""
+    print(f"[{session_id}] Starting free neural voiceover and karaoke subtitle alignment ({engine})...")
     import edge_tts
-    
+
     # Resolve parameters from arguments or environment variables. If no voice
-    # is forced, rotate one per video (seeded) from the narrator pool.
-    resolved_voice = (voice or os.environ.get("VOICEOVER_VOICE", "")).strip()
-    if not resolved_voice:
-        # Feedback-weighted rotation: identical to the legacy rnd.choice on
-        # cold start; with enough scored posts, better-performing narrators get
-        # picked more often (epsilon floor keeps every voice in rotation).
-        rnd = random.Random(_derive_seed(session_id))
-        resolved_voice, voice_mode = _feedback_weighted_choice(
-            VOICE_POOL, lambda v: v, "voices", rnd, get_feedback_stats())
-        print(f"[{session_id}] Seeded narrator voice for this video: {resolved_voice} ({voice_mode})")
-    # Recorded so the post ledger can attribute performance to the narrator.
-    render_status_store.setdefault(session_id, {})["resolved_voice"] = resolved_voice
+    # is forced, rotate one per video (seeded) from the engine's narrator pool.
+    if engine == "kokoro":
+        resolved_voice = (voice or os.environ.get("VOICEOVER_VOICE", "")).strip()
+        if resolved_voice and not is_kokoro_voice(resolved_voice):
+            resolved_voice = ""
+        if not resolved_voice:
+            rnd = random.Random(_derive_seed(session_id))
+            resolved_voice, voice_mode = _feedback_weighted_choice(
+                KOKORO_VOICE_POOL, lambda v: "kokoro:" + v, "voices", rnd, get_feedback_stats())
+            print(f"[{session_id}] Seeded kokoro narrator for this video: {resolved_voice} ({voice_mode})")
+        # Namespaced key so the ledger's voices bucket never conflates engines.
+        render_status_store.setdefault(session_id, {})["resolved_voice"] = "kokoro:" + resolved_voice
+        render_status_store[session_id]["tts_provider"] = "kokoro"
+    else:
+        resolved_voice = (voice or os.environ.get("VOICEOVER_VOICE", "")).strip()
+        if not resolved_voice:
+            # Feedback-weighted rotation: identical to the legacy rnd.choice on
+            # cold start; with enough scored posts, better-performing narrators get
+            # picked more often (epsilon floor keeps every voice in rotation).
+            rnd = random.Random(_derive_seed(session_id))
+            resolved_voice, voice_mode = _feedback_weighted_choice(
+                VOICE_POOL, lambda v: v, "voices", rnd, get_feedback_stats())
+            print(f"[{session_id}] Seeded narrator voice for this video: {resolved_voice} ({voice_mode})")
+        # Recorded so the post ledger can attribute performance to the narrator.
+        render_status_store.setdefault(session_id, {})["resolved_voice"] = resolved_voice
+        render_status_store[session_id]["tts_provider"] = "edge"
     # +10% read as hurried, which is most of what "sounds like a robot"
     # actually is. +5% keeps the pace tight for a Reel without the rush.
     resolved_rate = rate or os.environ.get("VOICEOVER_RATE", "+5%")
     resolved_pitch = pitch or os.environ.get("VOICEOVER_PITCH", "+0Hz")
-    
+
+    # Kokoro synthesizes every spoken scene in ONE worker subprocess (the
+    # ~330MB model loads once per video); the shared per-scene loop below
+    # then consumes the precomputed results exactly like a synth call.
+    kokoro_results = {}
+    if engine == "kokoro":
+        kokoro_speed = edge_rate_to_speed(resolved_rate)
+        kokoro_batch = []
+        for b_idx, b_scene in enumerate(scenes):
+            b_text = (b_scene.get("voiceover", "").strip() or b_scene.get("text", "").strip())
+            if b_text:
+                kokoro_batch.append({
+                    "idx": b_idx,
+                    "text": b_text.replace("|", " ").strip(),
+                    "out_path": os.path.join(public_dir, f"temp-{session_id}-scene-{b_idx}.wav"),
+                })
+        if kokoro_batch:
+            print(f"[{session_id}] Kokoro: synthesizing {len(kokoro_batch)} scenes "
+                  f"(voice={resolved_voice}, speed={edge_rate_to_speed(resolved_rate):.2f})...")
+            kokoro_results = synthesize_scenes_kokoro(
+                kokoro_batch, resolved_voice, kokoro_speed, session_id)
+
     temp_audio_files = []
     offsets = []
     global_subtitles = []
@@ -6875,55 +6973,67 @@ async def generate_voiceover_and_alignment(
             continue
         
         scene_text_cleaned = scene_text.replace("|", " ").strip()
-        scene_audio_filename = f"temp-{session_id}-scene-{idx}.mp3"
+        scene_audio_filename = f"temp-{session_id}-scene-{idx}." + ("wav" if engine == "kokoro" else "mp3")
         scene_audio_filepath = os.path.join(public_dir, scene_audio_filename)
-        
-        try:
-            # Voice failover: try the chosen narrator, then up to 2 pool
-            # fallbacks. Without this, one flaky Edge-TTS response left a
-            # scene silently voiceless (with no subtitles) in the final video.
-            voice_candidates = [resolved_voice] + [v for v in VOICE_POOL if v != resolved_voice]
-            scene_words = []
-            synth_ok = False
-            last_tts_err: Optional[Exception] = None
-            for cand_voice in voice_candidates[:3]:
-                try:
-                    print(f"[{session_id}] Edge-TTS scene {idx+1}/{len(scenes)}: Synthesizing with voice='{cand_voice}', rate='{resolved_rate}': '{scene_text_cleaned}'")
-                    communicate = edge_tts.Communicate(
-                        scene_text_cleaned,
-                        cand_voice,
-                        rate=resolved_rate,
-                        pitch=resolved_pitch,
-                        boundary="WordBoundary"
-                    )
 
-                    scene_words = []
-                    with open(scene_audio_filepath, "wb") as f:
-                        async for chunk in communicate.stream():
-                            if chunk["type"] == "audio":
-                                f.write(chunk["data"])
-                            elif chunk["type"] == "WordBoundary":
-                                # Convert 100ns ticks to seconds
-                                start_sec = chunk["offset"] / 10000000.0
-                                dur_sec = chunk["duration"] / 10000000.0
-                                scene_words.append({
-                                    "text": chunk["text"].strip(),
-                                    "start": start_sec,
-                                    "end": start_sec + dur_sec
-                                })
-                    if not scene_words or os.path.getsize(scene_audio_filepath) < 1024:
-                        raise Exception("TTS returned empty/near-empty audio")
-                    if cand_voice != resolved_voice:
-                        print(f"[{session_id}] Voice failover: switching narrator to '{cand_voice}' for the rest of the video (consistency).")
-                        resolved_voice = cand_voice
-                        render_status_store.setdefault(session_id, {})["resolved_voice"] = resolved_voice
-                    synth_ok = True
-                    break
-                except Exception as tts_err:
-                    last_tts_err = tts_err
-                    print(f"[{session_id}] TTS voice '{cand_voice}' failed on scene {idx+1}: {tts_err}. Trying fallback voice...")
-            if not synth_ok:
-                raise Exception(f"All TTS voices failed for scene {idx+1}: {last_tts_err}")
+        try:
+            if engine == "kokoro":
+                # Batch results were synthesized above. A hole here is
+                # systemic (local model, no flaky network), so it fails this
+                # pass and the wrapper restarts the whole video on edge-tts —
+                # per-scene voice failover would just mix engines.
+                kok_res = kokoro_results.get(idx) or {"error": "scene missing from kokoro batch"}
+                if "words" not in kok_res:
+                    raise Exception(f"kokoro synthesis failed: {kok_res.get('error', 'unknown')}")
+                scene_words = kok_res["words"]
+                if not scene_words or os.path.getsize(scene_audio_filepath) < 1024:
+                    raise Exception("TTS returned empty/near-empty audio")
+            else:
+                # Voice failover: try the chosen narrator, then up to 2 pool
+                # fallbacks. Without this, one flaky Edge-TTS response left a
+                # scene silently voiceless (with no subtitles) in the final video.
+                voice_candidates = [resolved_voice] + [v for v in VOICE_POOL if v != resolved_voice]
+                scene_words = []
+                synth_ok = False
+                last_tts_err: Optional[Exception] = None
+                for cand_voice in voice_candidates[:3]:
+                    try:
+                        print(f"[{session_id}] Edge-TTS scene {idx+1}/{len(scenes)}: Synthesizing with voice='{cand_voice}', rate='{resolved_rate}': '{scene_text_cleaned}'")
+                        communicate = edge_tts.Communicate(
+                            scene_text_cleaned,
+                            cand_voice,
+                            rate=resolved_rate,
+                            pitch=resolved_pitch,
+                            boundary="WordBoundary"
+                        )
+
+                        scene_words = []
+                        with open(scene_audio_filepath, "wb") as f:
+                            async for chunk in communicate.stream():
+                                if chunk["type"] == "audio":
+                                    f.write(chunk["data"])
+                                elif chunk["type"] == "WordBoundary":
+                                    # Convert 100ns ticks to seconds
+                                    start_sec = chunk["offset"] / 10000000.0
+                                    dur_sec = chunk["duration"] / 10000000.0
+                                    scene_words.append({
+                                        "text": chunk["text"].strip(),
+                                        "start": start_sec,
+                                        "end": start_sec + dur_sec
+                                    })
+                        if not scene_words or os.path.getsize(scene_audio_filepath) < 1024:
+                            raise Exception("TTS returned empty/near-empty audio")
+                        if cand_voice != resolved_voice:
+                            print(f"[{session_id}] Voice failover: switching narrator to '{cand_voice}' for the rest of the video (consistency).")
+                            resolved_voice = cand_voice
+                            render_status_store.setdefault(session_id, {})["resolved_voice"] = resolved_voice
+                        synth_ok = True
+                        break
+                    except Exception as tts_err:
+                        last_tts_err = tts_err
+                        print(f"[{session_id}] TTS voice '{cand_voice}' failed on scene {idx+1}: {tts_err}. Trying fallback voice...")
+                if not synth_ok:
+                    raise Exception(f"All TTS voices failed for scene {idx+1}: {last_tts_err}")
 
             # Auto-adjust scene duration to match speech duration.
             # PACING: only a short tail of silence after the last word before the
@@ -6991,6 +7101,10 @@ async def generate_voiceover_and_alignment(
             # shipped a video whose voice stopped after scene 1 — never again.
             if len(temp_audio_files) > 1 and REQUIRE_VOICEOVER:
                 raise Exception(f"FFmpeg voiceover mixing failed ({mix_err}) — aborting instead of posting partial narration.")
+            if temp_audio_files[0].endswith(".wav"):
+                # The final track is served under an .mp3 name — raw-copying a
+                # kokoro WAV there would hand the renderer mislabeled audio.
+                raise Exception(f"FFmpeg voiceover mixing failed ({mix_err}) — no raw-copy fallback for wav sources.")
             print(f"[{session_id}] FFmpeg mixing failed: {mix_err}. Attempting fallback copy of first track...")
             shutil.copyfile(temp_audio_files[0], final_voiceover_path)
         finally:

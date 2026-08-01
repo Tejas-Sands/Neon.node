@@ -118,6 +118,81 @@ jobs:
           # node_modules instead of being re-downloaded at render time.
           npx remotion browser ensure
 
+      # --- Kokoro TTS side stack (M2) ---------------------------------------
+      # The pipeline interpreter stays on Python 3.9 (the frozen posting path
+      # was debugged around 3.9 OpenSSL behavior); kokoro requires >=3.10, so
+      # it runs in scripts/kokoro_tts_worker.py under THIS side interpreter,
+      # addressed by absolute path via KOKORO_PYTHON — never put on PATH.
+      # All kokoro steps are gated on the TTS_PROVIDER repository VARIABLE
+      # (Settings -> Secrets and variables -> Actions -> Variables), so they
+      # cost zero minutes until the engine is actually enabled.
+      - name: Install espeak-ng (kokoro G2P dependency)
+        if: vars.TTS_PROVIDER == 'kokoro'
+        run: |
+          if ! command -v espeak-ng >/dev/null 2>&1; then
+            sudo apt-get update -y -o Acquire::Retries=3
+            sudo apt-get install -y --no-install-recommends -o Acquire::Retries=3 espeak-ng
+          fi
+
+      - name: Set up Python 3.11 (kokoro side interpreter)
+        if: vars.TTS_PROVIDER == 'kokoro'
+        id: kokoro-python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          update-environment: false
+
+      - name: Cache kokoro virtualenv
+        if: vars.TTS_PROVIDER == 'kokoro'
+        id: kokoro-venv-cache
+        uses: actions/cache@v4
+        with:
+          path: .venv-kokoro
+          key: venv-kokoro-${{ runner.os }}-py311-${{ hashFiles('requirements-kokoro.txt') }}
+
+      - name: Install kokoro dependencies (CPU torch)
+        if: vars.TTS_PROVIDER == 'kokoro' && steps.kokoro-venv-cache.outputs.cache-hit != 'true'
+        run: |
+          '${{ steps.kokoro-python.outputs.python-path }}' -m venv .venv-kokoro
+          .venv-kokoro/bin/pip install --upgrade pip
+          # CPU wheel first so kokoro's torch requirement is already satisfied
+          # (default PyPI Linux torch drags the multi-GB CUDA stack).
+          .venv-kokoro/bin/pip install torch --index-url https://download.pytorch.org/whl/cpu
+          .venv-kokoro/bin/pip install -r requirements-kokoro.txt
+
+      - name: Cache Kokoro-82M model weights
+        if: vars.TTS_PROVIDER == 'kokoro'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-kokoro-82m-v1
+
+      - name: Warm kokoro model + voices cache
+        if: vars.TTS_PROVIDER == 'kokoro'
+        run: |
+          # Failure here is non-fatal: resolve_tts_engine falls back to edge
+          # when the worker can't run, and the run must not lose its slot.
+          .venv-kokoro/bin/python - <<'PY' || echo "kokoro warmup failed — edge-tts will cover this run"
+          from kokoro import KPipeline
+          p = KPipeline(lang_code="a", repo_id="hexgrad/Kokoro-82M")
+          for v in ("af_heart", "af_bella", "am_michael", "am_fenrir"):
+              p.load_voice(v)
+          print("kokoro warm")
+          PY
+
+      # Feature flags for the run step (repository VARIABLES, not secrets —
+      # flipping a milestone on/off is a Settings edit, never a workflow
+      # edit). Exported via GITHUB_ENV so the frozen run step's env block
+      # stays byte-identical.
+      - name: Export pipeline feature flags
+        run: |
+          if [ -x .venv-kokoro/bin/python ]; then
+            echo "KOKORO_PYTHON=$GITHUB_WORKSPACE/.venv-kokoro/bin/python" >> "$GITHUB_ENV"
+          fi
+          echo "TTS_PROVIDER=${{ vars.TTS_PROVIDER || 'edge' }}" >> "$GITHUB_ENV"
+          echo "FORMAT_PACK=${{ vars.FORMAT_PACK || '' }}" >> "$GITHUB_ENV"
+          echo "LOOP_ENDING=${{ vars.LOOP_ENDING || 'false' }}" >> "$GITHUB_ENV"
+
       - name: Run Video Generation Pipeline
         env:
           # Inject secrets from GitHub Repository Settings
