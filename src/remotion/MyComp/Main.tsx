@@ -37,6 +37,7 @@ import {
   type Palette,
   type Finish,
 } from "./looks";
+import { derivePackSkin } from "./packs";
 import { springCfg } from "./motion";
 import { fitStackScale, stackHeightAt, textWidthFor } from "./fitStack";
 import {
@@ -103,6 +104,10 @@ interface ThemeProps {
   gradientOverlay?: "none" | "top-to-bottom" | "radial-center" | "diagonal";
   /** Per-video randomness seed (from backend session_id) driving all per-scene variety */
   seed?: number;
+  /** Format-pack name (backend-set; absent on every legacy render). Pack
+   *  skins key off this — e.g. list scenes render as a lettered quiz
+   *  OptionGrid under "quiz-reveal". */
+  formatPack?: string;
 }
 
 const defaultTheme: ThemeProps = {
@@ -1405,6 +1410,13 @@ const DynamicScene: React.FC<{
   // --- LIST scene (staggered reveal with animated bullets) ---
   if (type === "list") {
     const items = listItems ?? (text ? text.split("|").map((s) => s.trim()) : ["Item 1", "Item 2", "Item 3"]);
+    // Quiz-pack OptionGrid skin: lettered A/B/C/D badges, bigger option
+    // type, centered block, seeded badge/entrance variety (packs.ts). The
+    // grid stays NEUTRAL — correctIndex is never highlighted here; the
+    // reveal scene carries the answer. Absent formatPack = legacy list,
+    // byte-identical.
+    const isQuizGrid = theme.formatPack === "quiz-reveal";
+    const packSkin = isQuizGrid ? derivePackSkin((theme.seed ?? 0) >>> 0) : null;
     // 6-12 frames between rows is the professional band for list reveals —
     // duration-proportional stagger ballooned to 1.5s gaps on long scenes.
     const framesPerItem = Math.floor(durationInFrames * 0.55 / items.length);
@@ -1426,13 +1438,14 @@ const DynamicScene: React.FC<{
             titleWeight={FONT_METRICS[theme.fontFamilyName].displayWeight}
           />
         )}
-        <div style={{ position: "absolute", top: "18%", left: "8%", right: "8%", zIndex: 20, display: "flex", flexDirection: "column", gap: "10px" }}>
+        <div style={{ position: "absolute", top: isQuizGrid ? "26%" : "18%", left: "8%", right: "8%", zIndex: 20, display: "flex", flexDirection: "column", gap: isQuizGrid ? "16px" : "10px", transform: packSkin ? `scale(${packSkin.quizRowScale})` : undefined }}>
           {!title && <div style={{ height: "10px" }} />}
           {items.map((item, i) => {
             const itemStart = 12 + i * itemStagger;
             const localFrame = Math.max(0, frame - itemStart);
             const itemProgress = spring({ fps, frame: localFrame, config: { damping: 16, stiffness: Math.round(110 * sMul) }, durationInFrames: 16 });
-            const itemX = interpolate(itemProgress, [0, 1], [-50, 0]);
+            const enterSign = packSkin && packSkin.quizEnterFrom === "alternate" && i % 2 === 1 ? 1 : -1;
+            const itemX = interpolate(itemProgress, [0, 1], [enterSign * 50, 0]);
             const itemScale = interpolate(itemProgress, [0, 1], [0.9, 1]);
             const color = i % 2 === 0 ? theme.primaryColor : theme.secondaryColor;
 
@@ -1459,15 +1472,15 @@ const DynamicScene: React.FC<{
               >
                 <div
                   style={{
-                    width: "44px",
-                    height: "44px",
-                    borderRadius: "50%",
+                    width: isQuizGrid ? "52px" : "44px",
+                    height: isQuizGrid ? "52px" : "44px",
+                    borderRadius: packSkin && packSkin.quizBadge === "square" ? "12px" : "50%",
                     background: `linear-gradient(135deg, ${color}30, ${color}60)`,
                     border: `2px solid ${color}`,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: "24px",
+                    fontSize: isQuizGrid ? "26px" : "24px",
                     fontWeight: FONT_METRICS[theme.fontFamilyName].displayWeight,
                     fontFamily: getFontFamily(theme.fontFamilyName),
                     color: "#fff",
@@ -1476,9 +1489,9 @@ const DynamicScene: React.FC<{
                     boxShadow: `0 0 10px ${color}30`,
                   }}
                 >
-                  {i + 1}
+                  {isQuizGrid ? String.fromCharCode(65 + i) : i + 1}
                 </div>
-                <div style={{ fontSize: `${fs(30)}px`, color: "#fff", fontWeight: FONT_METRICS[theme.fontFamilyName].bodyWeight, fontFamily: getFontFamily(theme.fontFamilyName), lineHeight: 1.3 }}>
+                <div style={{ fontSize: `${fs(isQuizGrid ? 34 : 30)}px`, color: "#fff", fontWeight: FONT_METRICS[theme.fontFamilyName].bodyWeight, fontFamily: getFontFamily(theme.fontFamilyName), lineHeight: 1.3 }}>
                   {item}
                 </div>
               </div>
@@ -2680,6 +2693,7 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
     transitionStyle: theme?.transitionStyle ?? defaultTheme.transitionStyle ?? "crossfade",
     gradientOverlay: theme?.gradientOverlay ?? defaultTheme.gradientOverlay ?? "none",
     seed: theme?.seed ?? defaultTheme.seed ?? 0,
+    formatPack: theme?.formatPack,
   };
 
   // Loop-ending pack signals (M3) — read from the RAW props theme: the

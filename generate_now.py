@@ -28,7 +28,8 @@ from main import (
     _normalize_subject,
     collect_ledger_metrics,
 )
-from format_packs import resolve_pack
+from format_packs import build_pack_prompt, resolve_pack
+from main import plan_pack_brief
 
 
 def _build_env_instagram_config():
@@ -122,8 +123,14 @@ def main():
 
         best = None
         plan = None
+        pack_brief = None
         if not stories:
             print("Could not fetch HackerNews stories. Falling back to default tech prompt.")
+            if format_pack in ("quiz-reveal", "data-rankings"):
+                # Brief packs need a real article to ground their data —
+                # degrade rather than render a quiz with nothing to quiz.
+                print(f"[PackBrief] No stories to ground a {format_pack} brief — degrading to facts-explainer.")
+                format_pack = "facts-explainer"
             prompt = (
                 "Create a fast-paced vertical video about ONE specific, real, currently-relevant developer tool or "
                 "product release (pick a concrete named one — e.g. a specific framework version, database feature, or "
@@ -206,6 +213,17 @@ def main():
                 if plan is not None and not plan.get("subject"):
                     plan = None  # still vague — current pick ships with today's prompt
 
+            # Brief packs (quiz/rankings): plan the grounded data brief from
+            # the SAME scraped article the judge saw. A thin/failed brief
+            # DEGRADES the run to facts-explainer — a slot is never lost to
+            # an unquizzable story.
+            if format_pack in ("quiz-reveal", "data-rankings"):
+                pack_brief = plan_pack_brief(
+                    format_pack, title, body, plan=plan, session_id=session_id)
+                if pack_brief is None:
+                    print(f"[PackBrief] No usable {format_pack} brief — degrading to facts-explainer.")
+                    format_pack = "facts-explainer"
+
             # gh- sessions get the branded outro appended, so the closer must
             # not carry its own follow ask (it would play twice back-to-back).
             # Loop-ending packs (LOOP_ENDING + pack bit) instead end on the
@@ -215,12 +233,17 @@ def main():
                 os.environ.get("LOOP_ENDING", "false").strip().lower() in ("1", "true", "yes")
                 and bool(resolve_pack(format_pack)["loop_ending"])
             )
-            prompt = build_hn_news_prompt(
-                title, body, seed=_derive_seed(session_id),
-                outro_appended=session_id.startswith(AUTO_CHANNEL_PREFIXES),
-                plan=plan,
-                ending="no-ask" if loop_ending else None,
-            )
+            if pack_brief is not None:
+                # Pack prompts carry their own outline + no-ask rules.
+                prompt = build_pack_prompt(
+                    format_pack, title, pack_brief, seed=_derive_seed(session_id))
+            else:
+                prompt = build_hn_news_prompt(
+                    title, body, seed=_derive_seed(session_id),
+                    outro_appended=session_id.startswith(AUTO_CHANNEL_PREFIXES),
+                    plan=plan,
+                    ending="no-ask" if loop_ending else None,
+                )
 
         if dry_run:
             print(f"[DRY-RUN] Format pack: {format_pack}")
@@ -240,6 +263,7 @@ def main():
             req = RenderRequest(
                 prompt=prompt,
                 format_pack=format_pack,
+                pack_brief=pack_brief,
                 topic_meta=(
                     {
                         "title": best.get("title", ""),

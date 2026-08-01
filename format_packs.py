@@ -107,6 +107,60 @@ _LEGACY_TIGHTEN_NOTE = (
 )
 
 
+def build_pack_prompt(pack_name, title, brief, seed=None):
+    """User prompt for a data-brief pack (quiz-reveal / data-rankings).
+
+    The SCENE OUTLINE is the structure contract; main.apply_pack_postprocess
+    later injects/enforces the verified brief data regardless of how
+    faithfully the model followed it — so this prompt optimizes for natural
+    copy, labels and search queries, while correctness is guaranteed
+    downstream. Small-model friendly: short, imperative, field-exact.
+    """
+    if pack_name == "quiz-reveal":
+        opts = brief["options"]
+        return f"""Create a guess-the-answer QUIZ reel about this tech story: {title}
+
+THE QUIZ (verified data — use EXACTLY these, verbatim):
+- QUESTION: {brief['question']}
+- OPTIONS: {" / ".join(opts)}
+- CORRECT ANSWER: {opts[brief['answer_index']]}
+- PROOF: {brief['answer_fact']}
+
+SCENE OUTLINE (follow exactly — 4 scenes):
+- Scene 1 (HOOK): type "hero". On-screen "text" = the QUESTION verbatim. "voiceover" speaks the question plus one short stakes line, max 16 words total. The answer must NOT appear.
+- Scene 2 (OPTIONS): type "list". "listItems" = the OPTIONS verbatim, one per item. "voiceover" reads the options and challenges the viewer to pick one, max 18 words. "title" = a 2-3 word label like "YOUR OPTIONS" — never the question again.
+- Scene 3 (COUNTDOWN): type "countdown", countFrom 3, countTo 1, durationInFrames 90, "voiceover" = "" (empty string — music only).
+- Scene 4 (REVEAL): type "metric". "text" = the CORRECT ANSWER verbatim. "secondaryText" = the PROOF sentence. "voiceover" = the PROOF sentence (numbers spelled out). "title" = a 2-3 word label like "THE ANSWER".
+
+RULES:
+- The CORRECT ANSWER must never appear in scenes 1-3 "text" or "voiceover" (scene 2's options list is the only place it may be listed, unmarked).
+- No follow/subscribe ask anywhere; the video ends the instant the proof lands.
+- Every scene gets a "searchQuery" (concrete tech visual) and a "videoQuery"."""
+    if pack_name == "data-rankings":
+        series = brief["series"]
+        unit = brief.get("unit") or ""
+        listing = "; ".join(f"{p['label']} = {p['value']}{unit}" for p in series)
+        return f"""Create a RANKED-DATA reel about this tech story: {title}
+
+THE DATA (verified — use EXACTLY these values, never invent or round):
+- METRIC: {brief.get('metric_label') or 'the metric'}{f' ({unit})' if unit else ''}
+- SERIES: {listing}
+- WHY IT MATTERS: {brief.get('insight') or ''}
+
+SCENE OUTLINE (follow exactly — 4 scenes):
+- Scene 1 (HOOK): type "hero". Tease the ranking WITHOUT naming the leader (the "#1 is not who you think" energy). Max 8 on-screen words; "voiceover" max 14 words.
+- Scene 2 (SETUP): type "split". One line on WHAT was measured and HOW, from the story. No numbers yet.
+- Scene 3 (CHART): type "bar-chart". "chartData" = the SERIES verbatim as {{"label","value"}} pairs. "voiceover" walks the ranking WITHOUT the leader's name.
+- Scene 4 (REVEAL): type "metric". "text" = the leader's label. "voiceover" names the leader + its exact value, then lands WHY IT MATTERS in one sentence.
+
+RULES:
+- The leader's name must never appear in scenes 1-3 "voiceover" or "text".
+- Values verbatim from the SERIES — never rounded, never estimated.
+- No follow/subscribe ask anywhere; the video ends the instant the payoff lands.
+- Every scene gets a "searchQuery" (concrete tech visual) and a "videoQuery"."""
+    raise ValueError(f"no pack prompt builder for {pack_name!r}")
+
+
 def runtime_revision_notes(pack_cfg, min_sec, max_sec):
     """(expand_note, tighten_note) tails for the script retry loop.
 

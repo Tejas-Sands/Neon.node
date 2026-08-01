@@ -70,6 +70,13 @@ export const SceneSchema = z.object({
   rightLabel: z.string().optional(),
   // List scene fields
   listItems: z.array(z.string()).optional(),
+  /**
+   * Quiz packs (backend-set by apply_pack_postprocess, never LLM-authored):
+   * which listItems row is the verified correct answer. Render-side quiz
+   * skins may echo it AT/AFTER the reveal only — the option grid itself
+   * stays neutral. Backend-only like brollClips — no prompt/ALLOWED_* sync.
+   */
+  correctIndex: z.number().optional(),
   // Countdown scene fields
   countFrom: z.number().optional(),
   countTo: z.number().optional(),

@@ -473,6 +473,10 @@ class RenderRequest(BaseModel):
     # the pre-pack pipeline bit-for-bit. Scopes the runtime band + script
     # contract + ending mode; recorded to the ledger for the feedback loop.
     format_pack: Optional[str] = None
+    # Verified pack data brief from plan_pack_brief (quiz Q/A or ranked
+    # series). Grounded upstream against the source article; the pack
+    # post-processor injects it verbatim into the script. None = no brief.
+    pack_brief: Optional[Dict[str, Any]] = None
 
 
 class BatchRenderRequest(BaseModel):
@@ -3004,17 +3008,153 @@ def _subject_tokens(topic_meta) -> list:
             if len(w) >= 4 and w not in _SUBJECT_STOPWORDS]
 
 
+def apply_pack_postprocess(parsed_script: dict, pack_cfg: dict,
+                           brief: Optional[dict], session_id: str,
+                           force_rebuild: bool = False) -> None:
+    """Enforce the pack's scene shape and inject the VERIFIED brief data.
+
+    Injection only — options, chart values and the reveal come VERBATIM from
+    the grounded brief (never from the LLM), so quiz answers and chart bars
+    cannot fabricate (the F6 contract). When the model broke the scene shape
+    (or `force_rebuild` — the gate hard-flagged its copy), the scene list is
+    REBUILT deterministically from the brief: every sentence in the rebuilt
+    script is the brief's question/options/fact plus connective words — a
+    pack slot is never lost to scene-shape disobedience.
+
+    Runs AFTER parse_and_validate_script (validation, fabrication scrub,
+    redundancy pruning) so injected data can't be scrubbed away. Mutates
+    parsed_script in place; silently no-ops without a brief.
+    """
+    if not brief or not isinstance(brief, dict):
+        return
+    scenes = [s for s in (parsed_script.get("scenes") or []) if isinstance(s, dict)]
+    if not scenes:
+        return
+
+    sq = (scenes[0].get("searchQuery") or "").strip() or "technology abstract dark"
+    vq = (scenes[0].get("videoQuery") or "").strip()
+
+    def _sc(**kw):
+        base = {"searchQuery": sq, "durationInFrames": 120,
+                "textAnimation": "fade-up"}
+        if vq:
+            base["videoQuery"] = vq
+        base.update(kw)
+        return base
+
+    if brief.get("kind") == "quiz":
+        options = [str(o) for o in brief["options"]]
+        answer = options[brief["answer_index"]]
+        hero = scenes[0] if scenes[0].get("type") in (None, "hero") else \
+            next((s for s in scenes if s.get("type") == "hero"), None)
+        lst = next((s for s in scenes if s.get("type") == "list"), None)
+        cd = next((s for s in scenes if s.get("type") == "countdown"), None)
+        reveal = next((s for s in reversed(scenes) if s.get("type") in ("metric", "split")), None)
+        shape_ok = (hero is not None and lst is not None and cd is not None
+                    and reveal is not None
+                    and scenes.index(lst) < scenes.index(cd) < scenes.index(reveal))
+        if force_rebuild or not shape_ok:
+            print(f"[{session_id}] Quiz {'rebuild forced by gate' if force_rebuild else 'shape unusable'} "
+                  f"— deterministic rebuild from the verified brief.")
+            opts_spoken = ", ".join(options[:-1]) + ", or " + options[-1]
+            scenes = [
+                _sc(type="hero", title="", text=brief["question"],
+                    voiceover=brief["question"] + " Lock in your answer."),
+                _sc(type="list", title="YOUR OPTIONS", text="Pick one",
+                    voiceover=f"Is it {opts_spoken}?",
+                    listItems=list(options)),
+                _sc(type="countdown", title="", text="", voiceover="",
+                    countFrom=3, countTo=1, durationInFrames=90),
+                _sc(type="metric", title="THE ANSWER", text=answer,
+                    secondaryText=brief["answer_fact"],
+                    voiceover=brief["answer_fact"]),
+            ]
+            parsed_script["scenes"] = scenes
+            hero, lst, cd, reveal = scenes[0], scenes[1], scenes[2], scenes[3]
+        # Verified-data injection over whatever the model wrote.
+        lst["listItems"] = list(options)
+        lst["correctIndex"] = int(brief["answer_index"])
+        # Countdown beats are voiceover-free BY CONTRACT: repeated "Three.
+        # Two. One." lines get eaten by the redundancy prune, and an empty
+        # voiceover legitimately skips TTS (music/SFX carry the beat).
+        cd["voiceover"] = ""
+        cd.setdefault("countFrom", 3)
+        cd.setdefault("countTo", 1)
+        reveal["text"] = answer
+        reveal["secondaryText"] = brief["answer_fact"]
+        # The reveal narration IS the proof sentence, verbatim — grounded
+        # upstream, invents nothing.
+        reveal["voiceover"] = brief["answer_fact"]
+        # No-spoiler guard on the HOOK: the answer string may not appear
+        # before the options scene names every option legitimately.
+        ans_low = answer.lower()
+        for fld in ("text", "title", "subtitle", "secondaryText", "voiceover"):
+            val = hero.get(fld)
+            if isinstance(val, str) and ans_low and ans_low in val.lower():
+                if fld in ("text", "voiceover"):
+                    hero[fld] = brief["question"]
+                else:
+                    hero.pop(fld, None)
+                print(f"[{session_id}] Scrubbed answer spoiler from quiz hook field '{fld}'.")
+        return
+
+    if brief.get("kind") == "series":
+        # Ascending order: the leader animates LAST — the withheld-#1 beat is
+        # the format's retention engine.
+        series = sorted(brief["series"], key=lambda x: float(x["value"]))
+        unit = brief.get("unit") or ""
+        leader = series[-1]
+        chart = next((s for s in scenes if s.get("type") == "bar-chart"), None)
+        reveal = next((s for s in reversed(scenes) if s.get("type") in ("metric", "split")), None)
+        hero = scenes[0]
+        shape_ok = (chart is not None and reveal is not None
+                    and scenes.index(chart) < scenes.index(reveal))
+        if force_rebuild or not shape_ok:
+            print(f"[{session_id}] Rankings {'rebuild forced by gate' if force_rebuild else 'shape unusable'} "
+                  f"— deterministic rebuild from the verified brief.")
+            label = brief.get("metric_label") or "the numbers"
+            lead_val = ("%g" % leader["value"]) + (f" {unit}" if unit else "")
+            scenes = [
+                _sc(type="hero", title="", text=f"Ranked: {label}",
+                    voiceover=f"We ranked {label} — the leader surprised us."),
+                _sc(type="bar-chart", title=label.upper()[:40], text="",
+                    voiceover=f"Here is how they stack up on {label}.",
+                    chartData=[{"label": p["label"], "value": p["value"]} for p in series]),
+                _sc(type="metric", title="NUMBER ONE", text=leader["label"],
+                    secondaryText=f"{lead_val} — {label}",
+                    voiceover=f"Number one: {leader['label']}, at {lead_val}."),
+            ]
+            parsed_script["scenes"] = scenes
+            chart, reveal = scenes[1], scenes[2]
+        chart["chartData"] = [{"label": p["label"], "value": p["value"]} for p in series]
+        reveal["text"] = leader["label"]
+        lead_val = ("%g" % leader["value"]) + (f" {unit}" if unit else "")
+        reveal.setdefault("secondaryText", lead_val)
+        return
+
+
 def _script_vagueness_reasons(script: dict, source_prompt: str = "",
-                              topic_meta: Optional[dict] = None) -> tuple:
+                              topic_meta: Optional[dict] = None,
+                              format_pack: Optional[str] = None) -> tuple:
     """Returns (hard_reasons, soft_reasons) as human-readable strings the retry
     loop quotes back to the model. Read-only: never mutates the script.
 
     Runs on the POST-scrub script (after parse_and_validate_script), so the
     fabrication scrub and redundancy pruning have already done their work —
     this only judges what is left for vagueness.
+
+    `format_pack` (M5): None or the legacy pack returns BYTE-IDENTICAL
+    results to the pre-pack gate (pinned). Non-legacy packs add pack-aware
+    checks: quiz packs move the subject requirement off the hook (a quiz
+    WITHHOLDS the subject's answer by design), require a question-form hook
+    (H4), and skip the imperative-advice check ("Lock in your answer" is the
+    format, not platitude advice); all packs gain soft hook-quality notes
+    (S4 length, S5 number-or-payoff).
     """
     hard: list = []
     soft: list = []
+    is_pack = format_pack not in (None, LEGACY_PACK)
+    is_quiz = format_pack == "quiz-reveal"
     scenes = [s for s in (script.get("scenes") or []) if isinstance(s, dict)]
     if len(scenes) < 2:
         return hard, soft
@@ -3049,24 +3189,55 @@ def _script_vagueness_reasons(script: dict, source_prompt: str = "",
     subject_anywhere = any(t[:5] in script_blob for t in subj_tokens)
     if subj_tokens:
         subj_label = str(topic_meta.get("subject") or topic_meta.get("title") or "")
-        hook_blob = " ".join(_fields(scenes[0])).lower()
-        if not any(t[:5] in hook_blob for t in subj_tokens):
-            hard.append(f"the subject '{subj_label}' is never named in the hook scene")
+        if is_quiz:
+            # A quiz deliberately withholds the payoff until the reveal — the
+            # subject just has to be named SOMEWHERE (question or reveal).
+            if not subject_anywhere:
+                hard.append(f"the subject '{subj_label}' is never named anywhere — "
+                            "the quiz question or reveal must name it")
+        else:
+            hook_blob = " ".join(_fields(scenes[0])).lower()
+            if not any(t[:5] in hook_blob for t in subj_tokens):
+                hard.append(f"the subject '{subj_label}' is never named in the hook scene")
 
     # H3 / S2 — imperative-advice density over the middle scenes (hook and
     # closer are legitimately imperative: "Delete this app", "Try it today").
+    # Skipped for quiz packs: "Pick one", "Lock in your answer" ARE the
+    # format's middle scenes, not platitude advice.
     mid = scenes[1:-1] if len(scenes) > 2 else []
-    imp_count = sum(
-        1 for s in mid
-        if str(s.get("voiceover") or "").strip()
-        and _IMPERATIVE_ADVICE_RE.search(str(s.get("voiceover") or "").strip())
-    )
-    if mid and imp_count * 2 >= len(mid):
-        if not subject_anywhere and number_scenes == 0:
-            hard.append("most scenes give generic imperative advice with no named subject "
-                        "and no real numbers — a platitude video, not a story")
-        else:
-            soft.append("scenes open with 'do this' advice — explain what happened and how it works instead")
+    if not is_quiz:
+        imp_count = sum(
+            1 for s in mid
+            if str(s.get("voiceover") or "").strip()
+            and _IMPERATIVE_ADVICE_RE.search(str(s.get("voiceover") or "").strip())
+        )
+        if mid and imp_count * 2 >= len(mid):
+            if not subject_anywhere and number_scenes == 0:
+                hard.append("most scenes give generic imperative advice with no named subject "
+                            "and no real numbers — a platitude video, not a story")
+            else:
+                soft.append("scenes open with 'do this' advice — explain what happened and how it works instead")
+
+    # H4 (quiz, HARD) — the hook must actually ASK: question mark or an
+    # interrogative opener. A quiz whose scene 1 states instead of asking is
+    # structurally broken (and the pack post-processor will rebuild it).
+    if is_quiz:
+        hook_txt = (str(scenes[0].get("voiceover") or "") + " " + str(scenes[0].get("text") or "")).strip()
+        if "?" not in hook_txt and not re.match(
+                r"^\s*(what|which|who|where|how|can|could|guess|did|do|does|is|are|will|would)\b",
+                hook_txt, re.IGNORECASE):
+            hard.append("quiz hook is not question-form — scene 1 must ASK the question")
+
+    # S4/S5 (non-legacy packs, SOFT) — hook-copy quality notes. Soft first,
+    # precision-first: they re-ask, never cost a slot.
+    if is_pack:
+        hook_vo_words = len(str(scenes[0].get("voiceover") or "").split())
+        if hook_vo_words > 14:
+            soft.append(f"the hook voiceover runs {hook_vo_words} words — cut it to one line (max 14)")
+        hook_all = " ".join(_fields(scenes[0])).lower()
+        if not _scene_has_number(scenes[0]) and subj_tokens and \
+                not any(t[:5] in hook_all for t in subj_tokens) and not is_quiz:
+            soft.append("the hook names neither a number nor the subject — lead with the payoff")
 
     # S1 — the source carried real figures but the script barely uses any.
     corpus = (source_prompt or "").lower()
@@ -3260,7 +3431,8 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
         last_est_sec = est_sec
         band_dist = max(min_spoken_sec - est_sec, 0.0) + max(est_sec - max_spoken_sec, 0.0)
         if ENABLE_SCRIPT_GATE:
-            hard, soft = _script_vagueness_reasons(candidate, req.prompt or "", req.topic_meta)
+            hard, soft = _script_vagueness_reasons(
+                candidate, req.prompt or "", req.topic_meta, format_pack=pack_cfg["name"])
         else:
             hard, soft = [], []
         last_gate_reasons = hard + soft
@@ -3284,8 +3456,13 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
         print(f"[{session_id}] Script needs revision (runtime and/or insight gate) — regenerating...")
         attempt += 1
 
+    # A pack with a verified brief can DETERMINISTICALLY rebuild a compliant
+    # script from grounded data (apply_pack_postprocess), so gate-hard
+    # failures need not cost the posting slot on those runs.
+    pack_rebuild_available = bool(pack_cfg["brief"] and getattr(req, "pack_brief", None))
+
     if best_script is not None:
-        if ENABLE_SCRIPT_GATE and best_hard and is_auto_channel:
+        if ENABLE_SCRIPT_GATE and best_hard and is_auto_channel and not pack_rebuild_available:
             # Best attempt is still a vague/platitude script. Posting it would
             # be worse than skipping the slot — abort loudly (the CI wrapper
             # telegrams the failure; the story is NOT burned in history, so the
@@ -3332,6 +3509,19 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
     # generators (captions, upload metadata) can whitelist user-supplied names
     # when scrubbing fabricated attributions.
     parsed_script["_sourcePrompt"] = req.prompt or ""
+
+    # Pack post-processor: enforce the pack's scene shape and inject the
+    # VERIFIED brief data (options / chart values / reveal — all grounded
+    # upstream by plan_pack_brief). Runs AFTER validation+pruning so injected
+    # data can't be scrubbed, and rebuilds deterministically when the model
+    # broke the shape or the gate hard-flagged the copy — a pack slot is
+    # never lost to scene-shape disobedience.
+    if pack_rebuild_available:
+        try:
+            apply_pack_postprocess(parsed_script, pack_cfg, req.pack_brief,
+                                   session_id, force_rebuild=bool(best_hard))
+        except Exception as pp_err:
+            print(f"[{session_id}] Pack post-process failed ({pp_err}) — continuing with the raw script.")
 
     forced_theme_keys = set()
     if req.theme_overrides:
@@ -4092,7 +4282,7 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
         }
         
         # Pass through scene-type-specific fields
-        for field in ["leftLabel", "rightLabel", "listItems", "countFrom", "countTo", "countSuffix", "ctaText", "chartData", "ratingValue", "ratingMax"]:
+        for field in ["leftLabel", "rightLabel", "listItems", "countFrom", "countTo", "countSuffix", "ctaText", "chartData", "ratingValue", "ratingMax", "correctIndex"]:
             if scene.get(field) is not None:
                 scene_data[field] = scene[field]
 
@@ -4281,7 +4471,10 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
     # render side can cut mid-scene: clip A covers the whole scene, clip B
     # covers any cut point >= 50% of it.
     session_broll_used: list = []
-    if HOOK_VIDEO_ENABLED and SCENE_VIDEO_MODE != "off":
+    # Packs with broll="off" (quiz/rankings) never fetch stock clips: their
+    # visuals are programmatic graphics over stills — which also removes the
+    # unedited-stock-footage originality exposure on those formats entirely.
+    if HOOK_VIDEO_ENABLED and SCENE_VIDEO_MODE != "off" and pack_cfg["broll"] != "off":
         render_status_store[session_id]["status"] = "sourcing_broll"
         broll_pexels_key = (req.pexels_api_key or "").strip().strip("'\"") or PEXELS_API_KEY
         broll_dir = os.path.join(PUBLIC_DIR, "hook-videos")
@@ -9058,6 +9251,162 @@ Return ONLY this JSON (no other text):
     print(f"[TopicJudge] Plan: subject='{result['subject']}' "
           f"insight='{result['insight'][:80]}' facts={len(facts)}")
     return result
+
+
+def plan_pack_brief(pack_name: str, title: str, body: str,
+                    plan: Optional[dict] = None,
+                    session_id: str = "PackBrief") -> Optional[dict]:
+    """Grounded per-pack data brief: quiz Q/A ("quiz-reveal") or a ranked
+    numeric series ("data-rankings").
+
+    Same contract family as plan_story_angle: returns None on LLM/parse
+    failure OR when the verified data is too thin — the caller must then
+    DEGRADE the run to a brief-less pack (facts-explainer/legacy) rather
+    than lose the posting slot. Everything returned is verified to the
+    fabrication guard's standard: the quiz answer_fact passes _ground_facts
+    and the correct option is traceable to the fact/corpus; every series
+    value's digits must appear in the corpus. Never raises, never fetches.
+    Small-model friendly: one article in, strict tiny JSON out.
+    """
+    corpus = f"{title} {(body or '')}"
+    plan_facts = "\n".join(f"- {f}" for f in ((plan or {}).get("facts") or []))
+    body_snippet = (body or "").strip()[:3000]
+    facts_block = f"\nVERIFIED FACTS (from the editorial judge):\n{plan_facts}\n" if plan_facts else ""
+
+    if pack_name == "quiz-reveal":
+        system = (
+            "You are a viral quiz producer for Instagram Reels. You turn ONE tech news "
+            "article into a guess-the-answer quiz with a REAL, verifiable answer. "
+            "You only ever answer with strict JSON."
+        )
+        user = f"""ARTICLE HEADLINE: {title}
+
+ARTICLE TEXT (scraped; may be partial or empty):
+{body_snippet or "No article text available."}
+{facts_block}
+Write ONE quiz question about the single most surprising CONCRETE fact in this article — a number, a name, a version, an outcome. The correct answer must be checkable against the article text above.
+
+RULES:
+- "question": max 12 words, question form, names the subject, does NOT contain the answer.
+- "options": 3 or 4 SHORT options (max 5 words each), plausible, mutually exclusive, exactly ONE correct.
+- "answer_index": 0-based index of the correct option.
+- "answer_fact": ONE sentence COPIED (numbers verbatim) from the article that proves the answer. Max 20 words.
+- If the article has no quizzable concrete fact, return {{"question": ""}} and nothing else.
+
+Return ONLY this JSON (no other text):
+{{"question": "...", "options": ["...", "..."], "answer_index": 0, "answer_fact": "..."}}"""
+    elif pack_name == "data-rankings":
+        system = (
+            "You are a data-visual producer for Instagram Reels. You extract ONE small "
+            "ranked numeric series from a tech article for an animated chart. "
+            "You only ever answer with strict JSON."
+        )
+        user = f"""ARTICLE HEADLINE: {title}
+
+ARTICLE TEXT (scraped; may be partial or empty):
+{body_snippet or "No article text available."}
+{facts_block}
+Extract ONE comparable numeric series from this article (benchmark results, versions' figures, market shares, counts — anything rankable on one metric).
+
+RULES:
+- "metric_label": what the numbers measure, max 6 words.
+- "series": 3-6 items, each {{"label": "<max 4 words>", "value": <number>}} — values COPIED from the article text, never estimated.
+- "unit": short unit string ("%", "ms", "GB", "" if none).
+- "insight": one sentence on why the leader or the gap matters. Max 18 words.
+- If the article has no comparable numeric series, return {{"series": []}} and nothing else.
+
+Return ONLY this JSON (no other text):
+{{"metric_label": "...", "series": [{{"label": "...", "value": 0}}], "unit": "...", "insight": "..."}}"""
+    else:
+        return None
+
+    try:
+        raw = query_llm_with_failover(
+            system_prompt=system,
+            user_prompt=user,
+            max_tokens=380,
+            json_format=True,
+            session_id=session_id,
+        )
+    except Exception as e:
+        print(f"[PackBrief] LLM failed: {e}")
+        return None
+    data = _coerce_llm_json(raw, "PackBrief", quiet=True)
+    if not isinstance(data, dict):
+        print(f"[PackBrief] Could not parse brief JSON: {str(raw)[:200]}")
+        return None
+
+    if pack_name == "quiz-reveal":
+        question = str(data.get("question") or "").strip()
+        if not question:
+            print(f"[PackBrief] No quizzable fact verdict for: {title[:80]!r} — degrading.")
+            return None
+        raw_options = [str(o).strip() for o in (data.get("options") or []) if str(o).strip()]
+        seen_opts = set()
+        options = []
+        for o in raw_options:
+            if o.lower() not in seen_opts:
+                seen_opts.add(o.lower())
+                options.append(o[:60])
+        options = options[:4]
+        try:
+            answer_index = int(data.get("answer_index"))
+        except (TypeError, ValueError):
+            answer_index = -1
+        if len(options) < 3 or not (0 <= answer_index < len(options)):
+            print("[PackBrief] Bad options/answer_index — degrading.")
+            return None
+        if not question.rstrip().endswith("?"):
+            question = question.rstrip(".! ") + "?"
+        answer = options[answer_index]
+        if answer.lower() in question.lower():
+            print("[PackBrief] Question contains the answer — degrading.")
+            return None
+        grounded = _ground_facts([str(data.get("answer_fact") or "").strip()],
+                                 corpus, tag="PackBrief")
+        if not grounded:
+            print("[PackBrief] answer_fact failed grounding — degrading.")
+            return None
+        answer_fact = grounded[0]
+        if answer.lower() not in answer_fact.lower() and answer.lower() not in corpus.lower():
+            print(f"[PackBrief] Correct option {answer!r} not traceable to fact/corpus — degrading.")
+            return None
+        print(f"[PackBrief] Quiz brief OK: {question!r} -> {answer!r}")
+        return {"kind": "quiz", "question": question, "options": options,
+                "answer_index": answer_index, "answer_fact": answer_fact}
+
+    # data-rankings
+    corpus_norm = corpus.lower().replace(",", "")
+    clean = []
+    for item in (data.get("series") or []):
+        if not isinstance(item, dict):
+            continue
+        label = str(item.get("label") or "").strip()
+        try:
+            value = float(item.get("value"))
+        except (TypeError, ValueError):
+            continue
+        if not label or value != value:  # NaN guard
+            continue
+        # Every value's digit string must literally appear in the corpus
+        # (the _ground_facts number rule) — an estimated chart bar is a
+        # fabricated statistic, F6's exact target.
+        cand_strs = {("%g" % value).replace(",", "")}
+        if float(value).is_integer():
+            cand_strs.add(str(int(value)))
+        if not any(cs in corpus_norm for cs in cand_strs):
+            print(f"[PackBrief] Dropped ungrounded series value {label!r}={value}")
+            continue
+        clean.append({"label": label[:40], "value": value})
+    if len(clean) < 3:
+        print("[PackBrief] Fewer than 3 grounded series points — degrading.")
+        return None
+    print(f"[PackBrief] Series brief OK: {len(clean)} points")
+    return {"kind": "series",
+            "metric_label": str(data.get("metric_label") or "").strip()[:60],
+            "series": clean[:6],
+            "unit": str(data.get("unit") or "").strip()[:8],
+            "insight": str(data.get("insight") or "").strip()[:160]}
 
 
 def select_viral_topic(kind: str, processed: list, session_id: str = "TopicEngine",
