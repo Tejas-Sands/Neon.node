@@ -1789,6 +1789,46 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1785573577,
+   "posted_hour_utc": 8,
+   "channel": "news",
+   "topic": {
+    "title": "Google fixed more Chrome bugs in June than over the past two years, thanks to AI",
+    "subject": "Google Chrome AI security",
+    "url": "https://blog.google/security/chrome-stronger-with-every-update/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "google"
+    ],
+    "viral_score": 10.0,
+    "angle": "Google is using AI agents to find and patch security vulnerabilities in Chrome at a speed that human teams cannot match.",
+    "insight": "The shift from human-led to AI-agent-led vulnerability discovery means software will become exponentially more secure, but also harder for human researchers to audit.",
+    "judge": "plan"
+   },
+   "style_pack": "matrix-green",
+   "seed": 593794572,
+   "voice": "en-US-AndrewMultilingualNeural",
+   "hook_type": "PROVOCATIVE QUESTION",
+   "scene_count": 6,
+   "video_seconds": 35.7,
+   "session": "gh-707638",
+   "platforms": {
+    "instagram": {
+     "id": "17879698581681739",
+     "posted_at": 1785573646
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }

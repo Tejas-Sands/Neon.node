@@ -350,5 +350,13 @@
   "subject_norm": "large reasoning models",
   "ts": 1785556105,
   "session": "gh-ce342f"
+ },
+ {
+  "id": "49120097",
+  "title": "Google fixed more Chrome bugs in June than over the past two years, thanks to AI",
+  "norm": "google fixed more chrome bugs in june than over the past two years thanks to ai",
+  "subject_norm": "google chrome ai security",
+  "ts": 1785573649,
+  "session": "gh-707638"
  }
 ]
