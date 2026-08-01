@@ -4545,8 +4545,18 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
             "voice": render_status_store[session_id].get("resolved_voice"),
             "hook_type": variety_meta.get("hook_type"),
             "scene_count": len(parsed_script.get("scenes", [])),
+            # ACTUAL runtime: scenes_with_images carries the post-TTS
+            # durations (rewritten in place by generate_voiceover_and_
+            # alignment) plus the appended outro — what the viewer really
+            # watches. The old value summed pre-TTS PLANNED durations from
+            # parsed_script (~30% off in practice), which would poison
+            # watch-time-completion scoring. ledger_rev=2 marks entries with
+            # a trustworthy duration; compute_feedback_stats derives the
+            # watch-time term ONLY for rev>=2 entries (dual-read), so old
+            # planned-duration entries never mix into the same medians.
             "video_seconds": round(
-                sum(s.get("durationInFrames", 0) for s in parsed_script.get("scenes", [])) / 30.0, 1),
+                sum(s.get("durationInFrames", 0) for s in scenes_with_images) / 30.0, 1),
+            "ledger_rev": 2,
         }
 
     # Trigger background Instagram posting if configured
@@ -7836,6 +7846,13 @@ def _meta_graph_get(path_and_query: str, session_id: str = "Metrics",
 # 'views'), so an invalid-metric error walks this reduced ladder instead of
 # failing the whole run — with a single drift warning so the set gets fixed.
 _IG_INSIGHT_METRIC_SETS = [
+    # Row 0: full set + avg watch time (milliseconds) — the retention signal
+    # the feedback loop scores on. Its OWN row above the pre-watch-time set,
+    # so a Graph version that drops the metric degrades to row 1 losing ONLY
+    # watch time — never shares/saved (silently losing those would gut the
+    # sends-per-reach scoring). Falling off row 0 is an expected degrade;
+    # real drift (alert-worthy) starts when row 1 is rejected too.
+    "views,reach,likes,comments,shares,saved,total_interactions,ig_reels_avg_watch_time",
     "views,reach,likes,comments,shares,saved,total_interactions",
     "views,reach,likes,comments",
     "reach,likes,comments",
@@ -7849,7 +7866,7 @@ def fetch_instagram_media_metrics(media_id: str, access_token: str,
     instagram_manage_insights); returns {"deleted": True} for vanished posts.
     Adds "_metric_drift": True when a reduced metric set was needed."""
     drift = False
-    for metric_set in _IG_INSIGHT_METRIC_SETS:
+    for set_idx, metric_set in enumerate(_IG_INSIGHT_METRIC_SETS):
         data = _meta_graph_get(
             f"{media_id}/insights?metric={metric_set}&access_token={access_token}",
             session_id=session_id,
@@ -7864,7 +7881,10 @@ def fetch_instagram_media_metrics(media_id: str, access_token: str,
             if code in (10, 200):
                 raise MetricsAuthError(f"Instagram token lacks insights permission: {msg}")
             if code == 100 and "metric" in low:
-                drift = True
+                # Losing row 0 (a Graph version without ig_reels_avg_watch_time)
+                # is an expected degrade — only demotion PAST the historical
+                # full set (row 1) counts as drift and raises the alert.
+                drift = set_idx >= 1
                 continue
             if code == 100 or "does not exist" in low or "unsupported get request" in low:
                 return {"deleted": True}
@@ -8176,16 +8196,31 @@ def compute_feedback_stats(ledger: dict) -> dict:
         views = int(snap.get("views") or 0)
         likes = int(snap.get("likes") or 0)
         comments = int(snap.get("comments") or 0)
+        c: Dict[str, float] = {}
         if platform == "instagram":
             eng = likes \
                 + FEEDBACK_ENG_WEIGHTS["comments"] * comments \
                 + FEEDBACK_ENG_WEIGHTS["shares"] * int(snap.get("shares") or 0) \
                 + FEEDBACK_ENG_WEIGHTS["saved"] * int(snap.get("saved") or 0)
+            reach = int(snap.get("reach") or 0)
             if views == 0:
-                views = int(snap.get("reach") or 0)
+                views = reach
+            # Watch-time completion: platform avg watch time (ms) over the
+            # video's ACTUAL runtime. Only for ledger_rev>=2 entries — older
+            # entries recorded the pre-TTS PLANNED duration (~30% short), and
+            # mixing them in would corrupt the completion medians.
+            awt = snap.get("ig_reels_avg_watch_time")
+            dur = entry.get("video_seconds") or 0
+            if awt is not None and dur and int(entry.get("ledger_rev") or 1) >= 2:
+                c["wtr"] = (float(awt) / 1000.0) / float(dur)
+            # Sends-per-reach: Instagram's #1 non-follower ranking signal.
+            if reach > 0 and snap.get("shares") is not None:
+                c["spr"] = int(snap.get("shares") or 0) / reach
         else:
             eng = likes + FEEDBACK_ENG_WEIGHTS["comments"] * comments
-        return {"v": math.log1p(views), "er": eng / max(views, 1)}
+        c["v"] = math.log1p(views)
+        c["er"] = eng / max(views, 1)
+        return c
 
     comp_by_group: Dict[tuple, list] = {}
     per_entry = []
@@ -8206,23 +8241,54 @@ def compute_feedback_stats(ledger: dict) -> dict:
         mid = n // 2
         return s[mid] if n % 2 else 0.5 * (s[mid - 1] + s[mid])
 
+    # wtr/spr medians need a minimum sample count before they can normalize —
+    # a 2-sample "median" would let one odd post define the whole baseline.
+    _TERM_MIN_SAMPLES = 5
+
     baselines = {}
     for key, lst in comp_by_group.items():
         lst = lst[-40:]  # trailing window keeps the baseline current
-        baselines[key] = (_median([c["v"] for c in lst]), _median([c["er"] for c in lst]))
+        med = {"v": _median([c["v"] for c in lst]),
+               "er": _median([c["er"] for c in lst])}
+        for term in ("wtr", "spr"):
+            vals = [c[term] for c in lst if term in c]
+            med[term] = _median(vals) if len(vals) >= _TERM_MIN_SAMPLES else 0.0
+        baselines[key] = med
 
     stats = {"n_scored": 0, "keywords": {}, "styles": {}, "hooks": {},
-             "voices": {}, "hours4": {}}
-    agg: Dict[str, dict] = {k: {} for k in ("keywords", "styles", "hooks", "voices", "hours4")}
+             "voices": {}, "format_packs": {}, "hours4": {}}
+    agg: Dict[str, dict] = {k: {} for k in
+                            ("keywords", "styles", "hooks", "voices", "format_packs", "hours4")}
 
     for e, pcs in per_entry:
         ch = e.get("channel", "tech")
         perfs = []
         for platform, c in pcs.items():
-            v_med, er_med = baselines.get((platform, ch), (0.0, 0.0))
+            med = baselines.get((platform, ch)) or {}
+            v_med = med.get("v", 0.0)
             if v_med <= 0:
                 continue
-            perf = 0.6 * (c["v"] / v_med) + 0.4 * (c["er"] / max(er_med, 1e-4))
+            # Perf model: watch-time completion + sends-per-reach are what
+            # the platform actually ranks on; er stays as the quality
+            # tiebreak. A term is usable only when THIS entry carries it AND
+            # its group median is > 0 — unusable terms are dropped and the
+            # weights renormalized. Never divide by a floored epsilon: the
+            # old er-over-floored-median divide turned a single like on a
+            # zero-engagement ledger into a 4.0-clamped outlier and the
+            # whole loop into a binary "got >= 1 like" classifier.
+            quality = [(w, t) for w, t in ((0.45, "wtr"), (0.35, "spr"))
+                       if t in c and med.get(t, 0.0) > 0]
+            if quality:
+                terms = quality + ([(0.20, "er")] if med.get("er", 0.0) > 0 else [])
+                total_w = sum(w for w, _ in terms)
+                perf = sum(w * (c[t] / med[t]) for w, t in terms) / total_w
+            elif med.get("er", 0.0) > 0:
+                # Legacy formula, guarded — exact pre-watch-time behavior for
+                # entries/groups where engagement actually has a baseline.
+                perf = 0.6 * (c["v"] / v_med) + 0.4 * (c["er"] / med["er"])
+            else:
+                # Zero-engagement ledger: views are the only real signal.
+                perf = c["v"] / v_med
             perfs.append(max(0.25, min(4.0, perf)))
         if not perfs or e.get("backfilled"):
             continue
@@ -8244,8 +8310,22 @@ def compute_feedback_stats(ledger: dict) -> dict:
         _acc("styles", e.get("style_pack"))
         _acc("hooks", e.get("hook_type"))
         _acc("voices", e.get("voice"))
-        if e.get("posted_hour_utc") is not None:
-            _acc("hours4", int(e["posted_hour_utc"]) // 4)
+        _acc("format_packs", e.get("format_pack"))
+        # Hour bucket: prefer the ACTUAL publish moment (posted_at, written
+        # by record_post_to_ledger at dispatch success) over posted_hour_utc,
+        # which is stamped at render assembly and can trail the real post by
+        # the whole render+upload time.
+        hour = None
+        posted_at = (((e.get("platforms") or {}).get("instagram")) or {}).get("posted_at")
+        if posted_at:
+            try:
+                hour = datetime.datetime.utcfromtimestamp(float(posted_at)).hour
+            except (TypeError, ValueError, OSError, OverflowError):
+                hour = None
+        if hour is None and e.get("posted_hour_utc") is not None:
+            hour = int(e["posted_hour_utc"])
+        if hour is not None:
+            _acc("hours4", hour // 4)
 
     for bucket, items in agg.items():
         for key, (swp, sw, n) in items.items():
