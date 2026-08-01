@@ -1852,12 +1852,27 @@ const DynamicScene: React.FC<{
 
   // --- BAR CHART scene ---
   if (type === "bar-chart" && chartData && chartData.length >= 1) {
+    // data-rankings pack (M6): the WITHHELD-#1 beat — the leader bar's label
+    // reads "???" until the scene's last ~1.5s, then flips to the real name.
+    // Data arrives ASCENDING from the pack post-processor, so the leader is
+    // the max bar and already animates last; masking is label-only (bar
+    // heights never change → no reflow, deterministic, frame-driven).
+    // Absent formatPack = legacy bar-chart, byte-identical.
+    let displayData = chartData;
+    if (theme.formatPack === "data-rankings" && chartData.length >= 2) {
+      const maxIdx = chartData.reduce(
+        (a, c, i, arr) => (c.value > arr[a].value ? i : a), 0);
+      const revealFrame = Math.max(30, durationInFrames - 45);
+      if (frame < revealFrame) {
+        displayData = chartData.map((d, i) => (i === maxIdx ? { ...d, label: "???" } : d));
+      }
+    }
     return DataSceneShell({
       heading: title,
       caption: subtitle,
       children: (
         <BarChart
-          data={chartData}
+          data={displayData}
           primaryColor={theme.primaryColor}
           secondaryColor={theme.secondaryColor}
           fontFamily={getFontFamily(theme.fontFamilyName)}
