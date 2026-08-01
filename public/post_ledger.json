@@ -257,7 +257,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785492558
+      "fetched_at": 1785592558
      },
      "snap72": {
       "views": 119,
@@ -311,7 +311,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785492558
+      "fetched_at": 1785592558
      },
      "snap72": {
       "views": 120,
@@ -471,7 +471,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785492558
+      "fetched_at": 1785592558
      },
      "snap72": {
       "views": 125,
@@ -530,7 +530,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785492558
+      "fetched_at": 1785592558
      },
      "snap72": {
       "views": 118,
@@ -584,7 +584,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 2,
-      "fetched_at": 1785492558
+      "fetched_at": 1785592558
      },
      "snap72": {
       "views": 120,
@@ -742,7 +742,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785492558
+      "fetched_at": 1785592558
      },
      "snap72": {
       "views": 111,
@@ -797,7 +797,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785492558
+      "fetched_at": 1785592558
      },
      "snap72": {
       "views": 112,
@@ -854,7 +854,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785492558
+      "fetched_at": 1785592558
      },
      "snap72": {
       "views": 124,
@@ -1335,7 +1335,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785492558
+      "fetched_at": 1785592558
      },
      "snap72": {
       "views": 0,
@@ -1389,7 +1389,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785492558
+      "fetched_at": 1785592558
      },
      "snap72": {
       "views": 16,
@@ -1443,7 +1443,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785492558
+      "fetched_at": 1785592558
      },
      "snap72": {
       "views": 4,
@@ -1495,7 +1495,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785492558
+      "fetched_at": 1785592558
      },
      "snap72": {
       "views": 3,
@@ -1547,7 +1547,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785492558
+      "fetched_at": 1785592558
      },
      "snap72": {
       "views": 1,
@@ -1602,7 +1602,7 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785492558
+      "fetched_at": 1785592558
      },
      "snap72": {
       "views": 0,
@@ -1705,7 +1705,16 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 26,
+      "reach": 25,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "fetched_at": 1785592558
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -1819,6 +1828,45 @@
     "instagram": {
      "id": "17879698581681739",
      "posted_at": 1785573646
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785592498,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "Flint: A Visualization Language for the AI Era",
+    "subject": "Flint visualization language",
+    "url": "https://microsoft.github.io/flint-chart/",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 8.26,
+    "angle": "Flint is a new programming language designed to make AI-generated data visualizations easier to build and interpret.",
+    "insight": "Flint shifts the focus from writing boilerplate code to defining the logic of data representation, effectively bridging the gap between raw AI output and human-readable insights.",
+    "judge": "plan"
+   },
+   "style_pack": "mono-brutalist",
+   "seed": 1998808276,
+   "voice": "en-US-EmmaMultilingualNeural",
+   "hook_type": "HIGH-STAKES BENCHMARK",
+   "scene_count": 6,
+   "video_seconds": 36.2,
+   "session": "gh-9e7c54",
+   "platforms": {
+    "instagram": {
+     "id": "18085516016559166",
+     "posted_at": 1785592554
     }
    },
    "metrics": {

@@ -182,6 +182,69 @@
    "session": "gh-707638",
    "query": "data flow network nodes",
    "scene": 5
+  },
+  {
+   "id": "pexels-33314914",
+   "ts": 1785592498,
+   "session": "gh-9e7c54",
+   "query": "code editor screen scrolling",
+   "scene": 0
+  },
+  {
+   "id": "pexels-35332820",
+   "ts": 1785592498,
+   "session": "gh-9e7c54",
+   "query": "terminal typing commands",
+   "scene": 1
+  },
+  {
+   "id": "pexels-12893580",
+   "ts": 1785592498,
+   "session": "gh-9e7c54",
+   "query": "terminal typing commands",
+   "scene": 1
+  },
+  {
+   "id": "pexels-34430111",
+   "ts": 1785592498,
+   "session": "gh-9e7c54",
+   "query": "data center servers gpu",
+   "scene": 2
+  },
+  {
+   "id": "pexels-35157119",
+   "ts": 1785592498,
+   "session": "gh-9e7c54",
+   "query": "neural network visualization motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-8328105",
+   "ts": 1785592498,
+   "session": "gh-9e7c54",
+   "query": "robot arm working",
+   "scene": 4
+  },
+  {
+   "id": "pexels-6153050",
+   "ts": 1785592498,
+   "session": "gh-9e7c54",
+   "query": "robot arm working",
+   "scene": 4
+  },
+  {
+   "id": "pexels-8480282",
+   "ts": 1785592498,
+   "session": "gh-9e7c54",
+   "query": "developer laptop closeup",
+   "scene": 5
+  },
+  {
+   "id": "pexels-7240847",
+   "ts": 1785592498,
+   "session": "gh-9e7c54",
+   "query": "developer laptop closeup",
+   "scene": 5
   }
  ]
 }
