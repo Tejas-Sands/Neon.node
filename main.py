@@ -7982,18 +7982,26 @@ def load_topic_history(filepath: str) -> list:
 
 
 def record_topic_use(filepath: str, story_id=None, title: str = "",
-                     subject: str = "", session_id: str = "", cap: int = 200) -> None:
+                     subject: str = "", session_id: str = "", cap: int = None) -> None:
     """Append one used-topic entry, trim to the last `cap`, write atomically.
 
     RAISES on write failure — the caller decides how loudly to surface it
     (a swallowed save error would quietly resurrect the repeat-topic bug).
+    Default cap comes from TOPIC_HISTORY_CAP (200 = legacy; ~66 days at
+    3/day — a longer horizon strengthens dedup and the entity cooldown).
+    `entities` is derived here, not passed, so every call site gets it
+    without a signature change (the CI call site is inside the frozen
+    delivery region of generate_now.py).
     """
+    if cap is None:
+        cap = int(os.environ.get("TOPIC_HISTORY_CAP", "200"))
     history = load_topic_history(filepath)
     history.append({
         "id": str(story_id) if story_id is not None else None,
         "title": title or "",
         "norm": _normalize_subject(title),
         "subject_norm": _normalize_subject(subject) if subject else None,
+        "entities": _extract_entities(title, subject),
         "ts": int(time.time()),
         "session": session_id or "",
     })
@@ -8072,15 +8080,34 @@ def record_broll_use(session_id: str, clips: list, filepath: str = None) -> None
 
 def filter_and_pick_story(candidates: list, history: list, rng: random.Random,
                           top_n: int = 5):
-    """Dedup candidates against history, then weighted-random pick.
+    """Dedup candidates against history, then pick.
 
     Returns (chosen_candidate, was_fallback). A candidate is excluded when its
-    HN id is in history, its normalized title matches exactly, or its 3-word
-    normalized head appears inside a used title (same reword-catching
-    heuristic as select_viral_topic). Survivors are scored and the pick is
-    weighted-random over the top `top_n` with weight = score**2 — quality
-    still dominates, but two same-day runs over a near-identical front page
-    diverge instead of both taking the argmax.
+    HN id is in history, its normalized title matches exactly, or its title
+    matches a used one under the reword heuristic (legacy: 3-word normalized
+    head as substring; TOPIC_DEDUP_V2=true: token-set Jaccard ≥ 0.7 over
+    4+-char tokens — the head rule is simultaneously too broad, a generic
+    3-word opener suppresses unrelated stories, and too narrow, a reword
+    that shuffles word order sails through).
+
+    Flag-gated selection upgrades (all default to legacy behavior bit-for-bit,
+    including RNG consumption):
+      TOPIC_MAX_AGE_H       > 0: drop candidates older than this many hours;
+                            relaxes (loudly) rather than emptying the pool —
+                            freshness degrades before the LRU fallback fires.
+      TOPIC_FRESH_BOOST_H   > 0: +0.6 score for stories younger than this —
+                            catches stories on the rise, not after saturation.
+      TOPIC_ENTITY_COOLDOWN_H > 0: same primary entity (see _extract_entities)
+                            at most once per window, unless the candidate's
+                            score clears TOPIC_COOLDOWN_OVERRIDE_SCORE (13.0 —
+                            calibrated so a fresh 400-800 point keyword-rich
+                            story does NOT override; only the 2000+-point /
+                            breach-tier stories do).
+      TOPIC_PICK_MODE=argmax: deterministic best pick. The weighted-random
+                            top-5 existed so a persistent front-page leader
+                            wasn't re-picked every cron — but the id-dedup
+                            already guarantees that; the randomness only made
+                            the day's biggest story lose ~50% of the time.
 
     If EVERY candidate is excluded (slow news day), falls back to the
     least-recently-used repeat — the story whose last airing is oldest, since
@@ -8090,9 +8117,19 @@ def filter_and_pick_story(candidates: list, history: list, rng: random.Random,
     if not candidates:
         raise ValueError("filter_and_pick_story: no candidates supplied")
 
+    pick_mode = os.environ.get("TOPIC_PICK_MODE", "weighted").strip().lower()
+    max_age_h = float(os.environ.get("TOPIC_MAX_AGE_H", "0") or 0)
+    boost_h = float(os.environ.get("TOPIC_FRESH_BOOST_H", "0") or 0)
+    cooldown_h = float(os.environ.get("TOPIC_ENTITY_COOLDOWN_H", "0") or 0)
+    override_score = float(os.environ.get("TOPIC_COOLDOWN_OVERRIDE_SCORE", "13.0"))
+    dedup_v2 = os.environ.get("TOPIC_DEDUP_V2", "false").strip().lower() in ("1", "true", "yes")
+
     used_ids = {str(h.get("id")) for h in history if h.get("id")}
     used_norms = {h.get("norm") for h in history if h.get("norm")}
     used_norms |= {h.get("subject_norm") for h in history if h.get("subject_norm")}
+    used_token_sets = [
+        {t for t in n.split() if len(t) >= 4} for n in used_norms
+    ] if dedup_v2 else []
 
     def _is_used(c: dict) -> bool:
         if c.get("_hn_id") is not None and str(c["_hn_id"]) in used_ids:
@@ -8100,6 +8137,17 @@ def filter_and_pick_story(candidates: list, history: list, rng: random.Random,
         norm = _normalize_subject(c.get("title", ""))
         if norm and norm in used_norms:
             return True
+        if dedup_v2:
+            toks = {t for t in norm.split() if len(t) >= 4}
+            if toks:
+                for used in used_token_sets:
+                    if not used:
+                        continue
+                    inter = len(toks & used)
+                    union = len(toks | used)
+                    if union and inter / union >= 0.7:
+                        return True
+            return False
         head = " ".join(norm.split()[:3])
         if head and any(head in n for n in used_norms):
             return True
@@ -8107,10 +8155,73 @@ def filter_and_pick_story(candidates: list, history: list, rng: random.Random,
 
     for c in candidates:
         c["_score"] = score_virality(c)
+        if boost_h > 0 and float(c.get("age_hours", 24.0) or 24.0) <= boost_h:
+            c["_score"] += 0.6
 
     fresh = [c for c in candidates if not _is_used(c)]
+
+    # Freshness hard gate — relaxes before it empties: a stale story beats
+    # the LRU-repeat fallback, so the gate never causes one.
+    if max_age_h > 0 and fresh:
+        in_window = [c for c in fresh
+                     if float(c.get("age_hours", 24.0) or 24.0) <= max_age_h]
+        if in_window:
+            if len(in_window) < len(fresh):
+                print(f"[TopicSelect] Freshness gate ≤{max_age_h:.0f}h: "
+                      f"{len(fresh) - len(in_window)} stale candidate(s) dropped.")
+            fresh = in_window
+        else:
+            print(f"[TopicSelect] WARNING: freshness gate ≤{max_age_h:.0f}h would "
+                  f"empty the pool — RELAXED for this run (all candidates stale).")
+
+    # Entity cooldown — the same company/product headlines at most once per
+    # window. Old history entries without the `entities` field are derived
+    # on the fly, so the cooldown is effective immediately after deploy.
+    if cooldown_h > 0 and fresh:
+        cutoff = time.time() - cooldown_h * 3600.0
+        recent_entities: Dict[str, int] = {}
+        for h in history:
+            ts = int(h.get("ts") or 0)
+            if ts < cutoff:
+                continue
+            ents = h.get("entities")
+            if not isinstance(ents, list) or not ents:
+                ents = _extract_entities(h.get("title", ""))
+            for e in ents[:1]:  # primary entity only — the story's owner
+                recent_entities[e] = max(recent_entities.get(e, 0), ts)
+        if recent_entities:
+            kept, cooled = [], []
+            for c in fresh:
+                prim = (_extract_entities(c.get("title", ""), c.get("subject", "")) or [None])[0]
+                if prim and prim in recent_entities and c["_score"] < override_score:
+                    cooled.append((c, prim))
+                else:
+                    if prim and prim in recent_entities:
+                        print(f"[TopicSelect] Cooldown OVERRIDE: '{c.get('title', '')[:60]}' "
+                              f"(score {c['_score']:.2f} ≥ {override_score}) beats the "
+                              f"'{prim}' cooldown.")
+                    kept.append(c)
+            if cooled:
+                for c, prim in cooled:
+                    print(f"[TopicSelect] Entity cooldown ({cooldown_h:.0f}h): "
+                          f"'{c.get('title', '')[:60]}' excluded — '{prim}' aired recently.")
+            if kept:
+                fresh = kept
+            else:
+                print("[TopicSelect] WARNING: entity cooldown would empty the pool — "
+                      "re-admitting cooled candidates rather than falling to a repeat.")
+
     if fresh:
         fresh.sort(key=lambda c: c["_score"], reverse=True)
+        if len(fresh) < 3:
+            print(f"[TopicSelect] WARNING: thin fresh pool ({len(fresh)} candidate(s) "
+                  f"after dedup/freshness/cooldown) — tomorrow may hit the LRU fallback.")
+        if pick_mode == "argmax":
+            chosen = fresh[0]
+            print(f"[TopicHistory] {len(candidates)} candidates, {len(fresh)} eligible; "
+                  f"argmax picked '{chosen.get('title', '')[:70]}' "
+                  f"(score {chosen['_score']:.2f}).")
+            return chosen, False
         pool = fresh[:top_n]
         weights = [max(c["_score"], 0.1) ** 2 for c in pool]
         chosen = rng.choices(pool, weights=weights, k=1)[0]
@@ -8989,6 +9100,96 @@ _ADVICE_TITLE_RE = re.compile(
 def _normalize_subject(s: str) -> str:
     """Lowercased, punctuation-stripped key for dedup across sources/history."""
     return re.sub(r"[^a-z0-9]+", " ", (s or "").lower()).strip()
+
+
+# Canonicalization for the entity cooldown: product/model names cluster to the
+# company that owns the story, so "ChatGPT ships X" and "OpenAI raises Y" two
+# days apart count as the SAME entity. Token-exact matching only (see
+# _extract_entities) — substring matching would let "arm" hit "harm".
+ENTITY_ALIASES: Dict[str, str] = {
+    # AI labs & their models/products
+    "chatgpt": "openai", "gpt": "openai", "openai": "openai",
+    "claude": "anthropic", "anthropic": "anthropic",
+    "gemini": "google", "deepmind": "google", "google": "google",
+    "android": "google", "chrome": "google", "waymo": "google",
+    "llama": "meta", "meta": "meta", "instagram": "meta",
+    "whatsapp": "meta", "facebook": "meta",
+    "copilot": "microsoft", "microsoft": "microsoft", "windows": "microsoft",
+    "azure": "microsoft", "github": "microsoft",
+    "apple": "apple", "iphone": "apple", "ios": "apple", "macos": "apple",
+    "macbook": "apple", "ipad": "apple",
+    "deepseek": "deepseek", "mistral": "mistral",
+    "grok": "xai", "xai": "xai", "twitter": "xai",
+    "nvidia": "nvidia", "cuda": "nvidia",
+    "tesla": "tesla", "spacex": "spacex", "starlink": "spacex",
+    "amazon": "amazon", "aws": "amazon",
+    "intel": "intel", "amd": "amd",
+    "netflix": "netflix", "samsung": "samsung", "oracle": "oracle", "ibm": "ibm",
+    "firefox": "mozilla", "mozilla": "mozilla",
+    "linux": "linux", "rust": "rust", "python": "python",
+    "postgres": "postgresql", "postgresql": "postgresql",
+    "bitcoin": "bitcoin", "ethereum": "ethereum",
+}
+
+# Words that look like entities positionally but never are.
+_ENTITY_TITLE_STOP = {
+    "the", "a", "an", "is", "are", "was", "were", "this", "that", "its", "it",
+    "how", "why", "what", "when", "where", "who", "which", "new", "first",
+    "after", "before", "with", "without", "from", "for", "and", "not", "but",
+    "you", "your", "yours", "we", "our", "they", "their", "his", "her",
+    "in", "on", "of", "to", "at", "by", "as", "vs", "via", "into", "over",
+    "ai", "tech", "app", "web", "dev", "devs", "code", "data", "one", "two",
+    "all", "now", "just", "still", "more", "most", "than", "then", "will",
+    "can", "may", "should", "could", "would", "has", "have", "had", "been",
+    "about", "against", "under", "using", "inside", "every", "some", "no",
+}
+
+
+def _extract_entities(title: str, subject: str = "") -> list:
+    """Lightweight entity guesses for the topic cooldown — zero ML deps.
+
+    Two passes: (1) token-exact lookup in ENTITY_ALIASES (canonicalized, so
+    ChatGPT/GPT/OpenAI all → "openai"); (2) heuristic — CamelCase names
+    (PyTorch), letter+digit tokens (GPT-5, HTTP/3), and capitalized
+    mid-sentence words. The capitalized-word rule is disabled when the title
+    is Title Case (≥50% of words capitalized — caps carry no signal then).
+    Returns up to 4 lowercase entities, lexicon hits first; entities[0] is
+    the primary. Pure (text in → list out) so it's trivially testable.
+    """
+    text = f"{title or ''} {subject or ''}".strip()
+    if not text:
+        return []
+    out: list = []
+
+    def _add(e: str) -> None:
+        if e and e not in out:
+            out.append(e)
+
+    for tok in _normalize_subject(text).split():
+        if tok in ENTITY_ALIASES:
+            _add(ENTITY_ALIASES[tok])
+    if "x.com" in text.lower():
+        _add("xai")
+
+    words = re.findall(r"[A-Za-z][\w.\-/]*", text)
+    cap_mid = sum(1 for w in words[1:] if w[0].isupper())
+    caps_are_style = len(words) > 1 and cap_mid >= (len(words) - 1) * 0.5
+    for i, w in enumerate(words):
+        bare = w.strip(".-/")
+        if len(bare) < 3:
+            continue
+        low = bare.lower()
+        if low in _ENTITY_TITLE_STOP or low in ENTITY_ALIASES:
+            continue
+        camel = re.search(r"[a-z][A-Z]", bare) is not None
+        lettered_digit = (re.search(r"\d", bare) is not None
+                          and re.search(r"[A-Za-z]", bare) is not None)
+        capitalized_mid = i > 0 and bare[0].isupper() and not caps_are_style
+        if camel or lettered_digit or capitalized_mid:
+            _add(low)
+        if len(out) >= 4:
+            break
+    return out[:4]
 
 
 def get_reddit_top(subreddit: str, timeframe: str = "day", limit: int = 8) -> list:
