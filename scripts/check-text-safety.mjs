@@ -135,7 +135,9 @@ const countOf = (re) => (animatedSrc.match(re) || []).length;
 
 if (!/const\s+longestWordLen\s*=/.test(animatedSrc) || !/const\s+maxSizeForWord\s*=/.test(animatedSrc)) {
   fail(animated, 1, "the longest-word auto-fit cap is gone — words can overflow their line");
-} else if (!/Math\.min\(\s*requestedSize\s*,\s*maxSizeForWord\s*\)/.test(animatedSrc)) {
+} else if (!/Math\.min\(\s*requestedSize\s*,\s*maxSizeForWord\s*[,)]/.test(animatedSrc)) {
+  // `[,)]` accepts the 2026-08 strengthened form Math.min(requestedSize,
+  // maxSizeForWord, maxSizeForLine) — the word cap must still be an argument.
   fail(animated, 1, "maxSizeForWord is computed but no longer clamps the font size");
 }
 
