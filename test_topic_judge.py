@@ -65,7 +65,9 @@ def test_plan_story_angle():
     body = ("SaltCell published peer-reviewed results showing 92.3 percent capacity "
             "retention after 3,000 charge cycles, at a projected pack cost of 87 "
             "dollars per kWh compared to 135 for lithium.")
-    good_json = ('{"subject": "SaltCell battery", "angle": "Salt chemistry just beat lithium on endurance.", '
+    good_json = ('{"subject": "SaltCell battery", '
+                 '"display_title": "\\"This salt battery simply refuses to die in tests\\"", '
+                 '"angle": "Salt chemistry just beat lithium on endurance.", '
                  '"hook": "Salt just outlived lithium", '
                  '"insight": "Grid storage gets cheap cells that refuse to die.", '
                  '"facts": ["92.3 percent capacity retained after 3,000 charge cycles", '
@@ -80,6 +82,16 @@ def test_plan_story_angle():
     check(plan and plan.get("insight", "").startswith("Grid storage"),
           "insight field carried through")
     check(plan and plan.get("url") == "https://x", "url carried through")
+    # display_title (B5): clamped to 8 words, wrapping quotes stripped.
+    check(plan and plan.get("display_title") == "This salt battery simply refuses to die in",
+          "display_title clamped to 8 words with quotes stripped")
+
+    no_dt = good_json.replace(
+        '"display_title": "\\"This salt battery simply refuses to die in tests\\"", ', "")
+    plan = _with_fake_llm(lambda **kw: no_dt,
+                          lambda: main.plan_story_angle(title, body, session_id="test"))
+    check(isinstance(plan, dict) and plan.get("display_title") == "",
+          "missing display_title defaults to empty string (additive contract)")
 
     fenced = "```json\n" + good_json + "\n```"
     plan = _with_fake_llm(lambda **kw: fenced,
@@ -136,6 +148,18 @@ def test_build_hn_news_prompt_plan():
     for legacy in ("NEWS SOURCE DETAILS", "CONCRETENESS CONTRACT",
                    "branded outro card is appended automatically"):
         check(legacy in full, f"legacy marker survives plan enrichment: {legacy!r}")
+    # display_title (B5): absent key → no HEADLINE line (additive contract);
+    # present → the plain-English framing line appears.
+    check("- HEADLINE (" not in full, "no HEADLINE line without display_title")
+    with_dt = main.build_hn_news_prompt(
+        t, b, seed=42, outro_appended=True,
+        plan=dict(plan, display_title="Postgres upserts just got three times faster"))
+    check("- HEADLINE (use this plain-English framing" in with_dt
+          and "Postgres upserts just got three times faster" in with_dt,
+          "display_title emits the HEADLINE framing line")
+    check(with_dt.replace(
+        "- HEADLINE (use this plain-English framing for the hook's on-screen title — NOT the raw source headline): Postgres upserts just got three times faster\n",
+        "") == full, "HEADLINE line is the ONLY diff a display_title introduces")
 
     no_follow = main.build_hn_news_prompt(t, b, seed=42, outro_appended=False, plan=plan)
     check("Follow Neon Node for more tech" in no_follow,

@@ -12,6 +12,7 @@ from main import (
     _execute_render_unlocked,
     _build_env_youtube_config,
     _hn_to_candidates,
+    _gather_ci_candidates,
     get_hacker_news_frontpage,
     build_hn_news_prompt,
     extract_article_body,
@@ -114,17 +115,43 @@ def main():
     # building crash too (e.g. bad API data), and those failures must reach the
     # Telegram alert below just like render failures.
     try:
-        print("Fetching trending topics from Hacker News...")
+        # Multi-source intake (B4): NEWS_SOURCES repo Variable, comma list of
+        # hn|hnbest|lobsters|rss. Unset/"hn" = the legacy HN-only path
+        # byte-for-byte. Non-HN candidates carry a prefixed uid in _hn_id
+        # (lob:<id>, rss:<sha1>), so history dedup and the record_topic_use
+        # call in the frozen delivery region work unchanged.
+        sources = [s.strip().lower()
+                   for s in os.environ.get("NEWS_SOURCES", "hn").split(",") if s.strip()]
+        multi_source = sources != ["hn"]
+
         stories = []
-        try:
-            stories = get_hacker_news_frontpage(min_score=100, limit=15)
-        except Exception as e:
-            print(f"Failed to get HN stories: {e}")
+        candidates = []
+        if multi_source:
+            print(f"Fetching trending topics from sources: {', '.join(sources)}...")
+            try:
+                candidates, source_counts = _gather_ci_candidates(sources)
+            except Exception as e:
+                print(f"Multi-source intake failed: {e}")
+                candidates, source_counts = [], {s: 0 for s in sources}
+            dead = [k for k, v in source_counts.items() if v == 0]
+            if dead and len(dead) * 2 > len(source_counts) and not dry_run:
+                _alert_telegram(
+                    f"⚠️ Topic intake: {len(dead)}/{len(source_counts)} sources "
+                    f"returned nothing ({', '.join(dead)}) — running on a thin pool.",
+                    session_id,
+                )
+        else:
+            print("Fetching trending topics from Hacker News...")
+            try:
+                stories = get_hacker_news_frontpage(min_score=100, limit=15)
+            except Exception as e:
+                print(f"Failed to get HN stories: {e}")
+            candidates = _hn_to_candidates(stories)
 
         best = None
         plan = None
         pack_brief = None
-        if not stories:
+        if not candidates:
             print("Could not fetch HackerNews stories. Falling back to default tech prompt.")
             if format_pack in ("quiz-reveal", "data-rankings"):
                 # Brief packs need a real article to ground their data —
@@ -140,13 +167,11 @@ def main():
         else:
             # Rank real stories by viral potential, EXCLUDING ones recent runs
             # already covered — the history file is committed back to the repo
-            # by the workflow, so it survives ephemeral CI runners. The pick is
-            # weighted-random over the top 5 (not argmax): while a big headline
-            # sits on the front page all day, a deterministic argmax re-picked
-            # it on every one of the day's crons.
+            # by the workflow, so it survives ephemeral CI runners. Pick mode /
+            # freshness / entity-cooldown behavior is flag-gated inside
+            # filter_and_pick_story (TOPIC_* repo Variables; defaults legacy).
             history = load_topic_history(PROCESSED_NEWS_FILE)
             print(f"Loaded topic history: {len(history)} previously used stories.")
-            candidates = _hn_to_candidates(stories)
             rng = random.Random(_derive_seed(session_id))
             best, was_fallback = filter_and_pick_story(candidates, history, rng, top_n=5)
             if was_fallback and not dry_run:
@@ -155,18 +180,43 @@ def main():
                     f"used; re-airing least-recent: '{best.get('title', '')[:120]}'",
                     session_id,
                 )
-            # Match back by HN id first — titles can collide after rewording.
-            story = next(
-                (s for s in stories if str(s.get("id")) == str(best.get("_hn_id"))), None
-            ) or next((s for s in stories if s.get("title") == best["title"]), stories[0])
-            title = story.get("title", "")
-            # HN story dicts carry no article text — scrape it, exactly like the
+            elif not dry_run and 0 < best.get("_fresh_pool", 99) < 3:
+                # Early warning BEFORE the LRU fallback ever fires — the pool
+                # after dedup/freshness/cooldown is nearly dry.
+                _alert_telegram(
+                    f"⚠️ Thin topic pool: only {best.get('_fresh_pool')} eligible "
+                    "candidate(s) after dedup/freshness/cooldown — tomorrow may "
+                    "hit the repeat fallback.",
+                    session_id,
+                )
+            if multi_source:
+                # Observability: the ranked shortlist with source/age tags —
+                # the only way to sanity-check cross-source scoring from logs.
+                ranked = sorted(candidates, key=lambda c: c.get("_score", 0.0), reverse=True)[:8]
+                for i, c in enumerate(ranked, 1):
+                    srcs = ",".join(c.get("sources") or [c.get("source", "?")])
+                    print(f"  #{i} [{srcs}|{float(c.get('age_hours', 0)):.0f}h|"
+                          f"{float(c.get('_score', 0)):.2f}] {c.get('title', '')[:80]}")
+
+            def _resolve_pick(b):
+                """Title + url for a picked candidate. HN picks match back to
+                the raw story dict by id (titles can collide after rewording);
+                other sources carry their url on the candidate itself."""
+                if not multi_source:
+                    st = next(
+                        (s for s in stories if str(s.get("id")) == str(b.get("_hn_id"))), None
+                    ) or next((s for s in stories if s.get("title") == b["title"]), stories[0])
+                    return st.get("title", ""), st.get("url", "")
+                return b.get("title", ""), b.get("url", "")
+
+            title, story_url = _resolve_pick(best)
+            # Candidates carry no article text — scrape it, exactly like the
             # /render/hn-news endpoint does. Without it the prompt says "No
             # article content available." and the LLM writes thin, headline-only
             # scripts (or invents specifics the fabrication guard then fights).
             body = ""
             try:
-                body = extract_article_body(story.get("url", ""))
+                body = extract_article_body(story_url)
             except Exception as e:
                 print(f"Article scrape failed (continuing with headline only): {e}")
             print(f"Selected story (virality score {best['_score']:.2f}): '{title}' (article body: {len(body)} chars)")
@@ -179,7 +229,7 @@ def main():
                 repicks = int(os.environ.get("CI_TOPIC_REPICKS", "1"))
                 for _round in range(1 + repicks):
                     plan = plan_story_angle(
-                        title, body, url=story.get("url", ""), session_id=session_id)
+                        title, body, url=story_url, session_id=session_id)
                     if plan is None:
                         break  # LLM/parse failure — a retry would fail the same way
                     if plan.get("subject"):
@@ -199,13 +249,10 @@ def main():
                     if nxt_fb:
                         break  # nothing fresh left — keep the original pick
                     best, plan = nxt, None
-                    story = next(
-                        (s for s in stories if str(s.get("id")) == str(best.get("_hn_id"))), None
-                    ) or next((s for s in stories if s.get("title") == best["title"]), stories[0])
-                    title = story.get("title", "")
+                    title, story_url = _resolve_pick(best)
                     body = ""
                     try:
-                        body = extract_article_body(story.get("url", ""))
+                        body = extract_article_body(story_url)
                     except Exception as e:
                         print(f"Article scrape failed on re-pick (continuing with headline only): {e}")
                     print(f"[TopicJudge] Re-picked story (virality score {best['_score']:.2f}): "
@@ -270,12 +317,17 @@ def main():
                         "subject": ((plan or {}).get("subject")
                                     or best.get("subject", "") or best.get("title", "")),
                         "url": best.get("url", ""),
-                        "source": "hn",
+                        # "hn" preserved for HN picks (ledger continuity);
+                        # other sources record their own key (lobsters/rss:*).
+                        "source": ("hn" if best.get("source") in (None, "hackernews")
+                                   else best.get("source", "hn")),
                         "keywords": _extract_topic_keywords(best.get("title", "")),
                         "viral_score": round(float(best.get("_score", 0.0)), 2),
                         # Additive judge fields — the ledger copies this dict
                         # as-is and the feedback loop reads only "keywords",
                         # so extra keys are inert to both.
+                        "sources": best.get("sources") or [],
+                        "display_title": (plan or {}).get("display_title", ""),
                         "angle": (plan or {}).get("angle", ""),
                         "insight": (plan or {}).get("insight", ""),
                         "judge": "plan" if plan else "none",

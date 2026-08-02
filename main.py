@@ -7778,6 +7778,9 @@ def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None,
             "EDITORIAL PLAN (this is the point of the video — follow it):",
             f"- SUBJECT: {plan['subject']}. The ENTIRE video is about this one thing, end-to-end — no detours.",
         ]
+        if plan.get("display_title"):
+            editorial_lines.append(
+                f"- HEADLINE (use this plain-English framing for the hook's on-screen title — NOT the raw source headline): {plan['display_title']}")
         if plan.get("angle"):
             editorial_lines.append(f"- ANGLE: {plan['angle']}")
         if plan.get("insight"):
@@ -8218,6 +8221,7 @@ def filter_and_pick_story(candidates: list, history: list, rng: random.Random,
                   f"after dedup/freshness/cooldown) — tomorrow may hit the LRU fallback.")
         if pick_mode == "argmax":
             chosen = fresh[0]
+            chosen["_fresh_pool"] = len(fresh)
             print(f"[TopicHistory] {len(candidates)} candidates, {len(fresh)} eligible; "
                   f"argmax picked '{chosen.get('title', '')[:70]}' "
                   f"(score {chosen['_score']:.2f}).")
@@ -8225,6 +8229,10 @@ def filter_and_pick_story(candidates: list, history: list, rng: random.Random,
         pool = fresh[:top_n]
         weights = [max(c["_score"], 0.1) ** 2 for c in pool]
         chosen = rng.choices(pool, weights=weights, k=1)[0]
+        # Pool size rides on the pick (candidates already carry _score the
+        # same way) so callers can alert on a thin pool without a tuple
+        # change breaking existing call sites.
+        chosen["_fresh_pool"] = len(fresh)
         print(f"[TopicHistory] {len(candidates)} candidates, {len(fresh)} unused; "
               f"picked '{chosen.get('title', '')[:70]}' "
               f"(score {chosen['_score']:.2f}) from top {len(pool)}.")
@@ -9249,6 +9257,16 @@ def get_devto_top(limit: int = 10) -> list:
         return []
 
 
+def _lobsters_age_hours(created_at: str) -> float:
+    """Real age from Lobsters' ISO-8601 created_at; 24h only on parse failure
+    (the old fabricated flat 24.0 made recency scoring a fiction)."""
+    try:
+        dt = datetime.datetime.fromisoformat((created_at or "").replace("Z", "+00:00"))
+        return max(0.1, (time.time() - dt.timestamp()) / 3600.0)
+    except (TypeError, ValueError):
+        return 24.0
+
+
 def get_lobsters_hottest(limit: int = 12) -> list:
     """Hottest Lobsters stories (no auth, reliable from server IPs — a resilient
     fallback for when Reddit blocks datacenter requests)."""
@@ -9261,6 +9279,7 @@ def get_lobsters_hottest(limit: int = 12) -> list:
             return []
         out = []
         for s in r.json()[:limit]:
+            short_id = str(s.get("short_id") or "").strip()
             out.append({
                 "source": "lobsters",
                 "title": s.get("title", ""),
@@ -9268,8 +9287,13 @@ def get_lobsters_hottest(limit: int = 12) -> list:
                 "url": s.get("url") or s.get("short_id_url", ""),
                 "engagement": int(s.get("score", 0)),
                 "comments": int(s.get("comment_count", 0)),
-                "age_hours": 24.0,
+                "age_hours": _lobsters_age_hours(s.get("created_at", "")),
                 "meta": ", ".join(s.get("tags", [])[:3]) if isinstance(s.get("tags"), list) else "",
+                # Prefixed stable uid in the existing _hn_id field, so the
+                # history id-dedup and record_topic_use call sites work
+                # unchanged (the CI call site is in generate_now's frozen
+                # delivery region — this trick keeps it untouched).
+                "_hn_id": f"lob:{short_id}" if short_id else None,
             })
         return out
     except Exception as e:
@@ -9357,7 +9381,12 @@ def score_virality(c: dict) -> float:
     # matches (see _ADVICE_TITLE_RE above) — news over advice.
     class_adj = -1.5 if _ADVICE_TITLE_RE.search(c.get("title", "")) else 0.0
 
-    return engagement_score + discussion_score + recency_score + kw + punch + class_adj
+    # Source-trust prior (B4): engagement-less candidates (RSS) carry
+    # trust*2.2 + any corroboration boost. Absent field → bit-identical
+    # legacy score (pinned in test_topic_sources.py).
+    prior = float(c.get("_source_prior", 0.0) or 0.0)
+
+    return engagement_score + discussion_score + recency_score + kw + punch + class_adj + prior
 
 
 def _gather_candidates(kind: str) -> list:
@@ -9377,6 +9406,270 @@ def _gather_candidates(kind: str) -> list:
         candidates += get_reddit_top("technology", "week", 6)
     # Drop empties / obvious junk
     return [c for c in candidates if c.get("title") and len(c["title"]) > 6]
+
+
+# ============================================================================
+# CI MULTI-SOURCE INTAKE (NEWS_SOURCES flag — B4, 2026-08-02)
+# ----------------------------------------------------------------------------
+# The live CI path was Hacker-News-only: a developer-forum agenda standing in
+# for a tech-news agenda. This cluster adds $0, datacenter-friendly sources
+# (Lobsters, mainstream-outlet RSS, an HN high-score sweep) behind the
+# NEWS_SOURCES repo Variable; default "hn" keeps the legacy path byte-for-
+# byte. Deliberately separate from _gather_candidates (which serves the OFF
+# Space schedulers). NO Reddit (HTTP 403 from datacenter IPs, documented),
+# NO Dev.to (advice-heavy, fabricated ages), NO GitHub-trending (projects,
+# not news).
+# ============================================================================
+
+# Per-source trust prior. Engagement-bearing sources (HN/Lobsters) already
+# carry their own signal; RSS candidates have engagement=0 (honest — RSS has
+# none) and instead get _source_prior = trust * 2.2, calibrated so a fresh,
+# keyword-strong outlet story ranks near a ~150-point HN story.
+SOURCE_TRUST: Dict[str, float] = {
+    "hackernews": 1.0,
+    "lobsters": 0.9,
+    "rss:arstechnica": 0.9,
+    "rss:theverge": 0.85,
+    "rss:techcrunch": 0.85,
+    "rss:openai": 0.8,
+    "rss:googleai": 0.8,
+}
+
+CI_RSS_FEEDS = [
+    ("rss:theverge", "https://www.theverge.com/rss/index.xml"),
+    ("rss:techcrunch", "https://techcrunch.com/feed/"),
+    ("rss:arstechnica", "https://feeds.arstechnica.com/arstechnica/index"),
+    # Vendor feeds stay commented until a manual workflow_dispatch dry-run
+    # confirms they're reachable from Actions runners (vendor CDNs sometimes
+    # 403 datacenter UAs). Uncomment + dry-run to enable.
+    # ("rss:openai", "https://openai.com/news/rss.xml"),
+    # ("rss:googleai", "https://blog.google/technology/ai/rss/"),
+]
+
+
+def _parse_rss(xml_text: str, feed_key: str, limit: int = 10) -> list:
+    """Parse RSS 2.0 or Atom into normalized candidates.
+
+    PURE (text in → list out) so tests run on inline fixtures with zero
+    network. Stdlib only (xml.etree + email.utils) — feedparser would key a
+    new hash into the CI venv cache for two formats this covers already.
+    Timestamps are real; an unparseable date degrades to 24h, never a
+    fabricated freshness."""
+    import xml.etree.ElementTree as ET
+    import email.utils
+    import hashlib
+    try:
+        root = ET.fromstring(xml_text)
+    except ET.ParseError as e:
+        print(f"[RSS] {feed_key}: XML parse failed: {e}")
+        return []
+    ns = {"atom": "http://www.w3.org/2005/Atom"}
+    items = root.findall(".//item")  # RSS 2.0
+    atom = False
+    if not items:
+        items = root.findall(".//atom:entry", ns)
+        atom = True
+    now = time.time()
+    trust = SOURCE_TRUST.get(feed_key, 0.8)
+    out = []
+    for it in items[:limit]:
+        if atom:
+            title = (it.findtext("atom:title", default="", namespaces=ns) or "").strip()
+            link_el = it.find("atom:link[@rel='alternate']", ns)
+            if link_el is None:
+                link_el = it.find("atom:link", ns)
+            url = (link_el.get("href") if link_el is not None else "") or ""
+            date_s = (it.findtext("atom:published", default="", namespaces=ns)
+                      or it.findtext("atom:updated", default="", namespaces=ns) or "")
+            age = 24.0
+            if date_s:
+                try:
+                    dt = datetime.datetime.fromisoformat(date_s.replace("Z", "+00:00"))
+                    age = max(0.1, (now - dt.timestamp()) / 3600.0)
+                except (TypeError, ValueError):
+                    pass
+        else:
+            title = (it.findtext("title") or "").strip()
+            url = (it.findtext("link") or "").strip()
+            date_s = it.findtext("pubDate") or ""
+            age = 24.0
+            if date_s:
+                try:
+                    dt = email.utils.parsedate_to_datetime(date_s)
+                    # RFC-822 "-0000" parses as a NAIVE datetime; .timestamp()
+                    # would then assume LOCAL time and skew the age by the
+                    # runner's UTC offset. Naive == UTC here by RFC 2822.
+                    if dt.tzinfo is None:
+                        dt = dt.replace(tzinfo=datetime.timezone.utc)
+                    age = max(0.1, (now - dt.timestamp()) / 3600.0)
+                except (TypeError, ValueError):
+                    pass
+        if not title or not url:
+            continue
+        out.append({
+            "source": feed_key,
+            "title": title,
+            "subject": title,
+            "url": url,
+            "engagement": 0,
+            "comments": 0,
+            "age_hours": age,
+            "meta": feed_key.split(":", 1)[-1],
+            "_hn_id": "rss:" + hashlib.sha1(url.encode("utf-8")).hexdigest()[:12],
+            "_source_prior": round(trust * 2.2, 3),
+        })
+    return out
+
+
+def get_rss_candidates(limit_per_feed: int = 8) -> list:
+    """Fetch every feed in CI_RSS_FEEDS; per-feed failures are log-only."""
+    out: list = []
+    for key, url in CI_RSS_FEEDS:
+        try:
+            r = requests.get(url, headers={"User-Agent": "NeonNode-TopicBot/1.0"},
+                             timeout=10)
+            if r.status_code != 200:
+                print(f"[RSS] {key} failed: HTTP {r.status_code}")
+                continue
+            got = _parse_rss(r.text, key, limit=limit_per_feed)
+            print(f"[RSS] {key}: {len(got)} items")
+            out += got
+        except Exception as e:
+            print(f"[RSS] {key} error: {e}")
+    return out
+
+
+def get_hn_best_recent(min_points: int = 150, max_age_h: float = 36.0,
+                       limit: int = 15) -> list:
+    """High-scoring recent HN stories regardless of front-page status — catches
+    stories that never held (or already left) the front page. Same story shape
+    as get_hacker_news_frontpage, so ids match the history's HN ids."""
+    cutoff = int(time.time() - max_age_h * 3600)
+    url = ("https://hn.algolia.com/api/v1/search?tags=story"
+           f"&numericFilters=points>={min_points},created_at_i>={cutoff}"
+           f"&hitsPerPage={limit}")
+    try:
+        r = requests.get(url, timeout=10)
+        if r.status_code != 200:
+            print(f"[HN-Best] failed: HTTP {r.status_code}")
+            return []
+        stories = []
+        for hit in r.json().get("hits", []):
+            if not hit.get("url"):
+                continue
+            stories.append({
+                "id": hit.get("objectID"),
+                "title": hit.get("title"),
+                "url": hit.get("url"),
+                "score": hit.get("points") or 0,
+                "author": hit.get("author"),
+                "num_comments": hit.get("num_comments") or 0,
+                "created_at_i": hit.get("created_at_i") or 0,
+            })
+        return stories
+    except Exception as e:
+        print(f"[HN-Best] Error: {e}")
+        return []
+
+
+def _canonical_story_url(url: str) -> str:
+    """netloc+path key (query/fragment/trailing-slash/www stripped) — HN and
+    an outlet's RSS frequently link the identical article."""
+    try:
+        from urllib.parse import urlparse
+        p = urlparse((url or "").strip())
+        netloc = p.netloc.lower()
+        if netloc.startswith("www."):
+            netloc = netloc[4:]
+        return f"{netloc}{p.path.rstrip('/')}".lower()
+    except Exception:
+        return (url or "").lower()
+
+
+def _merge_and_corroborate(candidates: list) -> list:
+    """Cross-source dedup where a duplicate is a SIGNAL, not noise.
+
+    Groups by canonical URL, then by title token-set Jaccard ≥ 0.6. Each
+    group keeps one representative — engagement-bearing and highest-trust
+    first — which inherits: a `sources` list, the group's earliest real
+    timestamp, and a corroboration boost (+0.8 per extra outlet, capped
+    +1.6) on _source_prior. A story two outlets ran is more newsworthy than
+    either listing alone suggests (gap 7.6)."""
+    groups: list = []
+    for c in candidates:
+        c_url = _canonical_story_url(c.get("url", ""))
+        c_toks = {t for t in _normalize_subject(c.get("title", "")).split() if len(t) >= 4}
+        target = None
+        for g in groups:
+            if c_url and c_url == g["url"]:
+                target = g
+                break
+            if c_toks and g["toks"]:
+                inter = len(c_toks & g["toks"])
+                union = len(c_toks | g["toks"])
+                if union and inter / union >= 0.6:
+                    target = g
+                    break
+        if target is None:
+            groups.append({"url": c_url, "toks": c_toks, "members": [c]})
+        else:
+            target["members"].append(c)
+
+    def _trust(c: dict) -> float:
+        return SOURCE_TRUST.get(c.get("source", ""), 0.8)
+
+    out = []
+    for g in groups:
+        members = g["members"]
+        if len(members) == 1:
+            out.append(members[0])
+            continue
+        rep = dict(max(members, key=lambda c: (
+            float(c.get("engagement", 0) or 0) > 0, _trust(c),
+            float(c.get("engagement", 0) or 0))))
+        srcs = sorted({m.get("source", "?") for m in members})
+        boost = min(1.6, 0.8 * (len(srcs) - 1))
+        rep["sources"] = srcs
+        rep["_source_prior"] = round(float(rep.get("_source_prior", 0.0) or 0.0) + boost, 3)
+        rep["age_hours"] = min(float(m.get("age_hours", 24.0) or 24.0) for m in members)
+        print(f"[Corroborate] '{rep.get('title', '')[:60]}' seen by {srcs} "
+              f"(prior +{boost:.1f})")
+        out.append(rep)
+    return out
+
+
+def _gather_ci_candidates(sources: list):
+    """CI intake for the news pipeline (NEWS_SOURCES flag).
+
+    Returns (candidates, per_source_counts). Per-source failures degrade to
+    zero candidates for that source (log-only); the caller alerts when more
+    than half the enabled sources came back empty. _gather_ci_candidates(["hn"])
+    equals the legacy candidate shape exactly."""
+    counts: Dict[str, int] = {}
+    candidates: list = []
+    for src in sources:
+        got: list = []
+        try:
+            if src == "hn":
+                got = _hn_to_candidates(get_hacker_news_frontpage(min_score=100, limit=15))
+            elif src == "hnbest":
+                got = _hn_to_candidates(get_hn_best_recent())
+            elif src == "lobsters":
+                got = get_lobsters_hottest(12)
+            elif src == "rss":
+                got = get_rss_candidates()
+            else:
+                print(f"[CI-Intake] Unknown source '{src}' — skipped.")
+        except Exception as e:
+            print(f"[CI-Intake] Source '{src}' failed: {e}")
+        counts[src] = len(got)
+        candidates += got
+    candidates = [c for c in candidates if c.get("title") and len(c["title"]) > 6]
+    merged = _merge_and_corroborate(candidates)
+    print(f"[CI-Intake] {sum(counts.values())} raw from {len(counts)} source(s) → "
+          f"{len(merged)} after corroboration ("
+          + ", ".join(f"{k}={v}" for k, v in counts.items()) + ")")
+    return merged, counts
 
 
 def _ground_facts(facts: list, corpus: str, tag: str = "TopicEngine") -> list:
@@ -9540,7 +9833,7 @@ HARD REQUIREMENT — the video's subject must be ONE named, concrete thing: a sp
 "facts" rules: COPY 2-5 concrete specifics (numbers, versions, names, dates, what changed) accurately from the ARTICLE TEXT above. Never add specifics from memory. Each fact under 20 words.
 
 Return ONLY this JSON (no other text):
-{{"subject": "<2-5 word searchable topic>", "angle": "<one sentence: the story of the video>", "hook": "<scroll-stopping first line, max 8 words>", "insight": "<the one non-obvious takeaway — who is affected and what changes now, one sentence>", "facts": ["..."], "format": "news|explainer|comparison"}}"""
+{{"subject": "<2-5 word searchable topic>", "display_title": "<plain-English reframe of the headline for a general tech audience, max 8 words, no insider jargon or forum in-jokes>", "angle": "<one sentence: the story of the video>", "hook": "<scroll-stopping first line, max 8 words>", "insight": "<the one non-obvious takeaway — who is affected and what changes now, one sentence>", "facts": ["..."], "format": "news|explainer|comparison"}}"""
 
     try:
         raw = query_llm_with_failover(
@@ -9574,8 +9867,17 @@ Return ONLY this JSON (no other text):
     if fmt not in ("news", "explainer", "comparison"):
         fmt = "news"
 
+    # Plain-English headline reframe (B5): HN titles are written for an
+    # insider audience ("Htmx 4.0 ... exclusively on the Game Boy") and often
+    # read as noise on IG. Clamp to 8 words, strip wrapping quotes. Additive
+    # key — a plan without it produces today's prompt byte-for-byte.
+    display_title = " ".join(
+        str(plan.get("display_title") or "").strip().strip('"“”').split()[:8]
+    )
+
     result = {
         "subject": subject,
+        "display_title": display_title,
         "angle": str(plan.get("angle") or "").strip(),
         "hook": str(plan.get("hook") or "").strip(),
         # Angle-tier trust — the payoff beat, never a VERIFIED SOURCE FACT.

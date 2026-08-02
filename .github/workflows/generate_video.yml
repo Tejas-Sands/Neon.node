@@ -192,6 +192,14 @@ jobs:
           echo "TTS_PROVIDER=${{ vars.TTS_PROVIDER || 'edge' }}" >> "$GITHUB_ENV"
           echo "FORMAT_PACK=${{ vars.FORMAT_PACK || '' }}" >> "$GITHUB_ENV"
           echo "LOOP_ENDING=${{ vars.LOOP_ENDING || 'false' }}" >> "$GITHUB_ENV"
+          # Topic-selection flags (B2-B4, 2026-08): defaults = legacy behavior.
+          echo "NEWS_SOURCES=${{ vars.NEWS_SOURCES || 'hn' }}" >> "$GITHUB_ENV"
+          echo "TOPIC_PICK_MODE=${{ vars.TOPIC_PICK_MODE || 'weighted' }}" >> "$GITHUB_ENV"
+          echo "TOPIC_MAX_AGE_H=${{ vars.TOPIC_MAX_AGE_H || '0' }}" >> "$GITHUB_ENV"
+          echo "TOPIC_FRESH_BOOST_H=${{ vars.TOPIC_FRESH_BOOST_H || '0' }}" >> "$GITHUB_ENV"
+          echo "TOPIC_ENTITY_COOLDOWN_H=${{ vars.TOPIC_ENTITY_COOLDOWN_H || '0' }}" >> "$GITHUB_ENV"
+          echo "TOPIC_DEDUP_V2=${{ vars.TOPIC_DEDUP_V2 || 'false' }}" >> "$GITHUB_ENV"
+          echo "TOPIC_HISTORY_CAP=${{ vars.TOPIC_HISTORY_CAP || '200' }}" >> "$GITHUB_ENV"
 
       - name: Run Video Generation Pipeline
         env:
