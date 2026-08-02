@@ -38,6 +38,12 @@ export type CutStyleName =
   | "skew-peel"
   | "stutter-zoom"
   | "diamond-iris"
+  // 2026-08 professional additions (still inside the allowed families —
+  // wipes and burns; no zoom/glitch): a broadcast center-out curtain, a
+  // Swiss-poster diagonal sweep, and a soft luminance-accented dissolve.
+  | "split-wipe"
+  | "angled-wipe"
+  | "flash-dissolve"
   // The connector cut: a hard cut where the incoming scene lands slightly
   // punched-in (~6-8%) and settles. Reads as a deliberate camera change, not
   // an effect — it is what fills the space between dressed transitions.
@@ -85,10 +91,10 @@ export const WHOOSH_CUTS: ReadonlySet<CutStyleName> = new Set([
 // (`pool[floor(rng()*len) % len]`) consumes exactly one draw as before — only
 // the contents change, never the draw count.
 const TRANSITION_POOLS: Record<MotionFeel, readonly CutStyleName[]> = {
-  calm: ["crossfade", "blur-dissolve", "film-burn", "luma-radial"],
-  snappy: ["whip-pan", "venetian-blinds", "luma-radial", "diamond-iris"],
-  bouncy: ["push-up", "venetian-blinds", "whip-pan", "diamond-iris"],
-  cinematic: ["film-burn", "luma-radial", "diamond-iris", "crossfade"],
+  calm: ["crossfade", "blur-dissolve", "film-burn", "angled-wipe"],
+  snappy: ["whip-pan", "venetian-blinds", "split-wipe", "diamond-iris"],
+  bouncy: ["push-up", "venetian-blinds", "whip-pan", "split-wipe"],
+  cinematic: ["film-burn", "luma-radial", "flash-dissolve", "crossfade"],
 };
 
 // Anchors the Python side may still send that are no longer in the vocabulary,

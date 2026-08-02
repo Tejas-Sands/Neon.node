@@ -59,7 +59,7 @@ export function deriveEnergy(
   seed: number,
   sceneCount: number,
   sceneDurations: number[],
-  opts?: { loopEnding?: boolean },
+  opts?: { loopEnding?: boolean; beatFrames?: number },
 ): EnergyPlan {
   const rng = makeRng(((seed ^ 0x6d1b9f37) >>> 0) || 1);
   const loopEnding = opts?.loopEnding === true;
@@ -120,6 +120,29 @@ export function deriveEnergy(
     s.camera = 0.7 + 0.5 * s.level;
     s.springScale = 0.85 + 0.3 * s.level;
     s.allowMidCut = s.allowMidCut || (Math.round(sceneDurations[top] ?? 150) >= 100);
+  }
+
+  // Beat quantization (Q34:b — accents pulse to the beat, cuts stay free).
+  // Runs AFTER every draw is consumed and every roll-derived value is final,
+  // as pure post-processing: absent beatFrames ⇒ bit-identical schedules.
+  // kineticStart / midCutFrame snap to the nearest beat of a frame-0 grid,
+  // then re-clamp to the invariants the rolls established (kineticStart ≥
+  // landEnd + 12; midCutFrame ∈ [max(40, kineticStart), D − 12]).
+  const fpb = opts?.beatFrames;
+  if (fpb && fpb > 1) {
+    let sceneStart = 0;
+    for (let i = 0; i < scenes.length; i++) {
+      const s = scenes[i];
+      const D = Math.max(1, Math.round(sceneDurations[i] ?? 150));
+      const snap = (local: number) =>
+        Math.round(Math.round((sceneStart + local) / fpb) * fpb) - sceneStart;
+      s.kineticStart = Math.max(s.landEnd + 12, snap(s.kineticStart));
+      s.midCutFrame = Math.min(
+        Math.max(Math.max(40, s.kineticStart), snap(s.midCutFrame)),
+        Math.max(s.kineticStart, D - 12),
+      );
+      sceneStart += D;
+    }
   }
 
   return { scenes, levels: scenes.map((s) => s.level) };

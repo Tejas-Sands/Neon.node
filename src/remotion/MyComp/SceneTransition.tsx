@@ -542,6 +542,120 @@ function computeEdge(
       };
     }
 
+    // ── 2026-08 professional additions ─────────────────────────────────────
+
+    case "split-wipe": {
+      // Broadcast curtain: two dark panels meet at center ahead of the cut
+      // (exit) and open center-out after it (enter). Same reveal-illusion
+      // mechanics as venetian-blinds — children stay untransformed, the frame
+      // is FULLY covered exactly at the cut, plain divs + transforms only.
+      // A faint accent hairline rides each panel's leading edge.
+      const coverage = entering ? 1 - t : t; // 0 open .. 1 closed
+      if (coverage <= 0.001) return NEUTRAL;
+      const horizontal = axis === "x";
+      const panels = [0, 1].map((side) => {
+        const leading = side === 0 ? (horizontal ? "right" : "bottom") : horizontal ? "left" : "top";
+        return (
+          <div
+            key={side}
+            style={{
+              position: "absolute",
+              ...(horizontal
+                ? {
+                    top: 0,
+                    bottom: 0,
+                    width: "50.5%",
+                    [side === 0 ? "left" : "right"]: 0,
+                    transform: `scaleX(${coverage})`,
+                    transformOrigin: side === 0 ? "left" : "right",
+                  }
+                : {
+                    left: 0,
+                    right: 0,
+                    height: "50.5%",
+                    [side === 0 ? "top" : "bottom"]: 0,
+                    transform: `scaleY(${coverage})`,
+                    transformOrigin: side === 0 ? "top" : "bottom",
+                  }),
+              background: `linear-gradient(to ${leading}, rgba(2,2,6,0.94) 94%, ${ctx.accent}66 100%)`,
+              pointerEvents: "none",
+            }}
+          />
+        );
+      });
+      return { opacity: 1, transforms: [], filters: [], overlay: <>{panels}</> };
+    }
+
+    case "angled-wipe": {
+      // Swiss-poster diagonal: a soft-edged 115° mask sweep reveals the new
+      // scene; a faint bright line rides the wipe front. Exit side settles
+      // quietly — the enter is the star (same split as luma-radial).
+      const angle = dir > 0 ? 115 : 65;
+      if (entering) {
+        if (t >= 1) return NEUTRAL;
+        const f = 8; // feather %
+        const p = t * (100 + 2 * f) - f;
+        return {
+          opacity: 1,
+          transforms: [],
+          filters: [],
+          maskImage: `linear-gradient(${angle}deg, black 0%, black ${p}%, transparent ${p + f}%)`,
+          overlay: (
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: `linear-gradient(${angle}deg, transparent ${Math.max(0, p - 3)}%, rgba(255,255,255,${0.22 * E}) ${p}%, transparent ${Math.min(100, p + 3)}%)`,
+                pointerEvents: "none",
+              }}
+            />
+          ),
+        };
+      }
+      return {
+        opacity: 1 - interpolate(t, [0.45, 1], [0, 1], { extrapolateLeft: "clamp" }),
+        transforms: [dir > 0 ? `translateX(${-2.5 * t}%)` : `translateX(${2.5 * t}%)`],
+        filters: [],
+      };
+    }
+
+    case "flash-dissolve": {
+      // Crossfade carrying a short accent-tinted luminance bloom that peaks
+      // exactly at the boundary (±4 frames, frame-precise like
+      // chromatic-punch) — the tasteful "light hit" cut, soft by design and
+      // deliberately NOT in WHOOSH_CUTS.
+      const flashK = entering
+        ? 1 - clamp01(ctx.frame / 4)
+        : 1 - clamp01((ctx.durationInFrames - ctx.frame) / 4);
+      const flash =
+        flashK <= 0.01 ? undefined : (
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: `radial-gradient(ellipse 80% 60% at 50% 42%, rgba(255,255,255,0.9), ${ctx.accent}88 55%, transparent 80%)`,
+              opacity: 0.55 * E * flashK,
+              mixBlendMode: "screen",
+              pointerEvents: "none",
+            }}
+          />
+        );
+      if (entering) {
+        return {
+          opacity: interpolate(t, [0, 0.7], [0, 1], { extrapolateRight: "clamp" }),
+          transforms: [`scale(${1 + 0.02 * (1 - t)})`],
+          filters: [`brightness(${1 + 0.25 * E * (1 - t)})`],
+          overlay: flash,
+        };
+      }
+      return {
+        opacity: 1 - interpolate(t, [0.35, 1], [0, 1], { extrapolateLeft: "clamp" }),
+        transforms: [],
+        filters: [`brightness(${1 + 0.25 * E * t})`],
+        overlay: flash,
+      };
+    }
+
     default:
       return NEUTRAL;
   }

@@ -76,6 +76,7 @@ type TextAnimationMode =
   | "flip-in"
   | "clip-wipe"
   | "tracking-in"
+  | "line-stagger"
   | "none";
 
 type FontFamilyName =
@@ -515,6 +516,49 @@ const useClipWipe = (text: string, frame: number, fps: number, springMul = 1) =>
   return { wipeWords: rendered };
 };
 
+/** Greedy word-packer for line-stagger: lines of whole words only, so the
+ * mode is Pain Point 6-safe BY CONSTRUCTION (a break can only ever fall
+ * between words). Exported for the auto-fit cap below. */
+export const LINE_MAX_CHARS = 16;
+export const buildStaggerLines = (text: string, maxChars: number = LINE_MAX_CHARS): string[] => {
+  const lines: string[] = [];
+  let cur = "";
+  for (const word of text.split(/\s+/).filter(Boolean)) {
+    if (!cur) cur = word;
+    else if (cur.length + 1 + word.length <= maxChars) cur += " " + word;
+    else {
+      lines.push(cur);
+      cur = word;
+    }
+  }
+  if (cur) lines.push(cur);
+  return lines;
+};
+
+/** 13. Line-stagger — the editorial line-by-line reveal (brief Q14b): whole
+ * LINES rise out of their own overflow-hidden slots, top to bottom. The
+ * per-line stagger obeys the read lock, so every line is on screen by
+ * frame ~18 even for long copy. */
+const useLineStagger = (text: string, frame: number, fps: number, springMul = 1) => {
+  const lines = buildStaggerLines(text);
+  const framesPerLine = readLocked(6, lines.length);
+  const rendered = lines.map((line, i) => {
+    const localFrame = Math.max(0, frame - Math.round(i * framesPerLine));
+    const progress = spring({
+      fps,
+      frame: localFrame,
+      config: { damping: 26, stiffness: Math.round(140 * springMul), mass: 0.7 },
+      durationInFrames: 18,
+    });
+    return {
+      line,
+      riseY: interpolate(progress, [0, 1], [104, 0]),
+      opacity: interpolate(progress, [0, 0.5], [0, 1], { extrapolateRight: "clamp" }),
+    };
+  });
+  return { staggerLines: rendered };
+};
+
 /** 12. Tracking-in — cinematic title settle: letter-spacing tightens from wide
  * while the block fades in and scales down to rest. Single unbroken text
  * block, so word wrapping behaves exactly like the static case. */
@@ -586,7 +630,19 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   const requestedSize = Math.round((fontSize ?? (isRetro ? 36 : 40)) * fontScale);
   const longestWordLen = Math.max(1, ...text.split(/\s+/).map((w) => w.length));
   const maxSizeForWord = Math.floor(920 / (longestWordLen * 0.68));
-  const effectiveFontSize = Math.max(28, Math.min(requestedSize, maxSizeForWord));
+  // line-stagger renders whole LINES in nowrap slots, so the fit cap must
+  // also clear the longest line (the word cap alone is not enough there).
+  const maxSizeForLine =
+    animationMode === "line-stagger"
+      ? Math.floor(
+          920 /
+            (Math.max(1, ...buildStaggerLines(text).map((l) => l.length)) * 0.55),
+        )
+      : Number.MAX_SAFE_INTEGER;
+  const effectiveFontSize = Math.max(
+    28,
+    Math.min(requestedSize, maxSizeForWord, maxSizeForLine),
+  );
 
   // Em-based tracking: display sizes get the title track, smaller text the
   // body track; uppercase serif caps get a touch of extra air (never the wide
@@ -636,6 +692,8 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
           ...useTrackingIn(text, frame, fps, springMul, baseLetterSpacing),
           mode: "inline" as const,
         };
+      case "line-stagger":
+        return { ...useLineStagger(text, frame, fps, springMul), mode: "lines" as const };
       case "none":
       default:
         return { text, wrapperStyle: {} as React.CSSProperties, mode: "inline" as const };
@@ -646,10 +704,13 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   // render as their own spans or plain inline flow; string-manipulating modes
   // (typewriter / glitch-decode) and non-solid treatments (outline strokes,
   // gradient/boxed plates — their own colors would fight the accent) skip it.
+  // (line-stagger renders whole lines as single spans, so word-level
+  // emphasis has no span to land on — skipped there too.)
   const emphasisEnabled =
     treatment === "solid" &&
     animationMode !== "typewriter" &&
-    animationMode !== "glitch-decode";
+    animationMode !== "glitch-decode" &&
+    animationMode !== "line-stagger";
   const emphasisIndices = useMemo(
     () => (emphasisEnabled ? pickEmphasisIndices(text.split(" ")) : new Set<number>()),
     [text, emphasisEnabled],
@@ -926,6 +987,48 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
               </span>
             );
           }
+        )}
+      </div>
+    );
+  }
+
+  // Line-stagger: whole LINES rise out of their own overflow-hidden slots,
+  // top to bottom. Each line is a single nowrap span of whole words — a break
+  // can never fall inside a word (Pain Point 6 safe by construction).
+  if (animResult.mode === "lines" && "staggerLines" in animResult) {
+    return (
+      <div
+        style={{
+          ...platedStyle,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: align === "left" ? "flex-start" : "center",
+          gap: "2px",
+        }}
+      >
+        {(animResult as any).staggerLines.map(
+          (l: { line: string; riseY: number; opacity: number }, i: number) => (
+            <span
+              key={i}
+              style={{
+                display: "inline-flex",
+                overflow: "hidden",
+                whiteSpace: "nowrap",
+                padding: "2px 0",
+              }}
+            >
+              <span
+                style={{
+                  display: "inline-block",
+                  whiteSpace: "nowrap",
+                  transform: `translateY(${l.riseY}%)`,
+                  opacity: l.opacity,
+                }}
+              >
+                {l.line}
+              </span>
+            </span>
+          ),
         )}
       </div>
     );

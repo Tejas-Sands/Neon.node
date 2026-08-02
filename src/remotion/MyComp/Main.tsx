@@ -50,6 +50,7 @@ import {
 } from "./contrast";
 import { deriveCutPlan, WHOOSH_CUTS } from "./transitions";
 import { deriveEnergy, type SceneEnergy } from "./energy";
+import { framesPerBeat } from "./beat";
 import { deriveMicroDetails, type MicroDetailConfig } from "./microDetails";
 import { derivePolish } from "./polish";
 import { PolishStack, CutCover } from "./PolishLayers";
@@ -157,6 +158,11 @@ const TEXT_ANIM_POOLS: string[][] = [
   ["clip-wipe", "fade-up"],
   ["tracking-in", "blur-in"],
   ["clip-wipe", "rise-mask"],
+  // line-stagger = editorial line-by-line reveal (brief Q14b, 2026-08).
+  // Appending pools remaps which pool existing seeds land on ((seed>>>5)%len)
+  // — sanctioned precedent: the list already grew 6 → 9 → 11 → 13.
+  ["line-stagger", "fade-up"],
+  ["line-stagger", "rise-mask"],
 ];
 
 // 00..FF hex alpha from a 0..1 value (theme colors are 6-digit hex).
@@ -2711,6 +2717,7 @@ const FollowChip: React.FC<{
 };
 
 export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.infer<typeof CompositionProps>) => {
+  const { fps } = useVideoConfig();
   const resolvedVoiceoverUrl = React.useMemo(() => {
     if (!voiceoverUrl) return "";
     if (!voiceoverUrl.startsWith("http://") && !voiceoverUrl.startsWith("https://")) {
@@ -2799,6 +2806,10 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
     return starts;
   }, [scenes]);
 
+  // Music beat grid (Q34:b): accent moments quantize to the track's measured
+  // BPM; scene boundaries stay narration-timed. undefined for "none".
+  const beatFrames = framesPerBeat(activeTheme.musicTrack ?? undefined, fps);
+
   // Per-scene energy schedule — "energy is a schedule, not a level". Uses the
   // POST-TTS durations from props, so beat frames are real reading time.
   const energyPlan = React.useMemo(
@@ -2807,9 +2818,9 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
         (activeTheme.seed ?? 0) >>> 0,
         scenes.length,
         scenes.map((s) => s.durationInFrames),
-        { loopEnding },
+        { loopEnding, beatFrames },
       ),
-    [activeTheme.seed, scenes, loopEnding],
+    [activeTheme.seed, scenes, loopEnding, beatFrames],
   );
 
   // Seed-driven finishing layers (grain, leaks, letterbox, edge frame, ...)
@@ -2821,10 +2832,18 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
 
   // Loop-ending kills EndSettle: its last-30-frame vignette deepening would
   // pop dark->bright across the replay seam. All other polish layers stay.
-  const polishFx = React.useMemo(
-    () => (loopEnding ? { ...polish, endSettle: false } : polish),
-    [polish, loopEnding],
-  );
+  // With a beat grid, the pulse period rounds to the nearest whole number of
+  // beats (Q34:b) so the glow breathes with the music.
+  const polishFx = React.useMemo(() => {
+    let p = loopEnding ? { ...polish, endSettle: false } : polish;
+    if (beatFrames && beatFrames > 1 && p.pulse) {
+      p = {
+        ...p,
+        pulsePeriod: Math.max(1, Math.round(p.pulsePeriod / beatFrames)) * beatFrames,
+      };
+    }
+    return p;
+  }, [polish, loopEnding, beatFrames]);
 
   // Prism family (kaleidoscope / blend layers / giant type) — independent
   // seeded stream like polish; most seeds never draw it.
