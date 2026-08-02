@@ -12,6 +12,10 @@
 //   cut-fringe      → cut boundaries only (±2 frames, inside CutCover)
 //   grain-breath    → ambient, sub-threshold texture breathing
 //   progress-comet  → scene entries (the progress bar's tip leads the bar)
+//   accent-dot      → cross-scene through-line: one accent dot parked by the
+//                     title block, springing to the next anchor at each cut
+//   edge-tease      → the 6 frames before a dressed cut: the incoming edge
+//                     fills with the accent — the next scene arriving early
 //
 // All are O(1) DOM cost, none uses filter:blur, none enters the caption band,
 // and each supports reading rather than competing with it. Implementations
@@ -34,7 +38,9 @@ export type MicroDetail =
   | "emphasis-sweep"
   | "cut-fringe"
   | "grain-breath"
-  | "progress-comet";
+  | "progress-comet"
+  | "accent-dot"
+  | "edge-tease";
 
 export interface MicroDetailConfig {
   /** Exactly two distinct details per video (Q25b), seeded (Q26c). */
@@ -49,6 +55,11 @@ const ALL_DETAILS: readonly MicroDetail[] = [
   "cut-fringe",
   "grain-breath",
   "progress-comet",
+  // 2026-08 additions from the Q24 wishlist (d and j). Growing this list
+  // remaps which pair existing seeds pick — sanctioned precedent (the pool
+  // already changes shape via eligibility); draw count stays FOUR.
+  "accent-dot",
+  "edge-tease",
 ];
 
 /**

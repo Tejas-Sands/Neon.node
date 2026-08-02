@@ -291,6 +291,8 @@ const DynamicScene: React.FC<{
   chartData?: { label: string; value: number }[];
   ratingValue?: number;
   ratingMax?: number;
+  // Source attribution (backend-set, scene 0 only) — "via theverge.com".
+  sourceDomain?: string;
 }> = ({
   imageUrl,
   videoUrl,
@@ -301,7 +303,7 @@ const DynamicScene: React.FC<{
   secondaryText,
   type,
   durationInFrames,
-  theme,
+  theme: themeProp,
   look,
   palette,
   finish,
@@ -324,9 +326,31 @@ const DynamicScene: React.FC<{
   chartData,
   ratingValue,
   ratingMax,
+  sourceDomain,
 }) => {
   const frame = useCurrentFrame();
   const { fps, width: frameW, height: frameH } = useVideoConfig();
+  // Per-scene accent plan (Q31d): under "cycle"/"mono" the WHOLE scene wears
+  // the scene's accent — every internal consumer reads this override, while
+  // the palette (plates / ink / scrims — the whole contrast system) stays
+  // derived from the ORIGINAL pack colors, untouched.
+  const theme = React.useMemo(() => {
+    const plan = look.accentPlan ?? "fixed";
+    if (plan === "fixed") return themeProp;
+    if (plan === "cycle") {
+      return sceneIndex % 2 === 0
+        ? themeProp
+        : {
+            ...themeProp,
+            primaryColor: themeProp.secondaryColor,
+            secondaryColor: themeProp.primaryColor,
+          };
+    }
+    // mono: one rotating accent owns the scene (media desaturates below).
+    const pool = [themeProp.primaryColor, themeProp.secondaryColor, palette.primarySoft];
+    const accent = pool[sceneIndex % pool.length];
+    return { ...themeProp, primaryColor: accent, secondaryColor: accent };
+  }, [themeProp, look.accentPlan, sceneIndex, palette.primarySoft]);
   // Per-video seed folded into every pseudo-random choice so no two videos
   // share the same camera / text-animation sequence (render-safe, deterministic).
   const seed = (theme.seed ?? 0) >>> 0;
@@ -540,7 +564,17 @@ const DynamicScene: React.FC<{
       ),
     [look, palette, prism, theme.overlayType, theme.primaryColor, theme.secondaryColor, finish],
   );
-  const imgFilter = gradeFilter(look, 0, contrastBudget.brightnessLift);
+  const baseImgFilter = gradeFilter(look, 0, contrastBudget.brightnessLift);
+  // Q31d "mono": media desaturates toward monochrome so the one rotating
+  // accent owns the frame. Q33:b: subtle per-scene hue drift (−6°..+6°
+  // linear, MEDIA ONLY — brightness untouched so the contrast budget holds;
+  // the steps hide inside cuts).
+  const monoFilter = look.accentPlan === "mono" ? " saturate(0.25)" : "";
+  const driftFilter =
+    look.gradeDrift && totalScenes > 1
+      ? ` hue-rotate(${(-6 + (12 * sceneIndex) / (totalScenes - 1)).toFixed(1)}deg)`
+      : "";
+  const imgFilter = `${baseImgFilter}${monoFilter}${driftFilter}`;
   const vignettePx = Math.round(90 + look.vignette * 90); // ~90..180px inner shadow
   const washAngle = look.bgAngle + Math.sin(frame * 0.01) * 20;
 
@@ -575,17 +609,16 @@ const DynamicScene: React.FC<{
   // cta), the milder bodyMode elsewhere, 0 when the seed didn't draw it.
   const prismBase = prismSceneStrength(prism, type);
 
-  const BackgroundLayer = (
+  // Media framing (Q23): how the photo/b-roll sits in the frame. Poster never
+  // on scene 0 — the hook needs motion for the 3-second hold (a render-side
+  // gate, the deriveLook draw is already consumed either way).
+  const framing =
+    (look.mediaFraming ?? "full") === "poster" && sceneIndex === 0
+      ? "full"
+      : (look.mediaFraming ?? "full");
+
+  const MediaBlock = (
     <>
-      {/* Brand-tinted base field UNDER the photo: when the image is dim, dark
-          or absent the frame is still a designed gradient, not dead black. */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `radial-gradient(140% 90% at 50% 8%, ${palette.bgStops[0]} 0%, ${palette.ink} 55%, #05060a 100%)`,
-        }}
-      />
       {/* Dynamic Background visual — when this scene carries the prism
           treatment the media block (and ONLY the media block) is rendered
           through PrismMedia; every layer around it (base gradient, washes,
@@ -689,6 +722,80 @@ const DynamicScene: React.FC<{
             return loopWrapped(clips[0], durationInFrames, clipStyle(), "clip-single");
           })()}
         </>
+      )}
+    </>
+  );
+
+  const BackgroundLayer = (
+    <>
+      {/* Brand-tinted base field UNDER the photo: when the image is dim, dark
+          or absent the frame is still a designed gradient, not dead black. */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: `radial-gradient(140% 90% at 50% 8%, ${palette.bgStops[0]} 0%, ${palette.ink} 55%, #05060a 100%)`,
+        }}
+      />
+      {/* Media framing (Q23): full = classic full-bleed (unwrapped, the
+          original DOM); card = media inset in a rounded finish panel over the
+          palette field; split = media top 55% + accent hairline + solid ink
+          field below (captions land on near-solid ground — contrast strictly
+          improves); poster = no media, the palette field carries the frame. */}
+      {framing === "poster" ? null : framing === "card" ? (
+        <div
+          style={{
+            position: "absolute",
+            top: "6%",
+            left: "5%",
+            right: "5%",
+            height: "52%",
+            borderRadius: ft.radiusPanel,
+            overflow: "hidden",
+            border: ft.panelBorder(palette),
+            boxShadow: ft.panelShadow,
+          }}
+        >
+          {MediaBlock}
+        </div>
+      ) : framing === "split" ? (
+        <>
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: "55%",
+              overflow: "hidden",
+            }}
+          >
+            {MediaBlock}
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              top: "55%",
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: palette.ink,
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              top: "55%",
+              left: 0,
+              right: 0,
+              height: 2,
+              transform: "translateY(-1px)",
+              background: clampAccentLuminance(theme.primaryColor),
+            }}
+          />
+        </>
+      ) : (
+        MediaBlock
       )}
 
       {/* --- Treatment: DUOTONE color wash (blends photo into brand colors) ---
@@ -813,6 +920,61 @@ const DynamicScene: React.FC<{
       {sceneIndex === 0 && (
         <HookPunch primaryColor={theme.primaryColor} secondaryColor={theme.secondaryColor} seed={seed} />
       )}
+      {/* Source-attribution chip (Q30:b — scene 1 only). Enters at frame 40,
+          AFTER the hook lands (frame-2 readability untouched), exits well
+          before the first cut. Brand chrome face + ink plate (TEXT_ZONES:
+          alpha-plate) — a news account that cites its source reads as a
+          publication, not a bot. */}
+      {sceneIndex === 0 && sourceDomain && (() => {
+        const chipIn = interpolate(frame, [40, 52], [0, 1], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+          easing: Easing.out(Easing.cubic),
+        });
+        const chipOutStart = Math.min(150, durationInFrames - 20);
+        const chipOut = interpolate(frame, [chipOutStart, chipOutStart + 12], [1, 0], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        });
+        if (chipIn <= 0 || chipOut <= 0) return null;
+        return (
+          <div
+            style={{
+              position: "absolute",
+              top: 170,
+              left: 60,
+              zIndex: 30,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "8px 16px",
+              borderRadius: ft.radiusChip,
+              background: withAlpha(palette.ink, 0.7),
+              border: `1px solid ${withAlpha(palette.edge, 0.5)}`,
+              fontFamily: BRAND.family,
+              fontWeight: BRAND.chromeWeight,
+              fontSize: 18,
+              letterSpacing: "0.08em",
+              color: "rgba(255,255,255,0.85)",
+              whiteSpace: "nowrap",
+              opacity: chipIn * chipOut,
+              transform: `translateY(${(1 - chipIn) * -10}px)`,
+              pointerEvents: "none",
+            }}
+          >
+            <span
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: 3,
+                background: clampAccentLuminance(theme.primaryColor),
+                flexShrink: 0,
+              }}
+            />
+            via {sourceDomain}
+          </div>
+        );
+      })()}
     </>
   );
 
@@ -2650,6 +2812,56 @@ const KaraokeSubtitles: React.FC<{
 // Main composition
 // ============================================================================
 // ---------------------------------------------------------------------------
+// AccentDot — micro-detail "accent-dot" (Q24d): ONE 10px accent dot parked
+// beside the title region (per textLayout), springing to the opposite offset
+// at every scene boundary — a cross-scene through-line that reads as a
+// designer's hand. Global layer (like CutCover) because the travel spans
+// cuts; O(1) DOM, transform-only, never enters the caption band.
+// ---------------------------------------------------------------------------
+const AccentDot: React.FC<{
+  sceneStarts: number[];
+  accent: string;
+  textLayout: string;
+  heroAnchor: number;
+}> = ({ sceneStarts, accent, textLayout, heroAnchor }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  let idx = 0;
+  for (let i = 0; i < sceneStarts.length - 1; i++) {
+    if (frame >= sceneStarts[i]) idx = i;
+  }
+  const local = frame - sceneStarts[idx];
+  const t = spring({
+    fps,
+    frame: local,
+    config: { damping: 13, stiffness: 120, mass: 0.7 },
+    durationInFrames: 26,
+  });
+  const off = (i: number) => (((i % 2) + 2) % 2 === 0 ? -52 : 52);
+  const x = interpolate(t, [0, 1], [off(idx - 1), off(idx)]);
+  const topPct =
+    textLayout === "banner-low" ? 46 : textLayout === "top-ticker" ? 7 : Math.max(10, heroAnchor - 5);
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: `${topPct}%`,
+        left: textLayout === "left-rail" ? "9%" : "50%",
+        transform: `translateX(${x.toFixed(1)}px)`,
+        width: 10,
+        height: 10,
+        borderRadius: 5,
+        background: accent,
+        boxShadow: `0 0 12px ${accent}80`,
+        opacity: 0.9,
+        zIndex: 30,
+        pointerEvents: "none",
+      }}
+    />
+  );
+};
+
+// ---------------------------------------------------------------------------
 // FollowChip — the single follow-ask for loop-ending packs (M3). Those videos
 // have no outro card (the last frame is the replay seam and must stay payoff),
 // so one ≤60-frame pill mid-video carries the one ask instead — the
@@ -2957,6 +3169,7 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
                 chartData={scene.chartData}
                 ratingValue={scene.ratingValue}
                 ratingMax={scene.ratingMax}
+                sourceDomain={scene.sourceDomain}
               />
             </SceneTransition>
           </Series.Sequence>
@@ -3012,7 +3225,18 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
         boundaries={cutBoundaries}
         primaryColor={activeTheme.primaryColor}
         fringe={micro.has("cut-fringe")}
+        tease={micro.has("edge-tease")}
       />
+
+      {/* Micro-detail "accent-dot" (Q24d): the cross-scene through-line. */}
+      {micro.has("accent-dot") && (
+        <AccentDot
+          sceneStarts={sceneStarts}
+          accent={clampAccentLuminance(activeTheme.primaryColor)}
+          textLayout={look.textLayout}
+          heroAnchor={look.heroAnchor}
+        />
+      )}
 
       {/* Watermark chip (from pipeline config) — brand chrome face on an
           ink plate so the handle reads as a designed mark on every look

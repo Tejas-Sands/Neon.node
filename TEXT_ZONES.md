@@ -392,3 +392,5 @@ Substrates: {'shadow-only': 12, 'none': 22, 'alpha-plate': 59, 'scrim-only': 4, 
 | medium | Outro handle pill | `src/remotion/MyComp/Main.tsx` outro renderer | alpha-plate (`withAlpha(palette.ink, 0.7)` pill inside the finish-aware outro card) |
 | medium | Outro kicker "FOLLOW FOR MORE" | `src/remotion/MyComp/Main.tsx` outro renderer | alpha-plate (sits on the outro card `ft.panelBg`) |
 | medium | LowerThird minimal plate (when palette/finish passed) | `src/remotion/MyComp/LowerThird.tsx` minimal variant | alpha-plate (`withAlpha(palette.ink, 0.55)` at `ft.radiusChip`) |
+| medium | Source-attribution chip "via {domain}" (scene 1 only) | `src/remotion/MyComp/Main.tsx` SharedLayers | alpha-plate (`withAlpha(palette.ink, 0.7)` + edge border, BRAND face) |
+| low | vhs-glitch top-band readouts (PLAY/timecode/CH/REC) | `src/remotion/MyComp/HudOverlay.tsx` | alpha-plate (shared `rgba(8,10,14,0.6)` chips — closes 4 CRITICAL rows above) |

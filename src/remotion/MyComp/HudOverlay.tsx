@@ -67,21 +67,11 @@ export const HudOverlay: React.FC<HudOverlayProps> = ({
     />
   ) : null;
 
-  // 1. GRID HUD OVERLAY (enhanced with crosshair + animated corner brackets)
+  // 1. GRID HUD OVERLAY (trimmed 2026-08: grid + one scan line + telemetry)
   if (overlayType === "grid-hud") {
     const scanCycle = frame % 90;
     const scanLineY = interpolate(scanCycle, [0, 90], [0, height]);
     const scanLineOpacity = interpolate(scanCycle, [0, 10, 80, 90], [0, 0.6, 0.6, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-    const scanCycle2 = (frame + 45) % 120;
-    const scanLineY2 = interpolate(scanCycle2, [0, 120], [height, 0]);
-    const scanLineOpacity2 = interpolate(scanCycle2, [0, 10, 110, 120], [0, 0.3, 0.3, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-
-    // Pulsing crosshair at center
-    const crosshairPulse = Math.sin(frame * 0.08) * 0.3 + 0.7;
-    const crosshairSize = 20 + Math.sin(frame * 0.05) * 6;
-
-    // Corner bracket animation
-    const bracketPulse = Math.sin(frame * 0.04) * 4 + 36;
 
     return (
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, pointerEvents: "none", fontFamily: monospaceFont, color: primaryColor, fontSize: "10px", opacity: fadeIn }}>
@@ -104,45 +94,11 @@ export const HudOverlay: React.FC<HudOverlayProps> = ({
         {/* Primary scanning laser line */}
         <div style={{ position: "absolute", top: scanLineY, left: 0, right: 0, height: "2px", backgroundColor: primaryColor, boxShadow: `0 0 10px ${primaryColor}, 0 0 20px ${primaryColor}`, opacity: scanLineOpacity }} />
 
-        {/* Secondary scanning line (reverse direction, dimmer) */}
-        <div style={{ position: "absolute", top: scanLineY2, left: 0, right: 0, height: "1px", backgroundColor: secondaryColor, boxShadow: `0 0 8px ${secondaryColor}`, opacity: scanLineOpacity2 }} />
-
-        {/* Center crosshair */}
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            opacity: crosshairPulse * 0.4,
-          }}
-        >
-          <div style={{ position: "absolute", width: `${crosshairSize}px`, height: "1px", backgroundColor: primaryColor, top: 0, left: `-${crosshairSize / 2}px`, boxShadow: `0 0 6px ${primaryColor}` }} />
-          <div style={{ position: "absolute", width: "1px", height: `${crosshairSize}px`, backgroundColor: primaryColor, left: 0, top: `-${crosshairSize / 2}px`, boxShadow: `0 0 6px ${primaryColor}` }} />
-          <div style={{ position: "absolute", width: "4px", height: "4px", borderRadius: "50%", backgroundColor: primaryColor, top: "-2px", left: "-2px", boxShadow: `0 0 8px ${primaryColor}` }} />
-        </div>
-
-        {/* HUD corner brackets */}
-        {/* Top-left */}
-        <div style={{ position: "absolute", top: "60px", left: "40px" }}>
-          <div style={{ width: bracketPulse, height: "2px", backgroundColor: primaryColor, opacity: 0.5, boxShadow: `0 0 6px ${primaryColor}40` }} />
-          <div style={{ width: "2px", height: bracketPulse, backgroundColor: primaryColor, opacity: 0.5, boxShadow: `0 0 6px ${primaryColor}40` }} />
-        </div>
-        {/* Top-right */}
-        <div style={{ position: "absolute", top: "60px", right: "40px", display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
-          <div style={{ width: bracketPulse, height: "2px", backgroundColor: primaryColor, opacity: 0.5, boxShadow: `0 0 6px ${primaryColor}40` }} />
-          <div style={{ width: "2px", height: bracketPulse, backgroundColor: primaryColor, opacity: 0.5, alignSelf: "flex-end", boxShadow: `0 0 6px ${primaryColor}40` }} />
-        </div>
-        {/* Bottom-left */}
-        <div style={{ position: "absolute", bottom: "60px", left: "40px", display: "flex", flexDirection: "column-reverse" }}>
-          <div style={{ width: bracketPulse, height: "2px", backgroundColor: secondaryColor, opacity: 0.4, boxShadow: `0 0 6px ${secondaryColor}40` }} />
-          <div style={{ width: "2px", height: bracketPulse, backgroundColor: secondaryColor, opacity: 0.4, boxShadow: `0 0 6px ${secondaryColor}40` }} />
-        </div>
-        {/* Bottom-right */}
-        <div style={{ position: "absolute", bottom: "60px", right: "40px", display: "flex", flexDirection: "column-reverse", alignItems: "flex-end" }}>
-          <div style={{ width: bracketPulse, height: "2px", backgroundColor: secondaryColor, opacity: 0.4, boxShadow: `0 0 6px ${secondaryColor}40` }} />
-          <div style={{ width: "2px", height: bracketPulse, backgroundColor: secondaryColor, opacity: 0.4, alignSelf: "flex-end", boxShadow: `0 0 6px ${secondaryColor}40` }} />
-        </div>
+        {/* 2026-08 professional trim: the second reverse scan line, the
+            center crosshair (read as a gun-sight template) and the four
+            corner brackets (the Q29 bracket retirement never reached this
+            overlay's own set) are gone. The faint grid + one scan line +
+            telemetry line keep the HUD identity without the noise. */}
 
         {/* Telemetry data readout */}
         <div style={{ position: "absolute", bottom: "70px", left: "50px", fontSize: "9px", opacity: 0.35, letterSpacing: "2px" }}>
@@ -236,18 +192,21 @@ export const HudOverlay: React.FC<HudOverlayProps> = ({
           }}
         />
 
-        {/* VHS Text Details */}
-        <div style={{ position: "absolute", top: 50, left: 50, fontFamily: monospaceFont, color: "#fff", fontSize: "14px", textShadow: readableGlow(`2px 0 0 ${secondaryColor}, -2px 0 0 ${primaryColor}`, 14) }}>
+        {/* VHS Text Details — the whole top-50px readout strip shares ONE
+            dark chip per cluster: pure white 10-14px glyphs with chromatic
+            (non-darkening) shadows over bright footage were 4 CRITICAL
+            TEXT_ZONES rows. Chips close them all (alpha-plate). */}
+        <div style={{ position: "absolute", top: 50, left: 50, padding: "6px 12px", borderRadius: 8, backgroundColor: "rgba(8,10,14,0.6)", fontFamily: monospaceFont, color: "#fff", fontSize: "14px", textShadow: readableGlow(`2px 0 0 ${secondaryColor}, -2px 0 0 ${primaryColor}`, 14) }}>
           <div>PLAY ▶</div>
           <div style={{ fontSize: "10px", marginTop: "4px", opacity: 0.8 }}>
             {String(Math.floor(frame / (fps * 60))).padStart(2, "0")}:{String(Math.floor((frame / fps) % 60)).padStart(2, "0")}:{String(frame % fps).padStart(2, "0")}
           </div>
         </div>
-        <div style={{ position: "absolute", top: 50, right: 50, fontFamily: monospaceFont, color: "#fff", fontSize: "12px", textShadow: haloShadow(12) }}>
+        <div style={{ position: "absolute", top: 50, right: 50, padding: "6px 12px", borderRadius: 8, backgroundColor: "rgba(8,10,14,0.6)", fontFamily: monospaceFont, color: "#fff", fontSize: "12px", textShadow: haloShadow(12) }}>
           <div>CH 04</div>
         </div>
         {/* REC indicator */}
-        <div style={{ position: "absolute", top: 50, right: 120, display: "flex", alignItems: "center", gap: "6px" }}>
+        <div style={{ position: "absolute", top: 50, right: 128, display: "flex", alignItems: "center", gap: "6px", padding: "6px 12px", borderRadius: 8, backgroundColor: "rgba(8,10,14,0.6)" }}>
           <div style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#ff0000", opacity: frame % 40 < 25 ? 1 : 0.3, boxShadow: "0 0 6px #ff0000" }} />
           <div style={{ fontFamily: monospaceFont, color: "#fff", fontSize: "11px", opacity: 0.7, textShadow: haloShadow(11) }}>REC</div>
         </div>

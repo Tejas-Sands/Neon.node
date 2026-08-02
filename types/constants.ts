@@ -77,6 +77,13 @@ export const SceneSchema = z.object({
    * stays neutral. Backend-only like brollClips — no prompt/ALLOWED_* sync.
    */
   correctIndex: z.number().optional(),
+  /**
+   * Source attribution (backend-set from the trusted topic_meta URL, never
+   * LLM-authored): the story's publisher domain, shown as a small "via X"
+   * chip on scene 1 only. Backend-only like correctIndex — no prompt /
+   * ALLOWED_* sync. Safely ignored when absent.
+   */
+  sourceDomain: z.string().optional(),
   // Countdown scene fields
   countFrom: z.number().optional(),
   countTo: z.number().optional(),

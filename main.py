@@ -590,7 +590,7 @@ OVERLAY (overlayType):
   "grid-hud"       → Sci-fi holographic grid + scanning laser. USE FOR: tech, AI, cyberpunk, crypto, data.
   "particles"      → Gentle floating dust drifting upward.     USE FOR: nature, ambient, calm, wellness, meditation.
   "clean"          → No overlay, just image + text.            USE FOR: corporate, SaaS, professional, educational, marketing.
-  "vhs-glitch"     → Retro CRT scanlines + chromatic aberration. USE FOR: nostalgia, 80s/90s, meme, retro gaming.
+  "vhs-glitch"     → Retro CRT scanlines + chromatic aberration. AVOID unless the content is explicitly retro/nostalgia (80s/90s, retro gaming) — dated on straight news.
   "fantasy-sparks" → Drifting celestial spark lights.           USE FOR: fantasy, magic, space, spiritual, luxury.
   "aurora"         → Flowing aurora light waves + glow.          USE FOR: premium, dreamy, futuristic, product, ambient.
 
@@ -1075,13 +1075,13 @@ def _derive_seed(session_id: str) -> int:
 # problem — the automated channel previously hard-coded a single cyberpunk look.
 STYLE_PACKS = [
     {"name": "cyber-neon",     "primaryColor": "#00f0ff", "secondaryColor": "#ff007f", "overlayType": "grid-hud",       "fontFamilyName": "JetBrains Mono",  "musicTrack": "ambient-tech", "gradientOverlay": "radial-center"},
-    {"name": "synth-sunset",   "primaryColor": "#ff2d95", "secondaryColor": "#ffb300", "overlayType": "vhs-glitch",     "fontFamilyName": "Sora",            "musicTrack": "cosmic-synth", "gradientOverlay": "diagonal"},
+    {"name": "synth-sunset",   "primaryColor": "#ff2d95", "secondaryColor": "#ffb300", "overlayType": "aurora",         "fontFamilyName": "Sora",            "musicTrack": "cosmic-synth", "gradientOverlay": "diagonal"},
     {"name": "matrix-green",   "primaryColor": "#00ff9c", "secondaryColor": "#0affef", "overlayType": "grid-hud",       "fontFamilyName": "JetBrains Mono",  "musicTrack": "ambient-tech", "gradientOverlay": "top-to-bottom"},
     {"name": "royal-violet",   "primaryColor": "#8b5cf6", "secondaryColor": "#ec4899", "overlayType": "aurora",         "fontFamilyName": "Sora",            "musicTrack": "cosmic-synth", "gradientOverlay": "radial-center"},
     {"name": "ice-electric",   "primaryColor": "#38bdf8", "secondaryColor": "#818cf8", "overlayType": "particles",      "fontFamilyName": "Space Grotesk",   "musicTrack": "ambient-tech", "gradientOverlay": "top-to-bottom"},
     {"name": "ember-gold",     "primaryColor": "#ff6b35", "secondaryColor": "#ffd700", "overlayType": "aurora",         "fontFamilyName": "Archivo",         "musicTrack": "cosmic-synth", "gradientOverlay": "diagonal"},
     {"name": "mint-aqua",      "primaryColor": "#00d4aa", "secondaryColor": "#06b6d4", "overlayType": "particles",      "fontFamilyName": "Inter",           "musicTrack": "lofi-chill",   "gradientOverlay": "none"},
-    {"name": "crimson-mono",   "primaryColor": "#ff3b3b", "secondaryColor": "#ffffff", "overlayType": "vhs-glitch",     "fontFamilyName": "JetBrains Mono",  "musicTrack": "ambient-tech", "gradientOverlay": "top-to-bottom"},
+    {"name": "crimson-mono",   "primaryColor": "#ff3b3b", "secondaryColor": "#ffffff", "overlayType": "clean",          "fontFamilyName": "JetBrains Mono",  "musicTrack": "ambient-tech", "gradientOverlay": "top-to-bottom"},
     {"name": "cosmic-fantasy", "primaryColor": "#a78bfa", "secondaryColor": "#22d3ee", "overlayType": "fantasy-sparks", "fontFamilyName": "Fraunces",        "musicTrack": "cosmic-synth", "gradientOverlay": "radial-center"},
     {"name": "clean-cobalt",   "primaryColor": "#3b82f6", "secondaryColor": "#00d4aa", "overlayType": "clean",          "fontFamilyName": "Space Grotesk",   "musicTrack": "ambient-tech", "gradientOverlay": "diagonal"},
     {"name": "toxic-lime",     "primaryColor": "#a3e635", "secondaryColor": "#22d3ee", "overlayType": "grid-hud",       "fontFamilyName": "Archivo",         "musicTrack": "ambient-tech", "gradientOverlay": "none"},
@@ -1104,7 +1104,7 @@ STYLE_PACKS = [
     {"name": "lavender-haze",    "primaryColor": "#cdb4db", "secondaryColor": "#a2d2ff", "overlayType": "aurora",         "fontFamilyName": "Inter",            "musicTrack": "lofi-chill",   "gradientOverlay": "radial-center"},
     {"name": "citrus-fresh",     "primaryColor": "#f4d35e", "secondaryColor": "#ee964b", "overlayType": "particles",      "fontFamilyName": "Bricolage Grotesque", "musicTrack": "lofi-chill", "gradientOverlay": "none"},
     {"name": "slate-editorial",  "primaryColor": "#e2e8f0", "secondaryColor": "#f59e0b", "overlayType": "clean",          "fontFamilyName": "Space Grotesk",    "musicTrack": "lofi-chill",   "gradientOverlay": "top-to-bottom"},
-    {"name": "rosewood-vintage", "primaryColor": "#b5838d", "secondaryColor": "#ffcdb2", "overlayType": "vhs-glitch",     "fontFamilyName": "Fraunces",         "musicTrack": "lofi-chill",   "gradientOverlay": "top-to-bottom"},
+    {"name": "rosewood-vintage", "primaryColor": "#b5838d", "secondaryColor": "#ffcdb2", "overlayType": "clean",          "fontFamilyName": "Fraunces",         "musicTrack": "lofi-chill",   "gradientOverlay": "top-to-bottom"},
 ]
 
 # Proven scroll-stopping opening patterns for short-form social video. One is
@@ -4294,6 +4294,24 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
         for field in ["leftLabel", "rightLabel", "listItems", "countFrom", "countTo", "countSuffix", "ctaText", "chartData", "ratingValue", "ratingMax", "correctIndex"]:
             if scene.get(field) is not None:
                 scene_data[field] = scene[field]
+
+        # Source-attribution chip (A8, brief Q30:b — scene 1 only): backend-
+        # set from the TRUSTED topic_meta URL, never LLM-authored, so it is
+        # deliberately NOT in the whitelist loop above and needs no prompt /
+        # ALLOWED_* sync (same 2-sync contract as correctIndex). A news
+        # account that shows its source reads as a publication, not a bot.
+        if idx == 0 and getattr(req, "topic_meta", None):
+            src_url = str((req.topic_meta or {}).get("url") or "")
+            if src_url:
+                try:
+                    from urllib.parse import urlparse
+                    dom = urlparse(src_url).netloc.lower()
+                    if dom.startswith("www."):
+                        dom = dom[4:]
+                    if dom:
+                        scene_data["sourceDomain"] = dom
+                except Exception:
+                    pass
 
         # === STOCK VIDEO B-ROLL: scenes get real motion clips ===
         # Movement stops the scroll far better than a still photo + camera pan

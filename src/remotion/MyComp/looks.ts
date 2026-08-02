@@ -54,6 +54,26 @@ export type MotionFeel = "calm" | "snappy" | "bouncy" | "cinematic";
 export type TextLayout = "center-stack" | "left-rail" | "banner-low" | "top-ticker";
 /** Title styling treatment: solid (classic), outline stroke, gradient fill, or boxed plate. */
 export type TitleTreatment = "solid" | "outline" | "gradient-fill" | "boxed";
+/**
+ * How the scene MEDIA sits in the frame (brief Q23, 2026-08):
+ *  - full:   classic full-bleed photo/video (the original — most common)
+ *  - card:   media inset in a rounded panel over the palette base field
+ *            (Apple-keynote look)
+ *  - split:  media clipped to the top ~55% with a hard edge; the bottom is a
+ *            solid ink field, so captions land on near-solid ground (Vox
+ *            poster look)
+ *  - poster: no media at all — pure palette field, type carries the scene
+ *            (never on scene 0: the hook needs motion for the 3s hold)
+ */
+export type MediaFraming = "full" | "card" | "split" | "poster";
+/**
+ * Accent behavior across scenes (brief Q31d / Q33b):
+ *  - fixed: the classic two-color system, same accent every scene
+ *  - cycle: title/emphasis accent alternates primary/secondary per scene
+ *  - mono:  media desaturated toward monochrome; one accent rotates
+ *           primary/secondary/primarySoft per scene (Q31d, the owner's pick)
+ */
+export type AccentPlan = "fixed" | "cycle" | "mono";
 
 export interface LookConfig {
   seed: number;
@@ -78,6 +98,12 @@ export interface LookConfig {
   fontScale: number;
   /** How scene TITLES are dressed: solid / outline / gradient-fill / boxed. */
   titleTreatment: TitleTreatment;
+  /** How scene media sits in the frame (Q23): full / card / split / poster. */
+  mediaFraming: MediaFraming;
+  /** Accent behavior across scenes (Q31d/Q33b): fixed / cycle / mono. */
+  accentPlan: AccentPlan;
+  /** Subtle per-scene hue drift on the media only (Q33:b), −6°..+6° linear. */
+  gradeDrift: boolean;
   /** Angle used by gradient-wash / grade tint layers. */
   bgAngle: number;
   /** Spring stiffness multiplier driven by motion personality. */
@@ -187,6 +213,23 @@ export function deriveLook(seed: number): LookConfig {
     ] as const),
     fontScale: pick(rng, [0.92, 1.0, 1.1, 1.22]),
     titleTreatment: pick(rng, ["solid", "outline", "gradient-fill", "boxed"] as const),
+    // --- 2026-08 appended draws (Q23 / Q31d / Q33b). Order is FOREVER:
+    // mediaFraming → accentPlan → gradeDrift, strictly after titleTreatment.
+    // The mediaFraming draw is ALWAYS consumed; backgrounds that already
+    // restructure the frame (cinema-bars / gradient-wash / spotlight) then
+    // override the result to "full" — a post-draw gate, never a skipped draw.
+    mediaFraming: (() => {
+      const f = pick(rng, [
+        "full", "full", "full", "card", "card", "split", "split", "poster",
+      ] as const);
+      return background === "cinema-bars" ||
+        background === "gradient-wash" ||
+        background === "spotlight"
+        ? "full"
+        : f;
+    })(),
+    accentPlan: pick(rng, ["fixed", "fixed", "fixed", "cycle", "cycle", "mono"] as const),
+    gradeDrift: pick(rng, [false, false, true]),
     springMul: m.springMul,
     cameraPool: m.cameras,
     mutedHud: t.mutedHud,

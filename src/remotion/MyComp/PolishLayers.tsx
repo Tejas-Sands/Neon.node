@@ -312,11 +312,57 @@ export const CutCover: React.FC<{
    *  — never a constant treatment. Stays inside CutCover's null-on-most-frames
    *  budget; no content copies, no filters. */
   fringe?: boolean;
-}> = ({ boundaries, primaryColor, fringe }) => {
+  /** Micro-detail "edge-tease" (Q24j): in the 6 frames before a DRESSED cut,
+   *  a 24px band on the incoming edge fills with the accent — the next scene's
+   *  color arriving early. Boundary-local like everything else here. */
+  tease?: boolean;
+}> = ({ boundaries, primaryColor, fringe, tease }) => {
   const frame = useCurrentFrame();
   const { width } = useVideoConfig();
+
+  const teaseHit = tease
+    ? boundaries.find(
+        (b) =>
+          frame >= b.frame - 6 &&
+          frame < b.frame &&
+          b.spec.style !== "none" &&
+          b.spec.style !== "punch-in",
+      )
+    : undefined;
+  const teaseLayer = teaseHit
+    ? (() => {
+        const s = teaseHit.spec;
+        const k = 1 - (teaseHit.frame - frame) / 6;
+        const pos: React.CSSProperties =
+          s.axis === "x"
+            ? s.dir > 0
+              ? { top: 0, bottom: 0, right: 0, width: 24 }
+              : { top: 0, bottom: 0, left: 0, width: 24 }
+            : s.dir > 0
+              ? { left: 0, right: 0, bottom: 0, height: 24 }
+              : { left: 0, right: 0, top: 0, height: 24 };
+        const toEdge =
+          s.axis === "x" ? (s.dir > 0 ? "left" : "right") : s.dir > 0 ? "top" : "bottom";
+        return (
+          <div
+            style={{
+              position: "absolute",
+              ...pos,
+              background: `linear-gradient(to ${toEdge}, ${primaryColor}40, transparent)`,
+              opacity: k,
+              pointerEvents: "none",
+            }}
+          />
+        );
+      })()
+    : null;
+
   const hit = boundaries.find((b) => Math.abs(frame - b.frame) <= 5);
-  if (!hit) return null;
+  if (!hit) {
+    return teaseLayer ? (
+      <AbsoluteFill style={{ zIndex: 55, pointerEvents: "none" }}>{teaseLayer}</AbsoluteFill>
+    ) : null;
+  }
   const { spec } = hit;
   const d = frame - hit.frame;
   const progress = 1 - Math.abs(d) / 5; // triangular, peaks exactly at the cut
@@ -359,6 +405,7 @@ export const CutCover: React.FC<{
     );
     return (
       <AbsoluteFill style={{ zIndex: 55, pointerEvents: "none" }}>
+        {teaseLayer}
         {fringeLayer}
         {streak("30%", 3, 0, "s1")}
         {streak("50%", 2, 1, "s2")}
@@ -371,6 +418,7 @@ export const CutCover: React.FC<{
     const side = spec.flavor < 0.5 ? "20% 15%" : "80% 80%";
     return (
       <AbsoluteFill style={{ zIndex: 55, pointerEvents: "none" }}>
+        {teaseLayer}
         {fringeLayer}
         <div
           style={{
@@ -393,11 +441,12 @@ export const CutCover: React.FC<{
   ) {
     // 2-frame white veil right at the cut — sells the impact.
     const veil = Math.max(0, 1 - Math.abs(d) / 2);
-    if (veil <= 0) return fringeLayer ? (
-      <AbsoluteFill style={{ zIndex: 55, pointerEvents: "none" }}>{fringeLayer}</AbsoluteFill>
+    if (veil <= 0) return fringeLayer || teaseLayer ? (
+      <AbsoluteFill style={{ zIndex: 55, pointerEvents: "none" }}>{teaseLayer}{fringeLayer}</AbsoluteFill>
     ) : null;
     return (
       <AbsoluteFill style={{ zIndex: 55, pointerEvents: "none" }}>
+        {teaseLayer}
         {fringeLayer}
         <div
           style={{
@@ -411,7 +460,7 @@ export const CutCover: React.FC<{
     );
   }
 
-  return fringeLayer ? (
-    <AbsoluteFill style={{ zIndex: 55, pointerEvents: "none" }}>{fringeLayer}</AbsoluteFill>
+  return fringeLayer || teaseLayer ? (
+    <AbsoluteFill style={{ zIndex: 55, pointerEvents: "none" }}>{teaseLayer}{fringeLayer}</AbsoluteFill>
   ) : null;
 };
