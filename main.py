@@ -8590,6 +8590,16 @@ FEEDBACK_HALF_LIFE_DAYS = float(os.environ.get("FEEDBACK_HALF_LIFE_DAYS", "14"))
 # intent to revisit / redistribute, so they weigh heaviest — the single knob
 # most worth tuning once the newly-live IG insights accumulate.
 FEEDBACK_ENG_WEIGHTS = {"comments": 2, "shares": 3, "saved": 3}
+# Signal-quality floor for the whole loop. Entry COUNT is not signal QUALITY:
+# 32 posts flat in a 101-159 view band with zero shares/saves clear
+# FEEDBACK_MIN_ENTRIES yet carry nothing but delivery noise, and the loop was
+# measurably re-weighting hooks/styles/voices/keywords on that noise. The loop
+# may bias only once the scored population carries real signal: either enough
+# entries scored through a quality branch (wtr/spr/er — dense signal that
+# exists even at 0 likes once watch-time baselines accumulate), or enough raw
+# weighted engagement volume. Below both floors -> neutral (stats=None).
+FEEDBACK_MIN_SIGNAL = int(os.environ.get("FEEDBACK_MIN_SIGNAL", "30"))
+FEEDBACK_MIN_QUALITY = int(os.environ.get("FEEDBACK_MIN_QUALITY", "5"))
 
 
 def _entry_perf_snapshot(entry: dict, platform: str) -> Optional[dict]:
@@ -8655,6 +8665,7 @@ def compute_feedback_stats(ledger: dict) -> dict:
             eng = likes + FEEDBACK_ENG_WEIGHTS["comments"] * comments
         c["v"] = math.log1p(views)
         c["er"] = eng / max(views, 1)
+        c["eng"] = float(eng)
         return c
 
     comp_by_group: Dict[tuple, list] = {}
@@ -8694,10 +8705,17 @@ def compute_feedback_stats(ledger: dict) -> dict:
              "voices": {}, "format_packs": {}, "hours4": {}}
     agg: Dict[str, dict] = {k: {} for k in
                             ("keywords", "styles", "hooks", "voices", "format_packs", "hours4")}
+    # Signal census over the VOTING population (mirrors n_scored): raw
+    # weighted engagement volume, and how many entries scored through a
+    # quality branch (wtr/spr or legacy-er) rather than views-only. The
+    # get_feedback_stats signal gate reads this — see FEEDBACK_MIN_SIGNAL.
+    signal_eng = 0.0
+    signal_quality_n = 0
 
     for e, pcs in per_entry:
         ch = e.get("channel", "tech")
         perfs = []
+        entry_quality = False
         for platform, c in pcs.items():
             med = baselines.get((platform, ch)) or {}
             v_med = med.get("v", 0.0)
@@ -8717,10 +8735,12 @@ def compute_feedback_stats(ledger: dict) -> dict:
                 terms = quality + ([(0.20, "er")] if med.get("er", 0.0) > 0 else [])
                 total_w = sum(w for w, _ in terms)
                 perf = sum(w * (c[t] / med[t]) for w, t in terms) / total_w
+                entry_quality = True
             elif med.get("er", 0.0) > 0:
                 # Legacy formula, guarded — exact pre-watch-time behavior for
                 # entries/groups where engagement actually has a baseline.
                 perf = 0.6 * (c["v"] / v_med) + 0.4 * (c["er"] / med["er"])
+                entry_quality = True
             else:
                 # Zero-engagement ledger: views are the only real signal.
                 perf = c["v"] / v_med
@@ -8729,6 +8749,9 @@ def compute_feedback_stats(ledger: dict) -> dict:
             continue
         entry_perf = sum(perfs) / len(perfs)
         stats["n_scored"] += 1
+        signal_eng += sum(c.get("eng", 0.0) for c in pcs.values())
+        if entry_quality:
+            signal_quality_n += 1
         age_days = max(0.0, (now - (e.get("ts") or now)) / 86400.0)
         w = 0.5 ** (age_days / FEEDBACK_HALF_LIFE_DAYS)
 
@@ -8766,16 +8789,33 @@ def compute_feedback_stats(ledger: dict) -> dict:
         for key, (swp, sw, n) in items.items():
             if sw > 0:
                 stats[bucket][key] = {"m": round(swp / sw, 3), "n": n}
+    stats["signal"] = {"eng_total": round(signal_eng, 1),
+                       "quality_n": signal_quality_n}
     return stats
 
 
-_FEEDBACK_CACHE = {"mtime": None, "stats": None}
+def _feedback_signal_ok(stats: Optional[dict]) -> bool:
+    """True when the scored population carries enough real signal to bias on.
+
+    Pure predicate over compute_feedback_stats output so it's testable in
+    isolation. A missing/malformed signal block reads as no-signal (neutral)
+    — the safe direction."""
+    sig = (stats or {}).get("signal") or {}
+    try:
+        return (int(sig.get("quality_n") or 0) >= FEEDBACK_MIN_QUALITY
+                or float(sig.get("eng_total") or 0.0) >= FEEDBACK_MIN_SIGNAL)
+    except (TypeError, ValueError):
+        return False
+
+
+_FEEDBACK_CACHE = {"mtime": None, "stats": None, "gate_logged_mtime": None}
 
 
 def get_feedback_stats() -> Optional[dict]:
     """Cached feedback stats, or None — and None means EXACT legacy behavior
     at every application point (cold start, disabled flag, missing/edge-case
-    ledger, or fewer than FEEDBACK_MIN_ENTRIES scored posts)."""
+    ledger, fewer than FEEDBACK_MIN_ENTRIES scored posts, or a scored
+    population below the signal-quality floor)."""
     if not (ENABLE_POST_LEDGER and ENABLE_FEEDBACK_LOOP):
         return None
     try:
@@ -8793,6 +8833,18 @@ def get_feedback_stats() -> Optional[dict]:
         _FEEDBACK_CACHE["mtime"] = mtime
     stats = _FEEDBACK_CACHE["stats"]
     if not stats or stats.get("n_scored", 0) < FEEDBACK_MIN_ENTRIES:
+        return None
+    if not _feedback_signal_ok(stats):
+        # get_feedback_stats is called per-candidate from score_virality —
+        # log the gate verdict once per ledger revision, not per call.
+        if _FEEDBACK_CACHE.get("gate_logged_mtime") != mtime:
+            _FEEDBACK_CACHE["gate_logged_mtime"] = mtime
+            sig = stats.get("signal") or {}
+            print("[Feedback] Signal gate: measured engagement below floor "
+                  f"(eng_total={sig.get('eng_total')}, "
+                  f"quality_n={sig.get('quality_n')}; need "
+                  f"eng>={FEEDBACK_MIN_SIGNAL} or quality>={FEEDBACK_MIN_QUALITY})"
+                  " — running neutral.")
         return None
     return stats
 
@@ -9986,6 +10038,7 @@ def analytics_summary():
         "n_scored": stats.get("n_scored", 0),
         "feedback_active": get_feedback_stats() is not None,
         "min_entries_required": FEEDBACK_MIN_ENTRIES,
+        "signal_ok": _feedback_signal_ok(stats),
         "stats": stats,
     }
 

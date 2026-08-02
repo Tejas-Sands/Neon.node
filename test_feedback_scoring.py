@@ -16,6 +16,11 @@ Locks the rescored perf model in compute_feedback_stats:
      the render-time posted_hour_utc stamp.
   5. The guardrail constants (epsilon floor, clamps, min-entries/bucket,
      cold-start None) are asserted UNCHANGED — they must never be weakened.
+  6. The signal-quality gate: a ledger that clears FEEDBACK_MIN_ENTRIES but
+     carries only delivery noise (flat views, no engagement, no watch-time)
+     must NOT activate the bias — _feedback_signal_ok is False until either
+     enough entries score through a quality branch or raw engagement volume
+     clears the floor. Strengthening only: more ways to return None.
 
 Usage:
   python test_feedback_scoring.py       # run all, exit 0/1
@@ -180,6 +185,59 @@ led += [entry(style="B", views=100, likes=1) for _ in range(3)]
 s = stats_for(led)
 check("backfilled entries shape medians but never vote",
       "A" not in s["styles"] and "B" in s["styles"], f"styles={list(s['styles'])}")
+
+# --- 9. Signal-quality gate ------------------------------------------------------
+print("[signal gate]")
+check("FEEDBACK_MIN_SIGNAL = 30", main.FEEDBACK_MIN_SIGNAL == 30)
+check("FEEDBACK_MIN_QUALITY = 5", main.FEEDBACK_MIN_QUALITY == 5)
+
+# The live failure shape: 32 posts, flat 101-159 views, zero engagement.
+# Clears FEEDBACK_MIN_ENTRIES (8) but every entry scores views-only ->
+# quality_n=0, eng_total=0 -> gate must hold the loop neutral.
+led = [entry(style="A", views=101 + (i % 58)) for i in range(32)]
+s = stats_for(led)
+check("noise ledger reports zero signal",
+      s["signal"] == {"eng_total": 0.0, "quality_n": 0}, f"signal={s['signal']}")
+check("noise ledger fails the gate", main._feedback_signal_ok(s) is False)
+
+# Watch-time entries score through the quality branch — 5 of them clear
+# FEEDBACK_MIN_QUALITY even with zero likes (wtr is dense signal).
+led = [entry(style="A", views=100, awt_ms=8000 + 1000 * i, video_seconds=20.0,
+             ledger_rev=2) for i in range(6)]
+s = stats_for(led)
+check("wtr entries count as quality signal",
+      s["signal"]["quality_n"] >= main.FEEDBACK_MIN_QUALITY,
+      f"signal={s['signal']}")
+check("wtr ledger passes the gate", main._feedback_signal_ok(s) is True)
+
+# Raw engagement volume alone can clear the gate: weighted eng
+# (likes + 2c + 3sh + 3sv) summed over the voting population >= 30.
+led = [entry(style="A", views=120, likes=2, shares=1, saved=1) for _ in range(4)]
+s = stats_for(led)
+check("engagement volume clears the floor",
+      s["signal"]["eng_total"] >= main.FEEDBACK_MIN_SIGNAL, f"signal={s['signal']}")
+check("engagement-rich ledger passes the gate", main._feedback_signal_ok(s) is True)
+
+# Backfilled entries never vote — their engagement must not count toward
+# the signal census either (census mirrors the voting population).
+led = [entry(style="A", views=100, likes=50) for _ in range(3)]
+for e in led:
+    e["backfilled"] = True
+led += [entry(style="B", views=100) for _ in range(3)]
+s = stats_for(led)
+check("backfilled engagement excluded from signal census",
+      s["signal"]["eng_total"] == 0.0, f"signal={s['signal']}")
+
+# Malformed/missing signal block reads as no-signal (the safe direction).
+check("missing signal block fails closed", main._feedback_signal_ok({}) is False)
+check("None stats fail closed", main._feedback_signal_ok(None) is False)
+check("garbage signal fails closed",
+      main._feedback_signal_ok({"signal": {"eng_total": "x", "quality_n": None}}) is False)
+
+# The gate is wired into get_feedback_stats (strengthening the cold-start
+# contract, never bypassing it).
+src_get = inspect.getsource(main.get_feedback_stats)
+check("gate wired into get_feedback_stats", "_feedback_signal_ok" in src_get)
 
 print()
 if FAILURES:
