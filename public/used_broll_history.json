@@ -357,6 +357,48 @@
    "session": "gh-c7f8e5",
    "query": "network traffic dashboard screen",
    "scene": 4
+  },
+  {
+   "id": "pexels-36956436",
+   "ts": 1785676622,
+   "session": "gh-db890e",
+   "query": "data stream digital lines motion",
+   "scene": 0
+  },
+  {
+   "id": "pexels-30850690",
+   "ts": 1785676622,
+   "session": "gh-db890e",
+   "query": "film camera lens focus motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-34913155",
+   "ts": 1785676622,
+   "session": "gh-db890e",
+   "query": "neural network nodes connecting",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7600545",
+   "ts": 1785676622,
+   "session": "gh-db890e",
+   "query": "timeline editing software scrolling",
+   "scene": 3
+  },
+  {
+   "id": "pexels-15439741",
+   "ts": 1785676622,
+   "session": "gh-db890e",
+   "query": "server racks blinking lights",
+   "scene": 4
+  },
+  {
+   "id": "pexels-6883831",
+   "ts": 1785676622,
+   "session": "gh-db890e",
+   "query": "film set lighting equipment motion",
+   "scene": 5
   }
  ]
 }

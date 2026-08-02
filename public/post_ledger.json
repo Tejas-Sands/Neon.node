@@ -1869,7 +1869,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 2,
+      "reach": 2,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2143,
+      "fetched_at": 1785676686
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -1986,6 +1996,45 @@
     "instagram": {
      "id": "18124246930743147",
      "posted_at": 1785656895
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785676622,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "Seedance 2.5",
+    "subject": "Seedance 2.5",
+    "url": "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 7.33,
+    "angle": "Seedance 2.5 is shifting AI video from random clips to professional, long-form storytelling through enhanced multimodal referencing and editing control.",
+    "insight": "The shift from 'generating clips' to 'completing works' means AI video is moving from a novelty toy to a professional editing tool for filmmakers.",
+    "judge": "plan"
+   },
+   "style_pack": "desert-dune",
+   "format_pack": "legacy-news",
+   "seed": 375115777,
+   "voice": "en-US-AvaMultilingualNeural",
+   "hook_type": "CHALLENGE-DARE",
+   "scene_count": 6,
+   "video_seconds": 39.5,
+   "ledger_rev": 2,
+   "session": "gh-db890e",
+   "platforms": {
+    "instagram": {
+     "id": "18190392922380871",
+     "posted_at": 1785676683
     }
    },
    "metrics": {
