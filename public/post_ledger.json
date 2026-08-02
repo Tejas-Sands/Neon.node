@@ -1134,7 +1134,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 1491,
+      "fetched_at": 1785656898
      },
      "snap72": {
       "views": 117,
@@ -1186,7 +1187,8 @@
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 4006,
+      "fetched_at": 1785656898
      },
      "snap72": {
       "views": 122,
@@ -1240,7 +1242,8 @@
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "fetched_at": 1785556105
+      "ig_reels_avg_watch_time": 1816,
+      "fetched_at": 1785656898
      },
      "snap72": {
       "views": 126,
@@ -1292,7 +1295,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 1882,
+      "fetched_at": 1785656898
      },
      "snap72": {
       "views": 122,
@@ -1941,6 +1945,47 @@
     "instagram": {
      "id": "18117777016898537",
      "posted_at": 1785645726
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785656833,
+   "posted_hour_utc": 7,
+   "channel": "news",
+   "topic": {
+    "title": "Postmortem for Kernel Soundness Bug #14576",
+    "subject": "Lean Kernel Bug #14576",
+    "url": "https://leodemoura.github.io/blog/2026-8-1-postmortem-for-kernel-soundness-bug-14576/",
+    "source": "hn",
+    "keywords": [
+     "postmortem"
+    ],
+    "viral_score": 8.18,
+    "angle": "An AI-generated 'disproof' of the Collatz conjecture exposed a critical soundness bug in the Lean kernel, proving that even formal verification tools are vulnerable to implementation flaws.",
+    "insight": "Formal verification is only as strong as its implementation; relying on independent checkers is essential, but they must be kept updated to avoid compounding bugs.",
+    "judge": "plan"
+   },
+   "style_pack": "ocean-breeze",
+   "format_pack": "legacy-news",
+   "seed": 533113093,
+   "voice": "en-US-AvaMultilingualNeural",
+   "hook_type": "BREAKING-NEWS",
+   "scene_count": 5,
+   "video_seconds": 45.8,
+   "ledger_rev": 2,
+   "session": "gh-c7f8e5",
+   "platforms": {
+    "instagram": {
+     "id": "18124246930743147",
+     "posted_at": 1785656895
     }
    },
    "metrics": {

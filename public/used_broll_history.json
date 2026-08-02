@@ -301,6 +301,62 @@
    "session": "gh-013442",
    "query": "developer typing code laptop",
    "scene": 4
+  },
+  {
+   "id": "pexels-7989854",
+   "ts": 1785656833,
+   "session": "gh-c7f8e5",
+   "query": "terminal hacking code green",
+   "scene": 0
+  },
+  {
+   "id": "pexels-19532053",
+   "ts": 1785656833,
+   "session": "gh-c7f8e5",
+   "query": "code editor screen scrolling",
+   "scene": 1
+  },
+  {
+   "id": "pexels-28709421",
+   "ts": 1785656833,
+   "session": "gh-c7f8e5",
+   "query": "code editor screen scrolling",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5742408",
+   "ts": 1785656833,
+   "session": "gh-c7f8e5",
+   "query": "developer typing code laptop",
+   "scene": 2
+  },
+  {
+   "id": "pexels-37615808",
+   "ts": 1785656833,
+   "session": "gh-c7f8e5",
+   "query": "data center servers gpu",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35417379",
+   "ts": 1785656833,
+   "session": "gh-c7f8e5",
+   "query": "data center servers gpu",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35095187",
+   "ts": 1785656833,
+   "session": "gh-c7f8e5",
+   "query": "network traffic dashboard screen",
+   "scene": 4
+  },
+  {
+   "id": "pexels-36369991",
+   "ts": 1785656833,
+   "session": "gh-c7f8e5",
+   "query": "network traffic dashboard screen",
+   "scene": 4
   }
  ]
 }
