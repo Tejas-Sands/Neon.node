@@ -2,6 +2,14 @@ import React from "react";
 import { haloShadow, readableGlow } from "./contrast";
 import { useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
 import { EASE, SPRINGS } from "./motion";
+import { BRAND } from "./brand";
+import {
+  FINISH_TOKENS,
+  clampAccentLuminance,
+  withAlpha,
+  type Finish,
+  type Palette,
+} from "./looks";
 
 type LowerThirdVariant = "accent-bar" | "minimal" | "news-ticker";
 
@@ -23,6 +31,15 @@ interface LowerThirdProps {
   titleWeight?: number;
   /** Visual variant */
   variant?: LowerThirdVariant;
+  /**
+   * Look-system integration (both or neither). Present: panel/plate/borders
+   * come from FINISH_TOKENS + the video palette so lower thirds match every
+   * other panel in the video, and the accent-colored subtitle passes through
+   * clampAccentLuminance. Absent: the legacy hardcoded dressing, unchanged —
+   * so old call sites render byte-identically.
+   */
+  palette?: Palette;
+  finish?: Finish;
 }
 
 /**
@@ -37,12 +54,18 @@ export const LowerThird: React.FC<LowerThirdProps> = ({
   accentColor,
   secondaryColor = "#ffffff",
   durationInFrames,
-  fontFamily = "Inter, sans-serif",
+  fontFamily = BRAND.family,
   titleWeight = 700,
   variant = "accent-bar",
+  palette,
+  finish,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+
+  // Finish-aware dressing is active only when BOTH look inputs are supplied.
+  const ft = finish && palette ? FINISH_TOKENS[finish] : undefined;
+  const themedAccent = ft ? clampAccentLuminance(accentColor) : accentColor;
 
   // ── Entrance timing ────────────────────────────────────────────────────
   const enterDelay = 10; // start after impact frame
@@ -108,6 +131,16 @@ export const LowerThird: React.FC<LowerThirdProps> = ({
           zIndex: 30,
           opacity: totalOpacity,
           transform: `translateX(${totalX}px)`,
+          // Look-aware: "minimal" was scrim-only (zero substrate on half the
+          // finish catalogue — TEXT_ZONES CRITICAL); it gains a quiet ink
+          // plate when the look inputs are present.
+          ...(ft && palette
+            ? {
+                padding: "12px 20px",
+                background: withAlpha(palette.ink, 0.55),
+                borderRadius: ft.radiusChip,
+              }
+            : undefined),
         }}
       >
         <div
@@ -173,7 +206,7 @@ export const LowerThird: React.FC<LowerThirdProps> = ({
             alignItems: "center",
             gap: "16px",
             padding: "14px 28px",
-            background: "rgba(0,0,0,0.75)",
+            background: ft && palette ? withAlpha(palette.ink, 0.78) : "rgba(0,0,0,0.75)",
             backdropFilter: "blur(16px)",
             transform: `translateX(${totalX}px)`,
           }}
@@ -205,7 +238,7 @@ export const LowerThird: React.FC<LowerThirdProps> = ({
               <div
                 style={{
                   fontSize: "28px",
-                  color: accentColor,
+                  color: themedAccent,
                   fontFamily,
                   marginTop: "4px",
                   opacity: subOpacity,
@@ -247,17 +280,20 @@ export const LowerThird: React.FC<LowerThirdProps> = ({
           opacity: exitOpacity,
         }}
       />
-      {/* Glassmorphic panel */}
+      {/* Panel — finish-aware when the look inputs are present, else the
+          legacy glassmorphic dressing byte-for-byte. */}
       <div
         style={{
           opacity: totalOpacity,
           transform: `translateX(${totalX}px)`,
           padding: "18px 28px",
-          background: "rgba(0,0,0,0.5)",
+          background: ft && palette ? ft.panelBg(palette) : "rgba(0,0,0,0.5)",
           backdropFilter: "blur(20px)",
-          borderRadius: "14px",
-          border: `1px solid ${accentColor}25`,
-          boxShadow: `0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)`,
+          borderRadius: ft ? ft.radiusPanel : "14px",
+          border: ft && palette ? ft.panelBorder(palette) : `1px solid ${accentColor}25`,
+          boxShadow: ft
+            ? ft.panelShadow
+            : `0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)`,
         }}
       >
         <div
@@ -276,7 +312,7 @@ export const LowerThird: React.FC<LowerThirdProps> = ({
           <div
             style={{
               fontSize: "28px",
-              color: accentColor,
+              color: themedAccent,
               fontFamily,
               marginTop: "8px",
               opacity: subOpacity,

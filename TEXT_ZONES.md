@@ -51,12 +51,11 @@ Substrates: {'shadow-only': 12, 'none': 22, 'alpha-plate': 59, 'scrim-only': 4, 
 - **substrate** `none` — No background, no textShadow, no scrim. The sibling red dot at HudOverlay.tsx:249 has a boxShadow glow but that is a separate element and does not back the label.
 - Same exposure as CH 04 but dimmer (0.7 alpha at 11px). If the vhs-glitch HUD is kept after the brightness lift, all four of its top-band readouts (:239, :241, :245, :250) need one shared dark chip — they are clustered in the same top:50px strip and could share
 
-### LowerThird component — NO finish / FinishTokens / palette prop at all
+### LowerThird component — RESOLVED 2026-08-02 (finish/palette integration)
 
-- **at** `src/remotion/MyComp/LowerThird.tsx:7` — scenes: all LowerThird usages
-- **colour** `n/a — hardcoded "#ffffff", "#fff", "rgba(255,255,255,0.7)", "rgba(0,0,0,0.5)", "rgba(0,0,0,0.75)"`
-- **substrate** `none` — LowerThirdProps (LowerThird.tsx:7-25) declares ONLY: title, subtitle, accentColor, secondaryColor, durationInFrames, fontFamily, titleWeight, variant. There is no `finish`, no `ft`/FinishTokens, no `palette`, no `look`. Verified at all three call sites (Main.tsx:766-774, 1115-1123, 1771-1780) — none pass one.
-- STRUCTURAL BLOCKER for the plate plan: every other plated surface in this renderer sources its plate from `ft.panelBg(palette)` (FINISH_TOKENS in looks.ts:331-366 → surface / ink@0.78 / rgba(0,0,0,0.55) / rgba(0,0,0,0.45)). LowerThird cannot participate — its 
+- **at** `src/remotion/MyComp/LowerThird.tsx` — scenes: all LowerThird usages
+- **substrate** `alpha-plate` — LowerThirdProps now accepts optional `palette` + `finish`; all three Main.tsx call sites pass them. accent-bar panel = `ft.panelBg(palette)` + `ft.panelBorder` + `ft.radiusPanel` + `ft.panelShadow`; news-ticker bar = `withAlpha(palette.ink, 0.78)`; minimal gains its own ink plate `withAlpha(palette.ink, 0.55)` at `ft.radiusChip`. Accent-coloured subtitles pass through `clampAccentLuminance`. Props absent = legacy hardcoded dressing byte-for-byte (old fixtures unaffected).
+- (Historical: this was the STRUCTURAL BLOCKER row — the component took no look inputs at all.)
 
 ### cta — bare subtitle fallback (no ctaText, no button copy)
 
@@ -65,12 +64,10 @@ Substrates: {'shadow-only': 12, 'none': 22, 'alpha-plate': 59, 'scrim-only': 4, 
 - **substrate** `none` — No background, no border, no textShadow, no glow — the div is literally { fontSize, color, textAlign } (Main.tsx:1292).
 - Element 1291-1295. Completely naked 60%-alpha white in the mid-frame. Rarely hit (needs subtitle present and ctaText absent) but when hit it is unreadable the moment the plate-free backdrop brightens.
 
-### Outro @handle line
+### Outro @handle line — RESOLVED 2026-08-02 (brand card rework)
 
-- **at** `src/remotion/MyComp/Main.tsx:1444` — scenes: outro
-- **colour** `"rgba(255,255,255,0.75)" (style block at Main.tsx:1431-1439)`
-- **substrate** `shadow-only` — textShadow: `0 0 10px ${theme.primaryColor}40` — a 25%-alpha COLOURED glow, not a dark halo. No backgroundColor, no border, no wrapper plate; parent div (1412-1421) is a bare flex column.
-- The only handle read in the whole video and it has strictly weaker protection than the two AnimatedText lines above it. A coloured 0x40 glow adds nothing over a bright clip; 75% white on a blown highlight is gone.
+- **at** `src/remotion/MyComp/Main.tsx` outro renderer — scenes: outro
+- **substrate** `alpha-plate` — the handle now sits in its own pill (`withAlpha(palette.ink, 0.7)` + hairline `palette.edge` border, BRAND chrome face), and the whole outro stack (kicker + logo + name + handle) lives inside one finish-aware card (`ft.panelBg/panelBorder/radiusPanel/panelShadow`). The old coloured-glow-only monospace line is gone.
 
 ### Data-scene heading — gradient-fill treatment variant (PLATE IS CLIPPED AWAY)
 
@@ -386,3 +383,12 @@ Substrates: {'shadow-only': 12, 'none': 22, 'alpha-plate': 59, 'scrim-only': 4, 
 | low | TypingField — field label (uppercase caption above the input box) | `src/remotion/MyComp/VideoFX.tsx:839` | none |
 | low | TypingField — typed query text (the value being typed, char-by-char) | `src/remotion/MyComp/VideoFX.tsx:855` | alpha-plate |
 | low | TypingField — blinking caret glyph "▌" | `src/remotion/MyComp/VideoFX.tsx:856` | alpha-plate |
+
+## Added 2026-08-02 (brand chrome pass)
+
+| priority | surface | at | substrate |
+|---|---|---|---|
+| medium | Watermark chip (pipeline.watermark handle) | `src/remotion/MyComp/Main.tsx` watermark block | alpha-plate (`withAlpha(palette.ink, 0.72)` pill + edge border, BRAND face) |
+| medium | Outro handle pill | `src/remotion/MyComp/Main.tsx` outro renderer | alpha-plate (`withAlpha(palette.ink, 0.7)` pill inside the finish-aware outro card) |
+| medium | Outro kicker "FOLLOW FOR MORE" | `src/remotion/MyComp/Main.tsx` outro renderer | alpha-plate (sits on the outro card `ft.panelBg`) |
+| medium | LowerThird minimal plate (when palette/finish passed) | `src/remotion/MyComp/LowerThird.tsx` minimal variant | alpha-plate (`withAlpha(palette.ink, 0.55)` at `ft.radiusChip`) |

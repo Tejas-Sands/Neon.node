@@ -1,5 +1,6 @@
 import React from "react";
 import { useCurrentFrame, interpolate, spring, useVideoConfig, Easing } from "remotion";
+import { BRAND_MONO } from "./brand";
 
 interface SceneImpactFrameProps {
   /** Primary accent color for the flash/wipe */
@@ -233,9 +234,9 @@ export const SceneImpactFrame: React.FC<SceneImpactFrameProps> = ({
           <span
             style={{
               fontSize: "28px",
-              fontWeight: 800,
+              fontWeight: BRAND_MONO.strongWeight,
               color: primaryColor,
-              fontFamily: "monospace",
+              fontFamily: BRAND_MONO.family,
               fontVariantNumeric: "tabular-nums",
               letterSpacing: "1px",
             }}
@@ -246,7 +247,8 @@ export const SceneImpactFrame: React.FC<SceneImpactFrameProps> = ({
             style={{
               fontSize: "18px",
               color: "rgba(255,255,255,0.4)",
-              fontFamily: "monospace",
+              fontFamily: BRAND_MONO.family,
+              fontWeight: BRAND_MONO.weight,
             }}
           >
             / {displayTotal}

@@ -1,6 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, interpolate, Easing } from "remotion";
 import { readableGlow, haloShadow } from "./contrast";
+import { BRAND_MONO } from "./brand";
 
 type GradientOverlay = "none" | "top-to-bottom" | "radial-center" | "diagonal";
 
@@ -39,7 +40,7 @@ export const HudOverlay: React.FC<HudOverlayProps> = ({
   const frame = useCurrentFrame();
   const { height, fps } = useVideoConfig();
 
-  const monospaceFont = "monospace";
+  const monospaceFont = BRAND_MONO.family;
 
   // Fade-in so overlays don't pop in fully formed at frame 0
   const fadeIn = interpolate(frame, [0, 10], [0, 1], {

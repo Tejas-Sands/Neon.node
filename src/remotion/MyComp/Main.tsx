@@ -38,6 +38,7 @@ import {
   type Finish,
 } from "./looks";
 import { derivePackSkin } from "./packs";
+import { BRAND, BRAND_MONO } from "./brand";
 import { springCfg } from "./motion";
 import { fitStackScale, stackHeightAt, textWidthFor } from "./fitStack";
 import {
@@ -1023,6 +1024,8 @@ const DynamicScene: React.FC<{
             variant="minimal"
             fontFamily={getFontFamily(theme.fontFamilyName)}
             titleWeight={FONT_METRICS[theme.fontFamilyName].displayWeight}
+            palette={palette}
+            finish={finish}
           />
         )}
         {/* bottom 32%: the caption band tops out near 30%, and 28% used to
@@ -1447,6 +1450,8 @@ const DynamicScene: React.FC<{
             variant="accent-bar"
             fontFamily={getFontFamily(theme.fontFamilyName)}
             titleWeight={FONT_METRICS[theme.fontFamilyName].displayWeight}
+            palette={palette}
+            finish={finish}
           />
         )}
         <div style={{ position: "absolute", top: isQuizGrid ? "26%" : "18%", left: "8%", right: "8%", zIndex: 20, display: "flex", flexDirection: "column", gap: isQuizGrid ? "16px" : "10px", transform: packSkin ? `scale(${packSkin.quizRowScale})` : undefined }}>
@@ -1668,7 +1673,7 @@ const DynamicScene: React.FC<{
         <ParticleBurst
           originX={50}
           originY={45}
-          count={26}
+          count={14}
           startFrame={10}
           durationInFrames={48}
           seed={(seed >>> 0) + 202}
@@ -1686,90 +1691,111 @@ const DynamicScene: React.FC<{
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: "36px",
             zIndex: 20,
             padding: "0 8%",
           }}
         >
-          {/* Outro Call to Action Header — "follow" matches the spoken VO
-              ("Follow Neon Node…"); "subscribe" is the wrong verb on IG */}
-          <div style={{ transform: `translateY(${(1 - logoEntrance) * -20}px)`, opacity: logoOpacity }}>
-            <AnimatedText
-              text={"FOLLOW FOR MORE"}
-              glowColor={theme.secondaryColor}
-              fontFamilyName={theme.fontFamilyName}
-              overlayType={theme.overlayType}
-              animationMode={animMode}
-              fontSize={32}
-              finish={finish}
-            />
-          </div>
-
-          {/* Neon Node Logo */}
-          <div
-            style={{
-              transform: `scale(${logoScale})`,
-              opacity: logoOpacity,
-              position: "relative",
-              width: "220px",
-              height: "220px",
-              borderRadius: "24px",
-              padding: "4px",
-              background: `linear-gradient(135deg, ${theme.primaryColor}, ${theme.secondaryColor})`,
-              boxShadow: `0 0 ${glowIntensity}px ${theme.primaryColor}60, 0 0 ${glowIntensity * 1.5}px ${theme.secondaryColor}40`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <img
-              src={imageUrl || staticFile("tech_logo.png")}
-              style={{
-                width: "100%",
-                height: "100%",
-                borderRadius: "20px",
-                objectFit: "contain",
-                backgroundColor: "rgba(0,0,0,0.8)",
-                padding: "16px",
-              }}
-              alt="Neon Node Logo"
-            />
-          </div>
-
-          {/* Brand Name & Handle */}
+          {/* One finish-aware brand card: kicker + logo + name + handle read
+              as a single designed unit instead of loose floating elements. */}
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: "12px",
-              opacity: handleOpacity,
-              transform: `translateY(${handleY}px)`,
+              gap: "30px",
+              padding: "52px 60px",
+              background: ft.panelBg(palette),
+              border: ft.panelBorder(palette),
+              borderRadius: ft.radiusPanel,
+              boxShadow: ft.panelShadow,
+              transform: `scale(${logoScale})`,
+              opacity: logoOpacity,
             }}
           >
-            <AnimatedText
-              text={title || "NEON NODE"}
-              glowColor={theme.primaryColor}
-              fontFamilyName={theme.fontFamilyName}
-              overlayType={theme.overlayType}
-              animationMode={animMode}
-              fontSize={54}
-              finish={finish}
-            />
+            {/* Kicker — brand chrome face; "follow" matches the spoken VO
+                ("Follow Neon Node…"); "subscribe" is the wrong verb on IG */}
             <div
               style={{
-                fontSize: "28px",
-                color: "rgba(255,255,255,0.75)",
-                fontFamily: theme.fontFamilyName === "Share Tech Mono" ? "monospace" : "sans-serif",
-                letterSpacing: "5px",
+                fontFamily: BRAND.family,
+                fontWeight: BRAND.strongWeight,
+                fontSize: "24px",
+                letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                textShadow: readableGlow(`0 0 10px ${theme.primaryColor}40`, 28),
+                color: clampAccentLuminance(theme.secondaryColor),
+                textShadow: readableGlow(`0 0 10px ${theme.secondaryColor}40`, 24),
               }}
             >
-              {/* The props carry the real handle in `text` (from
-                  INSTAGRAM_TECH_USERNAME) — hardcoding it here once shipped
-                  a stale "@neon.node" */}
-              {text || "@neon.node"}
+              FOLLOW FOR MORE
+            </div>
+
+            {/* Neon Node Logo */}
+            <div
+              style={{
+                position: "relative",
+                width: "200px",
+                height: "200px",
+                borderRadius: "24px",
+                padding: "4px",
+                background: `linear-gradient(135deg, ${theme.primaryColor}, ${theme.secondaryColor})`,
+                boxShadow: `0 0 ${glowIntensity}px ${theme.primaryColor}60, 0 0 ${glowIntensity * 1.5}px ${theme.secondaryColor}40`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <img
+                src={imageUrl || staticFile("tech_logo.png")}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "20px",
+                  objectFit: "contain",
+                  backgroundColor: "rgba(0,0,0,0.8)",
+                  padding: "16px",
+                }}
+                alt="Neon Node Logo"
+              />
+            </div>
+
+            {/* Brand Name & Handle */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "16px",
+                opacity: handleOpacity,
+                transform: `translateY(${handleY}px)`,
+              }}
+            >
+              <AnimatedText
+                text={title || "NEON NODE"}
+                glowColor={theme.primaryColor}
+                fontFamilyName={theme.fontFamilyName}
+                overlayType={theme.overlayType}
+                animationMode={animMode}
+                fontSize={54}
+                finish={finish}
+              />
+              <div
+                style={{
+                  fontSize: "24px",
+                  color: "rgba(255,255,255,0.85)",
+                  fontFamily: BRAND.family,
+                  fontWeight: BRAND.chromeWeight,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  padding: "9px 22px",
+                  borderRadius: 999,
+                  background: withAlpha(palette.ink, 0.7),
+                  border: `1px solid ${withAlpha(palette.edge, 0.5)}`,
+                }}
+              >
+                {/* The props carry the real handle in `text` (from
+                    INSTAGRAM_TECH_USERNAME) — hardcoding it here once shipped
+                    a stale "@neon.node" */}
+                {text || "@neon.node"}
+              </div>
             </div>
           </div>
         </div>
@@ -2023,7 +2049,7 @@ const DynamicScene: React.FC<{
             <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#ff5f57" }} />
             <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#febc2e" }} />
             <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#28c840" }} />
-            <div style={{ flex: 1, marginLeft: "12px", padding: "6px 14px", borderRadius: "8px", background: "rgba(255,255,255,0.06)", fontSize: "18px", color: "rgba(255,255,255,0.6)", fontFamily: "monospace", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+            <div style={{ flex: 1, marginLeft: "12px", padding: "6px 14px", borderRadius: "8px", background: "rgba(255,255,255,0.06)", fontSize: "18px", color: "rgba(255,255,255,0.6)", fontFamily: BRAND_MONO.family, fontWeight: BRAND_MONO.weight, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
               {title ? title.toLowerCase().replace(/\s+/g, "") + ".app" : "preview.app"}
             </div>
           </div>
@@ -2120,6 +2146,8 @@ const DynamicScene: React.FC<{
           variant="accent-bar"
           fontFamily={getFontFamily(theme.fontFamilyName)}
           titleWeight={FONT_METRICS[theme.fontFamilyName].displayWeight}
+          palette={palette}
+          finish={finish}
         />
       )}
       {/* Main text stack — anchor + alignment follow the look's text layout.
@@ -2628,8 +2656,7 @@ const FollowChip: React.FC<{
   handle: string;
   startFrame: number;
   accent: string;
-  fontFamily: string;
-}> = ({ handle, startFrame, accent, fontFamily }) => {
+}> = ({ handle, startFrame, accent }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const local = frame - startFrame;
@@ -2666,7 +2693,10 @@ const FollowChip: React.FC<{
           background: "rgba(10, 12, 18, 0.72)",
           border: `1.5px solid ${accent}`,
           boxShadow: "0 4px 24px rgba(0, 0, 0, 0.35)",
-          fontFamily,
+          // Brand chrome face — the chip repeats on every loop-ending post,
+          // so it wears the account signature, not the video's display font.
+          fontFamily: BRAND.family,
+          fontWeight: BRAND.chromeWeight,
           fontSize: 26,
           letterSpacing: 1,
           color: "#ffffff",
@@ -2701,7 +2731,7 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
   if (!scenes || scenes.length === 0) {
     return (
       <AbsoluteFill style={{ backgroundColor: "#020205" }}>
-        <div style={{ color: "#ffffff", padding: 20, fontFamily: "sans-serif" }}>No scenes loaded.</div>
+        <div style={{ color: "#ffffff", padding: 20, fontFamily: BRAND.family }}>No scenes loaded.</div>
       </AbsoluteFill>
     );
   }
@@ -2965,7 +2995,9 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
         fringe={micro.has("cut-fringe")}
       />
 
-      {/* Watermark overlay (from pipeline config) */}
+      {/* Watermark chip (from pipeline config) — brand chrome face on an
+          ink plate so the handle reads as a designed mark on every look
+          (TEXT_ZONES: alpha-plate). */}
       {watermarkText && (
         <div
           style={{
@@ -2975,11 +3007,17 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
             // invisible there. Bottom-left above the caption zone is safe.
             bottom: "18%",
             left: "4%",
-            fontSize: "14px",
-            color: "rgba(255,255,255,0.35)",
-            fontFamily: "monospace",
-            letterSpacing: "2px",
+            padding: "7px 16px",
+            borderRadius: 999,
+            background: withAlpha(palette.ink, 0.72),
+            border: `1px solid ${withAlpha(palette.edge, 0.5)}`,
+            fontSize: "15px",
+            color: "rgba(255,255,255,0.82)",
+            fontFamily: BRAND.family,
+            fontWeight: BRAND.chromeWeight,
+            letterSpacing: "0.1em",
             textTransform: "uppercase",
+            opacity: 0.8,
             zIndex: 100,
             pointerEvents: "none",
           }}
@@ -3000,7 +3038,6 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
             ] + 8
           }
           accent={activeTheme.primaryColor}
-          fontFamily={getFontFamily(activeTheme.fontFamilyName)}
         />
       )}
     </AbsoluteFill>
