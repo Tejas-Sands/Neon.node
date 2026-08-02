@@ -104,11 +104,20 @@ export const ThemeSchema = z.object({
     "aurora",
   ]),
   fontFamilyName: z.enum([
+    // Retired-but-valid (pre-2026-08 catalog): old props render forever, but
+    // no STYLE_PACK or prompt references these five anymore.
     "Share Tech Mono",
     "Orbitron",
     "Inter",
     "Playfair Display",
     "Courier New",
+    // 2026-08 professional catalog (Inter above stays active too).
+    "Space Grotesk",
+    "Archivo",
+    "Sora",
+    "Bricolage Grotesque",
+    "Fraunces",
+    "JetBrains Mono",
   ]),
   musicTrack: z
     .enum(["ambient-tech", "lofi-chill", "cosmic-synth", "none"])

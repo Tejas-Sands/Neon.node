@@ -4,6 +4,12 @@ import { loadFont as loadShareTech } from "@remotion/google-fonts/ShareTechMono"
 import { loadFont as loadOrbitron } from "@remotion/google-fonts/Orbitron";
 import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
 import { loadFont as loadPlayfair } from "@remotion/google-fonts/PlayfairDisplay";
+import { loadFont as loadSpaceGrotesk } from "@remotion/google-fonts/SpaceGrotesk";
+import { loadFont as loadArchivo } from "@remotion/google-fonts/Archivo";
+import { loadFont as loadSora } from "@remotion/google-fonts/Sora";
+import { loadFont as loadBricolage } from "@remotion/google-fonts/BricolageGrotesque";
+import { loadFont as loadFraunces } from "@remotion/google-fonts/Fraunces";
+import { loadFont as loadJetBrains } from "@remotion/google-fonts/JetBrainsMono";
 import { FINISH_TOKENS, inkOn, withAlpha, type Finish } from "./looks";
 import { haloFilter } from "./contrast";
 
@@ -24,6 +30,30 @@ const fontInter = loadInter("normal", { subsets: ["latin"], weights: ["600", "70
 const fontPlayfair = loadPlayfair("normal", {
   subsets: ["latin"],
   weights: ["700", "800"],
+});
+// --- 2026-08 professional catalog. The five families above are retired-but-
+// valid: still loaded, still legal in the schema (old props render forever),
+// but no STYLE_PACK or prompt references them anymore.
+const fontSpaceGrotesk = loadSpaceGrotesk("normal", {
+  subsets: ["latin"],
+  weights: ["500", "700"],
+});
+const fontArchivo = loadArchivo("normal", {
+  subsets: ["latin"],
+  weights: ["600", "700", "900"],
+});
+const fontSora = loadSora("normal", { subsets: ["latin"], weights: ["600", "800"] });
+const fontBricolage = loadBricolage("normal", {
+  subsets: ["latin"],
+  weights: ["600", "800"],
+});
+const fontFraunces = loadFraunces("normal", {
+  subsets: ["latin"],
+  weights: ["600", "900"],
+});
+const fontJetBrains = loadJetBrains("normal", {
+  subsets: ["latin"],
+  weights: ["500", "700"],
 });
 
 const GLITCH_CHARS =
@@ -53,7 +83,13 @@ type FontFamilyName =
   | "Orbitron"
   | "Inter"
   | "Playfair Display"
-  | "Courier New";
+  | "Courier New"
+  | "Space Grotesk"
+  | "Archivo"
+  | "Sora"
+  | "Bricolage Grotesque"
+  | "Fraunces"
+  | "JetBrains Mono";
 
 type OverlayType =
   | "grid-hud"
@@ -192,6 +228,12 @@ export const FONT_METRICS: Record<
   Inter: { trackTitleEm: -0.01, trackBodyEm: 0, lineHeight: 1.12, displayWeight: 800, bodyWeight: 600 },
   "Playfair Display": { trackTitleEm: 0.005, trackBodyEm: 0.005, lineHeight: 1.14, displayWeight: 800, bodyWeight: 700 },
   "Courier New": { trackTitleEm: 0.01, trackBodyEm: 0.01, lineHeight: 1.2, displayWeight: 700, bodyWeight: 400 },
+  "Space Grotesk": { trackTitleEm: -0.005, trackBodyEm: 0, lineHeight: 1.12, displayWeight: 700, bodyWeight: 500 },
+  Archivo: { trackTitleEm: -0.015, trackBodyEm: 0, lineHeight: 1.08, displayWeight: 900, bodyWeight: 600 },
+  Sora: { trackTitleEm: -0.01, trackBodyEm: 0.005, lineHeight: 1.16, displayWeight: 800, bodyWeight: 600 },
+  "Bricolage Grotesque": { trackTitleEm: -0.01, trackBodyEm: 0, lineHeight: 1.1, displayWeight: 800, bodyWeight: 600 },
+  Fraunces: { trackTitleEm: 0.005, trackBodyEm: 0.005, lineHeight: 1.12, displayWeight: 900, bodyWeight: 600 },
+  "JetBrains Mono": { trackTitleEm: 0.01, trackBodyEm: 0.005, lineHeight: 1.2, displayWeight: 700, bodyWeight: 500 },
 };
 
 /** Map font family name to the loaded font CSS family string */
@@ -207,6 +249,18 @@ export const getFontFamily = (fontFamilyName: FontFamilyName): string => {
       return fontPlayfair.fontFamily;
     case "Courier New":
       return "Courier New, monospace";
+    case "Space Grotesk":
+      return fontSpaceGrotesk.fontFamily;
+    case "Archivo":
+      return fontArchivo.fontFamily;
+    case "Sora":
+      return fontSora.fontFamily;
+    case "Bricolage Grotesque":
+      return fontBricolage.fontFamily;
+    case "Fraunces":
+      return fontFraunces.fontFamily;
+    case "JetBrains Mono":
+      return fontJetBrains.fontFamily;
     default:
       return fontInter.fontFamily;
   }
@@ -539,7 +593,11 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   // mono/geometric tracking — that reads as neon, not editorial).
   const isDisplaySize = effectiveFontSize >= 42;
   let trackEm = isDisplaySize ? metrics.trackTitleEm : metrics.trackBodyEm;
-  if (fontFamilyName === "Playfair Display" && textCase !== "as-is") trackEm += 0.02;
+  if (
+    (fontFamilyName === "Playfair Display" || fontFamilyName === "Fraunces") &&
+    textCase !== "as-is"
+  )
+    trackEm += 0.02;
   const baseLetterSpacing = Math.round(trackEm * effectiveFontSize * 100) / 100;
 
   // Decode duration in frames

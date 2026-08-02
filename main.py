@@ -595,11 +595,13 @@ OVERLAY (overlayType):
   "aurora"         → Flowing aurora light waves + glow.          USE FOR: premium, dreamy, futuristic, product, ambient.
 
 FONT (fontFamilyName):
-  "Share Tech Mono" → Monospace tech font.    USE FOR: coding, hacker, sci-fi, data-heavy.
-  "Orbitron"        → Bold geometric future.  USE FOR: space, gaming, product launches, headlines.
-  "Inter"           → Clean modern sans-serif. USE FOR: corporate, educational, clean content. BEST DEFAULT.
-  "Playfair Display"→ Elegant serif.           USE FOR: luxury, fashion, editorial, storytelling, quotes.
-  "Courier New"     → Classic typewriter.      USE FOR: retro, vintage, literary, documentary, memes.
+  "Space Grotesk"       → Contemporary tech grotesk.   USE FOR: tech, AI, product, startup news. BEST DEFAULT for tech.
+  "Archivo"             → Heavy Swiss-poster grotesk.  USE FOR: bold headlines, business, breaking news.
+  "Sora"                → Geometric futuristic sans.   USE FOR: space, gaming, product launches, future-tech.
+  "Bricolage Grotesque" → Characterful editorial sans. USE FOR: culture, lifestyle, opinionated takes.
+  "Fraunces"            → Modern editorial serif.      USE FOR: luxury, fashion, editorial, storytelling, quotes.
+  "JetBrains Mono"      → Developer monospace.         USE FOR: coding, hacker, terminal, data-heavy.
+  "Inter"               → Clean neutral sans-serif.    USE FOR: corporate, educational, clean content. SAFE DEFAULT.
 
 MUSIC (musicTrack):
   "ambient-tech"  → Electronic atmosphere. Good for tech, corporate, modern.
@@ -794,16 +796,16 @@ F6. CHARTS/RATINGS/COUNTERS SHOW NUMBERS AS FACT. Only use "bar-chart", "chart",
 === STYLE PAIRING GUIDE ===
 
 These are PROVEN combinations. Use them as starting points:
-  Tech/AI/Crypto    → grid-hud + Share Tech Mono + dynamic-zoom-rotate + glitch-cut + glitch-decode
-  Corporate/SaaS    → clean + Inter + ken-burns + crossfade + fade-up + top-to-bottom gradient
-  Retro/Nostalgia   → vhs-glitch + Courier New + glitch-shift + glitch-cut + typewriter
-  Fantasy/Space     → fantasy-sparks + Playfair Display + zoom-slow + zoom-through + word-by-word + radial-center
+  Tech/AI/Crypto    → grid-hud + JetBrains Mono + dynamic-zoom-rotate + glitch-cut + glitch-decode
+  Corporate/SaaS    → clean + Space Grotesk + ken-burns + crossfade + fade-up + top-to-bottom gradient
+  Retro/Nostalgia   → vhs-glitch + JetBrains Mono + glitch-shift + glitch-cut + typewriter
+  Fantasy/Space     → fantasy-sparks + Fraunces + zoom-slow + zoom-through + word-by-word + radial-center
   Lifestyle/Chill   → particles + Inter + pan-horizontal + crossfade + fade-up
   Educational/Tips  → clean + Inter + ken-burns + slide-left + slide-in
-  Marketing/Launch  → clean + Orbitron + dynamic-zoom-rotate + zoom-through + fade-up + diagonal gradient
-  Fitness/Health    → particles + Orbitron + ken-burns + crossfade + fade-up
-  Food/Recipe       → clean + Playfair Display + zoom-slow + crossfade + fade-up + top-to-bottom
-  Motivational      → fantasy-sparks + Playfair Display + zoom-slow + crossfade + word-by-word + radial-center
+  Marketing/Launch  → clean + Sora + dynamic-zoom-rotate + zoom-through + fade-up + diagonal gradient
+  Fitness/Health    → particles + Archivo + ken-burns + crossfade + fade-up
+  Food/Recipe       → clean + Fraunces + zoom-slow + crossfade + fade-up + top-to-bottom
+  Motivational      → fantasy-sparks + Fraunces + zoom-slow + crossfade + word-by-word + radial-center
 
 === PLATFORM DETECTION ===
 
@@ -844,7 +846,7 @@ Topic: "SaaS product launch — 10x faster API"
     "primaryColor": "#7b68ee",
     "secondaryColor": "#ff6b9d",
     "overlayType": "clean",
-    "fontFamilyName": "Orbitron",
+    "fontFamilyName": "Sora",
     "musicTrack": "ambient-tech",
     "cameraMotion": "dynamic-zoom-rotate",
     "subtitlePosition": "bottom",
@@ -1023,7 +1025,14 @@ Output ONLY the raw JSON object:"""
 
 # --- Allowed enum values (must match Remotion component schemas exactly) ---
 ALLOWED_OVERLAY_TYPES = ["grid-hud", "particles", "clean", "vhs-glitch", "fantasy-sparks", "aurora"]
-ALLOWED_FONTS = ["Share Tech Mono", "Orbitron", "Inter", "Playfair Display", "Courier New"]
+# First five are retired-but-valid (pre-2026-08 catalog): still legal so old
+# props/manual requests keep rendering, but no STYLE_PACK or prompt offers
+# them. The 2026-08 professional catalog is the six after (Inter stays active).
+ALLOWED_FONTS = [
+    "Share Tech Mono", "Orbitron", "Inter", "Playfair Display", "Courier New",
+    "Space Grotesk", "Archivo", "Sora", "Bricolage Grotesque", "Fraunces",
+    "JetBrains Mono",
+]
 ALLOWED_MUSIC = ["ambient-tech", "lofi-chill", "cosmic-synth", "none"]
 ALLOWED_CAMERA = ["ken-burns", "pan-horizontal", "zoom-slow", "static", "dynamic-zoom-rotate", "pan-tilt", "pulse-zoom", "glitch-shift", "orbit-drift", "vertigo"]
 ALLOWED_SUBTITLE_POS = ["top", "center", "bottom"]
@@ -1065,37 +1074,37 @@ def _derive_seed(session_id: str) -> int:
 # variety between videos. Used to break the "every auto video looks identical"
 # problem — the automated channel previously hard-coded a single cyberpunk look.
 STYLE_PACKS = [
-    {"name": "cyber-neon",     "primaryColor": "#00f0ff", "secondaryColor": "#ff007f", "overlayType": "grid-hud",       "fontFamilyName": "Share Tech Mono", "musicTrack": "ambient-tech", "gradientOverlay": "radial-center"},
-    {"name": "synth-sunset",   "primaryColor": "#ff2d95", "secondaryColor": "#ffb300", "overlayType": "vhs-glitch",     "fontFamilyName": "Orbitron",        "musicTrack": "cosmic-synth", "gradientOverlay": "diagonal"},
-    {"name": "matrix-green",   "primaryColor": "#00ff9c", "secondaryColor": "#0affef", "overlayType": "grid-hud",       "fontFamilyName": "Share Tech Mono", "musicTrack": "ambient-tech", "gradientOverlay": "top-to-bottom"},
-    {"name": "royal-violet",   "primaryColor": "#8b5cf6", "secondaryColor": "#ec4899", "overlayType": "aurora",         "fontFamilyName": "Orbitron",        "musicTrack": "cosmic-synth", "gradientOverlay": "radial-center"},
-    {"name": "ice-electric",   "primaryColor": "#38bdf8", "secondaryColor": "#818cf8", "overlayType": "particles",      "fontFamilyName": "Inter",           "musicTrack": "ambient-tech", "gradientOverlay": "top-to-bottom"},
-    {"name": "ember-gold",     "primaryColor": "#ff6b35", "secondaryColor": "#ffd700", "overlayType": "aurora",         "fontFamilyName": "Orbitron",        "musicTrack": "cosmic-synth", "gradientOverlay": "diagonal"},
+    {"name": "cyber-neon",     "primaryColor": "#00f0ff", "secondaryColor": "#ff007f", "overlayType": "grid-hud",       "fontFamilyName": "JetBrains Mono",  "musicTrack": "ambient-tech", "gradientOverlay": "radial-center"},
+    {"name": "synth-sunset",   "primaryColor": "#ff2d95", "secondaryColor": "#ffb300", "overlayType": "vhs-glitch",     "fontFamilyName": "Sora",            "musicTrack": "cosmic-synth", "gradientOverlay": "diagonal"},
+    {"name": "matrix-green",   "primaryColor": "#00ff9c", "secondaryColor": "#0affef", "overlayType": "grid-hud",       "fontFamilyName": "JetBrains Mono",  "musicTrack": "ambient-tech", "gradientOverlay": "top-to-bottom"},
+    {"name": "royal-violet",   "primaryColor": "#8b5cf6", "secondaryColor": "#ec4899", "overlayType": "aurora",         "fontFamilyName": "Sora",            "musicTrack": "cosmic-synth", "gradientOverlay": "radial-center"},
+    {"name": "ice-electric",   "primaryColor": "#38bdf8", "secondaryColor": "#818cf8", "overlayType": "particles",      "fontFamilyName": "Space Grotesk",   "musicTrack": "ambient-tech", "gradientOverlay": "top-to-bottom"},
+    {"name": "ember-gold",     "primaryColor": "#ff6b35", "secondaryColor": "#ffd700", "overlayType": "aurora",         "fontFamilyName": "Archivo",         "musicTrack": "cosmic-synth", "gradientOverlay": "diagonal"},
     {"name": "mint-aqua",      "primaryColor": "#00d4aa", "secondaryColor": "#06b6d4", "overlayType": "particles",      "fontFamilyName": "Inter",           "musicTrack": "lofi-chill",   "gradientOverlay": "none"},
-    {"name": "crimson-mono",   "primaryColor": "#ff3b3b", "secondaryColor": "#ffffff", "overlayType": "vhs-glitch",     "fontFamilyName": "Courier New",     "musicTrack": "ambient-tech", "gradientOverlay": "top-to-bottom"},
-    {"name": "cosmic-fantasy", "primaryColor": "#a78bfa", "secondaryColor": "#22d3ee", "overlayType": "fantasy-sparks", "fontFamilyName": "Playfair Display","musicTrack": "cosmic-synth", "gradientOverlay": "radial-center"},
-    {"name": "clean-cobalt",   "primaryColor": "#3b82f6", "secondaryColor": "#00d4aa", "overlayType": "clean",          "fontFamilyName": "Inter",           "musicTrack": "ambient-tech", "gradientOverlay": "diagonal"},
-    {"name": "toxic-lime",     "primaryColor": "#a3e635", "secondaryColor": "#22d3ee", "overlayType": "grid-hud",       "fontFamilyName": "Orbitron",        "musicTrack": "ambient-tech", "gradientOverlay": "none"},
+    {"name": "crimson-mono",   "primaryColor": "#ff3b3b", "secondaryColor": "#ffffff", "overlayType": "vhs-glitch",     "fontFamilyName": "JetBrains Mono",  "musicTrack": "ambient-tech", "gradientOverlay": "top-to-bottom"},
+    {"name": "cosmic-fantasy", "primaryColor": "#a78bfa", "secondaryColor": "#22d3ee", "overlayType": "fantasy-sparks", "fontFamilyName": "Fraunces",        "musicTrack": "cosmic-synth", "gradientOverlay": "radial-center"},
+    {"name": "clean-cobalt",   "primaryColor": "#3b82f6", "secondaryColor": "#00d4aa", "overlayType": "clean",          "fontFamilyName": "Space Grotesk",   "musicTrack": "ambient-tech", "gradientOverlay": "diagonal"},
+    {"name": "toxic-lime",     "primaryColor": "#a3e635", "secondaryColor": "#22d3ee", "overlayType": "grid-hud",       "fontFamilyName": "Archivo",         "musicTrack": "ambient-tech", "gradientOverlay": "none"},
     {"name": "aurora-teal",    "primaryColor": "#2dd4bf", "secondaryColor": "#c084fc", "overlayType": "aurora",         "fontFamilyName": "Inter",           "musicTrack": "cosmic-synth", "gradientOverlay": "radial-center"},
     # --- Non-tech aesthetics: editorial / warm / pastel / natural / vintage ---
     # These deliberately avoid the neon-on-dark "cyberpunk" feel so the channel
     # doesn't read as the same sci-fi template every post.
-    {"name": "editorial-serif",  "primaryColor": "#f4f1ea", "secondaryColor": "#c9a227", "overlayType": "clean",          "fontFamilyName": "Playfair Display", "musicTrack": "lofi-chill",   "gradientOverlay": "none"},
-    {"name": "terracotta-earth", "primaryColor": "#e07a5f", "secondaryColor": "#f2cc8f", "overlayType": "clean",          "fontFamilyName": "Playfair Display", "musicTrack": "lofi-chill",   "gradientOverlay": "top-to-bottom"},
+    {"name": "editorial-serif",  "primaryColor": "#f4f1ea", "secondaryColor": "#c9a227", "overlayType": "clean",          "fontFamilyName": "Fraunces",         "musicTrack": "lofi-chill",   "gradientOverlay": "none"},
+    {"name": "terracotta-earth", "primaryColor": "#e07a5f", "secondaryColor": "#f2cc8f", "overlayType": "clean",          "fontFamilyName": "Fraunces",         "musicTrack": "lofi-chill",   "gradientOverlay": "top-to-bottom"},
     {"name": "sage-botanical",   "primaryColor": "#a3c9a8", "secondaryColor": "#e9f5db", "overlayType": "particles",      "fontFamilyName": "Inter",            "musicTrack": "lofi-chill",   "gradientOverlay": "none"},
-    {"name": "coral-pop",        "primaryColor": "#ff6f61", "secondaryColor": "#ffd166", "overlayType": "particles",      "fontFamilyName": "Inter",            "musicTrack": "lofi-chill",   "gradientOverlay": "diagonal"},
-    {"name": "sunset-peach",     "primaryColor": "#ffb4a2", "secondaryColor": "#ffcdb2", "overlayType": "aurora",         "fontFamilyName": "Playfair Display", "musicTrack": "lofi-chill",   "gradientOverlay": "radial-center"},
-    {"name": "golden-hour",      "primaryColor": "#ffb703", "secondaryColor": "#fb8500", "overlayType": "aurora",         "fontFamilyName": "Playfair Display", "musicTrack": "cosmic-synth", "gradientOverlay": "diagonal"},
-    {"name": "cherry-blossom",   "primaryColor": "#ffafcc", "secondaryColor": "#cdb4db", "overlayType": "fantasy-sparks", "fontFamilyName": "Playfair Display", "musicTrack": "lofi-chill",   "gradientOverlay": "radial-center"},
+    {"name": "coral-pop",        "primaryColor": "#ff6f61", "secondaryColor": "#ffd166", "overlayType": "particles",      "fontFamilyName": "Bricolage Grotesque", "musicTrack": "lofi-chill", "gradientOverlay": "diagonal"},
+    {"name": "sunset-peach",     "primaryColor": "#ffb4a2", "secondaryColor": "#ffcdb2", "overlayType": "aurora",         "fontFamilyName": "Fraunces",         "musicTrack": "lofi-chill",   "gradientOverlay": "radial-center"},
+    {"name": "golden-hour",      "primaryColor": "#ffb703", "secondaryColor": "#fb8500", "overlayType": "aurora",         "fontFamilyName": "Bricolage Grotesque", "musicTrack": "cosmic-synth", "gradientOverlay": "diagonal"},
+    {"name": "cherry-blossom",   "primaryColor": "#ffafcc", "secondaryColor": "#cdb4db", "overlayType": "fantasy-sparks", "fontFamilyName": "Fraunces",         "musicTrack": "lofi-chill",   "gradientOverlay": "radial-center"},
     {"name": "forest-moss",      "primaryColor": "#74c69d", "secondaryColor": "#d8f3dc", "overlayType": "clean",          "fontFamilyName": "Inter",            "musicTrack": "lofi-chill",   "gradientOverlay": "top-to-bottom"},
-    {"name": "ocean-breeze",     "primaryColor": "#48cae4", "secondaryColor": "#ade8f4", "overlayType": "particles",      "fontFamilyName": "Inter",            "musicTrack": "lofi-chill",   "gradientOverlay": "none"},
-    {"name": "desert-dune",      "primaryColor": "#dda15e", "secondaryColor": "#fefae0", "overlayType": "clean",          "fontFamilyName": "Playfair Display", "musicTrack": "lofi-chill",   "gradientOverlay": "diagonal"},
-    {"name": "burgundy-luxe",    "primaryColor": "#ff4d6d", "secondaryColor": "#ffb3c1", "overlayType": "aurora",         "fontFamilyName": "Playfair Display", "musicTrack": "cosmic-synth", "gradientOverlay": "radial-center"},
-    {"name": "mono-brutalist",   "primaryColor": "#ffffff", "secondaryColor": "#fca311", "overlayType": "clean",          "fontFamilyName": "Courier New",      "musicTrack": "none",         "gradientOverlay": "none"},
+    {"name": "ocean-breeze",     "primaryColor": "#48cae4", "secondaryColor": "#ade8f4", "overlayType": "particles",      "fontFamilyName": "Space Grotesk",    "musicTrack": "lofi-chill",   "gradientOverlay": "none"},
+    {"name": "desert-dune",      "primaryColor": "#dda15e", "secondaryColor": "#fefae0", "overlayType": "clean",          "fontFamilyName": "Fraunces",         "musicTrack": "lofi-chill",   "gradientOverlay": "diagonal"},
+    {"name": "burgundy-luxe",    "primaryColor": "#ff4d6d", "secondaryColor": "#ffb3c1", "overlayType": "aurora",         "fontFamilyName": "Fraunces",         "musicTrack": "cosmic-synth", "gradientOverlay": "radial-center"},
+    {"name": "mono-brutalist",   "primaryColor": "#ffffff", "secondaryColor": "#fca311", "overlayType": "clean",          "fontFamilyName": "Archivo",          "musicTrack": "none",         "gradientOverlay": "none"},
     {"name": "lavender-haze",    "primaryColor": "#cdb4db", "secondaryColor": "#a2d2ff", "overlayType": "aurora",         "fontFamilyName": "Inter",            "musicTrack": "lofi-chill",   "gradientOverlay": "radial-center"},
-    {"name": "citrus-fresh",     "primaryColor": "#f4d35e", "secondaryColor": "#ee964b", "overlayType": "particles",      "fontFamilyName": "Inter",            "musicTrack": "lofi-chill",   "gradientOverlay": "none"},
-    {"name": "slate-editorial",  "primaryColor": "#e2e8f0", "secondaryColor": "#f59e0b", "overlayType": "clean",          "fontFamilyName": "Inter",            "musicTrack": "lofi-chill",   "gradientOverlay": "top-to-bottom"},
-    {"name": "rosewood-vintage", "primaryColor": "#b5838d", "secondaryColor": "#ffcdb2", "overlayType": "vhs-glitch",     "fontFamilyName": "Playfair Display", "musicTrack": "lofi-chill",   "gradientOverlay": "top-to-bottom"},
+    {"name": "citrus-fresh",     "primaryColor": "#f4d35e", "secondaryColor": "#ee964b", "overlayType": "particles",      "fontFamilyName": "Bricolage Grotesque", "musicTrack": "lofi-chill", "gradientOverlay": "none"},
+    {"name": "slate-editorial",  "primaryColor": "#e2e8f0", "secondaryColor": "#f59e0b", "overlayType": "clean",          "fontFamilyName": "Space Grotesk",    "musicTrack": "lofi-chill",   "gradientOverlay": "top-to-bottom"},
+    {"name": "rosewood-vintage", "primaryColor": "#b5838d", "secondaryColor": "#ffcdb2", "overlayType": "vhs-glitch",     "fontFamilyName": "Fraunces",         "musicTrack": "lofi-chill",   "gradientOverlay": "top-to-bottom"},
 ]
 
 # Proven scroll-stopping opening patterns for short-form social video. One is
@@ -2253,7 +2262,7 @@ def _build_fallback_script() -> dict:
             "primaryColor": "#00f0ff",
             "secondaryColor": "#ff007f",
             "overlayType": "grid-hud",
-            "fontFamilyName": "Share Tech Mono",
+            "fontFamilyName": "JetBrains Mono",
             "musicTrack": "none",
             "cameraMotion": "ken-burns",
             "subtitlePosition": "bottom",

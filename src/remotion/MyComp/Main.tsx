@@ -95,7 +95,18 @@ interface ThemeProps {
   primaryColor: string;
   secondaryColor: string;
   overlayType: "grid-hud" | "particles" | "clean" | "vhs-glitch" | "fantasy-sparks" | "aurora";
-  fontFamilyName: "Share Tech Mono" | "Orbitron" | "Inter" | "Playfair Display" | "Courier New";
+  fontFamilyName:
+    | "Share Tech Mono"
+    | "Orbitron"
+    | "Inter"
+    | "Playfair Display"
+    | "Courier New"
+    | "Space Grotesk"
+    | "Archivo"
+    | "Sora"
+    | "Bricolage Grotesque"
+    | "Fraunces"
+    | "JetBrains Mono";
   musicTrack?: "ambient-tech" | "lofi-chill" | "cosmic-synth" | "none";
   cameraMotion?: "ken-burns" | "pan-horizontal" | "zoom-slow" | "static" | "dynamic-zoom-rotate" | "pan-tilt" | "pulse-zoom" | "glitch-shift" | "orbit-drift" | "vertigo";
   subtitlePosition?: "top" | "center" | "bottom";
