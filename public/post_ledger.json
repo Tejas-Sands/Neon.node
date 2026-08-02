@@ -38,7 +38,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 1601,
+      "fetched_at": 1785645729
      },
      "snap72": {
       "views": 101,
@@ -92,7 +93,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 1325,
+      "fetched_at": 1785645729
      },
      "snap72": {
       "views": 103,
@@ -147,7 +149,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 2582,
+      "fetched_at": 1785645729
      },
      "snap72": {
       "views": 109,
@@ -203,7 +206,8 @@
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 2439,
+      "fetched_at": 1785645729
      },
      "snap72": {
       "views": 119,
@@ -365,7 +369,8 @@
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 3877,
+      "fetched_at": 1785645729
      },
      "snap72": {
       "views": 114,
@@ -417,7 +422,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 1764,
+      "fetched_at": 1785645729
      },
      "snap72": {
       "views": 151,
@@ -636,7 +642,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 1164,
+      "fetched_at": 1785645729
      },
      "snap72": {
       "views": 116,
@@ -688,7 +695,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 1196,
+      "fetched_at": 1785645729
      },
      "snap72": {
       "views": 159,
@@ -908,7 +916,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 2463,
+      "fetched_at": 1785645729
      },
      "snap72": {
       "views": 125,
@@ -962,7 +971,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 2815,
+      "fetched_at": 1785645729
      },
      "snap72": {
       "views": 116,
@@ -1016,7 +1026,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 3552,
+      "fetched_at": 1785645729
      },
      "snap72": {
       "views": 106,
@@ -1070,7 +1081,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785509446
+      "ig_reels_avg_watch_time": 2691,
+      "fetched_at": 1785645729
      },
      "snap72": {
       "views": 86,
@@ -1657,7 +1669,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785492558
+      "ig_reels_avg_watch_time": 3323,
+      "fetched_at": 1785645729
      },
      "snap72": {
       "views": 14,
@@ -1753,7 +1766,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 7,
+      "reach": 7,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1332,
+      "fetched_at": 1785645729
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -1792,7 +1815,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 8,
+      "reach": 6,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1561,
+      "fetched_at": 1785645729
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -1867,6 +1900,47 @@
     "instagram": {
      "id": "18085516016559166",
      "posted_at": 1785592554
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785645637,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "AI financial advice is surprisingly good, especially if you ask right questions",
+    "subject": "MIT AI finance research",
+    "url": "https://mitsloan.mit.edu/ideas-made-to-matter/ai-financial-advice-surprisingly-good-especially-if-you-ask-right-questions",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 8.54,
+    "angle": "New research reveals that while AI is surprisingly good at long-term financial planning, the quality of its advice depends entirely on how you prompt it.",
+    "insight": "AI can democratize high-quality financial planning, but users must treat prompts like academic inputs to overcome the model's tendency to ignore active portfolio rebalancing.",
+    "judge": "plan"
+   },
+   "style_pack": "golden-hour",
+   "format_pack": "legacy-news",
+   "seed": 1493247974,
+   "voice": "en-US-AndrewMultilingualNeural",
+   "hook_type": "HYPER-SPECIFIC RELATABILITY",
+   "scene_count": 5,
+   "video_seconds": 48.2,
+   "ledger_rev": 2,
+   "session": "gh-013442",
+   "platforms": {
+    "instagram": {
+     "id": "18117777016898537",
+     "posted_at": 1785645726
     }
    },
    "metrics": {

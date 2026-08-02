@@ -366,5 +366,13 @@
   "subject_norm": "flint visualization language",
   "ts": 1785592558,
   "session": "gh-9e7c54"
+ },
+ {
+  "id": "49139102",
+  "title": "AI financial advice is surprisingly good, especially if you ask right questions",
+  "norm": "ai financial advice is surprisingly good especially if you ask right questions",
+  "subject_norm": "mit ai finance research",
+  "ts": 1785645729,
+  "session": "gh-013442"
  }
 ]

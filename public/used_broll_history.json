@@ -245,6 +245,62 @@
    "session": "gh-9e7c54",
    "query": "developer laptop closeup",
    "scene": 5
+  },
+  {
+   "id": "pexels-38410499",
+   "ts": 1785645637,
+   "session": "gh-013442",
+   "query": "terminal code scrolling dark",
+   "scene": 0
+  },
+  {
+   "id": "pexels-15439747",
+   "ts": 1785645637,
+   "session": "gh-013442",
+   "query": "data center server lights motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-20523328",
+   "ts": 1785645637,
+   "session": "gh-013442",
+   "query": "data center server lights motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-35544498",
+   "ts": 1785645637,
+   "session": "gh-013442",
+   "query": "trading chart screen moving",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7480061",
+   "ts": 1785645637,
+   "session": "gh-013442",
+   "query": "chip manufacturing closeup motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-7220850",
+   "ts": 1785645637,
+   "session": "gh-013442",
+   "query": "chip manufacturing closeup motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-8720756",
+   "ts": 1785645637,
+   "session": "gh-013442",
+   "query": "developer typing code laptop",
+   "scene": 4
+  },
+  {
+   "id": "pexels-7652166",
+   "ts": 1785645637,
+   "session": "gh-013442",
+   "query": "developer typing code laptop",
+   "scene": 4
   }
  ]
 }
