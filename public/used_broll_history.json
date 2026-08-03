@@ -399,6 +399,62 @@
    "session": "gh-db890e",
    "query": "film set lighting equipment motion",
    "scene": 5
+  },
+  {
+   "id": "pexels-6353346",
+   "ts": 1785734036,
+   "session": "gh-ad6f09",
+   "query": "ios app code screen scrolling",
+   "scene": 0
+  },
+  {
+   "id": "pexels-5647324",
+   "ts": 1785734036,
+   "session": "gh-ad6f09",
+   "query": "developer typing on keyboard closeup",
+   "scene": 1
+  },
+  {
+   "id": "pexels-8682965",
+   "ts": 1785734036,
+   "session": "gh-ad6f09",
+   "query": "terminal typing commands motion",
+   "scene": 2
+  },
+  {
+   "id": "pexels-6037662",
+   "ts": 1785734036,
+   "session": "gh-ad6f09",
+   "query": "terminal typing commands motion",
+   "scene": 2
+  },
+  {
+   "id": "pexels-6279147",
+   "ts": 1785734036,
+   "session": "gh-ad6f09",
+   "query": "mobile app ui design screen",
+   "scene": 3
+  },
+  {
+   "id": "pexels-5082599",
+   "ts": 1785734036,
+   "session": "gh-ad6f09",
+   "query": "mobile app ui design screen",
+   "scene": 3
+  },
+  {
+   "id": "pexels-36980773",
+   "ts": 1785734036,
+   "session": "gh-ad6f09",
+   "query": "developer workspace setup motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-28400000",
+   "ts": 1785734036,
+   "session": "gh-ad6f09",
+   "query": "developer workspace setup motion",
+   "scene": 4
   }
  ]
 }

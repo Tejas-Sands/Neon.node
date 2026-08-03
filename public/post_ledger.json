@@ -261,7 +261,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 4061,
+      "fetched_at": 1785734101
      },
      "snap72": {
       "views": 119,
@@ -315,7 +316,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 2813,
+      "fetched_at": 1785734101
      },
      "snap72": {
       "views": 120,
@@ -477,7 +479,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 2233,
+      "fetched_at": 1785734101
      },
      "snap72": {
       "views": 125,
@@ -536,7 +539,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 3856,
+      "fetched_at": 1785734101
      },
      "snap72": {
       "views": 118,
@@ -590,7 +594,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 2,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 2106,
+      "fetched_at": 1785734101
      },
      "snap72": {
       "views": 120,
@@ -750,7 +755,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 6074,
+      "fetched_at": 1785734101
      },
      "snap72": {
       "views": 111,
@@ -805,7 +811,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 2982,
+      "fetched_at": 1785734101
      },
      "snap72": {
       "views": 112,
@@ -862,7 +869,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 1745,
+      "fetched_at": 1785734101
      },
      "snap72": {
       "views": 124,
@@ -1351,7 +1359,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 9931,
+      "fetched_at": 1785734101
      },
      "snap72": {
       "views": 0,
@@ -1405,7 +1414,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 1803,
+      "fetched_at": 1785734101
      },
      "snap72": {
       "views": 16,
@@ -1459,7 +1469,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 1347,
+      "fetched_at": 1785734101
      },
      "snap72": {
       "views": 4,
@@ -1511,7 +1522,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 6834,
+      "fetched_at": 1785734101
      },
      "snap72": {
       "views": 3,
@@ -1563,7 +1575,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 21393,
+      "fetched_at": 1785734101
      },
      "snap72": {
       "views": 1,
@@ -1918,7 +1931,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 2,
+      "reach": 2,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5079,
+      "fetched_at": 1785734101
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -1959,7 +1982,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 5,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1447,
+      "fetched_at": 1785734101
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -2035,6 +2068,47 @@
     "instagram": {
      "id": "18190392922380871",
      "posted_at": 1785676683
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785734036,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "SwiftUI After 7 Years",
+    "subject": "SwiftUI",
+    "url": "https://ykvm.com/2026/07/swiftui-a-story-of-mediocrity/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 7.09,
+    "sources": [],
+    "display_title": "Is SwiftUI Finally Ready for Production?",
+    "angle": "Seven years after its debut, we examine if SwiftUI has finally matured into a reliable standard for Apple development.",
+    "insight": "The framework has shifted from a buggy experiment to a mandatory skill, forcing developers to abandon legacy UIKit habits to stay relevant in the Apple ecosystem.",
+    "judge": "plan"
+   },
+   "style_pack": "slate-editorial",
+   "format_pack": "legacy-news",
+   "seed": 2001647404,
+   "voice": "en-US-EmmaMultilingualNeural",
+   "hook_type": "HYPER-SPECIFIC RELATABILITY",
+   "scene_count": 5,
+   "video_seconds": 44.2,
+   "ledger_rev": 2,
+   "session": "gh-ad6f09",
+   "platforms": {
+    "instagram": {
+     "id": "18123226843697438",
+     "posted_at": 1785734098
     }
    },
    "metrics": {
