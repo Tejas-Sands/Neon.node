@@ -2534,9 +2534,13 @@ def query_llm_with_failover(
             "url": "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
             "key": gemini_key,
             # 1.5-flash/pro removed: retired from the free tier (quota limit 0).
+            # gemini-3.5-pro removed: never existed in the live catalog, and every
+            # pro-tier model (pro-latest / 3.1-pro-preview / 2.5-pro) is free-tier
+            # quota 0 (verified 2026-08-03) — so 3.5-flash-lite is the cushion
+            # when 3.5-flash is overloaded, ahead of the older 3.1-flash-lite.
             # 2.5/2.0-flash appended as known-live fallbacks now that catalog
             # matching tolerates the "models/" prefix Gemini's /models uses.
-            "models": ["gemini-3.5-flash", "gemini-3.5-pro", "gemini-3.1-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash"]
+            "models": ["gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash"]
         })
 
     # 2. Groq
@@ -2988,6 +2992,16 @@ _SUBJECT_STOPWORDS = frozenset((
     "update", "updates", "announces", "announcement", "version", "their",
 ))
 
+# Short ALL-CAPS tokens that read as acronyms but word-boundary-match ordinary
+# English ("US" hits the pronoun "us", "IT" hits "it") — never subject evidence.
+_ACRONYM_COMMON_WORDS = frozenset((
+    "an", "as", "at", "be", "by", "do", "go", "if", "in", "is", "it", "me",
+    "my", "no", "of", "on", "or", "so", "to", "up", "us", "we",
+    "all", "and", "are", "but", "can", "for", "get", "has", "how", "its",
+    "new", "not", "now", "off", "old", "one", "our", "out", "the", "top",
+    "was", "why", "you",
+))
+
 
 def _scene_has_number(scene: dict) -> bool:
     """True when the scene carries a real figure: a digit in an on-screen
@@ -3007,14 +3021,45 @@ def _scene_has_number(scene: dict) -> bool:
 
 def _subject_tokens(topic_meta) -> list:
     """Lowercased content tokens (len >= 4, stopwords dropped) of the topic's
-    subject/title. [] when unknown — subject checks are then skipped entirely.
+    subject/title. Hyphenated tokens also contribute their parts
+    ("ai-generated" -> "generated") so the unhyphenated spoken form still
+    matches, and 2-3 char ALL-CAPS acronyms ("AI", "GPT", "EU") survive the
+    length filter when the rest of the subject is mixed-case (an ALL-CAPS
+    subject line would make every short word look like an acronym) —
+    _subject_match word-boundary-matches those short tokens. [] when unknown
+    — subject checks are then skipped entirely.
     NOT _extract_topic_keywords: that returns VIRAL_KEYWORDS matches ("ai",
     "gpt"), not the subject's own name."""
     if not isinstance(topic_meta, dict):
         return []
     raw = str(topic_meta.get("subject") or topic_meta.get("title") or "")
-    return [w for w in re.findall(r"[a-z0-9][\w.-]*", raw.lower())
-            if len(w) >= 4 and w not in _SUBJECT_STOPWORDS]
+    caps_meaningful = raw != raw.upper()
+    tokens: list = []
+    for word in re.findall(r"[A-Za-z0-9][\w.-]*", raw):
+        for piece in [word] + (word.split("-") if "-" in word else []):
+            low = piece.lower()
+            if low in _SUBJECT_STOPWORDS or low in tokens:
+                continue
+            if len(low) >= 4:
+                tokens.append(low)
+            elif (len(low) >= 2 and caps_meaningful and piece.isupper()
+                  and low not in _ACRONYM_COMMON_WORDS):
+                tokens.append(low)
+    return tokens
+
+
+def _subject_match(blob: str, subj_tokens: list) -> bool:
+    """True when any subject token appears in the lowercased text blob.
+    Tokens of 4+ chars prefix-match on their first 5 chars ("postgres"
+    matches "PostgreSQL"); shorter acronym tokens must match as whole words —
+    a bare substring test would false-hit inside words ("ai" in "said")."""
+    for t in subj_tokens:
+        if len(t) >= 4:
+            if t[:5] in blob:
+                return True
+        elif re.search(r"\b%s\b" % re.escape(t), blob):
+            return True
+    return False
 
 
 def apply_pack_postprocess(parsed_script: dict, pack_cfg: dict,
@@ -3195,7 +3240,7 @@ def _script_vagueness_reasons(script: dict, source_prompt: str = "",
     # subject is unknown (manual sessions without topic_meta).
     subj_tokens = _subject_tokens(topic_meta)
     script_blob = " ".join(" ".join(_fields(s)) for s in scenes).lower()
-    subject_anywhere = any(t[:5] in script_blob for t in subj_tokens)
+    subject_anywhere = _subject_match(script_blob, subj_tokens)
     if subj_tokens:
         subj_label = str(topic_meta.get("subject") or topic_meta.get("title") or "")
         if is_quiz:
@@ -3206,7 +3251,7 @@ def _script_vagueness_reasons(script: dict, source_prompt: str = "",
                             "the quiz question or reveal must name it")
         else:
             hook_blob = " ".join(_fields(scenes[0])).lower()
-            if not any(t[:5] in hook_blob for t in subj_tokens):
+            if not _subject_match(hook_blob, subj_tokens):
                 hard.append(f"the subject '{subj_label}' is never named in the hook scene")
 
     # H3 / S2 — imperative-advice density over the middle scenes (hook and
@@ -3245,7 +3290,7 @@ def _script_vagueness_reasons(script: dict, source_prompt: str = "",
             soft.append(f"the hook voiceover runs {hook_vo_words} words — cut it to one line (max 14)")
         hook_all = " ".join(_fields(scenes[0])).lower()
         if not _scene_has_number(scenes[0]) and subj_tokens and \
-                not any(t[:5] in hook_all for t in subj_tokens) and not is_quiz:
+                not _subject_match(hook_all, subj_tokens) and not is_quiz:
             soft.append("the hook names neither a number nor the subject — lead with the payoff")
 
     # S1 — the source carried real figures but the script barely uses any.
@@ -9854,10 +9899,14 @@ Return ONLY this JSON (no other text):
 {{"subject": "<2-5 word searchable topic>", "display_title": "<plain-English reframe of the headline for a general tech audience, max 8 words, no insider jargon or forum in-jokes>", "angle": "<one sentence: the story of the video>", "hook": "<scroll-stopping first line, max 8 words>", "insight": "<the one non-obvious takeaway — who is affected and what changes now, one sentence>", "facts": ["..."], "format": "news|explainer|comparison"}}"""
 
     try:
+        # 800, not 450: the judge JSON itself fits in ~300 tokens, but on
+        # Gemini's OpenAI-compat endpoint thinking tokens count against
+        # max_tokens, and 3.5-flash truncated the JSON at 450 (run gh-a64955)
+        # — burning a whole model tier on every judge call.
         raw = query_llm_with_failover(
             system_prompt=system,
             user_prompt=user,
-            max_tokens=450,
+            max_tokens=800,
             json_format=True,
             session_id=session_id,
         )
