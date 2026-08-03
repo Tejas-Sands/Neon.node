@@ -39,7 +39,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1601,
-      "fetched_at": 1785645729
+      "fetched_at": 1785754165
      },
      "snap72": {
       "views": 101,
@@ -94,7 +94,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1325,
-      "fetched_at": 1785645729
+      "fetched_at": 1785754165
      },
      "snap72": {
       "views": 103,
@@ -150,7 +150,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2582,
-      "fetched_at": 1785645729
+      "fetched_at": 1785754165
      },
      "snap72": {
       "views": 109,
@@ -207,7 +207,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2439,
-      "fetched_at": 1785645729
+      "fetched_at": 1785754165
      },
      "snap72": {
       "views": 119,
@@ -372,7 +372,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3877,
-      "fetched_at": 1785645729
+      "fetched_at": 1785754165
      },
      "snap72": {
       "views": 114,
@@ -425,7 +425,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1764,
-      "fetched_at": 1785645729
+      "fetched_at": 1785754165
      },
      "snap72": {
       "views": 151,
@@ -648,7 +648,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1164,
-      "fetched_at": 1785645729
+      "fetched_at": 1785754165
      },
      "snap72": {
       "views": 116,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1196,
-      "fetched_at": 1785645729
+      "fetched_at": 1785754165
      },
      "snap72": {
       "views": 159,
@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1785645729
+      "fetched_at": 1785754165
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1785645729
+      "fetched_at": 1785754165
      },
      "snap72": {
       "views": 116,
@@ -1035,7 +1035,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3552,
-      "fetched_at": 1785645729
+      "fetched_at": 1785754165
      },
      "snap72": {
       "views": 106,
@@ -1090,7 +1090,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2691,
-      "fetched_at": 1785645729
+      "fetched_at": 1785754165
      },
      "snap72": {
       "views": 86,
@@ -1631,7 +1631,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 32136,
+      "fetched_at": 1785754165
      },
      "snap72": {
       "views": 0,
@@ -1743,9 +1744,20 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "fetched_at": 1785592558
+      "ig_reels_avg_watch_time": 2957,
+      "fetched_at": 1785754165
      },
-     "snap72": null,
+     "snap72": {
+      "views": 26,
+      "reach": 25,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2957,
+      "fetched_at": 1785754165
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -2033,7 +2045,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 6,
+      "reach": 6,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 916,
+      "fetched_at": 1785754165
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -2109,6 +2131,49 @@
     "instagram": {
      "id": "18123226843697438",
      "posted_at": 1785734098
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785754056,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "Why Book Corners won't sync contributions back to OpenStreetMap",
+    "subject": "Book Corners OSM integration",
+    "url": "https://www.andreagrandi.it/posts/why-book-corners-wont-sync-contributions-back-to-openstreetmap/",
+    "source": "hn",
+    "keywords": [
+     "why"
+    ],
+    "viral_score": 6.88,
+    "sources": [],
+    "display_title": "Why OpenStreetMap rejects external data imports",
+    "angle": "A developer explains why contributing user-submitted data back to OpenStreetMap is legally and procedurally impossible for small projects.",
+    "insight": "OpenStreetMap prioritizes data integrity over convenience, forcing small developers to act as professional data stewards if they want to contribute.",
+    "judge": "plan"
+   },
+   "style_pack": "lavender-haze",
+   "format_pack": "legacy-news",
+   "seed": 780236946,
+   "voice": "en-US-EmmaMultilingualNeural",
+   "hook_type": "CHALLENGE-DARE",
+   "scene_count": 6,
+   "video_seconds": 45.7,
+   "ledger_rev": 2,
+   "session": "gh-a1d2f4",
+   "platforms": {
+    "instagram": {
+     "id": "17864447916647967",
+     "posted_at": 1785754161
     }
    },
    "metrics": {
