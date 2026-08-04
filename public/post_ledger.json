@@ -372,7 +372,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3877,
-      "fetched_at": 1785754165
+      "fetched_at": 1785853655
      },
      "snap72": {
       "views": 114,
@@ -425,7 +425,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1764,
-      "fetched_at": 1785754165
+      "fetched_at": 1785853655
      },
      "snap72": {
       "views": 151,
@@ -648,7 +648,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1164,
-      "fetched_at": 1785754165
+      "fetched_at": 1785853655
      },
      "snap72": {
       "views": 116,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1196,
-      "fetched_at": 1785754165
+      "fetched_at": 1785853655
      },
      "snap72": {
       "views": 159,
@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1785754165
+      "fetched_at": 1785853655
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1785754165
+      "fetched_at": 1785853655
      },
      "snap72": {
       "views": 116,
@@ -1035,7 +1035,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3552,
-      "fetched_at": 1785754165
+      "fetched_at": 1785853655
      },
      "snap72": {
       "views": 106,
@@ -1090,7 +1090,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2691,
-      "fetched_at": 1785754165
+      "fetched_at": 1785853655
      },
      "snap72": {
       "views": 86,
@@ -1632,7 +1632,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 32136,
-      "fetched_at": 1785754165
+      "fetched_at": 1785853655
      },
      "snap72": {
       "views": 0,
@@ -1745,7 +1745,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2957,
-      "fetched_at": 1785754165
+      "fetched_at": 1785853655
      },
      "snap72": {
       "views": 26,
@@ -2104,9 +2104,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 916,
-      "fetched_at": 1785754165
+      "fetched_at": 1785853655
      },
-     "snap72": null,
+     "snap72": {
+      "views": 6,
+      "reach": 6,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 916,
+      "fetched_at": 1785853655
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -2341,6 +2351,49 @@
     "instagram": {
      "id": "18078874211321618",
      "posted_at": 1785841889
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785853396,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "Ray Bradbury's \"There Will Come Soft Rains\" is set today (2026-08-04)",
+    "subject": "Ray Bradbury August 4 2026",
+    "url": "https://short-stories.co/@raybradbury/there-will-come-soft-rains-6k8vr4xxlnmj",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 8.31,
+    "sources": [],
+    "display_title": "Ray Bradbury's 2026 Sci-Fi Future Is Today",
+    "angle": "Ray Bradbury's classic story 'There Will Come Soft Rains' set its automated apocalypse home on August 4, 2026.",
+    "insight": "As ambient automation and smart home tech advance, Bradbury's 1950s warning about human obsolescence hits uncomfortably close to home.",
+    "judge": "plan"
+   },
+   "style_pack": "rosewood-vintage",
+   "format_pack": "legacy-news",
+   "seed": 1431271797,
+   "voice": "en-US-EmmaMultilingualNeural",
+   "hook_type": "NEGATIVE WARNING",
+   "scene_count": 6,
+   "video_seconds": 48.6,
+   "ledger_rev": 2,
+   "session": "gh-553f2f",
+   "platforms": {
+    "instagram": {
+     "id": "17927912232390878",
+     "posted_at": 1785853651
     }
    },
    "metrics": {
