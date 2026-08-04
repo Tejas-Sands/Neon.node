@@ -426,5 +426,16 @@
   ],
   "ts": 1785824951,
   "session": "gh-36fcda"
+ },
+ {
+  "id": "49153374",
+  "title": "Prevent cognitive debt by manually retyping LLM-generated code",
+  "norm": "prevent cognitive debt by manually retyping llm generated code",
+  "subject_norm": null,
+  "entities": [
+   "llm-generated"
+  ],
+  "ts": 1785841893,
+  "session": "gh-62a00e"
  }
 ]

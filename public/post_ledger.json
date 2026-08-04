@@ -39,7 +39,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1601,
-      "fetched_at": 1785754165
+      "fetched_at": 1785841893
      },
      "snap72": {
       "views": 101,
@@ -94,7 +94,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1325,
-      "fetched_at": 1785754165
+      "fetched_at": 1785841893
      },
      "snap72": {
       "views": 103,
@@ -150,7 +150,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2582,
-      "fetched_at": 1785754165
+      "fetched_at": 1785841893
      },
      "snap72": {
       "views": 109,
@@ -207,7 +207,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2439,
-      "fetched_at": 1785754165
+      "fetched_at": 1785841893
      },
      "snap72": {
       "views": 119,
@@ -756,7 +756,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6074,
-      "fetched_at": 1785734101
+      "fetched_at": 1785841893
      },
      "snap72": {
       "views": 111,
@@ -812,7 +812,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2982,
-      "fetched_at": 1785734101
+      "fetched_at": 1785841893
      },
      "snap72": {
       "views": 112,
@@ -870,7 +870,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1745,
-      "fetched_at": 1785734101
+      "fetched_at": 1785841893
      },
      "snap72": {
       "views": 124,
@@ -1360,7 +1360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9931,
-      "fetched_at": 1785734101
+      "fetched_at": 1785841893
      },
      "snap72": {
       "views": 0,
@@ -1415,7 +1415,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1803,
-      "fetched_at": 1785734101
+      "fetched_at": 1785841893
      },
      "snap72": {
       "views": 16,
@@ -1470,7 +1470,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1347,
-      "fetched_at": 1785734101
+      "fetched_at": 1785841893
      },
      "snap72": {
       "views": 4,
@@ -1523,7 +1523,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6834,
-      "fetched_at": 1785734101
+      "fetched_at": 1785841893
      },
      "snap72": {
       "views": 3,
@@ -1576,7 +1576,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 21393,
-      "fetched_at": 1785734101
+      "fetched_at": 1785841893
      },
      "snap72": {
       "views": 1,
@@ -1982,9 +1982,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5079,
-      "fetched_at": 1785734101
+      "fetched_at": 1785841893
      },
-     "snap72": null,
+     "snap72": {
+      "views": 2,
+      "reach": 2,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5079,
+      "fetched_at": 1785841893
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -2033,9 +2043,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1447,
-      "fetched_at": 1785734101
+      "fetched_at": 1785841893
      },
-     "snap72": null,
+     "snap72": {
+      "views": 5,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1447,
+      "fetched_at": 1785841893
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -2228,7 +2248,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 9,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1878,
+      "fetched_at": 1785841893
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -2268,6 +2298,49 @@
     "instagram": {
      "id": "18095015762570263",
      "posted_at": 1785824948
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785841831,
+   "posted_hour_utc": 11,
+   "channel": "news",
+   "topic": {
+    "title": "Prevent cognitive debt by manually retyping LLM-generated code",
+    "subject": "Prevent cognitive debt by manually retyping LLM-generated code",
+    "url": "https://ankursethi.com/blog/prevent-cognitive-debt-by-manually-retyping-llm-generated-code/",
+    "source": "hn",
+    "keywords": [
+     "llm"
+    ],
+    "viral_score": 8.95,
+    "sources": [],
+    "display_title": "",
+    "angle": "",
+    "insight": "",
+    "judge": "none"
+   },
+   "style_pack": "synth-sunset",
+   "format_pack": "legacy-news",
+   "seed": 1309437909,
+   "voice": "en-US-AndrewMultilingualNeural",
+   "hook_type": "SHOCK-STAT",
+   "scene_count": 4,
+   "video_seconds": 44.0,
+   "ledger_rev": 2,
+   "session": "gh-62a00e",
+   "platforms": {
+    "instagram": {
+     "id": "18078874211321618",
+     "posted_at": 1785841889
     }
    },
    "metrics": {

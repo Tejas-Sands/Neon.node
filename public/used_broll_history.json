@@ -567,6 +567,55 @@
    "session": "gh-36fcda",
    "query": "developer laptop screen ui",
    "scene": 3
+  },
+  {
+   "id": "pexels-7989731",
+   "ts": 1785841831,
+   "session": "gh-62a00e",
+   "query": "code editor screen scrolling fast",
+   "scene": 0
+  },
+  {
+   "id": "pexels-6963412",
+   "ts": 1785841831,
+   "session": "gh-62a00e",
+   "query": "terminal typing commands closeup",
+   "scene": 1
+  },
+  {
+   "id": "pexels-6266437",
+   "ts": 1785841831,
+   "session": "gh-62a00e",
+   "query": "terminal typing commands closeup",
+   "scene": 1
+  },
+  {
+   "id": "pexels-7989667",
+   "ts": 1785841831,
+   "session": "gh-62a00e",
+   "query": "developer laptop screen code",
+   "scene": 2
+  },
+  {
+   "id": "pexels-8480478",
+   "ts": 1785841831,
+   "session": "gh-62a00e",
+   "query": "developer laptop screen code",
+   "scene": 2
+  },
+  {
+   "id": "pexels-18068664",
+   "ts": 1785841831,
+   "session": "gh-62a00e",
+   "query": "neural network visualization motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35062463",
+   "ts": 1785841831,
+   "session": "gh-62a00e",
+   "query": "neural network visualization motion",
+   "scene": 3
   }
  ]
 }
