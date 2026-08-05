@@ -791,6 +791,62 @@
    "session": "gh-16866f",
    "query": "office workspace laptop screen typing",
    "scene": 5
+  },
+  {
+   "id": "pexels-8720747",
+   "ts": 1785943502,
+   "session": "gh-bdc045",
+   "query": "terminal typing commands code",
+   "scene": 0
+  },
+  {
+   "id": "pexels-36805468",
+   "ts": 1785943502,
+   "session": "gh-bdc045",
+   "query": "office workers using computers dashboard",
+   "scene": 1
+  },
+  {
+   "id": "pexels-35497884",
+   "ts": 1785943502,
+   "session": "gh-bdc045",
+   "query": "data center servers blinking lights",
+   "scene": 2
+  },
+  {
+   "id": "pexels-5780954",
+   "ts": 1785943502,
+   "session": "gh-bdc045",
+   "query": "data center servers blinking lights",
+   "scene": 2
+  },
+  {
+   "id": "pexels-5377775",
+   "ts": 1785943502,
+   "session": "gh-bdc045",
+   "query": "network security firewall visualization",
+   "scene": 3
+  },
+  {
+   "id": "pexels-16456768",
+   "ts": 1785943502,
+   "session": "gh-bdc045",
+   "query": "network security firewall visualization",
+   "scene": 3
+  },
+  {
+   "id": "pexels-16029652",
+   "ts": 1785943502,
+   "session": "gh-bdc045",
+   "query": "cloud server infrastructure motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-35702897",
+   "ts": 1785943502,
+   "session": "gh-bdc045",
+   "query": "cloud server infrastructure motion",
+   "scene": 4
   }
  ]
 }

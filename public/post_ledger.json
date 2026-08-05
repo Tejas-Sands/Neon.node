@@ -39,7 +39,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1601,
-      "fetched_at": 1785841893
+      "fetched_at": 1785943588
      },
      "snap72": {
       "views": 101,
@@ -94,7 +94,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1325,
-      "fetched_at": 1785841893
+      "fetched_at": 1785943588
      },
      "snap72": {
       "views": 103,
@@ -150,7 +150,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2582,
-      "fetched_at": 1785841893
+      "fetched_at": 1785943588
      },
      "snap72": {
       "views": 109,
@@ -207,7 +207,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2439,
-      "fetched_at": 1785841893
+      "fetched_at": 1785943588
      },
      "snap72": {
       "views": 119,
@@ -756,7 +756,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6074,
-      "fetched_at": 1785841893
+      "fetched_at": 1785943588
      },
      "snap72": {
       "views": 111,
@@ -812,7 +812,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2982,
-      "fetched_at": 1785841893
+      "fetched_at": 1785943588
      },
      "snap72": {
       "views": 112,
@@ -870,7 +870,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1745,
-      "fetched_at": 1785841893
+      "fetched_at": 1785943588
      },
      "snap72": {
       "views": 124,
@@ -1360,7 +1360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9931,
-      "fetched_at": 1785841893
+      "fetched_at": 1785943588
      },
      "snap72": {
       "views": 0,
@@ -1415,7 +1415,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1803,
-      "fetched_at": 1785841893
+      "fetched_at": 1785943588
      },
      "snap72": {
       "views": 16,
@@ -1470,7 +1470,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1347,
-      "fetched_at": 1785841893
+      "fetched_at": 1785943588
      },
      "snap72": {
       "views": 4,
@@ -1522,8 +1522,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 6834,
-      "fetched_at": 1785841893
+      "ig_reels_avg_watch_time": 5869,
+      "fetched_at": 1785943588
      },
      "snap72": {
       "views": 3,
@@ -1575,8 +1575,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 21393,
-      "fetched_at": 1785841893
+      "ig_reels_avg_watch_time": 14547,
+      "fetched_at": 1785943588
      },
      "snap72": {
       "views": 1,
@@ -2223,10 +2223,20 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1135,
-      "fetched_at": 1785824951
+      "ig_reels_avg_watch_time": 1129,
+      "fetched_at": 1785943588
      },
-     "snap72": null,
+     "snap72": {
+      "views": 93,
+      "reach": 93,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1129,
+      "fetched_at": 1785943588
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -2375,7 +2385,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 22,
+      "reach": 20,
+      "likes": 5,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 5,
+      "ig_reels_avg_watch_time": 3950,
+      "fetched_at": 1785943588
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -2418,7 +2438,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 769,
+      "fetched_at": 1785943588
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -2499,6 +2529,49 @@
     "instagram": {
      "id": "17983985676048934",
      "posted_at": 1785926952
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785943502,
+   "posted_hour_utc": 15,
+   "channel": "news",
+   "topic": {
+    "title": "Cloudflare OS: an open platform for agents, apps, and work",
+    "subject": "Cloudflare OS",
+    "url": "https://blog.cloudflare.com/cloudflare-os/",
+    "source": "hn",
+    "keywords": [
+     "agent"
+    ],
+    "viral_score": 7.67,
+    "sources": [],
+    "display_title": "Cloudflare Just Open-Sourced an AI Agent OS",
+    "angle": "Cloudflare is open-sourcing its internal AI agent platform so any organization can build secure, context-aware workplace agents.",
+    "insight": "By baking permission security directly into the platform foundation, Cloudflare solves the biggest enterprise risk of sharing AI agent workspaces.",
+    "judge": "plan"
+   },
+   "style_pack": "clean-cobalt",
+   "format_pack": "legacy-news",
+   "seed": 967316009,
+   "voice": "en-US-BrianMultilingualNeural",
+   "hook_type": "MISTAKE CALLOUT",
+   "scene_count": 5,
+   "video_seconds": 54.0,
+   "ledger_rev": 2,
+   "session": "gh-bdc045",
+   "platforms": {
+    "instagram": {
+     "id": "18112417057991413",
+     "posted_at": 1785943585
     }
    },
    "metrics": {
