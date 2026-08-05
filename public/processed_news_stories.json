@@ -459,5 +459,16 @@
   ],
   "ts": 1785905608,
   "session": "gh-f64a61"
+ },
+ {
+  "id": "49176830",
+  "title": "Eight Myths on Software Engineering and GenAI",
+  "norm": "eight myths on software engineering and genai",
+  "subject_norm": null,
+  "entities": [
+   "genai"
+  ],
+  "ts": 1785926955,
+  "session": "gh-16866f"
  }
 ]

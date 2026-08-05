@@ -728,6 +728,69 @@
    "session": "gh-f64a61",
    "query": "data center corridor server racks",
    "scene": 5
+  },
+  {
+   "id": "pexels-36392049",
+   "ts": 1785926851,
+   "session": "gh-16866f",
+   "query": "server data center lights motion",
+   "scene": 0
+  },
+  {
+   "id": "pexels-34406494",
+   "ts": 1785926851,
+   "session": "gh-16866f",
+   "query": "developer typing on keyboard close up",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5377700",
+   "ts": 1785926851,
+   "session": "gh-16866f",
+   "query": "developer typing on keyboard close up",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5805640",
+   "ts": 1785926851,
+   "session": "gh-16866f",
+   "query": "network switch cables flashing",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7846332",
+   "ts": 1785926851,
+   "session": "gh-16866f",
+   "query": "network switch cables flashing",
+   "scene": 2
+  },
+  {
+   "id": "pexels-8348717",
+   "ts": 1785926851,
+   "session": "gh-16866f",
+   "query": "data analytics screen motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-37616259",
+   "ts": 1785926851,
+   "session": "gh-16866f",
+   "query": "data analytics screen motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-10374888",
+   "ts": 1785926851,
+   "session": "gh-16866f",
+   "query": "terminal screen scrolling commands",
+   "scene": 4
+  },
+  {
+   "id": "pexels-7250826",
+   "ts": 1785926851,
+   "session": "gh-16866f",
+   "query": "office workspace laptop screen typing",
+   "scene": 5
   }
  ]
 }
