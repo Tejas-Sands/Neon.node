@@ -446,5 +446,18 @@
   "entities": [],
   "ts": 1785853655,
   "session": "gh-553f2f"
+ },
+ {
+  "id": "49167448",
+  "title": "Xbox goes down. You can't play games you own on disc",
+  "norm": "xbox goes down you can t play games you own on disc",
+  "subject_norm": "xbox disc outage",
+  "entities": [
+   "xbox",
+   "disc",
+   "outage"
+  ],
+  "ts": 1785905608,
+  "session": "gh-f64a61"
  }
 ]

@@ -2404,6 +2404,47 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1785905498,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "Xbox goes down. You can't play games you own on disc",
+    "subject": "Xbox Disc Outage",
+    "url": "https://birchtree.me/blog/xbox-goes-down-you-cant-play-games-you-own-on-disc/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 8.05,
+    "sources": [],
+    "display_title": "Why Your Xbox Discs Don't Work Offline",
+    "angle": "Xbox's recent outage proved that modern physical discs are just digital licenses that fail without server access.",
+    "insight": "Modern physical media is an illusion; true ownership requires standalone hardware like retro cartridges or PC archives that bypass server checks entirely.",
+    "judge": "plan"
+   },
+   "style_pack": "sunset-peach",
+   "format_pack": "legacy-news",
+   "seed": 1423611243,
+   "voice": "en-US-BrianMultilingualNeural",
+   "hook_type": "HIGH-STAKES BENCHMARK",
+   "scene_count": 6,
+   "video_seconds": 41.5,
+   "ledger_rev": 2,
+   "session": "gh-f64a61",
+   "platforms": {
+    "instagram": {
+     "id": "17991680613009603",
+     "posted_at": 1785905604
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }
