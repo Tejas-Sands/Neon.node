@@ -372,7 +372,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3877,
-      "fetched_at": 1785853655
+      "fetched_at": 1785998571
      },
      "snap72": {
       "views": 114,
@@ -425,7 +425,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1764,
-      "fetched_at": 1785853655
+      "fetched_at": 1785998571
      },
      "snap72": {
       "views": 151,
@@ -648,7 +648,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1164,
-      "fetched_at": 1785853655
+      "fetched_at": 1785998571
      },
      "snap72": {
       "views": 116,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1196,
-      "fetched_at": 1785853655
+      "fetched_at": 1785998571
      },
      "snap72": {
       "views": 159,
@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1785853655
+      "fetched_at": 1785998571
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1785853655
+      "fetched_at": 1785998571
      },
      "snap72": {
       "views": 116,
@@ -1035,7 +1035,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3552,
-      "fetched_at": 1785853655
+      "fetched_at": 1785998571
      },
      "snap72": {
       "views": 106,
@@ -1090,7 +1090,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2691,
-      "fetched_at": 1785853655
+      "fetched_at": 1785998571
      },
      "snap72": {
       "views": 86,
@@ -1631,8 +1631,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 32136,
-      "fetched_at": 1785853655
+      "ig_reels_avg_watch_time": 16364,
+      "fetched_at": 1785998571
      },
      "snap72": {
       "views": 0,
@@ -1744,8 +1744,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2957,
-      "fetched_at": 1785853655
+      "ig_reels_avg_watch_time": 2876,
+      "fetched_at": 1785998571
      },
      "snap72": {
       "views": 26,
@@ -1981,8 +1981,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 5079,
-      "fetched_at": 1785841893
+      "ig_reels_avg_watch_time": 3957,
+      "fetched_at": 1785998571
      },
      "snap72": {
       "views": 2,
@@ -2042,8 +2042,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1447,
-      "fetched_at": 1785841893
+      "ig_reels_avg_watch_time": 1346,
+      "fetched_at": 1785998571
      },
      "snap72": {
       "views": 5,
@@ -2103,8 +2103,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 916,
-      "fetched_at": 1785853655
+      "ig_reels_avg_watch_time": 1307,
+      "fetched_at": 1785998571
      },
      "snap72": {
       "views": 6,
@@ -2286,10 +2286,20 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1878,
-      "fetched_at": 1785841893
+      "ig_reels_avg_watch_time": 1746,
+      "fetched_at": 1785998571
      },
-     "snap72": null,
+     "snap72": {
+      "views": 9,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1746,
+      "fetched_at": 1785998571
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -2489,7 +2499,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 110,
+      "reach": 98,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 1,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 3020,
+      "fetched_at": 1785998571
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -2572,6 +2592,49 @@
     "instagram": {
      "id": "18112417057991413",
      "posted_at": 1785943585
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1785998518,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Nashville uses eminent domain to block data center near zoo",
+    "subject": "Nashville eminent domain data center",
+    "url": "https://www.costar.com/article/970809918/nashville-council-approves-eminent-domain-action-to-halt-data-center-project",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 8.53,
+    "sources": [],
+    "display_title": "City uses eminent domain to block data center",
+    "angle": "Nashville used the power of eminent domain to stop a data center from being built near the zoo.",
+    "insight": "Local governments can now use eminent domain to halt unwanted digital infrastructure projects near community landmarks.",
+    "judge": "plan"
+   },
+   "style_pack": "burgundy-luxe",
+   "format_pack": "legacy-news",
+   "seed": 1831760042,
+   "voice": "en-US-AvaMultilingualNeural",
+   "hook_type": "TIMEFRAME-COMPRESSION",
+   "scene_count": 5,
+   "video_seconds": 52.9,
+   "ledger_rev": 2,
+   "session": "gh-edc845",
+   "platforms": {
+    "instagram": {
+     "id": "18101729426224119",
+     "posted_at": 1785998567
     }
    },
    "metrics": {

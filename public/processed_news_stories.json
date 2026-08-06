@@ -481,5 +481,16 @@
   ],
   "ts": 1785943588,
   "session": "gh-bdc045"
+ },
+ {
+  "id": "49191624",
+  "title": "Nashville uses eminent domain to block data center near zoo",
+  "norm": "nashville uses eminent domain to block data center near zoo",
+  "subject_norm": "nashville eminent domain data center",
+  "entities": [
+   "nashville"
+  ],
+  "ts": 1785998571,
+  "session": "gh-edc845"
  }
 ]
