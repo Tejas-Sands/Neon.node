@@ -903,6 +903,62 @@
    "session": "gh-edc845",
    "query": "data center server room blinking lights",
    "scene": 4
+  },
+  {
+   "id": "pexels-4708340",
+   "ts": 1786010315,
+   "session": "gh-104eec",
+   "query": "data center servers gpu",
+   "scene": 0
+  },
+  {
+   "id": "pexels-17037261",
+   "ts": 1786010315,
+   "session": "gh-104eec",
+   "query": "neural network visualization motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-16868498",
+   "ts": 1786010315,
+   "session": "gh-104eec",
+   "query": "neural network visualization motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-8100345",
+   "ts": 1786010315,
+   "session": "gh-104eec",
+   "query": "code editor screen scrolling",
+   "scene": 2
+  },
+  {
+   "id": "pexels-34771072",
+   "ts": 1786010315,
+   "session": "gh-104eec",
+   "query": "terminal typing commands",
+   "scene": 3
+  },
+  {
+   "id": "pexels-6266441",
+   "ts": 1786010315,
+   "session": "gh-104eec",
+   "query": "terminal typing commands",
+   "scene": 3
+  },
+  {
+   "id": "pexels-8328140",
+   "ts": 1786010315,
+   "session": "gh-104eec",
+   "query": "robot arm working",
+   "scene": 4
+  },
+  {
+   "id": "pexels-8087010",
+   "ts": 1786010315,
+   "session": "gh-104eec",
+   "query": "robot arm working",
+   "scene": 4
   }
  ]
 }

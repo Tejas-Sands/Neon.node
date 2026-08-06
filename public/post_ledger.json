@@ -2645,6 +2645,49 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1786010315,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "Discovery Loop",
+    "subject": "Discovery Loop AI Startup",
+    "url": "https://www.discoveryloop.com/",
+    "source": "hn",
+    "keywords": [
+     "discover"
+    ],
+    "viral_score": 8.84,
+    "sources": [],
+    "display_title": "AI legends launch a science-automating startup",
+    "angle": "Ex-Google AI heavyweights are launching Discovery Loop to automate the entire scientific and engineering experimental process using frontier AI.",
+    "insight": "By automating the iterative loop of proposing and running experiments, AI shifts from being a research assistant to running the entire scientific discovery engine in parallel.",
+    "judge": "plan"
+   },
+   "style_pack": "forest-moss",
+   "format_pack": "legacy-news",
+   "seed": 1322905979,
+   "voice": "en-US-AvaMultilingualNeural",
+   "hook_type": "STOP-SCROLLING TECH",
+   "scene_count": 5,
+   "video_seconds": 47.0,
+   "ledger_rev": 2,
+   "session": "gh-104eec",
+   "platforms": {
+    "instagram": {
+     "id": "18091329764385896",
+     "posted_at": 1786010379
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }
