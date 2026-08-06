@@ -959,6 +959,69 @@
    "session": "gh-104eec",
    "query": "robot arm working",
    "scene": 4
+  },
+  {
+   "id": "pexels-8721658",
+   "ts": 1786027195,
+   "session": "gh-c81725",
+   "query": "terminal typing commands code",
+   "scene": 0
+  },
+  {
+   "id": "pexels-19162466",
+   "ts": 1786027195,
+   "session": "gh-c81725",
+   "query": "code editor screen scrolling",
+   "scene": 1
+  },
+  {
+   "id": "pexels-38870359",
+   "ts": 1786027195,
+   "session": "gh-c81725",
+   "query": "data center servers gpu",
+   "scene": 2
+  },
+  {
+   "id": "pexels-6755152",
+   "ts": 1786027195,
+   "session": "gh-c81725",
+   "query": "circuit board macro motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-16277046",
+   "ts": 1786027195,
+   "session": "gh-c81725",
+   "query": "circuit board macro motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-34771079",
+   "ts": 1786027195,
+   "session": "gh-c81725",
+   "query": "developer typing code laptop",
+   "scene": 4
+  },
+  {
+   "id": "pexels-31830903",
+   "ts": 1786027195,
+   "session": "gh-c81725",
+   "query": "developer typing code laptop",
+   "scene": 4
+  },
+  {
+   "id": "pexels-25935022",
+   "ts": 1786027195,
+   "session": "gh-c81725",
+   "query": "neural network visualization motion",
+   "scene": 5
+  },
+  {
+   "id": "pexels-35010179",
+   "ts": 1786027195,
+   "session": "gh-c81725",
+   "query": "neural network visualization motion",
+   "scene": 5
   }
  ]
 }
