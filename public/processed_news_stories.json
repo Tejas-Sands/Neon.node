@@ -510,5 +510,17 @@
   "entities": [],
   "ts": 1786028009,
   "session": "gh-c81725"
+ },
+ {
+  "id": "49198464",
+  "title": "Launch HN: ProvenMetal (YC S26) delivers circuit boards in days instead of weeks",
+  "norm": "launch hn provenmetal yc s26 delivers circuit boards in days instead of weeks",
+  "subject_norm": "provenmetal",
+  "entities": [
+   "provenmetal",
+   "s26"
+  ],
+  "ts": 1786081205,
+  "session": "gh-0604f8"
  }
 ]
