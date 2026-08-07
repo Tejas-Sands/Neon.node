@@ -372,7 +372,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3877,
-      "fetched_at": 1785998571
+      "fetched_at": 1786099553
      },
      "snap72": {
       "views": 114,
@@ -425,7 +425,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1764,
-      "fetched_at": 1785998571
+      "fetched_at": 1786099553
      },
      "snap72": {
       "views": 151,
@@ -648,7 +648,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1164,
-      "fetched_at": 1785998571
+      "fetched_at": 1786099553
      },
      "snap72": {
       "views": 116,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1196,
-      "fetched_at": 1785998571
+      "fetched_at": 1786099553
      },
      "snap72": {
       "views": 159,
@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1785998571
+      "fetched_at": 1786099553
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1785998571
+      "fetched_at": 1786099553
      },
      "snap72": {
       "views": 116,
@@ -1035,7 +1035,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3552,
-      "fetched_at": 1785998571
+      "fetched_at": 1786099553
      },
      "snap72": {
       "views": 106,
@@ -1090,7 +1090,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2691,
-      "fetched_at": 1785998571
+      "fetched_at": 1786099553
      },
      "snap72": {
       "views": 86,
@@ -1632,7 +1632,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 16364,
-      "fetched_at": 1785998571
+      "fetched_at": 1786099553
      },
      "snap72": {
       "views": 0,
@@ -1744,8 +1744,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2876,
-      "fetched_at": 1785998571
+      "ig_reels_avg_watch_time": 2828,
+      "fetched_at": 1786099553
      },
      "snap72": {
       "views": 26,
@@ -1982,7 +1982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3957,
-      "fetched_at": 1785998571
+      "fetched_at": 1786099553
      },
      "snap72": {
       "views": 2,
@@ -2406,17 +2406,27 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 22,
-      "reach": 20,
+      "views": 23,
+      "reach": 21,
       "likes": 5,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 5,
-      "ig_reels_avg_watch_time": 3950,
-      "fetched_at": 1785943588
+      "ig_reels_avg_watch_time": 4173,
+      "fetched_at": 1786099553
      },
-     "snap72": null,
+     "snap72": {
+      "views": 23,
+      "reach": 21,
+      "likes": 5,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 5,
+      "ig_reels_avg_watch_time": 4173,
+      "fetched_at": 1786099553
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -2467,9 +2477,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 769,
-      "fetched_at": 1785943588
+      "fetched_at": 1786099553
      },
-     "snap72": null,
+     "snap72": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 769,
+      "fetched_at": 1786099553
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -2669,7 +2689,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 13063,
+      "fetched_at": 1786099553
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -2712,7 +2742,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 16233,
+      "fetched_at": 1786099553
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0

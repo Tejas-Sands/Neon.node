@@ -522,5 +522,19 @@
   ],
   "ts": 1786081205,
   "session": "gh-0604f8"
+ },
+ {
+  "id": "49204352",
+  "title": "New Mexico court orders Meta to pay $567m over harms to children\u2019s mental health",
+  "norm": "new mexico court orders meta to pay 567m over harms to children s mental health",
+  "subject_norm": "meta new mexico court fine",
+  "entities": [
+   "meta",
+   "mexico",
+   "court",
+   "fine"
+  ],
+  "ts": 1786099553,
+  "session": "gh-d249e7"
  }
 ]
