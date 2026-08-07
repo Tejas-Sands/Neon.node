@@ -2043,7 +2043,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1346,
-      "fetched_at": 1785998571
+      "fetched_at": 1786110649
      },
      "snap72": {
       "views": 5,
@@ -2104,7 +2104,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1307,
-      "fetched_at": 1785998571
+      "fetched_at": 1786110649
      },
      "snap72": {
       "views": 6,
@@ -2287,7 +2287,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1746,
-      "fetched_at": 1785998571
+      "fetched_at": 1786110649
      },
      "snap72": {
       "views": 9,
@@ -2538,9 +2538,19 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3020,
-      "fetched_at": 1785998571
+      "fetched_at": 1786110649
      },
-     "snap72": null,
+     "snap72": {
+      "views": 110,
+      "reach": 98,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 1,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 3020,
+      "fetched_at": 1786110649
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -2792,6 +2802,50 @@
     "instagram": {
      "id": "18164820094460453",
      "posted_at": 1786081202
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786110585,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "AMD acquires Taalas to boost inference performance by etching models in silicon",
+    "subject": "AMD acquires Taalas",
+    "url": "https://www.theregister.com/systems/2026/08/06/amd-acquires-ai-chip-startup-taalas-to-boost-inference-performance-by-etching-models-into-silicon/5284344",
+    "source": "hn",
+    "keywords": [
+     "model",
+     "acquire"
+    ],
+    "viral_score": 9.66,
+    "sources": [],
+    "display_title": "AMD's new chip etches AI into silicon",
+    "angle": "AMD bought startup Taalas to bake AI model weights directly into silicon, achieving blistering inference speeds that challenge Nvidia.",
+    "insight": "By etching static AI model weights directly into silicon rather than using high-bandwidth memory, hardware can bypass traditional bandwidth bottlenecks to serve tokens exponentially faster.",
+    "judge": "plan"
+   },
+   "style_pack": "mono-brutalist",
+   "format_pack": "legacy-news",
+   "seed": 973600468,
+   "voice": "en-US-EmmaMultilingualNeural",
+   "hook_type": "HIGH-STAKES BENCHMARK",
+   "scene_count": 6,
+   "video_seconds": 62.6,
+   "ledger_rev": 2,
+   "session": "gh-c0fc75",
+   "platforms": {
+    "instagram": {
+     "id": "18088472768643107",
+     "posted_at": 1786110645
     }
    },
    "metrics": {

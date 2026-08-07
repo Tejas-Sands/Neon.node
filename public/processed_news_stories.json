@@ -536,5 +536,17 @@
   ],
   "ts": 1786099553,
   "session": "gh-d249e7"
+ },
+ {
+  "id": "49201970",
+  "title": "AMD acquires Taalas to boost inference performance by etching models in silicon",
+  "norm": "amd acquires taalas to boost inference performance by etching models in silicon",
+  "subject_norm": "amd acquires taalas",
+  "entities": [
+   "amd",
+   "taalas"
+  ],
+  "ts": 1786110649,
+  "session": "gh-c0fc75"
  }
 ]
