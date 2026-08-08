@@ -557,5 +557,18 @@
   "entities": [],
   "ts": 1786165972,
   "session": "gh-626a9e"
+ },
+ {
+  "id": "49213754",
+  "title": "Oracle bans AI-generated code from OpenJDK",
+  "norm": "oracle bans ai generated code from openjdk",
+  "subject_norm": "oracle bans ai code",
+  "entities": [
+   "oracle",
+   "ai-generated",
+   "openjdk"
+  ],
+  "ts": 1786184997,
+  "session": "gh-8a6c05"
  }
 ]

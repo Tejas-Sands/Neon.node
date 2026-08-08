@@ -1267,6 +1267,69 @@
    "session": "gh-626a9e",
    "query": "developer typing code laptop",
    "scene": 4
+  },
+  {
+   "id": "pexels-38410501",
+   "ts": 1786184940,
+   "session": "gh-8a6c05",
+   "query": "terminal code screen scrolling fast",
+   "scene": 0
+  },
+  {
+   "id": "pexels-26060699",
+   "ts": 1786184940,
+   "session": "gh-8a6c05",
+   "query": "server room dark lights flashing",
+   "scene": 1
+  },
+  {
+   "id": "pexels-34280527",
+   "ts": 1786184940,
+   "session": "gh-8a6c05",
+   "query": "server room dark lights flashing",
+   "scene": 1
+  },
+  {
+   "id": "pexels-7280674",
+   "ts": 1786184940,
+   "session": "gh-8a6c05",
+   "query": "code editor syntax error highlighting",
+   "scene": 2
+  },
+  {
+   "id": "pexels-35050095",
+   "ts": 1786184940,
+   "session": "gh-8a6c05",
+   "query": "code editor syntax error highlighting",
+   "scene": 2
+  },
+  {
+   "id": "pexels-12893579",
+   "ts": 1786184940,
+   "session": "gh-8a6c05",
+   "query": "developer hands typing keyboard closeup",
+   "scene": 3
+  },
+  {
+   "id": "pexels-5377683",
+   "ts": 1786184940,
+   "session": "gh-8a6c05",
+   "query": "cyber security digital shield scan",
+   "scene": 4
+  },
+  {
+   "id": "pexels-38870306",
+   "ts": 1786184940,
+   "session": "gh-8a6c05",
+   "query": "data center servers motion tracking",
+   "scene": 5
+  },
+  {
+   "id": "pexels-28579792",
+   "ts": 1786184940,
+   "session": "gh-8a6c05",
+   "query": "data center servers motion tracking",
+   "scene": 5
   }
  ]
 }
