@@ -1330,6 +1330,62 @@
    "session": "gh-8a6c05",
    "query": "data center servers motion tracking",
    "scene": 5
+  },
+  {
+   "id": "pexels-7230784",
+   "ts": 1786200453,
+   "session": "gh-438f97",
+   "query": "data center server racks blinking",
+   "scene": 0
+  },
+  {
+   "id": "pexels-35205646",
+   "ts": 1786200453,
+   "session": "gh-438f97",
+   "query": "data center server racks blinking",
+   "scene": 0
+  },
+  {
+   "id": "pexels-34818829",
+   "ts": 1786200453,
+   "session": "gh-438f97",
+   "query": "code editor screen scrolling",
+   "scene": 1
+  },
+  {
+   "id": "pexels-9783691",
+   "ts": 1786200453,
+   "session": "gh-438f97",
+   "query": "code editor screen scrolling",
+   "scene": 1
+  },
+  {
+   "id": "pexels-38502680",
+   "ts": 1786200453,
+   "session": "gh-438f97",
+   "query": "network traffic visualization motion",
+   "scene": 2
+  },
+  {
+   "id": "pexels-32115649",
+   "ts": 1786200453,
+   "session": "gh-438f97",
+   "query": "supercomputer cooling system motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-7967182",
+   "ts": 1786200453,
+   "session": "gh-438f97",
+   "query": "developer laptop closeup typing",
+   "scene": 4
+  },
+  {
+   "id": "pexels-12894347",
+   "ts": 1786200453,
+   "session": "gh-438f97",
+   "query": "developer laptop closeup typing",
+   "scene": 4
   }
  ]
 }

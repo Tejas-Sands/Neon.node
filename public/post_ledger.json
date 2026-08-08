@@ -372,7 +372,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3877,
-      "fetched_at": 1786099553
+      "fetched_at": 1786200510
      },
      "snap72": {
       "views": 114,
@@ -425,7 +425,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1764,
-      "fetched_at": 1786099553
+      "fetched_at": 1786200510
      },
      "snap72": {
       "views": 151,
@@ -648,7 +648,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1164,
-      "fetched_at": 1786099553
+      "fetched_at": 1786200510
      },
      "snap72": {
       "views": 116,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1196,
-      "fetched_at": 1786099553
+      "fetched_at": 1786200510
      },
      "snap72": {
       "views": 159,
@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1786099553
+      "fetched_at": 1786200510
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1786099553
+      "fetched_at": 1786200510
      },
      "snap72": {
       "views": 116,
@@ -1035,7 +1035,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3552,
-      "fetched_at": 1786099553
+      "fetched_at": 1786200510
      },
      "snap72": {
       "views": 106,
@@ -1090,7 +1090,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2691,
-      "fetched_at": 1786099553
+      "fetched_at": 1786200510
      },
      "snap72": {
       "views": 86,
@@ -1632,7 +1632,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 16364,
-      "fetched_at": 1786099553
+      "fetched_at": 1786200510
      },
      "snap72": {
       "views": 0,
@@ -1745,7 +1745,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2828,
-      "fetched_at": 1786099553
+      "fetched_at": 1786200510
      },
      "snap72": {
       "views": 26,
@@ -1982,7 +1982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3957,
-      "fetched_at": 1786099553
+      "fetched_at": 1786200510
      },
      "snap72": {
       "views": 2,
@@ -2414,7 +2414,7 @@
       "saved": 0,
       "total_interactions": 5,
       "ig_reels_avg_watch_time": 4173,
-      "fetched_at": 1786099553
+      "fetched_at": 1786200510
      },
      "snap72": {
       "views": 23,
@@ -2477,7 +2477,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 769,
-      "fetched_at": 1786099553
+      "fetched_at": 1786200510
      },
      "snap72": {
       "views": 1,
@@ -2658,16 +2658,26 @@
     "instagram": {
      "latest": {
       "views": 4,
-      "reach": 4,
+      "reach": 5,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1523,
-      "fetched_at": 1786081205
+      "fetched_at": 1786200510
      },
-     "snap72": null,
+     "snap72": {
+      "views": 4,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1523,
+      "fetched_at": 1786200510
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -2870,7 +2880,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 9,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2667,
+      "fetched_at": 1786200510
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -2953,6 +2973,50 @@
     "instagram": {
      "id": "18122802280737919",
      "posted_at": 1786184994
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786200453,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+    "subject": "Genesis Open Models Initiative",
+    "url": "https://genesisopenmodels.anl.gov/",
+    "source": "hn",
+    "keywords": [
+     "model",
+     "launch"
+    ],
+    "viral_score": 8.42,
+    "sources": [],
+    "display_title": "US Government Launches Open AI Models",
+    "angle": "The Department of Energy is launching the Genesis Open Models Initiative to push open-source artificial intelligence in the public sector.",
+    "insight": "Federal backing of open models legitimizes them for enterprise use, shifting momentum away from closed-source tech giants.",
+    "judge": "plan"
+   },
+   "style_pack": "forest-moss",
+   "format_pack": "legacy-news",
+   "seed": 527027902,
+   "voice": "en-US-AvaMultilingualNeural",
+   "hook_type": "NEGATIVE WARNING",
+   "scene_count": 5,
+   "video_seconds": 41.8,
+   "ledger_rev": 2,
+   "session": "gh-438f97",
+   "platforms": {
+    "instagram": {
+     "id": "18151179412446515",
+     "posted_at": 1786200507
     }
    },
    "metrics": {
