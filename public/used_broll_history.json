@@ -1211,6 +1211,62 @@
    "session": "gh-c0fc75",
    "query": "developer typing code laptop",
    "scene": 5
+  },
+  {
+   "id": "pexels-15439745",
+   "ts": 1786165910,
+   "session": "gh-626a9e",
+   "query": "server room blinking lights motion",
+   "scene": 0
+  },
+  {
+   "id": "pexels-6245593",
+   "ts": 1786165910,
+   "session": "gh-626a9e",
+   "query": "terminal typing commands motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-29538698",
+   "ts": 1786165910,
+   "session": "gh-626a9e",
+   "query": "network traffic dashboard screen",
+   "scene": 2
+  },
+  {
+   "id": "pexels-35585194",
+   "ts": 1786165910,
+   "session": "gh-626a9e",
+   "query": "network traffic dashboard screen",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7579561",
+   "ts": 1786165910,
+   "session": "gh-626a9e",
+   "query": "data center servers gpu",
+   "scene": 3
+  },
+  {
+   "id": "pexels-36825184",
+   "ts": 1786165910,
+   "session": "gh-626a9e",
+   "query": "data center servers gpu",
+   "scene": 3
+  },
+  {
+   "id": "pexels-8266177",
+   "ts": 1786165910,
+   "session": "gh-626a9e",
+   "query": "developer typing code laptop",
+   "scene": 4
+  },
+  {
+   "id": "pexels-5925283",
+   "ts": 1786165910,
+   "session": "gh-626a9e",
+   "query": "developer typing code laptop",
+   "scene": 4
   }
  ]
 }
