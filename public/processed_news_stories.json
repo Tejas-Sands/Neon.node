@@ -590,5 +590,18 @@
   ],
   "ts": 1786253995,
   "session": "gh-82833a"
+ },
+ {
+  "id": "49228458",
+  "title": "The original URL for this prediction will no longer be available in 11 years (2011)",
+  "norm": "the original url for this prediction will no longer be available in 11 years 2011",
+  "subject_norm": "long bets link rot wager",
+  "entities": [
+   "url",
+   "long",
+   "bets"
+  ],
+  "ts": 1786264787,
+  "session": "gh-c501a5"
  }
 ]

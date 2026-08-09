@@ -1304,7 +1304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1882,
-      "fetched_at": 1786165972
+      "fetched_at": 1786264787
      },
      "snap72": {
       "views": 122,
@@ -1688,7 +1688,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3139,
-      "fetched_at": 1786165972
+      "fetched_at": 1786264787
      },
      "snap72": {
       "views": 14,
@@ -1804,7 +1804,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1292,
-      "fetched_at": 1786165972
+      "fetched_at": 1786264787
      },
      "snap72": {
       "views": 7,
@@ -1863,7 +1863,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1472,
-      "fetched_at": 1786165972
+      "fetched_at": 1786264787
      },
      "snap72": {
       "views": 8,
@@ -1923,7 +1923,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1749,
-      "fetched_at": 1786165972
+      "fetched_at": 1786264787
      },
      "snap72": {
       "views": 3,
@@ -2163,7 +2163,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1084,
-      "fetched_at": 1786165972
+      "fetched_at": 1786264787
      },
      "snap72": {
       "views": 0,
@@ -2602,7 +2602,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1353,
-      "fetched_at": 1786165972
+      "fetched_at": 1786264787
      },
      "snap72": {
       "views": 14,
@@ -3090,6 +3090,49 @@
     "instagram": {
      "id": "18111571630792622",
      "posted_at": 1786253991
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786264726,
+   "posted_hour_utc": 8,
+   "channel": "news",
+   "topic": {
+    "title": "The original URL for this prediction will no longer be available in 11 years (2011)",
+    "subject": "Long Bets link rot wager",
+    "url": "http://longbets.org/601/",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 7.98,
+    "sources": [],
+    "display_title": "Can a single web URL survive 11 years?",
+    "angle": "A high-stakes 2011 bet on link rot tests whether a simple prediction URL can survive eleven years on the web.",
+    "insight": "Even with mature 301 redirect strategies, the digital entropy of link rot remains a constant threat to web history.",
+    "judge": "plan"
+   },
+   "style_pack": "ice-electric",
+   "format_pack": "legacy-news",
+   "seed": 366457404,
+   "voice": "en-US-AvaMultilingualNeural",
+   "hook_type": "CURIOSITY GAP",
+   "scene_count": 6,
+   "video_seconds": 49.5,
+   "ledger_rev": 2,
+   "session": "gh-c501a5",
+   "platforms": {
+    "instagram": {
+     "id": "18117659959829915",
+     "posted_at": 1786264784
     }
    },
    "metrics": {
