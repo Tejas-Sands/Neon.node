@@ -486,11 +486,17 @@ def main():
                 prompt = build_pack_prompt(
                     format_pack, title, pack_brief, seed=_derive_seed(session_id))
             else:
+                # Non-legacy packs state their runtime budget up front so the
+                # first draft lands in band; legacy passes None and is
+                # byte-identical to the pre-2026-08-09 prompt.
+                _pack_cfg = resolve_pack(format_pack)
                 prompt = build_hn_news_prompt(
                     title, body, seed=_derive_seed(session_id),
                     outro_appended=session_id.startswith(AUTO_CHANNEL_PREFIXES),
                     plan=plan,
                     ending="no-ask" if loop_ending else None,
+                    target_sec=_pack_cfg["band"],
+                    scene_range=_pack_cfg["scenes"] if _pack_cfg["band"] else None,
                 )
 
         if dry_run:

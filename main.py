@@ -7914,7 +7914,9 @@ def extract_article_body(url: str) -> str:
 def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None,
                          outro_appended: bool = False,
                          plan: Optional[dict] = None,
-                         ending: Optional[str] = None) -> str:
+                         ending: Optional[str] = None,
+                         target_sec: Optional[tuple] = None,
+                         scene_range: Optional[tuple] = None) -> str:
     """Builds a fast-paced tech-news prompt with a RANDOMIZED scene flow.
 
     The visual theme is intentionally left to the backend style-director (which
@@ -7964,6 +7966,13 @@ def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None,
     if current_style_epoch() > 0:
         mc_options = _epoch_rng(41).choice(
             [[2, 3, 3, 4], [2, 2, 3, 3, 4], [3, 3, 4, 4], [2, 3, 4, 4]])
+    if scene_range:
+        # A pack's scene band is TOTAL scenes; middle beats are the total less
+        # the hook and the closer. Clamped into the epoch's own distribution so
+        # the draw is still consumed identically — a post-draw clamp, never a
+        # skipped draw.
+        lo, hi = int(scene_range[0]), int(scene_range[1])
+        mc_options = [min(max(m, max(1, lo - 2)), max(1, hi - 2)) for m in mc_options]
     middle_count = rnd.choice(mc_options)
     middle_beats = beat_pool[:middle_count]
 
@@ -8040,6 +8049,29 @@ TONE (MANDATORY): narrate like a delighted friend telling you the news — warm,
                 "- Use ONLY specifics that appear in the article text above — do NOT add numbers, people, or quotes beyond it.")
         editorial_block = "\n".join(editorial_lines) + "\n\n"
 
+    # Runtime target. Absent (the default) the prompt is byte-identical to the
+    # pre-2026-08-09 one and length is governed only by the retry loop — which
+    # is a REACTION: it costs a full LLM round trip to discover the script was
+    # too long. Stating the budget up front is what keeps a 20-30s pack from
+    # burning every attempt on a 40s draft.
+    #
+    # The "TWO scenes must carry a real figure" line is load-bearing, not
+    # padding: H1 in _script_vagueness_reasons fires HARD when a script has no
+    # number-bearing scene, and a 4-scene script has far fewer places to carry
+    # one. On an auto channel with no pack rebuild available that HARD verdict
+    # raises and the posting slot is skipped. Never drop that line to make the
+    # block shorter — weakening H1 instead is forbidden (repo rule 3).
+    length_block = ""
+    if target_sec:
+        lo_s, hi_s = float(target_sec[0]), float(target_sec[1])
+        # ~2.45 words/sec measured (scripts/measure_spoken_rate.py, 2026-08-09).
+        lo_w, hi_w = int(lo_s * 2.3), int(hi_s * 2.3)
+        sc_lo, sc_hi = (int(scene_range[0]), int(scene_range[1])) if scene_range else (4, 5)
+        per_lo, per_hi = max(6, lo_w // max(1, sc_hi)), max(8, hi_w // max(1, sc_lo))
+        length_block = f"""
+LENGTH (HARD CONSTRAINT — this is a {int(lo_s)}-{int(hi_s)} SECOND video): the summed "voiceover" across ALL scenes must be {lo_w}-{hi_w} words TOTAL, across {sc_lo}-{sc_hi} scenes — roughly {per_lo}-{per_hi} words per scene. Write ONE crisp sentence per scene; never two. Cut every clause that does not carry a specific from the article. At least TWO scenes must still carry a real figure copied from the source.
+"""
+
     return f"""Create a highly engaging, fast-paced vertical (9:16) tech-news video summarizing this trending Hacker News article.
 
 NEWS SOURCE DETAILS:
@@ -8064,7 +8096,7 @@ CONCRETENESS CONTRACT: this video covers THIS story only, END-TO-END. The scenes
 (3) REAL numbers — if the article text contains figures, weave at least two of them into the scenes; NEVER invent any;
 (4) WHY it matters — who is affected and what changes now.
 BANNED: generic filler everyone already knows ('technology is evolving fast', 'this will change everything', 'tools make life easier') AND generic advice to the viewer ('do this', 'you should', 'try these tips') — this is a news story, not a tutorial. Every sentence must carry information specific to THIS story.
-"""
+{length_block}"""
 
 
 @app.post("/render/hn-news", dependencies=[Depends(verify_api_key)])

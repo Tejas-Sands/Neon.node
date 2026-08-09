@@ -45,14 +45,23 @@ FORMAT_PACKS = {
     },
     # Today's concrete-news arc, retention-tuned: shorter, no outro coda,
     # loop-friendly ending. Closest pack to current content — ships first.
+    #
+    # Band retuned 30-45 -> 20-30 (2026-08-09) as the SHORT arm of the runtime
+    # experiment. Measured on 52 posts: 42-63s videos were retaining 1.5-3.0s,
+    # a ~5% completion rate, and Reels ranks on watch-through. Because this
+    # pack has outro=False, total runtime EQUALS the spoken band exactly —
+    # there is no 4s outro to reason about, which is why the experiment's
+    # short arm is this pack and not a retuned legacy-news (whose retry notes
+    # hardcode "40-55 seconds"; see runtime_revision_notes below).
+    # 20-30s at the 3.0s/scene floor implies 4-5 scenes at 11-14 spoken words.
     "facts-explainer": {
-        "band": (30.0, 45.0),
+        "band": (20.0, 30.0),
         "broll": "all",
         "outro": False,
         "loop_ending": True,
         "hook": "number-or-payoff",
         "brief": None,
-        "scenes": (4, 6),
+        "scenes": (4, 5),
     },
     # Animated data ranking with the leader withheld until the last beat.
     "data-rankings": {

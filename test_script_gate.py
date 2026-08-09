@@ -56,6 +56,24 @@ REJECT_HARD = {
                   voiceover="The ones who adapt early will win."),
         ]}, "", None),
 
+    # The short-arm failure mode, documented deliberately: the SAME 4-scene
+    # shape with its figures removed and one platitude left in. number_scenes
+    # drops to 0, so H1 escalates that single phrase to HARD. This is why the
+    # LENGTH block in build_hn_news_prompt must keep telling the model that at
+    # least TWO scenes carry a real figure — the fix is upstream in the prompt,
+    # never a weakening of H1.
+    "short script that lost its numbers": (
+        {"scenes": [
+            scene("hero", "CLOUDFLARE EDGE CACHE", "faster cold starts",
+                  voiceover="Cloudflare's edge cache just made cold starts dramatically quicker."),
+            scene("split", "HOW IT WORKS", "workers stay resident",
+                  voiceover="It keeps compiled workers resident instead of rebuilding them each request."),
+            scene("split", "WHY NOW", "the shift is here",
+                  voiceover="This will change everything about how teams ship at the edge."),
+            scene("split", "WHO IT HITS", "every workers API",
+                  voiceover="Every API running on workers gets that speedup without a redeploy."),
+        ]}, "", {"subject": "Cloudflare edge cache"}),
+
     # >=50% imperative mid scenes + no subject + no numbers -> H3.
     "generic productivity advice": (
         {"scenes": [
@@ -161,6 +179,26 @@ ACCEPT = {
             scene("metric", "THE NUMBER", "3x",
                   voiceover="Benchmarks show writes finishing in a third of the time."),
         ]}, "", {"subject": "Postgres 18"}, True),
+
+    # THE SHORT-ARM PIN. facts-explainer runs a 20-30s band = 4-5 scenes at
+    # ~47 words total. Fewer scenes means fewer places to carry a figure, and
+    # H1 escalates a SINGLE stray platitude to HARD the moment number_scenes
+    # hits 0 — which on an auto channel with no pack rebuild raises and SKIPS
+    # THE POSTING SLOT. A well-formed short script must be hard-clean, or the
+    # short arm silently costs posts instead of measuring anything.
+    "short-arm 4-scene script": (
+        {"scenes": [
+            scene("hero", "CLOUDFLARE EDGE CACHE", "9ms cold starts",
+                  voiceover="Cloudflare's edge cache just cut cold-start latency to nine milliseconds."),
+            scene("split", "HOW IT WORKS", "workers stay resident",
+                  voiceover="It keeps compiled workers resident in memory instead of rebuilding them on every request."),
+            scene("metric", "THE DROP", "200ms to 9ms",
+                  voiceover="That takes cold starts from two hundred milliseconds down to nine."),
+            scene("split", "WHO IT HITS", "every workers API",
+                  voiceover="Every API running on workers gets that speedup without a single redeploy."),
+        ]}, "Cloudflare shipped an edge cache cutting cold starts from 200ms to 9ms "
+            "by keeping compiled workers resident.",
+        {"subject": "Cloudflare edge cache"}, False),
 }
 
 

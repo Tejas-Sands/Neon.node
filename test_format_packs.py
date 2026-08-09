@@ -54,6 +54,17 @@ check("legacy band defers to env globals", format_packs.FORMAT_PACKS["legacy-new
 check("legacy has outro, no loop", format_packs.FORMAT_PACKS["legacy-news"]["outro"] is True
       and format_packs.FORMAT_PACKS["legacy-news"]["loop_ending"] is False)
 
+# facts-explainer is the SHORT arm of the runtime experiment. Its band is
+# pinned by value because the arm's whole premise is the runtime: 42-63s videos
+# were retaining 1.5-3.0s. outro=False is what makes total runtime EQUAL the
+# spoken band, so the arm's length is exactly this pair with no outro to add.
+fe = format_packs.FORMAT_PACKS["facts-explainer"]
+check("facts-explainer band is the 20-30s short arm", fe["band"] == (20.0, 30.0),
+      f"got {fe['band']}")
+check("facts-explainer scenes 4-5 (3.0s/scene floor at 20s)", fe["scenes"] == (4, 5),
+      f"got {fe['scenes']}")
+check("facts-explainer has no outro (runtime == band exactly)", fe["outro"] is False)
+
 # --- 2. Legacy revision-note byte pins ------------------------------------------
 # These literals are the EXACT strings the pre-pack retry loop appended
 # (main.py, CRITICAL REVISION branches). Pinned against raw literals here —
@@ -80,6 +91,19 @@ qexp, qtig = format_packs.runtime_revision_notes(quiz_cfg, *quiz_cfg["band"])
 check("quiz expand names its own band", "15-25 seconds" in qexp and "40-55" not in qexp)
 check("quiz tighten names its own band", "15-25 seconds" in qtig and "40-55" not in qtig)
 check("quiz notes preserve structure", "scene structure" in qexp and "scene structure" in qtig)
+
+# The short arm's retry copy must name ITS band. This is the reason the arm is
+# facts-explainer and not a retuned legacy-news: runtime_revision_notes returns
+# the legacy literals byte-for-byte and IGNORES its min_sec/max_sec arguments,
+# so setting MAX_SPOKEN_SEC=30 would still instruct the model to tighten "to
+# 40-55 seconds" on every retry — the loop would fight its own target.
+fe_cfg = format_packs.resolve_pack("facts-explainer")
+fexp, ftig = format_packs.runtime_revision_notes(fe_cfg, *fe_cfg["band"])
+check("facts expand names its own band", "20-30 seconds" in fexp and "40-55" not in fexp,
+      f"got: {fexp[:80]}...")
+check("facts tighten names its own band", "20-30 seconds" in ftig and "40-55" not in ftig,
+      f"got: {ftig[:80]}...")
+check("facts notes carry the 4-5 scene range", "4-5 scenes" in fexp, f"got: {fexp[:80]}...")
 
 # --- 3. build_variety_directive identity ----------------------------------------
 # The legacy creative brief must be byte-identical whether format_pack is
@@ -110,6 +134,12 @@ print("[no-ask ending]")
 p_default = main.build_hn_news_prompt("T", "B", seed=7, outro_appended=True)
 p_none = main.build_hn_news_prompt("T", "B", seed=7, outro_appended=True, ending=None)
 check("ending=None is byte-identical to the legacy call", p_default == p_none)
+# Same additive contract for the runtime-budget args: legacy-news passes
+# band=None, so every legacy prompt must be unchanged to the byte.
+p_lenNone = main.build_hn_news_prompt("T", "B", seed=7, outro_appended=True,
+                                      target_sec=None, scene_range=None)
+check("target_sec/scene_range default to a byte-identical legacy prompt",
+      p_default == p_lenNone)
 p_noask = main.build_hn_news_prompt("T", "B", seed=7, outro_appended=True, ending="no-ask")
 check("no-ask drops the outro-card clause", "branded outro card is appended" not in p_noask)
 check("no-ask drops the closer follow CTA", "Follow Neon Node for more tech" not in p_noask)
