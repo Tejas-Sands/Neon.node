@@ -750,11 +750,21 @@ export const SceneTransition: React.FC<SceneTransitionProps> = ({
   const exitDur = Math.min(6, td);
 
   // 0..1 eased edge progress shared by every style.
-  const enterT = interpolate(frame, [0, enterDur], [0, 1], {
+  const enterTRaw = interpolate(frame, [0, enterDur], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: EASE_OUT,
   });
+  // Scene 0's enter starts MORE THAN HALF-ARRIVED. Instagram uses the
+  // video's literal first frame as the reel cover (profile grid + the
+  // load-in moment), so any recipe that enters from nothing — fade, slide,
+  // wipe — turns the cover into a black card (seen on posted reels,
+  // 2026-08-09). Remapping the eased progress keeps every style's shape,
+  // guarantees the hook is visible at frame 0 (crossfade ⇒ opacity ≥ 0.7,
+  // blur-dissolve ⇒ ≤30% residual blur — frame 0 is the reel's COVER image),
+  // and still lands fully by frame 4. Applies to BOTH the cut-plan and
+  // legacy paths below. Do not regress: frame 0 must never be blank.
+  const enterT = sceneIndex === 0 ? 0.7 + 0.3 * enterTRaw : enterTRaw;
   const exitT = interpolate(
     frame,
     [durationInFrames - exitDur, durationInFrames],
