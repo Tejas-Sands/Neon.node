@@ -21,6 +21,13 @@ Locks the rescored perf model in compute_feedback_stats:
      must NOT activate the bias — _feedback_signal_ok is False until either
      enough entries score through a quality branch or raw engagement volume
      clears the floor. Strengthening only: more ways to return None.
+  7. The low-distribution floor (FEEDBACK_MIN_VIEWS): wtr and spr are
+     per-view/per-reach averages, so on a handful of plays one self-view of
+     the full runtime IS the metric. Posts below the floor keep voting on
+     VIEWS but contribute no quality term and never shape the wtr/spr
+     medians. Paired with a views anchor in the quality model so perf can
+     never degenerate into a single-term watch-time classifier when a
+     zero-share ledger drops spr and er. Strengthening only: MAY ONLY RISE.
 
 Usage:
   python test_feedback_scoring.py       # run all, exit 0/1
@@ -197,7 +204,8 @@ check("FEEDBACK_MIN_QUALITY = 5", main.FEEDBACK_MIN_QUALITY == 5)
 led = [entry(style="A", views=101 + (i % 58)) for i in range(32)]
 s = stats_for(led)
 check("noise ledger reports zero signal",
-      s["signal"] == {"eng_total": 0.0, "quality_n": 0}, f"signal={s['signal']}")
+      s["signal"]["eng_total"] == 0.0 and s["signal"]["quality_n"] == 0,
+      f"signal={s['signal']}")
 check("noise ledger fails the gate", main._feedback_signal_ok(s) is False)
 
 # Watch-time entries score through the quality branch — 5 of them clear
@@ -238,6 +246,76 @@ check("garbage signal fails closed",
 # contract, never bypassing it).
 src_get = inspect.getsource(main.get_feedback_stats)
 check("gate wired into get_feedback_stats", "_feedback_signal_ok" in src_get)
+
+# --- 10. Low-distribution floor (FEEDBACK_MIN_VIEWS) -----------------------------
+# Average watch time is an average over `views` plays: on a 1-view post a single
+# self-view of the full runtime IS the metric. The live ledger's three highest
+# wtr values (0.345/0.247/0.231) came from posts with 1, 1 and 9 views and were
+# the loop's strongest voters. Posts below the floor still vote on VIEWS.
+print("[low-distribution floor]")
+check("FEEDBACK_MIN_VIEWS = 20", main.FEEDBACK_MIN_VIEWS == 20)
+
+# 6 well-distributed posts + 3 self-view artifacts (1 view, near-full watch).
+real = [entry(style="R", views=100, awt_ms=4000, video_seconds=20.0, ledger_rev=2)
+        for _ in range(6)]
+fake = [entry(style="F", views=1, awt_ms=16000, video_seconds=20.0, ledger_rev=2)
+        for _ in range(3)]
+s = stats_for(real + fake)
+check("artifacts excluded from the quality census",
+      s["signal"]["quality_n"] == 6, f"signal={s['signal']}")
+check("artifacts counted as held-below-floor",
+      s["signal"]["low_dist_n"] == 3, f"signal={s['signal']}")
+# The 6 identical real posts define the median, so each scores ~1.0. If the
+# 1-view artifacts had shaped the wtr median this would be far off 1.0.
+check("artifacts never shape the wtr median",
+      abs(s["styles"]["R"]["m"] - 1.0) < 0.01, f"R={s['styles'].get('R')}")
+# The artifact still votes (on views), but at 1 view it must score LOW, not
+# clamp to 4.0 on a 0.8 watch ratio.
+check("artifact scores low on views, not high on watch ratio",
+      s["styles"]["F"]["m"] < 1.0, f"F={s['styles'].get('F')}")
+
+# Boundary is inclusive at exactly FEEDBACK_MIN_VIEWS.
+s = stats_for([entry(style="A", views=20, awt_ms=4000, video_seconds=20.0,
+                     ledger_rev=2) for _ in range(6)])
+check("views == floor counts as quality", s["signal"]["quality_n"] == 6,
+      f"signal={s['signal']}")
+s = stats_for([entry(style="A", views=19, awt_ms=4000, video_seconds=20.0,
+                     ledger_rev=2) for _ in range(6)])
+check("views == floor-1 does not", s["signal"]["quality_n"] == 0,
+      f"signal={s['signal']}")
+
+# The views anchor: a single 5x-median-wtr entry must not reach the 4.0 clamp
+# on watch time alone when its views are ordinary.
+led = [entry(style="A", views=100, awt_ms=2000, video_seconds=20.0, ledger_rev=2)
+       for _ in range(5)]
+led += [entry(style="B", views=100, awt_ms=10000, video_seconds=20.0, ledger_rev=2)]
+s = stats_for(led)
+check("views anchor keeps a wtr outlier off the 4.0 clamp",
+      s["styles"]["B"]["m"] < 4.0, f"B={s['styles'].get('B')}")
+check("views anchor present in the perf model", '(0.20, "v")' in src_stats)
+
+# The floor is the only thing doing the work — FEEDBACK_MIN_VIEWS=0 restores
+# pre-2026-08-09 behavior exactly (documented guard-WEAKENING switch).
+_saved_floor = main.FEEDBACK_MIN_VIEWS
+try:
+    main.FEEDBACK_MIN_VIEWS = 0
+    s = stats_for(real + fake)
+    check("FEEDBACK_MIN_VIEWS=0 restores the old (noisy) behavior",
+          s["signal"]["quality_n"] == 9 and s["signal"]["low_dist_n"] == 0,
+          f"signal={s['signal']}")
+finally:
+    main.FEEDBACK_MIN_VIEWS = _saved_floor
+
+# The experiment arm is instrumentation, never a feedback bucket: if it voted,
+# the bandit and the arm assignment would fight over the same lever.
+check("experiment never becomes a feedback bucket",
+      "experiment" not in src_stats)
+led_a = [entry(style="A", views=100, likes=1) for _ in range(3)]
+led_b = [entry(style="A", views=100, likes=1) for _ in range(3)]
+for e in led_b:
+    e["experiment"] = {"name": "runtime", "arm": "short", "assign": "roundrobin"}
+check("an experiment-tagged entry scores identically to an untagged one",
+      stats_for(led_a)["styles"] == stats_for(led_b)["styles"])
 
 print()
 if FAILURES:

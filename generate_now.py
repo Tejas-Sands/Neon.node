@@ -32,9 +32,18 @@ from main import (
     get_feedback_stats,
     load_post_ledger,
     _entry_perf_snapshot,
+    _assign_experiment,
 )
 from format_packs import build_pack_prompt, resolve_pack
 from main import plan_pack_brief
+
+# How an experiment arm changes what gets generated. An EXPERIMENT name with no
+# entry here is TAG-ONLY: the arm is recorded in the ledger and reported in the
+# weekly digest, but generation is untouched (that is the `era:` mode, used to
+# mark a before/after boundary when a change ships to 100%).
+EXPERIMENT_APPLIERS = {
+    "runtime": {"short": "facts-explainer", "long": "legacy-news"},
+}
 
 
 def _build_env_instagram_config():
@@ -83,6 +92,76 @@ def _alert_telegram(text: str, session_id: str):
             send_telegram_message(text, bot_token, chat_id, session_id)
     except Exception as tg_err:
         print(f"Could not send Telegram note: {tg_err}")
+
+
+# Minimum posts per arm before an experiment read-out means anything. Measured
+# by resampling the live post-07-28 view distribution (Mann-Whitney, a=0.05):
+# at n=20/arm a 3x effect on views is detected ~69% of the time, a 2x effect
+# ~35%, and a 1.5x effect ~19%. Below 20 the read is noise dressed as a result.
+EXPERIMENT_MIN_N = 20
+
+
+def _experiment_digest_lines(entries: list, now_ts: float) -> list:
+    """Per-arm read-out over a 28-day window, or [] when nothing is tagged.
+
+    Reports MEDIAN views (the pre-registered primary endpoint) and MEDIAN
+    ABSOLUTE watch seconds. It deliberately does NOT report watch RATIO: the
+    runtime experiment halves the denominator, so wtr is mechanically inflated
+    for the short arm and would read as a win no matter what viewers did.
+    """
+    window = [e for e in entries
+              if float(e.get("ts") or 0) >= now_ts - 28 * 86400
+              and (e.get("experiment") or {}).get("arm")]
+    if not window:
+        return []
+
+    def _median(vals):
+        s = sorted(vals)
+        if not s:
+            return None
+        mid = len(s) // 2
+        return s[mid] if len(s) % 2 else 0.5 * (s[mid - 1] + s[mid])
+
+    by_arm: dict = {}
+    for e in window:
+        exp = e["experiment"]
+        by_arm.setdefault((exp.get("name") or "?", exp["arm"]), []).append(e)
+
+    out = []
+    for name in sorted({k[0] for k in by_arm}):
+        arms = sorted(k[1] for k in by_arm if k[0] == name)
+        out.append(f"\U0001F9EA Experiment “{name}” (28d):")
+        thin = False
+        for arm in arms:
+            rows = by_arm[(name, arm)]
+            views, watch, secs = [], [], []
+            for e in rows:
+                snap = _entry_perf_snapshot(e, "instagram") or {}
+                v = snap.get("views")
+                if v is None:
+                    v = snap.get("reach")
+                if isinstance(v, (int, float)):
+                    views.append(float(v))
+                awt = snap.get("ig_reels_avg_watch_time")
+                if isinstance(awt, (int, float)):
+                    watch.append(float(awt) / 1000.0)
+                d = e.get("video_seconds")
+                if isinstance(d, (int, float)):
+                    secs.append(float(d))
+            mv, mw, ms = _median(views), _median(watch), _median(secs)
+            if len(rows) < EXPERIMENT_MIN_N:
+                thin = True
+            out.append(
+                f"  {arm}: n={len(rows)}"
+                + (f" · median {int(mv)} views" if mv is not None else " · no views yet")
+                + (f" · {mw:.1f}s watched" if mw is not None else "")
+                + (f" · {ms:.0f}s long" if ms is not None else "")
+                + (f" ({len(views)} measured)" if len(views) != len(rows) else "")
+            )
+        if thin:
+            out.append(f"  ⚠ under {EXPERIMENT_MIN_N}/arm — directional only, "
+                       f"do not ship on this.")
+    return out
 
 
 def _maybe_send_weekly_digest(session_id: str, now=None) -> None:
@@ -164,6 +243,7 @@ def _maybe_send_weekly_digest(session_id: str, now=None) -> None:
         epoch = week[-1].get("style_epoch")
         if epoch is not None:
             lines.append(f"Style epoch: {epoch}")
+        lines.extend(_experiment_digest_lines(entries, now.timestamp()))
         _alert_telegram("\n".join(lines)[:3900], session_id)
         print("[Digest] Weekly digest sent.")
     except Exception as digest_err:
@@ -214,6 +294,21 @@ def main():
         format_pack, pack_pick_mode = _feedback_weighted_choice(
             pack_mix, lambda p: p, "format_packs", pack_rnd, get_feedback_stats())
         print(f"[PackRotation] pack={format_pack} ({pack_pick_mode})")
+
+    # An active split OVERRIDES the bandit — deliberately. You cannot A/B a
+    # lever while a bandit is reweighting the same lever: the bandit would
+    # starve the arm that is losing early and the comparison would measure the
+    # bandit, not the format. `era:` specs have no applier entry, so they tag
+    # the post and change nothing.
+    experiment = _assign_experiment(session_id)
+    if experiment:
+        arm_pack = EXPERIMENT_APPLIERS.get(experiment["name"], {}).get(experiment["arm"])
+        if arm_pack:
+            format_pack = resolve_pack(arm_pack)["name"]
+        print(f"[Experiment] {experiment['name']}={experiment['arm']} "
+              f"({experiment['assign']})"
+              + (f" -> pack={format_pack}" if arm_pack else " (tag only)"))
+
     if format_pack != "legacy-news":
         print(f"Format pack: {format_pack}")
 

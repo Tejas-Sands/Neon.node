@@ -228,6 +228,22 @@ jobs:
           # STYLE_DRIFT_DAYS to retune; epoch 0 = today's exact behavior.
           echo "STYLE_DRIFT=${{ vars.STYLE_DRIFT || 'true' }}" >> "$GITHUB_ENV"
           echo "STYLE_DRIFT_DAYS=${{ vars.STYLE_DRIFT_DAYS || '4' }}" >> "$GITHUB_ENV"
+          # Experiment tagging (2026-08-09). UNSET = off, and off means every
+          # post is generated and recorded exactly as before. Two forms:
+          #   EXPERIMENT=era:<name>      tag a 100% rollout, change nothing
+          #   EXPERIMENT=runtime:short|long   50/50 split, short=facts-explainer
+          #                                   (20-30s), long=legacy-news (38-70s)
+          # A live split OVERRIDES the pack bandit by design — you cannot A/B a
+          # lever a bandit is reweighting. Read at n>=20/arm (~13 days at 3/day)
+          # via the Monday digest; below that the digest prints "directional
+          # only" and it means it.
+          echo "EXPERIMENT=${{ vars.EXPERIMENT || '' }}" >> "$GITHUB_ENV"
+          # Distribution floor for the feedback loop's watch-time/share terms.
+          # Watch time is an average over `views`, so on a 1-view post one
+          # self-view IS the metric — the loop was biasing on exactly that.
+          # MAY ONLY BE RAISED. 0 restores the old behavior and is a documented
+          # guard-WEAKENING switch: use only to demonstrate a regression.
+          echo "FEEDBACK_MIN_VIEWS=${{ vars.FEEDBACK_MIN_VIEWS || '20' }}" >> "$GITHUB_ENV"
 
       - name: Run Video Generation Pipeline
         env:

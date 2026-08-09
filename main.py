@@ -5018,6 +5018,10 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
             # planned-duration entries never mix into the same medians.
             "video_seconds": round(
                 sum(s.get("durationInFrames", 0) for s in scenes_with_images) / 30.0, 1),
+            # Which experiment arm produced this post, or None when EXPERIMENT
+            # is unset. Additive and self-identifying, so ledger_rev stays 2 —
+            # nothing about the duration semantics rev 2 marks has changed.
+            "experiment": _assign_experiment(session_id),
             "ledger_rev": 2,
         }
 
@@ -8586,6 +8590,93 @@ def _extract_topic_keywords(title: str) -> list:
     return [w for w in VIRAL_KEYWORDS if w in low]
 
 
+# ----------------------------------------------------------------------------
+# EXPERIMENT TAGGING
+# ----------------------------------------------------------------------------
+# Without this, nothing shipped is attributable: four feature commits landed in
+# three hours on 2026-08-09 and every post carried all of them, so a view
+# change could not be traced to a cause. Two modes, both driven by one env
+# Variable, both no-ops when it is unset:
+#
+#   EXPERIMENT=era:<name>          one arm — tag every post, change nothing.
+#                                  Use when shipping a change to 100% and you
+#                                  only need a before/after boundary.
+#   EXPERIMENT=<name>:<a>|<b>[|c]  split — deterministic arm per session.
+#
+# The arm is recorded in the ledger and read back by the weekly digest. It is
+# instrumentation ONLY: it must never become a feedback bucket, or the bandit
+# and the arm assignment would fight over the same lever and both readings
+# would be meaningless (pinned in test_feedback_scoring.py).
+_EXPERIMENT_CACHE: Dict[str, Optional[dict]] = {}
+
+
+def _parse_experiment_spec(raw: str):
+    """('name', ['arm', ...]) from an EXPERIMENT spec, or None if unusable.
+
+    Fails open (None => no experiment) on anything malformed: a typo'd
+    Variable must not change what gets posted.
+    """
+    spec = (raw or "").strip()
+    if not spec or ":" not in spec:
+        return None
+    name, _, arms_raw = spec.partition(":")
+    name = name.strip()
+    arms = [a.strip() for a in arms_raw.split("|") if a.strip()]
+    if not name or not arms:
+        return None
+    return name, arms
+
+
+def _assign_experiment(session_id: str) -> Optional[dict]:
+    """This session's experiment arm, or None when EXPERIMENT is unset.
+
+    Assignment is ROUND-ROBIN over the arms already used in the ledger, not a
+    seeded coin flip. At n=12/arm a fair coin lands 8-4 or worse ~39% of the
+    time, and at 3 posts/day imbalance is pure statistical power we cannot
+    afford. The seeded hash off the session id is the FALLBACK, used only when
+    the ledger can't be read, so assignment never depends on I/O succeeding.
+
+    Memoized per session: generate_now assigns pre-render to pick the format
+    pack, and ledger_meta records post-render — the two must never disagree.
+    """
+    if session_id in _EXPERIMENT_CACHE:
+        return _EXPERIMENT_CACHE[session_id]
+    # Bounded: CI runs one session per process, but the FastAPI Space is
+    # long-lived and this must not grow without limit. Sessions are assigned
+    # then read back minutes later, so dropping the oldest is safe.
+    if len(_EXPERIMENT_CACHE) >= 256:
+        for stale in list(_EXPERIMENT_CACHE)[:128]:
+            _EXPERIMENT_CACHE.pop(stale, None)
+    result: Optional[dict] = None
+    parsed = _parse_experiment_spec(os.environ.get("EXPERIMENT", ""))
+    if parsed:
+        name, arms = parsed
+        if len(arms) == 1:
+            result = {"name": name, "arm": arms[0], "assign": "single", "rev": 1}
+        else:
+            assign = "roundrobin"
+            try:
+                with _LEDGER_LOCK:
+                    ledger = load_post_ledger()
+                counts = {a: 0 for a in arms}
+                for e in ledger.get("entries") or []:
+                    if e.get("backfilled"):
+                        continue
+                    exp = e.get("experiment") or {}
+                    if exp.get("name") == name and exp.get("arm") in counts:
+                        counts[exp["arm"]] += 1
+                fewest = min(counts.values())
+                pool = [a for a in arms if counts[a] == fewest]
+            except Exception as exc:
+                print(f"[Experiment] Ledger read failed ({exc}) — seeded fallback.")
+                assign, pool = "seed", arms
+            rnd = random.Random(_derive_seed(session_id) ^ 0x1F83D9AB)
+            result = {"name": name, "arm": rnd.choice(pool),
+                      "assign": assign, "rev": 1}
+    _EXPERIMENT_CACHE[session_id] = result
+    return result
+
+
 def record_post_to_ledger(session_id: str, platform: str, post_id,
                           meta: Optional[dict] = None) -> None:
     """Upsert one published post (called from dispatchers at success points).
@@ -8970,6 +9061,21 @@ FEEDBACK_ENG_WEIGHTS = {"comments": 2, "shares": 3, "saved": 3}
 # weighted engagement volume. Below both floors -> neutral (stats=None).
 FEEDBACK_MIN_SIGNAL = int(os.environ.get("FEEDBACK_MIN_SIGNAL", "30"))
 FEEDBACK_MIN_QUALITY = int(os.environ.get("FEEDBACK_MIN_QUALITY", "5"))
+# Distribution floor for the QUALITY terms. Average watch time is an average
+# over `views` plays, so on a low-distribution post a single creator/self view
+# of the full runtime moves it by video_seconds/views seconds: +45s at 1 view,
+# +5.0s at 9 views, against a real viewer watch of 1.5-3.0s. Measured on the
+# live ledger 2026-08-09: every wtr above 0.10 came from a post with <=9 views
+# (0.345/0.247/0.231 from posts with 1, 1 and 9 views), and those three were
+# the loop's strongest voters across styles, hooks, voices and keywords, while
+# every post at >=20 views sat in a tight 0.026-0.095 band.
+# Below this floor a post still votes on VIEWS (real signal at any scale) but
+# contributes no wtr/spr term, no quality census, and — because comp_by_group
+# reuses these dicts — never shapes the wtr/spr medians either.
+# Peer of the signal gate: THIS MAY ONLY BE RAISED. FEEDBACK_MIN_VIEWS=0
+# restores pre-2026-08-09 behavior and is a guard-WEAKENING switch — use it
+# only to demonstrate a regression, never to "get the loop learning again".
+FEEDBACK_MIN_VIEWS = int(os.environ.get("FEEDBACK_MIN_VIEWS", "20"))
 
 
 def _entry_perf_snapshot(entry: dict, platform: str) -> Optional[dict]:
@@ -9003,6 +9109,10 @@ def compute_feedback_stats(ledger: dict) -> dict:
     import math
     now = time.time()
     entries = ledger.get("entries") or []
+    # How many entries carried watch-time data but were held below the
+    # distribution floor — surfaced in the signal block so a CI log reader can
+    # tell "no data yet" apart from "data withheld as unreliable".
+    low_dist = [0]
 
     def _components(entry: dict, platform: str) -> Optional[dict]:
         snap = _entry_perf_snapshot(entry, platform)
@@ -9020,17 +9130,24 @@ def compute_feedback_stats(ledger: dict) -> dict:
             reach = int(snap.get("reach") or 0)
             if views == 0:
                 views = reach
-            # Watch-time completion: platform avg watch time (ms) over the
-            # video's ACTUAL runtime. Only for ledger_rev>=2 entries — older
-            # entries recorded the pre-TTS PLANNED duration (~30% short), and
-            # mixing them in would corrupt the completion medians.
-            awt = snap.get("ig_reels_avg_watch_time")
-            dur = entry.get("video_seconds") or 0
-            if awt is not None and dur and int(entry.get("ledger_rev") or 1) >= 2:
-                c["wtr"] = (float(awt) / 1000.0) / float(dur)
-            # Sends-per-reach: Instagram's #1 non-follower ranking signal.
-            if reach > 0 and snap.get("shares") is not None:
-                c["spr"] = int(snap.get("shares") or 0) / reach
+            # QUALITY terms require real distribution: both are per-view /
+            # per-reach averages, and on a handful of plays a single self-view
+            # dominates them. See FEEDBACK_MIN_VIEWS. Views-based scoring below
+            # is unaffected — a 1-view post is honest evidence of 1 view.
+            if views >= FEEDBACK_MIN_VIEWS:
+                # Watch-time completion: platform avg watch time (ms) over the
+                # video's ACTUAL runtime. Only for ledger_rev>=2 entries — older
+                # entries recorded the pre-TTS PLANNED duration (~30% short), and
+                # mixing them in would corrupt the completion medians.
+                awt = snap.get("ig_reels_avg_watch_time")
+                dur = entry.get("video_seconds") or 0
+                if awt is not None and dur and int(entry.get("ledger_rev") or 1) >= 2:
+                    c["wtr"] = (float(awt) / 1000.0) / float(dur)
+                # Sends-per-reach: Instagram's #1 non-follower ranking signal.
+                if reach > 0 and snap.get("shares") is not None:
+                    c["spr"] = int(snap.get("shares") or 0) / reach
+            elif snap.get("ig_reels_avg_watch_time") is not None:
+                low_dist[0] += 1
         else:
             eng = likes + FEEDBACK_ENG_WEIGHTS["comments"] * comments
         c["v"] = math.log1p(views)
@@ -9102,7 +9219,15 @@ def compute_feedback_stats(ledger: dict) -> dict:
             quality = [(w, t) for w, t in ((0.45, "wtr"), (0.35, "spr"))
                        if t in c and med.get(t, 0.0) > 0]
             if quality:
-                terms = quality + ([(0.20, "er")] if med.get("er", 0.0) > 0 else [])
+                # The views term is ALWAYS usable here (v_med > 0 is checked
+                # above) and is carried as a 0.20 anchor so the model can never
+                # collapse into a single-term classifier. On a ledger with zero
+                # shares and ~zero likes both spr and er drop out, and without
+                # this anchor `perf` would be 100% watch-time — the noisiest
+                # metric in the system — normalized by a median built from the
+                # same handful of samples.
+                terms = quality + ([(0.20, "er")] if med.get("er", 0.0) > 0 else []) \
+                    + [(0.20, "v")]
                 total_w = sum(w for w, _ in terms)
                 perf = sum(w * (c[t] / med[t]) for w, t in terms) / total_w
                 entry_quality = True
@@ -9160,7 +9285,8 @@ def compute_feedback_stats(ledger: dict) -> dict:
             if sw > 0:
                 stats[bucket][key] = {"m": round(swp / sw, 3), "n": n}
     stats["signal"] = {"eng_total": round(signal_eng, 1),
-                       "quality_n": signal_quality_n}
+                       "quality_n": signal_quality_n,
+                       "low_dist_n": low_dist[0]}
     return stats
 
 
@@ -9212,7 +9338,8 @@ def get_feedback_stats() -> Optional[dict]:
             sig = stats.get("signal") or {}
             print("[Feedback] Signal gate: measured engagement below floor "
                   f"(eng_total={sig.get('eng_total')}, "
-                  f"quality_n={sig.get('quality_n')}; need "
+                  f"quality_n={sig.get('quality_n')}, "
+                  f"held_below_{FEEDBACK_MIN_VIEWS}_views={sig.get('low_dist_n')}; need "
                   f"eng>={FEEDBACK_MIN_SIGNAL} or quality>={FEEDBACK_MIN_QUALITY})"
                   " — running neutral.")
         return None
