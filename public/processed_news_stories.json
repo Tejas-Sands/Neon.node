@@ -617,5 +617,17 @@
   ],
   "ts": 1786269468,
   "session": "gh-6bfd1f"
+ },
+ {
+  "id": "49226636",
+  "title": "My server is a phone now",
+  "norm": "my server is a phone now",
+  "subject_norm": "cmf phone 1 server",
+  "entities": [
+   "cmf",
+   "phone"
+  ],
+  "ts": 1786271271,
+  "session": "gh-cebf38"
  }
 ]

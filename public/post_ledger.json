@@ -3186,6 +3186,48 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1786271208,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "My server is a phone now",
+    "subject": "CMF Phone 1 server",
+    "url": "https://seg6.space/posts/phone-server/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 7.19,
+    "sources": [],
+    "display_title": "Why I replaced my cloud server with a",
+    "angle": "A developer stopped paying for a Hetzner VPS and repurposed an old CMF Phone 1 into a home server, learning why keeping Android beats flashing raw Linux.",
+    "insight": "Using old smartphones as edge servers via Android containers instead of custom Linux distros provides free hardware with built-in battery backup and working drivers.",
+    "judge": "plan"
+   },
+   "style_pack": "cherry-blossom",
+   "format_pack": "legacy-news",
+   "seed": 1324734319,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "CHALLENGE-DARE",
+   "style_epoch": 0,
+   "scene_count": 6,
+   "video_seconds": 45.2,
+   "ledger_rev": 2,
+   "session": "gh-cebf38",
+   "platforms": {
+    "instagram": {
+     "id": "18279094462288211",
+     "posted_at": 1786271267
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }
