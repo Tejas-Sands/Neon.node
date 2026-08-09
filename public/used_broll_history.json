@@ -1624,6 +1624,62 @@
    "session": "gh-cebf38",
    "query": "data center server racks blinking lights",
    "scene": 5
+  },
+  {
+   "id": "pexels-5474267",
+   "ts": 1786284146,
+   "session": "gh-33a9cd",
+   "query": "terminal hackers typing code green",
+   "scene": 0
+  },
+  {
+   "id": "pexels-6382040",
+   "ts": 1786284146,
+   "session": "gh-33a9cd",
+   "query": "server room dark blinking lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5483090",
+   "ts": 1786284146,
+   "session": "gh-33a9cd",
+   "query": "code editor scrolling fast terminal",
+   "scene": 2
+  },
+  {
+   "id": "pexels-5981845",
+   "ts": 1786284146,
+   "session": "gh-33a9cd",
+   "query": "code editor scrolling fast terminal",
+   "scene": 2
+  },
+  {
+   "id": "pexels-5841707",
+   "ts": 1786284146,
+   "session": "gh-33a9cd",
+   "query": "data flow network nodes motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-34996611",
+   "ts": 1786284146,
+   "session": "gh-33a9cd",
+   "query": "data flow network nodes motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-6755165",
+   "ts": 1786284146,
+   "session": "gh-33a9cd",
+   "query": "microchip processor circuit motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-15283163",
+   "ts": 1786284146,
+   "session": "gh-33a9cd",
+   "query": "microchip processor circuit motion",
+   "scene": 4
   }
  ]
 }

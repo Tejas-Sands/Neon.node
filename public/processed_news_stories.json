@@ -629,5 +629,16 @@
   ],
   "ts": 1786271271,
   "session": "gh-cebf38"
+ },
+ {
+  "id": "49220609",
+  "title": "Timeline of the OpenAI accidental attack against Hugging Face",
+  "norm": "timeline of the openai accidental attack against hugging face",
+  "subject_norm": "openai hugging face incident",
+  "entities": [
+   "openai"
+  ],
+  "ts": 1786284207,
+  "session": "gh-33a9cd"
  }
 ]

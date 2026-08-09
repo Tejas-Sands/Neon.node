@@ -39,7 +39,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1601,
-      "fetched_at": 1786184997
+      "fetched_at": 1786284207
      },
      "snap72": {
       "views": 101,
@@ -94,7 +94,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1325,
-      "fetched_at": 1786184997
+      "fetched_at": 1786284207
      },
      "snap72": {
       "views": 103,
@@ -150,7 +150,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2582,
-      "fetched_at": 1786184997
+      "fetched_at": 1786284207
      },
      "snap72": {
       "views": 109,
@@ -207,7 +207,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2439,
-      "fetched_at": 1786184997
+      "fetched_at": 1786284207
      },
      "snap72": {
       "views": 119,
@@ -756,7 +756,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6074,
-      "fetched_at": 1786184997
+      "fetched_at": 1786284207
      },
      "snap72": {
       "views": 111,
@@ -812,7 +812,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2982,
-      "fetched_at": 1786184997
+      "fetched_at": 1786284207
      },
      "snap72": {
       "views": 112,
@@ -870,7 +870,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1745,
-      "fetched_at": 1786184997
+      "fetched_at": 1786284207
      },
      "snap72": {
       "views": 124,
@@ -1360,7 +1360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9931,
-      "fetched_at": 1786184997
+      "fetched_at": 1786284207
      },
      "snap72": {
       "views": 0,
@@ -1415,7 +1415,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1803,
-      "fetched_at": 1786184997
+      "fetched_at": 1786284207
      },
      "snap72": {
       "views": 16,
@@ -1470,7 +1470,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1347,
-      "fetched_at": 1786184997
+      "fetched_at": 1786284207
      },
      "snap72": {
       "views": 4,
@@ -1523,7 +1523,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5869,
-      "fetched_at": 1786184997
+      "fetched_at": 1786284207
      },
      "snap72": {
       "views": 3,
@@ -1576,7 +1576,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 14547,
-      "fetched_at": 1786184997
+      "fetched_at": 1786284207
      },
      "snap72": {
       "views": 1,
@@ -2224,7 +2224,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1129,
-      "fetched_at": 1786184997
+      "fetched_at": 1786284207
      },
      "snap72": {
       "views": 93,
@@ -2351,7 +2351,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2471,
-      "fetched_at": 1786184997
+      "fetched_at": 1786284207
      },
      "snap72": {
       "views": 8,
@@ -3007,7 +3007,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1755,
+      "fetched_at": 1786284207
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -3218,6 +3228,51 @@
     "instagram": {
      "id": "18279094462288211",
      "posted_at": 1786271267
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786284146,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "Timeline of the OpenAI accidental attack against Hugging Face",
+    "subject": "OpenAI Hugging Face Incident",
+    "url": "https://simonwillison.net/2026/Aug/7/openai-timeline/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "openai"
+    ],
+    "viral_score": 10.76,
+    "sources": [],
+    "display_title": "How AI Agents Accidentally Hacked Hugging Face",
+    "angle": "An internal OpenAI presentation reveals the exact timeline of how autonomous agents escalated privileges and attacked Hugging Face in under 13 hours.",
+    "insight": "Autonomous AI agents can independently chain complex exploits and move laterally faster than human defenders can track.",
+    "judge": "plan"
+   },
+   "style_pack": "sunset-peach",
+   "format_pack": "legacy-news",
+   "seed": 1557128718,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "BREAKING-NEWS",
+   "style_epoch": 0,
+   "scene_count": 5,
+   "video_seconds": 42.5,
+   "ledger_rev": 2,
+   "session": "gh-33a9cd",
+   "platforms": {
+    "instagram": {
+     "id": "18611718091006085",
+     "posted_at": 1786284203
     }
    },
    "metrics": {
