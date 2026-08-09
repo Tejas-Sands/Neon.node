@@ -579,5 +579,16 @@
   "entities": [],
   "ts": 1786200510,
   "session": "gh-438f97"
+ },
+ {
+  "id": "49223082",
+  "title": "Fastmail offers EU data region",
+  "norm": "fastmail offers eu data region",
+  "subject_norm": "fastmail eu data region",
+  "entities": [
+   "fastmail"
+  ],
+  "ts": 1786253995,
+  "session": "gh-82833a"
  }
 ]

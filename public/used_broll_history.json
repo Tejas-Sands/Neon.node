@@ -1386,6 +1386,62 @@
    "session": "gh-438f97",
    "query": "developer laptop closeup typing",
    "scene": 4
+  },
+  {
+   "id": "pexels-8745662",
+   "ts": 1786253880,
+   "session": "gh-82833a",
+   "query": "server racks blinking data center",
+   "scene": 0
+  },
+  {
+   "id": "pexels-8328102",
+   "ts": 1786253880,
+   "session": "gh-82833a",
+   "query": "circuit board macro motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-35003022",
+   "ts": 1786253880,
+   "session": "gh-82833a",
+   "query": "network data packet routing nodes",
+   "scene": 2
+  },
+  {
+   "id": "pexels-35002915",
+   "ts": 1786253880,
+   "session": "gh-82833a",
+   "query": "network data packet routing nodes",
+   "scene": 2
+  },
+  {
+   "id": "pexels-38899338",
+   "ts": 1786253880,
+   "session": "gh-82833a",
+   "query": "software dashboard ui scrolling",
+   "scene": 3
+  },
+  {
+   "id": "pexels-38901929",
+   "ts": 1786253880,
+   "session": "gh-82833a",
+   "query": "software dashboard ui scrolling",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35606045",
+   "ts": 1786253880,
+   "session": "gh-82833a",
+   "query": "data center servers gpu",
+   "scene": 4
+  },
+  {
+   "id": "pexels-18069164",
+   "ts": 1786253880,
+   "session": "gh-82833a",
+   "query": "data center servers gpu",
+   "scene": 4
   }
  ]
 }
