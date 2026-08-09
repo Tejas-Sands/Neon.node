@@ -28,6 +28,10 @@ from main import (
     _extract_topic_keywords,
     _normalize_subject,
     collect_ledger_metrics,
+    _feedback_weighted_choice,
+    get_feedback_stats,
+    load_post_ledger,
+    _entry_perf_snapshot,
 )
 from format_packs import build_pack_prompt, resolve_pack
 from main import plan_pack_brief
@@ -81,6 +85,91 @@ def _alert_telegram(text: str, session_id: str):
         print(f"Could not send Telegram note: {tg_err}")
 
 
+def _maybe_send_weekly_digest(session_id: str, now=None) -> None:
+    """Monday's FIRST run sends a 7-day performance digest to Telegram.
+
+    Fully autonomous reporting (2026-08-09): the ledger already records
+    format_pack / voice / hook_type / style_epoch / metrics per post — this
+    just reads it back so the channel owner sees what won without opening
+    anything. First-run-of-Monday detection is ledger-based (no state file):
+    if any entry other than this session was already recorded today, a
+    digest went out (or will not be needed). Best-effort end to end — any
+    failure logs and returns; a digest must NEVER affect a posting run.
+    Kill switch: WEEKLY_DIGEST=false.
+    """
+    try:
+        if os.environ.get("WEEKLY_DIGEST", "true").strip().lower() not in ("1", "true", "yes"):
+            return
+        import datetime as _dt
+        now = now or _dt.datetime.now(_dt.timezone.utc)  # injectable for tests
+        if now.weekday() != 0:  # Monday only
+            return
+        entries = (load_post_ledger() or {}).get("entries", [])
+
+        def _entry_ts(e) -> float:
+            try:
+                return float(e.get("ts") or 0)  # ledger ts = unix epoch seconds
+            except (TypeError, ValueError):
+                return 0.0
+
+        def _entry_date(e):
+            return _dt.datetime.fromtimestamp(_entry_ts(e), _dt.timezone.utc).date()
+
+        if any(_entry_date(e) == now.date() and e.get("session") != session_id
+               for e in entries if _entry_ts(e) > 0):
+            return
+        week_start_ts = now.timestamp() - 7 * 86400
+        week = [e for e in entries if _entry_ts(e) >= week_start_ts]
+        if not week:
+            return
+
+        packs: dict = {}
+        voices: dict = {}
+        hooks: dict = {}
+        total_views = 0.0
+        scored = 0
+        best = None
+        best_views = -1.0
+        for e in week:
+            packs[e.get("format_pack") or "legacy-news"] = packs.get(e.get("format_pack") or "legacy-news", 0) + 1
+            v = str(e.get("voice") or "?").split("-")[-1]
+            v = v.replace("MultilingualNeural", "").replace("Neural", "") or "?"
+            voices[v] = voices.get(v, 0) + 1
+            h = e.get("hook_type") or "?"
+            hooks[h] = hooks.get(h, 0) + 1
+            snap = _entry_perf_snapshot(e, "instagram") or {}
+            views = snap.get("views") or snap.get("reach") or 0
+            if isinstance(views, (int, float)) and views > 0:
+                total_views += views
+                scored += 1
+                if views > best_views:
+                    best_views = float(views)
+                    best = e
+
+        def _top(d: dict, n: int = 3) -> str:
+            return ", ".join(f"{k}×{c}" for k, c in
+                             sorted(d.items(), key=lambda kv: -kv[1])[:n])
+
+        lines = [f"\U0001F4CA Weekly digest — {len(week)} posts in the last 7 days"]
+        lines.append(f"Formats: {_top(packs)}")
+        lines.append(f"Voices: {_top(voices)}")
+        lines.append(f"Hooks: {_top(hooks)}")
+        if scored:
+            lines.append(f"IG views: {int(total_views)} total · avg {int(total_views / scored)} across {scored} measured")
+        if best is not None:
+            topic = best.get("topic") or {}
+            title = topic.get("display_title") or topic.get("title") or "?"
+            lines.append(f"\U0001F3C6 Top post: “{title}” — {int(best_views)} views "
+                         f"({best.get('format_pack') or 'legacy-news'}, {best.get('hook_type') or '?'} hook)")
+        epoch = week[-1].get("style_epoch")
+        if epoch is not None:
+            lines.append(f"Style epoch: {epoch}")
+        _alert_telegram("\n".join(lines)[:3900], session_id)
+        print("[Digest] Weekly digest sent.")
+    except Exception as digest_err:
+        print(f"[Digest] skipped: {digest_err}")
+
+
 def main():
     dry_run = "--dry-run" in sys.argv
     if "--collect-only" in sys.argv:
@@ -103,11 +192,28 @@ def main():
     # We generate a unique session ID for logging
     session_id = f"gh-{str(uuid.uuid4())[:6]}"
 
-    # Format pack for this run: FORMAT_PACK env pin, unset/unknown -> the
-    # legacy news pipeline bit-for-bit. This is how a 12-post format
-    # commitment window is run (pin the pack in the CI env). Seeded/bandit
-    # rotation joins later, once the ledger carries scored pack labels.
-    format_pack = resolve_pack(os.environ.get("FORMAT_PACK"))["name"]
+    # Format pack for this run. An explicit FORMAT_PACK env/Variable pin wins
+    # (that is how a 12-post format commitment window is run). Unset -> the
+    # seeded bandit rotation (2026-08-09, the rotation deferred at the pack
+    # launch): a legacy-heavy base mix of all four packs, biased by the
+    # ledger's format_packs bucket through the same clamped chooser as voices
+    # and hooks — the epsilon floor keeps every pack in rotation, and the
+    # [0.5, 2.0] weight clamp means performance can tilt the mix but never
+    # collapse it. Brief-less stories degrade quiz/rankings ->
+    # facts-explainer automatically further down, so a rotation pick is
+    # always safe. Kill switch: FORMAT_PACK_MODE=pin (legacy-news only,
+    # pre-rotation behavior) without having to pin a specific pack.
+    pinned_pack = (os.environ.get("FORMAT_PACK") or "").strip()
+    rotation_mode = (os.environ.get("FORMAT_PACK_MODE") or "rotate").strip().lower()
+    if pinned_pack or rotation_mode != "rotate":
+        format_pack = resolve_pack(pinned_pack or None)["name"]
+    else:
+        pack_mix = (["legacy-news"] * 5 + ["facts-explainer"] * 3
+                    + ["data-rankings"] + ["quiz-reveal"])
+        pack_rnd = random.Random(_derive_seed(session_id) ^ 0x5F0C4A21)
+        format_pack, pack_pick_mode = _feedback_weighted_choice(
+            pack_mix, lambda p: p, "format_packs", pack_rnd, get_feedback_stats())
+        print(f"[PackRotation] pack={format_pack} ({pack_pick_mode})")
     if format_pack != "legacy-news":
         print(f"Format pack: {format_pack}")
 
@@ -414,6 +520,9 @@ def main():
                 msg = f"⚠️ Video posted OK but metrics collection failed: {e}"
                 print(msg)
                 _alert_telegram(msg, session_id)
+            # Monday's first run also reports last week's numbers (own
+            # try/except inside — can never affect the run).
+            _maybe_send_weekly_digest(session_id)
 
     except Exception as e:
         print(f"\n❌ FATAL ERROR: {e}")

@@ -163,6 +163,11 @@ const TEXT_ANIM_POOLS: string[][] = [
   // — sanctioned precedent: the list already grew 6 → 9 → 11 → 13.
   ["line-stagger", "fade-up"],
   ["line-stagger", "rise-mask"],
+  // 2026-08-09 kinetic refresh: elastic-rise = liquid overshoot surge;
+  // pop-cascade = playful scale cascade (the cheerful register's visual
+  // twin). Render-side only, like every mode above this line.
+  ["elastic-rise", "fade-up"],
+  ["pop-cascade", "blur-in"],
 ];
 
 // 00..FF hex alpha from a 0..1 value (theme colors are 6-digit hex).
@@ -3164,6 +3169,15 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
             )}
             {look.motion !== "calm" && (scene.type === "metric" || scene.type === "countdown") && (
               <Audio src={staticFile("sfx/pop.wav")} volume={0.35} />
+            )}
+            {/* Brand ident on the outro card — deliberately NOT gated on
+                look.motion: the sonic signature is part of the brand, not
+                the video's energy. Delayed to land with the logo spring
+                (logo enters ~frame 10). */}
+            {scene.type === "outro" && (
+              <Sequence from={10} layout="none">
+                <Audio src={staticFile("sfx/sting.wav")} volume={0.4} />
+              </Sequence>
             )}
             <SceneTransition
               durationInFrames={scene.durationInFrames}

@@ -59,7 +59,8 @@ const fontJetBrains = loadJetBrains("normal", {
 const GLITCH_CHARS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
 
-// NOTE: "rise-mask", "flip-in", "clip-wipe" and "tracking-in" are RENDER-SIDE
+// NOTE: "rise-mask", "flip-in", "clip-wipe", "tracking-in", "elastic-rise"
+// and "pop-cascade" are RENDER-SIDE
 // ONLY modes: they are picked by the seeded TEXT_ANIM_POOLS in Main.tsx and
 // never appear in the props JSON, so the zod SceneSchema enum / Python
 // ALLOWED_TEXT_ANIMATIONS do NOT need to know about them (no §4.5 sync dance).
@@ -77,6 +78,8 @@ type TextAnimationMode =
   | "clip-wipe"
   | "tracking-in"
   | "line-stagger"
+  | "elastic-rise"
+  | "pop-cascade"
   | "none";
 
 type FontFamilyName =
@@ -488,6 +491,55 @@ const useFlipIn = (text: string, frame: number, fps: number, springMul = 1) => {
   return { flipWords: rendered };
 };
 
+/** Elastic-rise — words surge up from below on an under-damped spring that
+ * overshoots the resting line before settling, with a tiny alternating tilt
+ * (the 2026 "liquid" kinetic-type look). Word-grouped spans only: a line can
+ * wrap BETWEEN words, never inside one (Pain Point 6). */
+const useElasticRise = (text: string, frame: number, fps: number, springMul = 1) => {
+  const words = text.split(" ");
+  const framesPerWord = readLocked(3, words.length);
+  const rendered = words.map((word, i) => {
+    const localFrame = Math.max(0, frame - Math.round(i * framesPerWord));
+    const progress = spring({
+      fps,
+      frame: localFrame,
+      config: { damping: 9, stiffness: Math.round(150 * springMul), mass: 0.7 },
+      durationInFrames: 22,
+    });
+    return {
+      word,
+      y: (1 - progress) * 34,
+      rot: (1 - progress) * (i % 2 === 0 ? 3 : -3),
+      opacity: Math.min(1, progress * 2.2),
+    };
+  });
+  return { elasticWords: rendered };
+};
+
+/** Pop-cascade — playful per-word scale pop from 0.4 with overshoot and a
+ * small alternating tilt that settles to zero: the cheerful spoken register's
+ * visual twin. Word-grouped spans (Pain Point 6). */
+const usePopCascade = (text: string, frame: number, fps: number, springMul = 1) => {
+  const words = text.split(" ");
+  const framesPerWord = readLocked(3.5, words.length);
+  const rendered = words.map((word, i) => {
+    const localFrame = Math.max(0, frame - Math.round(i * framesPerWord));
+    const progress = spring({
+      fps,
+      frame: localFrame,
+      config: { damping: 11, stiffness: Math.round(170 * springMul), mass: 0.5 },
+      durationInFrames: 16,
+    });
+    return {
+      word,
+      scale: 0.4 + 0.6 * progress,
+      rot: (1 - progress) * (i % 2 === 0 ? -4 : 4),
+      opacity: Math.min(1, progress * 2.5),
+    };
+  });
+  return { cascadeWords: rendered };
+};
+
 /** 11. Clip-wipe — a highlighter bar sweeps each word's slot, the word slides
  * in behind it. Words are whole spans inside their own overflow-hidden slots
  * (Pain Point 6: wrapping only ever happens BETWEEN slots). */
@@ -694,6 +746,10 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
         };
       case "line-stagger":
         return { ...useLineStagger(text, frame, fps, springMul), mode: "lines" as const };
+      case "elastic-rise":
+        return { ...useElasticRise(text, frame, fps, springMul), mode: "elastic" as const };
+      case "pop-cascade":
+        return { ...usePopCascade(text, frame, fps, springMul), mode: "cascade" as const };
       case "none":
       default:
         return { text, wrapperStyle: {} as React.CSSProperties, mode: "inline" as const };
@@ -1051,6 +1107,60 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
                   transform: `rotateX(${w.rotateX}deg)${emph ? " scale(1.05)" : ""}`,
                   transformOrigin: "50% 100%",
                   backfaceVisibility: "hidden",
+                  ...(emph ? emphasisColorStyle(glowColor) : {}),
+                }}
+              >
+                {w.word}
+              </span>
+            );
+          }
+        )}
+      </div>
+    );
+  }
+
+  if (animResult.mode === "elastic" && "elasticWords" in animResult) {
+    return (
+      <div style={{ ...platedStyle, display: "flex", flexWrap: "wrap", justifyContent: flexJustify, gap: "8px" }}>
+        {(animResult as any).elasticWords.map(
+          (w: { word: string; y: number; rot: number; opacity: number }, i: number) => {
+            const emph = emphasisIndices.has(i);
+            return (
+              <span
+                key={i}
+                style={{
+                  display: "inline-block",
+                  whiteSpace: "nowrap",
+                  opacity: w.opacity,
+                  transform: `translateY(${w.y}px) rotate(${w.rot}deg)${emph ? " scale(1.05)" : ""}`,
+                  transformOrigin: "50% 100%",
+                  ...(emph ? emphasisColorStyle(glowColor) : {}),
+                }}
+              >
+                {w.word}
+              </span>
+            );
+          }
+        )}
+      </div>
+    );
+  }
+
+  if (animResult.mode === "cascade" && "cascadeWords" in animResult) {
+    return (
+      <div style={{ ...platedStyle, display: "flex", flexWrap: "wrap", justifyContent: flexJustify, gap: "8px" }}>
+        {(animResult as any).cascadeWords.map(
+          (w: { word: string; scale: number; rot: number; opacity: number }, i: number) => {
+            const emph = emphasisIndices.has(i);
+            return (
+              <span
+                key={i}
+                style={{
+                  display: "inline-block",
+                  whiteSpace: "nowrap",
+                  opacity: w.opacity,
+                  transform: `scale(${w.scale * (emph ? 1.05 : 1)}) rotate(${w.rot}deg)`,
+                  transformOrigin: "50% 80%",
                   ...(emph ? emphasisColorStyle(glowColor) : {}),
                 }}
               >

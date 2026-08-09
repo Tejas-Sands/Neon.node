@@ -116,6 +116,26 @@ def make_riser(duration=0.6, seed=23) -> list:
     return out
 
 
+def make_sting(duration=0.8, seed=31) -> list:
+    """Brand ident — two warm bell notes (A5 then E6, a perfect fifth) with
+    soft attacks and long decays. Plays once on the outro card: a consistent
+    sonic signature makes the channel recognizable with eyes closed."""
+    n = int(SR * duration)
+    out = [0.0] * n
+    for start_sec, freq, gain in ((0.0, 880.0, 1.0), (0.16, 1318.5, 0.85)):
+        start = int(SR * start_sec)
+        p1 = p2 = p3 = 0.0
+        for i in range(start, n):
+            t = (i - start) / SR
+            # Soft 8ms attack, ~2.6s-feel exponential decay (truncated).
+            env = min(1.0, t / 0.008) * math.exp(-t * 3.4) * gain
+            p1 += 2 * math.pi * freq / SR
+            p2 += 2 * math.pi * freq * 2.0 / SR
+            p3 += 2 * math.pi * freq * 2.99 / SR  # slightly detuned = bell
+            out[i] += (math.sin(p1) * 0.72 + math.sin(p2) * 0.2 + math.sin(p3) * 0.08) * env
+    return out
+
+
 if __name__ == "__main__":
     os.makedirs(OUT_DIR, exist_ok=True)
     _write_wav(os.path.join(OUT_DIR, "whoosh.wav"), make_whoosh())
@@ -123,3 +143,4 @@ if __name__ == "__main__":
     _write_wav(os.path.join(OUT_DIR, "pop.wav"), make_pop())
     _write_wav(os.path.join(OUT_DIR, "tick.wav"), make_tick())
     _write_wav(os.path.join(OUT_DIR, "riser.wav"), make_riser())
+    _write_wav(os.path.join(OUT_DIR, "sting.wav"), make_sting())

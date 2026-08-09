@@ -190,16 +190,29 @@ jobs:
             echo "KOKORO_PYTHON=$GITHUB_WORKSPACE/.venv-kokoro/bin/python" >> "$GITHUB_ENV"
           fi
           echo "TTS_PROVIDER=${{ vars.TTS_PROVIDER || 'edge' }}" >> "$GITHUB_ENV"
+          # Format mix (2026-08-09): FORMAT_PACK unset = seeded bandit
+          # rotation over all four packs (legacy-heavy, feedback-biased);
+          # set FORMAT_PACK to pin one pack, or FORMAT_PACK_MODE=pin for
+          # legacy-news only. LOOP_ENDING=true activates loop endings for
+          # the packs that declare them (legacy-news is unaffected by it).
           echo "FORMAT_PACK=${{ vars.FORMAT_PACK || '' }}" >> "$GITHUB_ENV"
-          echo "LOOP_ENDING=${{ vars.LOOP_ENDING || 'false' }}" >> "$GITHUB_ENV"
-          # Topic-selection flags (B2-B4, 2026-08): defaults = legacy behavior.
-          echo "NEWS_SOURCES=${{ vars.NEWS_SOURCES || 'hn' }}" >> "$GITHUB_ENV"
-          echo "TOPIC_PICK_MODE=${{ vars.TOPIC_PICK_MODE || 'weighted' }}" >> "$GITHUB_ENV"
-          echo "TOPIC_MAX_AGE_H=${{ vars.TOPIC_MAX_AGE_H || '0' }}" >> "$GITHUB_ENV"
-          echo "TOPIC_FRESH_BOOST_H=${{ vars.TOPIC_FRESH_BOOST_H || '0' }}" >> "$GITHUB_ENV"
-          echo "TOPIC_ENTITY_COOLDOWN_H=${{ vars.TOPIC_ENTITY_COOLDOWN_H || '0' }}" >> "$GITHUB_ENV"
-          echo "TOPIC_DEDUP_V2=${{ vars.TOPIC_DEDUP_V2 || 'false' }}" >> "$GITHUB_ENV"
-          echo "TOPIC_HISTORY_CAP=${{ vars.TOPIC_HISTORY_CAP || '200' }}" >> "$GITHUB_ENV"
+          echo "FORMAT_PACK_MODE=${{ vars.FORMAT_PACK_MODE || 'rotate' }}" >> "$GITHUB_ENV"
+          echo "LOOP_ENDING=${{ vars.LOOP_ENDING || 'true' }}" >> "$GITHUB_ENV"
+          # Topic engine (B2-B4) — ON since 2026-08-09 (was legacy defaults):
+          # 4 free key-less sources, deterministic top pick, 36h freshness
+          # gate + 12h boost, 48h entity cooldown, token-set dedup, longer
+          # history horizon. Kill switches: set any Variable to the legacy
+          # value ('hn' / 'weighted' / '0' / 'false' / '200').
+          echo "NEWS_SOURCES=${{ vars.NEWS_SOURCES || 'hn,hnbest,lobsters,rss' }}" >> "$GITHUB_ENV"
+          echo "TOPIC_PICK_MODE=${{ vars.TOPIC_PICK_MODE || 'argmax' }}" >> "$GITHUB_ENV"
+          echo "TOPIC_MAX_AGE_H=${{ vars.TOPIC_MAX_AGE_H || '36' }}" >> "$GITHUB_ENV"
+          echo "TOPIC_FRESH_BOOST_H=${{ vars.TOPIC_FRESH_BOOST_H || '12' }}" >> "$GITHUB_ENV"
+          echo "TOPIC_ENTITY_COOLDOWN_H=${{ vars.TOPIC_ENTITY_COOLDOWN_H || '48' }}" >> "$GITHUB_ENV"
+          echo "TOPIC_DEDUP_V2=${{ vars.TOPIC_DEDUP_V2 || 'true' }}" >> "$GITHUB_ENV"
+          echo "TOPIC_HISTORY_CAP=${{ vars.TOPIC_HISTORY_CAP || '400' }}" >> "$GITHUB_ENV"
+          # Monday-morning performance digest to Telegram (first run of the
+          # day computes it from the post ledger). WEEKLY_DIGEST=false kills.
+          echo "WEEKLY_DIGEST=${{ vars.WEEKLY_DIGEST || 'true' }}" >> "$GITHUB_ENV"
           # Voice & retention flags (2026-08-09): defaults ARE the new cheerful
           # voice + retention behavior (user-approved live launch). Set the
           # Variable to the legacy value to revert without a code change:
