@@ -78,11 +78,16 @@ export function deriveEnergy(
     const isStill = !loopEnding && isFinal;
     const isLoopTail = loopEnding && isFinal;
 
+    // 2026-08-09 retention pass: floors raised (hook 0.45→0.52, body
+    // 0.55→0.62, ceiling →1.0) — the flat-medium hum read as "same video
+    // every time". Draw count/order unchanged; still/loop-tail levels are
+    // design-brief decisions and stay. Legibility is untouched: level drives
+    // camera/spring intensity, never text contrast.
     let level: number;
     if (isStill) level = 0;
     else if (isLoopTail) level = 0.35;
-    else if (isHook) level = 0.45 + levelRoll * 0.1;
-    else level = 0.55 + levelRoll * 0.35;
+    else if (isHook) level = 0.52 + levelRoll * 0.13;
+    else level = 0.62 + levelRoll * 0.38;
 
     // Reading beats. landEnd covers the entrance springs (READ_LOCK is 18
     // frames; +8 of settle); the kinetic window opens at half the scene so
@@ -94,7 +99,7 @@ export function deriveEnergy(
 
     scenes.push({
       level,
-      camera: isStill ? 0 : isLoopTail ? 0.3 : isHook ? 0.8 : 0.7 + 0.5 * level,
+      camera: isStill ? 0 : isLoopTail ? 0.3 : isHook ? 0.9 : 0.7 + 0.5 * level,
       landEnd,
       kineticStart,
       allowMidCut: !isHook && !isFinal && level >= 0.55 && D >= 100,
@@ -116,7 +121,7 @@ export function deriveEnergy(
     if (triple.length === 0 || triple.some((i) => scenes[i].level >= 0.8)) continue;
     const top = triple.reduce((a, b) => (scenes[b].level > scenes[a].level ? b : a));
     const s = scenes[top];
-    s.level = 0.82;
+    s.level = 0.88;
     s.camera = 0.7 + 0.5 * s.level;
     s.springScale = 0.85 + 0.3 * s.level;
     s.allowMidCut = s.allowMidCut || (Math.round(sceneDurations[top] ?? 150) >= 100);

@@ -2798,9 +2798,9 @@ const KaraokeSubtitles: React.FC<{
           if (wordPulse && isActive && styleType !== 5) {
             const period = beatFrames && beatFrames > 4 ? beatFrames : 12;
             const pulse =
-              1 + 0.035 * (0.5 + 0.5 * Math.sin((2 * Math.PI * frame) / period));
+              1 + 0.06 * (0.5 + 0.5 * Math.sin((2 * Math.PI * frame) / period));
             wordStyle.transform = `${wordStyle.transform ?? ""} scale(${pulse})`.trim();
-            wordStyle.filter = "brightness(1.1)";
+            wordStyle.filter = "brightness(1.15)";
           }
 
           return (
@@ -3141,7 +3141,7 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
                       ~0.6s INTO the first cut — an audio-only pull toward the
                       payoff, so the hook's visuals stay clean (Q19:b). */}
                   <Sequence from={Math.max(0, scene.durationInFrames - 18)} layout="none">
-                    <Audio src={staticFile("sfx/riser.wav")} volume={0.28} />
+                    <Audio src={staticFile("sfx/riser.wav")} volume={0.4} />
                   </Sequence>
                 </>
               ) : (

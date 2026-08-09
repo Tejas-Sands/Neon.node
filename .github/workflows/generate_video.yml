@@ -206,7 +206,9 @@ jobs:
           # VOICE_STYLE=legacy, VOICEOVER_PITCH=+0Hz, RETENTION_V2=false.
           echo "VOICE_STYLE=${{ vars.VOICE_STYLE || 'cheerful' }}" >> "$GITHUB_ENV"
           echo "VOICEOVER_RATE=${{ vars.VOICEOVER_RATE || '+5%' }}" >> "$GITHUB_ENV"
-          echo "VOICEOVER_PITCH=${{ vars.VOICEOVER_PITCH || '+2Hz' }}" >> "$GITHUB_ENV"
+          # Empty pitch default = main.py applies its per-voice cheerful lift;
+          # set the Variable only to pin ONE pitch across all voices.
+          echo "VOICEOVER_PITCH=${{ vars.VOICEOVER_PITCH || '' }}" >> "$GITHUB_ENV"
           echo "RETENTION_V2=${{ vars.RETENTION_V2 || 'true' }}" >> "$GITHUB_ENV"
 
       - name: Run Video Generation Pipeline

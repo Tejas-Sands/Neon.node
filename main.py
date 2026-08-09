@@ -210,21 +210,34 @@ VOICE_POOL = [
     "en-US-EmmaMultilingualNeural",    # cheerful, clear, conversational
 ]
 
-# VOICE_STYLE=cheerful (the default since 2026-08-09) biases narrator rotation
-# toward the two brightest voices WITHOUT renaming any ledger key: duplicate
-# entries double Ava/Emma's weight in every _feedback_weighted_choice mode
-# (cold, explore, learned) while Andrew/Brian stay in rotation as variety.
-# Kill switch: repo Variable VOICE_STYLE=legacy restores the flat pool and the
+# VOICE_STYLE=cheerful (the default since 2026-08-09) swaps the narrator pool
+# to the EXPRESSIVE non-multilingual voices — the Multilingual set reads
+# noticeably flatter (user-verified 2026-08-09: an Ava video at +2Hz was
+# indistinguishable from the old sound). All four verified to emit
+# WordBoundary events (26/27 tokens — the em-dash carries none) at the pitches
+# below, so karaoke subtitles are safe. New names cold-start the ledger's
+# "voices" bucket — expected; the epsilon floor keeps rotation alive.
+# Weights: warm/bright female voices 2:2, crisp Aria and energetic Guy 1:1.
+# Kill switch: repo Variable VOICE_STYLE=legacy restores the old pool and the
 # pre-2026-08 SYSTEM_PROMPT (no spoken-warmth section).
 VOICE_STYLE = os.environ.get("VOICE_STYLE", "cheerful").strip().lower()
 CHEERFUL_VOICE_POOL = [
-    "en-US-AvaMultilingualNeural",
-    "en-US-AvaMultilingualNeural",
-    "en-US-EmmaMultilingualNeural",
-    "en-US-EmmaMultilingualNeural",
-    "en-US-AndrewMultilingualNeural",
-    "en-US-BrianMultilingualNeural",
+    "en-US-JennyNeural",   # warm, friendly, upbeat
+    "en-US-JennyNeural",
+    "en-US-EmmaNeural",    # bright, cheerful
+    "en-US-EmmaNeural",
+    "en-US-AriaNeural",    # positive, crisp
+    "en-US-GuyNeural",     # high-energy narrator (the classic short-form voice)
 ]
+# Per-voice pitch lift for the cheerful profile — audible brightening tuned
+# per voice (female voices take +8-10Hz cleanly; Guy chipmunks past +4Hz).
+# A per-request pitch or the VOICEOVER_PITCH env/Variable overrides these.
+CHEERFUL_VOICE_PITCH = {
+    "en-US-JennyNeural": "+10Hz",
+    "en-US-EmmaNeural": "+10Hz",
+    "en-US-AriaNeural": "+8Hz",
+    "en-US-GuyNeural": "+4Hz",
+}
 
 # A video must never ship with partial or missing narration. When on (default),
 # any TTS/mixing failure aborts the render instead of degrading — a GH runner
@@ -851,15 +864,18 @@ These are PROVEN combinations. Use them as starting points:
 # prompt byte-for-byte.
 _SPOKEN_WARMTH_RULES = """
 
-=== SPOKEN DELIVERY — WARM & CHEERFUL (how the voiceover should SOUND) ===
+=== SPOKEN DELIVERY — WARM, PLAYFUL, CHEERFUL (how the voiceover should SOUND) ===
 
-23. Write every "voiceover" the way an excited friend shares great news out loud — warm, playful, genuinely delighted by the details. The narration engine turns punctuation into real vocal emotion (question marks rise, exclamation marks brighten, a dash makes the voice lean in before a payoff), so punctuation IS the performance:
+23. The narrator is a delighted friend telling you the news, NOT a newsreader. This register is MANDATORY, not a garnish — a script that reads like a press summary is a failed script. The narration engine turns punctuation into real vocal emotion (question marks rise, exclamation marks brighten, a dash makes the voice lean in before a payoff), so punctuation IS the performance:
     - Short, punchy sentences (most under 12 words) with natural contractions ("it's", "that's", "here's").
-    - Lean on the setup — dash — payoff shape: "They rewrote the whole parser — in a weekend."
+    - Talk TO the viewer. "you" appears somewhere in the video's narration — the viewer is being told a story, not read a report.
+    - REQUIRED once per video: a playful aside or wry comparison grounded in a REAL fact from the brief ("that's roughly eight years of forgetting to charge it"). Humor comes from the true detail, never from an invented one.
+    - REQUIRED once per video: a tiny interjection sentence for rhythm — "Yep.", "Wild, right?", "No, really.", "Seriously." (1-3 words, its own sentence). Use at most two in the whole script.
     - Ask ONE genuine question somewhere in the video and answer it in the next scene ("So what actually broke?"). If the hook is already a question, that's the one.
+    - Lean on the setup — dash — payoff shape: "They rewrote the whole parser — in a weekend."
     - At MOST two exclamation marks in the whole script, placed where the surprise genuinely peaks.
     - Delight lives in specifics: an exact number delivered with relish beats any adjective.
-24. Cheerful NEVER means hype. Every fact-integrity and no-repetition rule above still applies in full: no cliché superlatives, no imperative advice outside the hook/CTA, and no catchphrase repeated across scenes — say a good line once and move on."""
+24. Cheerful NEVER means hype. Every fact-integrity and no-repetition rule above still applies in full: no cliché superlatives, no imperative advice outside the hook/CTA, and no catchphrase repeated across scenes — say a good line once and move on. The asides and interjections must never carry the facts — they decorate them."""
 
 if VOICE_STYLE != "legacy":
     SYSTEM_PROMPT = SYSTEM_PROMPT + _SPOKEN_WARMTH_RULES
@@ -924,7 +940,7 @@ Topic: "SaaS product launch — 10x faster API"
       "countFrom": 0,
       "countTo": 50000,
       "countSuffix": "+",
-      "voiceover": "All the way to fifty thousand requests a second — and it doesn't even break a sweat.",
+      "voiceover": "All the way to fifty thousand requests a second. Yep — and it doesn't even break a sweat.",
       "searchQuery": "network switch cables closeup",
       "videoQuery": "data flowing network nodes motion",
       "durationInFrames": 200,
@@ -945,7 +961,7 @@ Topic: "SaaS product launch — 10x faster API"
       "title": "FROM THE LAUNCH BENCHMARKS",
       "text": "1,000,000 requests. 20ms median.",
       "subtitle": "HyperAPI",
-      "voiceover": "That's not a marketing number — the published benchmark ran a million real requests and held a twenty-millisecond median.",
+      "voiceover": "And that's not a marketing number — the benchmark you can rerun yourself held a twenty-millisecond median across a million requests.",
       "searchQuery": "server racks glowing data center",
       "videoQuery": "server racks blinking data center",
       "durationInFrames": 175,
@@ -1025,7 +1041,7 @@ Topic: "Lab's sodium-ion battery retains 92% capacity after 3,000 charge cycles"
       "secondaryText": "$87/kWh",
       "leftLabel": "LITHIUM",
       "rightLabel": "SODIUM",
-      "voiceover": "Sodium is dirt cheap and everywhere — that cuts the projected pack cost by about a third.",
+      "voiceover": "Sodium is dirt cheap — it's literally table salt — and that cuts the projected pack cost by about a third.",
       "searchQuery": "salt crystals macro white",
       "videoQuery": "mining salt industrial machinery",
       "durationInFrames": 185,
@@ -1036,7 +1052,7 @@ Topic: "Lab's sodium-ion battery retains 92% capacity after 3,000 charge cycles"
       "title": "FROM THE PUBLISHED PAPER",
       "text": "92.3% retention at cycle 3,000",
       "subtitle": "the sodium-ion cell",
-      "voiceover": "That retention figure comes straight from the peer-reviewed results, not a press release.",
+      "voiceover": "And that retention figure? Straight from the peer-reviewed paper — not a press release.",
       "searchQuery": "scientific journal research data screen",
       "videoQuery": "data charts screen scrolling",
       "durationInFrames": 175,
@@ -2932,7 +2948,12 @@ def get_next_video_number() -> int:
 # (words-per-second, per-scene lead-in seconds). The edge pair is measured
 # (see the docstring below); the kokoro pair is provisional until a CI soak.
 _SPOKEN_RATE_BY_ENGINE = {
-    "edge": (2.33, 0.35),
+    # 2.45 since 2026-08-09 (was 2.33): the cheerful non-multilingual pool
+    # speaks 5.1% faster than the retired multilingual pool on the shared
+    # measurement corpus — see the docstring's 2026-08-09 entries. If
+    # VOICE_STYLE=legacy is ever flipped back on, this slightly over-permits
+    # script length (~5%) — acceptable for a kill-switch state.
+    "edge": (2.45, 0.35),
     "kokoro": (2.40, 0.40),
 }
 
@@ -2963,14 +2984,20 @@ def _estimate_spoken_seconds(scenes: List[dict], engine: Optional[str] = None) -
 
     2026-08-09 re-measurement (VOICE_STYLE=cheerful pool bias + pitch +2Hz,
     rate unchanged at +5%) via scripts/measure_spoken_rate.py: per-voice
-    effective rates on the few-shot corpus are Ava 3.06 / Emma 3.28 /
-    Andrew 3.03 / Brian 3.25 wps — the 2:2:1:1 cheerful weighting moves the
-    pool average by 0.1% vs the flat pool (3.159 vs 3.155), and pitch shifts
-    do not change duration, so THIS CONSTANT IS UNCHANGED. (Those corpus
-    numbers read faster than 2.33 because the few-shot scenes are longer than
-    the ~10-word production scenes this constant was fit on — see the script's
-    caveat; ground-truthed the same day: mp3 length ≈ last WordBoundary end
-    + 0.36s, i.e. SCENE_TAIL_PAD_SEC models the trailing silence correctly.)
+    effective rates on the few-shot corpus were Ava 3.06 / Emma(Multi) 3.28 /
+    Andrew 3.03 / Brian 3.25 wps — that pool's weighted average moved 0.1%
+    vs the flat pool (3.159 vs 3.155), and pitch shifts do not change
+    duration. (Corpus numbers read faster than the constant because the
+    few-shot scenes are longer than the ~10-word production scenes the
+    constant was fit on — see the script's caveat; ground-truthed the same
+    day: mp3 length ≈ last WordBoundary end + 0.36s, i.e. SCENE_TAIL_PAD_SEC
+    models the trailing silence correctly.)
+
+    2026-08-09 pool swap (cheerful v2 — Jenny/Emma/Aria/Guy at per-voice
+    pitches): same corpus measures Jenny 3.29 / Emma 3.28 / Aria 3.20 /
+    Guy 3.59 wps, pool-weighted 3.321 = 5.1% faster than the retired
+    multilingual pool's 3.159. Constant transferred corpus-relatively:
+    2.33 * 3.321/3.159 = 2.45.
     """
     wps, leadin = _SPOKEN_RATE_BY_ENGINE.get(
         engine or resolve_tts_engine(None), _SPOKEN_RATE_BY_ENGINE["edge"])
@@ -7369,11 +7396,21 @@ async def _generate_voiceover_with_engine(
         render_status_store[session_id]["tts_provider"] = "edge"
     # +10% read as hurried, which is most of what "sounds like a robot"
     # actually is. +5% keeps the pace tight for a Reel without the rush.
-    # Pitch +2Hz (default since 2026-08-09) brightens the delivery a touch
-    # toward "cheerful" — pitch shifts don't change duration, so the spoken-
-    # rate calibration is unaffected. Revert via Variable VOICEOVER_PITCH=+0Hz.
     resolved_rate = rate or os.environ.get("VOICEOVER_RATE", "+5%")
-    resolved_pitch = pitch or os.environ.get("VOICEOVER_PITCH", "+2Hz")
+    # Pitch: request param > env/Variable > per-voice cheerful lift > flat.
+    # Pitch shifts don't change duration, so the spoken-rate calibration is
+    # unaffected. (If per-scene failover swaps the narrator mid-video, the
+    # original voice's lift is kept — a rare emergency path, and a constant
+    # pitch beats an audible mid-video jump.)
+    env_pitch = os.environ.get("VOICEOVER_PITCH", "").strip()
+    if pitch:
+        resolved_pitch = pitch
+    elif env_pitch:
+        resolved_pitch = env_pitch
+    elif VOICE_STYLE != "legacy":
+        resolved_pitch = CHEERFUL_VOICE_PITCH.get(resolved_voice, "+2Hz")
+    else:
+        resolved_pitch = "+0Hz"
 
     # Kokoro synthesizes every spoken scene in ONE worker subprocess (the
     # ~330MB model loads once per video); the shared per-scene loop below
@@ -7905,6 +7942,14 @@ def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None,
 
     outline = "\n".join(outline_lines)
 
+    # Cheerful register contract for the production news path (VOICE_STYLE
+    # kill switch reverts it). Mirrors SYSTEM_PROMPT rules 23-24 — the outline
+    # prompt is what the model actually reads closest, so the register must be
+    # stated here too, not only in the system role.
+    tone_block = "" if VOICE_STYLE == "legacy" else """
+TONE (MANDATORY): narrate like a delighted friend telling you the news — warm, playful, cheerful — never a newsreader. Contractions everywhere; short punchy sentences. Include ONE playful aside or wry comparison grounded in a REAL fact from the article, and ONE tiny interjection sentence for rhythm ("Yep.", "Wild, right?", "No, really."). Address the viewer as "you" at least once (storytelling address — never generic advice). Punctuation is the vocal performance: questions rise, a dash leans in before a payoff, at most two exclamation marks total.
+"""
+
     editorial_block = ""
     if plan:
         plan_facts = [str(f).strip() for f in (plan.get("facts") or []) if str(f).strip()]
@@ -7943,7 +7988,7 @@ SCENE OUTLINE (follow this structure, but write ORIGINAL, specific copy):
 {outline}
 - Give EACH scene a different textAnimation. Keep on-screen "text" to a short label (a keyword or number); put the actual sentence in the "voiceover" — never the same words in both.
 - Give EACH scene a "videoQuery": 2-4 keywords for a TECH MOTION b-roll clip that shows this story's real subject in action (a terminal, code on screen, a dashboard, data-center racks, a chip, a robot, network traffic) — topic-relevant motion, never a generic abstract loop. Use a different videoQuery per scene, and never reuse the same main noun in two videoQuery values within one video.
-
+{tone_block}
 NO-REPETITION (this is the #1 thing that makes these videos feel cheap): name the product/company from the headline in the HOOK scene ONLY. After that, refer to it as "it" / "the tool" / "the team" — do NOT restate the headline in later scenes. The subtitles show every spoken word for the whole video, so a repeated line is read and heard 5-6 times. Every scene must add information the earlier scenes did NOT state.
 
 CONCRETENESS CONTRACT: this video covers THIS story only, END-TO-END. The scenes must together deliver:

@@ -39,15 +39,16 @@ import sys
 import edge_tts
 
 RATE = os.environ.get("VOICEOVER_RATE", "+5%")
-PITCH = os.environ.get("VOICEOVER_PITCH", "+2Hz")
 LEADIN = 0.35  # pinned to SCENE_TAIL_PAD_SEC — measured, not fit (see above)
 
-# CHEERFUL_VOICE_POOL rotation weights (see main.py).
+# CHEERFUL_VOICE_POOL rotation weights and per-voice pitch (see main.py —
+# keep both in sync with CHEERFUL_VOICE_POOL / CHEERFUL_VOICE_PITCH).
 VOICES = {
-    "en-US-AvaMultilingualNeural": 2,
-    "en-US-EmmaMultilingualNeural": 2,
-    "en-US-AndrewMultilingualNeural": 1,
-    "en-US-BrianMultilingualNeural": 1,
+    # voice: (rotation weight, pitch)
+    "en-US-JennyNeural": (2, "+10Hz"),
+    "en-US-EmmaNeural": (2, "+10Hz"),
+    "en-US-AriaNeural": (1, "+8Hz"),
+    "en-US-GuyNeural": (1, "+4Hz"),
 }
 
 # The two SYSTEM_PROMPT few-shot scripts' voiceovers (post spoken-warmth pass,
@@ -72,9 +73,9 @@ SCRIPTS = {
 }
 
 
-async def scene_seconds(text: str, voice: str) -> float:
+async def scene_seconds(text: str, voice: str, voice_pitch: str) -> float:
     """Spoken length of one scene = end of its last WordBoundary event."""
-    communicate = edge_tts.Communicate(text, voice, rate=RATE, pitch=PITCH, boundary="WordBoundary")
+    communicate = edge_tts.Communicate(text, voice, rate=RATE, pitch=voice_pitch, boundary="WordBoundary")
     last_end = 0.0
     async for chunk in communicate.stream():
         if chunk["type"] == "WordBoundary":
@@ -86,28 +87,30 @@ async def scene_seconds(text: str, voice: str) -> float:
 
 
 async def main() -> int:
-    print(f"rate={RATE} pitch={PITCH} leadin(pinned)={LEADIN}")
+    print(f"rate={RATE} leadin(pinned)={LEADIN}")
     weighted_wps = weight_total = 0.0
-    for voice, weight in VOICES.items():
+    for voice, (weight, voice_pitch) in VOICES.items():
         total_words = 0
         total_sec = 0.0
         scene_n = 0
         for scenes in SCRIPTS.values():
             for text in scenes:
-                total_sec += await scene_seconds(text, voice)
+                total_sec += await scene_seconds(text, voice, voice_pitch)
                 # .split() to match _estimate_spoken_seconds' token counting.
                 total_words += len(text.split())
                 scene_n += 1
         wps = total_words / total_sec
-        print(f"{voice}  wps={wps:.3f}  ({total_words} words, {total_sec:.1f}s over {scene_n} scenes)")
+        print(f"{voice}  pitch={voice_pitch}  wps={wps:.3f}  ({total_words} words, {total_sec:.1f}s over {scene_n} scenes)")
         weighted_wps += wps * weight
         weight_total += weight
     wps = weighted_wps / weight_total
-    print(f"\nPool-weighted (Ava x2, Emma x2, Andrew, Brian): wps={wps:.3f}")
-    print("Baseline for THIS corpus @ +5%/+2Hz (2026-08-09): 3.16")
-    drift = abs(wps - 3.16) / 3.16
-    print(f"drift vs corpus baseline: {drift * 100:.1f}%  "
-          f"({'speech rate MOVED — recalibrate _SPOKEN_RATE_BY_ENGINE from production props files' if drift > 0.03 else 'within 3% — constant stays'})")
+    print(f"\nPool-weighted: wps={wps:.3f}")
+    # Corpus-relative transfer: the RETIRED multilingual pool measured 3.159
+    # on this exact corpus while the production constant was 2.33 — so a new
+    # pool's production-equivalent constant is 2.33 * (new_wps / 3.159).
+    equiv = 2.33 * wps / 3.159
+    print(f"OLD pool corpus baseline: 3.159  ->  production-equivalent constant: {equiv:.2f}")
+    print("Update _SPOKEN_RATE_BY_ENGINE['edge'] to (%.2f, 0.35) if it drifted >3%% from the current value." % equiv)
     return 0
 
 
