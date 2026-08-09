@@ -82,9 +82,34 @@ def test_plan_story_angle():
     check(plan and plan.get("insight", "").startswith("Grid storage"),
           "insight field carried through")
     check(plan and plan.get("url") == "https://x", "url carried through")
-    # display_title (B5): clamped to 8 words, wrapping quotes stripped.
-    check(plan and plan.get("display_title") == "This salt battery simply refuses to die in",
-          "display_title clamped to 8 words with quotes stripped")
+    # display_title (B5, retightened 2026-08-09): this line is rendered as the
+    # hook card and Instagram publishes frame 0 as the reel COVER, so it is
+    # thumbnail copy — clamped to 6 words, wrapping quotes stripped, and a
+    # dangling connective trimmed back rather than shipped ("...refuses to die
+    # in" reads as a truncation bug at thumbnail size).
+    # 6-word clamp gives "This salt battery simply refuses to"; the dangling
+    # "to" is then trimmed, because a cover line ending on a connective reads
+    # as a truncation bug at thumbnail size.
+    check(plan and plan.get("display_title") == "This salt battery simply refuses",
+          "display_title clamped to 6 words with quotes stripped and no dangling tail "
+          f"(got {plan.get('display_title')!r})" if plan else "no plan")
+
+    for raw, want, why in (
+        ("Why I replaced my cloud server with a", "Why I replaced my cloud server",
+         "trailing article dropped"),
+        ("GraphQL Subscriptions Explained.", "GraphQL Subscriptions Explained",
+         "trailing period stripped"),
+        ("Rust 1.9 ships", "Rust 1.9 ships", "already short — untouched"),
+        ("How Google's TPU changes AI training that is",
+         "How Google's TPU changes AI training", "multiple dangling words trimmed"),
+    ):
+        j = good_json.replace(
+            '"\\"This salt battery simply refuses to die in tests\\""',
+            '"' + raw.replace('"', '\\"') + '"')
+        p = _with_fake_llm(lambda **kw: j,
+                           lambda: main.plan_story_angle(title, body, session_id="test"))
+        got = p.get("display_title") if p else None
+        check(got == want, f"cover line: {why} ({raw!r} -> {got!r}, want {want!r})")
 
     no_dt = good_json.replace(
         '"display_title": "\\"This salt battery simply refuses to die in tests\\"", ', "")

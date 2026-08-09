@@ -10201,8 +10201,14 @@ HARD REQUIREMENT — the video's subject must be ONE named, concrete thing: a sp
 
 "facts" rules: COPY 2-5 concrete specifics (numbers, versions, names, dates, what changed) accurately from the ARTICLE TEXT above. Never add specifics from memory. Each fact under 20 words.
 
+"display_title" is the THUMBNAIL. It is rendered as the hook card and Instagram publishes that first frame as the reel's cover, so it is the whole tap decision — it is read at the size of a thumbnail, before any audio, by someone who has never heard of this topic. Write it as a cover line, not a headline:
+- MAX 6 WORDS. Shorter wins; 3-4 words is ideal.
+- Lead with the concrete named thing (product, company, model, number). Never open with "How", "Why", "The", "This", "A".
+- No trailing period, no quotes, no colons, no "|" or "—" splits.
+- Plain English a general tech viewer knows. No insider jargon, no forum in-jokes, no source-outlet phrasing.
+
 Return ONLY this JSON (no other text):
-{{"subject": "<2-5 word searchable topic>", "display_title": "<plain-English reframe of the headline for a general tech audience, max 8 words, no insider jargon or forum in-jokes>", "angle": "<one sentence: the story of the video>", "hook": "<scroll-stopping first line, max 8 words>", "insight": "<the one non-obvious takeaway — who is affected and what changes now, one sentence>", "facts": ["..."], "format": "news|explainer|comparison"}}"""
+{{"subject": "<2-5 word searchable topic>", "display_title": "<thumbnail cover line, max 6 words, concrete noun first, no trailing punctuation>", "angle": "<one sentence: the story of the video>", "hook": "<scroll-stopping first line, max 8 words>", "insight": "<the one non-obvious takeaway — who is affected and what changes now, one sentence>", "facts": ["..."], "format": "news|explainer|comparison"}}"""
 
     try:
         # 800, not 450: the judge JSON itself fits in ~300 tokens, but on
@@ -10242,11 +10248,23 @@ Return ONLY this JSON (no other text):
 
     # Plain-English headline reframe (B5): HN titles are written for an
     # insider audience ("Htmx 4.0 ... exclusively on the Game Boy") and often
-    # read as noise on IG. Clamp to 8 words, strip wrapping quotes. Additive
-    # key — a plan without it produces today's prompt byte-for-byte.
-    display_title = " ".join(
-        str(plan.get("display_title") or "").strip().strip('"“”').split()[:8]
-    )
+    # read as noise on IG. Additive key — a plan without it produces today's
+    # prompt byte-for-byte.
+    #
+    # Clamped to 6 words, not 8 (2026-08-09): this line is rendered as the
+    # hook card, and Instagram publishes frame 0 as the reel COVER, so it is
+    # read at thumbnail size before any audio. Trailing punctuation and a
+    # dangling connective ("...that Is", "how Google") read as a truncation
+    # bug on a cover, so the clamp trims back past one rather than shipping it.
+    _COVER_TAIL_STOPWORDS = {
+        "a", "an", "and", "as", "at", "but", "by", "for", "from", "how", "in",
+        "into", "is", "it", "its", "of", "on", "or", "that", "the", "then",
+        "this", "to", "via", "was", "what", "when", "why", "with",
+    }
+    _dt_words = str(plan.get("display_title") or "").strip().strip('"“”').split()[:6]
+    while len(_dt_words) > 2 and _dt_words[-1].lower().strip(",;:-—") in _COVER_TAIL_STOPWORDS:
+        _dt_words.pop()
+    display_title = " ".join(_dt_words).rstrip(" .,:;—-")
 
     result = {
         "subject": subject,
