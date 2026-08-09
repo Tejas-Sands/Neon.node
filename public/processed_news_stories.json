@@ -603,5 +603,19 @@
   ],
   "ts": 1786264787,
   "session": "gh-c501a5"
+ },
+ {
+  "id": "49225139",
+  "title": "Open-source interactive map for the Aug 12 total solar eclipse",
+  "norm": "open source interactive map for the aug 12 total solar eclipse",
+  "subject_norm": "solar eclipse interactive map",
+  "entities": [
+   "aug",
+   "solar",
+   "eclipse",
+   "interactive"
+  ],
+  "ts": 1786269468,
+  "session": "gh-6bfd1f"
  }
 ]

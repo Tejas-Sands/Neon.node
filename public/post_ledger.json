@@ -3143,6 +3143,49 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1786269406,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "Open-source interactive map for the Aug 12 total solar eclipse",
+    "subject": "Solar Eclipse Interactive Map",
+    "url": "https://eclipsefan.org/?v=2&t=max&layers=eclipse%2Cbesselian%2Cumbra-live%2Cshadow-3d%2Ccloud-projection%2Cosm&lat=43.4623&lon=-3.8099&opacity=besselian%3A0.2%2Cumbra-live%3A0.2&zoom=6&palier=minute",
+    "source": "hn",
+    "keywords": [
+     "open-sourc"
+    ],
+    "viral_score": 7.75,
+    "sources": [],
+    "display_title": "Track the upcoming total solar eclipse",
+    "angle": "An open-source interactive map launched for the August 12 total solar eclipse, helping users track its path.",
+    "insight": "Open-source geospatial tools are becoming the standard for tracking major astronomical events with precision.",
+    "judge": "plan"
+   },
+   "style_pack": "desert-dune",
+   "format_pack": "legacy-news",
+   "seed": 758383358,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "SENIOR VS JUNIOR",
+   "scene_count": 5,
+   "video_seconds": 43.3,
+   "ledger_rev": 2,
+   "session": "gh-6bfd1f",
+   "platforms": {
+    "instagram": {
+     "id": "18065401442725546",
+     "posted_at": 1786269464
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }
