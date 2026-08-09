@@ -239,6 +239,51 @@ CHEERFUL_VOICE_PITCH = {
     "en-US-GuyNeural": "+4Hz",
 }
 
+# ---------------------------------------------------------------------------
+# Style-epoch drift (2026-08-09). Per-video seeds give variety WITHIN a day,
+# but the DISTRIBUTION is stationary — statistically the channel looks
+# identical every week, which is exactly what platform template-fatigue
+# detection fingerprints. Every STYLE_DRIFT_DAYS the pipeline enters a new
+# "epoch": a deterministic profile derived from the epoch number subtly tilts
+# narrator rotation, hook-style emphasis, scene-count distribution, caption
+# animation style, transition accents and energy — so the channel's style
+# center drifts slowly and content keeps reading as fresh.
+#
+# Contracts: epoch 0 (and STYLE_DRIFT=false) is the IDENTITY profile — bit-
+# identical to no-drift behavior. The render side never reads a clock
+# (determinism): the epoch travels as the backend-set optional prop
+# theme.styleEpoch. Epoch is a function of the UTC DATE, so re-running the
+# same day gives the same profile. Recorded in the post ledger as
+# "style_epoch" so the feedback loop can attribute performance to eras.
+STYLE_DRIFT = os.environ.get("STYLE_DRIFT", "true").strip().lower() == "true"
+STYLE_DRIFT_DAYS = max(1, int(os.environ.get("STYLE_DRIFT_DAYS", "4") or "4"))
+_STYLE_EPOCH_ANCHOR = datetime.date(2026, 8, 9)
+
+
+def current_style_epoch() -> int:
+    """Epoch index for today (UTC). 0 = identity profile / drift disabled."""
+    if not STYLE_DRIFT:
+        return 0
+    today = datetime.datetime.now(datetime.timezone.utc).date()
+    return max(0, (today - _STYLE_EPOCH_ANCHOR).days // STYLE_DRIFT_DAYS)
+
+
+def _epoch_rng(salt: int) -> random.Random:
+    """Deterministic per-epoch RNG — same epoch => same profile, all day."""
+    return random.Random(current_style_epoch() * 0x9E3779B1 + salt)
+
+
+def _epoch_hook_options() -> list:
+    """HOOK_PATTERNS with this epoch's 5 favorites duplicated (2x weight).
+
+    Epoch 0 returns the plain list. Duplication biases every chooser mode
+    (cold/explore/learned) without touching ledger keys — same trick as the
+    cheerful voice pool.
+    """
+    if current_style_epoch() <= 0:
+        return HOOK_PATTERNS
+    return HOOK_PATTERNS + _epoch_rng(29).sample(HOOK_PATTERNS, 5)
+
 # A video must never ship with partial or missing narration. When on (default),
 # any TTS/mixing failure aborts the render instead of degrading — a GH runner
 # without ffmpeg once posted a video whose voice died after scene 1 because the
@@ -1234,7 +1279,7 @@ def build_variety_directive(seed: int, is_auto_channel: bool = False,
 - INTEGRITY (overrides everything above): NO invented people, names, quotes, testimonials, or statistics — see the FACT INTEGRITY RULES."""
     rnd = random.Random(seed)
     hook, hook_mode = _feedback_weighted_choice(
-        HOOK_PATTERNS, lambda h: h.split(":")[0].strip(), "hooks", rnd, get_feedback_stats())
+        _epoch_hook_options(), lambda h: h.split(":")[0].strip(), "hooks", rnd, get_feedback_stats())
     scene_count = rnd.choice([4, 5, 5, 6, 6, 7])
     if meta_out is not None:
         meta_out["hook_type"] = hook.split(":")[0].strip()
@@ -3683,6 +3728,12 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
             # renderer must never infer it from scene shapes.
             parsed_script["theme"]["loopEnding"] = True
 
+    # Style-epoch drift prop (backend-set zod optional, 2-sync). The render
+    # side must never read a clock, so the epoch travels as data; absent (or
+    # epoch 0) the render is bit-identical to no-drift behavior.
+    if current_style_epoch() > 0:
+        parsed_script["theme"]["styleEpoch"] = current_style_epoch()
+
     # Merge pipeline config from LLM output with request-level overrides
     llm_pipeline = parsed_script.get("pipeline", {})
     if llm_pipeline:
@@ -4954,6 +5005,7 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
             "seed": video_seed,
             "voice": render_status_store[session_id].get("resolved_voice"),
             "hook_type": variety_meta.get("hook_type"),
+            "style_epoch": current_style_epoch(),
             "scene_count": len(parsed_script.get("scenes", [])),
             # ACTUAL runtime: scenes_with_images carries the post-TTS
             # durations (rewritten in place by generate_voiceover_and_
@@ -7388,6 +7440,10 @@ async def _generate_voiceover_with_engine(
             # picked more often (epsilon floor keeps every voice in rotation).
             rnd = random.Random(_derive_seed(session_id))
             edge_pool = CHEERFUL_VOICE_POOL if VOICE_STYLE != "legacy" else VOICE_POOL
+            if VOICE_STYLE != "legacy" and current_style_epoch() > 0:
+                # Epoch drift: this era's favorite narrator gets one extra
+                # rotation slot — the channel's "voice of the week" shifts.
+                edge_pool = edge_pool + [_epoch_rng(17).choice(sorted(set(edge_pool)))]
             resolved_voice, voice_mode = _feedback_weighted_choice(
                 edge_pool, lambda v: v, "voices", rnd, get_feedback_stats())
             print(f"[{session_id}] Seeded narrator voice for this video: {resolved_voice} ({voice_mode})")
@@ -7883,7 +7939,7 @@ def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None,
     plan = plan if (plan and str(plan.get("subject") or "").strip()) else None
 
     hook, _hook_mode = _feedback_weighted_choice(
-        HOOK_PATTERNS, lambda h: h.split(":")[0].strip(), "hooks", rnd, get_feedback_stats())
+        _epoch_hook_options(), lambda h: h.split(":")[0].strip(), "hooks", rnd, get_feedback_stats())
 
     # Pool of narrative "beats" for the middle of the video. We pick a seeded,
     # shuffled subset so the story structure changes every time.
@@ -7897,7 +7953,14 @@ def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None,
         ("testimonial", "Highlight the boldest fact from the article as a standout quote card. Attribute it ONLY to the source itself (the product, its docs, or the announcement) — NEVER invent a person; only name a person if the article text above explicitly names them."),
     ]
     rnd.shuffle(beat_pool)
-    middle_count = rnd.choice([2, 3, 3, 4])
+    # Epoch drift: the scene-count distribution tilts per era, so average
+    # video length/structure moves a little every few days. Epoch 0 = the
+    # historical distribution.
+    mc_options = [2, 3, 3, 4]
+    if current_style_epoch() > 0:
+        mc_options = _epoch_rng(41).choice(
+            [[2, 3, 3, 4], [2, 2, 3, 3, 4], [3, 3, 4, 4], [2, 3, 4, 4]])
+    middle_count = rnd.choice(mc_options)
     middle_beats = beat_pool[:middle_count]
 
     closer_type = rnd.choice(["cta", "hero", "split"])

@@ -210,6 +210,11 @@ jobs:
           # set the Variable only to pin ONE pitch across all voices.
           echo "VOICEOVER_PITCH=${{ vars.VOICEOVER_PITCH || '' }}" >> "$GITHUB_ENV"
           echo "RETENTION_V2=${{ vars.RETENTION_V2 || 'true' }}" >> "$GITHUB_ENV"
+          # Style-epoch drift: the channel's style center shifts subtly every
+          # STYLE_DRIFT_DAYS (anti template-fatigue). STYLE_DRIFT=false or
+          # STYLE_DRIFT_DAYS to retune; epoch 0 = today's exact behavior.
+          echo "STYLE_DRIFT=${{ vars.STYLE_DRIFT || 'true' }}" >> "$GITHUB_ENV"
+          echo "STYLE_DRIFT_DAYS=${{ vars.STYLE_DRIFT_DAYS || '4' }}" >> "$GITHUB_ENV"
 
       - name: Run Video Generation Pipeline
         env:

@@ -59,7 +59,7 @@ export function deriveEnergy(
   seed: number,
   sceneCount: number,
   sceneDurations: number[],
-  opts?: { loopEnding?: boolean; beatFrames?: number },
+  opts?: { loopEnding?: boolean; beatFrames?: number; epochLevelOffset?: number },
 ): EnergyPlan {
   const rng = makeRng(((seed ^ 0x6d1b9f37) >>> 0) || 1);
   const loopEnding = opts?.loopEnding === true;
@@ -88,6 +88,12 @@ export function deriveEnergy(
     else if (isLoopTail) level = 0.35;
     else if (isHook) level = 0.52 + levelRoll * 0.13;
     else level = 0.62 + levelRoll * 0.38;
+    // Style-epoch nudge (±0.04, post-draw, prop-driven — never a clock):
+    // a whole era runs slightly calmer or livelier. Still/loop-tail levels
+    // are design-brief decisions and never move. 0/absent ⇒ bit-identical.
+    if (!isStill && !isLoopTail && opts?.epochLevelOffset) {
+      level = Math.min(1, Math.max(0.35, level + opts.epochLevelOffset));
+    }
 
     // Reading beats. landEnd covers the entrance springs (READ_LOCK is 18
     // frames; +8 of settle); the kinetic window opens at half the scene so

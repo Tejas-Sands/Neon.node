@@ -2517,7 +2517,9 @@ const KaraokeSubtitles: React.FC<{
   wordPulse?: boolean;
   /** Beat grid (frames per beat) — syncs the pulse to the music (Q34:b). */
   beatFrames?: number;
-}> = ({ subtitles, theme, palette, finish, wordPulse, beatFrames }) => {
+  /** Style-epoch index — rotates which caption style each seed lands on. */
+  styleEpoch?: number;
+}> = ({ subtitles, theme, palette, finish, wordPulse, beatFrames, styleEpoch }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const currentTime = frame / fps;
@@ -2533,7 +2535,9 @@ const KaraokeSubtitles: React.FC<{
   // 0 bounce / 1 pill / 2 neon / 3 grow-lift / 4 underline sweep /
   // 5 spoken-word pop-in (words materialize as spoken, each in its own pill) /
   // 6 karaoke fill (color sweeps through the active word).
-  const styleType = ((theme.seed ?? 0) >>> 3) % 7;
+  // styleEpoch rotates which style each seed lands on — the channel's caption
+  // "look of the week" drifts per era (epoch 0/absent = historical mapping).
+  const styleType = (((theme.seed ?? 0) >>> 3) + (styleEpoch ?? 0) * 3) % 7;
 
   // Find active phrase
   const activePhraseIndex = phrases.findIndex(
@@ -3023,9 +3027,9 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
         scenes.length,
         activeTheme.transitionStyle ?? "crossfade",
         look.motion,
-        { loopEnding },
+        { loopEnding, epoch: theme?.styleEpoch ?? 0 },
       ),
-    [activeTheme.seed, scenes.length, activeTheme.transitionStyle, look.motion, loopEnding],
+    [activeTheme.seed, scenes.length, activeTheme.transitionStyle, look.motion, loopEnding, theme?.styleEpoch],
   );
 
   // Absolute start frame of each scene (prefix sums); sceneStarts[i] is where
@@ -3040,6 +3044,14 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
   // BPM; scene boundaries stay narration-timed. undefined for "none".
   const beatFrames = framesPerBeat(activeTheme.musicTrack ?? undefined, fps);
 
+  // Style-epoch drift (backend prop, read from RAW props like loopEnding —
+  // the render never reads a clock). Epoch 0 / absent must leave every
+  // consumer bit-identical. The level offset is a small deterministic
+  // per-epoch nudge (±0.04) so the whole era feels slightly calmer/livelier.
+  const styleEpoch = theme?.styleEpoch ?? 0;
+  const epochLevelOffset =
+    styleEpoch > 0 ? (makeRng(((styleEpoch * 0x9e3779b1) >>> 0) || 1)() - 0.5) * 0.08 : 0;
+
   // Per-scene energy schedule — "energy is a schedule, not a level". Uses the
   // POST-TTS durations from props, so beat frames are real reading time.
   const energyPlan = React.useMemo(
@@ -3048,9 +3060,9 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
         (activeTheme.seed ?? 0) >>> 0,
         scenes.length,
         scenes.map((s) => s.durationInFrames),
-        { loopEnding, beatFrames },
+        { loopEnding, beatFrames, epochLevelOffset },
       ),
-    [activeTheme.seed, scenes, loopEnding, beatFrames],
+    [activeTheme.seed, scenes, loopEnding, beatFrames, epochLevelOffset],
   );
 
   // Seed-driven finishing layers (grain, leaks, letterbox, edge frame, ...)
@@ -3242,7 +3254,7 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
 
       {/* Global Karaoke Subtitles Overlay */}
       {subtitles && subtitles.length > 0 && (
-        <KaraokeSubtitles subtitles={subtitles} theme={activeTheme} palette={palette} finish={finish} wordPulse={micro.has("word-pulse")} beatFrames={beatFrames} />
+        <KaraokeSubtitles subtitles={subtitles} theme={activeTheme} palette={palette} finish={finish} wordPulse={micro.has("word-pulse")} beatFrames={beatFrames} styleEpoch={styleEpoch} />
       )}
 
       {/* Cross-cut cover: carries each cut's peak ACROSS the boundary —

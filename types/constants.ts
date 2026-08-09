@@ -191,6 +191,14 @@ export const ThemeSchema = z.object({
    * FollowChip. Never inferred from scene shapes; absent = legacy ending.
    */
   loopEnding: z.boolean().optional(),
+  /**
+   * Style-epoch index (backend-set, main.py current_style_epoch): the
+   * channel's style center drifts subtly every few days (anti
+   * template-fatigue). Render-side consumers derive small deterministic
+   * offsets from it (caption style, transition accents, energy) — the render
+   * never reads a clock. Absent or 0 = bit-identical no-drift rendering.
+   */
+  styleEpoch: z.number().int().min(0).optional(),
 });
 
 export const PipelineSchema = z

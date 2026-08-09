@@ -144,9 +144,13 @@ export function deriveCutPlan(
   sceneCount: number,
   anchor: string,
   motion: MotionFeel,
-  opts?: { loopEnding?: boolean },
+  opts?: { loopEnding?: boolean; epoch?: number },
 ): CutSpec[] {
   const loopEnding = opts?.loopEnding === true;
+  // Style-epoch drift: rotates WHICH pool slots become this video's accent
+  // styles — the era's cut flavor shifts. Post-draw index remap only (both
+  // accent draws are still consumed identically); 0/absent ⇒ bit-identical.
+  const epochRot = Math.max(0, Math.floor(opts?.epoch ?? 0));
   const validAnchor: CutStyleName =
     anchor === "none"
       ? "none"
@@ -170,9 +174,9 @@ export function deriveCutPlan(
   // accent2 shifts one pool slot when its draw collides with accent — a
   // deterministic dodge that keeps the draw count fixed.
   const pool = TRANSITION_POOLS[motion];
-  const accentIdx = Math.floor(rng() * pool.length) % pool.length;
+  const accentIdx = (Math.floor(rng() * pool.length) + epochRot) % pool.length;
   const accent: CutStyleName = pool[accentIdx];
-  const accent2Idx = Math.floor(rng() * pool.length) % pool.length;
+  const accent2Idx = (Math.floor(rng() * pool.length) + epochRot) % pool.length;
   const accent2: CutStyleName =
     pool[accent2Idx === accentIdx ? (accent2Idx + 1) % pool.length : accent2Idx];
 
