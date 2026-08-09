@@ -755,16 +755,25 @@ export const SceneTransition: React.FC<SceneTransitionProps> = ({
     extrapolateRight: "clamp",
     easing: EASE_OUT,
   });
-  // Scene 0's enter starts MORE THAN HALF-ARRIVED. Instagram uses the
-  // video's literal first frame as the reel cover (profile grid + the
-  // load-in moment), so any recipe that enters from nothing — fade, slide,
-  // wipe — turns the cover into a black card (seen on posted reels,
-  // 2026-08-09). Remapping the eased progress keeps every style's shape,
-  // guarantees the hook is visible at frame 0 (crossfade ⇒ opacity ≥ 0.7,
-  // blur-dissolve ⇒ ≤30% residual blur — frame 0 is the reel's COVER image),
-  // and still lands fully by frame 4. Applies to BOTH the cut-plan and
-  // legacy paths below. Do not regress: frame 0 must never be blank.
-  const enterT = sceneIndex === 0 ? 0.7 + 0.3 * enterTRaw : enterTRaw;
+  // Scene 0's enter is FULLY ARRIVED at frame 0. Instagram uses the video's
+  // literal first frame as the reel cover (profile grid + the load-in
+  // moment), so scene 0 has no previous content to cut FROM — its "enter" is
+  // the cover being drawn, not a transition between two things.
+  //
+  // 2026-08-09 first shipped 0.7 + 0.3*t, which killed the black card but
+  // still published a cover carrying transition artifacts: iris-open clipped
+  // the corners to a 70% circle, push-up/slide held the frame 30% off
+  // position, blur-dissolve left ~3px of blur, scale-rotate a 1.8° tilt.
+  // At t = 1 every one of the 11 styles reachable at scene 0 (BANNED_ANCHORS
+  // + validAnchor keep the accent-only families out) computes to exact
+  // identity, so the cover is the composition as designed.
+  //
+  // This does NOT read as a jump cut: the first 12 frames still carry the
+  // hook punch, the accent-line/body/subtitle springs, the letterbox sweep,
+  // the HUD fade, the camera pan and the riser. The FRAME stops moving; the
+  // content inside it still arrives.
+  // Do not regress: frame 0 is the cover, and a cover does not animate.
+  const enterT = sceneIndex === 0 ? 1 : enterTRaw;
   const exitT = interpolate(
     frame,
     [durationInFrames - exitDur, durationInFrames],

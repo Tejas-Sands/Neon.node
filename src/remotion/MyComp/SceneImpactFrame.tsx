@@ -54,11 +54,25 @@ export const SceneImpactFrame: React.FC<SceneImpactFrameProps> = ({
   // Full-strength flash only on the first scene; later scenes stay subtle
   // so back-to-back scene entries don't strobe.
   const flashPeak = sceneIndex === 0 ? 0.3 : 0.15;
-  const flashOpacity = interpolate(frame, [0, 2, 10], [flashPeak, flashPeak * 0.6, 0], {
-    easing: Easing.out(Easing.cubic),
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  // Scene 0's peak is delayed off frame 0 — that frame is the reel cover, and
+  // it already carries the HookPunch wash. Scenes 1+ are byte-identical.
+  const flashOpacity =
+    sceneIndex === 0
+      ? interpolate(
+          frame,
+          [0, 3, 6, 12],
+          [flashPeak * 0.25, flashPeak, flashPeak * 0.6, 0],
+          {
+            easing: Easing.out(Easing.cubic),
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+          }
+        )
+      : interpolate(frame, [0, 2, 10], [flashPeak, flashPeak * 0.6, 0], {
+          easing: Easing.out(Easing.cubic),
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        });
 
   // ── 2. Accent sweep line ───────────────────────────────────────────────
   const sweepProgress = spring({

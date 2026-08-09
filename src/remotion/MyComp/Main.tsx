@@ -191,7 +191,12 @@ const HookPunch: React.FC<{ primaryColor: string; secondaryColor: string; seed?:
   // out; the flash/ring interpolations clamp to 0 well before this cutoff.
   if (frame > 42) return null;
 
-  const flash = interpolate(frame, [0, 2, 12], [0.85, 0.45, 0], {
+  // The peak sits at frame 3, not frame 0: frame 0 is the reel COVER, and an
+  // 0.85 full-frame accent wash is not a cover — it is a colour card with the
+  // hook faintly behind it. The punch still fires within 100ms of play start,
+  // so the pattern interrupt is intact; only the still frame is protected.
+  // The residual 0.10 at frame 0 leaves a faint brand bloom, which is wanted.
+  const flash = interpolate(frame, [0, 3, 6, 16], [0.1, 0.85, 0.45, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -1001,10 +1006,16 @@ const DynamicScene: React.FC<{
         : { damping: 12, stiffness: Math.round(100 * sMul), mass: 0.8 },
       durationInFrames: sceneIndex === 0 ? 12 : 20,
     });
-    const titleScale = interpolate(titleEntrance, [0, 1], [sceneIndex === 0 ? 0.85 : 0.7, 1]);
-    // Hook text is never fully invisible on scene 0 — readable from frame one
-    const titleOpacity = interpolate(titleEntrance, [0, 1], [sceneIndex === 0 ? 0.6 : 0, 1]);
-    const titleY = interpolate(titleEntrance, [0, 1], [30, 0]);
+    // Scene 0's hook is FULLY LANDED at frame 0 — full size, full opacity, at
+    // its resting position — because that frame is the reel cover. The old
+    // 0.85/0.6/+30px floors made the cover a dim, undersized, misplaced title
+    // in exchange for an entrance nobody sees: scene 0 already renders
+    // animationMode="none", so these three values were the only thing holding
+    // the hook back, and the visible entrance comes from the punch, the camera
+    // and the accent line. titleDrift below still keeps it alive in motion.
+    const titleScale = interpolate(titleEntrance, [0, 1], [sceneIndex === 0 ? 1 : 0.7, 1]);
+    const titleOpacity = interpolate(titleEntrance, [0, 1], [sceneIndex === 0 ? 1 : 0, 1]);
+    const titleY = interpolate(titleEntrance, [0, 1], [sceneIndex === 0 ? 0 : 30, 0]);
     // Post-entrance "living" drift: pro titles never sit dead-still — a slow
     // +1.5% scale over the scene keeps the type alive without fighting the
     // camera. Calm looks stay truly still (motion mood matches).
