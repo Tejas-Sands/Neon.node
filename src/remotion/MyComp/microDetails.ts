@@ -16,6 +16,9 @@
 //                     title block, springing to the next anchor at each cut
 //   edge-tease      → the 6 frames before a dressed cut: the incoming edge
 //                     fills with the accent — the next scene arriving early
+//   word-pulse      → the active caption word: a sustained sub-4% breathing
+//                     scale (beat-synced when BPM is known) while it is
+//                     spoken — a read-along eye lock on the karaoke line
 //
 // All are O(1) DOM cost, none uses filter:blur, none enters the caption band,
 // and each supports reading rather than competing with it. Implementations
@@ -40,7 +43,8 @@ export type MicroDetail =
   | "grain-breath"
   | "progress-comet"
   | "accent-dot"
-  | "edge-tease";
+  | "edge-tease"
+  | "word-pulse";
 
 export interface MicroDetailConfig {
   /** Exactly two distinct details per video (Q25b), seeded (Q26c). */
@@ -60,6 +64,9 @@ const ALL_DETAILS: readonly MicroDetail[] = [
   // already changes shape via eligibility); draw count stays FOUR.
   "accent-dot",
   "edge-tease",
+  // 2026-08-09 retention pass: always eligible, lives on the caption line
+  // (a temporal home no other detail occupies).
+  "word-pulse",
 ];
 
 /**

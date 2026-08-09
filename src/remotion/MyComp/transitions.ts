@@ -202,9 +202,12 @@ export function deriveCutPlan(
       // quiet. Draws above are consumed either way.
       style = loopEnding ? "punch-in" : motion === "cinematic" ? "film-burn" : "blur-dissolve";
       sinceDressed = 0;
-    } else if (sinceDressed >= 1 && (dressRoll < 0.55 || sinceDressed >= 2)) {
-      // Dressed cut roughly every other boundary: signature ~55%,
-      // first accent ~25%, second accent ~20%.
+    } else if (sinceDressed >= 1 && (dressRoll < (motion === "calm" ? 0.55 : 0.7) || sinceDressed >= 2)) {
+      // Dressed cut roughly every other boundary (calm), leaning denser for
+      // energetic looks (2026-08 retention pass: pattern interrupts every
+      // 3-5s measurably hold viewers; text enter/land timing is untouched,
+      // so comprehension-first survives). Style split: signature ~55%,
+      // first accent ~25%, second accent ~20%. Same draws either branch.
       style = styleRoll < 0.55 ? safeAnchor : styleRoll < 0.8 ? accent : accent2;
       sinceDressed = 0;
     } else {

@@ -98,9 +98,28 @@ def make_tick(duration=0.09, seed=17) -> list:
     return out
 
 
+def make_riser(duration=0.6, seed=23) -> list:
+    """Anticipation riser — filtered noise whose brightness and level climb
+    monotonically and END at the peak (no decay: the first cut after the hook
+    is the landing). Sits under the voiceover as a pull toward the payoff."""
+    rnd = random.Random(seed)
+    n = int(SR * duration)
+    out, lp = [], 0.0
+    for i in range(n):
+        t = i / n
+        # Rising amplitude with an accelerating curve — tension, not a swell.
+        env = t ** 1.8
+        # Lowpass opens steadily upward (brightness = approach).
+        alpha = 0.015 + 0.30 * (t ** 1.4)
+        lp += alpha * (rnd.uniform(-1, 1) - lp)
+        out.append(lp * env)
+    return out
+
+
 if __name__ == "__main__":
     os.makedirs(OUT_DIR, exist_ok=True)
     _write_wav(os.path.join(OUT_DIR, "whoosh.wav"), make_whoosh())
     _write_wav(os.path.join(OUT_DIR, "impact.wav"), make_impact())
     _write_wav(os.path.join(OUT_DIR, "pop.wav"), make_pop())
     _write_wav(os.path.join(OUT_DIR, "tick.wav"), make_tick())
+    _write_wav(os.path.join(OUT_DIR, "riser.wav"), make_riser())

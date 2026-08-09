@@ -2513,7 +2513,11 @@ const KaraokeSubtitles: React.FC<{
   theme: ThemeProps;
   palette: Palette;
   finish: Finish;
-}> = ({ subtitles, theme, palette, finish }) => {
+  /** word-pulse micro-detail: sustained breathing scale on the active word. */
+  wordPulse?: boolean;
+  /** Beat grid (frames per beat) — syncs the pulse to the music (Q34:b). */
+  beatFrames?: number;
+}> = ({ subtitles, theme, palette, finish, wordPulse, beatFrames }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const currentTime = frame / fps;
@@ -2783,6 +2787,20 @@ const KaraokeSubtitles: React.FC<{
             wordStyle.color = isPast
               ? theme.secondaryColor
               : `${theme.secondaryColor}99`;
+          }
+
+          // word-pulse micro-detail: the active word keeps BREATHING while it
+          // is spoken (the entrance bounce above is a one-shot; this sustains
+          // the life), beat-synced when the track's BPM is known. Transform +
+          // brightness only — no reflow, no metric change, so the one-line
+          // guarantee and the contrast floor hold. Style 5's per-word pill
+          // pop is already the loudest caption treatment, so it opts out.
+          if (wordPulse && isActive && styleType !== 5) {
+            const period = beatFrames && beatFrames > 4 ? beatFrames : 12;
+            const pulse =
+              1 + 0.035 * (0.5 + 0.5 * Math.sin((2 * Math.PI * frame) / period));
+            wordStyle.transform = `${wordStyle.transform ?? ""} scale(${pulse})`.trim();
+            wordStyle.filter = "brightness(1.1)";
           }
 
           return (
@@ -3117,7 +3135,15 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
                 short-form sound design. Calm looks stay silent throughout. */}
             {look.motion !== "calm" && (
               index === 0 ? (
-                <Audio src={staticFile("sfx/impact.wav")} volume={0.5} />
+                <>
+                  <Audio src={staticFile("sfx/impact.wav")} volume={0.5} />
+                  {/* Anticipation riser: crescendos through the hook's last
+                      ~0.6s INTO the first cut — an audio-only pull toward the
+                      payoff, so the hook's visuals stay clean (Q19:b). */}
+                  <Sequence from={Math.max(0, scene.durationInFrames - 18)} layout="none">
+                    <Audio src={staticFile("sfx/riser.wav")} volume={0.28} />
+                  </Sequence>
+                </>
               ) : (
                 cutPlan[index] && WHOOSH_CUTS.has(cutPlan[index].style) ? (
                   <Audio src={staticFile("sfx/whoosh.wav")} volume={0.25} />
@@ -3216,7 +3242,7 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
 
       {/* Global Karaoke Subtitles Overlay */}
       {subtitles && subtitles.length > 0 && (
-        <KaraokeSubtitles subtitles={subtitles} theme={activeTheme} palette={palette} finish={finish} />
+        <KaraokeSubtitles subtitles={subtitles} theme={activeTheme} palette={palette} finish={finish} wordPulse={micro.has("word-pulse")} beatFrames={beatFrames} />
       )}
 
       {/* Cross-cut cover: carries each cut's peak ACROSS the boundary —

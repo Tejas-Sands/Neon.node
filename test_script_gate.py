@@ -239,6 +239,17 @@ def run_prompt_pins():
         failures.append("build_hn_news_prompt lost the insight-arc contract")
     if any("This changes everything" in p for p in main.HOOK_PATTERNS):
         failures.append("HOOK_PATTERNS teaches the banned 'This changes everything' template again")
+    # No hook template may teach a phrase the platitude gate would then reject:
+    # a pattern that trips _PLATITUDE_RES burns retries on every video it's
+    # drawn for.
+    for p in main.HOOK_PATTERNS:
+        for rx in main._PLATITUDE_RES:
+            if rx.search(p):
+                failures.append(f"HOOK_PATTERNS entry matches platitude regex {rx.pattern!r}: {p!r}")
+    if "Plant ONE specific open loop" not in news_prompt:
+        failures.append("build_hn_news_prompt lost the scene-1 open-loop instruction")
+    if "closing the open loop planted in scene 1" not in news_prompt:
+        failures.append("build_hn_news_prompt's conclusion no longer resolves the scene-1 open loop")
     viral = main.build_viral_topic_prompt({
         "subject": "SaltCell", "angle": "a", "hook": "h",
         "insight": "grid storage gets cheaper", "facts": [], "format": "news"})

@@ -210,6 +210,22 @@ VOICE_POOL = [
     "en-US-EmmaMultilingualNeural",    # cheerful, clear, conversational
 ]
 
+# VOICE_STYLE=cheerful (the default since 2026-08-09) biases narrator rotation
+# toward the two brightest voices WITHOUT renaming any ledger key: duplicate
+# entries double Ava/Emma's weight in every _feedback_weighted_choice mode
+# (cold, explore, learned) while Andrew/Brian stay in rotation as variety.
+# Kill switch: repo Variable VOICE_STYLE=legacy restores the flat pool and the
+# pre-2026-08 SYSTEM_PROMPT (no spoken-warmth section).
+VOICE_STYLE = os.environ.get("VOICE_STYLE", "cheerful").strip().lower()
+CHEERFUL_VOICE_POOL = [
+    "en-US-AvaMultilingualNeural",
+    "en-US-AvaMultilingualNeural",
+    "en-US-EmmaMultilingualNeural",
+    "en-US-EmmaMultilingualNeural",
+    "en-US-AndrewMultilingualNeural",
+    "en-US-BrianMultilingualNeural",
+]
+
 # A video must never ship with partial or missing narration. When on (default),
 # any TTS/mixing failure aborts the render instead of degrading — a GH runner
 # without ffmpeg once posted a video whose voice died after scene 1 because the
@@ -711,7 +727,7 @@ Each scene has a "type" that controls its visual layout. Choose the type that be
 2. Use double quotes for ALL string values. No single quotes.
 3. No trailing commas. No JavaScript comments.
 4. Generate 4 to 8 scenes. Each scene MUST have: type, text, voiceover, searchQuery, durationInFrames.
-5. FIRST scene MUST be type "hero" — it is the HOOK. Instagram ranks Reels by 3-second hold, so this scene alone decides reach. Its "text" (max 8 words, on screen from frame one) and "voiceover" (max 12 words, spoken hook — never a greeting or intro like "welcome" / "in this video") must BOTH deliver the hook and make the payoff of watching obvious. Bold, surprising, specific (see the CREATIVE BRIEF below for the exact hook style to use).
+5. FIRST scene MUST be type "hero" — it is the HOOK. Instagram ranks Reels by 3-second hold, so this scene alone decides reach. Its "text" (max 8 words, on screen from frame one) and "voiceover" (max 12 words, spoken hook — never a greeting or intro like "welcome" / "in this video") must BOTH deliver the hook and make the payoff of watching obvious. Bold, surprising, specific (see the CREATIVE BRIEF below for the exact hook style to use). The voiceover's FIRST three words must already carry the surprise — never a wind-up like "So,", "Okay,", "Today," or "Guys".
 6. LAST scene MUST be type "cta", "hero", or "split" — this is the conclusion that pays off the hook. Default to a CONTENT payoff (a decisive takeaway, or a "try/do this" action tied to the story). Add a follow/subscribe ask ONLY if the creative brief below explicitly requests one — never invent one yourself, and never state the same call-to-action twice in one video.
 7. Use AT LEAST 3 different scene types across the video for visual variety. Do NOT repeat the same scene type back-to-back.
 8. VARY textAnimation across scenes — never use the same animation on consecutive scenes.
@@ -744,7 +760,7 @@ R3. ON-SCREEN ≠ SPOKEN. A scene's "text" (and "title"/"subtitle") is a SHORT p
     BAD:  text "The fastest API gateway ever built"  +  voiceover "Meet HyperAPI, the fastest API gateway ever built."   (screen = voiceover, redundant)
     GOOD: text "20ms, not 200ms"                     +  voiceover "It answers requests in twenty milliseconds — ten times quicker than the gateway you run now."
 R4. THREE FIELDS, THREE MEANINGS. Within one scene, "title", "text", and "subtitle" must each say something DIFFERENT. Never paraphrase one into another.
-R5. ARC, NOT A LIST. Build a story that escalates, not a pile of facts: HOOK (surprise) → STAKES (why the viewer should care) → the SURPRISING detail or mechanism (the "wait, really?" beat) → PAYOFF (one concrete takeaway). Plant one open loop early and close it at the end so viewers stay for the finish.
+R5. ARC, NOT A LIST. Build a story that escalates, not a pile of facts: HOOK (surprise) → STAKES (why the viewer should care) → the SURPRISING detail or mechanism (the "wait, really?" beat) → PAYOFF (one concrete takeaway). Plant one open loop early — name the CATEGORY of the payoff while withholding the payoff itself (tease "the fix is a single config line", reveal the line at the end) — and close it in the final scene so viewers stay for the finish.
 
 === FACT INTEGRITY RULES (ZERO TOLERANCE — one violation ruins the whole video) ===
 
@@ -827,6 +843,27 @@ These are PROVEN combinations. Use them as starting points:
     The summed narration MUST run 40-55 seconds when spoken (~110-150 words total across all scenes).
     Hit it by writing 20-35 word voiceovers per content scene — never by padding with repetition."""
 
+# Spoken-warmth register (VOICE_STYLE=cheerful, the default). edge-tts exposes
+# no emotion/style API — punctuation and phrasing are the only prosody levers,
+# so the cheerful delivery is written into the script itself: the engine
+# renders "?" with a genuine rise, "!" with brightness, and a dash with a
+# lean-in before the payoff. VOICE_STYLE=legacy restores the historical
+# prompt byte-for-byte.
+_SPOKEN_WARMTH_RULES = """
+
+=== SPOKEN DELIVERY — WARM & CHEERFUL (how the voiceover should SOUND) ===
+
+23. Write every "voiceover" the way an excited friend shares great news out loud — warm, playful, genuinely delighted by the details. The narration engine turns punctuation into real vocal emotion (question marks rise, exclamation marks brighten, a dash makes the voice lean in before a payoff), so punctuation IS the performance:
+    - Short, punchy sentences (most under 12 words) with natural contractions ("it's", "that's", "here's").
+    - Lean on the setup — dash — payoff shape: "They rewrote the whole parser — in a weekend."
+    - Ask ONE genuine question somewhere in the video and answer it in the next scene ("So what actually broke?"). If the hook is already a question, that's the one.
+    - At MOST two exclamation marks in the whole script, placed where the surprise genuinely peaks.
+    - Delight lives in specifics: an exact number delivered with relish beats any adjective.
+24. Cheerful NEVER means hype. Every fact-integrity and no-repetition rule above still applies in full: no cliché superlatives, no imperative advice outside the hook/CTA, and no catchphrase repeated across scenes — say a good line once and move on."""
+
+if VOICE_STYLE != "legacy":
+    SYSTEM_PROMPT = SYSTEM_PROMPT + _SPOKEN_WARMTH_RULES
+
 
 def build_user_prompt(user_request: str) -> str:
     """Build the user-role prompt with two diverse few-shot examples.
@@ -874,7 +911,7 @@ Topic: "SaaS product launch — 10x faster API"
       "secondaryText": "20ms",
       "leftLabel": "BEFORE",
       "rightLabel": "AFTER",
-      "voiceover": "Where old gateways burn two hundred milliseconds per request, it answers in twenty.",
+      "voiceover": "Old gateways burn two hundred milliseconds a request — this one answers in twenty. So how far does that scale?",
       "searchQuery": "server rack data center blue",
       "videoQuery": "network latency dashboard screen",
       "durationInFrames": 175,
@@ -887,7 +924,7 @@ Topic: "SaaS product launch — 10x faster API"
       "countFrom": 0,
       "countTo": 50000,
       "countSuffix": "+",
-      "voiceover": "It holds that speed all the way to fifty thousand requests a second before it even breaks a sweat.",
+      "voiceover": "All the way to fifty thousand requests a second — and it doesn't even break a sweat.",
       "searchQuery": "network switch cables closeup",
       "videoQuery": "data flowing network nodes motion",
       "durationInFrames": 200,
@@ -988,7 +1025,7 @@ Topic: "Lab's sodium-ion battery retains 92% capacity after 3,000 charge cycles"
       "secondaryText": "$87/kWh",
       "leftLabel": "LITHIUM",
       "rightLabel": "SODIUM",
-      "voiceover": "Sodium is dirt cheap and everywhere, cutting the projected pack cost by about a third.",
+      "voiceover": "Sodium is dirt cheap and everywhere — that cuts the projected pack cost by about a third.",
       "searchQuery": "salt crystals macro white",
       "videoQuery": "mining salt industrial machinery",
       "durationInFrames": 185,
@@ -1139,6 +1176,10 @@ HOOK_PATTERNS = [
     "SENIOR VS JUNIOR: contrast how junior vs senior engineers approach the topic (template: 'Senior devs do THIS instead of ___').",
     "FORBIDDEN ARCHITECTURE: frame as a little-known developer secret (template: 'The secret feature in ___ that feels illegal to know').",
     "STOP-SCROLLING TECH: target developers directly inside the first 2 words (template: 'Stop scrolling if you build apps in 2026').",
+    "HIDDEN-DETAIL: tease the one specific detail everyone missed in the story (template: 'Everyone missed the real story in ___' / 'The hidden number in the ___ announcement').",
+    "WHAT-NOW QUESTION: open with the consequence question the viewer is already asking (template: 'So what happens to ___ now?').",
+    "COST-OF-NOT-KNOWING: frame the hook as what missing this fact costs the viewer (template: 'Not knowing this about ___ costs you real money').",
+    "TWO-WORD COLD OPEN: two abrupt words, a beat, then the claim (template: 'It's live. And it breaks ___').",
 ]
 
 
@@ -2919,6 +2960,17 @@ def _estimate_spoken_seconds(scenes: List[dict], engine: Optional[str] = None) -
     edge calibration) — recalibrate from real CI syntheses before trusting
     the band gate under TTS_PROVIDER=kokoro (compare est vs the mixed-audio
     length the logs print, same procedure as the edge measurement above).
+
+    2026-08-09 re-measurement (VOICE_STYLE=cheerful pool bias + pitch +2Hz,
+    rate unchanged at +5%) via scripts/measure_spoken_rate.py: per-voice
+    effective rates on the few-shot corpus are Ava 3.06 / Emma 3.28 /
+    Andrew 3.03 / Brian 3.25 wps — the 2:2:1:1 cheerful weighting moves the
+    pool average by 0.1% vs the flat pool (3.159 vs 3.155), and pitch shifts
+    do not change duration, so THIS CONSTANT IS UNCHANGED. (Those corpus
+    numbers read faster than 2.33 because the few-shot scenes are longer than
+    the ~10-word production scenes this constant was fit on — see the script's
+    caveat; ground-truthed the same day: mp3 length ≈ last WordBoundary end
+    + 0.36s, i.e. SCENE_TAIL_PAD_SEC models the trailing silence correctly.)
     """
     wps, leadin = _SPOKEN_RATE_BY_ENGINE.get(
         engine or resolve_tts_engine(None), _SPOKEN_RATE_BY_ENGINE["edge"])
@@ -7308,16 +7360,20 @@ async def _generate_voiceover_with_engine(
             # cold start; with enough scored posts, better-performing narrators get
             # picked more often (epsilon floor keeps every voice in rotation).
             rnd = random.Random(_derive_seed(session_id))
+            edge_pool = CHEERFUL_VOICE_POOL if VOICE_STYLE != "legacy" else VOICE_POOL
             resolved_voice, voice_mode = _feedback_weighted_choice(
-                VOICE_POOL, lambda v: v, "voices", rnd, get_feedback_stats())
+                edge_pool, lambda v: v, "voices", rnd, get_feedback_stats())
             print(f"[{session_id}] Seeded narrator voice for this video: {resolved_voice} ({voice_mode})")
         # Recorded so the post ledger can attribute performance to the narrator.
         render_status_store.setdefault(session_id, {})["resolved_voice"] = resolved_voice
         render_status_store[session_id]["tts_provider"] = "edge"
     # +10% read as hurried, which is most of what "sounds like a robot"
     # actually is. +5% keeps the pace tight for a Reel without the rush.
+    # Pitch +2Hz (default since 2026-08-09) brightens the delivery a touch
+    # toward "cheerful" — pitch shifts don't change duration, so the spoken-
+    # rate calibration is unaffected. Revert via Variable VOICEOVER_PITCH=+0Hz.
     resolved_rate = rate or os.environ.get("VOICEOVER_RATE", "+5%")
-    resolved_pitch = pitch or os.environ.get("VOICEOVER_PITCH", "+0Hz")
+    resolved_pitch = pitch or os.environ.get("VOICEOVER_PITCH", "+2Hz")
 
     # Kokoro synthesizes every spoken scene in ONE worker subprocess (the
     # ~330MB model loads once per video); the shared per-scene loop below
@@ -7817,20 +7873,35 @@ def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None,
     judge_hook = f' Open with this energy: "{plan["hook"]}".' if plan and plan.get("hook") else ""
     takeaway = f' The takeaway to land: {plan["insight"]}' if plan and plan.get("insight") else ""
 
-    outline_lines = [f'- Scene 1 (HOOK): {hook} Type: "hero". Deliver the news headline in a way that is impossible to scroll past.{judge_hook}']
+    # RETENTION_V2 (default on): one mid-video "curiosity bridge" — the middle
+    # beat's voiceover ends on a short forward-tease so viewers hold for the
+    # payoff. Appended to a sentence (never a standalone command: the
+    # imperative gate is start-anchored) and required to use fresh words so
+    # the Jaccard redundancy prune never eats it. Variable RETENTION_V2=false
+    # restores the historical outline.
+    retention_v2 = os.environ.get("RETENTION_V2", "true").strip().lower() == "true"
+    bridge_beat_idx = (middle_count // 2) if (retention_v2 and middle_count >= 3) else -1
+
+    outline_lines = [f'- Scene 1 (HOOK): {hook} Type: "hero". Deliver the news headline in a way that is impossible to scroll past. Plant ONE specific open loop: name the category of the payoff without revealing it, so the ending has something to resolve.{judge_hook}']
     for i, (beat_type, beat_desc) in enumerate(middle_beats, start=2):
-        outline_lines.append(f'- Scene {i}: {beat_desc} Type: "{beat_type}".')
+        beat_line = f'- Scene {i}: {beat_desc} Type: "{beat_type}".'
+        if i - 2 == bridge_beat_idx:
+            beat_line += (" End this scene's voiceover with a short forward-tease clause"
+                          " (max 8 words, appended to the final sentence — never a standalone"
+                          " command) hinting at what the final scene reveals, in fresh words"
+                          " that repeat nothing from the hook.")
+        outline_lines.append(beat_line)
     conclusion_idx = len(middle_beats) + 2
     if ending == "no-ask":
         # Loop-ending packs (M3): no outro card exists AND the closer carries
         # no ask either — the FollowChip overlay is the single follow-ask.
         # Ending on the payoff (not a sign-off) is what makes the loop seam
         # invisible and keeps the last frame worth rewatching.
-        outline_lines.append(f'- Scene {conclusion_idx} (CONCLUSION): Land the payoff — the single most surprising concrete fact or consequence of the story.{takeaway} Type: "{closer_type}". The video ENDS the instant this line lands: no sign-off, no summary phrase like "so that\'s why...", no follow/subscribe ask, and do NOT mention the channel name.')
+        outline_lines.append(f'- Scene {conclusion_idx} (CONCLUSION): Land the payoff — the single most surprising concrete fact or consequence of the story, closing the open loop planted in scene 1.{takeaway} Type: "{closer_type}". The video ENDS the instant this line lands: no sign-off, no summary phrase like "so that\'s why...", no follow/subscribe ask, and do NOT mention the channel name.')
     elif outro_appended:
-        outline_lines.append(f'- Scene {conclusion_idx} (CONCLUSION): Land a strong, satisfying takeaway on why this story matters.{takeaway} Type: "{closer_type}". Do NOT ask viewers to follow/subscribe and do NOT mention the channel name — a branded outro card is appended automatically right after this scene.')
+        outline_lines.append(f'- Scene {conclusion_idx} (CONCLUSION): Land a strong, satisfying takeaway on why this story matters, closing the open loop planted in scene 1.{takeaway} Type: "{closer_type}". Do NOT ask viewers to follow/subscribe and do NOT mention the channel name — a branded outro card is appended automatically right after this scene.')
     else:
-        outline_lines.append(f'- Scene {conclusion_idx} (CONCLUSION): Land a strong, satisfying takeaway on why this story matters.{takeaway} Type: "{closer_type}". End with a clear "Follow Neon Node for more tech" call-to-action.')
+        outline_lines.append(f'- Scene {conclusion_idx} (CONCLUSION): Land a strong, satisfying takeaway on why this story matters, closing the open loop planted in scene 1.{takeaway} Type: "{closer_type}". End with a clear "Follow Neon Node for more tech" call-to-action.')
 
     outline = "\n".join(outline_lines)
 

@@ -200,6 +200,14 @@ jobs:
           echo "TOPIC_ENTITY_COOLDOWN_H=${{ vars.TOPIC_ENTITY_COOLDOWN_H || '0' }}" >> "$GITHUB_ENV"
           echo "TOPIC_DEDUP_V2=${{ vars.TOPIC_DEDUP_V2 || 'false' }}" >> "$GITHUB_ENV"
           echo "TOPIC_HISTORY_CAP=${{ vars.TOPIC_HISTORY_CAP || '200' }}" >> "$GITHUB_ENV"
+          # Voice & retention flags (2026-08-09): defaults ARE the new cheerful
+          # voice + retention behavior (user-approved live launch). Set the
+          # Variable to the legacy value to revert without a code change:
+          # VOICE_STYLE=legacy, VOICEOVER_PITCH=+0Hz, RETENTION_V2=false.
+          echo "VOICE_STYLE=${{ vars.VOICE_STYLE || 'cheerful' }}" >> "$GITHUB_ENV"
+          echo "VOICEOVER_RATE=${{ vars.VOICEOVER_RATE || '+5%' }}" >> "$GITHUB_ENV"
+          echo "VOICEOVER_PITCH=${{ vars.VOICEOVER_PITCH || '+2Hz' }}" >> "$GITHUB_ENV"
+          echo "RETENTION_V2=${{ vars.RETENTION_V2 || 'true' }}" >> "$GITHUB_ENV"
 
       - name: Run Video Generation Pipeline
         env:
