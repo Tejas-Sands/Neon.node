@@ -1715,6 +1715,48 @@
    "session": "gh-b54122",
    "query": "server racks blinking data center",
    "scene": 4
+  },
+  {
+   "id": "pexels-27385370",
+   "ts": 1786351244,
+   "session": "gh-c85fec",
+   "query": "terminal typing commands motion",
+   "scene": 0
+  },
+  {
+   "id": "pexels-9017889",
+   "ts": 1786351244,
+   "session": "gh-c85fec",
+   "query": "server rack lights blinking",
+   "scene": 1
+  },
+  {
+   "id": "pexels-19162270",
+   "ts": 1786351244,
+   "session": "gh-c85fec",
+   "query": "code editor scrolling fast",
+   "scene": 2
+  },
+  {
+   "id": "pexels-5377991",
+   "ts": 1786351244,
+   "session": "gh-c85fec",
+   "query": "cybersecurity data visualization",
+   "scene": 3
+  },
+  {
+   "id": "pexels-8086198",
+   "ts": 1786351244,
+   "session": "gh-c85fec",
+   "query": "developer typing laptop night",
+   "scene": 4
+  },
+  {
+   "id": "pexels-34124550",
+   "ts": 1786351244,
+   "session": "gh-c85fec",
+   "query": "developer typing laptop night",
+   "scene": 4
   }
  ]
 }

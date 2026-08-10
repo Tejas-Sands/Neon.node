@@ -649,5 +649,16 @@
   "entities": [],
   "ts": 1786334185,
   "session": "gh-b54122"
+ },
+ {
+  "id": "49239021",
+  "title": "Auto mode is now the default in Claude Code",
+  "norm": "auto mode is now the default in claude code",
+  "subject_norm": "claude code auto mode",
+  "entities": [
+   "anthropic"
+  ],
+  "ts": 1786351303,
+  "session": "gh-c85fec"
  }
 ]
