@@ -1757,6 +1757,69 @@
    "session": "gh-c85fec",
    "query": "developer typing laptop night",
    "scene": 4
+  },
+  {
+   "id": "pexels-36178907",
+   "ts": 1786369426,
+   "session": "gh-3dbbb2",
+   "query": "terminal code typing command line",
+   "scene": 0
+  },
+  {
+   "id": "pexels-3403279",
+   "ts": 1786369426,
+   "session": "gh-3dbbb2",
+   "query": "server rack lights flashing data",
+   "scene": 1
+  },
+  {
+   "id": "pexels-34576602",
+   "ts": 1786369426,
+   "session": "gh-3dbbb2",
+   "query": "data flow circuit board macro",
+   "scene": 2
+  },
+  {
+   "id": "pexels-34336322",
+   "ts": 1786369426,
+   "session": "gh-3dbbb2",
+   "query": "data flow circuit board macro",
+   "scene": 2
+  },
+  {
+   "id": "pexels-8103040",
+   "ts": 1786369426,
+   "session": "gh-3dbbb2",
+   "query": "code editor scrolling fast screen",
+   "scene": 3
+  },
+  {
+   "id": "pexels-36628014",
+   "ts": 1786369426,
+   "session": "gh-3dbbb2",
+   "query": "code editor scrolling fast screen",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35771140",
+   "ts": 1786369426,
+   "session": "gh-3dbbb2",
+   "query": "dashboard UI charts moving data",
+   "scene": 4
+  },
+  {
+   "id": "pexels-8348901",
+   "ts": 1786369426,
+   "session": "gh-3dbbb2",
+   "query": "dashboard UI charts moving data",
+   "scene": 4
+  },
+  {
+   "id": "pexels-12616425",
+   "ts": 1786369426,
+   "session": "gh-3dbbb2",
+   "query": "network traffic security nodes glowing",
+   "scene": 5
   }
  ]
 }
