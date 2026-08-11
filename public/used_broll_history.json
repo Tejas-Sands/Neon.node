@@ -1883,6 +1883,62 @@
    "session": "gh-e2b91d",
    "query": "server hardware rack cooling fans",
    "scene": 5
+  },
+  {
+   "id": "pexels-34336742",
+   "ts": 1786443499,
+   "session": "gh-2aa699",
+   "query": "neural network visualization motion nodes",
+   "scene": 0
+  },
+  {
+   "id": "pexels-34578211",
+   "ts": 1786443499,
+   "session": "gh-2aa699",
+   "query": "server data center lights motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-38454843",
+   "ts": 1786443499,
+   "session": "gh-2aa699",
+   "query": "server data center lights motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-18622821",
+   "ts": 1786443499,
+   "session": "gh-2aa699",
+   "query": "circuit board macro motion",
+   "scene": 2
+  },
+  {
+   "id": "pexels-5495890",
+   "ts": 1786443499,
+   "session": "gh-2aa699",
+   "query": "code editor screen scrolling",
+   "scene": 3
+  },
+  {
+   "id": "pexels-12913395",
+   "ts": 1786443499,
+   "session": "gh-2aa699",
+   "query": "code editor screen scrolling",
+   "scene": 3
+  },
+  {
+   "id": "pexels-36148341",
+   "ts": 1786443499,
+   "session": "gh-2aa699",
+   "query": "software dashboard ui scrolling",
+   "scene": 4
+  },
+  {
+   "id": "pexels-34679079",
+   "ts": 1786443499,
+   "session": "gh-2aa699",
+   "query": "software dashboard ui scrolling",
+   "scene": 4
   }
  ]
 }

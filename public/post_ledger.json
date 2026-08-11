@@ -372,7 +372,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3877,
-      "fetched_at": 1786334185
+      "fetched_at": 1786443554
      },
      "snap72": {
       "views": 114,
@@ -425,7 +425,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1764,
-      "fetched_at": 1786334185
+      "fetched_at": 1786443554
      },
      "snap72": {
       "views": 151,
@@ -648,7 +648,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1164,
-      "fetched_at": 1786334185
+      "fetched_at": 1786443554
      },
      "snap72": {
       "views": 116,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1228,
-      "fetched_at": 1786334185
+      "fetched_at": 1786443554
      },
      "snap72": {
       "views": 159,
@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1786334185
+      "fetched_at": 1786443554
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1786334185
+      "fetched_at": 1786443554
      },
      "snap72": {
       "views": 116,
@@ -1035,7 +1035,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3552,
-      "fetched_at": 1786334185
+      "fetched_at": 1786443554
      },
      "snap72": {
       "views": 106,
@@ -1090,7 +1090,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2691,
-      "fetched_at": 1786334185
+      "fetched_at": 1786443554
      },
      "snap72": {
       "views": 86,
@@ -1632,7 +1632,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 16364,
-      "fetched_at": 1786334185
+      "fetched_at": 1786443554
      },
      "snap72": {
       "views": 0,
@@ -1745,7 +1745,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2828,
-      "fetched_at": 1786334185
+      "fetched_at": 1786443554
      },
      "snap72": {
       "views": 26,
@@ -1982,7 +1982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3957,
-      "fetched_at": 1786334185
+      "fetched_at": 1786443554
      },
      "snap72": {
       "views": 2,
@@ -2351,7 +2351,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2471,
-      "fetched_at": 1786284207
+      "fetched_at": 1786443554
      },
      "snap72": {
       "views": 8,
@@ -2414,7 +2414,7 @@
       "saved": 0,
       "total_interactions": 5,
       "ig_reels_avg_watch_time": 4173,
-      "fetched_at": 1786334185
+      "fetched_at": 1786443554
      },
      "snap72": {
       "views": 23,
@@ -3046,9 +3046,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1755,
-      "fetched_at": 1786284207
+      "fetched_at": 1786443554
      },
-     "snap72": null,
+     "snap72": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1755,
+      "fetched_at": 1786443554
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -3471,7 +3481,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 2,
+      "reach": 2,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1239,
+      "fetched_at": 1786443554
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -3516,6 +3536,54 @@
     "instagram": {
      "id": "17861262837669509",
      "posted_at": 1786429323
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786443499,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "Muse Glimmer: 30B-parameter model optimized for always-on local agent workflows",
+    "subject": "Muse Glimmer",
+    "url": "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model",
+    "source": "hn",
+    "keywords": [
+     "agent",
+     "model"
+    ],
+    "viral_score": 10.34,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Muse Glimmer Local AI Model",
+    "angle": "Meta Superintelligence Labs released Muse Glimmer, a 30-billion-parameter open-weights model designed specifically to run always-on autonomous agents locally on consumer hardware.",
+    "insight": "By distilling agentic reasoning into a 30B footprint with Apache 2.0 weights, Meta makes private, always-on local automation practical on standard consumer GPUs without cloud dependencies.",
+    "judge": "plan"
+   },
+   "style_pack": "toxic-lime",
+   "format_pack": "legacy-news",
+   "seed": 740708236,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "STORY-TEASE",
+   "style_epoch": 0,
+   "scene_count": 5,
+   "video_seconds": 41.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-2aa699",
+   "platforms": {
+    "instagram": {
+     "id": "18274842859292465",
+     "posted_at": 1786443551
     }
    },
    "metrics": {

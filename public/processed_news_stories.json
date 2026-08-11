@@ -681,5 +681,18 @@
   ],
   "ts": 1786429326,
   "session": "gh-e2b91d"
+ },
+ {
+  "id": "49241679",
+  "title": "Muse Glimmer: 30B-parameter model optimized for always-on local agent workflows",
+  "norm": "muse glimmer 30b parameter model optimized for always on local agent workflows",
+  "subject_norm": "muse glimmer",
+  "entities": [
+   "glimmer",
+   "b-parameter",
+   "muse"
+  ],
+  "ts": 1786443554,
+  "session": "gh-2aa699"
  }
 ]
