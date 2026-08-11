@@ -1939,6 +1939,55 @@
    "session": "gh-2aa699",
    "query": "software dashboard ui scrolling",
    "scene": 4
+  },
+  {
+   "id": "pexels-7822022",
+   "ts": 1786455505,
+   "session": "gh-558385",
+   "query": "phone screen incoming call glowing",
+   "scene": 0
+  },
+  {
+   "id": "pexels-7706746",
+   "ts": 1786455505,
+   "session": "gh-558385",
+   "query": "telemarketing call center empty desks",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5452541",
+   "ts": 1786455505,
+   "session": "gh-558385",
+   "query": "telemarketing call center empty desks",
+   "scene": 1
+  },
+  {
+   "id": "pexels-36369486",
+   "ts": 1786455505,
+   "session": "gh-558385",
+   "query": "network traffic dashboard screen",
+   "scene": 2
+  },
+  {
+   "id": "pexels-5377697",
+   "ts": 1786455505,
+   "session": "gh-558385",
+   "query": "network traffic dashboard screen",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7569433",
+   "ts": 1786455505,
+   "session": "gh-558385",
+   "query": "server room dark lights blinking",
+   "scene": 3
+  },
+  {
+   "id": "pexels-10685158",
+   "ts": 1786455505,
+   "session": "gh-558385",
+   "query": "server room dark lights blinking",
+   "scene": 3
   }
  ]
 }

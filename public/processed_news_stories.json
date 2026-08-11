@@ -694,5 +694,16 @@
   ],
   "ts": 1786443554,
   "session": "gh-2aa699"
+ },
+ {
+  "id": "49254880",
+  "title": "France to ban unsolicited telemarketing calls",
+  "norm": "france to ban unsolicited telemarketing calls",
+  "subject_norm": "france telemarketing ban",
+  "entities": [
+   "france"
+  ],
+  "ts": 1786455570,
+  "session": "gh-558385"
  }
 ]

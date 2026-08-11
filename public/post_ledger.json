@@ -262,7 +262,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4061,
-      "fetched_at": 1786351303
+      "fetched_at": 1786455570
      },
      "snap72": {
       "views": 119,
@@ -317,7 +317,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2813,
-      "fetched_at": 1786351303
+      "fetched_at": 1786455570
      },
      "snap72": {
       "views": 120,
@@ -480,7 +480,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2233,
-      "fetched_at": 1786351303
+      "fetched_at": 1786455570
      },
      "snap72": {
       "views": 125,
@@ -540,7 +540,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3856,
-      "fetched_at": 1786351303
+      "fetched_at": 1786455570
      },
      "snap72": {
       "views": 118,
@@ -595,7 +595,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 2106,
-      "fetched_at": 1786351303
+      "fetched_at": 1786455570
      },
      "snap72": {
       "views": 120,
@@ -1143,7 +1143,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1491,
-      "fetched_at": 1786351303
+      "fetched_at": 1786455570
      },
      "snap72": {
       "views": 117,
@@ -1196,7 +1196,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4006,
-      "fetched_at": 1786351303
+      "fetched_at": 1786455570
      },
      "snap72": {
       "views": 122,
@@ -1251,7 +1251,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1816,
-      "fetched_at": 1786351303
+      "fetched_at": 1786455570
      },
      "snap72": {
       "views": 126,
@@ -2043,7 +2043,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1346,
-      "fetched_at": 1786351303
+      "fetched_at": 1786455570
      },
      "snap72": {
       "views": 5,
@@ -2103,8 +2103,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1307,
-      "fetched_at": 1786351303
+      "ig_reels_avg_watch_time": 1248,
+      "fetched_at": 1786455570
      },
      "snap72": {
       "views": 6,
@@ -2287,7 +2287,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1746,
-      "fetched_at": 1786351303
+      "fetched_at": 1786455570
      },
      "snap72": {
       "views": 9,
@@ -2490,7 +2490,7 @@
       "ig_reels_avg_watch_time": 769,
       "fetched_at": 1786099553
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -2678,7 +2678,7 @@
       "ig_reels_avg_watch_time": 1523,
       "fetched_at": 1786200510
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -2854,8 +2854,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 11156,
-      "fetched_at": 1786334185
+      "ig_reels_avg_watch_time": 10010,
+      "fetched_at": 1786455570
      },
      "snap72": {
       "views": 9,
@@ -3113,7 +3113,7 @@
       "fetched_at": 1786334185
      },
      "snap72": null,
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -3584,6 +3584,53 @@
     "instagram": {
      "id": "18274842859292465",
      "posted_at": 1786443551
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786455505,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "France to ban unsolicited telemarketing calls",
+    "subject": "France telemarketing ban",
+    "url": "https://www.lemonde.fr/en/france/article/2026/08/06/france-to-ban-unsolicited-telemarketing-calls-from-august-11_6756208_7.html",
+    "source": "hn",
+    "keywords": [
+     "ban"
+    ],
+    "viral_score": 10.05,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "France Bans Cold Calls",
+    "angle": "France introduces a nationwide ban on unsolicited cold calls to protect consumers from aggressive telemarketing tactics.",
+    "insight": "Regulators are shifting the burden of compliance entirely onto carriers and companies, signaling that spam calls are now treated as a legal offense rather than an annoyance.",
+    "judge": "plan"
+   },
+   "style_pack": "rosewood-vintage",
+   "format_pack": "legacy-news",
+   "seed": 111930183,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "TWO-WORD COLD OPEN",
+   "style_epoch": 0,
+   "scene_count": 4,
+   "video_seconds": 37.1,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-558385",
+   "platforms": {
+    "instagram": {
+     "id": "17960636235174143",
+     "posted_at": 1786455567
     }
    },
    "metrics": {
