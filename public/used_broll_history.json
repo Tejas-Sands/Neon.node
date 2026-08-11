@@ -1820,6 +1820,69 @@
    "session": "gh-3dbbb2",
    "query": "network traffic security nodes glowing",
    "scene": 5
+  },
+  {
+   "id": "pexels-5377698",
+   "ts": 1786429262,
+   "session": "gh-e2b91d",
+   "query": "server data center racks flashing",
+   "scene": 0
+  },
+  {
+   "id": "pexels-34995393",
+   "ts": 1786429262,
+   "session": "gh-e2b91d",
+   "query": "neural network visualization glowing nodes",
+   "scene": 1
+  },
+  {
+   "id": "pexels-34543219",
+   "ts": 1786429262,
+   "session": "gh-e2b91d",
+   "query": "neural network visualization glowing nodes",
+   "scene": 1
+  },
+  {
+   "id": "pexels-6535276",
+   "ts": 1786429262,
+   "session": "gh-e2b91d",
+   "query": "terminal window scrolling code green",
+   "scene": 2
+  },
+  {
+   "id": "pexels-19162378",
+   "ts": 1786429262,
+   "session": "gh-e2b91d",
+   "query": "terminal window scrolling code green",
+   "scene": 2
+  },
+  {
+   "id": "pexels-35281906",
+   "ts": 1786429262,
+   "session": "gh-e2b91d",
+   "query": "developer typing terminal command line",
+   "scene": 3
+  },
+  {
+   "id": "pexels-6803592",
+   "ts": 1786429262,
+   "session": "gh-e2b91d",
+   "query": "developer typing terminal command line",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35163081",
+   "ts": 1786429262,
+   "session": "gh-e2b91d",
+   "query": "data flowing network nodes motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-38868670",
+   "ts": 1786429262,
+   "session": "gh-e2b91d",
+   "query": "server hardware rack cooling fans",
+   "scene": 5
   }
  ]
 }

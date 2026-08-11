@@ -669,5 +669,17 @@
   "entities": [],
   "ts": 1786370257,
   "session": "gh-3dbbb2"
+ },
+ {
+  "id": "49243880",
+  "title": "Mark Zuckerberg attacks 'closed' AI rivals as Meta returns to open models",
+  "norm": "mark zuckerberg attacks closed ai rivals as meta returns to open models",
+  "subject_norm": "meta open source ai",
+  "entities": [
+   "meta",
+   "zuckerberg"
+  ],
+  "ts": 1786429326,
+  "session": "gh-e2b91d"
  }
 ]
