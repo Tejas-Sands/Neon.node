@@ -727,5 +727,17 @@
   ],
   "ts": 1786527197,
   "session": "gh-f22266"
+ },
+ {
+  "id": "49259339",
+  "title": "Apple Silicon and macOS VMs: Faster LLM Inference with llama.cpp",
+  "norm": "apple silicon and macos vms faster llm inference with llama cpp",
+  "subject_norm": "lume macos virtualization",
+  "entities": [
+   "apple",
+   "meta"
+  ],
+  "ts": 1786545957,
+  "session": "gh-a5c252"
  }
 ]

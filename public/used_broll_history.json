@@ -2114,6 +2114,41 @@
    "session": "gh-f22266",
    "query": "network traffic dashboard screen motion",
    "scene": 5
+  },
+  {
+   "id": "pexels-5981923",
+   "ts": 1786545896,
+   "session": "gh-a5c252",
+   "query": "terminal code scrolling dark mode",
+   "scene": 0
+  },
+  {
+   "id": "pexels-7830154",
+   "ts": 1786545896,
+   "session": "gh-a5c252",
+   "query": "data center server racks blue",
+   "scene": 1
+  },
+  {
+   "id": "pexels-38860079",
+   "ts": 1786545896,
+   "session": "gh-a5c252",
+   "query": "trading chart screen metrics moving",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7579576",
+   "ts": 1786545896,
+   "session": "gh-a5c252",
+   "query": "trading chart screen metrics moving",
+   "scene": 2
+  },
+  {
+   "id": "pexels-15283169",
+   "ts": 1786545896,
+   "session": "gh-a5c252",
+   "query": "circuit board macro motion",
+   "scene": 3
   }
  ]
 }

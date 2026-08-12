@@ -372,7 +372,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3877,
-      "fetched_at": 1786443554
+      "fetched_at": 1786545957
      },
      "snap72": {
       "views": 114,
@@ -425,7 +425,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1764,
-      "fetched_at": 1786443554
+      "fetched_at": 1786545957
      },
      "snap72": {
       "views": 151,
@@ -648,7 +648,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1164,
-      "fetched_at": 1786443554
+      "fetched_at": 1786545957
      },
      "snap72": {
       "views": 116,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1228,
-      "fetched_at": 1786443554
+      "fetched_at": 1786545957
      },
      "snap72": {
       "views": 159,
@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1786443554
+      "fetched_at": 1786545957
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1786443554
+      "fetched_at": 1786545957
      },
      "snap72": {
       "views": 116,
@@ -1035,7 +1035,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3552,
-      "fetched_at": 1786443554
+      "fetched_at": 1786545957
      },
      "snap72": {
       "views": 106,
@@ -1090,7 +1090,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2691,
-      "fetched_at": 1786443554
+      "fetched_at": 1786545957
      },
      "snap72": {
       "views": 86,
@@ -1644,7 +1644,7 @@
       "total_interactions": 0,
       "fetched_at": 1785492558
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -1745,7 +1745,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2828,
-      "fetched_at": 1786443554
+      "fetched_at": 1786545957
      },
      "snap72": {
       "views": 26,
@@ -1995,7 +1995,7 @@
       "ig_reels_avg_watch_time": 5079,
       "fetched_at": 1785841893
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -3396,9 +3396,19 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 11012,
-      "fetched_at": 1786429326
+      "fetched_at": 1786545957
      },
-     "snap72": null,
+     "snap72": {
+      "views": 4,
+      "reach": 4,
+      "likes": 0,
+      "comments": 0,
+      "shares": 2,
+      "saved": 0,
+      "total_interactions": 2,
+      "ig_reels_avg_watch_time": 11012,
+      "fetched_at": 1786545957
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -3451,10 +3461,20 @@
       "shares": 2,
       "saved": 0,
       "total_interactions": 2,
-      "ig_reels_avg_watch_time": 1253,
-      "fetched_at": 1786429326
+      "ig_reels_avg_watch_time": 1251,
+      "fetched_at": 1786545957
      },
-     "snap72": null,
+     "snap72": {
+      "views": 85,
+      "reach": 85,
+      "likes": 0,
+      "comments": 0,
+      "shares": 2,
+      "saved": 0,
+      "total_interactions": 2,
+      "ig_reels_avg_watch_time": 1251,
+      "fetched_at": 1786545957
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -3618,7 +3638,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 6,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1827,
+      "fetched_at": 1786545957
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -3665,7 +3695,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 16,
+      "reach": 16,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1624,
+      "fetched_at": 1786545957
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -3756,6 +3796,53 @@
     "instagram": {
      "id": "18339442738250523",
      "posted_at": 1786527193
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786545896,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "Apple Silicon and macOS VMs: Faster LLM Inference with llama.cpp",
+    "subject": "Lume macOS virtualization",
+    "url": "https://github.com/trycua/cua/blob/main/blog/gpu-passthrough-macos-vms.md",
+    "source": "hn",
+    "keywords": [
+     "llm",
+     "llama",
+     "apple"
+    ],
+    "viral_score": 9.99,
+    "sources": [],
+    "display_title": "Mac VMs Run LLMs 16x Faster",
+    "angle": "Cua researchers built a process-scoped compatibility layer that tricks macOS virtual machines into using newer Metal kernels, boosting llama.cpp performance on Apple Silicon up to 16 times.",
+    "insight": "Virtualization layers often lie about hardware capabilities to guests, but injecting targeted capability probes unlocks near bare-metal GPU performance without sacrificing isolation.",
+    "judge": "plan"
+   },
+   "style_pack": "mono-brutalist",
+   "format_pack": "facts-explainer",
+   "seed": 852022420,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 0,
+   "scene_count": 4,
+   "video_seconds": 24.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-a5c252",
+   "platforms": {
+    "instagram": {
+     "id": "18172876264439093",
+     "posted_at": 1786545954
     }
    },
    "metrics": {
