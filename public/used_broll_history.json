@@ -1988,6 +1988,69 @@
    "session": "gh-558385",
    "query": "server room dark lights blinking",
    "scene": 3
+  },
+  {
+   "id": "pexels-36628009",
+   "ts": 1786514291,
+   "session": "gh-8210a4",
+   "query": "server rack lights flashing red dark",
+   "scene": 0
+  },
+  {
+   "id": "pexels-37398776",
+   "ts": 1786514291,
+   "session": "gh-8210a4",
+   "query": "server rack lights flashing red dark",
+   "scene": 0
+  },
+  {
+   "id": "pexels-26081803",
+   "ts": 1786514291,
+   "session": "gh-8210a4",
+   "query": "data center servers cooling fans motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-18069233",
+   "ts": 1786514291,
+   "session": "gh-8210a4",
+   "query": "data center servers cooling fans motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-8720746",
+   "ts": 1786514291,
+   "session": "gh-8210a4",
+   "query": "code editor terminal scrolling fast",
+   "scene": 2
+  },
+  {
+   "id": "pexels-30485318",
+   "ts": 1786514291,
+   "session": "gh-8210a4",
+   "query": "modern office hallway glass reflection motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-6755162",
+   "ts": 1786514291,
+   "session": "gh-8210a4",
+   "query": "cpu processor chip macro motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-35062620",
+   "ts": 1786514291,
+   "session": "gh-8210a4",
+   "query": "data packets network nodes moving fast",
+   "scene": 5
+  },
+  {
+   "id": "pexels-38791993",
+   "ts": 1786514291,
+   "session": "gh-8210a4",
+   "query": "data packets network nodes moving fast",
+   "scene": 5
   }
  ]
 }

@@ -1304,7 +1304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1882,
-      "fetched_at": 1786370257
+      "fetched_at": 1786514379
      },
      "snap72": {
       "views": 122,
@@ -1688,7 +1688,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3139,
-      "fetched_at": 1786370257
+      "fetched_at": 1786514379
      },
      "snap72": {
       "views": 14,
@@ -1804,7 +1804,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1292,
-      "fetched_at": 1786370257
+      "fetched_at": 1786514379
      },
      "snap72": {
       "views": 7,
@@ -1863,7 +1863,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1472,
-      "fetched_at": 1786370257
+      "fetched_at": 1786514379
      },
      "snap72": {
       "views": 8,
@@ -1936,7 +1936,7 @@
       "ig_reels_avg_watch_time": 1904,
       "fetched_at": 1785824951
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -2176,7 +2176,7 @@
       "ig_reels_avg_watch_time": 2011,
       "fetched_at": 1785926955
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -2538,7 +2538,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3020,
-      "fetched_at": 1786370257
+      "fetched_at": 1786514379
      },
      "snap72": {
       "views": 110,
@@ -2601,8 +2601,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1353,
-      "fetched_at": 1786370257
+      "ig_reels_avg_watch_time": 1311,
+      "fetched_at": 1786514379
      },
      "snap72": {
       "views": 14,
@@ -2741,7 +2741,7 @@
       "ig_reels_avg_watch_time": 13063,
       "fetched_at": 1786253995
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -2804,7 +2804,7 @@
       "ig_reels_avg_watch_time": 16233,
       "fetched_at": 1786253995
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -2918,8 +2918,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2667,
-      "fetched_at": 1786351303
+      "ig_reels_avg_watch_time": 3508,
+      "fetched_at": 1786514379
      },
      "snap72": {
       "views": 9,
@@ -2974,15 +2974,15 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 11,
-      "reach": 12,
+      "views": 12,
+      "reach": 13,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1217,
-      "fetched_at": 1786370257
+      "ig_reels_avg_watch_time": 2642,
+      "fetched_at": 1786514379
      },
      "snap72": {
       "views": 11,
@@ -3166,7 +3166,7 @@
       "fetched_at": 1786351303
      },
      "snap72": null,
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -3209,16 +3209,26 @@
     "instagram": {
      "latest": {
       "views": 16,
-      "reach": 16,
+      "reach": 17,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1245,
-      "fetched_at": 1786351303
+      "ig_reels_avg_watch_time": 1541,
+      "fetched_at": 1786514379
      },
-     "snap72": null,
+     "snap72": {
+      "views": 16,
+      "reach": 17,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1541,
+      "fetched_at": 1786514379
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -3272,7 +3282,7 @@
       "fetched_at": 1786370257
      },
      "snap72": null,
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -3631,6 +3641,54 @@
     "instagram": {
      "id": "17960636235174143",
      "posted_at": 1786455567
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786514291,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "OpenAI\u2019s head of ethics leaves less than a year after joining",
+    "subject": "OpenAI ethics head leaves",
+    "url": "https://www.ft.com/content/e49dfb75-f841-4466-a577-f7aaff8779a0",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "openai"
+    ],
+    "viral_score": 10.71,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "OpenAI Ethics Chief Quits",
+    "angle": "OpenAI loses another key safety leader in under a year, raising serious questions about internal AI alignment priorities.",
+    "insight": "High turnover among safety leaders signals that commercial pressures at AI labs are continuing to override internal ethics oversight.",
+    "judge": "plan"
+   },
+   "style_pack": "forest-moss",
+   "format_pack": "legacy-news",
+   "seed": 2010115722,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "STOP-SCROLLING TECH",
+   "style_epoch": 0,
+   "scene_count": 6,
+   "video_seconds": 47.6,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-8210a4",
+   "platforms": {
+    "instagram": {
+     "id": "18123854365699783",
+     "posted_at": 1786514375
     }
    },
    "metrics": {

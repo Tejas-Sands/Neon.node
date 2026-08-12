@@ -705,5 +705,16 @@
   ],
   "ts": 1786455570,
   "session": "gh-558385"
+ },
+ {
+  "id": "49257160",
+  "title": "OpenAI\u2019s head of ethics leaves less than a year after joining",
+  "norm": "openai s head of ethics leaves less than a year after joining",
+  "subject_norm": "openai ethics head leaves",
+  "entities": [
+   "openai"
+  ],
+  "ts": 1786514379,
+  "session": "gh-8210a4"
  }
 ]
