@@ -39,7 +39,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1601,
-      "fetched_at": 1786429326
+      "fetched_at": 1786527197
      },
      "snap72": {
       "views": 101,
@@ -94,7 +94,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1325,
-      "fetched_at": 1786429326
+      "fetched_at": 1786527197
      },
      "snap72": {
       "views": 103,
@@ -150,7 +150,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2582,
-      "fetched_at": 1786429326
+      "fetched_at": 1786527197
      },
      "snap72": {
       "views": 109,
@@ -207,7 +207,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2439,
-      "fetched_at": 1786429326
+      "fetched_at": 1786527197
      },
      "snap72": {
       "views": 119,
@@ -756,7 +756,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6074,
-      "fetched_at": 1786429326
+      "fetched_at": 1786527197
      },
      "snap72": {
       "views": 111,
@@ -812,7 +812,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2982,
-      "fetched_at": 1786429326
+      "fetched_at": 1786527197
      },
      "snap72": {
       "views": 112,
@@ -870,7 +870,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1745,
-      "fetched_at": 1786429326
+      "fetched_at": 1786527197
      },
      "snap72": {
       "views": 124,
@@ -1372,7 +1372,7 @@
       "total_interactions": 0,
       "fetched_at": 1785492558
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -1414,8 +1414,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1803,
-      "fetched_at": 1786429326
+      "ig_reels_avg_watch_time": 1749,
+      "fetched_at": 1786527197
      },
      "snap72": {
       "views": 16,
@@ -1482,7 +1482,7 @@
       "total_interactions": 0,
       "fetched_at": 1785492558
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -1535,7 +1535,7 @@
       "total_interactions": 0,
       "fetched_at": 1785492558
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -1588,7 +1588,7 @@
       "total_interactions": 0,
       "fetched_at": 1785492558
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -2224,7 +2224,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1129,
-      "fetched_at": 1786429326
+      "fetched_at": 1786527197
      },
      "snap72": {
       "views": 93,
@@ -3323,17 +3323,27 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 78,
-      "reach": 69,
+      "views": 79,
+      "reach": 70,
       "likes": 0,
       "comments": 0,
       "shares": 2,
       "saved": 0,
       "total_interactions": 2,
-      "ig_reels_avg_watch_time": 8154,
-      "fetched_at": 1786370257
+      "ig_reels_avg_watch_time": 8084,
+      "fetched_at": 1786527197
      },
-     "snap72": null,
+     "snap72": {
+      "views": 79,
+      "reach": 70,
+      "likes": 0,
+      "comments": 0,
+      "shares": 2,
+      "saved": 0,
+      "total_interactions": 2,
+      "ig_reels_avg_watch_time": 8084,
+      "fetched_at": 1786527197
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -3550,7 +3560,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 22,
+      "reach": 21,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3714,
+      "fetched_at": 1786527197
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -3689,6 +3709,53 @@
     "instagram": {
      "id": "18123854365699783",
      "posted_at": 1786514375
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786527098,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "How Claude marks AI-generated content",
+    "subject": "Anthropic EU AI Act marking",
+    "url": "https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "claude",
+     "how"
+    ],
+    "viral_score": 10.7,
+    "sources": [],
+    "display_title": "Anthropic Watermarks Every Claude Output",
+    "angle": "Anthropic is complying with the EU AI Act by embedding watermarks and provenance metadata into all Claude outputs starting in 2026.",
+    "insight": "Mandatory AI watermarking is shifting from a theoretical compliance debate into an enforced global reality for enterprise builders.",
+    "judge": "plan"
+   },
+   "style_pack": "ember-gold",
+   "format_pack": "legacy-news",
+   "seed": 902110664,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "PAIN-POINT 'YOU'",
+   "style_epoch": 0,
+   "scene_count": 6,
+   "video_seconds": 51.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-f22266",
+   "platforms": {
+    "instagram": {
+     "id": "18339442738250523",
+     "posted_at": 1786527193
     }
    },
    "metrics": {
