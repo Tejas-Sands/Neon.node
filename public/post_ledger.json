@@ -39,7 +39,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1601,
-      "fetched_at": 1786527197
+      "fetched_at": 1786618925
      },
      "snap72": {
       "views": 101,
@@ -94,7 +94,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1325,
-      "fetched_at": 1786527197
+      "fetched_at": 1786618925
      },
      "snap72": {
       "views": 103,
@@ -150,7 +150,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2582,
-      "fetched_at": 1786527197
+      "fetched_at": 1786618925
      },
      "snap72": {
       "views": 109,
@@ -1303,8 +1303,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1882,
-      "fetched_at": 1786514379
+      "ig_reels_avg_watch_time": 1873,
+      "fetched_at": 1786618925
      },
      "snap72": {
       "views": 122,
@@ -1688,7 +1688,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3139,
-      "fetched_at": 1786514379
+      "fetched_at": 1786618925
      },
      "snap72": {
       "views": 14,
@@ -1804,7 +1804,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1292,
-      "fetched_at": 1786514379
+      "fetched_at": 1786618925
      },
      "snap72": {
       "views": 7,
@@ -1862,8 +1862,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1472,
-      "fetched_at": 1786514379
+      "ig_reels_avg_watch_time": 1366,
+      "fetched_at": 1786618925
      },
      "snap72": {
       "views": 8,
@@ -2286,8 +2286,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1746,
-      "fetched_at": 1786455570
+      "ig_reels_avg_watch_time": 1609,
+      "fetched_at": 1786618925
      },
      "snap72": {
       "views": 9,
@@ -2538,7 +2538,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3020,
-      "fetched_at": 1786514379
+      "fetched_at": 1786618925
      },
      "snap72": {
       "views": 110,
@@ -2602,7 +2602,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1311,
-      "fetched_at": 1786514379
+      "fetched_at": 1786618925
      },
      "snap72": {
       "views": 14,
@@ -2855,7 +2855,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 10010,
-      "fetched_at": 1786455570
+      "fetched_at": 1786618925
      },
      "snap72": {
       "views": 9,
@@ -2919,7 +2919,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3508,
-      "fetched_at": 1786514379
+      "fetched_at": 1786618925
      },
      "snap72": {
       "views": 9,
@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1786514379
+      "fetched_at": 1786618925
      },
      "snap72": {
       "views": 11,
@@ -3215,8 +3215,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1541,
-      "fetched_at": 1786514379
+      "ig_reels_avg_watch_time": 1496,
+      "fetched_at": 1786618925
      },
      "snap72": {
       "views": 16,
@@ -3820,7 +3820,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 28,
+      "reach": 27,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2257,
+      "fetched_at": 1786618925
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -3910,6 +3920,53 @@
     "instagram": {
      "id": "18424520716197761",
      "posted_at": 1786604316
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786618861,
+   "posted_hour_utc": 11,
+   "channel": "news",
+   "topic": {
+    "title": "DeepSeek V4 Pro 0813",
+    "subject": "DeepSeek V4 Pro 0813",
+    "url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813",
+    "source": "hn",
+    "keywords": [
+     "deepseek"
+    ],
+    "viral_score": 9.82,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "DeepSeek V4 Pro Released",
+    "angle": "DeepSeek V4 Pro 0813 has officially launched as a large-scale mixture-of-experts model with direct hosting and OpenAI-compatible API integration.",
+    "insight": "Real-world AI costs are dropping significantly below sticker prices due to hidden provider caching and automated fallback routing.",
+    "judge": "plan"
+   },
+   "style_pack": "forest-moss",
+   "format_pack": "facts-explainer",
+   "seed": 1268857744,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 1,
+   "scene_count": 5,
+   "video_seconds": 35.4,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-e6fcc1",
+   "platforms": {
+    "instagram": {
+     "id": "17938756164343753",
+     "posted_at": 1786618921
     }
    },
    "metrics": {
