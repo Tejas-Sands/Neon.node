@@ -739,5 +739,16 @@
   ],
   "ts": 1786545957,
   "session": "gh-a5c252"
+ },
+ {
+  "id": "49272569",
+  "title": "Someone is running mass vulnerability scans, spoofing AI bots like ClaudeBot",
+  "norm": "someone is running mass vulnerability scans spoofing ai bots like claudebot",
+  "subject_norm": "claudebot vulnerability scans",
+  "entities": [
+   "claudebot"
+  ],
+  "ts": 1786604319,
+  "session": "gh-3a5d88"
  }
 ]
