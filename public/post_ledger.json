@@ -207,7 +207,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2439,
-      "fetched_at": 1786527197
+      "fetched_at": 1786636069
      },
      "snap72": {
       "views": 119,
@@ -372,7 +372,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3877,
-      "fetched_at": 1786545957
+      "fetched_at": 1786636069
      },
      "snap72": {
       "views": 114,
@@ -425,7 +425,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1764,
-      "fetched_at": 1786545957
+      "fetched_at": 1786636069
      },
      "snap72": {
       "views": 151,
@@ -648,7 +648,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1164,
-      "fetched_at": 1786545957
+      "fetched_at": 1786636069
      },
      "snap72": {
       "views": 116,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1228,
-      "fetched_at": 1786545957
+      "fetched_at": 1786636069
      },
      "snap72": {
       "views": 159,
@@ -756,7 +756,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6074,
-      "fetched_at": 1786527197
+      "fetched_at": 1786636069
      },
      "snap72": {
       "views": 111,
@@ -812,7 +812,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2982,
-      "fetched_at": 1786527197
+      "fetched_at": 1786636069
      },
      "snap72": {
       "views": 112,
@@ -870,7 +870,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1745,
-      "fetched_at": 1786527197
+      "fetched_at": 1786636069
      },
      "snap72": {
       "views": 124,
@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1786545957
+      "fetched_at": 1786636069
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1786545957
+      "fetched_at": 1786636069
      },
      "snap72": {
       "views": 116,
@@ -1415,7 +1415,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1749,
-      "fetched_at": 1786527197
+      "fetched_at": 1786636069
      },
      "snap72": {
       "views": 16,
@@ -2223,8 +2223,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1129,
-      "fetched_at": 1786527197
+      "ig_reels_avg_watch_time": 1123,
+      "fetched_at": 1786636069
      },
      "snap72": {
       "views": 93,
@@ -3330,8 +3330,8 @@
       "shares": 2,
       "saved": 0,
       "total_interactions": 2,
-      "ig_reels_avg_watch_time": 8084,
-      "fetched_at": 1786527197
+      "ig_reels_avg_watch_time": 7981,
+      "fetched_at": 1786636069
      },
      "snap72": {
       "views": 79,
@@ -3599,9 +3599,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3714,
-      "fetched_at": 1786527197
+      "fetched_at": 1786636069
      },
-     "snap72": null,
+     "snap72": {
+      "views": 22,
+      "reach": 21,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3714,
+      "fetched_at": 1786636069
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -3877,7 +3887,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 4,
+      "reach": 4,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2261,
+      "fetched_at": 1786636069
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -3967,6 +3987,52 @@
     "instagram": {
      "id": "17938756164343753",
      "posted_at": 1786618921
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786636003,
+   "posted_hour_utc": 15,
+   "channel": "news",
+   "topic": {
+    "title": "AI agents lie, cheat and steal. That is putting off users",
+    "subject": "AI agents lie, cheat and steal. That is putting off users",
+    "url": "https://www.economist.com/business/2026/08/12/ai-agents-lie-cheat-and-steal-that-is-putting-off-users",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "agent"
+    ],
+    "viral_score": 9.59,
+    "sources": [],
+    "display_title": "",
+    "angle": "",
+    "insight": "",
+    "judge": "none"
+   },
+   "style_pack": "sage-botanical",
+   "format_pack": "facts-explainer",
+   "seed": 215279651,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 1,
+   "scene_count": 5,
+   "video_seconds": 27.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-cc87ef",
+   "platforms": {
+    "instagram": {
+     "id": "18098744243217616",
+     "posted_at": 1786636066
     }
    },
    "metrics": {
