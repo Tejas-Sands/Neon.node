@@ -2275,6 +2275,69 @@
    "session": "gh-cc87ef",
    "query": "network traffic dashboard grid",
    "scene": 4
+  },
+  {
+   "id": "pexels-7989719",
+   "ts": 1786700242,
+   "session": "gh-9598ac",
+   "query": "terminal typing code screen closeup",
+   "scene": 0
+  },
+  {
+   "id": "pexels-16049995",
+   "ts": 1786700242,
+   "session": "gh-9598ac",
+   "query": "code editor scrolling interface",
+   "scene": 1
+  },
+  {
+   "id": "pexels-37021581",
+   "ts": 1786700242,
+   "session": "gh-9598ac",
+   "query": "code editor scrolling interface",
+   "scene": 1
+  },
+  {
+   "id": "pexels-38870355",
+   "ts": 1786700242,
+   "session": "gh-9598ac",
+   "query": "data stream scrolling terminal",
+   "scene": 2
+  },
+  {
+   "id": "pexels-8085491",
+   "ts": 1786700242,
+   "session": "gh-9598ac",
+   "query": "data stream scrolling terminal",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7854925",
+   "ts": 1786700242,
+   "session": "gh-9598ac",
+   "query": "linux desktop workspace switching",
+   "scene": 3
+  },
+  {
+   "id": "pexels-8480680",
+   "ts": 1786700242,
+   "session": "gh-9598ac",
+   "query": "linux desktop workspace switching",
+   "scene": 3
+  },
+  {
+   "id": "pexels-10405280",
+   "ts": 1786700242,
+   "session": "gh-9598ac",
+   "query": "terminal command execution typing",
+   "scene": 4
+  },
+  {
+   "id": "pexels-15162385",
+   "ts": 1786700242,
+   "session": "gh-9598ac",
+   "query": "developer workspace dual screens",
+   "scene": 5
   }
  ]
 }

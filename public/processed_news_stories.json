@@ -781,5 +781,18 @@
   ],
   "ts": 1786684424,
   "session": "gh-9ab2fa"
+ },
+ {
+  "id": "49281916",
+  "title": "Codex in ChatGPT desktop app for Linux is now in preview",
+  "norm": "codex in chatgpt desktop app for linux is now in preview",
+  "subject_norm": "chatgpt linux desktop app",
+  "entities": [
+   "openai",
+   "linux",
+   "desktop"
+  ],
+  "ts": 1786700301,
+  "session": "gh-9598ac"
  }
 ]
