@@ -770,5 +770,16 @@
   "entities": [],
   "ts": 1786636069,
   "session": "gh-cc87ef"
+ },
+ {
+  "id": "49289112",
+  "title": "Gemini 3.7 Flash",
+  "norm": "gemini 3 7 flash",
+  "subject_norm": "gemini 3 7 flash",
+  "entities": [
+   "google"
+  ],
+  "ts": 1786684424,
+  "session": "gh-9ab2fa"
  }
 ]

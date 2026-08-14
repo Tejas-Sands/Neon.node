@@ -1035,7 +1035,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3552,
-      "fetched_at": 1786545957
+      "fetched_at": 1786684424
      },
      "snap72": {
       "views": 106,
@@ -1090,7 +1090,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2691,
-      "fetched_at": 1786545957
+      "fetched_at": 1786684424
      },
      "snap72": {
       "views": 86,
@@ -1745,7 +1745,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2828,
-      "fetched_at": 1786545957
+      "fetched_at": 1786684424
      },
      "snap72": {
       "views": 26,
@@ -3409,7 +3409,7 @@
       "ig_reels_avg_watch_time": 11012,
       "fetched_at": 1786545957
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -3455,14 +3455,14 @@
     "instagram": {
      "latest": {
       "views": 85,
-      "reach": 85,
+      "reach": 86,
       "likes": 0,
       "comments": 0,
       "shares": 2,
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1786545957
+      "fetched_at": 1786684424
      },
      "snap72": {
       "views": 85,
@@ -3667,9 +3667,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1827,
-      "fetched_at": 1786545957
+      "fetched_at": 1786684424
      },
-     "snap72": null,
+     "snap72": {
+      "views": 6,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1827,
+      "fetched_at": 1786684424
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -3724,9 +3734,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1624,
-      "fetched_at": 1786545957
+      "fetched_at": 1786684424
      },
-     "snap72": null,
+     "snap72": {
+      "views": 16,
+      "reach": 16,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1624,
+      "fetched_at": 1786684424
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -4033,6 +4053,53 @@
     "instagram": {
      "id": "18098744243217616",
      "posted_at": 1786636066
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786684367,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Gemini 3.7 Flash",
+    "subject": "Gemini 3.7 Flash",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/",
+    "source": "hn",
+    "keywords": [
+     "gemini"
+    ],
+    "viral_score": 10.46,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Gemini 3.7 Flash drops pricing",
+    "angle": "Google launched Gemini 3.7 Flash with massive coding gains and half-price tokens just weeks after 3.6.",
+    "insight": "AI pricing deflation is now moving so fast that minor version updates are cutting enterprise agent costs in half.",
+    "judge": "plan"
+   },
+   "style_pack": "forest-moss",
+   "format_pack": "quiz-reveal",
+   "seed": 1130061511,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-QUIZ-REVEAL",
+   "style_epoch": 1,
+   "scene_count": 4,
+   "video_seconds": 20.0,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-9ab2fa",
+   "platforms": {
+    "instagram": {
+     "id": "17872301100568002",
+     "posted_at": 1786684421
     }
    },
    "metrics": {
