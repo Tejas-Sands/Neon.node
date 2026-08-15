@@ -207,7 +207,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2439,
-      "fetched_at": 1786636069
+      "fetched_at": 1786773508
      },
      "snap72": {
       "views": 119,
@@ -372,7 +372,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3877,
-      "fetched_at": 1786636069
+      "fetched_at": 1786773508
      },
      "snap72": {
       "views": 114,
@@ -425,7 +425,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1764,
-      "fetched_at": 1786636069
+      "fetched_at": 1786773508
      },
      "snap72": {
       "views": 151,
@@ -648,7 +648,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1164,
-      "fetched_at": 1786636069
+      "fetched_at": 1786773508
      },
      "snap72": {
       "views": 116,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1228,
-      "fetched_at": 1786636069
+      "fetched_at": 1786773508
      },
      "snap72": {
       "views": 159,
@@ -756,7 +756,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6074,
-      "fetched_at": 1786636069
+      "fetched_at": 1786773508
      },
      "snap72": {
       "views": 111,
@@ -812,7 +812,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2982,
-      "fetched_at": 1786636069
+      "fetched_at": 1786773508
      },
      "snap72": {
       "views": 112,
@@ -870,7 +870,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1745,
-      "fetched_at": 1786636069
+      "fetched_at": 1786773508
      },
      "snap72": {
       "views": 124,
@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1786636069
+      "fetched_at": 1786773508
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1786636069
+      "fetched_at": 1786773508
      },
      "snap72": {
       "views": 116,
@@ -1415,7 +1415,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1749,
-      "fetched_at": 1786636069
+      "fetched_at": 1786773508
      },
      "snap72": {
       "views": 16,
@@ -2224,7 +2224,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1123,
-      "fetched_at": 1786636069
+      "fetched_at": 1786773508
      },
      "snap72": {
       "views": 93,
@@ -3868,10 +3868,20 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2257,
-      "fetched_at": 1786618925
+      "ig_reels_avg_watch_time": 2349,
+      "fetched_at": 1786773508
      },
-     "snap72": null,
+     "snap72": {
+      "views": 28,
+      "reach": 27,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2349,
+      "fetched_at": 1786773508
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -4087,7 +4097,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 4,
+      "reach": 4,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2318,
+      "fetched_at": 1786773508
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -4134,7 +4154,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 22,
+      "reach": 22,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1904,
+      "fetched_at": 1786773508
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -4176,6 +4206,52 @@
     "instagram": {
      "id": "18108067501847546",
      "posted_at": 1786700298
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786773424,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Firefox is now the last major browser that still supports uBlock Origin",
+    "subject": "Firefox uBlock Origin",
+    "url": "https://www.pcworld.com/article/3212428/firefox-is-now-the-last-major-browser-that-still-supports-ublock-origin.html",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 9.55,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "Firefox Last Browser Supporting uBlock Origin",
+    "angle": "Firefox remains the only major browser supporting full uBlock Origin as Chromium browsers transition to Manifest V3.",
+    "insight": "Chromium's shift to Manifest V3 effectively kills full ad-blocking on Edge and Chrome, turning Firefox's independence into its ultimate killer feature.",
+    "judge": "plan"
+   },
+   "style_pack": "coral-pop",
+   "format_pack": "legacy-news",
+   "seed": 911897416,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "CHALLENGE-DARE",
+   "style_epoch": 1,
+   "scene_count": 5,
+   "video_seconds": 34.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-753e15",
+   "platforms": {
+    "instagram": {
+     "id": "18129416590642482",
+     "posted_at": 1786773504
     }
    },
    "metrics": {

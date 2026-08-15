@@ -808,5 +808,18 @@
   ],
   "ts": 1786713685,
   "session": "gh-b1a70d"
+ },
+ {
+  "id": "49303202",
+  "title": "Firefox is now the last major browser that still supports uBlock Origin",
+  "norm": "firefox is now the last major browser that still supports ublock origin",
+  "subject_norm": "firefox ublock origin",
+  "entities": [
+   "mozilla",
+   "ublock",
+   "origin"
+  ],
+  "ts": 1786773508,
+  "session": "gh-753e15"
  }
 ]
