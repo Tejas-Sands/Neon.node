@@ -832,5 +832,14 @@
   ],
   "ts": 1786788859,
   "session": "gh-4f3647"
+ },
+ {
+  "id": "49299605",
+  "title": "Qwen 3.8 27B",
+  "norm": "qwen 3 8 27b",
+  "subject_norm": "qwen 3 8 27b",
+  "entities": [],
+  "ts": 1786807936,
+  "session": "gh-3b6c00"
  }
 ]

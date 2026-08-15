@@ -2485,6 +2485,62 @@
    "session": "gh-4f3647",
    "query": "developer hands typing keyboard macro",
    "scene": 5
+  },
+  {
+   "id": "pexels-5921200",
+   "ts": 1786807148,
+   "session": "gh-3b6c00",
+   "query": "datacenter gpu servers blinking",
+   "scene": 0
+  },
+  {
+   "id": "pexels-12271136",
+   "ts": 1786807148,
+   "session": "gh-3b6c00",
+   "query": "datacenter gpu servers blinking",
+   "scene": 0
+  },
+  {
+   "id": "pexels-6755159",
+   "ts": 1786807148,
+   "session": "gh-3b6c00",
+   "query": "chip semiconductor manufacturing motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-12896413",
+   "ts": 1786807148,
+   "session": "gh-3b6c00",
+   "query": "code editor screen scrolling lines",
+   "scene": 2
+  },
+  {
+   "id": "pexels-12571926",
+   "ts": 1786807148,
+   "session": "gh-3b6c00",
+   "query": "network traffic data visualization",
+   "scene": 3
+  },
+  {
+   "id": "pexels-37616088",
+   "ts": 1786807148,
+   "session": "gh-3b6c00",
+   "query": "network traffic data visualization",
+   "scene": 3
+  },
+  {
+   "id": "pexels-5495901",
+   "ts": 1786807148,
+   "session": "gh-3b6c00",
+   "query": "developer typing code terminal",
+   "scene": 4
+  },
+  {
+   "id": "pexels-4974882",
+   "ts": 1786807148,
+   "session": "gh-3b6c00",
+   "query": "developer typing code terminal",
+   "scene": 4
   }
  ]
 }
