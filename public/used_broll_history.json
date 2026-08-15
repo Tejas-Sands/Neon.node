@@ -2422,6 +2422,69 @@
    "session": "gh-753e15",
    "query": "server racks glowing data center",
    "scene": 4
+  },
+  {
+   "id": "pexels-12145873",
+   "ts": 1786788714,
+   "session": "gh-4f3647",
+   "query": "terminal scrolling error text code",
+   "scene": 0
+  },
+  {
+   "id": "pexels-5377690",
+   "ts": 1786788714,
+   "session": "gh-4f3647",
+   "query": "code editor typing cursor blinking",
+   "scene": 1
+  },
+  {
+   "id": "pexels-6755168",
+   "ts": 1786788714,
+   "session": "gh-4f3647",
+   "query": "data center servers blinking blue",
+   "scene": 2
+  },
+  {
+   "id": "pexels-12601961",
+   "ts": 1786788714,
+   "session": "gh-4f3647",
+   "query": "data center servers blinking blue",
+   "scene": 2
+  },
+  {
+   "id": "pexels-30284959",
+   "ts": 1786788714,
+   "session": "gh-4f3647",
+   "query": "code diff screen scrolling fast",
+   "scene": 3
+  },
+  {
+   "id": "pexels-5473810",
+   "ts": 1786788714,
+   "session": "gh-4f3647",
+   "query": "code diff screen scrolling fast",
+   "scene": 3
+  },
+  {
+   "id": "pexels-38503000",
+   "ts": 1786788714,
+   "session": "gh-4f3647",
+   "query": "network traffic glowing lines motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-12616422",
+   "ts": 1786788714,
+   "session": "gh-4f3647",
+   "query": "network traffic glowing lines motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-4873110",
+   "ts": 1786788714,
+   "session": "gh-4f3647",
+   "query": "developer hands typing keyboard macro",
+   "scene": 5
   }
  ]
 }

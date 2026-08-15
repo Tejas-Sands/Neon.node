@@ -821,5 +821,16 @@
   ],
   "ts": 1786773508,
   "session": "gh-753e15"
+ },
+ {
+  "id": "49296740",
+  "title": "Why does Opus 5 feel worse to work with?",
+  "norm": "why does opus 5 feel worse to work with",
+  "subject_norm": "opus 5 ai model",
+  "entities": [
+   "opus"
+  ],
+  "ts": 1786788859,
+  "session": "gh-4f3647"
  }
 ]
