@@ -262,7 +262,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4061,
-      "fetched_at": 1786788859
+      "fetched_at": 1786876392
      },
      "snap72": {
       "views": 119,
@@ -317,7 +317,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2813,
-      "fetched_at": 1786788859
+      "fetched_at": 1786876392
      },
      "snap72": {
       "views": 120,
@@ -480,7 +480,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2233,
-      "fetched_at": 1786788859
+      "fetched_at": 1786876392
      },
      "snap72": {
       "views": 125,
@@ -540,7 +540,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3856,
-      "fetched_at": 1786788859
+      "fetched_at": 1786876392
      },
      "snap72": {
       "views": 118,
@@ -595,7 +595,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 2106,
-      "fetched_at": 1786788859
+      "fetched_at": 1786876392
      },
      "snap72": {
       "views": 120,
@@ -812,7 +812,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2982,
-      "fetched_at": 1786773508
+      "fetched_at": 1786876392
      },
      "snap72": {
       "views": 112,
@@ -870,7 +870,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1745,
-      "fetched_at": 1786773508
+      "fetched_at": 1786876392
      },
      "snap72": {
       "views": 124,
@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1786773508
+      "fetched_at": 1786876392
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1786773508
+      "fetched_at": 1786876392
      },
      "snap72": {
       "views": 116,
@@ -1415,7 +1415,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1749,
-      "fetched_at": 1786773508
+      "fetched_at": 1786876392
      },
      "snap72": {
       "views": 16,
@@ -2224,7 +2224,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1123,
-      "fetched_at": 1786773508
+      "fetched_at": 1786876392
      },
      "snap72": {
       "views": 93,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1786773508
+      "fetched_at": 1786876392
      },
      "snap72": {
       "views": 28,
@@ -4106,9 +4106,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1786773508
+      "fetched_at": 1786876392
      },
-     "snap72": null,
+     "snap72": {
+      "views": 4,
+      "reach": 4,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2318,
+      "fetched_at": 1786876392
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -4162,10 +4172,20 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "ig_reels_avg_watch_time": 1904,
-      "fetched_at": 1786773508
+      "ig_reels_avg_watch_time": 1887,
+      "fetched_at": 1786876392
      },
-     "snap72": null,
+     "snap72": {
+      "views": 22,
+      "reach": 22,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1887,
+      "fetched_at": 1786876392
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -4321,7 +4341,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 109,
+      "reach": 101,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1629,
+      "fetched_at": 1786876392
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -4365,6 +4395,52 @@
     "instagram": {
      "id": "18096661301035188",
      "posted_at": 1786862967
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786876323,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "What happens when an LLM never sees material beyond fifth grade?",
+    "subject": "LittleLearner LLM",
+    "url": "https://littlelearner-ll.github.io/",
+    "source": "hn",
+    "keywords": [
+     "llm",
+     "never"
+    ],
+    "viral_score": 9.45,
+    "sources": [],
+    "display_title": "LittleLearner 5B fifth grade limit",
+    "angle": "Researchers trained models exclusively on a K-5 curriculum to test if post-training can push intelligence past pretraining data limits.",
+    "insight": "Post-training and scaling amplify existing skills but cannot create out-of-scope reasoning, proving the pretraining filter sets the absolute capability ceiling.",
+    "judge": "plan"
+   },
+   "style_pack": "lavender-haze",
+   "format_pack": "legacy-news",
+   "seed": 1039238602,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "CHALLENGE-DARE",
+   "style_epoch": 1,
+   "scene_count": 6,
+   "video_seconds": 46.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-cf4633",
+   "platforms": {
+    "instagram": {
+     "id": "18112716287074891",
+     "posted_at": 1786876387
     }
    },
    "metrics": {
