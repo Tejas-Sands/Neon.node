@@ -207,7 +207,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2439,
-      "fetched_at": 1786773508
+      "fetched_at": 1786862970
      },
      "snap72": {
       "views": 119,
@@ -372,7 +372,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3877,
-      "fetched_at": 1786773508
+      "fetched_at": 1786862970
      },
      "snap72": {
       "views": 114,
@@ -425,7 +425,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1764,
-      "fetched_at": 1786773508
+      "fetched_at": 1786862970
      },
      "snap72": {
       "views": 151,
@@ -648,7 +648,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1164,
-      "fetched_at": 1786773508
+      "fetched_at": 1786862970
      },
      "snap72": {
       "views": 116,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1228,
-      "fetched_at": 1786773508
+      "fetched_at": 1786862970
      },
      "snap72": {
       "views": 159,
@@ -756,7 +756,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6074,
-      "fetched_at": 1786773508
+      "fetched_at": 1786862970
      },
      "snap72": {
       "views": 111,
@@ -2286,8 +2286,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1609,
-      "fetched_at": 1786713685
+      "ig_reels_avg_watch_time": 1759,
+      "fetched_at": 1786862970
      },
      "snap72": {
       "views": 9,
@@ -2537,8 +2537,8 @@
       "shares": 0,
       "saved": 1,
       "total_interactions": 1,
-      "ig_reels_avg_watch_time": 3020,
-      "fetched_at": 1786713685
+      "ig_reels_avg_watch_time": 2998,
+      "fetched_at": 1786862970
      },
      "snap72": {
       "views": 110,
@@ -2601,8 +2601,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1311,
-      "fetched_at": 1786713685
+      "ig_reels_avg_watch_time": 1277,
+      "fetched_at": 1786862970
      },
      "snap72": {
       "views": 14,
@@ -2868,7 +2868,7 @@
       "ig_reels_avg_watch_time": 11156,
       "fetched_at": 1786334185
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -2919,7 +2919,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3508,
-      "fetched_at": 1786713685
+      "fetched_at": 1786862970
      },
      "snap72": {
       "views": 9,
@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1786713685
+      "fetched_at": 1786862970
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1786713685
+      "fetched_at": 1786862970
      },
      "snap72": {
       "views": 16,
@@ -4053,7 +4053,7 @@
       "fetched_at": 1786713685
      },
      "snap72": null,
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -4266,7 +4266,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 89,
+      "reach": 82,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 4088,
+      "fetched_at": 1786862970
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -4307,6 +4317,54 @@
     "instagram": {
      "id": "18130280056567441",
      "posted_at": 1786788856
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1786862908,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Going Dark, and the era of law enforcement hacking",
+    "subject": "Going Dark, and the era of law enforcement hacking",
+    "url": "https://blog.cryptographyengineering.com/2026/08/14/everything-is-about-to-go-dark/",
+    "source": "hn",
+    "keywords": [
+     "hack"
+    ],
+    "viral_score": 9.96,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "",
+    "angle": "",
+    "insight": "",
+    "judge": "none"
+   },
+   "style_pack": "toxic-lime",
+   "format_pack": "legacy-news",
+   "seed": 981175819,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "STORY-TEASE",
+   "style_epoch": 1,
+   "scene_count": 6,
+   "video_seconds": 48.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-b3917c",
+   "platforms": {
+    "instagram": {
+     "id": "18096661301035188",
+     "posted_at": 1786862967
     }
    },
    "metrics": {

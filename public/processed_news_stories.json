@@ -841,5 +841,16 @@
   "entities": [],
   "ts": 1786807936,
   "session": "gh-3b6c00"
+ },
+ {
+  "id": "49304447",
+  "title": "Going Dark, and the era of law enforcement hacking",
+  "norm": "going dark and the era of law enforcement hacking",
+  "subject_norm": null,
+  "entities": [
+   "dark"
+  ],
+  "ts": 1786862970,
+  "session": "gh-b3917c"
  }
 ]
