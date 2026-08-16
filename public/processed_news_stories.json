@@ -864,5 +864,17 @@
   ],
   "ts": 1786876392,
   "session": "gh-cf4633"
+ },
+ {
+  "id": "49312008",
+  "title": "A controversial Alzheimer's surgery is said to reverse symptoms",
+  "norm": "a controversial alzheimer s surgery is said to reverse symptoms",
+  "subject_norm": "dclva alzheimer surgery",
+  "entities": [
+   "alzheimer",
+   "dclva"
+  ],
+  "ts": 1786888324,
+  "session": "gh-87e7e6"
  }
 ]
