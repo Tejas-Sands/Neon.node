@@ -2723,6 +2723,48 @@
    "session": "gh-87e7e6",
    "query": "modern research laboratory hallway",
    "scene": 4
+  },
+  {
+   "id": "pexels-15439747",
+   "ts": 1786947373,
+   "session": "gh-870ba0",
+   "query": "server data center lights motion",
+   "scene": 0
+  },
+  {
+   "id": "pexels-37446281",
+   "ts": 1786947373,
+   "session": "gh-870ba0",
+   "query": "code editor screen scrolling",
+   "scene": 1
+  },
+  {
+   "id": "pexels-35544498",
+   "ts": 1786947373,
+   "session": "gh-870ba0",
+   "query": "trading chart screen moving",
+   "scene": 2
+  },
+  {
+   "id": "pexels-38470559",
+   "ts": 1786947373,
+   "session": "gh-870ba0",
+   "query": "trading chart screen moving",
+   "scene": 2
+  },
+  {
+   "id": "pexels-34566854",
+   "ts": 1786947373,
+   "session": "gh-870ba0",
+   "query": "network traffic glowing packets",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35114237",
+   "ts": 1786947373,
+   "session": "gh-870ba0",
+   "query": "network traffic glowing packets",
+   "scene": 3
   }
  ]
 }
