@@ -899,5 +899,17 @@
   ],
   "ts": 1786956679,
   "session": "gh-90bb5f"
+ },
+ {
+  "id": "49323686",
+  "title": "Nvidia dramatically reduces amount of OpenAI infra financing it may guarantee",
+  "norm": "nvidia dramatically reduces amount of openai infra financing it may guarantee",
+  "subject_norm": "nvidia openai financing reduction",
+  "entities": [
+   "nvidia",
+   "openai"
+  ],
+  "ts": 1786973802,
+  "session": "gh-989c64"
  }
 ]
