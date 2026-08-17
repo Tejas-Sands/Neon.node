@@ -2,34 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-8720751",
-   "ts": 1785509354,
-   "session": "gh-1787df",
-   "query": "terminal typing code commands",
-   "scene": 0
-  },
-  {
-   "id": "pexels-3403583",
-   "ts": 1785509354,
-   "session": "gh-1787df",
-   "query": "data center server racks blinking",
-   "scene": 1
-  },
-  {
-   "id": "pexels-9563523",
-   "ts": 1785509354,
-   "session": "gh-1787df",
-   "query": "data center server racks blinking",
-   "scene": 1
-  },
-  {
-   "id": "pexels-8321893",
-   "ts": 1785509354,
-   "session": "gh-1787df",
-   "query": "digital clock countdown timer",
-   "scene": 2
-  },
-  {
    "id": "pexels-9145983",
    "ts": 1785509354,
    "session": "gh-1787df",
@@ -2765,6 +2737,69 @@
    "session": "gh-870ba0",
    "query": "network traffic glowing packets",
    "scene": 3
+  },
+  {
+   "id": "pexels-7686981",
+   "ts": 1786956605,
+   "session": "gh-90bb5f",
+   "query": "terminal scrolling code green text",
+   "scene": 0
+  },
+  {
+   "id": "pexels-32046805",
+   "ts": 1786956605,
+   "session": "gh-90bb5f",
+   "query": "data center servers blinking lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5473800",
+   "ts": 1786956605,
+   "session": "gh-90bb5f",
+   "query": "data center servers blinking lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-38902001",
+   "ts": 1786956605,
+   "session": "gh-90bb5f",
+   "query": "network security dashboard metrics",
+   "scene": 2
+  },
+  {
+   "id": "pexels-6931255",
+   "ts": 1786956605,
+   "session": "gh-90bb5f",
+   "query": "network security dashboard metrics",
+   "scene": 2
+  },
+  {
+   "id": "pexels-5474272",
+   "ts": 1786956605,
+   "session": "gh-90bb5f",
+   "query": "cyber security firewall shield animation",
+   "scene": 3
+  },
+  {
+   "id": "pexels-36644498",
+   "ts": 1786956605,
+   "session": "gh-90bb5f",
+   "query": "server room dark blue lights",
+   "scene": 4
+  },
+  {
+   "id": "pexels-19532053",
+   "ts": 1786956605,
+   "session": "gh-90bb5f",
+   "query": "code editor screen scrolling fast",
+   "scene": 5
+  },
+  {
+   "id": "pexels-38410499",
+   "ts": 1786956605,
+   "session": "gh-90bb5f",
+   "query": "code editor screen scrolling fast",
+   "scene": 5
   }
  ]
 }

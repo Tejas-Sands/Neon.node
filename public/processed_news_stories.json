@@ -888,5 +888,16 @@
   ],
   "ts": 1786947447,
   "session": "gh-870ba0"
+ },
+ {
+  "id": "49325159",
+  "title": "The federal keyword lists that canceled billions in research funding",
+  "norm": "the federal keyword lists that canceled billions in research funding",
+  "subject_norm": "federal research keyword censorship",
+  "entities": [
+   "federal"
+  ],
+  "ts": 1786956679,
+  "session": "gh-90bb5f"
  }
 ]
