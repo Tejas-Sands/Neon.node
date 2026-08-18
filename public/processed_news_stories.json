@@ -936,5 +936,17 @@
   ],
   "ts": 1787048454,
   "session": "gh-3cd056"
+ },
+ {
+  "id": "49343559",
+  "title": "Google buys crashed airline Spirit's data at auction, because AI",
+  "norm": "google buys crashed airline spirit s data at auction because ai",
+  "subject_norm": "google buys spirit data",
+  "entities": [
+   "google",
+   "spirit"
+  ],
+  "ts": 1787062998,
+  "session": "gh-f5fe45"
  }
 ]

@@ -2,62 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-7423951",
-   "ts": 1785573577,
-   "session": "gh-707638",
-   "query": "padlock circuit board motion",
-   "scene": 3
-  },
-  {
-   "id": "pexels-8888608",
-   "ts": 1785573577,
-   "session": "gh-707638",
-   "query": "code editor typing commands",
-   "scene": 4
-  },
-  {
-   "id": "pexels-34573354",
-   "ts": 1785573577,
-   "session": "gh-707638",
-   "query": "code editor typing commands",
-   "scene": 4
-  },
-  {
-   "id": "pexels-18069803",
-   "ts": 1785573577,
-   "session": "gh-707638",
-   "query": "data flow network nodes",
-   "scene": 5
-  },
-  {
-   "id": "pexels-17144481",
-   "ts": 1785573577,
-   "session": "gh-707638",
-   "query": "data flow network nodes",
-   "scene": 5
-  },
-  {
-   "id": "pexels-33314914",
-   "ts": 1785592498,
-   "session": "gh-9e7c54",
-   "query": "code editor screen scrolling",
-   "scene": 0
-  },
-  {
-   "id": "pexels-35332820",
-   "ts": 1785592498,
-   "session": "gh-9e7c54",
-   "query": "terminal typing commands",
-   "scene": 1
-  },
-  {
-   "id": "pexels-12893580",
-   "ts": 1785592498,
-   "session": "gh-9e7c54",
-   "query": "terminal typing commands",
-   "scene": 1
-  },
-  {
    "id": "pexels-34430111",
    "ts": 1785592498,
    "session": "gh-9e7c54",
@@ -2799,6 +2743,62 @@
    "ts": 1787048382,
    "session": "gh-3cd056",
    "query": "data center servers dark rack",
+   "scene": 5
+  },
+  {
+   "id": "pexels-6308545",
+   "ts": 1787062936,
+   "session": "gh-f5fe45",
+   "query": "server data center blue lights",
+   "scene": 0
+  },
+  {
+   "id": "pexels-38992857",
+   "ts": 1787062936,
+   "session": "gh-f5fe45",
+   "query": "financial data charts terminal scrolling",
+   "scene": 1
+  },
+  {
+   "id": "pexels-28709421",
+   "ts": 1787062936,
+   "session": "gh-f5fe45",
+   "query": "database files scrolling terminal code",
+   "scene": 2
+  },
+  {
+   "id": "pexels-34786209",
+   "ts": 1787062936,
+   "session": "gh-f5fe45",
+   "query": "database files scrolling terminal code",
+   "scene": 2
+  },
+  {
+   "id": "pexels-35062665",
+   "ts": 1787062936,
+   "session": "gh-f5fe45",
+   "query": "neural network nodes glowing motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35287950",
+   "ts": 1787062936,
+   "session": "gh-f5fe45",
+   "query": "neural network nodes glowing motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-5473969",
+   "ts": 1787062936,
+   "session": "gh-f5fe45",
+   "query": "code security encryption shield scan",
+   "scene": 4
+  },
+  {
+   "id": "pexels-36644496",
+   "ts": 1787062936,
+   "session": "gh-f5fe45",
+   "query": "server racks dark lighting motion",
    "scene": 5
   }
  ]

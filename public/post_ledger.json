@@ -262,7 +262,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4061,
-      "fetched_at": 1786973802
+      "fetched_at": 1787062998
      },
      "snap72": {
       "views": 119,
@@ -317,7 +317,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2813,
-      "fetched_at": 1786973802
+      "fetched_at": 1787062998
      },
      "snap72": {
       "views": 120,
@@ -425,7 +425,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1764,
-      "fetched_at": 1786956679
+      "fetched_at": 1787062998
      },
      "snap72": {
       "views": 151,
@@ -480,7 +480,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2233,
-      "fetched_at": 1786973802
+      "fetched_at": 1787062998
      },
      "snap72": {
       "views": 125,
@@ -648,7 +648,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1164,
-      "fetched_at": 1786956679
+      "fetched_at": 1787062998
      },
      "snap72": {
       "views": 116,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1228,
-      "fetched_at": 1786956679
+      "fetched_at": 1787062998
      },
      "snap72": {
       "views": 159,
@@ -756,7 +756,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6074,
-      "fetched_at": 1786956679
+      "fetched_at": 1787062998
      },
      "snap72": {
       "views": 111,
@@ -2287,7 +2287,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1759,
-      "fetched_at": 1786956679
+      "fetched_at": 1787062998
      },
      "snap72": {
       "views": 9,
@@ -2538,7 +2538,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2998,
-      "fetched_at": 1786956679
+      "fetched_at": 1787062998
      },
      "snap72": {
       "views": 110,
@@ -2602,7 +2602,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1277,
-      "fetched_at": 1786956679
+      "fetched_at": 1787062998
      },
      "snap72": {
       "views": 14,
@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1786956679
+      "fetched_at": 1787062998
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1786956679
+      "fetched_at": 1787062998
      },
      "snap72": {
       "views": 16,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4049,
-      "fetched_at": 1786956679
+      "fetched_at": 1787062998
      },
      "snap72": {
       "views": 90,
@@ -4430,17 +4430,27 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 28,
-      "reach": 27,
+      "views": 29,
+      "reach": 28,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1020,
-      "fetched_at": 1786956679
+      "ig_reels_avg_watch_time": 2541,
+      "fetched_at": 1787062998
      },
-     "snap72": null,
+     "snap72": {
+      "views": 29,
+      "reach": 28,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2541,
+      "fetched_at": 1787062998
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -4658,7 +4668,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 2,
+      "reach": 2,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1863,
+      "fetched_at": 1787062998
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -4753,6 +4773,52 @@
     "instagram": {
      "id": "18129667663671879",
      "posted_at": 1787048451
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787062936,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "Google buys crashed airline Spirit's data at auction, because AI",
+    "subject": "Google buys Spirit data",
+    "url": "https://www.theregister.com/ai-and-ml/2026/08/18/google-buys-crashed-airline-spirits-data-at-auction-because-ai/5288962",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "google"
+    ],
+    "viral_score": 10.22,
+    "sources": [],
+    "display_title": "Google Bought Dead Airline Data",
+    "angle": "Google paid $10 million for bankrupt Spirit airline's massive data trove to train niche AI models.",
+    "insight": "AI training is shifting from scraping the web to buying proprietary operational data from liquidated companies.",
+    "judge": "plan"
+   },
+   "style_pack": "golden-hour",
+   "format_pack": "legacy-news",
+   "seed": 130740577,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "SENIOR VS JUNIOR",
+   "style_epoch": 2,
+   "scene_count": 6,
+   "video_seconds": 43.4,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-f5fe45",
+   "platforms": {
+    "instagram": {
+     "id": "18192861487387177",
+     "posted_at": 1787062995
     }
    },
    "metrics": {
