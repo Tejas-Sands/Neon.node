@@ -911,5 +911,17 @@
   ],
   "ts": 1786973802,
   "session": "gh-989c64"
+ },
+ {
+  "id": "49329575",
+  "title": "GPT 5.6 Sol is the best \"vision\" model OpenAI ever released",
+  "norm": "gpt 5 6 sol is the best vision model openai ever released",
+  "subject_norm": "gpt 5 6 sol",
+  "entities": [
+   "openai",
+   "sol"
+  ],
+  "ts": 1787030873,
+  "session": "gh-f8c008"
  }
 ]
