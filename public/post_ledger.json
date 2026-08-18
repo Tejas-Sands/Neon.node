@@ -39,7 +39,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1601,
-      "fetched_at": 1786947447
+      "fetched_at": 1787048454
      },
      "snap72": {
       "views": 101,
@@ -94,7 +94,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1325,
-      "fetched_at": 1786947447
+      "fetched_at": 1787048454
      },
      "snap72": {
       "views": 103,
@@ -150,7 +150,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2582,
-      "fetched_at": 1786947447
+      "fetched_at": 1787048454
      },
      "snap72": {
       "views": 109,
@@ -207,7 +207,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2439,
-      "fetched_at": 1786956679
+      "fetched_at": 1787048454
      },
      "snap72": {
       "views": 119,
@@ -372,7 +372,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3877,
-      "fetched_at": 1786956679
+      "fetched_at": 1787048454
      },
      "snap72": {
       "views": 114,
@@ -1143,7 +1143,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1491,
-      "fetched_at": 1786947447
+      "fetched_at": 1787048454
      },
      "snap72": {
       "views": 117,
@@ -1196,7 +1196,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4006,
-      "fetched_at": 1786947447
+      "fetched_at": 1787048454
      },
      "snap72": {
       "views": 122,
@@ -1251,7 +1251,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1816,
-      "fetched_at": 1786947447
+      "fetched_at": 1787048454
      },
      "snap72": {
       "views": 126,
@@ -1304,7 +1304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1873,
-      "fetched_at": 1786947447
+      "fetched_at": 1787048454
      },
      "snap72": {
       "views": 122,
@@ -1688,7 +1688,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3139,
-      "fetched_at": 1786947447
+      "fetched_at": 1787048454
      },
      "snap72": {
       "views": 14,
@@ -2351,7 +2351,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2399,
-      "fetched_at": 1786947447
+      "fetched_at": 1787048454
      },
      "snap72": {
       "views": 8,
@@ -2414,7 +2414,7 @@
       "saved": 0,
       "total_interactions": 5,
       "ig_reels_avg_watch_time": 3953,
-      "fetched_at": 1786947447
+      "fetched_at": 1787048454
      },
      "snap72": {
       "views": 23,
@@ -3530,7 +3530,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1239,
-      "fetched_at": 1786947447
+      "fetched_at": 1787048454
      },
      "snap72": {
       "views": 2,
@@ -4544,7 +4544,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 11,
+      "reach": 10,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3682,
+      "fetched_at": 1787048454
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -4590,7 +4600,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 7,
+      "reach": 7,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2497,
+      "fetched_at": 1787048454
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -4685,6 +4705,54 @@
     "instagram": {
      "id": "18001629479991397",
      "posted_at": 1787030869
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787048382,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "Quake Shareware, a CD-ROM just a little too full",
+    "subject": "Quake Shareware CD",
+    "url": "https://fabiensanglard.net/quake_shareware_cd/index.html",
+    "source": "hn",
+    "keywords": [
+     "war"
+    ],
+    "viral_score": 9.7,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "Quake Shareware CD Encrypted Catalog",
+    "angle": "How id Software used the massive unused space on the Quake shareware CD to hide their entire encrypted game catalog, which was promptly cracked in 39 days.",
+    "insight": "Security through obscurity fails when you ship the decryption key alongside the locked vault on physical media.",
+    "judge": "plan"
+   },
+   "style_pack": "aurora-teal",
+   "format_pack": "legacy-news",
+   "seed": 1980316602,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "TIMEFRAME-COMPRESSION",
+   "style_epoch": 2,
+   "scene_count": 6,
+   "video_seconds": 41.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-3cd056",
+   "platforms": {
+    "instagram": {
+     "id": "18129667663671879",
+     "posted_at": 1787048451
     }
    },
    "metrics": {

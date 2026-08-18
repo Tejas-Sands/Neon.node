@@ -2,62 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-31362170",
-   "ts": 1785556035,
-   "session": "gh-ce342f",
-   "query": "math equations screen scrolling",
-   "scene": 2
-  },
-  {
-   "id": "pexels-29267591",
-   "ts": 1785556035,
-   "session": "gh-ce342f",
-   "query": "code editor screen scrolling",
-   "scene": 3
-  },
-  {
-   "id": "pexels-35544532",
-   "ts": 1785556035,
-   "session": "gh-ce342f",
-   "query": "dashboard ui data motion",
-   "scene": 4
-  },
-  {
-   "id": "pexels-8141707",
-   "ts": 1785556035,
-   "session": "gh-ce342f",
-   "query": "dashboard ui data motion",
-   "scene": 4
-  },
-  {
-   "id": "pexels-17356514",
-   "ts": 1785573577,
-   "session": "gh-707638",
-   "query": "terminal code scrolling fast",
-   "scene": 0
-  },
-  {
-   "id": "pexels-15886614",
-   "ts": 1785573577,
-   "session": "gh-707638",
-   "query": "neural network visualization motion",
-   "scene": 1
-  },
-  {
-   "id": "pexels-35047533",
-   "ts": 1785573577,
-   "session": "gh-707638",
-   "query": "neural network visualization motion",
-   "scene": 1
-  },
-  {
-   "id": "pexels-8128344",
-   "ts": 1785573577,
-   "session": "gh-707638",
-   "query": "server room blinking lights",
-   "scene": 2
-  },
-  {
    "id": "pexels-7423951",
    "ts": 1785573577,
    "session": "gh-707638",
@@ -2799,6 +2743,62 @@
    "ts": 1787030817,
    "session": "gh-f8c008",
    "query": "developer laptop closeup",
+   "scene": 5
+  },
+  {
+   "id": "pexels-5452770",
+   "ts": 1787048382,
+   "session": "gh-3cd056",
+   "query": "cdrom drive loading disk macro",
+   "scene": 0
+  },
+  {
+   "id": "pexels-10456671",
+   "ts": 1787048382,
+   "session": "gh-3cd056",
+   "query": "binary code scrolling dark terminal",
+   "scene": 1
+  },
+  {
+   "id": "pexels-19162269",
+   "ts": 1787048382,
+   "session": "gh-3cd056",
+   "query": "code editor screen scrolling dark",
+   "scene": 2
+  },
+  {
+   "id": "pexels-34459460",
+   "ts": 1787048382,
+   "session": "gh-3cd056",
+   "query": "code editor screen scrolling dark",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7669662",
+   "ts": 1787048382,
+   "session": "gh-3cd056",
+   "query": "terminal typing commands fast",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35102966",
+   "ts": 1787048382,
+   "session": "gh-3cd056",
+   "query": "shopping mall old electronics sign",
+   "scene": 4
+  },
+  {
+   "id": "pexels-35189262",
+   "ts": 1787048382,
+   "session": "gh-3cd056",
+   "query": "shopping mall old electronics sign",
+   "scene": 4
+  },
+  {
+   "id": "pexels-8348315",
+   "ts": 1787048382,
+   "session": "gh-3cd056",
+   "query": "data center servers dark rack",
    "scene": 5
   }
  ]
