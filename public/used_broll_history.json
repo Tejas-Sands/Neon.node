@@ -2,55 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-34430111",
-   "ts": 1785592498,
-   "session": "gh-9e7c54",
-   "query": "data center servers gpu",
-   "scene": 2
-  },
-  {
-   "id": "pexels-35157119",
-   "ts": 1785592498,
-   "session": "gh-9e7c54",
-   "query": "neural network visualization motion",
-   "scene": 3
-  },
-  {
-   "id": "pexels-8328105",
-   "ts": 1785592498,
-   "session": "gh-9e7c54",
-   "query": "robot arm working",
-   "scene": 4
-  },
-  {
-   "id": "pexels-6153050",
-   "ts": 1785592498,
-   "session": "gh-9e7c54",
-   "query": "robot arm working",
-   "scene": 4
-  },
-  {
-   "id": "pexels-8480282",
-   "ts": 1785592498,
-   "session": "gh-9e7c54",
-   "query": "developer laptop closeup",
-   "scene": 5
-  },
-  {
-   "id": "pexels-7240847",
-   "ts": 1785592498,
-   "session": "gh-9e7c54",
-   "query": "developer laptop closeup",
-   "scene": 5
-  },
-  {
-   "id": "pexels-38410499",
-   "ts": 1785645637,
-   "session": "gh-013442",
-   "query": "terminal code scrolling dark",
-   "scene": 0
-  },
-  {
    "id": "pexels-15439747",
    "ts": 1785645637,
    "session": "gh-013442",
@@ -2800,6 +2751,55 @@
    "session": "gh-f5fe45",
    "query": "server racks dark lighting motion",
    "scene": 5
+  },
+  {
+   "id": "pexels-3946211",
+   "ts": 1787150225,
+   "session": "gh-667b4f",
+   "query": "smartphone motherboard chip macro",
+   "scene": 0
+  },
+  {
+   "id": "pexels-5973871",
+   "ts": 1787150225,
+   "session": "gh-667b4f",
+   "query": "digital clock numbers counting up",
+   "scene": 1
+  },
+  {
+   "id": "pexels-6611951",
+   "ts": 1787150225,
+   "session": "gh-667b4f",
+   "query": "smartphone screen ui scrolling",
+   "scene": 2
+  },
+  {
+   "id": "pexels-8165887",
+   "ts": 1787150225,
+   "session": "gh-667b4f",
+   "query": "smartphone screen ui scrolling",
+   "scene": 2
+  },
+  {
+   "id": "pexels-15440318",
+   "ts": 1787150225,
+   "session": "gh-667b4f",
+   "query": "microchip hardware security glowing",
+   "scene": 3
+  },
+  {
+   "id": "pexels-34868658",
+   "ts": 1787150225,
+   "session": "gh-667b4f",
+   "query": "network nodes glowing data links",
+   "scene": 4
+  },
+  {
+   "id": "pexels-34870216",
+   "ts": 1787150225,
+   "session": "gh-667b4f",
+   "query": "network nodes glowing data links",
+   "scene": 4
   }
  ]
 }

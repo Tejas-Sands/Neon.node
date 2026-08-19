@@ -540,7 +540,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3856,
-      "fetched_at": 1786973802
+      "fetched_at": 1787150308
      },
      "snap72": {
       "views": 118,
@@ -595,7 +595,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 2106,
-      "fetched_at": 1786973802
+      "fetched_at": 1787150308
      },
      "snap72": {
       "views": 120,
@@ -812,7 +812,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2982,
-      "fetched_at": 1786973802
+      "fetched_at": 1787150308
      },
      "snap72": {
       "views": 112,
@@ -870,7 +870,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1745,
-      "fetched_at": 1786973802
+      "fetched_at": 1787150308
      },
      "snap72": {
       "views": 124,
@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1786973802
+      "fetched_at": 1787150308
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1786973802
+      "fetched_at": 1787150308
      },
      "snap72": {
       "views": 116,
@@ -1415,7 +1415,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1749,
-      "fetched_at": 1786973802
+      "fetched_at": 1787150308
      },
      "snap72": {
       "views": 16,
@@ -2224,7 +2224,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1123,
-      "fetched_at": 1786973802
+      "fetched_at": 1787150308
      },
      "snap72": {
       "views": 93,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1786973802
+      "fetched_at": 1787150308
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1786973802
+      "fetched_at": 1787150308
      },
      "snap72": {
       "views": 4,
@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1786973802
+      "fetched_at": 1787150308
      },
      "snap72": {
       "views": 22,
@@ -4503,10 +4503,20 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 953,
-      "fetched_at": 1786973802
+      "ig_reels_avg_watch_time": 954,
+      "fetched_at": 1787150308
      },
-     "snap72": null,
+     "snap72": {
+      "views": 38,
+      "reach": 40,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 954,
+      "fetched_at": 1787150308
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -4729,7 +4739,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 15,
+      "reach": 14,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 980,
+      "fetched_at": 1787150308
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -4777,7 +4797,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 9,
+      "reach": 9,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 952,
+      "fetched_at": 1787150308
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -4819,6 +4849,61 @@
     "instagram": {
      "id": "18192861487387177",
      "posted_at": 1787062995
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": {
+      "views": 0,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1787150308
+     },
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787150225,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "GrapheneOS in 2027 available on high-end Motorola phones",
+    "subject": "GrapheneOS on Motorola",
+    "url": "https://grapheneos.social/@GrapheneOS/117078064184215730",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 9.67,
+    "sources": [],
+    "display_title": "GrapheneOS Coming To Motorola",
+    "angle": "GrapheneOS is expanding beyond Pixel to support high-end Motorola hardware in 2027.",
+    "insight": "By expanding to Motorola hardware, GrapheneOS reduces the privacy community's total dependence on Pixel devices for hardware-backed security.",
+    "judge": "plan"
+   },
+   "style_pack": "aurora-teal",
+   "format_pack": "legacy-news",
+   "seed": 437257196,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "TIMEFRAME-COMPRESSION",
+   "style_epoch": 2,
+   "scene_count": 5,
+   "video_seconds": 40.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-667b4f",
+   "platforms": {
+    "instagram": {
+     "id": "18084367376682709",
+     "posted_at": 1787150304
     }
    },
    "metrics": {
