@@ -540,7 +540,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3856,
-      "fetched_at": 1787150308
+      "fetched_at": 1787240266
      },
      "snap72": {
       "views": 118,
@@ -595,7 +595,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 2106,
-      "fetched_at": 1787150308
+      "fetched_at": 1787240266
      },
      "snap72": {
       "views": 120,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1228,
-      "fetched_at": 1787062998
+      "fetched_at": 1787240266
      },
      "snap72": {
       "views": 159,
@@ -756,7 +756,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6074,
-      "fetched_at": 1787062998
+      "fetched_at": 1787240266
      },
      "snap72": {
       "views": 111,
@@ -812,7 +812,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2982,
-      "fetched_at": 1787150308
+      "fetched_at": 1787240266
      },
      "snap72": {
       "views": 112,
@@ -870,7 +870,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1745,
-      "fetched_at": 1787150308
+      "fetched_at": 1787240266
      },
      "snap72": {
       "views": 124,
@@ -2286,8 +2286,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1759,
-      "fetched_at": 1787062998
+      "ig_reels_avg_watch_time": 1659,
+      "fetched_at": 1787240266
      },
      "snap72": {
       "views": 9,
@@ -2538,7 +2538,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2998,
-      "fetched_at": 1787062998
+      "fetched_at": 1787240266
      },
      "snap72": {
       "views": 110,
@@ -2602,7 +2602,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1277,
-      "fetched_at": 1787062998
+      "fetched_at": 1787240266
      },
      "snap72": {
       "views": 14,
@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1787062998
+      "fetched_at": 1787240266
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1787062998
+      "fetched_at": 1787240266
      },
      "snap72": {
       "views": 16,
@@ -4304,8 +4304,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "ig_reels_avg_watch_time": 4049,
-      "fetched_at": 1787062998
+      "ig_reels_avg_watch_time": 4015,
+      "fetched_at": 1787240266
      },
      "snap72": {
       "views": 90,
@@ -4437,8 +4437,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2541,
-      "fetched_at": 1787062998
+      "ig_reels_avg_watch_time": 2513,
+      "fetched_at": 1787240266
      },
      "snap72": {
       "views": 29,
@@ -4697,9 +4697,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1787062998
+      "fetched_at": 1787240266
      },
-     "snap72": null,
+     "snap72": {
+      "views": 2,
+      "reach": 2,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1863,
+      "fetched_at": 1787240266
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -4918,7 +4928,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 7,
+      "reach": 6,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1580,
+      "fetched_at": 1787240266
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -5008,6 +5028,54 @@
     "instagram": {
      "id": "17956343510997896",
      "posted_at": 1787218790
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787240206,
+   "posted_hour_utc": 15,
+   "channel": "news",
+   "topic": {
+    "title": "AliExpress runs silent WebAudio fingerprinting that breaks Bluetooth multipoint",
+    "subject": "AliExpress WebAudio fingerprinting",
+    "url": "https://blog.laserphile.com/2026/08/aliexpress-webpage-keeping-multipoint.html",
+    "source": "hn",
+    "keywords": [
+     "ipo"
+    ],
+    "viral_score": 9.98,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "AliExpress Silent Audio Tracking",
+    "angle": "An investigation reveals that AliExpress uses hidden WebAudio scripts for fingerprinting that hijack system audio and break Bluetooth multipoint connections.",
+    "insight": "WebAudio scripts can hijack system audio routing even with zero volume, proving that browser muting controls fail against advanced silent fingerprinting.",
+    "judge": "plan"
+   },
+   "style_pack": "ice-electric",
+   "format_pack": "facts-explainer",
+   "seed": 1394655757,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 2,
+   "scene_count": 5,
+   "video_seconds": 26.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-4f5038",
+   "platforms": {
+    "instagram": {
+     "id": "18127264438672465",
+     "posted_at": 1787240263
     }
    },
    "metrics": {

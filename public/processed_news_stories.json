@@ -980,5 +980,18 @@
   "entities": [],
   "ts": 1787218793,
   "session": "gh-599886"
+ },
+ {
+  "id": "49372583",
+  "title": "AliExpress runs silent WebAudio fingerprinting that breaks Bluetooth multipoint",
+  "norm": "aliexpress runs silent webaudio fingerprinting that breaks bluetooth multipoint",
+  "subject_norm": "aliexpress webaudio fingerprinting",
+  "entities": [
+   "aliexpress",
+   "webaudio",
+   "bluetooth"
+  ],
+  "ts": 1787240266,
+  "session": "gh-4f5038"
  }
 ]

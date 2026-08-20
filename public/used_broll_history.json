@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-36956436",
-   "ts": 1785676622,
-   "session": "gh-db890e",
-   "query": "data stream digital lines motion",
-   "scene": 0
-  },
-  {
-   "id": "pexels-30850690",
-   "ts": 1785676622,
-   "session": "gh-db890e",
-   "query": "film camera lens focus motion",
-   "scene": 1
-  },
-  {
-   "id": "pexels-34913155",
-   "ts": 1785676622,
-   "session": "gh-db890e",
-   "query": "neural network nodes connecting",
-   "scene": 2
-  },
-  {
-   "id": "pexels-7600545",
-   "ts": 1785676622,
-   "session": "gh-db890e",
-   "query": "timeline editing software scrolling",
-   "scene": 3
-  },
-  {
-   "id": "pexels-15439741",
-   "ts": 1785676622,
-   "session": "gh-db890e",
-   "query": "server racks blinking lights",
-   "scene": 4
-  },
-  {
    "id": "pexels-6883831",
    "ts": 1785676622,
    "session": "gh-db890e",
@@ -2799,6 +2764,41 @@
    "ts": 1787218732,
    "session": "gh-599886",
    "query": "code scrolling smooth dark mode",
+   "scene": 4
+  },
+  {
+   "id": "pexels-6913246",
+   "ts": 1787240206,
+   "session": "gh-4f5038",
+   "query": "phone screen bluetooth connection",
+   "scene": 0
+  },
+  {
+   "id": "pexels-33314914",
+   "ts": 1787240206,
+   "session": "gh-4f5038",
+   "query": "code editor terminal scrolling",
+   "scene": 1
+  },
+  {
+   "id": "pexels-29941195",
+   "ts": 1787240206,
+   "session": "gh-4f5038",
+   "query": "network traffic data visualization",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7586160",
+   "ts": 1787240206,
+   "session": "gh-4f5038",
+   "query": "audio waveform analyzer screen",
+   "scene": 3
+  },
+  {
+   "id": "pexels-8136216",
+   "ts": 1787240206,
+   "session": "gh-4f5038",
+   "query": "bluetooth headphones laptop closeup",
    "scene": 4
   }
  ]
