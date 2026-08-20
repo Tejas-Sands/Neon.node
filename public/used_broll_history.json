@@ -2,55 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-15439747",
-   "ts": 1785645637,
-   "session": "gh-013442",
-   "query": "data center server lights motion",
-   "scene": 1
-  },
-  {
-   "id": "pexels-20523328",
-   "ts": 1785645637,
-   "session": "gh-013442",
-   "query": "data center server lights motion",
-   "scene": 1
-  },
-  {
-   "id": "pexels-35544498",
-   "ts": 1785645637,
-   "session": "gh-013442",
-   "query": "trading chart screen moving",
-   "scene": 2
-  },
-  {
-   "id": "pexels-7480061",
-   "ts": 1785645637,
-   "session": "gh-013442",
-   "query": "chip manufacturing closeup motion",
-   "scene": 3
-  },
-  {
-   "id": "pexels-7220850",
-   "ts": 1785645637,
-   "session": "gh-013442",
-   "query": "chip manufacturing closeup motion",
-   "scene": 3
-  },
-  {
-   "id": "pexels-8720756",
-   "ts": 1785645637,
-   "session": "gh-013442",
-   "query": "developer typing code laptop",
-   "scene": 4
-  },
-  {
-   "id": "pexels-7652166",
-   "ts": 1785645637,
-   "session": "gh-013442",
-   "query": "developer typing code laptop",
-   "scene": 4
-  },
-  {
    "id": "pexels-7989854",
    "ts": 1785656833,
    "session": "gh-c7f8e5",
@@ -2800,6 +2751,55 @@
    "session": "gh-667b4f",
    "query": "network nodes glowing data links",
    "scene": 4
+  },
+  {
+   "id": "pexels-5377775",
+   "ts": 1787203332,
+   "session": "gh-7d5b21",
+   "query": "terminal hacking code green",
+   "scene": 0
+  },
+  {
+   "id": "pexels-7989667",
+   "ts": 1787203332,
+   "session": "gh-7d5b21",
+   "query": "code editor screen scrolling",
+   "scene": 1
+  },
+  {
+   "id": "pexels-35931121",
+   "ts": 1787203332,
+   "session": "gh-7d5b21",
+   "query": "drone aerial landscape motion",
+   "scene": 2
+  },
+  {
+   "id": "pexels-15283160",
+   "ts": 1787203332,
+   "session": "gh-7d5b21",
+   "query": "data center servers gpu",
+   "scene": 3
+  },
+  {
+   "id": "pexels-16727477",
+   "ts": 1787203332,
+   "session": "gh-7d5b21",
+   "query": "data center servers gpu",
+   "scene": 3
+  },
+  {
+   "id": "pexels-29450498",
+   "ts": 1787203332,
+   "session": "gh-7d5b21",
+   "query": "satellite telemetry dashboard ui",
+   "scene": 4
+  },
+  {
+   "id": "pexels-38614084",
+   "ts": 1787203332,
+   "session": "gh-7d5b21",
+   "query": "network traffic nodes glowing",
+   "scene": 5
   }
  ]
 }
