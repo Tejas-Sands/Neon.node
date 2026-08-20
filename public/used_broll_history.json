@@ -2,62 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-7989854",
-   "ts": 1785656833,
-   "session": "gh-c7f8e5",
-   "query": "terminal hacking code green",
-   "scene": 0
-  },
-  {
-   "id": "pexels-19532053",
-   "ts": 1785656833,
-   "session": "gh-c7f8e5",
-   "query": "code editor screen scrolling",
-   "scene": 1
-  },
-  {
-   "id": "pexels-28709421",
-   "ts": 1785656833,
-   "session": "gh-c7f8e5",
-   "query": "code editor screen scrolling",
-   "scene": 1
-  },
-  {
-   "id": "pexels-5742408",
-   "ts": 1785656833,
-   "session": "gh-c7f8e5",
-   "query": "developer typing code laptop",
-   "scene": 2
-  },
-  {
-   "id": "pexels-37615808",
-   "ts": 1785656833,
-   "session": "gh-c7f8e5",
-   "query": "data center servers gpu",
-   "scene": 3
-  },
-  {
-   "id": "pexels-35417379",
-   "ts": 1785656833,
-   "session": "gh-c7f8e5",
-   "query": "data center servers gpu",
-   "scene": 3
-  },
-  {
-   "id": "pexels-35095187",
-   "ts": 1785656833,
-   "session": "gh-c7f8e5",
-   "query": "network traffic dashboard screen",
-   "scene": 4
-  },
-  {
-   "id": "pexels-36369991",
-   "ts": 1785656833,
-   "session": "gh-c7f8e5",
-   "query": "network traffic dashboard screen",
-   "scene": 4
-  },
-  {
    "id": "pexels-36956436",
    "ts": 1785676622,
    "session": "gh-db890e",
@@ -2800,6 +2744,62 @@
    "session": "gh-7d5b21",
    "query": "network traffic nodes glowing",
    "scene": 5
+  },
+  {
+   "id": "pexels-7989854",
+   "ts": 1787218732,
+   "session": "gh-599886",
+   "query": "code editor screen scrolling lines",
+   "scene": 0
+  },
+  {
+   "id": "pexels-8720751",
+   "ts": 1787218732,
+   "session": "gh-599886",
+   "query": "code editor screen scrolling lines",
+   "scene": 0
+  },
+  {
+   "id": "pexels-6266437",
+   "ts": 1787218732,
+   "session": "gh-599886",
+   "query": "terminal typing commands fast",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5925288",
+   "ts": 1787218732,
+   "session": "gh-599886",
+   "query": "developer laptop code night",
+   "scene": 2
+  },
+  {
+   "id": "pexels-5495786",
+   "ts": 1787218732,
+   "session": "gh-599886",
+   "query": "developer laptop code night",
+   "scene": 2
+  },
+  {
+   "id": "pexels-37616259",
+   "ts": 1787218732,
+   "session": "gh-599886",
+   "query": "software dashboard ui scrolling",
+   "scene": 3
+  },
+  {
+   "id": "pexels-37116270",
+   "ts": 1787218732,
+   "session": "gh-599886",
+   "query": "software dashboard ui scrolling",
+   "scene": 3
+  },
+  {
+   "id": "pexels-17356513",
+   "ts": 1787218732,
+   "session": "gh-599886",
+   "query": "code scrolling smooth dark mode",
+   "scene": 4
   }
  ]
 }
