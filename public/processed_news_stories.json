@@ -993,5 +993,18 @@
   ],
   "ts": 1787240266,
   "session": "gh-4f5038"
+ },
+ {
+  "id": "49379550",
+  "title": "Aaron Swartz was prosecuted for scraping, while Meta does it without consequence",
+  "norm": "aaron swartz was prosecuted for scraping while meta does it without consequence",
+  "subject_norm": "aaron swartz vs meta scraping",
+  "entities": [
+   "meta",
+   "swartz",
+   "aaron"
+  ],
+  "ts": 1787295615,
+  "session": "gh-d9a423"
  }
 ]

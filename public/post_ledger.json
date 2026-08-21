@@ -39,7 +39,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1601,
-      "fetched_at": 1787203388
+      "fetched_at": 1787295615
      },
      "snap72": {
       "views": 101,
@@ -94,7 +94,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1325,
-      "fetched_at": 1787203388
+      "fetched_at": 1787295615
      },
      "snap72": {
       "views": 103,
@@ -150,7 +150,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2582,
-      "fetched_at": 1787203388
+      "fetched_at": 1787295615
      },
      "snap72": {
       "views": 109,
@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1787150308
+      "fetched_at": 1787295615
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1787150308
+      "fetched_at": 1787295615
      },
      "snap72": {
       "views": 116,
@@ -1415,7 +1415,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1749,
-      "fetched_at": 1787150308
+      "fetched_at": 1787295615
      },
      "snap72": {
       "views": 16,
@@ -2224,7 +2224,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1123,
-      "fetched_at": 1787150308
+      "fetched_at": 1787295615
      },
      "snap72": {
       "views": 93,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1787150308
+      "fetched_at": 1787295615
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1787150308
+      "fetched_at": 1787295615
      },
      "snap72": {
       "views": 4,
@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1787150308
+      "fetched_at": 1787295615
      },
      "snap72": {
       "views": 22,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1787150308
+      "fetched_at": 1787295615
      },
      "snap72": {
       "views": 38,
@@ -4768,9 +4768,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1787150308
+      "fetched_at": 1787295615
      },
-     "snap72": null,
+     "snap72": {
+      "views": 15,
+      "reach": 14,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 980,
+      "fetched_at": 1787295615
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -4826,9 +4836,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1787150308
+      "fetched_at": 1787295615
      },
-     "snap72": null,
+     "snap72": {
+      "views": 9,
+      "reach": 9,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 952,
+      "fetched_at": 1787295615
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -4882,9 +4902,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1787150308
+      "fetched_at": 1787295615
      },
-     "snap72": null,
+     "snap72": {
+      "views": 0,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1787295615
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -4986,7 +5016,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 5,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1296,
+      "fetched_at": 1787295615
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -5076,6 +5116,54 @@
     "instagram": {
      "id": "18127264438672465",
      "posted_at": 1787240263
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787295559,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Aaron Swartz was prosecuted for scraping, while Meta does it without consequence",
+    "subject": "Aaron Swartz vs Meta scraping",
+    "url": "https://blog.curiousquail.com/im-upset-again-about-a-co-creator-of-rss-being-prosecuted-for-something-meta-is-doing-with-little-consequence/",
+    "source": "hn",
+    "keywords": [
+     "war",
+     "meta"
+    ],
+    "viral_score": 10.94,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Meta Scrapes 80 Terabytes",
+    "angle": "Aaron Swartz faced decades in prison for downloading academic articles, while Meta faces zero real consequences for scraping 80 terabytes of books to train AI.",
+    "insight": "Data scraping is treated as a capital crime or a minor business expense depending entirely on your net worth.",
+    "judge": "plan"
+   },
+   "style_pack": "burgundy-luxe",
+   "format_pack": "legacy-news",
+   "seed": 719312036,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "COST-OF-NOT-KNOWING",
+   "style_epoch": 3,
+   "scene_count": 5,
+   "video_seconds": 38.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-d9a423",
+   "platforms": {
+    "instagram": {
+     "id": "17888896125433930",
+     "posted_at": 1787295612
     }
    },
    "metrics": {
