@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-8480682",
-   "ts": 1785754056,
-   "session": "gh-a1d2f4",
-   "query": "developer typing code closeup",
-   "scene": 4
-  },
-  {
-   "id": "pexels-15283159",
-   "ts": 1785754056,
-   "session": "gh-a1d2f4",
-   "query": "network nodes connecting motion",
-   "scene": 5
-  },
-  {
-   "id": "pexels-5871854",
-   "ts": 1785754056,
-   "session": "gh-a1d2f4",
-   "query": "network nodes connecting motion",
-   "scene": 5
-  },
-  {
-   "id": "pexels-16655800",
-   "ts": 1785824890,
-   "session": "gh-36fcda",
-   "query": "gpu chip macro motion",
-   "scene": 0
-  },
-  {
-   "id": "pexels-7652205",
-   "ts": 1785824890,
-   "session": "gh-36fcda",
-   "query": "server room blinking lights",
-   "scene": 1
-  },
-  {
-   "id": "pexels-6382041",
-   "ts": 1785824890,
-   "session": "gh-36fcda",
-   "query": "server room blinking lights",
-   "scene": 1
-  },
-  {
-   "id": "pexels-32259631",
-   "ts": 1785824890,
-   "session": "gh-36fcda",
-   "query": "terminal typing code scrolling",
-   "scene": 2
-  },
-  {
-   "id": "pexels-8721926",
-   "ts": 1785824890,
-   "session": "gh-36fcda",
-   "query": "terminal typing code scrolling",
-   "scene": 2
-  },
-  {
-   "id": "pexels-7448471",
-   "ts": 1785824890,
-   "session": "gh-36fcda",
-   "query": "developer laptop screen ui",
-   "scene": 3
-  },
-  {
    "id": "pexels-6930234",
    "ts": 1785824890,
    "session": "gh-36fcda",
@@ -2800,6 +2737,69 @@
    "session": "gh-dff800",
    "query": "motherboard circuit board motion",
    "scene": 4
+  },
+  {
+   "id": "pexels-36392049",
+   "ts": 1787323711,
+   "session": "gh-932631",
+   "query": "server data center racks blinking lights",
+   "scene": 0
+  },
+  {
+   "id": "pexels-19162466",
+   "ts": 1787323711,
+   "session": "gh-932631",
+   "query": "code editor screen scrolling fast",
+   "scene": 1
+  },
+  {
+   "id": "pexels-16727463",
+   "ts": 1787323711,
+   "session": "gh-932631",
+   "query": "network packets data stream motion",
+   "scene": 2
+  },
+  {
+   "id": "pexels-16456770",
+   "ts": 1787323711,
+   "session": "gh-932631",
+   "query": "network packets data stream motion",
+   "scene": 2
+  },
+  {
+   "id": "pexels-28925348",
+   "ts": 1787323711,
+   "session": "gh-932631",
+   "query": "cloud infrastructure servers glowing",
+   "scene": 3
+  },
+  {
+   "id": "pexels-30940809",
+   "ts": 1787323711,
+   "session": "gh-932631",
+   "query": "cloud infrastructure servers glowing",
+   "scene": 3
+  },
+  {
+   "id": "pexels-15439750",
+   "ts": 1787323711,
+   "session": "gh-932631",
+   "query": "cpu chip circuit board macro motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-16456768",
+   "ts": 1787323711,
+   "session": "gh-932631",
+   "query": "datacenter hardware server blades motion",
+   "scene": 5
+  },
+  {
+   "id": "pexels-15439746",
+   "ts": 1787323711,
+   "session": "gh-932631",
+   "query": "datacenter hardware server blades motion",
+   "scene": 5
   }
  ]
 }

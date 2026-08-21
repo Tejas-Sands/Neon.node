@@ -1020,5 +1020,16 @@
   ],
   "ts": 1787309423,
   "session": "gh-dff800"
+ },
+ {
+  "id": "49378957",
+  "title": "The August 17 outage",
+  "norm": "the august 17 outage",
+  "subject_norm": "github august 17 outage",
+  "entities": [
+   "microsoft"
+  ],
+  "ts": 1787323772,
+  "session": "gh-932631"
  }
 ]
