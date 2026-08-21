@@ -2,62 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-36980773",
-   "ts": 1785734036,
-   "session": "gh-ad6f09",
-   "query": "developer workspace setup motion",
-   "scene": 4
-  },
-  {
-   "id": "pexels-28400000",
-   "ts": 1785734036,
-   "session": "gh-ad6f09",
-   "query": "developer workspace setup motion",
-   "scene": 4
-  },
-  {
-   "id": "pexels-5138031",
-   "ts": 1785754056,
-   "session": "gh-a1d2f4",
-   "query": "map navigation screen glowing",
-   "scene": 0
-  },
-  {
-   "id": "pexels-34459460",
-   "ts": 1785754056,
-   "session": "gh-a1d2f4",
-   "query": "scrolling through database code",
-   "scene": 1
-  },
-  {
-   "id": "pexels-8889195",
-   "ts": 1785754056,
-   "session": "gh-a1d2f4",
-   "query": "terminal typing commands green",
-   "scene": 2
-  },
-  {
-   "id": "pexels-12893568",
-   "ts": 1785754056,
-   "session": "gh-a1d2f4",
-   "query": "terminal typing commands green",
-   "scene": 2
-  },
-  {
-   "id": "pexels-9902177",
-   "ts": 1785754056,
-   "session": "gh-a1d2f4",
-   "query": "database error screen flashing",
-   "scene": 3
-  },
-  {
-   "id": "pexels-34786192",
-   "ts": 1785754056,
-   "session": "gh-a1d2f4",
-   "query": "database error screen flashing",
-   "scene": 3
-  },
-  {
    "id": "pexels-8480682",
    "ts": 1785754056,
    "session": "gh-a1d2f4",
@@ -2799,6 +2743,62 @@
    "ts": 1787295559,
    "session": "gh-d9a423",
    "query": "hacker terminal typing dark room",
+   "scene": 4
+  },
+  {
+   "id": "pexels-8721926",
+   "ts": 1787308624,
+   "session": "gh-dff800",
+   "query": "terminal screen typing commands",
+   "scene": 0
+  },
+  {
+   "id": "pexels-6803592",
+   "ts": 1787308624,
+   "session": "gh-dff800",
+   "query": "code editor scrolling fast",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5377700",
+   "ts": 1787308624,
+   "session": "gh-dff800",
+   "query": "code editor scrolling fast",
+   "scene": 1
+  },
+  {
+   "id": "pexels-35417379",
+   "ts": 1787308624,
+   "session": "gh-dff800",
+   "query": "network traffic data visualization",
+   "scene": 2
+  },
+  {
+   "id": "pexels-30948710",
+   "ts": 1787308624,
+   "session": "gh-dff800",
+   "query": "network traffic data visualization",
+   "scene": 2
+  },
+  {
+   "id": "pexels-34771072",
+   "ts": 1787308624,
+   "session": "gh-dff800",
+   "query": "developer typing on keyboard closeup",
+   "scene": 3
+  },
+  {
+   "id": "pexels-20523328",
+   "ts": 1787308624,
+   "session": "gh-dff800",
+   "query": "motherboard circuit board motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-34948753",
+   "ts": 1787308624,
+   "session": "gh-dff800",
+   "query": "motherboard circuit board motion",
    "scene": 4
   }
  ]
