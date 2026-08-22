@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-6602799",
-   "ts": 1785853396,
-   "session": "gh-553f2f",
-   "query": "smart home dashboard interface futuristic",
-   "scene": 5
-  },
-  {
-   "id": "pexels-28598941",
-   "ts": 1785853396,
-   "session": "gh-553f2f",
-   "query": "smart home dashboard interface futuristic",
-   "scene": 5
-  },
-  {
-   "id": "pexels-12715350",
-   "ts": 1785905498,
-   "session": "gh-f64a61",
-   "query": "game console power button red LED",
-   "scene": 0
-  },
-  {
-   "id": "pexels-8086284",
-   "ts": 1785905498,
-   "session": "gh-f64a61",
-   "query": "optical disc drive reading laser",
-   "scene": 1
-  },
-  {
-   "id": "pexels-8306447",
-   "ts": 1785905498,
-   "session": "gh-f64a61",
-   "query": "internal hard drive data transfer",
-   "scene": 2
-  },
-  {
    "id": "pexels-35356075",
    "ts": 1785905498,
    "session": "gh-f64a61",
@@ -2799,6 +2764,41 @@
    "ts": 1787391967,
    "session": "gh-130a8c",
    "query": "trading chart screen moving numbers",
+   "scene": 4
+  },
+  {
+   "id": "pexels-32259631",
+   "ts": 1787404565,
+   "session": "gh-006849",
+   "query": "terminal typing commands green",
+   "scene": 0
+  },
+  {
+   "id": "pexels-12893579",
+   "ts": 1787404565,
+   "session": "gh-006849",
+   "query": "code editor screen scrolling",
+   "scene": 1
+  },
+  {
+   "id": "pexels-7970386",
+   "ts": 1787404565,
+   "session": "gh-006849",
+   "query": "developer laptop closeup",
+   "scene": 2
+  },
+  {
+   "id": "pexels-33264188",
+   "ts": 1787404565,
+   "session": "gh-006849",
+   "query": "music player interface screen",
+   "scene": 3
+  },
+  {
+   "id": "pexels-6153460",
+   "ts": 1787404565,
+   "session": "gh-006849",
+   "query": "ai chatbot typing interface",
    "scene": 4
   }
  ]
