@@ -1042,5 +1042,17 @@
   ],
   "ts": 1787377976,
   "session": "gh-139ec5"
+ },
+ {
+  "id": "49386163",
+  "title": "DeepSeek-v4-flash-vision-exp",
+  "norm": "deepseek v4 flash vision exp",
+  "subject_norm": "deepseek v4 flash vision exp",
+  "entities": [
+   "deepseek",
+   "deepseek-v4-flash-vision-exp"
+  ],
+  "ts": 1787392024,
+  "session": "gh-130a8c"
  }
 ]

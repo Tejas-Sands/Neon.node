@@ -94,7 +94,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1325,
-      "fetched_at": 1787295615
+      "fetched_at": 1787392024
      },
      "snap72": {
       "views": 103,
@@ -150,7 +150,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2582,
-      "fetched_at": 1787295615
+      "fetched_at": 1787392024
      },
      "snap72": {
       "views": 109,
@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1787295615
+      "fetched_at": 1787392024
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1787295615
+      "fetched_at": 1787392024
      },
      "snap72": {
       "views": 116,
@@ -1415,7 +1415,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1749,
-      "fetched_at": 1787295615
+      "fetched_at": 1787392024
      },
      "snap72": {
       "views": 16,
@@ -2224,7 +2224,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1123,
-      "fetched_at": 1787295615
+      "fetched_at": 1787392024
      },
      "snap72": {
       "views": 93,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1787295615
+      "fetched_at": 1787392024
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1787295615
+      "fetched_at": 1787392024
      },
      "snap72": {
       "views": 4,
@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1787295615
+      "fetched_at": 1787392024
      },
      "snap72": {
       "views": 22,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1787295615
+      "fetched_at": 1787392024
      },
      "snap72": {
       "views": 38,
@@ -4768,7 +4768,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1787295615
+      "fetched_at": 1787392024
      },
      "snap72": {
       "views": 15,
@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1787295615
+      "fetched_at": 1787392024
      },
      "snap72": {
       "views": 9,
@@ -4902,7 +4902,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1787295615
+      "fetched_at": 1787392024
      },
      "snap72": {
       "views": 0,
@@ -4967,9 +4967,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1580,
-      "fetched_at": 1787240266
+      "fetched_at": 1787392024
      },
-     "snap72": null,
+     "snap72": {
+      "views": 7,
+      "reach": 6,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1580,
+      "fetched_at": 1787392024
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -5188,7 +5198,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1568,
+      "fetched_at": 1787392024
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -5276,6 +5296,51 @@
     "instagram": {
      "id": "18455618299141265",
      "posted_at": 1787377971
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787391967,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "DeepSeek-v4-flash-vision-exp",
+    "subject": "DeepSeek v4 flash vision exp",
+    "url": "https://api-docs.deepseek.com/guides/vision/",
+    "source": "hn",
+    "keywords": [
+     "deepseek"
+    ],
+    "viral_score": 8.7,
+    "sources": [],
+    "display_title": "DeepSeek v4 Flash Vision",
+    "angle": "DeepSeek launched v4-flash-vision-exp, supporting image inputs via base64, URLs, and a Files API with a 384 token cap per image.",
+    "insight": "By capping every image at 384 tokens regardless of resolution, DeepSeek makes high-res chart and screenshot processing much cheaper.",
+    "judge": "plan"
+   },
+   "style_pack": "rosewood-vintage",
+   "format_pack": "legacy-news",
+   "seed": 2045165816,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "MISTAKE CALLOUT",
+   "style_epoch": 3,
+   "scene_count": 5,
+   "video_seconds": 38.0,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-130a8c",
+   "platforms": {
+    "instagram": {
+     "id": "17900211267356147",
+     "posted_at": 1787392020
     }
    },
    "metrics": {
