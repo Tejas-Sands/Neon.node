@@ -540,7 +540,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3856,
-      "fetched_at": 1787240266
+      "fetched_at": 1787377976
      },
      "snap72": {
       "views": 118,
@@ -595,7 +595,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 2106,
-      "fetched_at": 1787240266
+      "fetched_at": 1787377976
      },
      "snap72": {
       "views": 120,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1228,
-      "fetched_at": 1787240266
+      "fetched_at": 1787377976
      },
      "snap72": {
       "views": 159,
@@ -756,7 +756,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6074,
-      "fetched_at": 1787240266
+      "fetched_at": 1787377976
      },
      "snap72": {
       "views": 111,
@@ -812,7 +812,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2982,
-      "fetched_at": 1787240266
+      "fetched_at": 1787377976
      },
      "snap72": {
       "views": 112,
@@ -870,7 +870,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1745,
-      "fetched_at": 1787240266
+      "fetched_at": 1787377976
      },
      "snap72": {
       "views": 124,
@@ -2287,7 +2287,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1659,
-      "fetched_at": 1787240266
+      "fetched_at": 1787377976
      },
      "snap72": {
       "views": 9,
@@ -2538,7 +2538,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2998,
-      "fetched_at": 1787240266
+      "fetched_at": 1787377976
      },
      "snap72": {
       "views": 110,
@@ -2602,7 +2602,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1277,
-      "fetched_at": 1787240266
+      "fetched_at": 1787377976
      },
      "snap72": {
       "views": 14,
@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1787240266
+      "fetched_at": 1787377976
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1787240266
+      "fetched_at": 1787377976
      },
      "snap72": {
       "views": 16,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1787240266
+      "fetched_at": 1787377976
      },
      "snap72": {
       "views": 90,
@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1787240266
+      "fetched_at": 1787377976
      },
      "snap72": {
       "views": 29,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1787240266
+      "fetched_at": 1787377976
      },
      "snap72": {
       "views": 2,
@@ -5130,7 +5130,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 7,
+      "reach": 6,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5297,
+      "fetched_at": 1787377976
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -5221,6 +5231,51 @@
     "instagram": {
      "id": "17908728501467084",
      "posted_at": 1787323768
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787377909,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "There's no reason for software to be slow anymore",
+    "subject": "FRE regex engine",
+    "url": "https://danluu.com/perf-opt/",
+    "source": "hn",
+    "keywords": [
+     "war"
+    ],
+    "viral_score": 8.86,
+    "sources": [],
+    "display_title": "AI rewrites slow software",
+    "angle": "How AI lowers the barrier to build hyper-specialized software like custom JIT compilers and regex engines.",
+    "insight": "AI makes writing complex optimizations like JIT compilers cheap enough for anyone, shifting performance work from rare human skill to automated workload-fitting.",
+    "judge": "plan"
+   },
+   "style_pack": "royal-violet",
+   "format_pack": "legacy-news",
+   "seed": 1778337098,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "CONTRARIAN CLAIM",
+   "style_epoch": 3,
+   "scene_count": 6,
+   "video_seconds": 49.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-139ec5",
+   "platforms": {
+    "instagram": {
+     "id": "18455618299141265",
+     "posted_at": 1787377971
     }
    },
    "metrics": {
