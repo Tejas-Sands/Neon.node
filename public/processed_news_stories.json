@@ -1063,5 +1063,18 @@
   "entities": [],
   "ts": 1787404650,
   "session": "gh-006849"
+ },
+ {
+  "id": "49402741",
+  "title": "hdiutil is deprecated in macOS 27 Golden Gate",
+  "norm": "hdiutil is deprecated in macos 27 golden gate",
+  "subject_norm": "hdiutil deprecation",
+  "entities": [
+   "apple",
+   "golden",
+   "gate"
+  ],
+  "ts": 1787461714,
+  "session": "gh-cf82a5"
  }
 ]

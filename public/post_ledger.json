@@ -425,7 +425,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1764,
-      "fetched_at": 1787323772
+      "fetched_at": 1787461714
      },
      "snap72": {
       "views": 151,
@@ -480,7 +480,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2233,
-      "fetched_at": 1787323772
+      "fetched_at": 1787461714
      },
      "snap72": {
       "views": 125,
@@ -648,7 +648,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1164,
-      "fetched_at": 1787323772
+      "fetched_at": 1787461714
      },
      "snap72": {
       "views": 116,
@@ -1143,7 +1143,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1491,
-      "fetched_at": 1787323772
+      "fetched_at": 1787461714
      },
      "snap72": {
       "views": 117,
@@ -1196,7 +1196,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4006,
-      "fetched_at": 1787323772
+      "fetched_at": 1787461714
      },
      "snap72": {
       "views": 122,
@@ -1251,7 +1251,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1816,
-      "fetched_at": 1787323772
+      "fetched_at": 1787461714
      },
      "snap72": {
       "views": 126,
@@ -1304,7 +1304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1873,
-      "fetched_at": 1787323772
+      "fetched_at": 1787461714
      },
      "snap72": {
       "views": 122,
@@ -1688,7 +1688,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3139,
-      "fetched_at": 1787323772
+      "fetched_at": 1787461714
      },
      "snap72": {
       "views": 14,
@@ -2414,7 +2414,7 @@
       "saved": 0,
       "total_interactions": 5,
       "ig_reels_avg_watch_time": 3953,
-      "fetched_at": 1787323772
+      "fetched_at": 1787461714
      },
      "snap72": {
       "views": 23,
@@ -4573,7 +4573,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3478,
-      "fetched_at": 1787323772
+      "fetched_at": 1787461714
      },
      "snap72": {
       "views": 11,
@@ -5101,9 +5101,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1276,
-      "fetched_at": 1787309423
+      "fetched_at": 1787461714
      },
-     "snap72": null,
+     "snap72": {
+      "views": 42,
+      "reach": 39,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1276,
+      "fetched_at": 1787461714
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -5265,7 +5275,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 10,
+      "reach": 9,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5887,
+      "fetched_at": 1787461714
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -5397,6 +5417,53 @@
     "instagram": {
      "id": "18085712885223485",
      "posted_at": 1787404646
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787461650,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "hdiutil is deprecated in macOS 27 Golden Gate",
+    "subject": "hdiutil deprecation",
+    "url": "https://lapcatsoftware.com/articles/2026/8/7.html",
+    "source": "hn",
+    "keywords": [
+     "deprecat"
+    ],
+    "viral_score": 8.8,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "hdiutil deprecated in macOS",
+    "angle": "Apple is deprecating the foundational disk image utility hdiutil in macOS 27 Golden Gate, forcing developers to migrate their deployment pipelines.",
+    "insight": "Automated disk image creation in CI/CD pipelines will break, requiring an immediate shift to newer packaging APIs before full removal.",
+    "judge": "plan"
+   },
+   "style_pack": "clean-cobalt",
+   "format_pack": "legacy-news",
+   "seed": 352616847,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "URGENCY",
+   "style_epoch": 3,
+   "scene_count": 6,
+   "video_seconds": 41.4,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-cf82a5",
+   "platforms": {
+    "instagram": {
+     "id": "18098920268340819",
+     "posted_at": 1787461710
     }
    },
    "metrics": {
