@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1787392024
+      "fetched_at": 1787495295
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1787392024
+      "fetched_at": 1787495295
      },
      "snap72": {
       "views": 116,
@@ -1415,7 +1415,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1749,
-      "fetched_at": 1787392024
+      "fetched_at": 1787495295
      },
      "snap72": {
       "views": 16,
@@ -2224,7 +2224,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1123,
-      "fetched_at": 1787392024
+      "fetched_at": 1787495295
      },
      "snap72": {
       "views": 93,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1787392024
+      "fetched_at": 1787495295
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1787392024
+      "fetched_at": 1787495295
      },
      "snap72": {
       "views": 4,
@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1787392024
+      "fetched_at": 1787495295
      },
      "snap72": {
       "views": 22,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1787392024
+      "fetched_at": 1787495295
      },
      "snap72": {
       "views": 38,
@@ -4768,7 +4768,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1787392024
+      "fetched_at": 1787495295
      },
      "snap72": {
       "views": 15,
@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1787392024
+      "fetched_at": 1787495295
      },
      "snap72": {
       "views": 9,
@@ -4902,7 +4902,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1787392024
+      "fetched_at": 1787495295
      },
      "snap72": {
       "views": 0,
@@ -4967,7 +4967,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1580,
-      "fetched_at": 1787392024
+      "fetched_at": 1787495295
      },
      "snap72": {
       "views": 7,
@@ -5169,9 +5169,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5297,
-      "fetched_at": 1787377976
+      "fetched_at": 1787495295
      },
-     "snap72": null,
+     "snap72": {
+      "views": 7,
+      "reach": 6,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5297,
+      "fetched_at": 1787495295
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -5385,7 +5395,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 12,
+      "reach": 10,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5193,
+      "fetched_at": 1787495295
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -5431,7 +5451,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 5,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1818,
+      "fetched_at": 1787495295
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -5520,6 +5550,52 @@
     "instagram": {
      "id": "18123484258855792",
      "posted_at": 1787477792
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787495211,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "Hister \u2013 A private, full content search index that you control",
+    "subject": "Hister private search index",
+    "url": "https://hister.org/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 8.78,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "Hister Private Search Index",
+    "angle": "Hister is an open source, self-hosted search engine that indexes the full content of your visited web pages and local files without telemetry.",
+    "insight": "By keeping full-text document search and extraction on a self-hosted server, you bypass cloud tracking while gaining deep command-line and AI retrieval over your digital history.",
+    "judge": "plan"
+   },
+   "style_pack": "ocean-breeze",
+   "format_pack": "facts-explainer",
+   "seed": 1983918321,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 3,
+   "scene_count": 5,
+   "video_seconds": 35.0,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-c3f328",
+   "platforms": {
+    "instagram": {
+     "id": "17929410564142651",
+     "posted_at": 1787495291
     }
    },
    "metrics": {
