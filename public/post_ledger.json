@@ -540,7 +540,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3856,
-      "fetched_at": 1787377976
+      "fetched_at": 1787477795
      },
      "snap72": {
       "views": 118,
@@ -595,7 +595,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 2106,
-      "fetched_at": 1787377976
+      "fetched_at": 1787477795
      },
      "snap72": {
       "views": 120,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1228,
-      "fetched_at": 1787377976
+      "fetched_at": 1787477795
      },
      "snap72": {
       "views": 159,
@@ -756,7 +756,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6074,
-      "fetched_at": 1787377976
+      "fetched_at": 1787477795
      },
      "snap72": {
       "views": 111,
@@ -812,7 +812,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2982,
-      "fetched_at": 1787377976
+      "fetched_at": 1787477795
      },
      "snap72": {
       "views": 112,
@@ -870,7 +870,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1745,
-      "fetched_at": 1787377976
+      "fetched_at": 1787477795
      },
      "snap72": {
       "views": 124,
@@ -2287,7 +2287,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1659,
-      "fetched_at": 1787377976
+      "fetched_at": 1787477795
      },
      "snap72": {
       "views": 9,
@@ -2538,7 +2538,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2998,
-      "fetched_at": 1787377976
+      "fetched_at": 1787477795
      },
      "snap72": {
       "views": 110,
@@ -2602,7 +2602,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1277,
-      "fetched_at": 1787377976
+      "fetched_at": 1787477795
      },
      "snap72": {
       "views": 14,
@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1787377976
+      "fetched_at": 1787477795
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1787377976
+      "fetched_at": 1787477795
      },
      "snap72": {
       "views": 16,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1787377976
+      "fetched_at": 1787477795
      },
      "snap72": {
       "views": 90,
@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1787377976
+      "fetched_at": 1787477795
      },
      "snap72": {
       "views": 29,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1787377976
+      "fetched_at": 1787477795
      },
      "snap72": {
       "views": 2,
@@ -5330,7 +5330,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 7,
+      "reach": 7,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1063,
+      "fetched_at": 1787477795
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -5464,6 +5474,52 @@
     "instagram": {
      "id": "18098920268340819",
      "posted_at": 1787461710
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787477736,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "Hook, hold, harvest and hide: Meta's alleged strategy laid out in first week",
+    "subject": "Meta child safety trial",
+    "url": "https://www.theguardian.com/technology/2026/aug/22/meta-trial-children-privacy",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "meta"
+    ],
+    "viral_score": 8.5,
+    "sources": [],
+    "display_title": "Meta Faces $200B Trial",
+    "angle": "California and 28 states opened a blockbuster trial against Meta alleging an intentional strategy to hook children and hide harms.",
+    "insight": "If Meta loses this existential trial, potential damages up to $200 billion could force a permanent redesign of its social platforms.",
+    "judge": "plan"
+   },
+   "style_pack": "matrix-green",
+   "format_pack": "legacy-news",
+   "seed": 1534839488,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "PROVOCATIVE QUESTION",
+   "style_epoch": 3,
+   "scene_count": 5,
+   "video_seconds": 37.8,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-dd23c2",
+   "platforms": {
+    "instagram": {
+     "id": "18123484258855792",
+     "posted_at": 1787477792
     }
    },
    "metrics": {
