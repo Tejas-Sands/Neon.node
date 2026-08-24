@@ -595,7 +595,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 2106,
-      "fetched_at": 1787477795
+      "fetched_at": 1787572514
      },
      "snap72": {
       "views": 120,
@@ -701,7 +701,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1228,
-      "fetched_at": 1787477795
+      "fetched_at": 1787572514
      },
      "snap72": {
       "views": 159,
@@ -756,7 +756,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6074,
-      "fetched_at": 1787477795
+      "fetched_at": 1787572514
      },
      "snap72": {
       "views": 111,
@@ -812,7 +812,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2982,
-      "fetched_at": 1787477795
+      "fetched_at": 1787572514
      },
      "snap72": {
       "views": 112,
@@ -870,7 +870,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1745,
-      "fetched_at": 1787477795
+      "fetched_at": 1787572514
      },
      "snap72": {
       "views": 124,
@@ -1196,7 +1196,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4006,
-      "fetched_at": 1787461714
+      "fetched_at": 1787572514
      },
      "snap72": {
       "views": 122,
@@ -1251,7 +1251,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1816,
-      "fetched_at": 1787461714
+      "fetched_at": 1787572514
      },
      "snap72": {
       "views": 126,
@@ -1304,7 +1304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1873,
-      "fetched_at": 1787461714
+      "fetched_at": 1787572514
      },
      "snap72": {
       "views": 122,
@@ -1688,7 +1688,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3139,
-      "fetched_at": 1787461714
+      "fetched_at": 1787572514
      },
      "snap72": {
       "views": 14,
@@ -2287,7 +2287,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1659,
-      "fetched_at": 1787477795
+      "fetched_at": 1787572514
      },
      "snap72": {
       "views": 9,
@@ -2414,7 +2414,7 @@
       "saved": 0,
       "total_interactions": 5,
       "ig_reels_avg_watch_time": 3953,
-      "fetched_at": 1787461714
+      "fetched_at": 1787572514
      },
      "snap72": {
       "views": 23,
@@ -4573,7 +4573,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3478,
-      "fetched_at": 1787461714
+      "fetched_at": 1787572514
      },
      "snap72": {
       "views": 11,
@@ -5101,7 +5101,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1276,
-      "fetched_at": 1787461714
+      "fetched_at": 1787572514
      },
      "snap72": {
       "views": 42,
@@ -5304,9 +5304,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5887,
-      "fetched_at": 1787461714
+      "fetched_at": 1787572514
      },
-     "snap72": null,
+     "snap72": {
+      "views": 10,
+      "reach": 9,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5887,
+      "fetched_at": 1787572514
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -5574,7 +5584,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 8,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1778,
+      "fetched_at": 1787572514
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -5661,6 +5681,52 @@
     "instagram": {
      "id": "18114387610995356",
      "posted_at": 1787550365
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787572454,
+   "posted_hour_utc": 11,
+   "channel": "news",
+   "topic": {
+    "title": "Humanoid robots smash Usain Bolt&#8217;s 100-meter record",
+    "subject": "Tiangong Ultra humanoid robot",
+    "url": "https://www.theverge.com/tech/983688/world-humanoid-robot-games-sprint-record-2026",
+    "source": "rss:theverge",
+    "keywords": [
+     "ai",
+     "record"
+    ],
+    "viral_score": 7.31,
+    "sources": [],
+    "display_title": "Robot Smashes Bolt Record",
+    "angle": "Chinese humanoid robots beat Usain Bolt's 100-meter record at the World Humanoid Robot Games, though they still struggle with braking.",
+    "insight": "Bipedal robotics has solved raw speed and acceleration, but braking and deceleration remain the hardest physics problems for physical AI.",
+    "judge": "plan"
+   },
+   "style_pack": "rosewood-vintage",
+   "format_pack": "quiz-reveal",
+   "seed": 1829038223,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "PACK-QUIZ-REVEAL",
+   "style_epoch": 3,
+   "scene_count": 4,
+   "video_seconds": 24.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-4f8adf",
+   "platforms": {
+    "instagram": {
+     "id": "18028219001848273",
+     "posted_at": 1787572511
     }
    },
    "metrics": {
