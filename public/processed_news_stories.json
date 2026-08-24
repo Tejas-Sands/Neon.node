@@ -1121,5 +1121,17 @@
   ],
   "ts": 1787572514,
   "session": "gh-4f8adf"
+ },
+ {
+  "id": "lob:fadbev",
+  "title": "Amazon kept shutting down my tablet, so I spent $266 on four AI models to own it",
+  "norm": "amazon kept shutting down my tablet so i spent 266 on four ai models to own it",
+  "subject_norm": "amazon fire hd tablet root",
+  "entities": [
+   "amazon",
+   "fire"
+  ],
+  "ts": 1787582271,
+  "session": "gh-5c5e8e"
  }
 ]

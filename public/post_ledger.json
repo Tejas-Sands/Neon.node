@@ -925,7 +925,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1787495295
+      "fetched_at": 1787582271
      },
      "snap72": {
       "views": 125,
@@ -980,7 +980,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1787495295
+      "fetched_at": 1787582271
      },
      "snap72": {
       "views": 116,
@@ -1415,7 +1415,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1749,
-      "fetched_at": 1787495295
+      "fetched_at": 1787582271
      },
      "snap72": {
       "views": 16,
@@ -2224,7 +2224,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1123,
-      "fetched_at": 1787495295
+      "fetched_at": 1787582271
      },
      "snap72": {
       "views": 93,
@@ -2538,7 +2538,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2998,
-      "fetched_at": 1787477795
+      "fetched_at": 1787582271
      },
      "snap72": {
       "views": 110,
@@ -2602,7 +2602,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1277,
-      "fetched_at": 1787477795
+      "fetched_at": 1787582271
      },
      "snap72": {
       "views": 14,
@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1787477795
+      "fetched_at": 1787582271
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1787477795
+      "fetched_at": 1787582271
      },
      "snap72": {
       "views": 16,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1787495295
+      "fetched_at": 1787582271
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1787495295
+      "fetched_at": 1787582271
      },
      "snap72": {
       "views": 4,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1787477795
+      "fetched_at": 1787582271
      },
      "snap72": {
       "views": 90,
@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1787477795
+      "fetched_at": 1787582271
      },
      "snap72": {
       "views": 29,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1787477795
+      "fetched_at": 1787582271
      },
      "snap72": {
       "views": 2,
@@ -5369,9 +5369,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1787477795
+      "fetched_at": 1787582271
      },
-     "snap72": null,
+     "snap72": {
+      "views": 7,
+      "reach": 7,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1063,
+      "fetched_at": 1787582271
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -5640,7 +5650,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 4,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 947,
+      "fetched_at": 1787582271
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -5727,6 +5747,54 @@
     "instagram": {
      "id": "18028219001848273",
      "posted_at": 1787572511
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787582199,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "Amazon kept shutting down my tablet, so I spent $266 on four AI models to own it",
+    "subject": "Amazon Fire HD tablet root",
+    "url": "https://ericpardee.github.io/fire-hd-ownership/",
+    "source": "lobsters",
+    "keywords": [
+     "ai",
+     "model",
+     "$",
+     "amazon"
+    ],
+    "viral_score": 7.13,
+    "sources": [],
+    "display_title": "Amazon Tablet Rooted With AI",
+    "angle": "A tech worker spent $266 on four AI models to successfully root an unrootable Amazon Fire HD tablet after Amazon kept shutting it down.",
+    "insight": "When human crowdsourcing hits a dead end on locked hardware, autonomous coding agents can discover novel exploits by reasoning past conventional wisdom.",
+    "judge": "plan"
+   },
+   "style_pack": "toxic-lime",
+   "format_pack": "legacy-news",
+   "seed": 1808476330,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "URGENCY",
+   "style_epoch": 3,
+   "scene_count": 6,
+   "video_seconds": 45.0,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-5c5e8e",
+   "platforms": {
+    "instagram": {
+     "id": "17893825821398267",
+     "posted_at": 1787582268
     }
    },
    "metrics": {
