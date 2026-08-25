@@ -1145,5 +1145,16 @@
   ],
   "ts": 1787637713,
   "session": "gh-da0806"
+ },
+ {
+  "id": "49421074",
+  "title": "OpenAI: GPT 5.6 Sol price reduction (until at least Nov 21)",
+  "norm": "openai gpt 5 6 sol price reduction until at least nov 21",
+  "subject_norm": "openai gpt 5 6 sol",
+  "entities": [
+   "openai"
+  ],
+  "ts": 1787655471,
+  "session": "gh-21977a"
  }
 ]

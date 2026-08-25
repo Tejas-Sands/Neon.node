@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-25935022",
-   "ts": 1786027195,
-   "session": "gh-c81725",
-   "query": "neural network visualization motion",
-   "scene": 5
-  },
-  {
-   "id": "pexels-35010179",
-   "ts": 1786027195,
-   "session": "gh-c81725",
-   "query": "neural network visualization motion",
-   "scene": 5
-  },
-  {
-   "id": "pexels-5846646",
-   "ts": 1786081113,
-   "session": "gh-0604f8",
-   "query": "circuit board manufacturing machine macro",
-   "scene": 0
-  },
-  {
-   "id": "pexels-36460608",
-   "ts": 1786081113,
-   "session": "gh-0604f8",
-   "query": "oscilloscope screen testing electronics",
-   "scene": 1
-  },
-  {
-   "id": "pexels-6976210",
-   "ts": 1786081113,
-   "session": "gh-0604f8",
-   "query": "oscilloscope screen testing electronics",
-   "scene": 1
-  },
-  {
    "id": "pexels-7868420",
    "ts": 1786081113,
    "session": "gh-0604f8",
@@ -2799,6 +2764,41 @@
    "ts": 1787637644,
    "session": "gh-da0806",
    "query": "network traffic visualization motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-38972451",
+   "ts": 1787655405,
+   "session": "gh-21977a",
+   "query": "gpu server rack data center",
+   "scene": 0
+  },
+  {
+   "id": "pexels-36178907",
+   "ts": 1787655405,
+   "session": "gh-21977a",
+   "query": "code editor typing lines",
+   "scene": 1
+  },
+  {
+   "id": "pexels-32720577",
+   "ts": 1787655405,
+   "session": "gh-21977a",
+   "query": "network traffic dashboard lights",
+   "scene": 2
+  },
+  {
+   "id": "pexels-16971219",
+   "ts": 1787655405,
+   "session": "gh-21977a",
+   "query": "server hardware rack blinking",
+   "scene": 3
+  },
+  {
+   "id": "pexels-34543219",
+   "ts": 1787655405,
+   "session": "gh-21977a",
+   "query": "digital network nodes glowing",
    "scene": 4
   }
  ]
