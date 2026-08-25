@@ -1035,7 +1035,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3552,
-      "fetched_at": 1787550368
+      "fetched_at": 1787637713
      },
      "snap72": {
       "views": 106,
@@ -1090,7 +1090,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2691,
-      "fetched_at": 1787550368
+      "fetched_at": 1787637713
      },
      "snap72": {
       "views": 86,
@@ -1143,7 +1143,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1491,
-      "fetched_at": 1787550368
+      "fetched_at": 1787637713
      },
      "snap72": {
       "views": 117,
@@ -1745,7 +1745,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2706,
-      "fetched_at": 1787550368
+      "fetched_at": 1787637713
      },
      "snap72": {
       "views": 26,
@@ -3331,7 +3331,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 7981,
-      "fetched_at": 1787550368
+      "fetched_at": 1787637713
      },
      "snap72": {
       "views": 79,
@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1787495295
+      "fetched_at": 1787637713
      },
      "snap72": {
       "views": 22,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1787495295
+      "fetched_at": 1787637713
      },
      "snap72": {
       "views": 38,
@@ -4768,7 +4768,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1787495295
+      "fetched_at": 1787637713
      },
      "snap72": {
       "views": 15,
@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1787495295
+      "fetched_at": 1787637713
      },
      "snap72": {
       "views": 9,
@@ -4902,7 +4902,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1787495295
+      "fetched_at": 1787637713
      },
      "snap72": {
       "views": 0,
@@ -4967,7 +4967,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1580,
-      "fetched_at": 1787495295
+      "fetched_at": 1787637713
      },
      "snap72": {
       "views": 7,
@@ -5169,7 +5169,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5297,
-      "fetched_at": 1787495295
+      "fetched_at": 1787637713
      },
      "snap72": {
       "views": 7,
@@ -5434,9 +5434,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5193,
-      "fetched_at": 1787495295
+      "fetched_at": 1787637713
      },
-     "snap72": null,
+     "snap72": {
+      "views": 12,
+      "reach": 10,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5193,
+      "fetched_at": 1787637713
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -5490,9 +5500,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1818,
-      "fetched_at": 1787495295
+      "fetched_at": 1787637713
      },
-     "snap72": null,
+     "snap72": {
+      "views": 5,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1818,
+      "fetched_at": 1787637713
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -5705,7 +5725,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 114,
+      "reach": 107,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1121,
+      "fetched_at": 1787637713
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -5795,6 +5825,52 @@
     "instagram": {
      "id": "17893825821398267",
      "posted_at": 1787582268
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787637644,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Andreessen Horowitz is investing billions into a bleak future",
+    "subject": "Speedrun",
+    "url": "https://www.modelrepublic.org/articles/a16z-portfolio",
+    "source": "hn",
+    "keywords": [
+     "leak",
+     "billion"
+    ],
+    "viral_score": 10.74,
+    "sources": [],
+    "display_title": "Andreessen Horowitz Funds Bot Farm",
+    "angle": "Venture capital firm Andreessen Horowitz is investing in reckless tech startups while spending millions to block AI regulations.",
+    "insight": "Venture capital firms are funding rule-breaking startups and simultaneously buying political influence to ensure those loopholes never close.",
+    "judge": "plan"
+   },
+   "style_pack": "ocean-breeze",
+   "format_pack": "legacy-news",
+   "seed": 988703082,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "WHAT-NOW QUESTION",
+   "style_epoch": 4,
+   "scene_count": 5,
+   "video_seconds": 57.1,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-da0806",
+   "platforms": {
+    "instagram": {
+     "id": "17977584315108571",
+     "posted_at": 1787637710
     }
    },
    "metrics": {
