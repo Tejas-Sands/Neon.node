@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-7868420",
-   "ts": 1786081113,
-   "session": "gh-0604f8",
-   "query": "circuit board assembly robotic soldering",
-   "scene": 2
-  },
-  {
-   "id": "pexels-7423949",
-   "ts": 1786081113,
-   "session": "gh-0604f8",
-   "query": "engineer soldering circuit board macro",
-   "scene": 3
-  },
-  {
-   "id": "pexels-36125347",
-   "ts": 1786081113,
-   "session": "gh-0604f8",
-   "query": "microchip silicon wafer macro pan",
-   "scene": 4
-  },
-  {
-   "id": "pexels-6754831",
-   "ts": 1786081113,
-   "session": "gh-0604f8",
-   "query": "microchip silicon wafer macro pan",
-   "scene": 4
-  },
-  {
-   "id": "pexels-7231303",
-   "ts": 1786081113,
-   "session": "gh-0604f8",
-   "query": "cad software circuit design screen scroll",
-   "scene": 5
-  },
-  {
-   "id": "pexels-38901962",
-   "ts": 1786081113,
-   "session": "gh-0604f8",
-   "query": "cad software circuit design screen scroll",
-   "scene": 5
-  },
-  {
-   "id": "pexels-15439746",
-   "ts": 1786098734,
-   "session": "gh-d249e7",
-   "query": "server data center glowing racks",
-   "scene": 0
-  },
-  {
-   "id": "pexels-35417493",
-   "ts": 1786098734,
-   "session": "gh-d249e7",
-   "query": "trading chart screen moving",
-   "scene": 1
-  },
-  {
-   "id": "pexels-9573743",
-   "ts": 1786098734,
-   "session": "gh-d249e7",
-   "query": "medical laboratory screen telemetry",
-   "scene": 2
-  },
-  {
    "id": "pexels-8888815",
    "ts": 1786098734,
    "session": "gh-d249e7",
@@ -2800,6 +2737,69 @@
    "session": "gh-21977a",
    "query": "digital network nodes glowing",
    "scene": 4
+  },
+  {
+   "id": "pexels-27936932",
+   "ts": 1787671744,
+   "session": "gh-c55b3c",
+   "query": "chip manufacturing macro closeup motion",
+   "scene": 0
+  },
+  {
+   "id": "pexels-34909848",
+   "ts": 1787671744,
+   "session": "gh-c55b3c",
+   "query": "neural network visualization code motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-17356514",
+   "ts": 1787671744,
+   "session": "gh-c55b3c",
+   "query": "gpu processor chip closeup rotating",
+   "scene": 2
+  },
+  {
+   "id": "pexels-34582174",
+   "ts": 1787671744,
+   "session": "gh-c55b3c",
+   "query": "gpu processor chip closeup rotating",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7252267",
+   "ts": 1787671744,
+   "session": "gh-c55b3c",
+   "query": "data center memory modules blinking",
+   "scene": 3
+  },
+  {
+   "id": "pexels-16863222",
+   "ts": 1787671744,
+   "session": "gh-c55b3c",
+   "query": "data center memory modules blinking",
+   "scene": 3
+  },
+  {
+   "id": "pexels-7423951",
+   "ts": 1787671744,
+   "session": "gh-c55b3c",
+   "query": "circuit board traces glowing motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-26655775",
+   "ts": 1787671744,
+   "session": "gh-c55b3c",
+   "query": "circuit board traces glowing motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-8347247",
+   "ts": 1787671744,
+   "session": "gh-c55b3c",
+   "query": "developer workspace dual monitors setup",
+   "scene": 5
   }
  ]
 }

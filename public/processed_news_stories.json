@@ -1156,5 +1156,17 @@
   ],
   "ts": 1787655471,
   "session": "gh-21977a"
+ },
+ {
+  "id": "49433292",
+  "title": "Apple introduces M6 and M5 Ultra for a big leap in performance and AI compute",
+  "norm": "apple introduces m6 and m5 ultra for a big leap in performance and ai compute",
+  "subject_norm": "apple m6 and m5 ultra",
+  "entities": [
+   "apple",
+   "ultra"
+  ],
+  "ts": 1787672587,
+  "session": "gh-c55b3c"
  }
 ]
