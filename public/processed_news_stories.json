@@ -1168,5 +1168,16 @@
   ],
   "ts": 1787672587,
   "session": "gh-c55b3c"
+ },
+ {
+  "id": "49424606",
+  "title": "Oceans hit highest temperature on record",
+  "norm": "oceans hit highest temperature on record",
+  "subject_norm": "copernicus ocean temperature data",
+  "entities": [
+   "copernicus"
+  ],
+  "ts": 1787721425,
+  "session": "gh-08adfa"
  }
 ]

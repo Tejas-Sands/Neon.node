@@ -2224,7 +2224,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1123,
-      "fetched_at": 1787582271
+      "fetched_at": 1787721425
      },
      "snap72": {
       "views": 93,
@@ -2538,7 +2538,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2998,
-      "fetched_at": 1787582271
+      "fetched_at": 1787721425
      },
      "snap72": {
       "views": 110,
@@ -2602,7 +2602,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1277,
-      "fetched_at": 1787582271
+      "fetched_at": 1787721425
      },
      "snap72": {
       "views": 14,
@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1787582271
+      "fetched_at": 1787721425
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1787582271
+      "fetched_at": 1787721425
      },
      "snap72": {
       "views": 16,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1787582271
+      "fetched_at": 1787721425
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1787582271
+      "fetched_at": 1787721425
      },
      "snap72": {
       "views": 4,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1787582271
+      "fetched_at": 1787721425
      },
      "snap72": {
       "views": 90,
@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1787582271
+      "fetched_at": 1787721425
      },
      "snap72": {
       "views": 29,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1787582271
+      "fetched_at": 1787721425
      },
      "snap72": {
       "views": 2,
@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1787582271
+      "fetched_at": 1787721425
      },
      "snap72": {
       "views": 7,
@@ -5699,9 +5699,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1787582271
+      "fetched_at": 1787721425
      },
-     "snap72": null,
+     "snap72": {
+      "views": 4,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 947,
+      "fetched_at": 1787721425
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -5958,6 +5968,51 @@
     "instagram": {
      "id": "18618144853016520",
      "posted_at": 1787655468
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787721364,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Oceans hit highest temperature on record",
+    "subject": "Copernicus ocean temperature data",
+    "url": "https://www.bbc.com/news/articles/c62m4gpnp78o",
+    "source": "hn",
+    "keywords": [
+     "record"
+    ],
+    "viral_score": 8.83,
+    "sources": [],
+    "display_title": "Oceans Hit Record Heat",
+    "angle": "World oceans hit a record 21.1C surface temperature driven by human climate change and an intensifying El Ni\u00f1o.",
+    "insight": "El Ni\u00f1o has not even peaked yet, meaning global marine ecosystems face months of compounding thermal stress before hitting their historical March peak.",
+    "judge": "plan"
+   },
+   "style_pack": "desert-dune",
+   "format_pack": "facts-explainer",
+   "seed": 3546353,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 4,
+   "scene_count": 5,
+   "video_seconds": 22.6,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-08adfa",
+   "platforms": {
+    "instagram": {
+     "id": "18110833607120709",
+     "posted_at": 1787721421
     }
    },
    "metrics": {

@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-8888815",
-   "ts": 1786098734,
-   "session": "gh-d249e7",
-   "query": "terminal typing code lines",
-   "scene": 3
-  },
-  {
-   "id": "pexels-33315117",
-   "ts": 1786098734,
-   "session": "gh-d249e7",
-   "query": "terminal typing code lines",
-   "scene": 3
-  },
-  {
-   "id": "pexels-35535557",
-   "ts": 1786098734,
-   "session": "gh-d249e7",
-   "query": "neural network visualization motion",
-   "scene": 4
-  },
-  {
-   "id": "pexels-35063152",
-   "ts": 1786098734,
-   "session": "gh-d249e7",
-   "query": "neural network visualization motion",
-   "scene": 4
-  },
-  {
-   "id": "pexels-38870378",
-   "ts": 1786098734,
-   "session": "gh-d249e7",
-   "query": "security firewall dashboard interface",
-   "scene": 5
-  },
-  {
    "id": "pexels-34975243",
    "ts": 1786098734,
    "session": "gh-d249e7",
@@ -2800,6 +2765,41 @@
    "session": "gh-c55b3c",
    "query": "developer workspace dual monitors setup",
    "scene": 5
+  },
+  {
+   "id": "pexels-28846365",
+   "ts": 1787721364,
+   "session": "gh-08adfa",
+   "query": "satellite data screen interface",
+   "scene": 0
+  },
+  {
+   "id": "pexels-37700794",
+   "ts": 1787721364,
+   "session": "gh-08adfa",
+   "query": "oceanographic research vessel telemetry",
+   "scene": 1
+  },
+  {
+   "id": "pexels-16561468",
+   "ts": 1787721364,
+   "session": "gh-08adfa",
+   "query": "climate simulation model supercomputer",
+   "scene": 2
+  },
+  {
+   "id": "pexels-37676204",
+   "ts": 1787721364,
+   "session": "gh-08adfa",
+   "query": "scientific dashboard data visualization",
+   "scene": 3
+  },
+  {
+   "id": "pexels-36252373",
+   "ts": 1787721364,
+   "session": "gh-08adfa",
+   "query": "meteorology forecast map animation",
+   "scene": 4
   }
  ]
 }
