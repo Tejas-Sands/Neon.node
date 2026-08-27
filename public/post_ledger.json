@@ -2224,7 +2224,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1123,
-      "fetched_at": 1787721425
+      "fetched_at": 1787839075
      },
      "snap72": {
       "views": 93,
@@ -2538,7 +2538,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2998,
-      "fetched_at": 1787721425
+      "fetched_at": 1787839075
      },
      "snap72": {
       "views": 110,
@@ -2602,7 +2602,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1277,
-      "fetched_at": 1787721425
+      "fetched_at": 1787839075
      },
      "snap72": {
       "views": 14,
@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1787721425
+      "fetched_at": 1787839075
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1787721425
+      "fetched_at": 1787839075
      },
      "snap72": {
       "views": 16,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1787721425
+      "fetched_at": 1787839075
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1787721425
+      "fetched_at": 1787839075
      },
      "snap72": {
       "views": 4,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1787721425
+      "fetched_at": 1787839075
      },
      "snap72": {
       "views": 90,
@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1787721425
+      "fetched_at": 1787839075
      },
      "snap72": {
       "views": 29,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1787721425
+      "fetched_at": 1787839075
      },
      "snap72": {
       "views": 2,
@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1787721425
+      "fetched_at": 1787839075
      },
      "snap72": {
       "views": 7,
@@ -5633,7 +5633,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1778,
-      "fetched_at": 1787672587
+      "fetched_at": 1787839075
      },
      "snap72": {
       "views": 8,
@@ -5699,7 +5699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1787721425
+      "fetched_at": 1787839075
      },
      "snap72": {
       "views": 4,
@@ -5830,9 +5830,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1787672587
+      "fetched_at": 1787839075
      },
-     "snap72": null,
+     "snap72": {
+      "views": 3,
+      "reach": 2,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1011,
+      "fetched_at": 1787839075
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -5888,9 +5898,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1787672587
+      "fetched_at": 1787839075
      },
-     "snap72": null,
+     "snap72": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1787839075
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -6161,6 +6181,54 @@
     "instagram": {
      "id": "18097036577457316",
      "posted_at": 1787823736
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787839001,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "Tailcat \u2013 Like netcat, but over Tailscale\u2019s data plane",
+    "subject": "Tailcat",
+    "url": "https://github.com/tailscale/tailcat",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 10.45,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "Tailcat Netcat Over Tailscale",
+    "angle": "Tailcat remixes Tailscale open source code to give you WireGuard-encrypted point-to-point tunnels without needing a Tailscale account or control plane.",
+    "insight": "By separating the data plane from the control plane, developers can build instant ad-hoc WireGuard tunnels using out-of-band tokens and no admin rights.",
+    "judge": "plan"
+   },
+   "style_pack": "cosmic-fantasy",
+   "format_pack": "facts-explainer",
+   "seed": 539486872,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 4,
+   "scene_count": 4,
+   "video_seconds": 22.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-46e9f9",
+   "platforms": {
+    "instagram": {
+     "id": "18124390696828652",
+     "posted_at": 1787839070
     }
    },
    "metrics": {

@@ -2,34 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-36825184",
-   "ts": 1786165910,
-   "session": "gh-626a9e",
-   "query": "data center servers gpu",
-   "scene": 3
-  },
-  {
-   "id": "pexels-8266177",
-   "ts": 1786165910,
-   "session": "gh-626a9e",
-   "query": "developer typing code laptop",
-   "scene": 4
-  },
-  {
-   "id": "pexels-5925283",
-   "ts": 1786165910,
-   "session": "gh-626a9e",
-   "query": "developer typing code laptop",
-   "scene": 4
-  },
-  {
-   "id": "pexels-38410501",
-   "ts": 1786184940,
-   "session": "gh-8a6c05",
-   "query": "terminal code screen scrolling fast",
-   "scene": 0
-  },
-  {
    "id": "pexels-26060699",
    "ts": 1786184940,
    "session": "gh-8a6c05",
@@ -2800,6 +2772,34 @@
    "session": "gh-dee290",
    "query": "chip manufacturing closeup motion",
    "scene": 5
+  },
+  {
+   "id": "pexels-5473915",
+   "ts": 1787839001,
+   "session": "gh-46e9f9",
+   "query": "terminal window typing code neon",
+   "scene": 0
+  },
+  {
+   "id": "pexels-37700770",
+   "ts": 1787839001,
+   "session": "gh-46e9f9",
+   "query": "data center servers blinking lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-34993294",
+   "ts": 1787839001,
+   "session": "gh-46e9f9",
+   "query": "network packets node graph animation",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7240847",
+   "ts": 1787839001,
+   "session": "gh-46e9f9",
+   "query": "terminal commands scrolling fast",
+   "scene": 3
   }
  ]
 }
