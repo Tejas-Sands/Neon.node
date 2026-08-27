@@ -1190,5 +1190,19 @@
   ],
   "ts": 1787810977,
   "session": "gh-be9b47"
+ },
+ {
+  "id": "49458418",
+  "title": "CEO fired developers to make room for AI. Developers create open source AI CEO",
+  "norm": "ceo fired developers to make room for ai developers create open source ai ceo",
+  "subject_norm": "open executive ai",
+  "entities": [
+   "developers",
+   "ceo",
+   "open",
+   "executive"
+  ],
+  "ts": 1787823741,
+  "session": "gh-dee290"
  }
 ]
