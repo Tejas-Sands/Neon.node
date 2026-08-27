@@ -1745,7 +1745,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2706,
-      "fetched_at": 1787637713
+      "fetched_at": 1787810977
      },
      "snap72": {
       "views": 26,
@@ -3331,7 +3331,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 7981,
-      "fetched_at": 1787637713
+      "fetched_at": 1787810977
      },
      "snap72": {
       "views": 79,
@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1787637713
+      "fetched_at": 1787810977
      },
      "snap72": {
       "views": 22,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1787637713
+      "fetched_at": 1787810977
      },
      "snap72": {
       "views": 38,
@@ -4768,7 +4768,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1787637713
+      "fetched_at": 1787810977
      },
      "snap72": {
       "views": 15,
@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1787637713
+      "fetched_at": 1787810977
      },
      "snap72": {
       "views": 9,
@@ -4902,7 +4902,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1787637713
+      "fetched_at": 1787810977
      },
      "snap72": {
       "views": 0,
@@ -4959,15 +4959,15 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 7,
-      "reach": 6,
+      "views": 8,
+      "reach": 7,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1580,
-      "fetched_at": 1787637713
+      "ig_reels_avg_watch_time": 3060,
+      "fetched_at": 1787810977
      },
      "snap72": {
       "views": 7,
@@ -5169,7 +5169,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5297,
-      "fetched_at": 1787637713
+      "fetched_at": 1787810977
      },
      "snap72": {
       "views": 7,
@@ -5434,7 +5434,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5193,
-      "fetched_at": 1787637713
+      "fetched_at": 1787810977
      },
      "snap72": {
       "views": 12,
@@ -5500,7 +5500,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1818,
-      "fetched_at": 1787637713
+      "fetched_at": 1787810977
      },
      "snap72": {
       "views": 5,
@@ -5764,9 +5764,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1787637713
+      "fetched_at": 1787810977
      },
-     "snap72": null,
+     "snap72": {
+      "views": 114,
+      "reach": 107,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1121,
+      "fetched_at": 1787810977
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -5925,8 +5935,28 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
-     "snap72": null,
+     "latest": {
+      "views": 2,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2501,
+      "fetched_at": 1787810977
+     },
+     "snap72": {
+      "views": 2,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2501,
+      "fetched_at": 1787810977
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -5972,7 +6002,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 2,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1305,
+      "fetched_at": 1787810977
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -6013,6 +6053,65 @@
     "instagram": {
      "id": "18110833607120709",
      "posted_at": 1787721421
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": {
+      "views": 12,
+      "reach": 12,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1881,
+      "fetched_at": 1787810977
+     },
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787810909,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Nvidia agrees to acquire Hugging Face for $13B",
+    "subject": "Nvidia Hugging Face Acquisition",
+    "url": "https://www.businessinsider.com/nvidia-in-talks-to-buy-hugging-face-13-billion-dollars-2026-8",
+    "source": "hn",
+    "keywords": [
+     "$",
+     "acquire",
+     "nvidia"
+    ],
+    "viral_score": 12.6,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Nvidia Buying Hugging Face",
+    "angle": "Nvidia is in talks to acquire AI hub Hugging Face for $13 billion to dominate the open-source developer ecosystem.",
+    "insight": "By acquiring the neutral home of open-source AI, Nvidia risks losing the platform's developer trust to lock hardware workloads into its own chips.",
+    "judge": "plan"
+   },
+   "style_pack": "terracotta-earth",
+   "format_pack": "facts-explainer",
+   "seed": 1053895308,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 4,
+   "scene_count": 4,
+   "video_seconds": 26.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-be9b47",
+   "platforms": {
+    "instagram": {
+     "id": "18083847101418903",
+     "posted_at": 1787810974
     }
    },
    "metrics": {

@@ -1179,5 +1179,16 @@
   ],
   "ts": 1787721425,
   "session": "gh-08adfa"
+ },
+ {
+  "id": "49458161",
+  "title": "Nvidia agrees to acquire Hugging Face for $13B",
+  "norm": "nvidia agrees to acquire hugging face for 13b",
+  "subject_norm": "nvidia hugging face acquisition",
+  "entities": [
+   "nvidia"
+  ],
+  "ts": 1787810977,
+  "session": "gh-be9b47"
  }
 ]
