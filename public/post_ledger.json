@@ -2287,7 +2287,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1659,
-      "fetched_at": 1787823741
+      "fetched_at": 1787925017
      },
      "snap72": {
       "views": 9,
@@ -2414,7 +2414,7 @@
       "saved": 0,
       "total_interactions": 5,
       "ig_reels_avg_watch_time": 3953,
-      "fetched_at": 1787823741
+      "fetched_at": 1787925017
      },
      "snap72": {
       "views": 23,
@@ -3462,7 +3462,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1787823741
+      "fetched_at": 1787925017
      },
      "snap72": {
       "views": 85,
@@ -3599,7 +3599,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3616,
-      "fetched_at": 1787823741
+      "fetched_at": 1787925017
      },
      "snap72": {
       "views": 22,
@@ -3667,7 +3667,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1827,
-      "fetched_at": 1787823741
+      "fetched_at": 1787925017
      },
      "snap72": {
       "views": 6,
@@ -3734,7 +3734,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2967,
-      "fetched_at": 1787823741
+      "fetched_at": 1787925017
      },
      "snap72": {
       "views": 16,
@@ -4239,7 +4239,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1069,
-      "fetched_at": 1787823741
+      "fetched_at": 1787925017
      },
      "snap72": {
       "views": 115,
@@ -4370,7 +4370,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1787823741
+      "fetched_at": 1787925017
      },
      "snap72": {
       "views": 109,
@@ -4573,7 +4573,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3478,
-      "fetched_at": 1787823741
+      "fetched_at": 1787925017
      },
      "snap72": {
       "views": 11,
@@ -5035,7 +5035,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1296,
-      "fetched_at": 1787823741
+      "fetched_at": 1787925017
      },
      "snap72": {
       "views": 5,
@@ -5101,7 +5101,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1276,
-      "fetched_at": 1787823741
+      "fetched_at": 1787925017
      },
      "snap72": {
       "views": 42,
@@ -5237,7 +5237,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1568,
-      "fetched_at": 1787823741
+      "fetched_at": 1787925017
      },
      "snap72": {
       "views": 1,
@@ -5304,7 +5304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5887,
-      "fetched_at": 1787823741
+      "fetched_at": 1787925017
      },
      "snap72": {
       "views": 10,
@@ -6031,9 +6031,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1305,
-      "fetched_at": 1787810977
+      "fetched_at": 1787925017
      },
-     "snap72": null,
+     "snap72": {
+      "views": 2,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1305,
+      "fetched_at": 1787925017
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -6086,9 +6096,19 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1881,
-      "fetched_at": 1787810977
+      "fetched_at": 1787925017
      },
-     "snap72": null,
+     "snap72": {
+      "views": 12,
+      "reach": 12,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1881,
+      "fetched_at": 1787925017
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -6343,6 +6363,52 @@
     "instagram": {
      "id": "17906546874536269",
      "posted_at": 1787914484
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787924950,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "Luanti removed from Google Play due to baseless AI copyright notice",
+    "subject": "Luanti Google Play removal",
+    "url": "https://blog.luanti.org/2026/08/27/luanti-dmca-tracer-ai/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "google"
+    ],
+    "viral_score": 9.09,
+    "sources": [],
+    "display_title": "Luanti Banned From Google Play",
+    "angle": "An open-source game engine was wrongfully pulled from the Google Play Store due to a flawed AI-driven copyright notice filed on behalf of Microsoft.",
+    "insight": "Automated DMCA enforcement firms can weaponize vague copyright claims to wipe entirely asset-free engines off app stores without human verification.",
+    "judge": "plan"
+   },
+   "style_pack": "coral-pop",
+   "format_pack": "legacy-news",
+   "seed": 1378004211,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "CHALLENGE-DARE",
+   "style_epoch": 4,
+   "scene_count": 6,
+   "video_seconds": 47.4,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-df90df",
+   "platforms": {
+    "instagram": {
+     "id": "18100854110578233",
+     "posted_at": 1787925014
     }
    },
    "metrics": {

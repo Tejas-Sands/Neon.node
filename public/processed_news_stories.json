@@ -1240,5 +1240,18 @@
   ],
   "ts": 1787914486,
   "session": "gh-fdceab"
+ },
+ {
+  "id": "49475079",
+  "title": "Luanti removed from Google Play due to baseless AI copyright notice",
+  "norm": "luanti removed from google play due to baseless ai copyright notice",
+  "subject_norm": "luanti google play removal",
+  "entities": [
+   "google",
+   "play",
+   "luanti"
+  ],
+  "ts": 1787925017,
+  "session": "gh-df90df"
  }
 ]
