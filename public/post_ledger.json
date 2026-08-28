@@ -1745,7 +1745,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2706,
-      "fetched_at": 1787810977
+      "fetched_at": 1787914486
      },
      "snap72": {
       "views": 26,
@@ -3331,7 +3331,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 7981,
-      "fetched_at": 1787810977
+      "fetched_at": 1787914486
      },
      "snap72": {
       "views": 79,
@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1787810977
+      "fetched_at": 1787914486
      },
      "snap72": {
       "views": 22,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1787810977
+      "fetched_at": 1787914486
      },
      "snap72": {
       "views": 38,
@@ -4768,7 +4768,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1787810977
+      "fetched_at": 1787914486
      },
      "snap72": {
       "views": 15,
@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1787810977
+      "fetched_at": 1787914486
      },
      "snap72": {
       "views": 9,
@@ -4902,7 +4902,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1787810977
+      "fetched_at": 1787914486
      },
      "snap72": {
       "views": 0,
@@ -4967,7 +4967,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3060,
-      "fetched_at": 1787810977
+      "fetched_at": 1787914486
      },
      "snap72": {
       "views": 7,
@@ -5169,7 +5169,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5297,
-      "fetched_at": 1787810977
+      "fetched_at": 1787914486
      },
      "snap72": {
       "views": 7,
@@ -5434,7 +5434,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5193,
-      "fetched_at": 1787810977
+      "fetched_at": 1787914486
      },
      "snap72": {
       "views": 12,
@@ -5500,7 +5500,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1818,
-      "fetched_at": 1787810977
+      "fetched_at": 1787914486
      },
      "snap72": {
       "views": 5,
@@ -5764,7 +5764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1787810977
+      "fetched_at": 1787914486
      },
      "snap72": {
       "views": 114,
@@ -5964,7 +5964,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2501,
-      "fetched_at": 1787810977
+      "fetched_at": 1787914486
      },
      "snap72": {
       "views": 2,
@@ -6136,7 +6136,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 4,
+      "reach": 4,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 731,
+      "fetched_at": 1787914486
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -6185,7 +6195,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 4,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3159,
+      "fetched_at": 1787914486
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -6277,6 +6297,52 @@
     "instagram": {
      "id": "18090552041403963",
      "posted_at": 1787895555
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787914424,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "Saving 100 terabytes of memory by optimizing 1.1.1.1's DNS cache",
+    "subject": "Cloudflare 1.1.1.1 DNS cache",
+    "url": "https://blog.cloudflare.com/dns-cache-memory-optimization-1111/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 9.89,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "Cloudflare Saved 100 Terabytes RAM",
+    "angle": "How optimizing cache data structures freed massive server memory without hurting speed.",
+    "insight": "Micro-optimizations in data structures can yield massive infrastructure savings at web scale without sacrificing speed.",
+    "judge": "plan"
+   },
+   "style_pack": "synth-sunset",
+   "format_pack": "quiz-reveal",
+   "seed": 22825567,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "PACK-QUIZ-REVEAL",
+   "style_epoch": 4,
+   "scene_count": 4,
+   "video_seconds": 19.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-fdceab",
+   "platforms": {
+    "instagram": {
+     "id": "17906546874536269",
+     "posted_at": 1787914484
     }
    },
    "metrics": {
