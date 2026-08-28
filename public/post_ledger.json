@@ -6239,6 +6239,54 @@
      "fetch_errors": 0
     }
    }
+  },
+  {
+   "ts": 1787895485,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Show HN: The load-bearing vocabulary of Claude",
+    "subject": "Claude load-bearing vocabulary",
+    "url": "https://louisabraham.github.io/load-bearing/",
+    "source": "hn",
+    "keywords": [
+     "claude",
+     "how"
+    ],
+    "viral_score": 9.33,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Claude hidden trigger words",
+    "angle": "An analysis of Show HN reveals the specific load-bearing vocabulary words that heavily influence Claude outputs.",
+    "insight": "LLMs depend on specific high-leverage trigger words that dramatically alter generations, meaning prompt engineering is often about vocabulary optimization rather than complex instructions.",
+    "judge": "plan"
+   },
+   "style_pack": "synth-sunset",
+   "format_pack": "facts-explainer",
+   "seed": 958097434,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 4,
+   "scene_count": 5,
+   "video_seconds": 23.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-5e7e5a",
+   "platforms": {
+    "instagram": {
+     "id": "18090552041403963",
+     "posted_at": 1787895555
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
   }
  ]
 }

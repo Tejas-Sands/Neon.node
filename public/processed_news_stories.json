@@ -1217,5 +1217,16 @@
   ],
   "ts": 1787839075,
   "session": "gh-46e9f9"
+ },
+ {
+  "id": "49461817",
+  "title": "Show HN: The load-bearing vocabulary of Claude",
+  "norm": "show hn the load bearing vocabulary of claude",
+  "subject_norm": "claude load bearing vocabulary",
+  "entities": [
+   "anthropic"
+  ],
+  "ts": 1787895558,
+  "session": "gh-5e7e5a"
  }
 ]
