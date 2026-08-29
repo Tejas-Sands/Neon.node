@@ -2224,7 +2224,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1123,
-      "fetched_at": 1787839075
+      "fetched_at": 1787982696
      },
      "snap72": {
       "views": 93,
@@ -2538,7 +2538,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2998,
-      "fetched_at": 1787839075
+      "fetched_at": 1787982696
      },
      "snap72": {
       "views": 110,
@@ -2602,7 +2602,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1277,
-      "fetched_at": 1787839075
+      "fetched_at": 1787982696
      },
      "snap72": {
       "views": 14,
@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1787839075
+      "fetched_at": 1787982696
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1787839075
+      "fetched_at": 1787982696
      },
      "snap72": {
       "views": 16,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1787839075
+      "fetched_at": 1787982696
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1787839075
+      "fetched_at": 1787982696
      },
      "snap72": {
       "views": 4,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1787839075
+      "fetched_at": 1787982696
      },
      "snap72": {
       "views": 90,
@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1787839075
+      "fetched_at": 1787982696
      },
      "snap72": {
       "views": 29,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1787839075
+      "fetched_at": 1787982696
      },
      "snap72": {
       "views": 2,
@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1787839075
+      "fetched_at": 1787982696
      },
      "snap72": {
       "views": 7,
@@ -5567,7 +5567,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1787823741
+      "fetched_at": 1787982696
      },
      "snap72": {
       "views": 8,
@@ -5633,7 +5633,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1778,
-      "fetched_at": 1787839075
+      "fetched_at": 1787982696
      },
      "snap72": {
       "views": 8,
@@ -6273,7 +6273,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1787982696
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -6321,7 +6331,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1787982696
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -6409,6 +6429,54 @@
     "instagram": {
      "id": "18100854110578233",
      "posted_at": 1787925014
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787982617,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Our decision on Cursor following its acquisition by SpaceX",
+    "subject": "SpaceX acquires Cursor",
+    "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+    "source": "hn",
+    "keywords": [
+     "acquisition",
+     "spacex"
+    ],
+    "viral_score": 10.13,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "SpaceX Buys Cursor",
+    "angle": "SpaceX has acquired the AI code editor Cursor, signaling a massive shift in how aerospace software is built.",
+    "insight": "Aerospace engineering is shifting from manual programming to AI-driven generation, proving code editors are now critical national infrastructure.",
+    "judge": "plan"
+   },
+   "style_pack": "clean-cobalt",
+   "format_pack": "legacy-news",
+   "seed": 1869954367,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "URGENCY",
+   "style_epoch": 5,
+   "scene_count": 5,
+   "video_seconds": 52.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-0cbac6",
+   "platforms": {
+    "instagram": {
+     "id": "18094903235143548",
+     "posted_at": 1787982693
     }
    },
    "metrics": {

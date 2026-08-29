@@ -1253,5 +1253,17 @@
   ],
   "ts": 1787925017,
   "session": "gh-df90df"
+ },
+ {
+  "id": "49486172",
+  "title": "Our decision on Cursor following its acquisition by SpaceX",
+  "norm": "our decision on cursor following its acquisition by spacex",
+  "subject_norm": "spacex acquires cursor",
+  "entities": [
+   "spacex",
+   "cursor"
+  ],
+  "ts": 1787982696,
+  "session": "gh-0cbac6"
  }
 ]
