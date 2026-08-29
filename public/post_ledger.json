@@ -5699,7 +5699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1787839075
+      "fetched_at": 1787997432
      },
      "snap72": {
       "views": 4,
@@ -5830,7 +5830,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1787839075
+      "fetched_at": 1787997432
      },
      "snap72": {
       "views": 3,
@@ -5898,7 +5898,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1787839075
+      "fetched_at": 1787997432
      },
      "snap72": {
       "views": 0,
@@ -6477,6 +6477,53 @@
     "instagram": {
      "id": "18094903235143548",
      "posted_at": 1787982693
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1787997381,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "U.S. sanctions against the A/I Collective",
+    "subject": "Autistici Inventati sanctions",
+    "url": "https://www.inventati.org/",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 9.29,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "US Sanctions Autistici Inventati",
+    "angle": "The US government has sanctioned the anticapitalist digital rights collective Autistici Inventati, which has provided free, privacy-focused communication tools for activists since 2001.",
+    "insight": "State-level sanctions are increasingly being deployed not just against nation-states, but against grassroots ideological infrastructure and volunteer-run digital privacy tools.",
+    "judge": "plan"
+   },
+   "style_pack": "coral-pop",
+   "format_pack": "facts-explainer",
+   "seed": 1555087160,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 5,
+   "scene_count": 5,
+   "video_seconds": 27.6,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-1308c9",
+   "platforms": {
+    "instagram": {
+     "id": "17874228981565144",
+     "posted_at": 1787997429
     }
    },
    "metrics": {
