@@ -1274,5 +1274,16 @@
   "entities": [],
   "ts": 1787997432,
   "session": "gh-1308c9"
+ },
+ {
+  "id": "49480466",
+  "title": "Just the rumour of a bug is enough to find an exploit these days",
+  "norm": "just the rumour of a bug is enough to find an exploit these days",
+  "subject_norm": "ocaml cohttp 6 3 0 path traversal",
+  "entities": [
+   "ocaml"
+  ],
+  "ts": 1788011341,
+  "session": "gh-c6490d"
  }
 ]

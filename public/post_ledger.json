@@ -1745,7 +1745,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2706,
-      "fetched_at": 1787914486
+      "fetched_at": 1788011341
      },
      "snap72": {
       "views": 26,
@@ -3331,7 +3331,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 7981,
-      "fetched_at": 1787914486
+      "fetched_at": 1788011341
      },
      "snap72": {
       "views": 79,
@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1787914486
+      "fetched_at": 1788011341
      },
      "snap72": {
       "views": 22,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1787914486
+      "fetched_at": 1788011341
      },
      "snap72": {
       "views": 38,
@@ -4768,7 +4768,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1787914486
+      "fetched_at": 1788011341
      },
      "snap72": {
       "views": 15,
@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1787914486
+      "fetched_at": 1788011341
      },
      "snap72": {
       "views": 9,
@@ -4902,7 +4902,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1787914486
+      "fetched_at": 1788011341
      },
      "snap72": {
       "views": 0,
@@ -4967,7 +4967,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3060,
-      "fetched_at": 1787914486
+      "fetched_at": 1788011341
      },
      "snap72": {
       "views": 7,
@@ -5169,7 +5169,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5297,
-      "fetched_at": 1787914486
+      "fetched_at": 1788011341
      },
      "snap72": {
       "views": 7,
@@ -5434,7 +5434,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5193,
-      "fetched_at": 1787914486
+      "fetched_at": 1788011341
      },
      "snap72": {
       "views": 12,
@@ -5500,7 +5500,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1818,
-      "fetched_at": 1787914486
+      "fetched_at": 1788011341
      },
      "snap72": {
       "views": 5,
@@ -5764,7 +5764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1787914486
+      "fetched_at": 1788011341
      },
      "snap72": {
       "views": 114,
@@ -5964,7 +5964,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2501,
-      "fetched_at": 1787914486
+      "fetched_at": 1788011341
      },
      "snap72": {
       "views": 2,
@@ -6165,9 +6165,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 731,
-      "fetched_at": 1787914486
+      "fetched_at": 1788011341
      },
-     "snap72": null,
+     "snap72": {
+      "views": 4,
+      "reach": 4,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 731,
+      "fetched_at": 1788011341
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -6387,7 +6397,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 4,
+      "reach": 4,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1444,
+      "fetched_at": 1788011341
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -6524,6 +6544,54 @@
     "instagram": {
      "id": "17874228981565144",
      "posted_at": 1787997429
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788011028,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "Just the rumour of a bug is enough to find an exploit these days",
+    "subject": "OCaml cohttp 6.3.0 path traversal",
+    "url": "https://anil.recoil.org/notes/rumour-is-the-exploit",
+    "source": "hn",
+    "keywords": [
+     "exploit"
+    ],
+    "viral_score": 8.94,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "AI Exploits Bugs in Minutes",
+    "angle": "How AI agents have inverted the vulnerability timeline, meaning exploitation now happens before patches are even released.",
+    "insight": "Secrecy no longer protects open source because AI can reverse-engineer an exploit from the mere rumor of a bug.",
+    "judge": "plan"
+   },
+   "style_pack": "mint-aqua",
+   "format_pack": "legacy-news",
+   "seed": 822279797,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "MISTAKE CALLOUT",
+   "style_epoch": 5,
+   "scene_count": 6,
+   "video_seconds": 50.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-c6490d",
+   "platforms": {
+    "instagram": {
+     "id": "18213306793357474",
+     "posted_at": 1788011275
     }
    },
    "metrics": {
