@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-6278824",
-   "ts": 1786271208,
-   "session": "gh-cebf38",
-   "query": "mobile phone screen settings ui",
-   "scene": 3
-  },
-  {
-   "id": "pexels-8947128",
-   "ts": 1786271208,
-   "session": "gh-cebf38",
-   "query": "mobile phone screen settings ui",
-   "scene": 3
-  },
-  {
-   "id": "pexels-32388953",
-   "ts": 1786271208,
-   "session": "gh-cebf38",
-   "query": "code editor terminal typing lines",
-   "scene": 4
-  },
-  {
-   "id": "pexels-5377696",
-   "ts": 1786271208,
-   "session": "gh-cebf38",
-   "query": "code editor terminal typing lines",
-   "scene": 4
-  },
-  {
-   "id": "pexels-35528988",
-   "ts": 1786271208,
-   "session": "gh-cebf38",
-   "query": "data center server racks blinking lights",
-   "scene": 5
-  },
-  {
-   "id": "pexels-5474267",
-   "ts": 1786284146,
-   "session": "gh-33a9cd",
-   "query": "terminal hackers typing code green",
-   "scene": 0
-  },
-  {
-   "id": "pexels-6382040",
-   "ts": 1786284146,
-   "session": "gh-33a9cd",
-   "query": "server room dark blinking lights",
-   "scene": 1
-  },
-  {
-   "id": "pexels-5483090",
-   "ts": 1786284146,
-   "session": "gh-33a9cd",
-   "query": "code editor scrolling fast terminal",
-   "scene": 2
-  },
-  {
-   "id": "pexels-5981845",
-   "ts": 1786284146,
-   "session": "gh-33a9cd",
-   "query": "code editor scrolling fast terminal",
-   "scene": 2
-  },
-  {
    "id": "pexels-5841707",
    "ts": 1786284146,
    "session": "gh-33a9cd",
@@ -2799,6 +2736,69 @@
    "ts": 1788068967,
    "session": "gh-1e1630",
    "query": "security camera rotating city street",
+   "scene": 5
+  },
+  {
+   "id": "pexels-36628017",
+   "ts": 1788078860,
+   "session": "gh-56d853",
+   "query": "terminal typing commands screen",
+   "scene": 0
+  },
+  {
+   "id": "pexels-5647324",
+   "ts": 1788078860,
+   "session": "gh-56d853",
+   "query": "terminal typing commands screen",
+   "scene": 0
+  },
+  {
+   "id": "pexels-29267591",
+   "ts": 1788078860,
+   "session": "gh-56d853",
+   "query": "code editor screen scrolling",
+   "scene": 1
+  },
+  {
+   "id": "pexels-8472307",
+   "ts": 1788078860,
+   "session": "gh-56d853",
+   "query": "developer laptop closeup",
+   "scene": 2
+  },
+  {
+   "id": "pexels-33841806",
+   "ts": 1788078860,
+   "session": "gh-56d853",
+   "query": "developer laptop closeup",
+   "scene": 2
+  },
+  {
+   "id": "pexels-38454843",
+   "ts": 1788078860,
+   "session": "gh-56d853",
+   "query": "data center servers gpu",
+   "scene": 3
+  },
+  {
+   "id": "pexels-26953415",
+   "ts": 1788078860,
+   "session": "gh-56d853",
+   "query": "software dashboard ui scrolling",
+   "scene": 4
+  },
+  {
+   "id": "pexels-39104096",
+   "ts": 1788078860,
+   "session": "gh-56d853",
+   "query": "network traffic data stream motion",
+   "scene": 5
+  },
+  {
+   "id": "pexels-12460545",
+   "ts": 1788078860,
+   "session": "gh-56d853",
+   "query": "network traffic data stream motion",
    "scene": 5
   }
  ]

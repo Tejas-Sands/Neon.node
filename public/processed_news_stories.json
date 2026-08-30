@@ -1296,5 +1296,16 @@
   ],
   "ts": 1788069027,
   "session": "gh-1e1630"
+ },
+ {
+  "id": "49489982",
+  "title": "Debian votes to allow \"responsible use of generative AI\"",
+  "norm": "debian votes to allow responsible use of generative ai",
+  "subject_norm": "debian generative ai policy",
+  "entities": [
+   "debian"
+  ],
+  "ts": 1788078929,
+  "session": "gh-56d853"
  }
 ]

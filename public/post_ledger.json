@@ -2224,7 +2224,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1123,
-      "fetched_at": 1787982696
+      "fetched_at": 1788078929
      },
      "snap72": {
       "views": 93,
@@ -2538,7 +2538,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2998,
-      "fetched_at": 1787982696
+      "fetched_at": 1788078929
      },
      "snap72": {
       "views": 110,
@@ -2602,7 +2602,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1277,
-      "fetched_at": 1787982696
+      "fetched_at": 1788078929
      },
      "snap72": {
       "views": 14,
@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1787982696
+      "fetched_at": 1788078929
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1787982696
+      "fetched_at": 1788078929
      },
      "snap72": {
       "views": 16,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1787982696
+      "fetched_at": 1788078929
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1787982696
+      "fetched_at": 1788078929
      },
      "snap72": {
       "views": 4,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1787982696
+      "fetched_at": 1788078929
      },
      "snap72": {
       "views": 90,
@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1787982696
+      "fetched_at": 1788078929
      },
      "snap72": {
       "views": 29,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1787982696
+      "fetched_at": 1788078929
      },
      "snap72": {
       "views": 2,
@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1787982696
+      "fetched_at": 1788078929
      },
      "snap72": {
       "views": 7,
@@ -5567,7 +5567,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1787982696
+      "fetched_at": 1788078929
      },
      "snap72": {
       "views": 8,
@@ -6031,7 +6031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1305,
-      "fetched_at": 1787925017
+      "fetched_at": 1788078929
      },
      "snap72": {
       "views": 2,
@@ -6096,7 +6096,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1881,
-      "fetched_at": 1787925017
+      "fetched_at": 1788078929
      },
      "snap72": {
       "views": 12,
@@ -6521,7 +6521,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 38,
+      "reach": 34,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2016,
+      "fetched_at": 1788078929
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -6660,6 +6670,51 @@
     "instagram": {
      "id": "18122900545873896",
      "posted_at": 1788069023
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788078860,
+   "posted_hour_utc": 8,
+   "channel": "news",
+   "topic": {
+    "title": "Debian votes to allow \"responsible use of generative AI\"",
+    "subject": "Debian generative AI policy",
+    "url": "https://lwn.net/Articles/1091231/",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 9.13,
+    "sources": [],
+    "display_title": "Debian Approves Generative AI",
+    "angle": "Debian officially allows the use of generative AI tools for software development and documentation while holding contributors fully responsible for the output quality.",
+    "insight": "Open-source projects are shifting from banning AI to strictly enforcing personal accountability for AI-generated code.",
+    "judge": "plan"
+   },
+   "style_pack": "burgundy-luxe",
+   "format_pack": "legacy-news",
+   "seed": 293642921,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "TWO-WORD COLD OPEN",
+   "style_epoch": 5,
+   "scene_count": 6,
+   "video_seconds": 45.4,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-56d853",
+   "platforms": {
+    "instagram": {
+     "id": "18152508133520291",
+     "posted_at": 1788078925
     }
    },
    "metrics": {
