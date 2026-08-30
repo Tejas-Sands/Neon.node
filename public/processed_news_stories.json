@@ -1285,5 +1285,16 @@
   ],
   "ts": 1788011341,
   "session": "gh-c6490d"
+ },
+ {
+  "id": "49494182",
+  "title": "Lawmakers added $1 to car insurance policies. That money paid for Flock cameras",
+  "norm": "lawmakers added 1 to car insurance policies that money paid for flock cameras",
+  "subject_norm": "flock cameras",
+  "entities": [
+   "flock"
+  ],
+  "ts": 1788069027,
+  "session": "gh-1e1630"
  }
 ]

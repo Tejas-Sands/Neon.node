@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-34654487",
-   "ts": 1786269406,
-   "session": "gh-6bfd1f",
-   "query": "earth rotating satellite view motion",
-   "scene": 1
-  },
-  {
-   "id": "pexels-36950732",
-   "ts": 1786269406,
-   "session": "gh-6bfd1f",
-   "query": "terminal lines scrolling data processing",
-   "scene": 2
-  },
-  {
-   "id": "pexels-33315143",
-   "ts": 1786269406,
-   "session": "gh-6bfd1f",
-   "query": "terminal lines scrolling data processing",
-   "scene": 2
-  },
-  {
-   "id": "pexels-34336059",
-   "ts": 1786269406,
-   "session": "gh-6bfd1f",
-   "query": "digital globe rotating grid lines",
-   "scene": 3
-  },
-  {
-   "id": "pexels-8828863",
-   "ts": 1786269406,
-   "session": "gh-6bfd1f",
-   "query": "developer dashboard ui map rendering",
-   "scene": 4
-  },
-  {
-   "id": "pexels-6754823",
-   "ts": 1786271208,
-   "session": "gh-cebf38",
-   "query": "smartphone circuit board glowing macro",
-   "scene": 0
-  },
-  {
-   "id": "pexels-20757503",
-   "ts": 1786271208,
-   "session": "gh-cebf38",
-   "query": "mobile processor chip macro motion",
-   "scene": 1
-  },
-  {
-   "id": "pexels-5473802",
-   "ts": 1786271208,
-   "session": "gh-cebf38",
-   "query": "terminal flashing error code screen",
-   "scene": 2
-  },
-  {
-   "id": "pexels-36962593",
-   "ts": 1786271208,
-   "session": "gh-cebf38",
-   "query": "terminal flashing error code screen",
-   "scene": 2
-  },
-  {
    "id": "pexels-6278824",
    "ts": 1786271208,
    "session": "gh-cebf38",
@@ -2799,6 +2736,69 @@
    "ts": 1788011028,
    "session": "gh-c6490d",
    "query": "server room camera pan motion",
+   "scene": 5
+  },
+  {
+   "id": "pexels-35471095",
+   "ts": 1788068967,
+   "session": "gh-1e1630",
+   "query": "security camera scanning highway traffic",
+   "scene": 0
+  },
+  {
+   "id": "pexels-11326269",
+   "ts": 1788068967,
+   "session": "gh-1e1630",
+   "query": "security camera scanning highway traffic",
+   "scene": 0
+  },
+  {
+   "id": "pexels-10466298",
+   "ts": 1788068967,
+   "session": "gh-1e1630",
+   "query": "police radar screen tracking cars",
+   "scene": 1
+  },
+  {
+   "id": "pexels-38870327",
+   "ts": 1788068967,
+   "session": "gh-1e1630",
+   "query": "financial charts data terminal scrolling",
+   "scene": 2
+  },
+  {
+   "id": "pexels-38860073",
+   "ts": 1788068967,
+   "session": "gh-1e1630",
+   "query": "financial charts data terminal scrolling",
+   "scene": 2
+  },
+  {
+   "id": "pexels-5921200",
+   "ts": 1788068967,
+   "session": "gh-1e1630",
+   "query": "data center servers blinking lights",
+   "scene": 3
+  },
+  {
+   "id": "pexels-4985363",
+   "ts": 1788068967,
+   "session": "gh-1e1630",
+   "query": "breaking news studio monitor background",
+   "scene": 4
+  },
+  {
+   "id": "pexels-26340947",
+   "ts": 1788068967,
+   "session": "gh-1e1630",
+   "query": "breaking news studio monitor background",
+   "scene": 4
+  },
+  {
+   "id": "pexels-36558125",
+   "ts": 1788068967,
+   "session": "gh-1e1630",
+   "query": "security camera rotating city street",
    "scene": 5
   }
  ]
