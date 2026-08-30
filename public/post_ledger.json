@@ -3331,7 +3331,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 7981,
-      "fetched_at": 1788011341
+      "fetched_at": 1788098142
      },
      "snap72": {
       "views": 79,
@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1788011341
+      "fetched_at": 1788098142
      },
      "snap72": {
       "views": 22,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1788011341
+      "fetched_at": 1788098142
      },
      "snap72": {
       "views": 38,
@@ -4768,7 +4768,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1788011341
+      "fetched_at": 1788098142
      },
      "snap72": {
       "views": 15,
@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1788011341
+      "fetched_at": 1788098142
      },
      "snap72": {
       "views": 9,
@@ -4902,7 +4902,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1788011341
+      "fetched_at": 1788098142
      },
      "snap72": {
       "views": 0,
@@ -4967,7 +4967,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3060,
-      "fetched_at": 1788011341
+      "fetched_at": 1788098142
      },
      "snap72": {
       "views": 7,
@@ -5633,7 +5633,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1778,
-      "fetched_at": 1787982696
+      "fetched_at": 1788098142
      },
      "snap72": {
       "views": 8,
@@ -5699,7 +5699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1787997432
+      "fetched_at": 1788098142
      },
      "snap72": {
       "views": 4,
@@ -5830,7 +5830,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1787997432
+      "fetched_at": 1788098142
      },
      "snap72": {
       "views": 3,
@@ -5898,7 +5898,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1787997432
+      "fetched_at": 1788098142
      },
      "snap72": {
       "views": 0,
@@ -6305,7 +6305,7 @@
       "fetched_at": 1787982696
      },
      "snap72": null,
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -6363,7 +6363,7 @@
       "fetched_at": 1787982696
      },
      "snap72": null,
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -6578,7 +6578,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 4,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 764,
+      "fetched_at": 1788098142
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -6626,7 +6636,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 153,
+      "reach": 138,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1024,
+      "fetched_at": 1788098142
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -6715,6 +6735,51 @@
     "instagram": {
      "id": "18152508133520291",
      "posted_at": 1788078925
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788098082,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "Longest Straight Line Paths on Water or Land on the Earth (2018)",
+    "subject": "Longest Straight Line Paths on Water or Land",
+    "url": "https://arxiv.org/abs/1804.07389",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 8.61,
+    "sources": [],
+    "display_title": "Longest Straight Line Paths on Earth",
+    "angle": "Researchers used algorithms to map the absolute longest possible straight paths you can walk or sail across the globe without hitting land or water.",
+    "insight": "Computational pathfinding algorithms solve complex global geography problems instantly, opening new doors for logistics and spatial optimization.",
+    "judge": "plan"
+   },
+   "style_pack": "citrus-fresh",
+   "format_pack": "facts-explainer",
+   "seed": 1532175492,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 5,
+   "scene_count": 5,
+   "video_seconds": 28.9,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-be0612",
+   "platforms": {
+    "instagram": {
+     "id": "18100338143629796",
+     "posted_at": 1788098139
     }
    },
    "metrics": {
