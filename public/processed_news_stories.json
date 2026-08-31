@@ -1316,5 +1316,18 @@
   "entities": [],
   "ts": 1788098142,
   "session": "gh-be0612"
+ },
+ {
+  "id": "49499867",
+  "title": "Haiku R1/beta6 has been released",
+  "norm": "haiku r1 beta6 has been released",
+  "subject_norm": "haiku r1 beta6 release",
+  "entities": [
+   "r1/beta6",
+   "haiku",
+   "beta6"
+  ],
+  "ts": 1788150980,
+  "session": "gh-70bfe6"
  }
 ]
