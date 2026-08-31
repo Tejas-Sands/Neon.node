@@ -1329,5 +1329,16 @@
   ],
   "ts": 1788150980,
   "session": "gh-70bfe6"
+ },
+ {
+  "id": "49504625",
+  "title": "Understanding ChatGPT Work",
+  "norm": "understanding chatgpt work",
+  "subject_norm": "chatgpt work",
+  "entities": [
+   "openai"
+  ],
+  "ts": 1788165713,
+  "session": "gh-c730a2"
  }
 ]

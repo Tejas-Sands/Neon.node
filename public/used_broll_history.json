@@ -2,48 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-34124550",
-   "ts": 1786351244,
-   "session": "gh-c85fec",
-   "query": "developer typing laptop night",
-   "scene": 4
-  },
-  {
-   "id": "pexels-36178907",
-   "ts": 1786369426,
-   "session": "gh-3dbbb2",
-   "query": "terminal code typing command line",
-   "scene": 0
-  },
-  {
-   "id": "pexels-3403279",
-   "ts": 1786369426,
-   "session": "gh-3dbbb2",
-   "query": "server rack lights flashing data",
-   "scene": 1
-  },
-  {
-   "id": "pexels-34576602",
-   "ts": 1786369426,
-   "session": "gh-3dbbb2",
-   "query": "data flow circuit board macro",
-   "scene": 2
-  },
-  {
-   "id": "pexels-34336322",
-   "ts": 1786369426,
-   "session": "gh-3dbbb2",
-   "query": "data flow circuit board macro",
-   "scene": 2
-  },
-  {
-   "id": "pexels-8103040",
-   "ts": 1786369426,
-   "session": "gh-3dbbb2",
-   "query": "code editor scrolling fast screen",
-   "scene": 3
-  },
-  {
    "id": "pexels-36628014",
    "ts": 1786369426,
    "session": "gh-3dbbb2",
@@ -2800,6 +2758,48 @@
    "session": "gh-70bfe6",
    "query": "circuit board macro light trace",
    "scene": 5
+  },
+  {
+   "id": "pexels-9783691",
+   "ts": 1788165634,
+   "session": "gh-c730a2",
+   "query": "laptop screen code scrolling",
+   "scene": 0
+  },
+  {
+   "id": "pexels-7204518",
+   "ts": 1788165634,
+   "session": "gh-c730a2",
+   "query": "terminal typing commands",
+   "scene": 1
+  },
+  {
+   "id": "pexels-7569433",
+   "ts": 1788165634,
+   "session": "gh-c730a2",
+   "query": "server room dark lights",
+   "scene": 2
+  },
+  {
+   "id": "pexels-28560962",
+   "ts": 1788165634,
+   "session": "gh-c730a2",
+   "query": "server room dark lights",
+   "scene": 2
+  },
+  {
+   "id": "pexels-4873110",
+   "ts": 1788165634,
+   "session": "gh-c730a2",
+   "query": "developer typing code keyboard",
+   "scene": 3
+  },
+  {
+   "id": "pexels-37671328",
+   "ts": 1788165634,
+   "session": "gh-c730a2",
+   "query": "network traffic data visualization",
+   "scene": 4
   }
  ]
 }
