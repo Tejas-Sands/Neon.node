@@ -2224,7 +2224,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1123,
-      "fetched_at": 1788078929
+      "fetched_at": 1788188233
      },
      "snap72": {
       "views": 93,
@@ -2538,7 +2538,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2998,
-      "fetched_at": 1788078929
+      "fetched_at": 1788188233
      },
      "snap72": {
       "views": 110,
@@ -2602,7 +2602,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1277,
-      "fetched_at": 1788078929
+      "fetched_at": 1788188233
      },
      "snap72": {
       "views": 14,
@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1788078929
+      "fetched_at": 1788188233
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1788078929
+      "fetched_at": 1788188233
      },
      "snap72": {
       "views": 16,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1788078929
+      "fetched_at": 1788188233
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1788078929
+      "fetched_at": 1788188233
      },
      "snap72": {
       "views": 4,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1788078929
+      "fetched_at": 1788188233
      },
      "snap72": {
       "views": 90,
@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1788078929
+      "fetched_at": 1788188233
      },
      "snap72": {
       "views": 29,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1788078929
+      "fetched_at": 1788188233
      },
      "snap72": {
       "views": 2,
@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1788078929
+      "fetched_at": 1788188233
      },
      "snap72": {
       "views": 7,
@@ -5567,7 +5567,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1788078929
+      "fetched_at": 1788188233
      },
      "snap72": {
       "views": 8,
@@ -6234,7 +6234,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3159,
-      "fetched_at": 1788069027
+      "fetched_at": 1788188233
      },
      "snap72": {
       "views": 4,
@@ -6482,9 +6482,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1788069027
+      "fetched_at": 1788188233
      },
-     "snap72": null,
+     "snap72": {
+      "views": 112,
+      "reach": 109,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1011,
+      "fetched_at": 1788188233
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -6814,7 +6824,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 302,
+      "fetched_at": 1788188233
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -6856,6 +6876,54 @@
     "instagram": {
      "id": "17943548766333189",
      "posted_at": 1788165710
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788188078,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "OpenShot 4.0: Record, Edit, and Color Like Never Before",
+    "subject": "OpenShot 4.0",
+    "url": "https://www.openshot.org/blog/2026/08/30/openshot-40-record-edit-color-like-never-before/",
+    "source": "hn",
+    "keywords": [
+     "record",
+     "never"
+    ],
+    "viral_score": 10.24,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "OpenShot 4.0 Adds Pro Color Wheels",
+    "angle": "OpenShot 4.0 transforms the free video editor with professional color grading tools, screen recording, and local machine learning subject isolation.",
+    "insight": "Open-source video editors are closing the feature gap with expensive paid software, making Hollywood-grade color grading accessible to everyone for free.",
+    "judge": "plan"
+   },
+   "style_pack": "ember-gold",
+   "format_pack": "facts-explainer",
+   "seed": 2124951746,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 5,
+   "scene_count": 5,
+   "video_seconds": 30.0,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-66d90c",
+   "platforms": {
+    "instagram": {
+     "id": "17904401097486239",
+     "posted_at": 1788188230
     }
    },
    "metrics": {

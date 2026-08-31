@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-36628014",
-   "ts": 1786369426,
-   "session": "gh-3dbbb2",
-   "query": "code editor scrolling fast screen",
-   "scene": 3
-  },
-  {
-   "id": "pexels-35771140",
-   "ts": 1786369426,
-   "session": "gh-3dbbb2",
-   "query": "dashboard UI charts moving data",
-   "scene": 4
-  },
-  {
-   "id": "pexels-8348901",
-   "ts": 1786369426,
-   "session": "gh-3dbbb2",
-   "query": "dashboard UI charts moving data",
-   "scene": 4
-  },
-  {
-   "id": "pexels-12616425",
-   "ts": 1786369426,
-   "session": "gh-3dbbb2",
-   "query": "network traffic security nodes glowing",
-   "scene": 5
-  },
-  {
-   "id": "pexels-5377698",
-   "ts": 1786429262,
-   "session": "gh-e2b91d",
-   "query": "server data center racks flashing",
-   "scene": 0
-  },
-  {
    "id": "pexels-34995393",
    "ts": 1786429262,
    "session": "gh-e2b91d",
@@ -2799,6 +2764,41 @@
    "ts": 1788165634,
    "session": "gh-c730a2",
    "query": "network traffic data visualization",
+   "scene": 4
+  },
+  {
+   "id": "pexels-19972051",
+   "ts": 1788188078,
+   "session": "gh-66d90c",
+   "query": "video editing timeline waveform scopes screen",
+   "scene": 0
+  },
+  {
+   "id": "pexels-8100338",
+   "ts": 1788188078,
+   "session": "gh-66d90c",
+   "query": "color grading panel wheels scopes",
+   "scene": 1
+  },
+  {
+   "id": "pexels-8201291",
+   "ts": 1788188078,
+   "session": "gh-66d90c",
+   "query": "waveform monitor video scopes graph",
+   "scene": 2
+  },
+  {
+   "id": "pexels-35063152",
+   "ts": 1788188078,
+   "session": "gh-66d90c",
+   "query": "neural network wireframe motion graphic",
+   "scene": 3
+  },
+  {
+   "id": "pexels-38870355",
+   "ts": 1788188078,
+   "session": "gh-66d90c",
+   "query": "software interface dark mode dashboard",
    "scene": 4
   }
  ]

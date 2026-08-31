@@ -1340,5 +1340,16 @@
   ],
   "ts": 1788165713,
   "session": "gh-c730a2"
+ },
+ {
+  "id": "49507822",
+  "title": "OpenShot 4.0: Record, Edit, and Color Like Never Before",
+  "norm": "openshot 4 0 record edit and color like never before",
+  "subject_norm": "openshot 4 0",
+  "entities": [
+   "openshot"
+  ],
+  "ts": 1788188233,
+  "session": "gh-66d90c"
  }
 ]
