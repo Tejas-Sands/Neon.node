@@ -1374,5 +1374,16 @@
   ],
   "ts": 1788256250,
   "session": "gh-d54f50"
+ },
+ {
+  "id": "49506819",
+  "title": "Breaking Claude Code Opus 5 Auto Mode",
+  "norm": "breaking claude code opus 5 auto mode",
+  "subject_norm": "claude code opus 5 auto mode",
+  "entities": [
+   "anthropic"
+  ],
+  "ts": 1788268345,
+  "session": "gh-74305d"
  }
 ]

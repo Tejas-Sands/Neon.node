@@ -4239,7 +4239,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1069,
-      "fetched_at": 1788165713
+      "fetched_at": 1788268345
      },
      "snap72": {
       "views": 115,
@@ -4370,7 +4370,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1788165713
+      "fetched_at": 1788268345
      },
      "snap72": {
       "views": 109,
@@ -4573,7 +4573,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3478,
-      "fetched_at": 1788165713
+      "fetched_at": 1788268345
      },
      "snap72": {
       "views": 11,
@@ -5035,7 +5035,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1296,
-      "fetched_at": 1788165713
+      "fetched_at": 1788268345
      },
      "snap72": {
       "views": 5,
@@ -5101,7 +5101,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1276,
-      "fetched_at": 1788165713
+      "fetched_at": 1788268345
      },
      "snap72": {
       "views": 42,
@@ -5237,7 +5237,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1568,
-      "fetched_at": 1788165713
+      "fetched_at": 1788268345
      },
      "snap72": {
       "views": 1,
@@ -5304,7 +5304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5887,
-      "fetched_at": 1788165713
+      "fetched_at": 1788268345
      },
      "snap72": {
       "views": 10,
@@ -6753,9 +6753,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7695,
-      "fetched_at": 1788165713
+      "fetched_at": 1788268345
      },
-     "snap72": null,
+     "snap72": {
+      "views": 10,
+      "reach": 10,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 7695,
+      "fetched_at": 1788268345
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -6808,9 +6818,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1224,
-      "fetched_at": 1788165713
+      "fetched_at": 1788268345
      },
-     "snap72": null,
+     "snap72": {
+      "views": 31,
+      "reach": 27,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1224,
+      "fetched_at": 1788268345
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -7057,6 +7077,51 @@
     "instagram": {
      "id": "17903879760331802",
      "posted_at": 1788256247
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788268291,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "Breaking Claude Code Opus 5 Auto Mode",
+    "subject": "Claude Code Opus 5 Auto Mode",
+    "url": "https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/",
+    "source": "hn",
+    "keywords": [
+     "claude"
+    ],
+    "viral_score": 9.14,
+    "sources": [],
+    "display_title": "Claude Code Auto Mode Hijacked",
+    "angle": "How a simple website summary request achieved an 80% code execution attack success rate on Claude Code Opus 5 in Auto Mode.",
+    "insight": "Safety classifiers replacing human approval do not substitute for running coding agents in isolated environments.",
+    "judge": "plan"
+   },
+   "style_pack": "ember-gold",
+   "format_pack": "legacy-news",
+   "seed": 1804783168,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "PAIN-POINT 'YOU'",
+   "style_epoch": 5,
+   "scene_count": 6,
+   "video_seconds": 37.9,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-74305d",
+   "platforms": {
+    "instagram": {
+     "id": "18085846970259628",
+     "posted_at": 1788268342
     }
    },
    "metrics": {

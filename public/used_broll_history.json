@@ -2,55 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-36148341",
-   "ts": 1786443499,
-   "session": "gh-2aa699",
-   "query": "software dashboard ui scrolling",
-   "scene": 4
-  },
-  {
-   "id": "pexels-34679079",
-   "ts": 1786443499,
-   "session": "gh-2aa699",
-   "query": "software dashboard ui scrolling",
-   "scene": 4
-  },
-  {
-   "id": "pexels-7822022",
-   "ts": 1786455505,
-   "session": "gh-558385",
-   "query": "phone screen incoming call glowing",
-   "scene": 0
-  },
-  {
-   "id": "pexels-7706746",
-   "ts": 1786455505,
-   "session": "gh-558385",
-   "query": "telemarketing call center empty desks",
-   "scene": 1
-  },
-  {
-   "id": "pexels-5452541",
-   "ts": 1786455505,
-   "session": "gh-558385",
-   "query": "telemarketing call center empty desks",
-   "scene": 1
-  },
-  {
-   "id": "pexels-36369486",
-   "ts": 1786455505,
-   "session": "gh-558385",
-   "query": "network traffic dashboard screen",
-   "scene": 2
-  },
-  {
-   "id": "pexels-5377697",
-   "ts": 1786455505,
-   "session": "gh-558385",
-   "query": "network traffic dashboard screen",
-   "scene": 2
-  },
-  {
    "id": "pexels-7569433",
    "ts": 1786455505,
    "session": "gh-558385",
@@ -2800,6 +2751,55 @@
    "session": "gh-d54f50",
    "query": "terminal typing commands",
    "scene": 4
+  },
+  {
+   "id": "pexels-5378125",
+   "ts": 1788268291,
+   "session": "gh-74305d",
+   "query": "terminal hacking code green matrix",
+   "scene": 0
+  },
+  {
+   "id": "pexels-19532053",
+   "ts": 1788268291,
+   "session": "gh-74305d",
+   "query": "code editor screen scrolling fast",
+   "scene": 1
+  },
+  {
+   "id": "pexels-36824993",
+   "ts": 1788268291,
+   "session": "gh-74305d",
+   "query": "trading chart screen moving data",
+   "scene": 2
+  },
+  {
+   "id": "pexels-34433115",
+   "ts": 1788268291,
+   "session": "gh-74305d",
+   "query": "trading chart screen moving data",
+   "scene": 2
+  },
+  {
+   "id": "pexels-6755151",
+   "ts": 1788268291,
+   "session": "gh-74305d",
+   "query": "circuit board macro motion electronics",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35205646",
+   "ts": 1788268291,
+   "session": "gh-74305d",
+   "query": "server racks blinking data center",
+   "scene": 4
+  },
+  {
+   "id": "pexels-18069164",
+   "ts": 1788268291,
+   "session": "gh-74305d",
+   "query": "network firewall security animation",
+   "scene": 5
   }
  ]
 }
