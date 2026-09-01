@@ -1351,5 +1351,17 @@
   ],
   "ts": 1788188233,
   "session": "gh-66d90c"
+ },
+ {
+  "id": "49514878",
+  "title": "Google Has Removed MV2 Extensions from the Chrome Web Store, Including UBO",
+  "norm": "google has removed mv2 extensions from the chrome web store including ubo",
+  "subject_norm": "google chrome mv2 extensions",
+  "entities": [
+   "google",
+   "mv2"
+  ],
+  "ts": 1788244821,
+  "session": "gh-7f5100"
  }
 ]

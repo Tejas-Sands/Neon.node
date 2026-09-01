@@ -3331,7 +3331,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 7981,
-      "fetched_at": 1788098142
+      "fetched_at": 1788244821
      },
      "snap72": {
       "views": 79,
@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1788098142
+      "fetched_at": 1788244821
      },
      "snap72": {
       "views": 22,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1788098142
+      "fetched_at": 1788244821
      },
      "snap72": {
       "views": 38,
@@ -4768,7 +4768,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1788098142
+      "fetched_at": 1788244821
      },
      "snap72": {
       "views": 15,
@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1788098142
+      "fetched_at": 1788244821
      },
      "snap72": {
       "views": 9,
@@ -4902,7 +4902,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1788098142
+      "fetched_at": 1788244821
      },
      "snap72": {
       "views": 0,
@@ -4967,7 +4967,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3060,
-      "fetched_at": 1788098142
+      "fetched_at": 1788244821
      },
      "snap72": {
       "views": 7,
@@ -5633,7 +5633,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1778,
-      "fetched_at": 1788098142
+      "fetched_at": 1788244821
      },
      "snap72": {
       "views": 8,
@@ -5699,7 +5699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1788098142
+      "fetched_at": 1788244821
      },
      "snap72": {
       "views": 4,
@@ -5830,7 +5830,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1788098142
+      "fetched_at": 1788244821
      },
      "snap72": {
       "views": 3,
@@ -5898,7 +5898,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1788098142
+      "fetched_at": 1788244821
      },
      "snap72": {
       "views": 0,
@@ -6031,7 +6031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1305,
-      "fetched_at": 1788078929
+      "fetched_at": 1788244821
      },
      "snap72": {
       "views": 2,
@@ -6096,7 +6096,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1881,
-      "fetched_at": 1788078929
+      "fetched_at": 1788244821
      },
      "snap72": {
       "views": 12,
@@ -6550,9 +6550,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2016,
-      "fetched_at": 1788078929
+      "fetched_at": 1788244821
      },
-     "snap72": null,
+     "snap72": {
+      "views": 38,
+      "reach": 34,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2016,
+      "fetched_at": 1788244821
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -6607,9 +6617,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 764,
-      "fetched_at": 1788098142
+      "fetched_at": 1788244821
      },
-     "snap72": null,
+     "snap72": {
+      "views": 4,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 764,
+      "fetched_at": 1788244821
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -6924,6 +6944,51 @@
     "instagram": {
      "id": "17904401097486239",
      "posted_at": 1788188230
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788244769,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Google Has Removed MV2 Extensions from the Chrome Web Store, Including UBO",
+    "subject": "Google Chrome MV2 Extensions",
+    "url": "https://webiterate.dev/google-removed-extensions-ublock-origin-108/",
+    "source": "hn",
+    "keywords": [
+     "google"
+    ],
+    "viral_score": 9.95,
+    "sources": [],
+    "display_title": "Google Blocks Chrome Ad Blockers",
+    "angle": "Google has officially removed Manifest V2 extensions from the Chrome Web Store, effectively breaking classic ad blockers like uBlock Origin.",
+    "insight": "Power users must switch to Manifest V3 alternatives like uBlock Origin Lite, accepting reduced ad-blocking capabilities as Google tightens control over browser extensions.",
+    "judge": "plan"
+   },
+   "style_pack": "matrix-green",
+   "format_pack": "legacy-news",
+   "seed": 148540818,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "SHOCK-STAT",
+   "style_epoch": 5,
+   "scene_count": 6,
+   "video_seconds": 52.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-7f5100",
+   "platforms": {
+    "instagram": {
+     "id": "17903416161557626",
+     "posted_at": 1788244817
     }
    },
    "metrics": {

@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-34995393",
-   "ts": 1786429262,
-   "session": "gh-e2b91d",
-   "query": "neural network visualization glowing nodes",
-   "scene": 1
-  },
-  {
-   "id": "pexels-34543219",
-   "ts": 1786429262,
-   "session": "gh-e2b91d",
-   "query": "neural network visualization glowing nodes",
-   "scene": 1
-  },
-  {
-   "id": "pexels-6535276",
-   "ts": 1786429262,
-   "session": "gh-e2b91d",
-   "query": "terminal window scrolling code green",
-   "scene": 2
-  },
-  {
-   "id": "pexels-19162378",
-   "ts": 1786429262,
-   "session": "gh-e2b91d",
-   "query": "terminal window scrolling code green",
-   "scene": 2
-  },
-  {
-   "id": "pexels-35281906",
-   "ts": 1786429262,
-   "session": "gh-e2b91d",
-   "query": "developer typing terminal command line",
-   "scene": 3
-  },
-  {
-   "id": "pexels-6803592",
-   "ts": 1786429262,
-   "session": "gh-e2b91d",
-   "query": "developer typing terminal command line",
-   "scene": 3
-  },
-  {
-   "id": "pexels-35163081",
-   "ts": 1786429262,
-   "session": "gh-e2b91d",
-   "query": "data flowing network nodes motion",
-   "scene": 4
-  },
-  {
-   "id": "pexels-38868670",
-   "ts": 1786429262,
-   "session": "gh-e2b91d",
-   "query": "server hardware rack cooling fans",
-   "scene": 5
-  },
-  {
-   "id": "pexels-34336742",
-   "ts": 1786443499,
-   "session": "gh-2aa699",
-   "query": "neural network visualization motion nodes",
-   "scene": 0
-  },
-  {
    "id": "pexels-34578211",
    "ts": 1786443499,
    "session": "gh-2aa699",
@@ -2800,6 +2737,69 @@
    "session": "gh-66d90c",
    "query": "software interface dark mode dashboard",
    "scene": 4
+  },
+  {
+   "id": "pexels-6266253",
+   "ts": 1788244769,
+   "session": "gh-7f5100",
+   "query": "terminal scrolling code error screen",
+   "scene": 0
+  },
+  {
+   "id": "pexels-34449249",
+   "ts": 1788244769,
+   "session": "gh-7f5100",
+   "query": "data center server racks blinking lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-15439756",
+   "ts": 1788244769,
+   "session": "gh-7f5100",
+   "query": "data center server racks blinking lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-6963412",
+   "ts": 1788244769,
+   "session": "gh-7f5100",
+   "query": "code editor typing syntax highlighting",
+   "scene": 2
+  },
+  {
+   "id": "pexels-36632263",
+   "ts": 1788244769,
+   "session": "gh-7f5100",
+   "query": "dashboard UI loading spinner error state",
+   "scene": 3
+  },
+  {
+   "id": "pexels-8746938",
+   "ts": 1788244769,
+   "session": "gh-7f5100",
+   "query": "dashboard UI loading spinner error state",
+   "scene": 3
+  },
+  {
+   "id": "pexels-5805638",
+   "ts": 1788244769,
+   "session": "gh-7f5100",
+   "query": "settings toggle switch interface click",
+   "scene": 4
+  },
+  {
+   "id": "pexels-7679831",
+   "ts": 1788244769,
+   "session": "gh-7f5100",
+   "query": "developer scrolling documentation laptop screen",
+   "scene": 5
+  },
+  {
+   "id": "pexels-6573992",
+   "ts": 1788244769,
+   "session": "gh-7f5100",
+   "query": "developer scrolling documentation laptop screen",
+   "scene": 5
   }
  ]
 }
