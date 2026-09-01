@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-34578211",
-   "ts": 1786443499,
-   "session": "gh-2aa699",
-   "query": "server data center lights motion",
-   "scene": 1
-  },
-  {
-   "id": "pexels-38454843",
-   "ts": 1786443499,
-   "session": "gh-2aa699",
-   "query": "server data center lights motion",
-   "scene": 1
-  },
-  {
-   "id": "pexels-18622821",
-   "ts": 1786443499,
-   "session": "gh-2aa699",
-   "query": "circuit board macro motion",
-   "scene": 2
-  },
-  {
-   "id": "pexels-5495890",
-   "ts": 1786443499,
-   "session": "gh-2aa699",
-   "query": "code editor screen scrolling",
-   "scene": 3
-  },
-  {
-   "id": "pexels-12913395",
-   "ts": 1786443499,
-   "session": "gh-2aa699",
-   "query": "code editor screen scrolling",
-   "scene": 3
-  },
-  {
    "id": "pexels-36148341",
    "ts": 1786443499,
    "session": "gh-2aa699",
@@ -2800,6 +2765,41 @@
    "session": "gh-7f5100",
    "query": "developer scrolling documentation laptop screen",
    "scene": 5
+  },
+  {
+   "id": "pexels-6354772",
+   "ts": 1788256185,
+   "session": "gh-d54f50",
+   "query": "server rack lights closeup dark",
+   "scene": 0
+  },
+  {
+   "id": "pexels-18069700",
+   "ts": 1788256185,
+   "session": "gh-d54f50",
+   "query": "circuit board macro motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-16727472",
+   "ts": 1788256185,
+   "session": "gh-d54f50",
+   "query": "data center servers gpu",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7220849",
+   "ts": 1788256185,
+   "session": "gh-d54f50",
+   "query": "chip manufacturing closeup",
+   "scene": 3
+  },
+  {
+   "id": "pexels-8128023",
+   "ts": 1788256185,
+   "session": "gh-d54f50",
+   "query": "terminal typing commands",
+   "scene": 4
   }
  ]
 }

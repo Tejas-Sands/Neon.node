@@ -1363,5 +1363,16 @@
   ],
   "ts": 1788244821,
   "session": "gh-7f5100"
+ },
+ {
+  "id": "49508982",
+  "title": "Apple caught off guard by AI demand for Mac Mini and Mac Studio",
+  "norm": "apple caught off guard by ai demand for mac mini and mac studio",
+  "subject_norm": "apple mac studio and mac mini",
+  "entities": [
+   "apple"
+  ],
+  "ts": 1788256250,
+  "session": "gh-d54f50"
  }
 ]
