@@ -1399,5 +1399,19 @@
   ],
   "ts": 1788334124,
   "session": "gh-81696d"
+ },
+ {
+  "id": "49527396",
+  "title": "The ChatGPT/Codex app bundles a full copy of LibreOffice",
+  "norm": "the chatgpt codex app bundles a full copy of libreoffice",
+  "subject_norm": "openai codex desktop app",
+  "entities": [
+   "openai",
+   "chatgpt/codex",
+   "libreoffice",
+   "codex"
+  ],
+  "ts": 1788345504,
+  "session": "gh-b93e82"
  }
 ]

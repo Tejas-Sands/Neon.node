@@ -3331,7 +3331,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 7981,
-      "fetched_at": 1788244821
+      "fetched_at": 1788345504
      },
      "snap72": {
       "views": 79,
@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1788244821
+      "fetched_at": 1788345504
      },
      "snap72": {
       "views": 22,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1788244821
+      "fetched_at": 1788345504
      },
      "snap72": {
       "views": 38,
@@ -4768,7 +4768,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1788244821
+      "fetched_at": 1788345504
      },
      "snap72": {
       "views": 15,
@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1788244821
+      "fetched_at": 1788345504
      },
      "snap72": {
       "views": 9,
@@ -4915,7 +4915,7 @@
       "ig_reels_avg_watch_time": 0,
       "fetched_at": 1787295615
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -4967,7 +4967,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3060,
-      "fetched_at": 1788244821
+      "fetched_at": 1788345504
      },
      "snap72": {
       "views": 7,
@@ -5633,7 +5633,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1778,
-      "fetched_at": 1788244821
+      "fetched_at": 1788345504
      },
      "snap72": {
       "views": 8,
@@ -5699,7 +5699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1788244821
+      "fetched_at": 1788345504
      },
      "snap72": {
       "views": 4,
@@ -5830,7 +5830,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1788244821
+      "fetched_at": 1788345504
      },
      "snap72": {
       "views": 3,
@@ -5897,8 +5897,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1788244821
+      "ig_reels_avg_watch_time": 2238,
+      "fetched_at": 1788345504
      },
      "snap72": {
       "views": 0,
@@ -6030,8 +6030,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1305,
-      "fetched_at": 1788244821
+      "ig_reels_avg_watch_time": 1121,
+      "fetched_at": 1788345504
      },
      "snap72": {
       "views": 2,
@@ -6095,8 +6095,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "ig_reels_avg_watch_time": 1881,
-      "fetched_at": 1788244821
+      "ig_reels_avg_watch_time": 2142,
+      "fetched_at": 1788345504
      },
      "snap72": {
       "views": 12,
@@ -6886,7 +6886,7 @@
       "fetched_at": 1788188233
      },
      "snap72": null,
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -7093,7 +7093,7 @@
     "instagram": {
      "latest": null,
      "snap72": null,
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -7178,6 +7178,54 @@
     "instagram": {
      "id": "18135763213623348",
      "posted_at": 1788334120
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788345402,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "The ChatGPT/Codex app bundles a full copy of LibreOffice",
+    "subject": "OpenAI Codex desktop app",
+    "url": "https://simonwillison.net/2026/Sep/1/codex-libreoffice/",
+    "source": "hn",
+    "keywords": [
+     "gpt",
+     "chatgpt"
+    ],
+    "viral_score": 10.93,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "ChatGPT Desktop Hidden LibreOffice",
+    "angle": "Simon Willison discovered that the OpenAI desktop app secretly bundles an entire 1.7GB runtime including Python, Node.js, and a full copy of LibreOffice.",
+    "insight": "AI desktop apps are becoming bloated operating systems in a box, bundling entire software suites locally just to handle specialized document tasks.",
+    "judge": "plan"
+   },
+   "style_pack": "cosmic-fantasy",
+   "format_pack": "quiz-reveal",
+   "seed": 576528629,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "PACK-QUIZ-REVEAL",
+   "style_epoch": 6,
+   "scene_count": 4,
+   "video_seconds": 20.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-b93e82",
+   "platforms": {
+    "instagram": {
+     "id": "18627466432022775",
+     "posted_at": 1788345501
     }
    },
    "metrics": {
