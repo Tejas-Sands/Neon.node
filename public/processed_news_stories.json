@@ -1385,5 +1385,19 @@
   ],
   "ts": 1788268345,
   "session": "gh-74305d"
+ },
+ {
+  "id": "49519939",
+  "title": "I trained a small transformer in 1.5hrs and it beats many LLMs",
+  "norm": "i trained a small transformer in 1 5hrs and it beats many llms",
+  "subject_norm": "small transformer arc agi",
+  "entities": [
+   "llms",
+   "small",
+   "transformer",
+   "arc-agi"
+  ],
+  "ts": 1788334124,
+  "session": "gh-81696d"
  }
 ]

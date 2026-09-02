@@ -2,48 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-7569433",
-   "ts": 1786455505,
-   "session": "gh-558385",
-   "query": "server room dark lights blinking",
-   "scene": 3
-  },
-  {
-   "id": "pexels-10685158",
-   "ts": 1786455505,
-   "session": "gh-558385",
-   "query": "server room dark lights blinking",
-   "scene": 3
-  },
-  {
-   "id": "pexels-36628009",
-   "ts": 1786514291,
-   "session": "gh-8210a4",
-   "query": "server rack lights flashing red dark",
-   "scene": 0
-  },
-  {
-   "id": "pexels-37398776",
-   "ts": 1786514291,
-   "session": "gh-8210a4",
-   "query": "server rack lights flashing red dark",
-   "scene": 0
-  },
-  {
-   "id": "pexels-26081803",
-   "ts": 1786514291,
-   "session": "gh-8210a4",
-   "query": "data center servers cooling fans motion",
-   "scene": 1
-  },
-  {
-   "id": "pexels-18069233",
-   "ts": 1786514291,
-   "session": "gh-8210a4",
-   "query": "data center servers cooling fans motion",
-   "scene": 1
-  },
-  {
    "id": "pexels-8720746",
    "ts": 1786514291,
    "session": "gh-8210a4",
@@ -2800,6 +2758,48 @@
    "session": "gh-74305d",
    "query": "network firewall security animation",
    "scene": 5
+  },
+  {
+   "id": "pexels-34516350",
+   "ts": 1788334065,
+   "session": "gh-81696d",
+   "query": "gpu chip macro lighting motion",
+   "scene": 0
+  },
+  {
+   "id": "pexels-4709299",
+   "ts": 1788334065,
+   "session": "gh-81696d",
+   "query": "terminal typing python code",
+   "scene": 1
+  },
+  {
+   "id": "pexels-36628014",
+   "ts": 1788334065,
+   "session": "gh-81696d",
+   "query": "terminal typing python code",
+   "scene": 1
+  },
+  {
+   "id": "pexels-28709421",
+   "ts": 1788334065,
+   "session": "gh-81696d",
+   "query": "neural network visualization data nodes",
+   "scene": 2
+  },
+  {
+   "id": "pexels-34582654",
+   "ts": 1788334065,
+   "session": "gh-81696d",
+   "query": "server rack lights flashing data center",
+   "scene": 3
+  },
+  {
+   "id": "pexels-32220524",
+   "ts": 1788334065,
+   "session": "gh-81696d",
+   "query": "server rack lights flashing data center",
+   "scene": 3
   }
  ]
 }

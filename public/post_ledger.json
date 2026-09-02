@@ -2538,7 +2538,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2998,
-      "fetched_at": 1788188233
+      "fetched_at": 1788334124
      },
      "snap72": {
       "views": 110,
@@ -2602,7 +2602,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1277,
-      "fetched_at": 1788188233
+      "fetched_at": 1788334124
      },
      "snap72": {
       "views": 14,
@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1788188233
+      "fetched_at": 1788334124
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1788188233
+      "fetched_at": 1788334124
      },
      "snap72": {
       "views": 16,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1788188233
+      "fetched_at": 1788334124
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1788188233
+      "fetched_at": 1788334124
      },
      "snap72": {
       "views": 4,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1788188233
+      "fetched_at": 1788334124
      },
      "snap72": {
       "views": 90,
@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1788188233
+      "fetched_at": 1788334124
      },
      "snap72": {
       "views": 29,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1788188233
+      "fetched_at": 1788334124
      },
      "snap72": {
       "views": 2,
@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1788188233
+      "fetched_at": 1788334124
      },
      "snap72": {
       "views": 7,
@@ -5567,7 +5567,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1788188233
+      "fetched_at": 1788334124
      },
      "snap72": {
       "views": 8,
@@ -6233,8 +6233,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 3159,
-      "fetched_at": 1788188233
+      "ig_reels_avg_watch_time": 2886,
+      "fetched_at": 1788334124
      },
      "snap72": {
       "views": 4,
@@ -6481,8 +6481,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1788188233
+      "ig_reels_avg_watch_time": 1082,
+      "fetched_at": 1788334124
      },
      "snap72": {
       "views": 112,
@@ -6988,7 +6988,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 144,
+      "reach": 137,
+      "likes": 3,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 3,
+      "ig_reels_avg_watch_time": 1823,
+      "fetched_at": 1788334124
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -7035,7 +7045,7 @@
     "instagram": {
      "latest": null,
      "snap72": null,
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -7122,6 +7132,52 @@
     "instagram": {
      "id": "18085846970259628",
      "posted_at": 1788268342
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788334065,
+   "posted_hour_utc": 7,
+   "channel": "news",
+   "topic": {
+    "title": "I trained a small transformer in 1.5hrs and it beats many LLMs",
+    "subject": "Small Transformer ARC-AGI",
+    "url": "https://mvakde.github.io/blog/44-on-arc-1/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "llm"
+    ],
+    "viral_score": 10.96,
+    "sources": [],
+    "display_title": "Trained Transformer Beats LLMs In Hours",
+    "angle": "An engineer trained a small transformer on a single 5090 GPU in just 1.5 hours that beats many LLMs on ARC-AGI by focusing on sample efficiency and output-only token training.",
+    "insight": "Chasing the lowest validation loss on small datasets can be misleading; optimizing strictly for output token supervision yields better scores with less variance.",
+    "judge": "plan"
+   },
+   "style_pack": "cosmic-fantasy",
+   "format_pack": "facts-explainer",
+   "seed": 1206510544,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 6,
+   "scene_count": 4,
+   "video_seconds": 25.4,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-81696d",
+   "platforms": {
+    "instagram": {
+     "id": "18135763213623348",
+     "posted_at": 1788334120
     }
    },
    "metrics": {
