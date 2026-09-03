@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-7579576",
-   "ts": 1786545896,
-   "session": "gh-a5c252",
-   "query": "trading chart screen metrics moving",
-   "scene": 2
-  },
-  {
-   "id": "pexels-15283169",
-   "ts": 1786545896,
-   "session": "gh-a5c252",
-   "query": "circuit board macro motion",
-   "scene": 3
-  },
-  {
-   "id": "pexels-5377268",
-   "ts": 1786604264,
-   "session": "gh-3a5d88",
-   "query": "terminal hacking code green matrix",
-   "scene": 0
-  },
-  {
-   "id": "pexels-34449249",
-   "ts": 1786604264,
-   "session": "gh-3a5d88",
-   "query": "data center servers blinking blue",
-   "scene": 1
-  },
-  {
-   "id": "pexels-35563918",
-   "ts": 1786604264,
-   "session": "gh-3a5d88",
-   "query": "network traffic security packets stream",
-   "scene": 2
-  },
-  {
-   "id": "pexels-31115111",
-   "ts": 1786604264,
-   "session": "gh-3a5d88",
-   "query": "network traffic security packets stream",
-   "scene": 2
-  },
-  {
-   "id": "pexels-5495899",
-   "ts": 1786604264,
-   "session": "gh-3a5d88",
-   "query": "code editor screen scrolling fast",
-   "scene": 3
-  },
-  {
-   "id": "pexels-5473804",
-   "ts": 1786604264,
-   "session": "gh-3a5d88",
-   "query": "cyber security warning interface pulse",
-   "scene": 4
-  },
-  {
-   "id": "pexels-8348323",
-   "ts": 1786618861,
-   "session": "gh-e6fcc1",
-   "query": "data center servers gpu",
-   "scene": 0
-  },
-  {
    "id": "pexels-5483083",
    "ts": 1786618861,
    "session": "gh-e6fcc1",
@@ -2800,6 +2737,69 @@
    "session": "gh-4194ac",
    "query": "code editor typing lines fast",
    "scene": 4
+  },
+  {
+   "id": "pexels-5473913",
+   "ts": 1788442965,
+   "session": "gh-bf6091",
+   "query": "terminal typing code fast",
+   "scene": 0
+  },
+  {
+   "id": "pexels-25935015",
+   "ts": 1788442965,
+   "session": "gh-bf6091",
+   "query": "code scrolling rust terminal",
+   "scene": 1
+  },
+  {
+   "id": "pexels-15439741",
+   "ts": 1788442965,
+   "session": "gh-bf6091",
+   "query": "data center servers blinking",
+   "scene": 2
+  },
+  {
+   "id": "pexels-5473804",
+   "ts": 1788442965,
+   "session": "gh-bf6091",
+   "query": "code editor highlight syntax",
+   "scene": 3
+  },
+  {
+   "id": "pexels-16049995",
+   "ts": 1788442965,
+   "session": "gh-bf6091",
+   "query": "code editor highlight syntax",
+   "scene": 3
+  },
+  {
+   "id": "pexels-18069831",
+   "ts": 1788442965,
+   "session": "gh-bf6091",
+   "query": "ai data processing visual",
+   "scene": 4
+  },
+  {
+   "id": "pexels-25935017",
+   "ts": 1788442965,
+   "session": "gh-bf6091",
+   "query": "ai data processing visual",
+   "scene": 4
+  },
+  {
+   "id": "pexels-8720756",
+   "ts": 1788442965,
+   "session": "gh-bf6091",
+   "query": "code compiling terminal output",
+   "scene": 5
+  },
+  {
+   "id": "pexels-5473802",
+   "ts": 1788442965,
+   "session": "gh-bf6091",
+   "query": "code compiling terminal output",
+   "scene": 5
   }
  ]
 }
