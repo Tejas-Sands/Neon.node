@@ -2538,7 +2538,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2998,
-      "fetched_at": 1788334124
+      "fetched_at": 1788428341
      },
      "snap72": {
       "views": 110,
@@ -2602,7 +2602,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1277,
-      "fetched_at": 1788334124
+      "fetched_at": 1788428341
      },
      "snap72": {
       "views": 14,
@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1788334124
+      "fetched_at": 1788428341
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1788334124
+      "fetched_at": 1788428341
      },
      "snap72": {
       "views": 16,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1788334124
+      "fetched_at": 1788428341
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1788334124
+      "fetched_at": 1788428341
      },
      "snap72": {
       "views": 4,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1788334124
+      "fetched_at": 1788428341
      },
      "snap72": {
       "views": 90,
@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1788334124
+      "fetched_at": 1788428341
      },
      "snap72": {
       "views": 29,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1788334124
+      "fetched_at": 1788428341
      },
      "snap72": {
       "views": 2,
@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1788334124
+      "fetched_at": 1788428341
      },
      "snap72": {
       "views": 7,
@@ -5567,7 +5567,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1788334124
+      "fetched_at": 1788428341
      },
      "snap72": {
       "views": 8,
@@ -6234,7 +6234,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2886,
-      "fetched_at": 1788334124
+      "fetched_at": 1788428341
      },
      "snap72": {
       "views": 4,
@@ -6482,7 +6482,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1082,
-      "fetched_at": 1788334124
+      "fetched_at": 1788428341
      },
      "snap72": {
       "views": 112,
@@ -6997,9 +6997,19 @@
       "saved": 0,
       "total_interactions": 3,
       "ig_reels_avg_watch_time": 1823,
-      "fetched_at": 1788334124
+      "fetched_at": 1788428341
      },
-     "snap72": null,
+     "snap72": {
+      "views": 144,
+      "reach": 137,
+      "likes": 3,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 3,
+      "ig_reels_avg_watch_time": 1823,
+      "fetched_at": 1788428341
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -7192,7 +7202,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 4299,
+      "fetched_at": 1788428341
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -7331,6 +7351,52 @@
     "instagram": {
      "id": "18100390355193827",
      "posted_at": 1788411541
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788428198,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "Quasar 438B: Europe's Leading AI Model",
+    "subject": "Quasar 438B AI Model",
+    "url": "https://multiversecomputing.com/resources/introducing-quasar-438b-europe-s-leading-ai-model",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "model"
+    ],
+    "viral_score": 8.88,
+    "sources": [],
+    "display_title": "Quasar 438B Beats Europe AI",
+    "angle": "Quasar 438B has emerged as Europe's top reasoning model, combining a score of 43 on the Intelligence Index with a rapid 15.3-second response time for 500 tokens.",
+    "insight": "By pairing heavy reasoning capability with sub-16-second response times, Quasar proves massive models no longer have to sacrifice speed for deep enterprise task execution.",
+    "judge": "plan"
+   },
+   "style_pack": "coral-pop",
+   "format_pack": "facts-explainer",
+   "seed": 1681455855,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 6,
+   "scene_count": 5,
+   "video_seconds": 26.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-4194ac",
+   "platforms": {
+    "instagram": {
+     "id": "18175547974434762",
+     "posted_at": 1788428338
     }
    },
    "metrics": {

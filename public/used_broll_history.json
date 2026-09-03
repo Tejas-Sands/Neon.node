@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-6091131",
-   "ts": 1786527098,
-   "session": "gh-f22266",
-   "query": "server racks dark lights data center",
-   "scene": 4
-  },
-  {
-   "id": "pexels-26953415",
-   "ts": 1786527098,
-   "session": "gh-f22266",
-   "query": "network traffic dashboard screen motion",
-   "scene": 5
-  },
-  {
-   "id": "pexels-5981923",
-   "ts": 1786545896,
-   "session": "gh-a5c252",
-   "query": "terminal code scrolling dark mode",
-   "scene": 0
-  },
-  {
-   "id": "pexels-7830154",
-   "ts": 1786545896,
-   "session": "gh-a5c252",
-   "query": "data center server racks blue",
-   "scene": 1
-  },
-  {
-   "id": "pexels-38860079",
-   "ts": 1786545896,
-   "session": "gh-a5c252",
-   "query": "trading chart screen metrics moving",
-   "scene": 2
-  },
-  {
    "id": "pexels-7579576",
    "ts": 1786545896,
    "session": "gh-a5c252",
@@ -2799,6 +2764,41 @@
    "ts": 1788411492,
    "session": "gh-b3e192",
    "query": "chip manufacturing macro motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-15439743",
+   "ts": 1788428198,
+   "session": "gh-4194ac",
+   "query": "datacenter servers gpu cluster flashing",
+   "scene": 0
+  },
+  {
+   "id": "pexels-8348315",
+   "ts": 1788428198,
+   "session": "gh-4194ac",
+   "query": "terminal output data scrolling screen",
+   "scene": 1
+  },
+  {
+   "id": "pexels-8676943",
+   "ts": 1788428198,
+   "session": "gh-4194ac",
+   "query": "chip manufacturing closeup silicon wafer",
+   "scene": 2
+  },
+  {
+   "id": "pexels-35160268",
+   "ts": 1788428198,
+   "session": "gh-4194ac",
+   "query": "neural network animation nodes connecting",
+   "scene": 3
+  },
+  {
+   "id": "pexels-5377697",
+   "ts": 1788428198,
+   "session": "gh-4194ac",
+   "query": "code editor typing lines fast",
    "scene": 4
   }
  ]
