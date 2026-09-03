@@ -4239,7 +4239,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1069,
-      "fetched_at": 1788268345
+      "fetched_at": 1788411544
      },
      "snap72": {
       "views": 115,
@@ -4370,7 +4370,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1788268345
+      "fetched_at": 1788411544
      },
      "snap72": {
       "views": 109,
@@ -4573,7 +4573,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3478,
-      "fetched_at": 1788268345
+      "fetched_at": 1788411544
      },
      "snap72": {
       "views": 11,
@@ -5035,7 +5035,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1296,
-      "fetched_at": 1788268345
+      "fetched_at": 1788411544
      },
      "snap72": {
       "views": 5,
@@ -5101,7 +5101,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1276,
-      "fetched_at": 1788268345
+      "fetched_at": 1788411544
      },
      "snap72": {
       "views": 42,
@@ -5237,7 +5237,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1568,
-      "fetched_at": 1788268345
+      "fetched_at": 1788411544
      },
      "snap72": {
       "views": 1,
@@ -5304,7 +5304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5887,
-      "fetched_at": 1788268345
+      "fetched_at": 1788411544
      },
      "snap72": {
       "views": 10,
@@ -6684,8 +6684,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1020,
-      "fetched_at": 1788256250
+      "ig_reels_avg_watch_time": 1019,
+      "fetched_at": 1788411544
      },
      "snap72": {
       "views": 155,
@@ -6752,8 +6752,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 7695,
-      "fetched_at": 1788268345
+      "ig_reels_avg_watch_time": 7175,
+      "fetched_at": 1788411544
      },
      "snap72": {
       "views": 10,
@@ -6817,8 +6817,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1224,
-      "fetched_at": 1788268345
+      "ig_reels_avg_watch_time": 1203,
+      "fetched_at": 1788411544
      },
      "snap72": {
       "views": 31,
@@ -6942,7 +6942,7 @@
       "fetched_at": 1788256250
      },
      "snap72": null,
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -7283,6 +7283,54 @@
     "instagram": {
      "id": "18046558214807124",
      "posted_at": 1788357825
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788411492,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "Three sites made 215,128 \u201cbest software\u201d pages for AI. Perplexity cites them",
+    "subject": "AI Search Citation Spam",
+    "url": "https://trellner.com/reports/manufactured-sources-behind-ai-recommendations/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "war"
+    ],
+    "viral_score": 10.11,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "215000 Fake Pages Fool Perplexity",
+    "angle": "Three newly created sites flooded the web with over 200,000 AI-generated software review pages, successfully manipulating Perplexity citations.",
+    "insight": "AI retrieval relies heavily on web grounding, making it vulnerable to automated, low-quality content farms outranking established authorities.",
+    "judge": "plan"
+   },
+   "style_pack": "mono-brutalist",
+   "format_pack": "legacy-news",
+   "seed": 1094969149,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "TWO-WORD COLD OPEN",
+   "style_epoch": 6,
+   "scene_count": 5,
+   "video_seconds": 35.0,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-b3e192",
+   "platforms": {
+    "instagram": {
+     "id": "18100390355193827",
+     "posted_at": 1788411541
     }
    },
    "metrics": {

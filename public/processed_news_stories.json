@@ -1422,5 +1422,19 @@
   "entities": [],
   "ts": 1788357829,
   "session": "gh-68e7b2"
+ },
+ {
+  "id": "49536375",
+  "title": "Three sites made 215,128 \u201cbest software\u201d pages for AI. Perplexity cites them",
+  "norm": "three sites made 215 128 best software pages for ai perplexity cites them",
+  "subject_norm": "ai search citation spam",
+  "entities": [
+   "perplexity",
+   "search",
+   "citation",
+   "spam"
+  ],
+  "ts": 1788411544,
+  "session": "gh-b3e192"
  }
 ]
