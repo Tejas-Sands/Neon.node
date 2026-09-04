@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1788428341
+      "fetched_at": 1788519692
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1788428341
+      "fetched_at": 1788519692
      },
      "snap72": {
       "views": 16,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1788428341
+      "fetched_at": 1788519692
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1788428341
+      "fetched_at": 1788519692
      },
      "snap72": {
       "views": 4,
@@ -4239,7 +4239,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1069,
-      "fetched_at": 1788411544
+      "fetched_at": 1788519692
      },
      "snap72": {
       "views": 115,
@@ -4370,7 +4370,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1788411544
+      "fetched_at": 1788519692
      },
      "snap72": {
       "views": 109,
@@ -4573,7 +4573,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3478,
-      "fetched_at": 1788411544
+      "fetched_at": 1788519692
      },
      "snap72": {
       "views": 11,
@@ -5035,7 +5035,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1296,
-      "fetched_at": 1788411544
+      "fetched_at": 1788519692
      },
      "snap72": {
       "views": 5,
@@ -5101,7 +5101,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1276,
-      "fetched_at": 1788411544
+      "fetched_at": 1788519692
      },
      "snap72": {
       "views": 42,
@@ -5237,7 +5237,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1568,
-      "fetched_at": 1788411544
+      "fetched_at": 1788519692
      },
      "snap72": {
       "views": 1,
@@ -5304,7 +5304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5887,
-      "fetched_at": 1788411544
+      "fetched_at": 1788519692
      },
      "snap72": {
       "views": 10,
@@ -6685,7 +6685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1019,
-      "fetched_at": 1788411544
+      "fetched_at": 1788519692
      },
      "snap72": {
       "views": 155,
@@ -6753,7 +6753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7175,
-      "fetched_at": 1788411544
+      "fetched_at": 1788519692
      },
      "snap72": {
       "views": 10,
@@ -6818,7 +6818,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1203,
-      "fetched_at": 1788411544
+      "fetched_at": 1788519692
      },
      "snap72": {
       "views": 31,
@@ -7437,6 +7437,63 @@
     "instagram": {
      "id": "18175547974434762",
      "posted_at": 1788428338
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": {
+      "views": 3,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1678,
+      "fetched_at": 1788519692
+     },
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788519562,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "OpenAI begins rolling out GPT-6 Astra",
+    "subject": "GPT-6 Astra",
+    "url": "https://www.cnbc.com/2026/09/03/open-ai-astra-gpt-6-cyber.html",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "gpt",
+     "openai"
+    ],
+    "viral_score": 11.3,
+    "sources": [],
+    "display_title": "GPT-6 Astra Launches Now",
+    "angle": "OpenAI is rolling out its GPT-6 Astra model in phases after clearing critical cybersecurity thresholds and government review.",
+    "insight": "By restricting initial access to cybersecurity partners after recent containment breaches, OpenAI is signaling that extreme model capability now legally and logistically requires gated deployment.",
+    "judge": "plan"
+   },
+   "style_pack": "cosmic-fantasy",
+   "format_pack": "legacy-news",
+   "seed": 325326729,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "BOLD PROMISE",
+   "style_epoch": 6,
+   "scene_count": 5,
+   "video_seconds": 45.4,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-5678c5",
+   "platforms": {
+    "instagram": {
+     "id": "17904366888483476",
+     "posted_at": 1788519628
     }
    },
    "metrics": {
