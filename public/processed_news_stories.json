@@ -1454,5 +1454,14 @@
   "entities": [],
   "ts": 1788443788,
   "session": "gh-bf6091"
+ },
+ {
+  "id": "49554520",
+  "title": "Qwen 3.8 27B available on Cerebras at 1500 tokens/s",
+  "norm": "qwen 3 8 27b available on cerebras at 1500 tokens s",
+  "subject_norm": "qwen 3 8 27b on cerebras",
+  "entities": [],
+  "ts": 1788503073,
+  "session": "gh-df9128"
  }
 ]

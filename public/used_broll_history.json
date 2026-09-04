@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-5483083",
-   "ts": 1786618861,
-   "session": "gh-e6fcc1",
-   "query": "terminal hacking code green",
-   "scene": 1
-  },
-  {
-   "id": "pexels-5378132",
-   "ts": 1786618861,
-   "session": "gh-e6fcc1",
-   "query": "terminal hacking code green",
-   "scene": 1
-  },
-  {
-   "id": "pexels-5378129",
-   "ts": 1786618861,
-   "session": "gh-e6fcc1",
-   "query": "code editor typing screen",
-   "scene": 2
-  },
-  {
-   "id": "pexels-5473913",
-   "ts": 1786618861,
-   "session": "gh-e6fcc1",
-   "query": "code editor typing screen",
-   "scene": 2
-  },
-  {
-   "id": "pexels-34638592",
-   "ts": 1786618861,
-   "session": "gh-e6fcc1",
-   "query": "neural network visualization motion",
-   "scene": 3
-  },
-  {
-   "id": "pexels-35417425",
-   "ts": 1786618861,
-   "session": "gh-e6fcc1",
-   "query": "trading chart numbers moving",
-   "scene": 4
-  },
-  {
-   "id": "pexels-5377532",
-   "ts": 1786636003,
-   "session": "gh-cc87ef",
-   "query": "terminal hacking code red screen",
-   "scene": 0
-  },
-  {
-   "id": "pexels-35988530",
-   "ts": 1786636003,
-   "session": "gh-cc87ef",
-   "query": "server data center error lights",
-   "scene": 1
-  },
-  {
-   "id": "pexels-18069700",
-   "ts": 1786636003,
-   "session": "gh-cc87ef",
-   "query": "code editor screen scrolling fast",
-   "scene": 2
-  },
-  {
    "id": "pexels-15440319",
    "ts": 1786636003,
    "session": "gh-cc87ef",
@@ -2799,6 +2736,69 @@
    "ts": 1788442965,
    "session": "gh-bf6091",
    "query": "code compiling terminal output",
+   "scene": 5
+  },
+  {
+   "id": "pexels-35091908",
+   "ts": 1788502271,
+   "session": "gh-df9128",
+   "query": "data center servers gpu blinking lights",
+   "scene": 0
+  },
+  {
+   "id": "pexels-7220850",
+   "ts": 1788502271,
+   "session": "gh-df9128",
+   "query": "chip manufacturing closeup macro motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-35772615",
+   "ts": 1788502271,
+   "session": "gh-df9128",
+   "query": "chip manufacturing closeup macro motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-8721653",
+   "ts": 1788502271,
+   "session": "gh-df9128",
+   "query": "terminal typing commands fast code",
+   "scene": 2
+  },
+  {
+   "id": "pexels-38902001",
+   "ts": 1788502271,
+   "session": "gh-df9128",
+   "query": "code editor screen scrolling lines",
+   "scene": 3
+  },
+  {
+   "id": "pexels-33314914",
+   "ts": 1788502271,
+   "session": "gh-df9128",
+   "query": "code editor screen scrolling lines",
+   "scene": 3
+  },
+  {
+   "id": "pexels-17555904",
+   "ts": 1788502271,
+   "session": "gh-df9128",
+   "query": "neural network visualization motion nodes",
+   "scene": 4
+  },
+  {
+   "id": "pexels-34336742",
+   "ts": 1788502271,
+   "session": "gh-df9128",
+   "query": "neural network visualization motion nodes",
+   "scene": 4
+  },
+  {
+   "id": "pexels-37616259",
+   "ts": 1788502271,
+   "session": "gh-df9128",
+   "query": "network traffic dashboard screen motion",
    "scene": 5
   }
  ]
