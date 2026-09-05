@@ -2982,7 +2982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2642,
-      "fetched_at": 1788519692
+      "fetched_at": 1788619054
      },
      "snap72": {
       "views": 11,
@@ -3216,7 +3216,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1496,
-      "fetched_at": 1788519692
+      "fetched_at": 1788619054
      },
      "snap72": {
       "views": 16,
@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1788519692
+      "fetched_at": 1788619054
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1788519692
+      "fetched_at": 1788619054
      },
      "snap72": {
       "views": 4,
@@ -4239,7 +4239,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1069,
-      "fetched_at": 1788519692
+      "fetched_at": 1788619054
      },
      "snap72": {
       "views": 115,
@@ -4370,7 +4370,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1788519692
+      "fetched_at": 1788619054
      },
      "snap72": {
       "views": 109,
@@ -4573,7 +4573,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3478,
-      "fetched_at": 1788519692
+      "fetched_at": 1788619054
      },
      "snap72": {
       "views": 11,
@@ -5964,7 +5964,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1596,
-      "fetched_at": 1788503073
+      "fetched_at": 1788619054
      },
      "snap72": {
       "views": 2,
@@ -6165,7 +6165,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 718,
-      "fetched_at": 1788503073
+      "fetched_at": 1788619054
      },
      "snap72": {
       "views": 4,
@@ -6416,7 +6416,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4974,
-      "fetched_at": 1788503073
+      "fetched_at": 1788619054
      },
      "snap72": {
       "views": 4,
@@ -6550,7 +6550,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2032,
-      "fetched_at": 1788503073
+      "fetched_at": 1788619054
      },
      "snap72": {
       "views": 38,
@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1788503073
+      "fetched_at": 1788619054
      },
      "snap72": {
       "views": 0,
@@ -7356,9 +7356,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1788503073
+      "fetched_at": 1788619054
      },
-     "snap72": null,
+     "snap72": {
+      "views": 23,
+      "reach": 19,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1528,
+      "fetched_at": 1788619054
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -7414,9 +7424,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1788503073
+      "fetched_at": 1788619054
      },
-     "snap72": null,
+     "snap72": {
+      "views": 6,
+      "reach": 6,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2046,
+      "fetched_at": 1788619054
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -7518,7 +7538,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 30,
+      "reach": 31,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1287,
+      "fetched_at": 1788619054
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -7565,6 +7595,52 @@
     "instagram": {
      "id": "18463332706140422",
      "posted_at": 1788538318
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788618879,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "Corporate America is getting hooked on open-source AI",
+    "subject": "Corporate America is getting hooked on open-source AI",
+    "url": "https://www.nytimes.com/2026/09/04/technology/open-source-ai-anthropic-openai.html",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "open-sourc"
+    ],
+    "viral_score": 9.79,
+    "sources": [],
+    "display_title": "",
+    "angle": "",
+    "insight": "",
+    "judge": "none"
+   },
+   "style_pack": "ice-electric",
+   "format_pack": "legacy-news",
+   "seed": 835081103,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "CURIOSITY GAP",
+   "style_epoch": 6,
+   "scene_count": 6,
+   "video_seconds": 50.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-58274a",
+   "platforms": {
+    "instagram": {
+     "id": "17913885417449716",
+     "posted_at": 1788619050
     }
    },
    "metrics": {
