@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-34336609",
-   "ts": 1786712877,
-   "session": "gh-b1a70d",
-   "query": "data flow security network animation",
-   "scene": 4
-  },
-  {
-   "id": "pexels-34550739",
-   "ts": 1786712877,
-   "session": "gh-b1a70d",
-   "query": "data flow security network animation",
-   "scene": 4
-  },
-  {
-   "id": "pexels-5925286",
-   "ts": 1786773424,
-   "session": "gh-753e15",
-   "query": "browser interface code scrolling screen",
-   "scene": 0
-  },
-  {
-   "id": "pexels-38993329",
-   "ts": 1786773424,
-   "session": "gh-753e15",
-   "query": "terminal lines typing code screen",
-   "scene": 1
-  },
-  {
-   "id": "pexels-15439743",
-   "ts": 1786773424,
-   "session": "gh-753e15",
-   "query": "chip processor microchip macro motion",
-   "scene": 2
-  },
-  {
-   "id": "pexels-12893567",
-   "ts": 1786773424,
-   "session": "gh-753e15",
-   "query": "developer typing laptop code office",
-   "scene": 3
-  },
-  {
-   "id": "pexels-38774818",
-   "ts": 1786773424,
-   "session": "gh-753e15",
-   "query": "server racks glowing data center",
-   "scene": 4
-  },
-  {
-   "id": "pexels-12145873",
-   "ts": 1786788714,
-   "session": "gh-4f3647",
-   "query": "terminal scrolling error text code",
-   "scene": 0
-  },
-  {
-   "id": "pexels-5377690",
-   "ts": 1786788714,
-   "session": "gh-4f3647",
-   "query": "code editor typing cursor blinking",
-   "scene": 1
-  },
-  {
    "id": "pexels-6755168",
    "ts": 1786788714,
    "session": "gh-4f3647",
@@ -2800,6 +2737,69 @@
    "session": "gh-cc579f",
    "query": "neural network visualization motion",
    "scene": 4
+  },
+  {
+   "id": "pexels-8802320",
+   "ts": 1788599686,
+   "session": "gh-d226bc",
+   "query": "shopping app search interface scrolling",
+   "scene": 0
+  },
+  {
+   "id": "pexels-6549980",
+   "ts": 1788599686,
+   "session": "gh-d226bc",
+   "query": "data center server racks blinking",
+   "scene": 1
+  },
+  {
+   "id": "pexels-4543502",
+   "ts": 1788599686,
+   "session": "gh-d226bc",
+   "query": "data center server racks blinking",
+   "scene": 1
+  },
+  {
+   "id": "pexels-38431825",
+   "ts": 1788599686,
+   "session": "gh-d226bc",
+   "query": "ecommerce price chart rising animation",
+   "scene": 2
+  },
+  {
+   "id": "pexels-38993368",
+   "ts": 1788599686,
+   "session": "gh-d226bc",
+   "query": "ecommerce price chart rising animation",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7579575",
+   "ts": 1788599686,
+   "session": "gh-d226bc",
+   "query": "stock market chart green red lines",
+   "scene": 3
+  },
+  {
+   "id": "pexels-12898223",
+   "ts": 1788599686,
+   "session": "gh-d226bc",
+   "query": "terminal code scrolling matrix green",
+   "scene": 4
+  },
+  {
+   "id": "pexels-34459460",
+   "ts": 1788599686,
+   "session": "gh-d226bc",
+   "query": "terminal code scrolling matrix green",
+   "scene": 4
+  },
+  {
+   "id": "pexels-6611945",
+   "ts": 1788599686,
+   "session": "gh-d226bc",
+   "query": "person scrolling phone ui dark",
+   "scene": 5
   }
  ]
 }
