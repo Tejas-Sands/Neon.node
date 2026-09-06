@@ -2,48 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-4974882",
-   "ts": 1786807148,
-   "session": "gh-3b6c00",
-   "query": "developer typing code terminal",
-   "scene": 4
-  },
-  {
-   "id": "pexels-33278733",
-   "ts": 1786862908,
-   "session": "gh-b3917c",
-   "query": "terminal hacking code green matrix",
-   "scene": 0
-  },
-  {
-   "id": "pexels-8720756",
-   "ts": 1786862908,
-   "session": "gh-b3917c",
-   "query": "code editor screen scrolling dark",
-   "scene": 1
-  },
-  {
-   "id": "pexels-7989668",
-   "ts": 1786862908,
-   "session": "gh-b3917c",
-   "query": "code editor screen scrolling dark",
-   "scene": 1
-  },
-  {
-   "id": "pexels-34567987",
-   "ts": 1786862908,
-   "session": "gh-b3917c",
-   "query": "network traffic glowing nodes",
-   "scene": 2
-  },
-  {
-   "id": "pexels-6498981",
-   "ts": 1786862908,
-   "session": "gh-b3917c",
-   "query": "server data center blue lights",
-   "scene": 3
-  },
-  {
    "id": "pexels-7767523",
    "ts": 1786862908,
    "session": "gh-b3917c",
@@ -2799,6 +2757,48 @@
    "ts": 1788675348,
    "session": "gh-5ac378",
    "query": "white house drone motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-32838970",
+   "ts": 1788691496,
+   "session": "gh-a5bdc6",
+   "query": "terminal window typing commands linux",
+   "scene": 0
+  },
+  {
+   "id": "pexels-9371263",
+   "ts": 1788691496,
+   "session": "gh-a5bdc6",
+   "query": "code editor scrolling lines rapidly",
+   "scene": 1
+  },
+  {
+   "id": "pexels-20523328",
+   "ts": 1788691496,
+   "session": "gh-a5bdc6",
+   "query": "server room lights pulsing data",
+   "scene": 2
+  },
+  {
+   "id": "pexels-34997352",
+   "ts": 1788691496,
+   "session": "gh-a5bdc6",
+   "query": "security dashboard network nodes moving",
+   "scene": 3
+  },
+  {
+   "id": "pexels-6140558",
+   "ts": 1788691496,
+   "session": "gh-a5bdc6",
+   "query": "mobile app ui screen swiping",
+   "scene": 4
+  },
+  {
+   "id": "pexels-9559150",
+   "ts": 1788691496,
+   "session": "gh-a5bdc6",
+   "query": "mobile app ui screen swiping",
    "scene": 4
   }
  ]
