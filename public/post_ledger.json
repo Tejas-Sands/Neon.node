@@ -3331,7 +3331,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 7981,
-      "fetched_at": 1788538322
+      "fetched_at": 1788675411
      },
      "snap72": {
       "views": 79,
@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1788538322
+      "fetched_at": 1788675411
      },
      "snap72": {
       "views": 22,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1788538322
+      "fetched_at": 1788675411
      },
      "snap72": {
       "views": 90,
@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1788538322
+      "fetched_at": 1788675411
      },
      "snap72": {
       "views": 29,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1788538322
+      "fetched_at": 1788675411
      },
      "snap72": {
       "views": 38,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1788538322
+      "fetched_at": 1788675411
      },
      "snap72": {
       "views": 2,
@@ -5035,7 +5035,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1296,
-      "fetched_at": 1788519692
+      "fetched_at": 1788675411
      },
      "snap72": {
       "views": 5,
@@ -5101,7 +5101,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1276,
-      "fetched_at": 1788519692
+      "fetched_at": 1788675411
      },
      "snap72": {
       "views": 42,
@@ -5237,7 +5237,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1568,
-      "fetched_at": 1788519692
+      "fetched_at": 1788675411
      },
      "snap72": {
       "views": 1,
@@ -5304,7 +5304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5887,
-      "fetched_at": 1788519692
+      "fetched_at": 1788675411
      },
      "snap72": {
       "views": 10,
@@ -6685,7 +6685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1019,
-      "fetched_at": 1788519692
+      "fetched_at": 1788675411
      },
      "snap72": {
       "views": 155,
@@ -6753,7 +6753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7175,
-      "fetched_at": 1788519692
+      "fetched_at": 1788675411
      },
      "snap72": {
       "views": 10,
@@ -6818,7 +6818,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1203,
-      "fetched_at": 1788519692
+      "fetched_at": 1788675411
      },
      "snap72": {
       "views": 31,
@@ -7490,9 +7490,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1788519692
+      "fetched_at": 1788675411
      },
-     "snap72": null,
+     "snap72": {
+      "views": 3,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1678,
+      "fetched_at": 1788675411
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -7599,7 +7609,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 2,
+      "reach": 2,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 828,
+      "fetched_at": 1788675411
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -7641,6 +7661,51 @@
     "instagram": {
      "id": "17913885417449716",
      "posted_at": 1788619050
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788675348,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Record-High 89% in U.S. Say Government Corruption Widespread",
+    "subject": "Gallup US Corruption Poll",
+    "url": "https://news.gallup.com/poll/713933/record-high-say-government-corruption-widespread.aspx",
+    "source": "hn",
+    "keywords": [
+     "record"
+    ],
+    "viral_score": 9.26,
+    "sources": [],
+    "display_title": "89 Percent US Corruption Record",
+    "angle": "A record-high 89 percent of Americans now view government corruption as widespread, pushing the U.S. past OECD medians and matching developing nation levels.",
+    "insight": "While Democrats' views swing based on who is in the White House, Republicans show a steady underlying distrust regardless of party power.",
+    "judge": "plan"
+   },
+   "style_pack": "desert-dune",
+   "format_pack": "facts-explainer",
+   "seed": 412795875,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 7,
+   "scene_count": 5,
+   "video_seconds": 25.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-5ac378",
+   "platforms": {
+    "instagram": {
+     "id": "18156953083446490",
+     "posted_at": 1788675407
     }
    },
    "metrics": {

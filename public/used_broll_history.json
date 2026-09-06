@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-6755159",
-   "ts": 1786807148,
-   "session": "gh-3b6c00",
-   "query": "chip semiconductor manufacturing motion",
-   "scene": 1
-  },
-  {
-   "id": "pexels-12896413",
-   "ts": 1786807148,
-   "session": "gh-3b6c00",
-   "query": "code editor screen scrolling lines",
-   "scene": 2
-  },
-  {
-   "id": "pexels-12571926",
-   "ts": 1786807148,
-   "session": "gh-3b6c00",
-   "query": "network traffic data visualization",
-   "scene": 3
-  },
-  {
-   "id": "pexels-37616088",
-   "ts": 1786807148,
-   "session": "gh-3b6c00",
-   "query": "network traffic data visualization",
-   "scene": 3
-  },
-  {
-   "id": "pexels-5495901",
-   "ts": 1786807148,
-   "session": "gh-3b6c00",
-   "query": "developer typing code terminal",
-   "scene": 4
-  },
-  {
    "id": "pexels-4974882",
    "ts": 1786807148,
    "session": "gh-3b6c00",
@@ -2800,6 +2765,41 @@
    "session": "gh-58274a",
    "query": "circuit board macro motion",
    "scene": 5
+  },
+  {
+   "id": "pexels-29549360",
+   "ts": 1788675348,
+   "session": "gh-5ac378",
+   "query": "washington dc capitol building aerial",
+   "scene": 0
+  },
+  {
+   "id": "pexels-7429834",
+   "ts": 1788675348,
+   "session": "gh-5ac378",
+   "query": "world map digital network motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-35771140",
+   "ts": 1788675348,
+   "session": "gh-5ac378",
+   "query": "financial chart screen moving",
+   "scene": 2
+  },
+  {
+   "id": "pexels-10204159",
+   "ts": 1788675348,
+   "session": "gh-5ac378",
+   "query": "voter ballot box hand motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-39301536",
+   "ts": 1788675348,
+   "session": "gh-5ac378",
+   "query": "white house drone motion",
+   "scene": 4
   }
  ]
 }
