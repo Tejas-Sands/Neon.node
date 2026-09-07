@@ -1561,5 +1561,17 @@
   ],
   "ts": 1788771875,
   "session": "gh-96bdb4"
+ },
+ {
+  "id": "49594251",
+  "title": "Switzerland's Federal Government Is Replacing Microsoft on 3k Computers",
+  "norm": "switzerland s federal government is replacing microsoft on 3k computers",
+  "subject_norm": "switzerland opendesk migration",
+  "entities": [
+   "microsoft",
+   "opendesk"
+  ],
+  "ts": 1788786599,
+  "session": "gh-bbecea"
  }
 ]

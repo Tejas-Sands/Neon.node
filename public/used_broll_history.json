@@ -2,48 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-32046805",
-   "ts": 1786956605,
-   "session": "gh-90bb5f",
-   "query": "data center servers blinking lights",
-   "scene": 1
-  },
-  {
-   "id": "pexels-5473800",
-   "ts": 1786956605,
-   "session": "gh-90bb5f",
-   "query": "data center servers blinking lights",
-   "scene": 1
-  },
-  {
-   "id": "pexels-38902001",
-   "ts": 1786956605,
-   "session": "gh-90bb5f",
-   "query": "network security dashboard metrics",
-   "scene": 2
-  },
-  {
-   "id": "pexels-6931255",
-   "ts": 1786956605,
-   "session": "gh-90bb5f",
-   "query": "network security dashboard metrics",
-   "scene": 2
-  },
-  {
-   "id": "pexels-5474272",
-   "ts": 1786956605,
-   "session": "gh-90bb5f",
-   "query": "cyber security firewall shield animation",
-   "scene": 3
-  },
-  {
-   "id": "pexels-36644498",
-   "ts": 1786956605,
-   "session": "gh-90bb5f",
-   "query": "server room dark blue lights",
-   "scene": 4
-  },
-  {
    "id": "pexels-19532053",
    "ts": 1786956605,
    "session": "gh-90bb5f",
@@ -2800,6 +2758,48 @@
    "session": "gh-96bdb4",
    "query": "cyber security firewall shield grid",
    "scene": 6
+  },
+  {
+   "id": "pexels-36740307",
+   "ts": 1788786537,
+   "session": "gh-bbecea",
+   "query": "server racks glowing data center",
+   "scene": 0
+  },
+  {
+   "id": "pexels-38870359",
+   "ts": 1788786537,
+   "session": "gh-bbecea",
+   "query": "financial dashboard charts motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-32259631",
+   "ts": 1788786537,
+   "session": "gh-bbecea",
+   "query": "terminal typing code commands",
+   "scene": 2
+  },
+  {
+   "id": "pexels-6633341",
+   "ts": 1788786537,
+   "session": "gh-bbecea",
+   "query": "terminal typing code commands",
+   "scene": 2
+  },
+  {
+   "id": "pexels-17144481",
+   "ts": 1788786537,
+   "session": "gh-bbecea",
+   "query": "network nodes digital security motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-37342578",
+   "ts": 1788786537,
+   "session": "gh-bbecea",
+   "query": "network nodes digital security motion",
+   "scene": 3
   }
  ]
 }
