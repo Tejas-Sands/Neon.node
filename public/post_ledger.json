@@ -3331,7 +3331,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 7981,
-      "fetched_at": 1788675411
+      "fetched_at": 1788771875
      },
      "snap72": {
       "views": 79,
@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1788675411
+      "fetched_at": 1788771875
      },
      "snap72": {
       "views": 22,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1788675411
+      "fetched_at": 1788771875
      },
      "snap72": {
       "views": 90,
@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1788675411
+      "fetched_at": 1788771875
      },
      "snap72": {
       "views": 29,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1788675411
+      "fetched_at": 1788771875
      },
      "snap72": {
       "views": 38,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1788675411
+      "fetched_at": 1788771875
      },
      "snap72": {
       "views": 2,
@@ -5035,7 +5035,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1296,
-      "fetched_at": 1788675411
+      "fetched_at": 1788771875
      },
      "snap72": {
       "views": 5,
@@ -5101,7 +5101,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1276,
-      "fetched_at": 1788675411
+      "fetched_at": 1788771875
      },
      "snap72": {
       "views": 42,
@@ -5237,7 +5237,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1568,
-      "fetched_at": 1788675411
+      "fetched_at": 1788771875
      },
      "snap72": {
       "views": 1,
@@ -5304,7 +5304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5887,
-      "fetched_at": 1788675411
+      "fetched_at": 1788771875
      },
      "snap72": {
       "views": 10,
@@ -6685,7 +6685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1019,
-      "fetched_at": 1788675411
+      "fetched_at": 1788771875
      },
      "snap72": {
       "views": 155,
@@ -6753,7 +6753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7175,
-      "fetched_at": 1788675411
+      "fetched_at": 1788771875
      },
      "snap72": {
       "views": 10,
@@ -6818,7 +6818,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1203,
-      "fetched_at": 1788675411
+      "fetched_at": 1788771875
      },
      "snap72": {
       "views": 31,
@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1788675411
+      "fetched_at": 1788771875
      },
      "snap72": {
       "views": 3,
@@ -7730,7 +7730,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 16,
+      "reach": 14,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1655,
+      "fetched_at": 1788771875
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -7819,6 +7829,51 @@
     "instagram": {
      "id": "18112936334321382",
      "posted_at": 1788757200
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788771814,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "Your intellectual fly is open when you use an LLM to author a post (2025)",
+    "subject": "Your intellectual fly is open when you use an LLM to author a post (2025)",
+    "url": "https://bcantrill.dtrace.org/2025/12/05/your-intellectual-fly-is-open/",
+    "source": "hn",
+    "keywords": [
+     "llm"
+    ],
+    "viral_score": 9.2,
+    "sources": [],
+    "display_title": "",
+    "angle": "",
+    "insight": "",
+    "judge": "none"
+   },
+   "style_pack": "rosewood-vintage",
+   "format_pack": "legacy-news",
+   "seed": 1895644734,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "URGENCY",
+   "style_epoch": 7,
+   "scene_count": 7,
+   "video_seconds": 55.8,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-96bdb4",
+   "platforms": {
+    "instagram": {
+     "id": "18028652477848986",
+     "posted_at": 1788771871
     }
    },
    "metrics": {

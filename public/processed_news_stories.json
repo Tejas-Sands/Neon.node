@@ -1550,5 +1550,16 @@
   ],
   "ts": 1788757203,
   "session": "gh-9bb6bd"
+ },
+ {
+  "id": "49585644",
+  "title": "Your intellectual fly is open when you use an LLM to author a post (2025)",
+  "norm": "your intellectual fly is open when you use an llm to author a post 2025",
+  "subject_norm": null,
+  "entities": [
+   "llm"
+  ],
+  "ts": 1788771875,
+  "session": "gh-96bdb4"
  }
 ]
