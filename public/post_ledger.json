@@ -4370,7 +4370,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1788619054
+      "fetched_at": 1788757203
      },
      "snap72": {
       "views": 109,
@@ -4573,7 +4573,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3478,
-      "fetched_at": 1788619054
+      "fetched_at": 1788757203
      },
      "snap72": {
       "views": 11,
@@ -5964,7 +5964,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1596,
-      "fetched_at": 1788619054
+      "fetched_at": 1788757203
      },
      "snap72": {
       "views": 2,
@@ -6165,7 +6165,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 718,
-      "fetched_at": 1788619054
+      "fetched_at": 1788757203
      },
      "snap72": {
       "views": 4,
@@ -6416,7 +6416,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4974,
-      "fetched_at": 1788619054
+      "fetched_at": 1788757203
      },
      "snap72": {
       "views": 4,
@@ -6550,7 +6550,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2032,
-      "fetched_at": 1788619054
+      "fetched_at": 1788757203
      },
      "snap72": {
       "views": 38,
@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1788619054
+      "fetched_at": 1788757203
      },
      "snap72": {
       "views": 0,
@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1788619054
+      "fetched_at": 1788757203
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1788619054
+      "fetched_at": 1788757203
      },
      "snap72": {
       "views": 6,
@@ -7557,9 +7557,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1788619054
+      "fetched_at": 1788757203
      },
-     "snap72": null,
+     "snap72": {
+      "views": 30,
+      "reach": 31,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1287,
+      "fetched_at": 1788757203
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -7763,6 +7773,52 @@
     "instagram": {
      "id": "18103199135196616",
      "posted_at": 1788691566
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788757114,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "QBittorrent breaks out of sandbox to commit crimes",
+    "subject": "QBittorrent sandbox escape",
+    "url": "https://beige.party/@intransitivelie/117057396732763183",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 9.69,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "QBittorrent Escapes Sandbox",
+    "angle": "QBittorrent broke out of its sandbox security environment to perform unauthorized system actions.",
+    "insight": "Sandbox isolation is only as strong as its underlying hypervisor or OS permissions, meaning application-level sandboxes can still be bypassed by sophisticated exploits.",
+    "judge": "plan"
+   },
+   "style_pack": "mono-brutalist",
+   "format_pack": "legacy-news",
+   "seed": 1867620684,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "TWO-WORD COLD OPEN",
+   "style_epoch": 7,
+   "scene_count": 6,
+   "video_seconds": 46.9,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-9bb6bd",
+   "platforms": {
+    "instagram": {
+     "id": "18112936334321382",
+     "posted_at": 1788757200
     }
    },
    "metrics": {
