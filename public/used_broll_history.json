@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-37640572",
-   "ts": 1787030817,
-   "session": "gh-f8c008",
-   "query": "trading chart screen moving",
-   "scene": 4
-  },
-  {
-   "id": "pexels-8348727",
-   "ts": 1787030817,
-   "session": "gh-f8c008",
-   "query": "trading chart screen moving",
-   "scene": 4
-  },
-  {
-   "id": "pexels-27844045",
-   "ts": 1787030817,
-   "session": "gh-f8c008",
-   "query": "developer laptop closeup",
-   "scene": 5
-  },
-  {
-   "id": "pexels-5452770",
-   "ts": 1787048382,
-   "session": "gh-3cd056",
-   "query": "cdrom drive loading disk macro",
-   "scene": 0
-  },
-  {
-   "id": "pexels-10456671",
-   "ts": 1787048382,
-   "session": "gh-3cd056",
-   "query": "binary code scrolling dark terminal",
-   "scene": 1
-  },
-  {
-   "id": "pexels-19162269",
-   "ts": 1787048382,
-   "session": "gh-3cd056",
-   "query": "code editor screen scrolling dark",
-   "scene": 2
-  },
-  {
-   "id": "pexels-34459460",
-   "ts": 1787048382,
-   "session": "gh-3cd056",
-   "query": "code editor screen scrolling dark",
-   "scene": 2
-  },
-  {
-   "id": "pexels-7669662",
-   "ts": 1787048382,
-   "session": "gh-3cd056",
-   "query": "terminal typing commands fast",
-   "scene": 3
-  },
-  {
-   "id": "pexels-35102966",
-   "ts": 1787048382,
-   "session": "gh-3cd056",
-   "query": "shopping mall old electronics sign",
-   "scene": 4
-  },
-  {
    "id": "pexels-35189262",
    "ts": 1787048382,
    "session": "gh-3cd056",
@@ -2800,6 +2737,69 @@
    "session": "gh-135e08",
    "query": "server room dark blue lights",
    "scene": 4
+  },
+  {
+   "id": "pexels-35050095",
+   "ts": 1788875559,
+   "session": "gh-edfdb9",
+   "query": "terminal scrolling green error logs",
+   "scene": 0
+  },
+  {
+   "id": "pexels-6955614",
+   "ts": 1788875559,
+   "session": "gh-edfdb9",
+   "query": "terminal scrolling green error logs",
+   "scene": 0
+  },
+  {
+   "id": "pexels-32115649",
+   "ts": 1788875559,
+   "session": "gh-edfdb9",
+   "query": "data center servers blinking lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-18184655",
+   "ts": 1788875559,
+   "session": "gh-edfdb9",
+   "query": "data center servers blinking lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-35544532",
+   "ts": 1788875559,
+   "session": "gh-edfdb9",
+   "query": "financial charts dashboard scrolling ui",
+   "scene": 2
+  },
+  {
+   "id": "pexels-38502680",
+   "ts": 1788875559,
+   "session": "gh-edfdb9",
+   "query": "network traffic glowing packets motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-9520978",
+   "ts": 1788875559,
+   "session": "gh-edfdb9",
+   "query": "code editor typing lines rapidly",
+   "scene": 4
+  },
+  {
+   "id": "pexels-34342945",
+   "ts": 1788875559,
+   "session": "gh-edfdb9",
+   "query": "digital network grid abstract motion",
+   "scene": 5
+  },
+  {
+   "id": "pexels-36314952",
+   "ts": 1788875559,
+   "session": "gh-edfdb9",
+   "query": "digital network grid abstract motion",
+   "scene": 5
   }
  ]
 }

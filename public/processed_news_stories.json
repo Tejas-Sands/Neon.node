@@ -1584,5 +1584,17 @@
   ],
   "ts": 1788858549,
   "session": "gh-135e08"
+ },
+ {
+  "id": "49604870",
+  "title": "There's a new \"Google Jail\" for independent wikis",
+  "norm": "there s a new google jail for independent wikis",
+  "subject_norm": "google jail",
+  "entities": [
+   "google",
+   "jail"
+  ],
+  "ts": 1788875640,
+  "session": "gh-edfdb9"
  }
 ]

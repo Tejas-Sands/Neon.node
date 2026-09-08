@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1788771875
+      "fetched_at": 1788875640
      },
      "snap72": {
       "views": 22,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1788771875
+      "fetched_at": 1788875640
      },
      "snap72": {
       "views": 90,
@@ -4370,7 +4370,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1788757203
+      "fetched_at": 1788875640
      },
      "snap72": {
       "views": 109,
@@ -4573,7 +4573,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3478,
-      "fetched_at": 1788757203
+      "fetched_at": 1788875640
      },
      "snap72": {
       "views": 11,
@@ -5964,7 +5964,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1596,
-      "fetched_at": 1788757203
+      "fetched_at": 1788875640
      },
      "snap72": {
       "views": 2,
@@ -6165,7 +6165,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 718,
-      "fetched_at": 1788757203
+      "fetched_at": 1788875640
      },
      "snap72": {
       "views": 4,
@@ -6416,7 +6416,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4974,
-      "fetched_at": 1788757203
+      "fetched_at": 1788875640
      },
      "snap72": {
       "views": 4,
@@ -6550,7 +6550,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2032,
-      "fetched_at": 1788757203
+      "fetched_at": 1788875640
      },
      "snap72": {
       "views": 38,
@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1788757203
+      "fetched_at": 1788875640
      },
      "snap72": {
       "views": 0,
@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1788707516
+      "fetched_at": 1788875640
      },
      "snap72": {
       "views": 0,
@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1788757203
+      "fetched_at": 1788875640
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1788757203
+      "fetched_at": 1788875640
      },
      "snap72": {
       "views": 6,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1788757203
+      "fetched_at": 1788875640
      },
      "snap72": {
       "views": 30,
@@ -7694,9 +7694,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1788707516
+      "fetched_at": 1788875640
      },
-     "snap72": null,
+     "snap72": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1788875640
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -7965,7 +7975,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 13,
+      "reach": 11,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1385,
+      "fetched_at": 1788875640
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -8008,6 +8028,54 @@
     "instagram": {
      "id": "18132184822737636",
      "posted_at": 1788858546
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788875559,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "There's a new \"Google Jail\" for independent wikis",
+    "subject": "Google Jail",
+    "url": "https://weirdgloop.org/blog/google-jail",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "google"
+    ],
+    "viral_score": 9.94,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Google Jail Kills New Wikis",
+    "angle": "Google's SEO penalty on brand new domains forces independent gaming wikis to launch on established subdomains instead.",
+    "insight": "Google's defense against SEO slop has effectively broken independent wiki migrations, forcing communities to rely on established parent domains.",
+    "judge": "plan"
+   },
+   "style_pack": "royal-violet",
+   "format_pack": "legacy-news",
+   "seed": 1962271927,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "PROVOCATIVE QUESTION",
+   "style_epoch": 7,
+   "scene_count": 6,
+   "video_seconds": 46.6,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-edfdb9",
+   "platforms": {
+    "instagram": {
+     "id": "18341172208248800",
+     "posted_at": 1788875637
     }
    },
    "metrics": {
