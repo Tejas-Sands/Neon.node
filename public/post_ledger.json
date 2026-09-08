@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1788707516
+      "fetched_at": 1788858549
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1788707516
+      "fetched_at": 1788858549
      },
      "snap72": {
       "views": 4,
@@ -4239,7 +4239,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1069,
-      "fetched_at": 1788707516
+      "fetched_at": 1788858549
      },
      "snap72": {
       "views": 115,
@@ -5500,7 +5500,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1818,
-      "fetched_at": 1788707516
+      "fetched_at": 1788858549
      },
      "snap72": {
       "views": 5,
@@ -5633,7 +5633,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1778,
-      "fetched_at": 1788707516
+      "fetched_at": 1788858549
      },
      "snap72": {
       "views": 8,
@@ -5699,7 +5699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1788707516
+      "fetched_at": 1788858549
      },
      "snap72": {
       "views": 4,
@@ -5764,7 +5764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1788707516
+      "fetched_at": 1788858549
      },
      "snap72": {
       "views": 114,
@@ -5830,7 +5830,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1788707516
+      "fetched_at": 1788858549
      },
      "snap72": {
       "views": 3,
@@ -5898,7 +5898,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2238,
-      "fetched_at": 1788707516
+      "fetched_at": 1788858549
      },
      "snap72": {
       "views": 0,
@@ -6031,7 +6031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1788707516
+      "fetched_at": 1788858549
      },
      "snap72": {
       "views": 2,
@@ -6096,7 +6096,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2142,
-      "fetched_at": 1788707516
+      "fetched_at": 1788858549
      },
      "snap72": {
       "views": 12,
@@ -6997,7 +6997,7 @@
       "saved": 0,
       "total_interactions": 3,
       "ig_reels_avg_watch_time": 1823,
-      "fetched_at": 1788691570
+      "fetched_at": 1788858549
      },
      "snap72": {
       "views": 144,
@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1788691570
+      "fetched_at": 1788858549
      },
      "snap72": {
       "views": 1,
@@ -7853,7 +7853,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 302,
+      "fetched_at": 1788858549
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -7898,7 +7908,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 6,
+      "reach": 3,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1190,
+      "fetched_at": 1788858549
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -7941,6 +7961,53 @@
     "instagram": {
      "id": "17965221828156140",
      "posted_at": 1788786596
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788858477,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "Mistral raises \u20ac3B",
+    "subject": "Mistral \u20ac3B funding round",
+    "url": "https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 10.12,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Mistral Raises \u20ac3 Billion",
+    "angle": "Mistral secured a massive Series D to cement its position as Europe's sovereign AI champion.",
+    "insight": "Enterprise AI spending is shifting away from US vendor lock-in toward sovereign open-weight infrastructure that keeps data strictly in-house.",
+    "judge": "plan"
+   },
+   "style_pack": "synth-sunset",
+   "format_pack": "legacy-news",
+   "seed": 2102657623,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "SHOCK-STAT",
+   "style_epoch": 7,
+   "scene_count": 5,
+   "video_seconds": 43.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-135e08",
+   "platforms": {
+    "instagram": {
+     "id": "18132184822737636",
+     "posted_at": 1788858546
     }
    },
    "metrics": {

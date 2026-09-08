@@ -1573,5 +1573,16 @@
   ],
   "ts": 1788786599,
   "session": "gh-bbecea"
+ },
+ {
+  "id": "49605767",
+  "title": "Mistral raises \u20ac3B",
+  "norm": "mistral raises 3b",
+  "subject_norm": "mistral 3b funding round",
+  "entities": [
+   "mistral"
+  ],
+  "ts": 1788858549,
+  "session": "gh-135e08"
  }
 ]
