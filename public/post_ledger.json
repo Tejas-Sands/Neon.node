@@ -3869,7 +3869,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2349,
-      "fetched_at": 1788858549
+      "fetched_at": 1788945406
      },
      "snap72": {
       "views": 28,
@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1788858549
+      "fetched_at": 1788945406
      },
      "snap72": {
       "views": 4,
@@ -4239,7 +4239,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1069,
-      "fetched_at": 1788858549
+      "fetched_at": 1788945406
      },
      "snap72": {
       "views": 115,
@@ -4768,7 +4768,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1788786599
+      "fetched_at": 1788945406
      },
      "snap72": {
       "views": 15,
@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1788786599
+      "fetched_at": 1788945406
      },
      "snap72": {
       "views": 9,
@@ -4967,7 +4967,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3060,
-      "fetched_at": 1788786599
+      "fetched_at": 1788945406
      },
      "snap72": {
       "views": 7,
@@ -5169,7 +5169,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5297,
-      "fetched_at": 1788786599
+      "fetched_at": 1788945406
      },
      "snap72": {
       "views": 7,
@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1788786599
+      "fetched_at": 1788945406
      },
      "snap72": {
       "views": 7,
@@ -5434,7 +5434,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5193,
-      "fetched_at": 1788786599
+      "fetched_at": 1788945406
      },
      "snap72": {
       "views": 12,
@@ -5567,7 +5567,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1788786599
+      "fetched_at": 1788945406
      },
      "snap72": {
       "views": 8,
@@ -6234,7 +6234,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2886,
-      "fetched_at": 1788786599
+      "fetched_at": 1788945406
      },
      "snap72": {
       "views": 4,
@@ -6482,7 +6482,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1082,
-      "fetched_at": 1788786599
+      "fetched_at": 1788945406
      },
      "snap72": {
       "views": 112,
@@ -7628,7 +7628,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 828,
-      "fetched_at": 1788786599
+      "fetched_at": 1788945406
      },
      "snap72": {
       "views": 2,
@@ -7826,9 +7826,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1788786599
+      "fetched_at": 1788945406
      },
-     "snap72": null,
+     "snap72": {
+      "views": 0,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1788945406
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -8042,7 +8052,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 4,
+      "reach": 2,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1927,
+      "fetched_at": 1788945406
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -8132,6 +8152,55 @@
     "instagram": {
      "id": "18448407025124089",
      "posted_at": 1788934147
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788945330,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "Muse \u2013 Meta\u2019s personal AI agent",
+    "subject": "Muse Meta personal AI agent",
+    "url": "https://ai.meta.com/muse/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "agent",
+     "meta"
+    ],
+    "viral_score": 11.27,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Muse Meta Personal AI",
+    "angle": "Meta is developing Muse, a personal AI agent designed to assist users in their daily digital lives.",
+    "insight": "As big tech shifts from social feeds to proactive personal agents, standalone productivity apps face direct platform competition.",
+    "judge": "plan"
+   },
+   "style_pack": "desert-dune",
+   "format_pack": "facts-explainer",
+   "seed": 1231493025,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 7,
+   "scene_count": 5,
+   "video_seconds": 22.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-98de09",
+   "platforms": {
+    "instagram": {
+     "id": "17975470010918101",
+     "posted_at": 1788945403
     }
    },
    "metrics": {
