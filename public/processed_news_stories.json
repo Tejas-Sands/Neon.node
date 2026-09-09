@@ -1618,5 +1618,16 @@
   ],
   "ts": 1788945406,
   "session": "gh-98de09"
+ },
+ {
+  "id": "49610538",
+  "title": "LibreOffice breaks download records after declaring it has no AI features",
+  "norm": "libreoffice breaks download records after declaring it has no ai features",
+  "subject_norm": "libreoffice 26 8",
+  "entities": [
+   "libreoffice"
+  ],
+  "ts": 1788959341,
+  "session": "gh-e4506d"
  }
 ]

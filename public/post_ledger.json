@@ -5500,7 +5500,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1818,
-      "fetched_at": 1788858549
+      "fetched_at": 1788959341
      },
      "snap72": {
       "views": 5,
@@ -5633,7 +5633,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1778,
-      "fetched_at": 1788858549
+      "fetched_at": 1788959341
      },
      "snap72": {
       "views": 8,
@@ -5699,7 +5699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1788858549
+      "fetched_at": 1788959341
      },
      "snap72": {
       "views": 4,
@@ -5764,7 +5764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1788858549
+      "fetched_at": 1788959341
      },
      "snap72": {
       "views": 114,
@@ -5830,7 +5830,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1788858549
+      "fetched_at": 1788959341
      },
      "snap72": {
       "views": 3,
@@ -5898,7 +5898,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2238,
-      "fetched_at": 1788858549
+      "fetched_at": 1788959341
      },
      "snap72": {
       "views": 0,
@@ -6031,7 +6031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1788858549
+      "fetched_at": 1788959341
      },
      "snap72": {
       "views": 2,
@@ -6096,7 +6096,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2142,
-      "fetched_at": 1788858549
+      "fetched_at": 1788959341
      },
      "snap72": {
       "views": 12,
@@ -6997,7 +6997,7 @@
       "saved": 0,
       "total_interactions": 3,
       "ig_reels_avg_watch_time": 1823,
-      "fetched_at": 1788858549
+      "fetched_at": 1788959341
      },
      "snap72": {
       "views": 144,
@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1788858549
+      "fetched_at": 1788959341
      },
      "snap72": {
       "views": 1,
@@ -7892,9 +7892,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1788858549
+      "fetched_at": 1788959341
      },
-     "snap72": null,
+     "snap72": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 302,
+      "fetched_at": 1788959341
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -7940,16 +7950,26 @@
     "instagram": {
      "latest": {
       "views": 6,
-      "reach": 3,
+      "reach": 5,
       "likes": 1,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "ig_reels_avg_watch_time": 1190,
-      "fetched_at": 1788858549
+      "ig_reels_avg_watch_time": 3536,
+      "fetched_at": 1788959341
      },
-     "snap72": null,
+     "snap72": {
+      "views": 6,
+      "reach": 5,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 3536,
+      "fetched_at": 1788959341
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -8201,6 +8221,52 @@
     "instagram": {
      "id": "17975470010918101",
      "posted_at": 1788945403
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1788959278,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "LibreOffice breaks download records after declaring it has no AI features",
+    "subject": "LibreOffice 26.8",
+    "url": "https://manualdousuario.net/en/libreoffice-download-record-no-ai/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "record"
+    ],
+    "viral_score": 10.41,
+    "sources": [],
+    "display_title": "LibreOffice 268 Rejects AI",
+    "angle": "LibreOffice breaks download records after proudly declaring its new release contains zero generative AI features.",
+    "insight": "Software users experiencing AI fatigue are actively seeking out privacy-first, unbloated alternatives that respect local document control.",
+    "judge": "plan"
+   },
+   "style_pack": "ice-electric",
+   "format_pack": "legacy-news",
+   "seed": 2133028885,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "CURIOSITY GAP",
+   "style_epoch": 7,
+   "scene_count": 5,
+   "video_seconds": 37.9,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-e4506d",
+   "platforms": {
+    "instagram": {
+     "id": "18002659769995883",
+     "posted_at": 1788959338
     }
    },
    "metrics": {
