@@ -1651,5 +1651,16 @@
   ],
   "ts": 1789027967,
   "session": "gh-a256d7"
+ },
+ {
+  "id": "49641215",
+  "title": "Show HN: The same nine streaming subscriptions cost $702/year more than in 2021",
+  "norm": "show hn the same nine streaming subscriptions cost 702 year more than in 2021",
+  "subject_norm": "streaming subscription price increases",
+  "entities": [
+   "streaming"
+  ],
+  "ts": 1789047033,
+  "session": "gh-bf20a4"
  }
 ]

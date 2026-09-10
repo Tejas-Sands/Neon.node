@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-8136216",
-   "ts": 1787240206,
-   "session": "gh-4f5038",
-   "query": "bluetooth headphones laptop closeup",
-   "scene": 4
-  },
-  {
-   "id": "pexels-34873718",
-   "ts": 1787295559,
-   "session": "gh-d9a423",
-   "query": "data center server racks blinking red",
-   "scene": 0
-  },
-  {
-   "id": "pexels-5921203",
-   "ts": 1787295559,
-   "session": "gh-d9a423",
-   "query": "terminal scrolling green code fast",
-   "scene": 1
-  },
-  {
-   "id": "pexels-7579578",
-   "ts": 1787295559,
-   "session": "gh-d9a423",
-   "query": "server room data transfer motion",
-   "scene": 2
-  },
-  {
-   "id": "pexels-36805468",
-   "ts": 1787295559,
-   "session": "gh-d9a423",
-   "query": "server room data transfer motion",
-   "scene": 2
-  },
-  {
-   "id": "pexels-30056318",
-   "ts": 1787295559,
-   "session": "gh-d9a423",
-   "query": "binary code scrolling screen dark",
-   "scene": 3
-  },
-  {
-   "id": "pexels-8721656",
-   "ts": 1787295559,
-   "session": "gh-d9a423",
-   "query": "hacker terminal typing dark room",
-   "scene": 4
-  },
-  {
-   "id": "pexels-8721658",
-   "ts": 1787295559,
-   "session": "gh-d9a423",
-   "query": "hacker terminal typing dark room",
-   "scene": 4
-  },
-  {
-   "id": "pexels-8721926",
-   "ts": 1787308624,
-   "session": "gh-dff800",
-   "query": "terminal screen typing commands",
-   "scene": 0
-  },
-  {
    "id": "pexels-6803592",
    "ts": 1787308624,
    "session": "gh-dff800",
@@ -2799,6 +2736,69 @@
    "ts": 1789027909,
    "session": "gh-a256d7",
    "query": "server rack lights blinking",
+   "scene": 5
+  },
+  {
+   "id": "pexels-34631259",
+   "ts": 1789046230,
+   "session": "gh-bf20a4",
+   "query": "tv screen glowing dark room",
+   "scene": 0
+  },
+  {
+   "id": "pexels-4872944",
+   "ts": 1789046230,
+   "session": "gh-bf20a4",
+   "query": "credit card online checkout screen",
+   "scene": 1
+  },
+  {
+   "id": "pexels-7691585",
+   "ts": 1789046230,
+   "session": "gh-bf20a4",
+   "query": "financial graph moving screen",
+   "scene": 2
+  },
+  {
+   "id": "pexels-8141714",
+   "ts": 1789046230,
+   "session": "gh-bf20a4",
+   "query": "financial graph moving screen",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7989854",
+   "ts": 1789046230,
+   "session": "gh-bf20a4",
+   "query": "terminal code scrolling screen",
+   "scene": 3
+  },
+  {
+   "id": "pexels-37339322",
+   "ts": 1789046230,
+   "session": "gh-bf20a4",
+   "query": "tablet screen glowing closeup",
+   "scene": 4
+  },
+  {
+   "id": "pexels-38470559",
+   "ts": 1789046230,
+   "session": "gh-bf20a4",
+   "query": "tablet screen glowing closeup",
+   "scene": 4
+  },
+  {
+   "id": "pexels-7688613",
+   "ts": 1789046230,
+   "session": "gh-bf20a4",
+   "query": "television static noise screen",
+   "scene": 5
+  },
+  {
+   "id": "pexels-6955103",
+   "ts": 1789046230,
+   "session": "gh-bf20a4",
+   "query": "television static noise screen",
    "scene": 5
   }
  ]
