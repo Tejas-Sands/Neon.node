@@ -1638,5 +1638,18 @@
   "entities": [],
   "ts": 1789018308,
   "session": "gh-a99916"
+ },
+ {
+  "id": "49623754",
+  "title": "Claude, change the \u201cAdd to Cart\u201d button to blue",
+  "norm": "claude change the add to cart button to blue",
+  "subject_norm": "claude add to cart button",
+  "entities": [
+   "anthropic",
+   "add",
+   "cart"
+  ],
+  "ts": 1789027967,
+  "session": "gh-a256d7"
  }
 ]

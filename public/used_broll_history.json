@@ -2,55 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-37616259",
-   "ts": 1787218732,
-   "session": "gh-599886",
-   "query": "software dashboard ui scrolling",
-   "scene": 3
-  },
-  {
-   "id": "pexels-37116270",
-   "ts": 1787218732,
-   "session": "gh-599886",
-   "query": "software dashboard ui scrolling",
-   "scene": 3
-  },
-  {
-   "id": "pexels-17356513",
-   "ts": 1787218732,
-   "session": "gh-599886",
-   "query": "code scrolling smooth dark mode",
-   "scene": 4
-  },
-  {
-   "id": "pexels-6913246",
-   "ts": 1787240206,
-   "session": "gh-4f5038",
-   "query": "phone screen bluetooth connection",
-   "scene": 0
-  },
-  {
-   "id": "pexels-33314914",
-   "ts": 1787240206,
-   "session": "gh-4f5038",
-   "query": "code editor terminal scrolling",
-   "scene": 1
-  },
-  {
-   "id": "pexels-29941195",
-   "ts": 1787240206,
-   "session": "gh-4f5038",
-   "query": "network traffic data visualization",
-   "scene": 2
-  },
-  {
-   "id": "pexels-7586160",
-   "ts": 1787240206,
-   "session": "gh-4f5038",
-   "query": "audio waveform analyzer screen",
-   "scene": 3
-  },
-  {
    "id": "pexels-8136216",
    "ts": 1787240206,
    "session": "gh-4f5038",
@@ -2799,6 +2750,55 @@
    "ts": 1789018239,
    "session": "gh-a99916",
    "query": "network traffic dashboard motion",
+   "scene": 5
+  },
+  {
+   "id": "pexels-8889195",
+   "ts": 1789027909,
+   "session": "gh-a256d7",
+   "query": "terminal typing commands cursor",
+   "scene": 0
+  },
+  {
+   "id": "pexels-37446281",
+   "ts": 1789027909,
+   "session": "gh-a256d7",
+   "query": "code scrolling fast editor",
+   "scene": 1
+  },
+  {
+   "id": "pexels-8480282",
+   "ts": 1789027909,
+   "session": "gh-a256d7",
+   "query": "developer hands typing code",
+   "scene": 2
+  },
+  {
+   "id": "pexels-35417379",
+   "ts": 1789027909,
+   "session": "gh-a256d7",
+   "query": "dashboard ui glowing nodes",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35536514",
+   "ts": 1789027909,
+   "session": "gh-a256d7",
+   "query": "data stream scrolling binary",
+   "scene": 4
+  },
+  {
+   "id": "pexels-15439758",
+   "ts": 1789027909,
+   "session": "gh-a256d7",
+   "query": "data stream scrolling binary",
+   "scene": 4
+  },
+  {
+   "id": "pexels-5377698",
+   "ts": 1789027909,
+   "session": "gh-a256d7",
+   "query": "server rack lights blinking",
    "scene": 5
   }
  ]
