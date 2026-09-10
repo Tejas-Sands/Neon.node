@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1788875640
+      "fetched_at": 1789018308
      },
      "snap72": {
       "views": 22,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1788875640
+      "fetched_at": 1789018308
      },
      "snap72": {
       "views": 90,
@@ -4370,7 +4370,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1788875640
+      "fetched_at": 1789018308
      },
      "snap72": {
       "views": 109,
@@ -4573,7 +4573,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3478,
-      "fetched_at": 1788875640
+      "fetched_at": 1789018308
      },
      "snap72": {
       "views": 11,
@@ -5964,7 +5964,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1596,
-      "fetched_at": 1788875640
+      "fetched_at": 1789018308
      },
      "snap72": {
       "views": 2,
@@ -6165,7 +6165,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 718,
-      "fetched_at": 1788875640
+      "fetched_at": 1789018308
      },
      "snap72": {
       "views": 4,
@@ -6416,7 +6416,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4974,
-      "fetched_at": 1788875640
+      "fetched_at": 1789018308
      },
      "snap72": {
       "views": 4,
@@ -6550,7 +6550,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2032,
-      "fetched_at": 1788875640
+      "fetched_at": 1789018308
      },
      "snap72": {
       "views": 38,
@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1788875640
+      "fetched_at": 1789018308
      },
      "snap72": {
       "views": 0,
@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1788875640
+      "fetched_at": 1789018308
      },
      "snap72": {
       "views": 0,
@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1788875640
+      "fetched_at": 1789018308
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1788875640
+      "fetched_at": 1789018308
      },
      "snap72": {
       "views": 6,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1788875640
+      "fetched_at": 1789018308
      },
      "snap72": {
       "views": 30,
@@ -7694,7 +7694,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1788875640
+      "fetched_at": 1789018308
      },
      "snap72": {
       "views": 0,
@@ -8130,7 +8130,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 10,
+      "reach": 9,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 6066,
+      "fetched_at": 1789018308
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -8267,6 +8277,54 @@
     "instagram": {
      "id": "18002659769995883",
      "posted_at": 1788959338
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789018239,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Shopify acquires Tailwind",
+    "subject": "Shopify acquires Tailwind",
+    "url": "https://tailwindcss.com/blog/tailwind-is-joining-shopify",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "acquire"
+    ],
+    "viral_score": 10.67,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Shopify Buys Tailwind",
+    "angle": "Tailwind CSS is joining Shopify to secure long-term open-source maintenance while closing commercial template signups.",
+    "insight": "Open-source infrastructure thrives when absorbed by deep-pocketed platform giants that rely on it for production.",
+    "judge": "plan"
+   },
+   "style_pack": "rosewood-vintage",
+   "format_pack": "legacy-news",
+   "seed": 291223852,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "COST-OF-NOT-KNOWING",
+   "style_epoch": 8,
+   "scene_count": 6,
+   "video_seconds": 45.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-a99916",
+   "platforms": {
+    "instagram": {
+     "id": "18023956880698316",
+     "posted_at": 1789018304
     }
    },
    "metrics": {

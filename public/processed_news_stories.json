@@ -1629,5 +1629,14 @@
   ],
   "ts": 1788959341,
   "session": "gh-e4506d"
+ },
+ {
+  "id": "49626190",
+  "title": "Shopify acquires Tailwind",
+  "norm": "shopify acquires tailwind",
+  "subject_norm": "shopify acquires tailwind",
+  "entities": [],
+  "ts": 1789018308,
+  "session": "gh-a99916"
  }
 ]
