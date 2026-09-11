@@ -1686,5 +1686,18 @@
   ],
   "ts": 1789118743,
   "session": "gh-9eb823"
+ },
+ {
+  "id": "49637385",
+  "title": "Show HN: What if the speed of light was 5 km/h?",
+  "norm": "show hn what if the speed of light was 5 km h",
+  "subject_norm": "speed of light park simulation",
+  "entities": [
+   "speed",
+   "light",
+   "park"
+  ],
+  "ts": 1789135715,
+  "session": "gh-bdc836"
  }
 ]

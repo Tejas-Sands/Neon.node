@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1789027967
+      "fetched_at": 1789135715
      },
      "snap72": {
       "views": 29,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1789027967
+      "fetched_at": 1789135715
      },
      "snap72": {
       "views": 38,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1789027967
+      "fetched_at": 1789135715
      },
      "snap72": {
       "views": 2,
@@ -5035,7 +5035,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1296,
-      "fetched_at": 1789027967
+      "fetched_at": 1789135715
      },
      "snap72": {
       "views": 5,
@@ -5101,7 +5101,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1276,
-      "fetched_at": 1789027967
+      "fetched_at": 1789135715
      },
      "snap72": {
       "views": 42,
@@ -5237,7 +5237,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1568,
-      "fetched_at": 1789027967
+      "fetched_at": 1789135715
      },
      "snap72": {
       "views": 1,
@@ -5304,7 +5304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5887,
-      "fetched_at": 1789027967
+      "fetched_at": 1789135715
      },
      "snap72": {
       "views": 10,
@@ -6685,7 +6685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1019,
-      "fetched_at": 1789027967
+      "fetched_at": 1789135715
      },
      "snap72": {
       "views": 155,
@@ -6753,7 +6753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7175,
-      "fetched_at": 1789027967
+      "fetched_at": 1789135715
      },
      "snap72": {
       "views": 10,
@@ -6818,7 +6818,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1203,
-      "fetched_at": 1789027967
+      "fetched_at": 1789135715
      },
      "snap72": {
       "views": 31,
@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1789027967
+      "fetched_at": 1789135715
      },
      "snap72": {
       "views": 3,
@@ -7694,7 +7694,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789018308
+      "fetched_at": 1789135715
      },
      "snap72": {
       "views": 0,
@@ -8024,7 +8024,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1385,
-      "fetched_at": 1789027967
+      "fetched_at": 1789135715
      },
      "snap72": {
       "views": 13,
@@ -8159,9 +8159,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6066,
-      "fetched_at": 1789018308
+      "fetched_at": 1789135715
      },
-     "snap72": null,
+     "snap72": {
+      "views": 10,
+      "reach": 9,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 6066,
+      "fetched_at": 1789135715
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -8207,17 +8217,27 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 124,
-      "reach": 118,
+      "views": 127,
+      "reach": 121,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1001,
-      "fetched_at": 1789027967
+      "ig_reels_avg_watch_time": 992,
+      "fetched_at": 1789135715
      },
-     "snap72": null,
+     "snap72": {
+      "views": 127,
+      "reach": 121,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 992,
+      "fetched_at": 1789135715
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -8536,6 +8556,51 @@
     "instagram": {
      "id": "18114030938101652",
      "posted_at": 1789118740
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789135336,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "Show HN: What if the speed of light was 5 km/h?",
+    "subject": "Speed of Light Park simulation",
+    "url": "https://rivendell.dmitrybrant.com/relativity/",
+    "source": "hn",
+    "keywords": [
+     "how"
+    ],
+    "viral_score": 8.57,
+    "sources": [],
+    "display_title": "Walk at light speed",
+    "angle": "A new interactive simulation lets users experience extreme relativistic physics by setting the speed of light to a brisk walking pace.",
+    "insight": "Simulating everyday physics at relativistic speeds makes abstract concepts like length contraction and blueshifting immediately intuitive.",
+    "judge": "plan"
+   },
+   "style_pack": "cyber-neon",
+   "format_pack": "legacy-news",
+   "seed": 1993318569,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "SHOCK-STAT",
+   "style_epoch": 8,
+   "scene_count": 6,
+   "video_seconds": 41.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-bdc836",
+   "platforms": {
+    "instagram": {
+     "id": "18107844412890270",
+     "posted_at": 1789135579
     }
    },
    "metrics": {
