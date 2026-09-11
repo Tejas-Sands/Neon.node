@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-36392049",
-   "ts": 1787323711,
-   "session": "gh-932631",
-   "query": "server data center racks blinking lights",
-   "scene": 0
-  },
-  {
-   "id": "pexels-19162466",
-   "ts": 1787323711,
-   "session": "gh-932631",
-   "query": "code editor screen scrolling fast",
-   "scene": 1
-  },
-  {
-   "id": "pexels-16727463",
-   "ts": 1787323711,
-   "session": "gh-932631",
-   "query": "network packets data stream motion",
-   "scene": 2
-  },
-  {
-   "id": "pexels-16456770",
-   "ts": 1787323711,
-   "session": "gh-932631",
-   "query": "network packets data stream motion",
-   "scene": 2
-  },
-  {
-   "id": "pexels-28925348",
-   "ts": 1787323711,
-   "session": "gh-932631",
-   "query": "cloud infrastructure servers glowing",
-   "scene": 3
-  },
-  {
-   "id": "pexels-30940809",
-   "ts": 1787323711,
-   "session": "gh-932631",
-   "query": "cloud infrastructure servers glowing",
-   "scene": 3
-  },
-  {
-   "id": "pexels-15439750",
-   "ts": 1787323711,
-   "session": "gh-932631",
-   "query": "cpu chip circuit board macro motion",
-   "scene": 4
-  },
-  {
-   "id": "pexels-16456768",
-   "ts": 1787323711,
-   "session": "gh-932631",
-   "query": "datacenter hardware server blades motion",
-   "scene": 5
-  },
-  {
-   "id": "pexels-15439746",
-   "ts": 1787323711,
-   "session": "gh-932631",
-   "query": "datacenter hardware server blades motion",
-   "scene": 5
-  },
-  {
    "id": "pexels-37551936",
    "ts": 1787377909,
    "session": "gh-139ec5",
@@ -2800,6 +2737,69 @@
    "session": "gh-30a479",
    "query": "neural network visualization motion",
    "scene": 4
+  },
+  {
+   "id": "pexels-5981593",
+   "ts": 1789118567,
+   "session": "gh-9eb823",
+   "query": "terminal scrolling green code streams",
+   "scene": 0
+  },
+  {
+   "id": "pexels-5377532",
+   "ts": 1789118567,
+   "session": "gh-9eb823",
+   "query": "developer typing code dark office",
+   "scene": 1
+  },
+  {
+   "id": "pexels-8516376",
+   "ts": 1789118567,
+   "session": "gh-9eb823",
+   "query": "microchip processor close up motion",
+   "scene": 2
+  },
+  {
+   "id": "pexels-5387436",
+   "ts": 1789118567,
+   "session": "gh-9eb823",
+   "query": "server rack flashing lights loop",
+   "scene": 3
+  },
+  {
+   "id": "pexels-15283162",
+   "ts": 1789118567,
+   "session": "gh-9eb823",
+   "query": "server rack flashing lights loop",
+   "scene": 3
+  },
+  {
+   "id": "pexels-34912747",
+   "ts": 1789118567,
+   "session": "gh-9eb823",
+   "query": "neural network nodes glowing data",
+   "scene": 4
+  },
+  {
+   "id": "pexels-34996611",
+   "ts": 1789118567,
+   "session": "gh-9eb823",
+   "query": "neural network nodes glowing data",
+   "scene": 4
+  },
+  {
+   "id": "pexels-38901929",
+   "ts": 1789118567,
+   "session": "gh-9eb823",
+   "query": "data analytics dashboard charts motion",
+   "scene": 5
+  },
+  {
+   "id": "pexels-38870378",
+   "ts": 1789118567,
+   "session": "gh-9eb823",
+   "query": "data analytics dashboard charts motion",
+   "scene": 5
   }
  ]
 }

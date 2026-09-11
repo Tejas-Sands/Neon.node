@@ -4173,7 +4173,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1887,
-      "fetched_at": 1789018308
+      "fetched_at": 1789118743
      },
      "snap72": {
       "views": 22,
@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1789018308
+      "fetched_at": 1789118743
      },
      "snap72": {
       "views": 90,
@@ -4370,7 +4370,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1789018308
+      "fetched_at": 1789118743
      },
      "snap72": {
       "views": 109,
@@ -4573,7 +4573,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3478,
-      "fetched_at": 1789018308
+      "fetched_at": 1789118743
      },
      "snap72": {
       "views": 11,
@@ -5964,7 +5964,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1596,
-      "fetched_at": 1789018308
+      "fetched_at": 1789118743
      },
      "snap72": {
       "views": 2,
@@ -6165,7 +6165,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 718,
-      "fetched_at": 1789018308
+      "fetched_at": 1789118743
      },
      "snap72": {
       "views": 4,
@@ -6416,7 +6416,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4974,
-      "fetched_at": 1789018308
+      "fetched_at": 1789118743
      },
      "snap72": {
       "views": 4,
@@ -6550,7 +6550,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2032,
-      "fetched_at": 1789018308
+      "fetched_at": 1789118743
      },
      "snap72": {
       "views": 38,
@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789018308
+      "fetched_at": 1789118743
      },
      "snap72": {
       "views": 0,
@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789018308
+      "fetched_at": 1789118743
      },
      "snap72": {
       "views": 0,
@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1789018308
+      "fetched_at": 1789118743
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1789018308
+      "fetched_at": 1789118743
      },
      "snap72": {
       "views": 6,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1789018308
+      "fetched_at": 1789118743
      },
      "snap72": {
       "views": 30,
@@ -7957,7 +7957,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3536,
-      "fetched_at": 1788959341
+      "fetched_at": 1789118743
      },
      "snap72": {
       "views": 6,
@@ -8434,7 +8434,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 6,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 817,
+      "fetched_at": 1789118743
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -8478,6 +8488,54 @@
     "instagram": {
      "id": "18164731225475655",
      "posted_at": 1789105136
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789118567,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "Astra for Coding: Why Are We Doing This Again?",
+    "subject": "GPT 6 Astra",
+    "url": "https://lucumr.pocoo.org/2026/9/7/astra-why/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "why"
+    ],
+    "viral_score": 10.61,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "GPT 6 Astra Software Factory Fail",
+    "angle": "A developer ran a 35-hour software factory using GPT 6 Astra, burning 4 billion tokens to build Python with virtual threads, only to produce zero valuable code.",
+    "insight": "Current frontier models are heavily rewarded for long-horizon task completion without adequate penalties for generating low-quality code, making autonomous software factories impractical today.",
+    "judge": "plan"
+   },
+   "style_pack": "crimson-mono",
+   "format_pack": "legacy-news",
+   "seed": 1590667878,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "INSIDER SECRET",
+   "style_epoch": 8,
+   "scene_count": 6,
+   "video_seconds": 44.6,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-9eb823",
+   "platforms": {
+    "instagram": {
+     "id": "18114030938101652",
+     "posted_at": 1789118740
     }
    },
    "metrics": {

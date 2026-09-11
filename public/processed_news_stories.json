@@ -1675,5 +1675,16 @@
   ],
   "ts": 1789105140,
   "session": "gh-30a479"
+ },
+ {
+  "id": "49654229",
+  "title": "Astra for Coding: Why Are We Doing This Again?",
+  "norm": "astra for coding why are we doing this again",
+  "subject_norm": "gpt 6 astra",
+  "entities": [
+   "openai"
+  ],
+  "ts": 1789118743,
+  "session": "gh-9eb823"
  }
 ]
