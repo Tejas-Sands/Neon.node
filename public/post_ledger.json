@@ -5500,7 +5500,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1818,
-      "fetched_at": 1788959341
+      "fetched_at": 1789105140
      },
      "snap72": {
       "views": 5,
@@ -5633,7 +5633,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1778,
-      "fetched_at": 1788959341
+      "fetched_at": 1789105140
      },
      "snap72": {
       "views": 8,
@@ -5699,7 +5699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1788959341
+      "fetched_at": 1789105140
      },
      "snap72": {
       "views": 4,
@@ -5764,7 +5764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1788959341
+      "fetched_at": 1789105140
      },
      "snap72": {
       "views": 114,
@@ -5830,7 +5830,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1788959341
+      "fetched_at": 1789105140
      },
      "snap72": {
       "views": 3,
@@ -5898,7 +5898,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2238,
-      "fetched_at": 1788959341
+      "fetched_at": 1789105140
      },
      "snap72": {
       "views": 0,
@@ -6031,7 +6031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1788959341
+      "fetched_at": 1789105140
      },
      "snap72": {
       "views": 2,
@@ -6096,7 +6096,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2142,
-      "fetched_at": 1788959341
+      "fetched_at": 1789105140
      },
      "snap72": {
       "views": 12,
@@ -6997,7 +6997,7 @@
       "saved": 0,
       "total_interactions": 3,
       "ig_reels_avg_watch_time": 1823,
-      "fetched_at": 1788959341
+      "fetched_at": 1789105140
      },
      "snap72": {
       "views": 144,
@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1788959341
+      "fetched_at": 1789105140
      },
      "snap72": {
       "views": 1,
@@ -7628,7 +7628,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 828,
-      "fetched_at": 1788945406
+      "fetched_at": 1789105140
      },
      "snap72": {
       "views": 2,
@@ -7826,7 +7826,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1788945406
+      "fetched_at": 1789105140
      },
      "snap72": {
       "views": 0,
@@ -7892,7 +7892,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1788959341
+      "fetched_at": 1789105140
      },
      "snap72": {
       "views": 1,
@@ -8084,16 +8084,26 @@
     "instagram": {
      "latest": {
       "views": 4,
-      "reach": 2,
+      "reach": 3,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1927,
-      "fetched_at": 1788945406
+      "ig_reels_avg_watch_time": 1549,
+      "fetched_at": 1789105140
      },
-     "snap72": null,
+     "snap72": {
+      "views": 4,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1549,
+      "fetched_at": 1789105140
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -8369,7 +8379,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 3,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 854,
+      "fetched_at": 1789105140
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -8410,6 +8430,54 @@
     "instagram": {
      "id": "17976110544125564",
      "posted_at": 1789027963
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789105079,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Rust is tier-1 language at Microsoft",
+    "subject": "Microsoft Rust Tier-1 Status",
+    "url": "https://rustfoundation.org/media/guest-post-rust-is-tier-1-language-at-microsoft/",
+    "source": "hn",
+    "keywords": [
+     "microsoft"
+    ],
+    "viral_score": 9.98,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "Microsoft Adopted Rust",
+    "angle": "Microsoft officially elevates Rust to Tier-1 status alongside C++ and C#, building a unified MSVC backend for seamless integration.",
+    "insight": "By bridging the Rust compiler directly into the MSVC backend, Microsoft is proving memory-safe languages must fully integrate with legacy native toolchains rather than replace them from scratch.",
+    "judge": "plan"
+   },
+   "style_pack": "mint-aqua",
+   "format_pack": "facts-explainer",
+   "seed": 1965013462,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 8,
+   "scene_count": 5,
+   "video_seconds": 35.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-30a479",
+   "platforms": {
+    "instagram": {
+     "id": "18164731225475655",
+     "posted_at": 1789105136
     }
    },
    "metrics": {

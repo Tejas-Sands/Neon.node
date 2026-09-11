@@ -1662,5 +1662,18 @@
   ],
   "ts": 1789047033,
   "session": "gh-bf20a4"
+ },
+ {
+  "id": "49643546",
+  "title": "Rust is tier-1 language at Microsoft",
+  "norm": "rust is tier 1 language at microsoft",
+  "subject_norm": "microsoft rust tier 1 status",
+  "entities": [
+   "rust",
+   "microsoft",
+   "tier-1"
+  ],
+  "ts": 1789105140,
+  "session": "gh-30a479"
  }
 ]
