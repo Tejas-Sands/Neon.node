@@ -1723,5 +1723,17 @@
   ],
   "ts": 1789204170,
   "session": "gh-3550ee"
+ },
+ {
+  "id": "49662990",
+  "title": "I spent $220 on Google app ads and 60% of the installs were robots",
+  "norm": "i spent 220 on google app ads and 60 of the installs were robots",
+  "subject_norm": "google app ads",
+  "entities": [
+   "google",
+   "ads"
+  ],
+  "ts": 1789223702,
+  "session": "gh-ffa1be"
  }
 ]
