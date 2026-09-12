@@ -5500,7 +5500,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1818,
-      "fetched_at": 1789105140
+      "fetched_at": 1789204170
      },
      "snap72": {
       "views": 5,
@@ -5633,7 +5633,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1778,
-      "fetched_at": 1789105140
+      "fetched_at": 1789204170
      },
      "snap72": {
       "views": 8,
@@ -5699,7 +5699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1789105140
+      "fetched_at": 1789204170
      },
      "snap72": {
       "views": 4,
@@ -5764,7 +5764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1789105140
+      "fetched_at": 1789204170
      },
      "snap72": {
       "views": 114,
@@ -5830,7 +5830,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1789105140
+      "fetched_at": 1789204170
      },
      "snap72": {
       "views": 3,
@@ -5898,7 +5898,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2238,
-      "fetched_at": 1789105140
+      "fetched_at": 1789204170
      },
      "snap72": {
       "views": 0,
@@ -6031,7 +6031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1789105140
+      "fetched_at": 1789204170
      },
      "snap72": {
       "views": 2,
@@ -6096,7 +6096,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2142,
-      "fetched_at": 1789105140
+      "fetched_at": 1789204170
      },
      "snap72": {
       "views": 12,
@@ -6997,7 +6997,7 @@
       "saved": 0,
       "total_interactions": 3,
       "ig_reels_avg_watch_time": 1823,
-      "fetched_at": 1789105140
+      "fetched_at": 1789204170
      },
      "snap72": {
       "views": 144,
@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1789105140
+      "fetched_at": 1789204170
      },
      "snap72": {
       "views": 1,
@@ -7628,7 +7628,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 828,
-      "fetched_at": 1789105140
+      "fetched_at": 1789204170
      },
      "snap72": {
       "views": 2,
@@ -7826,7 +7826,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789105140
+      "fetched_at": 1789204170
      },
      "snap72": {
       "views": 0,
@@ -7892,7 +7892,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1789105140
+      "fetched_at": 1789204170
      },
      "snap72": {
       "views": 1,
@@ -8091,7 +8091,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1549,
-      "fetched_at": 1789105140
+      "fetched_at": 1789204170
      },
      "snap72": {
       "views": 4,
@@ -8532,7 +8532,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 4,
+      "reach": 4,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 865,
+      "fetched_at": 1789204170
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -8671,6 +8681,54 @@
     "instagram": {
      "id": "18177661600429615",
      "posted_at": 1789188702
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789204103,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "Claude is only available to people over 18 years",
+    "subject": "Claude age verification",
+    "url": "https://support.claude.com/en/articles/15171100-age-assurance-on-claude",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "claude"
+    ],
+    "viral_score": 11.38,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Claude bans under 18 users",
+    "angle": "Anthropic is enforcing a strict 18-plus policy for Claude, using Yoti's third-party software for facial estimation or ID checks.",
+    "insight": "AI companies are shifting from self-certification to strict third-party biometric verification to enforce age limits.",
+    "judge": "plan"
+   },
+   "style_pack": "burgundy-luxe",
+   "format_pack": "facts-explainer",
+   "seed": 1463736053,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 8,
+   "scene_count": 5,
+   "video_seconds": 26.8,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-3550ee",
+   "platforms": {
+    "instagram": {
+     "id": "18054384503636586",
+     "posted_at": 1789204167
     }
    },
    "metrics": {

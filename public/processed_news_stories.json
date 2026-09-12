@@ -1712,5 +1712,16 @@
   ],
   "ts": 1789188705,
   "session": "gh-050484"
+ },
+ {
+  "id": "49656225",
+  "title": "Claude is only available to people over 18 years",
+  "norm": "claude is only available to people over 18 years",
+  "subject_norm": "claude age verification",
+  "entities": [
+   "anthropic"
+  ],
+  "ts": 1789204170,
+  "session": "gh-3550ee"
  }
 ]

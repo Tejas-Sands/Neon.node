@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-7448471",
-   "ts": 1787391967,
-   "session": "gh-130a8c",
-   "query": "code editor screen scrolling rapidly",
-   "scene": 3
-  },
-  {
-   "id": "pexels-35417493",
-   "ts": 1787391967,
-   "session": "gh-130a8c",
-   "query": "trading chart screen moving numbers",
-   "scene": 4
-  },
-  {
-   "id": "pexels-32259631",
-   "ts": 1787404565,
-   "session": "gh-006849",
-   "query": "terminal typing commands green",
-   "scene": 0
-  },
-  {
-   "id": "pexels-12893579",
-   "ts": 1787404565,
-   "session": "gh-006849",
-   "query": "code editor screen scrolling",
-   "scene": 1
-  },
-  {
-   "id": "pexels-7970386",
-   "ts": 1787404565,
-   "session": "gh-006849",
-   "query": "developer laptop closeup",
-   "scene": 2
-  },
-  {
    "id": "pexels-33264188",
    "ts": 1787404565,
    "session": "gh-006849",
@@ -2800,6 +2765,41 @@
    "session": "gh-050484",
    "query": "data stream cascading matrix green",
    "scene": 3
+  },
+  {
+   "id": "pexels-34969100",
+   "ts": 1789204103,
+   "session": "gh-3550ee",
+   "query": "terminal access denied glitch screen",
+   "scene": 0
+  },
+  {
+   "id": "pexels-4359117",
+   "ts": 1789204103,
+   "session": "gh-3550ee",
+   "query": "facial recognition scanning interface grid",
+   "scene": 1
+  },
+  {
+   "id": "pexels-26060699",
+   "ts": 1789204103,
+   "session": "gh-3550ee",
+   "query": "encrypted data stream network lines",
+   "scene": 2
+  },
+  {
+   "id": "pexels-8347241",
+   "ts": 1789204103,
+   "session": "gh-3550ee",
+   "query": "security dashboard metrics counter",
+   "scene": 3
+  },
+  {
+   "id": "pexels-30948710",
+   "ts": 1789204103,
+   "session": "gh-3550ee",
+   "query": "secure network authorization flow",
+   "scene": 4
   }
  ]
 }
