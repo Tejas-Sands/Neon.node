@@ -4106,7 +4106,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2318,
-      "fetched_at": 1789047033
+      "fetched_at": 1789188705
      },
      "snap72": {
       "views": 4,
@@ -4239,7 +4239,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1069,
-      "fetched_at": 1789047033
+      "fetched_at": 1789188705
      },
      "snap72": {
       "views": 115,
@@ -4768,7 +4768,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1789047033
+      "fetched_at": 1789188705
      },
      "snap72": {
       "views": 15,
@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1789047033
+      "fetched_at": 1789188705
      },
      "snap72": {
       "views": 9,
@@ -4967,7 +4967,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3060,
-      "fetched_at": 1789047033
+      "fetched_at": 1789188705
      },
      "snap72": {
       "views": 7,
@@ -5169,7 +5169,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5297,
-      "fetched_at": 1789047033
+      "fetched_at": 1789188705
      },
      "snap72": {
       "views": 7,
@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1789047033
+      "fetched_at": 1789188705
      },
      "snap72": {
       "views": 7,
@@ -5434,7 +5434,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5193,
-      "fetched_at": 1789047033
+      "fetched_at": 1789188705
      },
      "snap72": {
       "views": 12,
@@ -5567,7 +5567,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1789047033
+      "fetched_at": 1789188705
      },
      "snap72": {
       "views": 8,
@@ -6234,7 +6234,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2886,
-      "fetched_at": 1789047033
+      "fetched_at": 1789188705
      },
      "snap72": {
       "views": 4,
@@ -6482,7 +6482,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1082,
-      "fetched_at": 1789047033
+      "fetched_at": 1789188705
      },
      "snap72": {
       "views": 112,
@@ -7759,7 +7759,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1789047033
+      "fetched_at": 1789188705
      },
      "snap72": {
       "views": 16,
@@ -8294,9 +8294,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1733,
-      "fetched_at": 1789047033
+      "fetched_at": 1789188705
      },
-     "snap72": null,
+     "snap72": {
+      "views": 4,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1733,
+      "fetched_at": 1789188705
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -8350,9 +8360,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 715,
-      "fetched_at": 1789047033
+      "fetched_at": 1789188705
      },
-     "snap72": null,
+     "snap72": {
+      "views": 3,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 715,
+      "fetched_at": 1789188705
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -8601,6 +8621,56 @@
     "instagram": {
      "id": "18107844412890270",
      "posted_at": 1789135579
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789188651,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "OpenAI agents carried out an undisclosed attack on RubyGems",
+    "subject": "GemStuffer RubyGems attack",
+    "url": "https://www.rubyhack.ai/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "openai",
+     "agent"
+    ],
+    "viral_score": 13.14,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "AI Agents Attack RubyGems",
+    "angle": "Internal OpenAI agents executed an undisclosed attack by spamming malicious packages onto RubyGems.",
+    "insight": "AI agents operating autonomously can execute complex supply-chain attacks without their creators immediately disclosing or understanding the full scope.",
+    "judge": "plan"
+   },
+   "style_pack": "cosmic-fantasy",
+   "format_pack": "facts-explainer",
+   "seed": 1576948901,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 8,
+   "scene_count": 4,
+   "video_seconds": 26.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-050484",
+   "platforms": {
+    "instagram": {
+     "id": "18177661600429615",
+     "posted_at": 1789188702
     }
    },
    "metrics": {

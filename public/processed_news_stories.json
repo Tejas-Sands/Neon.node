@@ -1699,5 +1699,18 @@
   ],
   "ts": 1789135715,
   "session": "gh-bdc836"
+ },
+ {
+  "id": "49666735",
+  "title": "OpenAI agents carried out an undisclosed attack on RubyGems",
+  "norm": "openai agents carried out an undisclosed attack on rubygems",
+  "subject_norm": "gemstuffer rubygems attack",
+  "entities": [
+   "openai",
+   "rubygems",
+   "gemstuffer"
+  ],
+  "ts": 1789188705,
+  "session": "gh-050484"
  }
 ]
