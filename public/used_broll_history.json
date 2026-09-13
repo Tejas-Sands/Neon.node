@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-5377516",
-   "ts": 1787461650,
-   "session": "gh-cf82a5",
-   "query": "developer coding dark room screen",
-   "scene": 3
-  },
-  {
-   "id": "pexels-5377282",
-   "ts": 1787461650,
-   "session": "gh-cf82a5",
-   "query": "developer coding dark room screen",
-   "scene": 3
-  },
-  {
-   "id": "pexels-5473972",
-   "ts": 1787461650,
-   "session": "gh-cf82a5",
-   "query": "code scrolling text editor split",
-   "scene": 4
-  },
-  {
-   "id": "pexels-8629578",
-   "ts": 1787461650,
-   "session": "gh-cf82a5",
-   "query": "server room warning light flashing",
-   "scene": 5
-  },
-  {
-   "id": "pexels-6273837",
-   "ts": 1787461650,
-   "session": "gh-cf82a5",
-   "query": "server room warning light flashing",
-   "scene": 5
-  },
-  {
-   "id": "pexels-30211503",
-   "ts": 1787477736,
-   "session": "gh-dd23c2",
-   "query": "courtroom gavel striking desk closeup",
-   "scene": 0
-  },
-  {
-   "id": "pexels-6173151",
-   "ts": 1787477736,
-   "session": "gh-dd23c2",
-   "query": "attorney speaking podium courtroom",
-   "scene": 1
-  },
-  {
-   "id": "pexels-34550101",
-   "ts": 1787477736,
-   "session": "gh-dd23c2",
-   "query": "attorney speaking podium courtroom",
-   "scene": 1
-  },
-  {
-   "id": "pexels-38870378",
-   "ts": 1787477736,
-   "session": "gh-dd23c2",
-   "query": "financial analytics falling chart screen",
-   "scene": 2
-  },
-  {
    "id": "pexels-37410268",
    "ts": 1787477736,
    "session": "gh-dd23c2",
@@ -2800,6 +2737,69 @@
    "session": "gh-bf6e12",
    "query": "dashboard UI loading success screen",
    "scene": 4
+  },
+  {
+   "id": "pexels-33315143",
+   "ts": 1789294366,
+   "session": "gh-7935bb",
+   "query": "terminal hacking code green matrix",
+   "scene": 0
+  },
+  {
+   "id": "pexels-34818829",
+   "ts": 1789294366,
+   "session": "gh-7935bb",
+   "query": "code editor screen scrolling fast",
+   "scene": 1
+  },
+  {
+   "id": "pexels-19162270",
+   "ts": 1789294366,
+   "session": "gh-7935bb",
+   "query": "code editor screen scrolling fast",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5523892",
+   "ts": 1789294366,
+   "session": "gh-7935bb",
+   "query": "server room dark lights flashing",
+   "scene": 2
+  },
+  {
+   "id": "pexels-19193293",
+   "ts": 1789294366,
+   "session": "gh-7935bb",
+   "query": "server room dark lights flashing",
+   "scene": 2
+  },
+  {
+   "id": "pexels-18069233",
+   "ts": 1789294366,
+   "session": "gh-7935bb",
+   "query": "data center servers gpu racks motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-38901962",
+   "ts": 1789294366,
+   "session": "gh-7935bb",
+   "query": "network latency dashboard screen ui",
+   "scene": 4
+  },
+  {
+   "id": "pexels-34149137",
+   "ts": 1789294366,
+   "session": "gh-7935bb",
+   "query": "network latency dashboard screen ui",
+   "scene": 4
+  },
+  {
+   "id": "pexels-7660185",
+   "ts": 1789294366,
+   "session": "gh-7935bb",
+   "query": "developer typing code laptop closeup",
+   "scene": 5
   }
  ]
 }

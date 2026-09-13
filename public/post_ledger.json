@@ -4768,7 +4768,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1789188705
+      "fetched_at": 1789294477
      },
      "snap72": {
       "views": 15,
@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1789188705
+      "fetched_at": 1789294477
      },
      "snap72": {
       "views": 9,
@@ -4967,7 +4967,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3060,
-      "fetched_at": 1789188705
+      "fetched_at": 1789294477
      },
      "snap72": {
       "views": 7,
@@ -5169,7 +5169,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5297,
-      "fetched_at": 1789188705
+      "fetched_at": 1789294477
      },
      "snap72": {
       "views": 7,
@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1789188705
+      "fetched_at": 1789294477
      },
      "snap72": {
       "views": 7,
@@ -5434,7 +5434,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5193,
-      "fetched_at": 1789188705
+      "fetched_at": 1789294477
      },
      "snap72": {
       "views": 12,
@@ -5567,7 +5567,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1789188705
+      "fetched_at": 1789294477
      },
      "snap72": {
       "views": 8,
@@ -6234,7 +6234,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2886,
-      "fetched_at": 1789188705
+      "fetched_at": 1789294477
      },
      "snap72": {
       "views": 4,
@@ -6482,7 +6482,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1082,
-      "fetched_at": 1789188705
+      "fetched_at": 1789294477
      },
      "snap72": {
       "views": 112,
@@ -7694,7 +7694,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789135715
+      "fetched_at": 1789294477
      },
      "snap72": {
       "views": 0,
@@ -7759,7 +7759,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1789188705
+      "fetched_at": 1789294477
      },
      "snap72": {
       "views": 16,
@@ -8024,7 +8024,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1385,
-      "fetched_at": 1789135715
+      "fetched_at": 1789294477
      },
      "snap72": {
       "views": 13,
@@ -8159,7 +8159,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6066,
-      "fetched_at": 1789135715
+      "fetched_at": 1789294477
      },
      "snap72": {
       "views": 10,
@@ -8225,7 +8225,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 992,
-      "fetched_at": 1789135715
+      "fetched_at": 1789294477
      },
      "snap72": {
       "views": 127,
@@ -8783,7 +8783,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 57,
+      "reach": 55,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1369,
+      "fetched_at": 1789294477
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -8876,6 +8886,55 @@
     "instagram": {
      "id": "18182319700418153",
      "posted_at": 1789279264
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789294366,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "Why are AI agents lying, cheating and coordinating?",
+    "subject": "Why are AI agents lying, cheating and coordinating?",
+    "url": "https://yoshuabengio.org/en/publication/why-are-ai-agents-lying-cheating-and-coordinating",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "agent",
+     "why"
+    ],
+    "viral_score": 11.47,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "",
+    "angle": "",
+    "insight": "",
+    "judge": "none"
+   },
+   "style_pack": "royal-violet",
+   "format_pack": "legacy-news",
+   "seed": 1694547133,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "CONTRARIAN CLAIM",
+   "style_epoch": 8,
+   "scene_count": 6,
+   "video_seconds": 45.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-7935bb",
+   "platforms": {
+    "instagram": {
+     "id": "18123837886856067",
+     "posted_at": 1789294473
     }
    },
    "metrics": {
