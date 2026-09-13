@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-33264188",
-   "ts": 1787404565,
-   "session": "gh-006849",
-   "query": "music player interface screen",
-   "scene": 3
-  },
-  {
-   "id": "pexels-6153460",
-   "ts": 1787404565,
-   "session": "gh-006849",
-   "query": "ai chatbot typing interface",
-   "scene": 4
-  },
-  {
-   "id": "pexels-8480682",
-   "ts": 1787461650,
-   "session": "gh-cf82a5",
-   "query": "terminal prompt typing commands fast",
-   "scene": 0
-  },
-  {
-   "id": "pexels-5377699",
-   "ts": 1787461650,
-   "session": "gh-cf82a5",
-   "query": "code editor scrolling documentation",
-   "scene": 1
-  },
-  {
-   "id": "pexels-6382045",
-   "ts": 1787461650,
-   "session": "gh-cf82a5",
-   "query": "data center servers blinking lights",
-   "scene": 2
-  },
-  {
    "id": "pexels-5377516",
    "ts": 1787461650,
    "session": "gh-cf82a5",
@@ -2799,6 +2764,41 @@
    "ts": 1789204103,
    "session": "gh-3550ee",
    "query": "secure network authorization flow",
+   "scene": 4
+  },
+  {
+   "id": "pexels-5925286",
+   "ts": 1789279176,
+   "session": "gh-bf6e12",
+   "query": "terminal loading screen cybersecurity code",
+   "scene": 0
+  },
+  {
+   "id": "pexels-5921200",
+   "ts": 1789279176,
+   "session": "gh-bf6e12",
+   "query": "data center servers blinking lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-30056318",
+   "ts": 1789279176,
+   "session": "gh-bf6e12",
+   "query": "code scrolling terminal fast",
+   "scene": 2
+  },
+  {
+   "id": "pexels-34550739",
+   "ts": 1789279176,
+   "session": "gh-bf6e12",
+   "query": "network nodes glowing particles graph",
+   "scene": 3
+  },
+  {
+   "id": "pexels-30028386",
+   "ts": 1789279176,
+   "session": "gh-bf6e12",
+   "query": "dashboard UI loading success screen",
    "scene": 4
   }
  ]

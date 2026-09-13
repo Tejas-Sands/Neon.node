@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1789135715
+      "fetched_at": 1789279267
      },
      "snap72": {
       "views": 29,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1789135715
+      "fetched_at": 1789279267
      },
      "snap72": {
       "views": 38,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1789135715
+      "fetched_at": 1789279267
      },
      "snap72": {
       "views": 2,
@@ -5035,7 +5035,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1296,
-      "fetched_at": 1789135715
+      "fetched_at": 1789279267
      },
      "snap72": {
       "views": 5,
@@ -5101,7 +5101,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1276,
-      "fetched_at": 1789135715
+      "fetched_at": 1789279267
      },
      "snap72": {
       "views": 42,
@@ -5237,7 +5237,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1568,
-      "fetched_at": 1789135715
+      "fetched_at": 1789279267
      },
      "snap72": {
       "views": 1,
@@ -5304,7 +5304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5887,
-      "fetched_at": 1789135715
+      "fetched_at": 1789279267
      },
      "snap72": {
       "views": 10,
@@ -6685,7 +6685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1019,
-      "fetched_at": 1789135715
+      "fetched_at": 1789279267
      },
      "snap72": {
       "views": 155,
@@ -6753,7 +6753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7175,
-      "fetched_at": 1789135715
+      "fetched_at": 1789279267
      },
      "snap72": {
       "views": 10,
@@ -6818,7 +6818,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1203,
-      "fetched_at": 1789135715
+      "fetched_at": 1789279267
      },
      "snap72": {
       "views": 31,
@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1789135715
+      "fetched_at": 1789279267
      },
      "snap72": {
       "views": 3,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1789118743
+      "fetched_at": 1789279267
      },
      "snap72": {
       "views": 30,
@@ -7957,7 +7957,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3536,
-      "fetched_at": 1789118743
+      "fetched_at": 1789279267
      },
      "snap72": {
       "views": 6,
@@ -8493,9 +8493,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1789118743
+      "fetched_at": 1789279267
      },
-     "snap72": null,
+     "snap72": {
+      "views": 6,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 817,
+      "fetched_at": 1789279267
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -8715,7 +8725,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 108,
+      "reach": 107,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1015,
+      "fetched_at": 1789279267
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -8807,6 +8827,55 @@
     "instagram": {
      "id": "18104246311958477",
      "posted_at": 1789223700
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789279176,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Everyone should slow down AI development except for me",
+    "subject": "Everyone should slow down AI development except for me",
+    "url": "https://xeiaso.net/notes/2026/everyone-slowdown-but-me/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "everyone"
+    ],
+    "viral_score": 11.43,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "",
+    "angle": "",
+    "insight": "",
+    "judge": "none"
+   },
+   "style_pack": "rosewood-vintage",
+   "format_pack": "facts-explainer",
+   "seed": 1832869966,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 8,
+   "scene_count": 5,
+   "video_seconds": 22.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-bf6e12",
+   "platforms": {
+    "instagram": {
+     "id": "18182319700418153",
+     "posted_at": 1789279264
     }
    },
    "metrics": {
