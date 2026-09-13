@@ -2,62 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-37410268",
-   "ts": 1787477736,
-   "session": "gh-dd23c2",
-   "query": "jury seating empty courtroom wide",
-   "scene": 3
-  },
-  {
-   "id": "pexels-6266117",
-   "ts": 1787477736,
-   "session": "gh-dd23c2",
-   "query": "jury seating empty courtroom wide",
-   "scene": 3
-  },
-  {
-   "id": "pexels-8165696",
-   "ts": 1787477736,
-   "session": "gh-dd23c2",
-   "query": "smartphone screen notifications scrolling",
-   "scene": 4
-  },
-  {
-   "id": "pexels-36950732",
-   "ts": 1787495211,
-   "session": "gh-c3f328",
-   "query": "terminal typing commands green",
-   "scene": 0
-  },
-  {
-   "id": "pexels-33315117",
-   "ts": 1787495211,
-   "session": "gh-c3f328",
-   "query": "code editor screen scrolling",
-   "scene": 1
-  },
-  {
-   "id": "pexels-35002915",
-   "ts": 1787495211,
-   "session": "gh-c3f328",
-   "query": "data flowing network nodes motion",
-   "scene": 2
-  },
-  {
-   "id": "pexels-34336884",
-   "ts": 1787495211,
-   "session": "gh-c3f328",
-   "query": "data flowing network nodes motion",
-   "scene": 2
-  },
-  {
-   "id": "pexels-12330892",
-   "ts": 1787495211,
-   "session": "gh-c3f328",
-   "query": "server data center lights motion",
-   "scene": 3
-  },
-  {
    "id": "pexels-7579561",
    "ts": 1787495211,
    "session": "gh-c3f328",
@@ -2800,6 +2744,62 @@
    "session": "gh-7935bb",
    "query": "developer typing code laptop closeup",
    "scene": 5
+  },
+  {
+   "id": "pexels-7989668",
+   "ts": 1789306100,
+   "session": "gh-507fae",
+   "query": "terminal code editor scrolling screen",
+   "scene": 0
+  },
+  {
+   "id": "pexels-7593273",
+   "ts": 1789306100,
+   "session": "gh-507fae",
+   "query": "codebase directory tree file scrolling",
+   "scene": 1
+  },
+  {
+   "id": "pexels-34651697",
+   "ts": 1789306100,
+   "session": "gh-507fae",
+   "query": "codebase directory tree file scrolling",
+   "scene": 1
+  },
+  {
+   "id": "pexels-38992894",
+   "ts": 1789306100,
+   "session": "gh-507fae",
+   "query": "software testing dashboard metrics",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7580269",
+   "ts": 1789306100,
+   "session": "gh-507fae",
+   "query": "code debugging terminal output",
+   "scene": 3
+  },
+  {
+   "id": "pexels-26953415",
+   "ts": 1789306100,
+   "session": "gh-507fae",
+   "query": "code debugging terminal output",
+   "scene": 3
+  },
+  {
+   "id": "pexels-7767523",
+   "ts": 1789306100,
+   "session": "gh-507fae",
+   "query": "data center server racks blinking",
+   "scene": 4
+  },
+  {
+   "id": "pexels-16929615",
+   "ts": 1789306100,
+   "session": "gh-507fae",
+   "query": "data center server racks blinking",
+   "scene": 4
   }
  ]
 }

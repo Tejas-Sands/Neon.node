@@ -1753,5 +1753,18 @@
   "entities": [],
   "ts": 1789294477,
   "session": "gh-7935bb"
+ },
+ {
+  "id": "49676820",
+  "title": "Real-SWE: Benchmarking AI models on private, real-world, enterprise codebases",
+  "norm": "real swe benchmarking ai models on private real world enterprise codebases",
+  "subject_norm": "real swe benchmark",
+  "entities": [
+   "benchmarking",
+   "real-swe",
+   "benchmark"
+  ],
+  "ts": 1789306167,
+  "session": "gh-507fae"
  }
 ]
