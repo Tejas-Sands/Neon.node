@@ -4768,7 +4768,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1789294477
+      "fetched_at": 1789396206
      },
      "snap72": {
       "views": 15,
@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1789294477
+      "fetched_at": 1789396206
      },
      "snap72": {
       "views": 9,
@@ -4967,7 +4967,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3060,
-      "fetched_at": 1789294477
+      "fetched_at": 1789396206
      },
      "snap72": {
       "views": 7,
@@ -5169,7 +5169,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5297,
-      "fetched_at": 1789294477
+      "fetched_at": 1789396206
      },
      "snap72": {
       "views": 7,
@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1789294477
+      "fetched_at": 1789396206
      },
      "snap72": {
       "views": 7,
@@ -5434,7 +5434,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5193,
-      "fetched_at": 1789294477
+      "fetched_at": 1789396206
      },
      "snap72": {
       "views": 12,
@@ -5567,7 +5567,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1789294477
+      "fetched_at": 1789396206
      },
      "snap72": {
       "views": 8,
@@ -6234,7 +6234,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2886,
-      "fetched_at": 1789294477
+      "fetched_at": 1789396206
      },
      "snap72": {
       "views": 4,
@@ -6482,7 +6482,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1082,
-      "fetched_at": 1789294477
+      "fetched_at": 1789396206
      },
      "snap72": {
       "views": 112,
@@ -7707,7 +7707,7 @@
       "ig_reels_avg_watch_time": 0,
       "fetched_at": 1788875640
      },
-     "deleted": false,
+     "deleted": true,
      "fetch_errors": 0
     }
    }
@@ -7957,7 +7957,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3536,
-      "fetched_at": 1789279267
+      "fetched_at": 1789396206
      },
      "snap72": {
       "views": 6,
@@ -8493,7 +8493,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1789279267
+      "fetched_at": 1789396206
      },
      "snap72": {
       "views": 6,
@@ -8756,17 +8756,27 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 108,
-      "reach": 107,
+      "views": 109,
+      "reach": 109,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1015,
-      "fetched_at": 1789279267
+      "ig_reels_avg_watch_time": 1034,
+      "fetched_at": 1789396206
      },
-     "snap72": null,
+     "snap72": {
+      "views": 109,
+      "reach": 109,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1034,
+      "fetched_at": 1789396206
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -8989,7 +8999,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 2,
+      "reach": 2,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 760,
+      "fetched_at": 1789396206
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -9036,7 +9056,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 294,
+      "fetched_at": 1789396206
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -9128,6 +9158,56 @@
     "instagram": {
      "id": "17882867538504703",
      "posted_at": 1789376386
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789396139,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "Apple's Siri AI Can Be Swapped Out for Claude, ChatGPT, Code Shows",
+    "subject": "Apple Siri third-party AI models",
+    "url": "https://www.macrumors.com/2026/09/14/siri-can-be-swapped-out-for-chatgpt-claude/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "gpt",
+     "chatgpt",
+     "claude",
+     "how",
+     "apple"
+    ],
+    "viral_score": 11.68,
+    "sources": [],
+    "display_title": "Siri Runs ChatGPT And Claude",
+    "angle": "Code leaks show Apple built deep architecture letting users swap Siri out for Claude and ChatGPT.",
+    "insight": "Apple is turning Siri into a neutral wrapper for third-party models to comply with EU regulations and avoid antitrust fines.",
+    "judge": "plan"
+   },
+   "style_pack": "burgundy-luxe",
+   "format_pack": "legacy-news",
+   "seed": 552715733,
+   "voice": "en-US-GuyNeural",
+   "hook_type": "TWO-WORD COLD OPEN",
+   "style_epoch": 9,
+   "scene_count": 5,
+   "video_seconds": 36.6,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-db1197",
+   "platforms": {
+    "instagram": {
+     "id": "18166262122484099",
+     "posted_at": 1789396203
     }
    },
    "metrics": {

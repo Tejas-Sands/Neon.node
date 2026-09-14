@@ -1789,5 +1789,18 @@
   ],
   "ts": 1789376390,
   "session": "gh-e56bd7"
+ },
+ {
+  "id": "49695409",
+  "title": "Apple's Siri AI Can Be Swapped Out for Claude, ChatGPT, Code Shows",
+  "norm": "apple s siri ai can be swapped out for claude chatgpt code shows",
+  "subject_norm": "apple siri third party ai models",
+  "entities": [
+   "apple",
+   "anthropic",
+   "openai"
+  ],
+  "ts": 1789396206,
+  "session": "gh-db1197"
  }
 ]
