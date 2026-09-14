@@ -4438,7 +4438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2513,
-      "fetched_at": 1789279267
+      "fetched_at": 1789376390
      },
      "snap72": {
       "views": 29,
@@ -4504,7 +4504,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 954,
-      "fetched_at": 1789279267
+      "fetched_at": 1789376390
      },
      "snap72": {
       "views": 38,
@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1789279267
+      "fetched_at": 1789376390
      },
      "snap72": {
       "views": 2,
@@ -5035,7 +5035,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1296,
-      "fetched_at": 1789279267
+      "fetched_at": 1789376390
      },
      "snap72": {
       "views": 5,
@@ -5101,7 +5101,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1276,
-      "fetched_at": 1789279267
+      "fetched_at": 1789376390
      },
      "snap72": {
       "views": 42,
@@ -5237,7 +5237,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1568,
-      "fetched_at": 1789279267
+      "fetched_at": 1789376390
      },
      "snap72": {
       "views": 1,
@@ -5304,7 +5304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5887,
-      "fetched_at": 1789279267
+      "fetched_at": 1789376390
      },
      "snap72": {
       "views": 10,
@@ -6685,7 +6685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1019,
-      "fetched_at": 1789279267
+      "fetched_at": 1789376390
      },
      "snap72": {
       "views": 155,
@@ -6753,7 +6753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7175,
-      "fetched_at": 1789279267
+      "fetched_at": 1789376390
      },
      "snap72": {
       "views": 10,
@@ -6818,7 +6818,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1203,
-      "fetched_at": 1789279267
+      "fetched_at": 1789376390
      },
      "snap72": {
       "views": 31,
@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1789279267
+      "fetched_at": 1789376390
      },
      "snap72": {
       "views": 3,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1789279267
+      "fetched_at": 1789376390
      },
      "snap72": {
       "views": 30,
@@ -8629,9 +8629,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9140,
-      "fetched_at": 1789223702
+      "fetched_at": 1789376390
      },
-     "snap72": null,
+     "snap72": {
+      "views": 9,
+      "reach": 9,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 9140,
+      "fetched_at": 1789376390
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -8684,9 +8694,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1789223702
+      "fetched_at": 1789376390
      },
-     "snap72": null,
+     "snap72": {
+      "views": 48,
+      "reach": 49,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 946,
+      "fetched_at": 1789376390
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -8910,7 +8930,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1789376390
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -9050,6 +9080,54 @@
     "instagram": {
      "id": "18083868266309486",
      "posted_at": 1789361830
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789376323,
+   "posted_hour_utc": 8,
+   "channel": "news",
+   "topic": {
+    "title": "The case against JPEG XL",
+    "subject": "JPEG XL web image codec",
+    "url": "https://giannirosato.com/blog/post/case-against-jxl/",
+    "source": "hn",
+    "keywords": [
+     "ai"
+    ],
+    "viral_score": 9.81,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "JPEG XL Web Image Codec",
+    "angle": "An expert analysis explains why JPEG XL ultimately fails to justify its place on the modern web compared to lossy alternatives.",
+    "insight": "Lossless compression gains like 12% do not justify adding a new browser codec when lossy web use cases already dominate.",
+    "judge": "plan"
+   },
+   "style_pack": "sage-botanical",
+   "format_pack": "facts-explainer",
+   "seed": 787136871,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 9,
+   "scene_count": 5,
+   "video_seconds": 23.9,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-e56bd7",
+   "platforms": {
+    "instagram": {
+     "id": "17882867538504703",
+     "posted_at": 1789376386
     }
    },
    "metrics": {

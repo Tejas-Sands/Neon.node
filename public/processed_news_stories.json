@@ -1778,5 +1778,16 @@
   ],
   "ts": 1789361833,
   "session": "gh-997f2c"
+ },
+ {
+  "id": "49690554",
+  "title": "The case against JPEG XL",
+  "norm": "the case against jpeg xl",
+  "subject_norm": "jpeg xl web image codec",
+  "entities": [
+   "jpeg"
+  ],
+  "ts": 1789376390,
+  "session": "gh-e56bd7"
  }
 ]

@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-6283051",
-   "ts": 1787550308,
-   "session": "gh-303c7f",
-   "query": "camera moving past bookshelves",
-   "scene": 3
-  },
-  {
-   "id": "pexels-8557551",
-   "ts": 1787550308,
-   "session": "gh-303c7f",
-   "query": "fountain pen writing paper",
-   "scene": 4
-  },
-  {
-   "id": "pexels-8889195",
-   "ts": 1787582199,
-   "session": "gh-5c5e8e",
-   "query": "terminal typing code green matrix",
-   "scene": 0
-  },
-  {
-   "id": "pexels-38901962",
-   "ts": 1787582199,
-   "session": "gh-5c5e8e",
-   "query": "smart home ui dashboard scrolling",
-   "scene": 1
-  },
-  {
-   "id": "pexels-8136204",
-   "ts": 1787582199,
-   "session": "gh-5c5e8e",
-   "query": "smart home ui dashboard scrolling",
-   "scene": 1
-  },
-  {
    "id": "pexels-7230985",
    "ts": 1787582199,
    "session": "gh-5c5e8e",
@@ -2799,6 +2764,41 @@
    "ts": 1789361774,
    "session": "gh-997f2c",
    "query": "data center server racks panning",
+   "scene": 4
+  },
+  {
+   "id": "pexels-38410501",
+   "ts": 1789376323,
+   "session": "gh-e56bd7",
+   "query": "web browser screen scrolling",
+   "scene": 0
+  },
+  {
+   "id": "pexels-6931577",
+   "ts": 1789376323,
+   "session": "gh-e56bd7",
+   "query": "data charts screen moving",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5925288",
+   "ts": 1789376323,
+   "session": "gh-e56bd7",
+   "query": "terminal typing rust code",
+   "scene": 2
+  },
+  {
+   "id": "pexels-27385370",
+   "ts": 1789376323,
+   "session": "gh-e56bd7",
+   "query": "developer laptop closeup",
+   "scene": 3
+  },
+  {
+   "id": "pexels-7205852",
+   "ts": 1789376323,
+   "session": "gh-e56bd7",
+   "query": "server rack blinking lights",
    "scene": 4
   }
  ]
