@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-7579561",
-   "ts": 1787495211,
-   "session": "gh-c3f328",
-   "query": "network latency dashboard screen",
-   "scene": 4
-  },
-  {
-   "id": "pexels-35544532",
-   "ts": 1787495211,
-   "session": "gh-c3f328",
-   "query": "network latency dashboard screen",
-   "scene": 4
-  },
-  {
-   "id": "pexels-7809671",
-   "ts": 1787550308,
-   "session": "gh-303c7f",
-   "query": "turning book pages closeup",
-   "scene": 0
-  },
-  {
-   "id": "pexels-6611949",
-   "ts": 1787550308,
-   "session": "gh-303c7f",
-   "query": "scrolling phone screen closeup",
-   "scene": 1
-  },
-  {
-   "id": "pexels-5614669",
-   "ts": 1787550308,
-   "session": "gh-303c7f",
-   "query": "typing fast laptop keyboard",
-   "scene": 2
-  },
-  {
    "id": "pexels-6283051",
    "ts": 1787550308,
    "session": "gh-303c7f",
@@ -2799,6 +2764,41 @@
    "ts": 1789306100,
    "session": "gh-507fae",
    "query": "data center server racks blinking",
+   "scene": 4
+  },
+  {
+   "id": "pexels-15439750",
+   "ts": 1789361774,
+   "session": "gh-997f2c",
+   "query": "chip architecture closeup macro",
+   "scene": 0
+  },
+  {
+   "id": "pexels-5871854",
+   "ts": 1789361774,
+   "session": "gh-997f2c",
+   "query": "code editor scrolling lines",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5647324",
+   "ts": 1789361774,
+   "session": "gh-997f2c",
+   "query": "terminal typing commands screen",
+   "scene": 2
+  },
+  {
+   "id": "pexels-36588601",
+   "ts": 1789361774,
+   "session": "gh-997f2c",
+   "query": "processor silicon wafer rotation",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35878194",
+   "ts": 1789361774,
+   "session": "gh-997f2c",
+   "query": "data center server racks panning",
    "scene": 4
   }
  ]

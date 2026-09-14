@@ -4305,7 +4305,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 4015,
-      "fetched_at": 1789223702
+      "fetched_at": 1789361833
      },
      "snap72": {
       "views": 90,
@@ -4370,7 +4370,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1789223702
+      "fetched_at": 1789361833
      },
      "snap72": {
       "views": 109,
@@ -4573,7 +4573,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3478,
-      "fetched_at": 1789223702
+      "fetched_at": 1789361833
      },
      "snap72": {
       "views": 11,
@@ -5964,7 +5964,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1596,
-      "fetched_at": 1789223702
+      "fetched_at": 1789361833
      },
      "snap72": {
       "views": 2,
@@ -6165,7 +6165,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 718,
-      "fetched_at": 1789223702
+      "fetched_at": 1789361833
      },
      "snap72": {
       "views": 4,
@@ -6416,7 +6416,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4974,
-      "fetched_at": 1789223702
+      "fetched_at": 1789361833
      },
      "snap72": {
       "views": 4,
@@ -6550,7 +6550,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2032,
-      "fetched_at": 1789223702
+      "fetched_at": 1789361833
      },
      "snap72": {
       "views": 38,
@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789223702
+      "fetched_at": 1789361833
      },
      "snap72": {
       "views": 0,
@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789223702
+      "fetched_at": 1789361833
      },
      "snap72": {
       "views": 0,
@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1789223702
+      "fetched_at": 1789361833
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1789223702
+      "fetched_at": 1789361833
      },
      "snap72": {
       "views": 6,
@@ -8091,7 +8091,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1549,
-      "fetched_at": 1789204170
+      "fetched_at": 1789361833
      },
      "snap72": {
       "views": 4,
@@ -8428,7 +8428,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 854,
-      "fetched_at": 1789223702
+      "fetched_at": 1789361833
      },
      "snap72": {
       "views": 3,
@@ -8561,9 +8561,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 865,
-      "fetched_at": 1789204170
+      "fetched_at": 1789361833
      },
-     "snap72": null,
+     "snap72": {
+      "views": 4,
+      "reach": 4,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 865,
+      "fetched_at": 1789361833
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -8841,7 +8851,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1789361833
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -8982,6 +9002,54 @@
     "instagram": {
      "id": "18015918374941534",
      "posted_at": 1789306164
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789361774,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "Why is the x86 undefined instruction called ud2? Why 2?",
+    "subject": "x86 ud2 instruction",
+    "url": "https://devblogs.microsoft.com/oldnewthing/20260910-00/?p=112689",
+    "source": "hn",
+    "keywords": [
+     "why"
+    ],
+    "viral_score": 9.68,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "Why x86 has ud2",
+    "angle": "We explain how an accidental crash instruction became an official standard because software developers accidentally relied on undefined behavior.",
+    "insight": "Hyrum's Law proves that once software developers rely on an undocumented quirk like 0F FF, hardware makers are forced to standardize it.",
+    "judge": "plan"
+   },
+   "style_pack": "ice-electric",
+   "format_pack": "facts-explainer",
+   "seed": 499956586,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 9,
+   "scene_count": 5,
+   "video_seconds": 27.4,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-997f2c",
+   "platforms": {
+    "instagram": {
+     "id": "18083868266309486",
+     "posted_at": 1789361830
     }
    },
    "metrics": {

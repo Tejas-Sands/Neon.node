@@ -1766,5 +1766,17 @@
   ],
   "ts": 1789306167,
   "session": "gh-507fae"
+ },
+ {
+  "id": "49683262",
+  "title": "Why is the x86 undefined instruction called ud2? Why 2?",
+  "norm": "why is the x86 undefined instruction called ud2 why 2",
+  "subject_norm": "x86 ud2 instruction",
+  "entities": [
+   "x86",
+   "ud2"
+  ],
+  "ts": 1789361833,
+  "session": "gh-997f2c"
  }
 ]
