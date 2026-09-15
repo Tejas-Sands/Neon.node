@@ -4697,7 +4697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1863,
-      "fetched_at": 1789376390
+      "fetched_at": 1789482089
      },
      "snap72": {
       "views": 2,
@@ -5035,7 +5035,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1296,
-      "fetched_at": 1789376390
+      "fetched_at": 1789482089
      },
      "snap72": {
       "views": 5,
@@ -5101,7 +5101,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1276,
-      "fetched_at": 1789376390
+      "fetched_at": 1789482089
      },
      "snap72": {
       "views": 42,
@@ -5237,7 +5237,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1568,
-      "fetched_at": 1789376390
+      "fetched_at": 1789482089
      },
      "snap72": {
       "views": 1,
@@ -5304,7 +5304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5887,
-      "fetched_at": 1789376390
+      "fetched_at": 1789482089
      },
      "snap72": {
       "views": 10,
@@ -6685,7 +6685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1019,
-      "fetched_at": 1789376390
+      "fetched_at": 1789482089
      },
      "snap72": {
       "views": 155,
@@ -6753,7 +6753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7175,
-      "fetched_at": 1789376390
+      "fetched_at": 1789482089
      },
      "snap72": {
       "views": 10,
@@ -6818,7 +6818,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1203,
-      "fetched_at": 1789376390
+      "fetched_at": 1789482089
      },
      "snap72": {
       "views": 31,
@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1789376390
+      "fetched_at": 1789482089
      },
      "snap72": {
       "views": 3,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1789376390
+      "fetched_at": 1789482089
      },
      "snap72": {
       "views": 30,
@@ -8091,7 +8091,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1549,
-      "fetched_at": 1789361833
+      "fetched_at": 1789482089
      },
      "snap72": {
       "views": 4,
@@ -8428,7 +8428,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 854,
-      "fetched_at": 1789361833
+      "fetched_at": 1789482089
      },
      "snap72": {
       "views": 3,
@@ -8561,7 +8561,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 865,
-      "fetched_at": 1789361833
+      "fetched_at": 1789482089
      },
      "snap72": {
       "views": 4,
@@ -8900,9 +8900,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789361833
+      "fetched_at": 1789482089
      },
-     "snap72": null,
+     "snap72": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1789482089
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -9182,7 +9192,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 3,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5867,
+      "fetched_at": 1789482089
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -9324,6 +9344,53 @@
     "instagram": {
      "id": "18042837386820542",
      "posted_at": 1789459777
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789482010,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "Pion, an agent designed to run any company autonomously",
+    "subject": "Pion autonomous company agent",
+    "url": "https://andonlabs.com/blog/why-we-built-pion",
+    "source": "hn",
+    "keywords": [
+     "agent"
+    ],
+    "viral_score": 8.81,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Pion Runs Real Businesses",
+    "angle": "Andon is releasing Pion, an autonomous agent platform designed to run real-world businesses from vending machines to cafes.",
+    "insight": "AI capability benchmarks are shifting from simulated tests to real-world resource acquisition, raising critical alignment questions about autonomous economic power.",
+    "judge": "plan"
+   },
+   "style_pack": "ember-gold",
+   "format_pack": "facts-explainer",
+   "seed": 2041148147,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 9,
+   "scene_count": 4,
+   "video_seconds": 21.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-f024ba",
+   "platforms": {
+    "instagram": {
+     "id": "17951384502266488",
+     "posted_at": 1789482086
     }
    },
    "metrics": {
