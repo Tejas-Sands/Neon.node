@@ -136,9 +136,9 @@ os.makedirs(PUBLIC_DIR, exist_ok=True)
 # Users can override via the pexels_api_key field in the request body
 PEXELS_API_KEY = os.environ.get("PEXELS_API_KEY", "").strip()
 
-# Stock VIDEO b-roll: scenes use real motion clips instead of still photos —
-# motion in the first frame is a proven scroll-stopper for the Instagram
-# 3-second-hold signal, and periodic visual change lifts retention throughout.
+# Stock VIDEO b-roll: scenes use real motion clips instead of still photos.
+# The opening visual must communicate the hook immediately; later changes
+# support the narration without competing with reading beats.
 # Clips come from the free Pexels Video API (same key as photos; free for
 # commercial use, no attribution), with the free Pixabay video API as fallback.
 # SCENE_VIDEO_MODE: "all" = every scene tries for a clip (default),
@@ -274,7 +274,7 @@ def _epoch_rng(salt: int) -> random.Random:
 
 
 def _epoch_hook_options() -> list:
-    """HOOK_PATTERNS with this epoch's 5 favorites duplicated (2x weight).
+    """HOOK_PATTERNS with up to 5 epoch favorites duplicated (2x weight).
 
     Epoch 0 returns the plain list. Duplication biases every chooser mode
     (cold/explore/learned) without touching ledger keys — same trick as the
@@ -282,7 +282,8 @@ def _epoch_hook_options() -> list:
     """
     if current_style_epoch() <= 0:
         return HOOK_PATTERNS
-    return HOOK_PATTERNS + _epoch_rng(29).sample(HOOK_PATTERNS, 5)
+    return HOOK_PATTERNS + _epoch_rng(29).sample(
+        HOOK_PATTERNS, min(5, len(HOOK_PATTERNS)))
 
 # A video must never ship with partial or missing narration. When on (default),
 # any TTS/mixing failure aborts the render instead of degrading — a GH runner
@@ -785,7 +786,7 @@ Each scene has a "type" that controls its visual layout. Choose the type that be
 2. Use double quotes for ALL string values. No single quotes.
 3. No trailing commas. No JavaScript comments.
 4. Generate 4 to 8 scenes. Each scene MUST have: type, text, voiceover, searchQuery, durationInFrames.
-5. FIRST scene MUST be type "hero" — it is the HOOK. Instagram ranks Reels by 3-second hold, so this scene alone decides reach. Its "text" (max 8 words, on screen from frame one) and "voiceover" (max 12 words, spoken hook — never a greeting or intro like "welcome" / "in this video") must BOTH deliver the hook and make the payoff of watching obvious. Bold, surprising, specific (see the CREATIVE BRIEF below for the exact hook style to use). The voiceover's FIRST three words must already carry the surprise — never a wind-up like "So,", "Okay,", "Today," or "Guys".
+5. FIRST scene MUST be type "hero" — it is the HOOK. Viewers decide in the opening seconds whether to stay, so its "text" (max 8 words, visible from frame one) and "voiceover" (max 12 words) must immediately deliver specific value. Never greet, announce the video, or use a wind-up such as "So", "Okay", "Today", "Welcome", or "In this video". The FIRST three spoken words must carry a number, an unexpected consequence, or a proven contradiction.
 6. LAST scene MUST be type "cta", "hero", or "split" — this is the conclusion that pays off the hook. Default to a CONTENT payoff (a decisive takeaway, or a "try/do this" action tied to the story). Add a follow/subscribe ask ONLY if the creative brief below explicitly requests one — never invent one yourself, and never state the same call-to-action twice in one video.
 7. Use AT LEAST 3 different scene types across the video for visual variety. Do NOT repeat the same scene type back-to-back.
 8. VARY textAnimation across scenes — never use the same animation on consecutive scenes.
@@ -892,14 +893,13 @@ These are PROVEN combinations. Use them as starting points:
 === DURATION GUIDE ===
 
 21. durationInFrames at 30fps: 150 frames = 5 seconds, 175 = ~6s, 200 = ~6.7s, 250 = ~8.3s.
-    - Hero/opener (the HOOK): 100-140 frames (~3.5-4.5s) — shortest scene in the video; a fast hook protects 3-second retention
+    - Hero/opener (the HOOK): 100-120 frames (~3.3-4s) — shortest scene in the video
     - Content scenes: 175-200 frames (time to read + absorb)
     - Countdown scenes: 200-250 frames (animation needs time)
     - List scenes: 200-250 frames (items reveal one by one)
     - CTA/closer: 175-200 frames (clear call to action)
 22. TOTAL RUNTIME: scene lengths auto-sync to the spoken narration, so the "voiceover" fields ARE the video length.
-    The summed narration MUST run 40-55 seconds when spoken (~110-150 words total across all scenes).
-    Hit it by writing 20-35 word voiceovers per content scene — never by padding with repetition."""
+    Follow any runtime and word budget in the user prompt; it overrides this default. Otherwise, target 40-55 seconds total. Never pad with repetition."""
 
 # Spoken-warmth register (VOICE_STYLE=cheerful, the default). edge-tts exposes
 # no emotion/style API — punctuation and phrasing are the only prosody levers,
@@ -914,16 +914,36 @@ _SPOKEN_WARMTH_RULES = """
 23. The narrator is a delighted friend telling you the news, NOT a newsreader. This register is MANDATORY, not a garnish — a script that reads like a press summary is a failed script. The narration engine turns punctuation into real vocal emotion (question marks rise, exclamation marks brighten, a dash makes the voice lean in before a payoff), so punctuation IS the performance:
     - Short, punchy sentences (most under 12 words) with natural contractions ("it's", "that's", "here's").
     - Talk TO the viewer. "you" appears somewhere in the video's narration — the viewer is being told a story, not read a report.
-    - REQUIRED once per video: a playful aside or wry comparison grounded in a REAL fact from the brief ("that's roughly eight years of forgetting to charge it"). Humor comes from the true detail, never from an invented one.
-    - REQUIRED once per video: a tiny interjection sentence for rhythm — "Yep.", "Wild, right?", "No, really.", "Seriously." (1-3 words, its own sentence). Use at most two in the whole script.
-    - Ask ONE genuine question somewhere in the video and answer it in the next scene ("So what actually broke?"). If the hook is already a question, that's the one.
+    - REQUIRED once per video: ONE honest reaction at the most surprising fact — "That's not a typo.", "Wild, right?", or a wry comparison grounded in the brief. Never invent context for it.
+    - Ask at most ONE genuine question and answer it in the next scene. If the hook is already a question, do not add another.
     - Lean on the setup — dash — payoff shape: "They rewrote the whole parser — in a weekend."
     - At MOST two exclamation marks in the whole script, placed where the surprise genuinely peaks.
     - Delight lives in specifics: an exact number delivered with relish beats any adjective.
-24. Cheerful NEVER means hype. Every fact-integrity and no-repetition rule above still applies in full: no cliché superlatives, no imperative advice outside the hook/CTA, and no catchphrase repeated across scenes — say a good line once and move on. The asides and interjections must never carry the facts — they decorate them."""
+24. Cheerful NEVER means hype. Every fact-integrity and no-repetition rule above still applies in full: no cliché superlatives, no imperative advice outside the hook/CTA, and no catchphrase repeated across scenes — say a good line once and move on. The reaction never carries a fact; it punctuates one."""
 
 if VOICE_STYLE != "legacy":
     SYSTEM_PROMPT = SYSTEM_PROMPT + _SPOKEN_WARMTH_RULES
+
+# Retention rules are always applied, regardless of VOICE_STYLE. Keep this
+# compact: small models follow one clear contract better than overlapping
+# formulas and unsupported algorithm claims.
+_HOOK_ENGINEERING_RULES = """
+
+=== RETENTION CONTRACT — PROMISE, PROOF, PAYOFF ===
+
+25. Use EXACTLY ONE grounded hook family:
+    - SHOCK STAT: lead with a striking figure copied from the verified facts.
+    - BROKEN ASSUMPTION: contradict a common belief only when the source proves the correction.
+    - STAKES REVEAL: lead with a specific consequence for the viewer, then name the verified action.
+    Never invent personal experience, secret knowledge, urgency, blame, or a number to make a hook stronger.
+
+26. The hook promises one specific answer without vague clickbait. Each body scene adds proof the previous scene did not contain: why it matters, how it works, then the most surprising verified detail. One short forward tease is enough; do not stack cliffhangers.
+
+27. The final scene resolves the hook and gives the viewer one concrete takeaway before any CTA. A generic follow request is not a payoff, and a generic FOLLOW button is not a content action.
+
+28. SILENT STORY: titles and on-screen text must make the same promise-to-payoff arc understandable without narration. Put important numbers on screen, keep the hook title at four words or fewer and hook text at eight words or fewer, and never repeat the spoken sentence verbatim."""
+
+SYSTEM_PROMPT = SYSTEM_PROMPT + _HOOK_ENGINEERING_RULES
 
 
 def build_user_prompt(user_request: str) -> str:
@@ -1205,42 +1225,12 @@ STYLE_PACKS = [
     {"name": "rosewood-vintage", "primaryColor": "#b5838d", "secondaryColor": "#ffcdb2", "overlayType": "clean",          "fontFamilyName": "Fraunces",         "musicTrack": "lofi-chill",   "gradientOverlay": "top-to-bottom"},
 ]
 
-# Proven scroll-stopping opening patterns for short-form social video. One is
-# picked per video (seeded) and injected into the LLM prompt so the very first
-# scene grabs attention in the first ~1 second (critical for reels/shorts).
-#
-# Informed by how the Instagram Reels algorithm ranks content: the "3-second
-# hold" is the strongest early ranking signal (Reels with >60% 3s-hold reach
-# 5-10x further than <40%), and up to ~50% of viewers drop off inside the
-# first 3 seconds. Meta's creator guidance: the hook must communicate the
-# video's VALUE in the first frame (not act as an intro), with on-screen text
-# from frame one, and be specific rather than general. Each pattern below
-# includes a fill-in-the-blank template the LLM can adapt to the topic.
+# Grounded hook families for autonomous news. Every option is usable without
+# inventing personal experience, secret knowledge, urgency or viewer blame.
 HOOK_PATTERNS = [
-    "PATTERN-INTERRUPT: open with an unexpected, punchy 2-4 word statement that makes viewers stop scrolling (template: 'Delete this app' / 'Docker just broke').",
-    "SHOCK-STAT: open with a surprising, concrete number that sounds almost unbelievable but is plausible (template: '92% of devs miss this').",
-    "PROVOCATIVE QUESTION: open with a bold question that challenges the viewer's assumptions and demands an answer (template: 'Why is nobody using ___?').",
-    "CONTRARIAN CLAIM: open with a confident, against-the-grain statement that contradicts common belief (template: '___ is dead. Here's what replaced it').",
-    "CURIOSITY GAP: tease a surprising outcome or secret without revealing it, forcing viewers to keep watching (template: 'The last one surprised even me').",
-    "PAIN-POINT 'YOU': name a frustration the viewer personally feels, using the word 'you' (template: 'You're wasting hours on ___').",
-    "MISTAKE CALLOUT: tell the viewer they're doing something wrong — instant self-check reflex (template: 'You've been using ___ wrong').",
-    "INSIDER SECRET: open with forbidden-knowledge energy (template: 'This feels illegal to know' / 'What they don't tell you about ___').",
-    "BOLD PROMISE: promise a specific, valuable payoff for watching to the end (template: 'Save 10 hours a week with this').",
-    "URGENCY: a 'right now / before it's too late' framing that makes the topic feel time-sensitive (template: 'Do this before ___ changes').",
-    "STORY-TEASE: open mid-action with a mini cliffhanger that sets up a fast payoff (template: 'I almost lost everything doing this').",
-    "TIMEFRAME-COMPRESSION: compress a big transformation into a tiny window (template: '3 years of lessons in 30 seconds').",
-    "HYPER-SPECIFIC RELATABILITY: describe an oddly specific moment the target viewer instantly recognizes (template: 'If you've ever ___ at 2am...').",
-    "NEGATIVE WARNING: lead with what to STOP doing — loss-aversion beats gain framing (template: 'Stop doing ___ immediately').",
-    "BREAKING-NEWS: frame the topic as a just-dropped development (template: 'This just changed ___ forever').",
-    "CHALLENGE-DARE: dare the viewer to make it to the payoff (template: 'Bet you can't guess #1').",
-    "HIGH-STAKES BENCHMARK: lead with an unexpected benchmark or architectural outcome (template: 'We replaced ___ and latency dropped 80%').",
-    "SENIOR VS JUNIOR: contrast how junior vs senior engineers approach the topic (template: 'Senior devs do THIS instead of ___').",
-    "FORBIDDEN ARCHITECTURE: frame as a little-known developer secret (template: 'The secret feature in ___ that feels illegal to know').",
-    "STOP-SCROLLING TECH: target developers directly inside the first 2 words (template: 'Stop scrolling if you build apps in 2026').",
-    "HIDDEN-DETAIL: tease the one specific detail everyone missed in the story (template: 'Everyone missed the real story in ___' / 'The hidden number in the ___ announcement').",
-    "WHAT-NOW QUESTION: open with the consequence question the viewer is already asking (template: 'So what happens to ___ now?').",
-    "COST-OF-NOT-KNOWING: frame the hook as what missing this fact costs the viewer (template: 'Not knowing this about ___ costs you real money').",
-    "TWO-WORD COLD OPEN: two abrupt words, a beat, then the claim (template: 'It's live. And it breaks ___').",
+    "SHOCK-STAT: lead with a striking number copied from the verified facts, state its concrete consequence, and leave why it happened for the body.",
+    "BROKEN-ASSUMPTION: contradict one common belief only when the verified facts prove the correction, then leave the mechanism for the body.",
+    "STAKES-REVEAL: lead with the specific consequence for the viewer, then name the subject's verified action and leave the practical implication open.",
 ]
 
 
@@ -1261,7 +1251,7 @@ def build_variety_directive(seed: int, is_auto_channel: bool = False,
     `format_pack`: non-legacy packs get a slim, hook-quality-only brief — the
     pack's own prompt outline owns structure, and the full brief's scene-count
     / closer / pacing lines would contradict it. None or the legacy pack keeps
-    the historical brief byte-for-byte (pinned by test_format_packs.py).
+    the full creative-brief shape expected by test_format_packs.py.
     """
     if format_pack not in (None, LEGACY_PACK):
         if meta_out is not None:
@@ -1303,7 +1293,7 @@ def build_variety_directive(seed: int, is_auto_channel: bool = False,
 === CREATIVE BRIEF (follow this to make THIS video unique) ===
 - OPENING HOOK: {hook}
   The FIRST scene must deliver this hook. Make it impossible to scroll past.
-  ALGORITHM RULES for the first scene (Instagram ranks Reels by 3-second hold — half of viewers decide to leave within 3 seconds):
+  OPENING RULES:
   * The first scene's "text" IS the hook: max 8 words, readable in under 1 second, on screen from the very first frame.
   * The first scene's "voiceover" must SPEAK the hook immediately in max 12 words. NO greetings, NO "welcome", NO "in this video", NO "today we'll" — start mid-value. A short voiceover also keeps the hook scene fast (scene length auto-syncs to speech).
   * Be hyper-specific: real numbers, names, concrete outcomes. Generic openers kill retention.
@@ -3321,13 +3311,12 @@ def _script_vagueness_reasons(script: dict, source_prompt: str = "",
     fabrication scrub and redundancy pruning have already done their work —
     this only judges what is left for vagueness.
 
-    `format_pack` (M5): None or the legacy pack returns BYTE-IDENTICAL
-    results to the pre-pack gate (pinned). Non-legacy packs add pack-aware
-    checks: quiz packs move the subject requirement off the hook (a quiz
-    WITHHOLDS the subject's answer by design), require a question-form hook
-    (H4), and skip the imperative-advice check ("Lock in your answer" is the
-    format, not platitude advice); all packs gain soft hook-quality notes
-    (S4 length, S5 number-or-payoff).
+    The opening-copy, viewer-address and payoff checks apply to every format.
+    Non-legacy packs also add pack-aware checks: quiz packs move the subject
+    requirement off the hook (a quiz WITHHOLDS the subject's answer by design),
+    require a question-form hook (H4), and skip the imperative-advice check
+    ("Lock in your answer" is the format, not platitude advice). Other packs
+    gain a soft number-or-subject hook check (S5).
     """
     hard: list = []
     soft: list = []
@@ -3341,6 +3330,41 @@ def _script_vagueness_reasons(script: dict, source_prompt: str = "",
         return [str(s.get(f) or "") for f in ("voiceover", "text", "title", "subtitle", "secondaryText")]
 
     number_scenes = sum(1 for s in scenes if _scene_has_number(s))
+
+    # Retention contract: reject intros that spend the only useful opening
+    # beat announcing the video instead of delivering it. The remaining copy
+    # checks are soft so a small model gets a corrective re-ask without a
+    # false positive costing an automated posting slot.
+    hook = scenes[0]
+    hook_vo = str(hook.get("voiceover") or "").strip()
+    if re.match(
+            r"^(?:so|okay|today|hey(?:\s+guys)?|welcome(?:\s+back)?|in\s+this|"
+            r"let['’]s|we['’]re|i['’]m\s+going\s+to|have\s+you\s+ever|"
+            r"stop\s+scrolling)\b",
+            hook_vo, re.IGNORECASE):
+        hard.append("hook opens with a wind-up instead of immediate value")
+    hook_vo_words = len(hook_vo.split())
+    if hook_vo_words > 12:
+        soft.append(f"the hook voiceover runs {hook_vo_words} words — cut it to one line (max 12)")
+    for field, limit in (("title", 4), ("text", 8)):
+        words = len(str(hook.get(field) or "").split())
+        if words > limit:
+            soft.append(f"hook on-screen {field} runs {words} words — max {limit} for instant scanning")
+
+    narration = " ".join(str(s.get("voiceover") or "") for s in scenes)
+    if not re.search(r"\byou(?:r|rs|['’](?:re|ve|ll|d))?\b", narration, re.IGNORECASE):
+        soft.append("the narration never addresses the viewer as 'you' or 'your'")
+
+    closer = scenes[-1]
+    closer_vo = str(closer.get("voiceover") or "").strip()
+    if re.match(
+            r"^(?:please\s+)?(?:follow(?:\s+(?:us|me|neon|for|@))|subscribe|"
+            r"like\s+(?:and|this|the)|share\s+(?:this|it|the)|comment\s+(?:below|your|if))\b",
+            closer_vo, re.IGNORECASE):
+        soft.append("the closing asks for engagement before delivering a concrete payoff")
+    cta_label = re.sub(r"[^A-Z0-9]+", " ", str(closer.get("ctaText") or "").upper()).strip()
+    if cta_label in {"FOLLOW", "FOLLOW FOR MORE", "SUBSCRIBE", "LIKE AND FOLLOW", "SHARE"}:
+        soft.append("the CTA button is generic — tie it to the content")
 
     # H1 — banned platitude phrases. >=2 hits (or 1 hit in a numbers-free
     # script) = a platitude video; a single stray phrase in an otherwise
@@ -3409,9 +3433,6 @@ def _script_vagueness_reasons(script: dict, source_prompt: str = "",
     # S4/S5 (non-legacy packs, SOFT) — hook-copy quality notes. Soft first,
     # precision-first: they re-ask, never cost a slot.
     if is_pack:
-        hook_vo_words = len(str(scenes[0].get("voiceover") or "").split())
-        if hook_vo_words > 14:
-            soft.append(f"the hook voiceover runs {hook_vo_words} words — cut it to one line (max 14)")
         hook_all = " ".join(_fields(scenes[0])).lower()
         if not _scene_has_number(scenes[0]) and subj_tokens and \
                 not _subject_match(hook_all, subj_tokens) and not is_quiz:
@@ -4489,10 +4510,9 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
                     pass
 
         # === STOCK VIDEO B-ROLL: scenes get real motion clips ===
-        # Movement stops the scroll far better than a still photo + camera pan
-        # (the 3-second-hold decides reach, and a visual change every scene
-        # keeps mid-video retention up). The still image above always stays as
-        # the fallback/poster, so a failed fetch just means a static scene.
+        # Motion can support the opening hook and later narration when it stays
+        # relevant. The still image above always stays as the fallback/poster,
+        # so a failed fetch just means a static scene.
         # Only the QUERY is decided here — the actual fetch runs AFTER TTS
         # (see the sourcing_broll pass below), because scene durations are
         # rewritten to the spoken length there and the clip's min-duration
@@ -8023,7 +8043,7 @@ def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None,
     # prompt is what the model actually reads closest, so the register must be
     # stated here too, not only in the system role.
     tone_block = "" if VOICE_STYLE == "legacy" else """
-TONE (MANDATORY): narrate like a delighted friend telling you the news — warm, playful, cheerful — never a newsreader. Contractions everywhere; short punchy sentences. Include ONE playful aside or wry comparison grounded in a REAL fact from the article, and ONE tiny interjection sentence for rhythm ("Yep.", "Wild, right?", "No, really."). Address the viewer as "you" at least once (storytelling address — never generic advice). Punctuation is the vocal performance: questions rise, a dash leans in before a payoff, at most two exclamation marks total.
+TONE (MANDATORY): narrate like a delighted friend telling you the news — warm and conversational, never a newsreader. Use contractions and short sentences. Include ONE honest reaction at the most surprising verified fact (a brief interjection or grounded wry comparison), and address the viewer as "you" at least once. Punctuation is the vocal performance: a question rises, a dash leans into a payoff, and the whole video gets at most two exclamation marks.
 """
 
     editorial_block = ""
@@ -8614,12 +8634,32 @@ def save_post_ledger(ledger: dict) -> None:
     os.replace(tmp, POST_LEDGER_FILE)
 
 
+_VIRAL_KEYWORD_STEMS = {
+    "announc", "deprecat", "discover", "exploit", "open sourc",
+    "open-sourc", "releas", "revolution", "vulnerab",
+}
+
+
+def _viral_keyword_matches(text: str, keyword: str) -> bool:
+    """Match a scoring keyword as a word/phrase, never inside another word."""
+    low = (text or "").lower()
+    if keyword == "$":
+        return "$" in low
+    if keyword == "ai":
+        return bool(re.search(r"(?<![a-z0-9])(?:ai|openai|genai)(?![a-z0-9])", low))
+    if keyword == "gpt":
+        return bool(re.search(r"(?<![a-z0-9])(?:chat)?gpt(?:-[0-9.]+)?(?![a-z0-9])", low))
+    if keyword == "llm":
+        return bool(re.search(r"(?<![a-z0-9])(?:[a-z0-9-]+)?llms?(?![a-z0-9])", low))
+    suffix = r"[a-z]*" if keyword in _VIRAL_KEYWORD_STEMS else (
+        r"(?:s|es)?" if keyword.isalpha() and len(keyword) >= 5 else "")
+    return bool(re.search(
+        rf"(?<![a-z0-9]){re.escape(keyword)}{suffix}(?![a-z0-9])", low))
+
+
 def _extract_topic_keywords(title: str) -> list:
-    """VIRAL_KEYWORDS keys matching a title (same substring rule as
-    score_virality). Storing the matched keys — not raw title words — makes
-    attribution map 1:1 onto the knob the feedback loop later re-weights."""
-    low = (title or "").lower()
-    return [w for w in VIRAL_KEYWORDS if w in low]
+    """Return scoring keys genuinely present in a title for attribution."""
+    return [w for w in VIRAL_KEYWORDS if _viral_keyword_matches(title, w)]
 
 
 # ----------------------------------------------------------------------------
@@ -9415,7 +9455,7 @@ def _feedback_keyword_bonus(title_lower: str) -> float:
         return 0.0
     bonus = 0.0
     for word, rec in (stats.get("keywords") or {}).items():
-        if word in title_lower and rec.get("n", 0) >= FEEDBACK_MIN_BUCKET:
+        if _viral_keyword_matches(title_lower, word) and rec.get("n", 0) >= FEEDBACK_MIN_BUCKET:
             bonus += max(-0.5, min(0.5, FEEDBACK_KW_ALPHA * (float(rec["m"]) - 1.0)))
     return max(-1.5, min(1.5, bonus))
 
@@ -9760,7 +9800,7 @@ def score_virality(c: dict) -> float:
     # Hook / keyword model.
     kw = 0.0
     for word, w in VIRAL_KEYWORDS.items():
-        if word in title:
+        if _viral_keyword_matches(title, word):
             kw += w
     kw = min(kw, 4.0)  # cap so one keyword-stuffed title can't dominate
     for word, mult in VIRAL_NEGATIVES.items():
@@ -10996,6 +11036,3 @@ def start_schedulers():
         threading.Thread(target=run_metrics_scheduler, daemon=True).start()
     else:
         print("[Scheduler] Post-metrics loop is disabled (ENABLE_METRICS_LOOP != 'true').")
-
-
-

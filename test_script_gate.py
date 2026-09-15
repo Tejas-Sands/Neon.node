@@ -119,7 +119,7 @@ ACCEPT = {
     "concrete tech script": (
         {"scenes": [
             scene("hero", "MEET HYPERAPI", "20ms, not 200ms", "your gateway is the bottleneck",
-                  voiceover="Your API gateway is the slowest hop in your whole stack — HyperAPI just fixed that."),
+                  voiceover="Your gateway is the bottleneck — HyperAPI just cut latency tenfold."),
             scene("comparison", "THE DIFFERENCE", "200ms", secondaryText="20ms",
                   voiceover="Where old gateways burn two hundred milliseconds per request, it answers in twenty."),
             scene("list", "ZERO SETUP TAX", "Auto-scaling|Edge cache|Zero-config SSL",
@@ -138,7 +138,7 @@ ACCEPT = {
             scene("split", "WHO IT HITS", "vendors first",
                   voiceover="Vendors selling scanning systems in Europe must recertify under the act."),
             scene("split", "WHY IT MATTERS", "precedent set",
-                  voiceover="It is the first outright ban of a deployed AI category anywhere."),
+                  voiceover="If you sell scanning systems in Europe, this is the first outright AI-category ban."),
         ]}, "The EU AI Act entered into force with a ban on real-time biometric identification.",
         {"subject": "EU AI Act"}, False),
 
@@ -152,14 +152,14 @@ ACCEPT = {
             scene("split", "THE RETENTION", "capacity holds",
                   voiceover="It kept ninety two percent of its capacity across the whole endurance test."),
             scene("split", "WHY IT MATTERS", "grid storage first",
-                  voiceover="Cheap cells that refuse to die are exactly what solar farms need at night."),
+                  voiceover="Cheap cells that refuse to die are exactly what your solar farm needs at night."),
         ]}, "", None, False),
 
-    # Imperative hook + imperative CTA are exempt from the advice check.
-    "imperative hook and cta": (
+    # A subject-specific imperative CTA is exempt from the advice check.
+    "imperative cta": (
         {"scenes": [
             scene("hero", "STOP SCROLLING", "agents shipped",
-                  voiceover="Stop scrolling — Cursor just shipped background agents."),
+                  voiceover="Eight background agents — Cursor just put them in your repository."),
             scene("metric", "PARALLEL RUNS", "8 at once",
                   voiceover="It runs eight isolated agents in parallel on one repository."),
             scene("split", "HOW IT WORKS", "worktree per agent",
@@ -195,7 +195,7 @@ ACCEPT = {
             scene("metric", "THE DROP", "200ms to 9ms",
                   voiceover="That takes cold starts from two hundred milliseconds down to nine."),
             scene("split", "WHO IT HITS", "every workers API",
-                  voiceover="Every API running on workers gets that speedup without a single redeploy."),
+                  voiceover="If your API runs on workers, it gets that speedup without a single redeploy."),
         ]}, "Cloudflare shipped an edge cache cutting cold starts from 200ms to 9ms "
             "by keeping compiled workers resident.",
         {"subject": "Cloudflare edge cache"}, False),
@@ -265,6 +265,46 @@ def run_scorer_cases():
         if mult >= 1.0:
             failures.append("VIRAL_NEGATIVES must all be < 1.0 (multipliers; >=1.0 is a boost)")
             break
+
+    # Keyword attribution feeds topic ranking, captions and the performance
+    # learner. Substring matches used to turn Fastmail into AI, software into
+    # war, and ProvenMetal into Meta — three real production-ledger failures.
+    false_positive_cases = {
+        "Fastmail offers EU data region": {"ai"},
+        "Software rendering in 500 lines of C++": {"war"},
+        "Launch HN: ProvenMetal makes circuit boards": {"meta"},
+        "Kill the cookie banner": {"ban"},
+    }
+    for title, forbidden in false_positive_cases.items():
+        got = set(main._extract_topic_keywords(title))
+        leaked = got & forbidden
+        if leaked:
+            failures.append(f"keyword matcher false-positive for {title!r}: {sorted(leaked)}")
+
+    true_positive_cases = {
+        "OpenAI releases GPT-6": {"ai", "openai", "gpt", "releas"},
+        "AI agents find a vulnerability": {"ai", "agent", "vulnerab"},
+        "Google launches an open-source model": {"google", "launch", "open-sourc", "model"},
+    }
+    for title, required in true_positive_cases.items():
+        got = set(main._extract_topic_keywords(title))
+        missing = required - got
+        if missing:
+            failures.append(f"keyword matcher missed {title!r}: {sorted(missing)}")
+
+    if main.score_virality(cand("Fastmail offers EU data region")) != \
+            main.score_virality(cand("Postmark offers EU data region")):
+        failures.append("score_virality still gives Fastmail a false AI boost")
+
+    previous_stats = main.get_feedback_stats
+    main.get_feedback_stats = lambda: {"keywords": {"ai": {"m": 2.0, "n": 3}}}
+    try:
+        if main._feedback_keyword_bonus("Fastmail offers EU data region") != 0.0:
+            failures.append("feedback learner still treats Fastmail as AI")
+        if main._feedback_keyword_bonus("OpenAI releases GPT-6") <= 0.0:
+            failures.append("feedback learner no longer recognizes OpenAI as AI")
+    finally:
+        main.get_feedback_stats = previous_stats
     return failures
 
 
@@ -284,6 +324,27 @@ def run_prompt_pins():
         for rx in main._PLATITUDE_RES:
             if rx.search(p):
                 failures.append(f"HOOK_PATTERNS entry matches platitude regex {rx.pattern!r}: {p!r}")
+    hook_families = {p.split(":", 1)[0] for p in main.HOOK_PATTERNS}
+    approved_families = {"SHOCK-STAT", "BROKEN-ASSUMPTION", "STAKES-REVEAL"}
+    if hook_families != approved_families:
+        failures.append(
+            f"hook chooser must use only the three grounded families; got {sorted(hook_families)}")
+
+    previous_patterns = main.HOOK_PATTERNS
+    previous_epoch = main.current_style_epoch
+    main.HOOK_PATTERNS = ["A: one", "B: two", "C: three"]
+    main.current_style_epoch = lambda: 1
+    try:
+        try:
+            epoch_options = main._epoch_hook_options()
+        except ValueError as exc:
+            failures.append(f"epoch hook weighting crashes with a three-family pool: {exc}")
+        else:
+            if set(epoch_options) != set(main.HOOK_PATTERNS):
+                failures.append("epoch hook weighting invented an option outside the configured pool")
+    finally:
+        main.HOOK_PATTERNS = previous_patterns
+        main.current_style_epoch = previous_epoch
     if "Plant ONE specific open loop" not in news_prompt:
         failures.append("build_hn_news_prompt lost the scene-1 open-loop instruction")
     if "closing the open loop planted in scene 1" not in news_prompt:
@@ -299,15 +360,84 @@ def run_prompt_pins():
     return failures
 
 
+def run_retention_cases():
+    failures = []
+
+    base = {"scenes": [
+        scene("hero", "POSTGRES 18", "UPDATES RUN 3X FASTER",
+              voiceover="Postgres eighteen just made your busiest updates three times faster."),
+        scene("split", "THE MECHANISM", "ONE LESS INDEX WALK",
+              voiceover="Its new btree path skips a second index descent on every conflict."),
+        scene("metric", "THE RESULT", "3X FASTER",
+              voiceover="That removes one full tree walk from each conflicting write."),
+        scene("cta", "YOUR TAKEAWAY", "UPGRADES CUT WRITE COST",
+              voiceover="For your write-heavy service, the upgrade removes work from every upsert.",
+              ctaText="READ THE NOTES"),
+    ]}
+
+    windup = copy.deepcopy(base)
+    windup["scenes"][0]["voiceover"] = (
+        "Today we're looking at Postgres eighteen making your updates three times faster.")
+    hard, _ = main._script_vagueness_reasons(
+        windup, topic_meta={"subject": "Postgres 18"})
+    if not any("wind-up" in reason for reason in hard):
+        failures.append(f"retention gate accepted a wind-up hook: {hard}")
+
+    long_hook = copy.deepcopy(base)
+    long_hook["scenes"][0]["voiceover"] = (
+        "Three times faster writes just landed in Postgres eighteen, and your busiest database gets the payoff immediately.")
+    _, soft = main._script_vagueness_reasons(
+        long_hook, topic_meta={"subject": "Postgres 18"})
+    if not any("hook voiceover" in reason for reason in soft):
+        failures.append(f"retention gate accepted a hook over 12 words: {soft}")
+
+    no_viewer = copy.deepcopy(base)
+    for item in no_viewer["scenes"]:
+        item["voiceover"] = item["voiceover"].replace("your", "the")
+    _, soft = main._script_vagueness_reasons(
+        no_viewer, topic_meta={"subject": "Postgres 18"})
+    if not any("viewer" in reason for reason in soft):
+        failures.append(f"retention gate accepted narration that never addresses the viewer: {soft}")
+
+    unreadable = copy.deepcopy(base)
+    unreadable["scenes"][0]["title"] = "POSTGRES EIGHTEEN CHANGES DATABASE WRITES"
+    unreadable["scenes"][0]["text"] = "YOUR BUSIEST DATABASE UPDATES NOW RUN THREE TIMES FASTER"
+    _, soft = main._script_vagueness_reasons(
+        unreadable, topic_meta={"subject": "Postgres 18"})
+    if sum("hook on-screen" in reason for reason in soft) != 2:
+        failures.append(f"retention gate missed hook title/text scan limits: {soft}")
+
+    rewardless = copy.deepcopy(base)
+    rewardless["scenes"][-1]["voiceover"] = "Follow Neon Node for more tech videos."
+    rewardless["scenes"][-1]["ctaText"] = "FOLLOW"
+    _, soft = main._script_vagueness_reasons(
+        rewardless, topic_meta={"subject": "Postgres 18"})
+    if not any("payoff" in reason for reason in soft):
+        failures.append(f"retention gate accepted a rewardless closing voiceover: {soft}")
+    if not any("CTA button" in reason for reason in soft):
+        failures.append(f"retention gate accepted a generic FOLLOW button: {soft}")
+
+    before = copy.deepcopy(base)
+    hard, soft = main._script_vagueness_reasons(
+        base, topic_meta={"subject": "Postgres 18"})
+    if hard or soft:
+        failures.append(f"retention gate rejected a clean script: hard={hard}, soft={soft}")
+    if base != before:
+        failures.append("retention gate mutated the script")
+
+    return failures
+
+
 def main_():
-    failures = run_gate_cases() + run_scorer_cases() + run_prompt_pins()
+    failures = (run_gate_cases() + run_scorer_cases() + run_prompt_pins()
+                + run_retention_cases())
     total = len(REJECT_HARD) + len(ACCEPT)
     if failures:
         print(f"\nFAIL — {len(failures)} problem(s):")
         for f in failures:
             print(f"  ✗ {f}")
         sys.exit(1)
-    print(f"OK — {total} gate cases + scorer + prompt pins all green.")
+    print(f"OK — {total} gate cases + retention + scorer + prompt pins all green.")
     sys.exit(0)
 
 
