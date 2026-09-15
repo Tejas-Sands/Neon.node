@@ -4573,7 +4573,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3478,
-      "fetched_at": 1789361833
+      "fetched_at": 1789459780
      },
      "snap72": {
       "views": 11,
@@ -5964,7 +5964,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1596,
-      "fetched_at": 1789361833
+      "fetched_at": 1789459780
      },
      "snap72": {
       "views": 2,
@@ -6165,7 +6165,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 718,
-      "fetched_at": 1789361833
+      "fetched_at": 1789459780
      },
      "snap72": {
       "views": 4,
@@ -6416,7 +6416,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4974,
-      "fetched_at": 1789361833
+      "fetched_at": 1789459780
      },
      "snap72": {
       "views": 4,
@@ -6550,7 +6550,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2032,
-      "fetched_at": 1789361833
+      "fetched_at": 1789459780
      },
      "snap72": {
       "views": 38,
@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789361833
+      "fetched_at": 1789459780
      },
      "snap72": {
       "views": 0,
@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789361833
+      "fetched_at": 1789459780
      },
      "snap72": {
       "views": 0,
@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1789361833
+      "fetched_at": 1789459780
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1789361833
+      "fetched_at": 1789459780
      },
      "snap72": {
       "views": 6,
@@ -7628,7 +7628,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 828,
-      "fetched_at": 1789306167
+      "fetched_at": 1789459780
      },
      "snap72": {
       "views": 2,
@@ -7826,7 +7826,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789306167
+      "fetched_at": 1789459780
      },
      "snap72": {
       "views": 0,
@@ -7892,7 +7892,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1789306167
+      "fetched_at": 1789459780
      },
      "snap72": {
       "views": 1,
@@ -8294,7 +8294,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1733,
-      "fetched_at": 1789306167
+      "fetched_at": 1789459780
      },
      "snap72": {
       "views": 4,
@@ -8360,7 +8360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 715,
-      "fetched_at": 1789306167
+      "fetched_at": 1789459780
      },
      "snap72": {
       "views": 3,
@@ -9124,7 +9124,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 3,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1538,
+      "fetched_at": 1789459780
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -9267,6 +9277,53 @@
     "instagram": {
      "id": "18007778435776020",
      "posted_at": 1789445701
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789459672,
+   "posted_hour_utc": 8,
+   "channel": "news",
+   "topic": {
+    "title": "Steam Frame starts at $1059",
+    "subject": "Steam Frame",
+    "url": "https://store.steampowered.com/hardware/steamframe",
+    "source": "hn",
+    "keywords": [
+     "$"
+    ],
+    "viral_score": 9.47,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Steam Frame 1059 Dollars",
+    "angle": "Valve introduces the Steam Frame starting at a steep 1059 dollars, shifting the pricing expectations for high-end VR hardware.",
+    "insight": "Valve is testing whether hardcore PC gamers will pay flagship smartphone prices for standalone VR immersion.",
+    "judge": "plan"
+   },
+   "style_pack": "coral-pop",
+   "format_pack": "facts-explainer",
+   "seed": 807711030,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 9,
+   "scene_count": 4,
+   "video_seconds": 19.9,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-f18536",
+   "platforms": {
+    "instagram": {
+     "id": "18042837386820542",
+     "posted_at": 1789459777
     }
    },
    "metrics": {

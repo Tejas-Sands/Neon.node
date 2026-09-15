@@ -1814,5 +1814,14 @@
   ],
   "ts": 1789445705,
   "session": "gh-02c642"
+ },
+ {
+  "id": "49700661",
+  "title": "Steam Frame starts at $1059",
+  "norm": "steam frame starts at 1059",
+  "subject_norm": "steam frame",
+  "entities": [],
+  "ts": 1789459780,
+  "session": "gh-f18536"
  }
 ]
