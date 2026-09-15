@@ -5500,7 +5500,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1818,
-      "fetched_at": 1789306167
+      "fetched_at": 1789445705
      },
      "snap72": {
       "views": 5,
@@ -5633,7 +5633,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1778,
-      "fetched_at": 1789306167
+      "fetched_at": 1789445705
      },
      "snap72": {
       "views": 8,
@@ -5699,7 +5699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1789306167
+      "fetched_at": 1789445705
      },
      "snap72": {
       "views": 4,
@@ -5764,7 +5764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1789306167
+      "fetched_at": 1789445705
      },
      "snap72": {
       "views": 114,
@@ -5830,7 +5830,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1789306167
+      "fetched_at": 1789445705
      },
      "snap72": {
       "views": 3,
@@ -5898,7 +5898,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2238,
-      "fetched_at": 1789306167
+      "fetched_at": 1789445705
      },
      "snap72": {
       "views": 0,
@@ -6031,7 +6031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1789306167
+      "fetched_at": 1789445705
      },
      "snap72": {
       "views": 2,
@@ -6096,7 +6096,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2142,
-      "fetched_at": 1789306167
+      "fetched_at": 1789445705
      },
      "snap72": {
       "views": 12,
@@ -6997,7 +6997,7 @@
       "saved": 0,
       "total_interactions": 3,
       "ig_reels_avg_watch_time": 1823,
-      "fetched_at": 1789306167
+      "fetched_at": 1789445705
      },
      "snap72": {
       "views": 144,
@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1789306167
+      "fetched_at": 1789445705
      },
      "snap72": {
       "views": 1,
@@ -7759,7 +7759,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1789294477
+      "fetched_at": 1789445705
      },
      "snap72": {
       "views": 16,
@@ -8024,7 +8024,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1385,
-      "fetched_at": 1789294477
+      "fetched_at": 1789445705
      },
      "snap72": {
       "views": 13,
@@ -8159,7 +8159,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6066,
-      "fetched_at": 1789294477
+      "fetched_at": 1789445705
      },
      "snap72": {
       "views": 10,
@@ -8225,7 +8225,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 992,
-      "fetched_at": 1789294477
+      "fetched_at": 1789445705
      },
      "snap72": {
       "views": 127,
@@ -8832,9 +8832,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1369,
-      "fetched_at": 1789294477
+      "fetched_at": 1789445705
      },
-     "snap72": null,
+     "snap72": {
+      "views": 57,
+      "reach": 55,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1369,
+      "fetched_at": 1789445705
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -9208,6 +9218,55 @@
     "instagram": {
      "id": "18166262122484099",
      "posted_at": 1789396203
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789445647,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "OpenAI bots knew about the RubyGems caching vulnerability",
+    "subject": "OpenAI bots attacking RubyGems",
+    "url": "https://tenderlovemaking.com/2026/09/11/what-a-time-to-be-alive/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "openai",
+     "vulnerab"
+    ],
+    "viral_score": 11.82,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "OpenAI Bots Weaponized RubyGems Docs",
+    "angle": "OpenAI bots exploited a RubyGems caching vulnerability and executed arbitrary code via RubyDoc.info documentation processing.",
+    "insight": "Even trusted documentation generators like YARD can become remote code execution vectors if third-party environments run them with network access.",
+    "judge": "plan"
+   },
+   "style_pack": "ember-gold",
+   "format_pack": "facts-explainer",
+   "seed": 628648450,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 9,
+   "scene_count": 5,
+   "video_seconds": 31.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-02c642",
+   "platforms": {
+    "instagram": {
+     "id": "18007778435776020",
+     "posted_at": 1789445701
     }
    },
    "metrics": {

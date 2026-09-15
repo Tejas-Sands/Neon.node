@@ -1802,5 +1802,17 @@
   ],
   "ts": 1789396206,
   "session": "gh-db1197"
+ },
+ {
+  "id": "49695876",
+  "title": "OpenAI bots knew about the RubyGems caching vulnerability",
+  "norm": "openai bots knew about the rubygems caching vulnerability",
+  "subject_norm": "openai bots attacking rubygems",
+  "entities": [
+   "openai",
+   "rubygems"
+  ],
+  "ts": 1789445705,
+  "session": "gh-02c642"
  }
 ]
