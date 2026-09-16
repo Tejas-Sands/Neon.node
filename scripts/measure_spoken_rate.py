@@ -50,6 +50,8 @@ VOICES = {
     "en-US-AriaNeural": (1, "+8Hz"),
     "en-US-GuyNeural": (1, "+4Hz"),
 }
+if os.environ.get("VOICE_IDENTITY", "consistent") != "rotate":
+    VOICES = {"en-US-JennyNeural": (1, "+0Hz")}
 
 # The two SYSTEM_PROMPT few-shot scripts' voiceovers (post spoken-warmth pass,
 # 2026-08-09) — real scene-length distribution, not synthetic sentences.

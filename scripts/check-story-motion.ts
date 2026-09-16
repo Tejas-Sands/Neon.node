@@ -2,6 +2,7 @@
  * --outDir /tmp/story-motion-check scripts/check-story-motion.ts &&
  * node /tmp/story-motion-check/scripts/check-story-motion.js */
 import assert from "node:assert/strict";
+import * as motion from "../src/remotion/MyComp/storyMotion";
 import { deriveStoryMotion, storyProgress, sharedSubject, storyCutStyle, storyMusicVolume, fitStoryFont } from "../src/remotion/MyComp/storyMotion";
 
 const scenes = [
@@ -69,3 +70,27 @@ assert.equal(kind("a".repeat(50)), "legacy", "a word too long at the readability
 assert.ok(deriveStoryMotion(scenes, words, energy, 30, undefined, false).every(s => s.kind === "legacy"),
   "non-portrait layouts keep their existing safe zones");
 console.log("story-motion: all assertions passed");
+
+// These catch drifting reading holds, motion on the final frame, and a
+// numeric match-cut carrying a DIFFERENT unit into the next scene.
+assert.equal(typeof motion.storyStage, "function", "story layouts need separate arrive / hold / reveal stages");
+const reading = {landEnd: 26, kineticStart: 75, still: false};
+assert.deepEqual(motion.storyStage(40, 150, 75, reading), {enter: 1, reveal: 0, dock: 0});
+assert.equal(motion.storyStage(0, 150, 75, reading).enter, 0);
+assert.equal(motion.storyStage(105, 150, 75, reading).reveal, 1);
+assert.equal(motion.storyStage(149, 150, 75, reading).dock, 1);
+assert.equal(motion.storyStage(149, 150, 125, reading).dock, 1, "late legal voice cues must still complete the match cut");
+assert.deepEqual(motion.storyStage(0, 150, 75, {...reading, still: true}),
+  motion.storyStage(149, 150, 75, {...reading, still: true}));
+assert.equal(motion.sharedMetric({text: "32-bit"}, {text: "32-bit weights"}), "32-bit");
+assert.equal(motion.sharedMetric({text: "40%"}, {text: "40 ms"}), undefined);
+assert.equal(motion.sharedMetric({text: "40%"}, {text: "140%"}), undefined);
+assert.equal(motion.sharedMetric({text: "40%"}, {text: "-40%"}), undefined);
+assert.equal(motion.sharedMetric({text: "40%"}, {text: "40%"}), "40%");
+assert.equal(motion.sharedMetric({type: "metric", text: "40%"}, {type: "metric", text: "40%"}), undefined,
+  "repeated metric scenes must not compete for incoming and outgoing chip ownership");
+assert.equal(deriveStoryMotion([scenes[0], {type: "split", text: "A detail", title: "Long title ".repeat(8), durationInFrames: 150}, scenes[3]], [], energy, 30)[1].kind,
+  "legacy", "long kickers keep the renderer that budgets the entire stack");
+assert.equal(deriveStoryMotion([scenes[0], {type: "comparison", text: "Before", secondaryText: "After", leftLabel: "Long label ".repeat(6), durationInFrames: 150}, scenes[3]], [], energy, 30)[1].kind,
+  "legacy", "long comparison labels cannot overflow fixed panel slots");
+console.log("editorial-motion: all assertions passed");

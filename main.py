@@ -211,7 +211,9 @@ VOICE_POOL = [
     "en-US-EmmaMultilingualNeural",    # cheerful, clear, conversational
 ]
 
-# VOICE_STYLE=cheerful (the default since 2026-08-09) swaps the narrator pool
+# VOICE_IDENTITY=consistent uses Jenny at natural pitch by default. The pool
+# below remains available with VOICE_IDENTITY=rotate. VOICE_STYLE=cheerful
+# (the default since 2026-08-09) swaps that optional narrator pool
 # to the EXPRESSIVE non-multilingual voices — the Multilingual set reads
 # noticeably flatter (user-verified 2026-08-09: an Ava video at +2Hz was
 # indistinguishable from the old sound). All four verified to emit
@@ -910,9 +912,9 @@ These are PROVEN combinations. Use them as starting points:
 # prompt byte-for-byte.
 _SPOKEN_WARMTH_RULES = """
 
-=== SPOKEN DELIVERY — WARM, PLAYFUL, CHEERFUL (how the voiceover should SOUND) ===
+=== SPOKEN DELIVERY — WARM, CURIOUS, CONFIDENT (how the voiceover should SOUND) ===
 
-23. The narrator is a delighted friend telling you the news, NOT a newsreader. This register is MANDATORY, not a garnish — a script that reads like a press summary is a failed script. The narration engine turns punctuation into real vocal emotion (question marks rise, exclamation marks brighten, a dash makes the voice lean in before a payoff), so punctuation IS the performance:
+23. The narrator is a knowledgeable friend who found something genuinely surprising, NOT a newsreader or an advertisement. This register is MANDATORY — a press summary is a failed script. Punctuation can influence the speech engine's phrasing; it does not guarantee emotion. Write a performance the words can carry:
     - Short, punchy sentences (most under 12 words) with natural contractions ("it's", "that's", "here's").
     - Talk TO the viewer. "you" appears somewhere in the video's narration — the viewer is being told a story, not read a report.
     - REQUIRED once per video: ONE honest reaction at the most surprising fact — "That's not a typo.", "Wild, right?", or a wry comparison grounded in the brief. Never invent context for it.
@@ -920,6 +922,8 @@ _SPOKEN_WARMTH_RULES = """
     - Lean on the setup — dash — payoff shape: "They rewrote the whole parser — in a weekend."
     - At MOST two exclamation marks in the whole script, placed where the surprise genuinely peaks.
     - Delight lives in specifics: an exact number delivered with relish beats any adjective.
+    - Delivery arc: immediate hook; grounded explanation; strongest emphasis on the single surprising verified detail; a composed, useful close. Do not give every sentence the same intensity.
+    - Vary sentence length naturally. Use one short sentence before a payoff, then a connected explanation. Do not put an em dash or reaction into every scene. No stage directions or emotion tags in spoken text.
 24. Cheerful NEVER means hype. Every fact-integrity and no-repetition rule above still applies in full: no cliché superlatives, no imperative advice outside the hook/CTA, and no catchphrase repeated across scenes — say a good line once and move on. The reaction never carries a fact; it punctuates one."""
 
 if VOICE_STYLE != "legacy":
@@ -7413,7 +7417,7 @@ async def generate_voiceover_and_alignment(
     timestamps, side Python interpreter); ANY kokoro failure restarts the
     WHOLE video on edge-tts — engines never mix mid-video (a mid-video
     narrator swap reads as broken, the same lesson as the sticky voice
-    failover). Default engine "edge" is the historical path byte-for-byte."""
+    failover). Default engine "edge" keeps the native WordBoundary path."""
     engine = resolve_tts_engine(voice)
     if engine == "kokoro":
         # Snapshot planned durations: a failed kokoro pass may already have
@@ -7449,8 +7453,8 @@ async def _generate_voiceover_with_engine(
     print(f"[{session_id}] Starting free neural voiceover and karaoke subtitle alignment ({engine})...")
     import edge_tts
 
-    # Resolve parameters from arguments or environment variables. If no voice
-    # is forced, rotate one per video (seeded) from the engine's narrator pool.
+    # Explicit request/env pins win. Edge defaults to a consistent narrator;
+    # Kokoro and the opt-in Edge rotation retain their seeded voice pools.
     if engine == "kokoro":
         resolved_voice = (voice or os.environ.get("VOICEOVER_VOICE", "")).strip()
         if resolved_voice and not is_kokoro_voice(resolved_voice):
@@ -7465,6 +7469,11 @@ async def _generate_voiceover_with_engine(
         render_status_store[session_id]["tts_provider"] = "kokoro"
     else:
         resolved_voice = (voice or os.environ.get("VOICEOVER_VOICE", "")).strip()
+        # One channel voice unless explicitly auditioning the old rotation.
+        # Keep provider selection and the existing failure recovery unchanged.
+        consistent_voice = VOICE_STYLE != "legacy" and os.environ.get("VOICE_IDENTITY", "consistent") != "rotate"
+        if not resolved_voice and consistent_voice:
+            resolved_voice = "en-US-JennyNeural"
         if not resolved_voice:
             # Feedback-weighted rotation: identical to the legacy rnd.choice on
             # cold start; with enough scored posts, better-performing narrators get
@@ -7494,6 +7503,8 @@ async def _generate_voiceover_with_engine(
         resolved_pitch = pitch
     elif env_pitch:
         resolved_pitch = env_pitch
+    elif engine == "edge" and consistent_voice:
+        resolved_pitch = "+0Hz"
     elif VOICE_STYLE != "legacy":
         resolved_pitch = CHEERFUL_VOICE_PITCH.get(resolved_voice, "+2Hz")
     else:
@@ -8050,7 +8061,7 @@ def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None,
     # prompt is what the model actually reads closest, so the register must be
     # stated here too, not only in the system role.
     tone_block = "" if VOICE_STYLE == "legacy" else """
-TONE (MANDATORY): narrate like a delighted friend telling you the news — warm and conversational, never a newsreader. Use contractions and short sentences. Include ONE honest reaction at the most surprising verified fact (a brief interjection or grounded wry comparison), and address the viewer as "you" at least once. Punctuation is the vocal performance: a question rises, a dash leans into a payoff, and the whole video gets at most two exclamation marks.
+TONE (MANDATORY): narrate like a knowledgeable friend who found something genuinely surprising — warm, curious and confident, never a newsreader or an advertisement. Use contractions and varied sentence lengths. Include ONE honest reaction at the most surprising verified fact, and address the viewer as "you" at least once. Delivery arc: immediate hook, grounded explanation, strongest emphasis on the surprising detail, composed payoff. Use a short sentence or a dash before that payoff, not in every scene. At most two exclamation marks; no spoken stage directions or emotion tags.
 """
 
     editorial_block = ""

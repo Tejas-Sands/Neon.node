@@ -218,9 +218,10 @@ jobs:
           # Variable to the legacy value to revert without a code change:
           # VOICE_STYLE=legacy, VOICEOVER_PITCH=+0Hz, RETENTION_V2=false.
           echo "VOICE_STYLE=${{ vars.VOICE_STYLE || 'cheerful' }}" >> "$GITHUB_ENV"
+          echo "VOICE_IDENTITY=${{ vars.VOICE_IDENTITY || 'consistent' }}" >> "$GITHUB_ENV"
           echo "VOICEOVER_RATE=${{ vars.VOICEOVER_RATE || '+5%' }}" >> "$GITHUB_ENV"
-          # Empty pitch default = main.py applies its per-voice cheerful lift;
-          # set the Variable only to pin ONE pitch across all voices.
+          # Empty pitch = natural in consistent mode; legacy lifts in rotate.
+          # Explicit pitch Variables still take precedence.
           echo "VOICEOVER_PITCH=${{ vars.VOICEOVER_PITCH || '' }}" >> "$GITHUB_ENV"
           echo "RETENTION_V2=${{ vars.RETENTION_V2 || 'true' }}" >> "$GITHUB_ENV"
           # Style-epoch drift: the channel's style center shifts subtly every

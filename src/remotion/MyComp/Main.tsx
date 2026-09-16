@@ -16,7 +16,7 @@ import {
 import { z } from "zod";
 import { getProject } from "@theatre/core";
 import { CompositionProps } from "../../../types/constants";
-import { AnimatedText, getFontFamily, FONT_METRICS } from "./AnimatedText";
+import { AnimatedText, getFontFamily, FONT_METRICS, type FontFamilyName } from "./AnimatedText";
 import { HudOverlay } from "./HudOverlay";
 import { SceneTransition } from "./SceneTransition";
 import { SceneImpactFrame } from "./SceneImpactFrame";
@@ -51,7 +51,7 @@ import {
 import { deriveCutPlan, WHOOSH_CUTS } from "./transitions";
 import { deriveEnergy, type SceneEnergy } from "./energy";
 import { framesPerBeat } from "./beat";
-import { deriveStoryMotion, sharedSubject, storyCutStyle, storyMusicVolume, type StoryBeat } from "./storyMotion";
+import { deriveStoryMotion, sharedSubject, sharedMetric, storyCutStyle, storyMusicVolume, type StoryBeat } from "./storyMotion";
 import { StoryScene } from "./StoryScene";
 import { deriveMicroDetails, type MicroDetailConfig } from "./microDetails";
 import { derivePolish } from "./polish";
@@ -99,18 +99,7 @@ interface ThemeProps {
   primaryColor: string;
   secondaryColor: string;
   overlayType: "grid-hud" | "particles" | "clean" | "vhs-glitch" | "fantasy-sparks" | "aurora";
-  fontFamilyName:
-    | "Share Tech Mono"
-    | "Orbitron"
-    | "Inter"
-    | "Playfair Display"
-    | "Courier New"
-    | "Space Grotesk"
-    | "Archivo"
-    | "Sora"
-    | "Bricolage Grotesque"
-    | "Fraunces"
-    | "JetBrains Mono";
+  fontFamilyName: FontFamilyName;
   musicTrack?: "ambient-tech" | "lofi-chill" | "cosmic-synth" | "none";
   cameraMotion?: "ken-burns" | "pan-horizontal" | "zoom-slow" | "static" | "dynamic-zoom-rotate" | "pan-tilt" | "pulse-zoom" | "glitch-shift" | "orbit-drift" | "vertigo";
   subtitlePosition?: "top" | "center" | "bottom";
@@ -307,6 +296,8 @@ const DynamicScene: React.FC<{
   sourceDomain?: string;
   storyBeat?: StoryBeat;
   storySubject?: string;
+  incomingMetric?: string;
+  outgoingMetric?: string;
 }> = ({
   imageUrl,
   videoUrl,
@@ -343,6 +334,8 @@ const DynamicScene: React.FC<{
   sourceDomain,
   storyBeat,
   storySubject,
+  incomingMetric,
+  outgoingMetric,
 }) => {
   const frame = useCurrentFrame();
   const { fps, width: frameW, height: frameH } = useVideoConfig();
@@ -1004,9 +997,10 @@ const DynamicScene: React.FC<{
     return (
       <AbsoluteFill>
         <StoryScene
-          scene={{text, title, subtitle, secondaryText, leftLabel, rightLabel, imageUrl}}
+          scene={{text, title, subtitle, secondaryText, leftLabel, rightLabel, imageUrl, durationInFrames}}
           beat={storyBeat} energy={energy} palette={palette}
-          accent={themeProp.primaryColor} font={theme.fontFamilyName} subject={storySubject}
+          accent={themeProp.primaryColor} subject={storySubject}
+          incomingMetric={incomingMetric} outgoingMetric={outgoingMetric}
         />
         <SceneImpactFrame primaryColor={themeProp.primaryColor} secondaryColor={themeProp.secondaryColor}
           durationInFrames={durationInFrames} sceneIndex={sceneIndex} totalScenes={totalScenes}
@@ -3022,7 +3016,7 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
     primaryColor: theme?.primaryColor ?? defaultTheme.primaryColor,
     secondaryColor: theme?.secondaryColor ?? defaultTheme.secondaryColor,
     overlayType: theme?.overlayType ?? defaultTheme.overlayType,
-    fontFamilyName: theme?.fontFamilyName ?? defaultTheme.fontFamilyName,
+    fontFamilyName: height > width ? "Geist" : theme?.fontFamilyName ?? defaultTheme.fontFamilyName,
     musicTrack: theme?.musicTrack ?? defaultTheme.musicTrack ?? "none",
     cameraMotion: theme?.cameraMotion ?? defaultTheme.cameraMotion ?? "ken-burns",
     subtitlePosition: theme?.subtitlePosition ?? defaultTheme.subtitlePosition ?? "bottom",
@@ -3106,10 +3100,11 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
   );
 
   // Render-side only: existing scheduled props opt in automatically. The
-  // portrait safe-zone design leaves landscape and square layouts alone.
+  // Tall-portrait safe zones; shorter portrait, landscape and square keep
+  // their existing stack fitters (the diagram needs vertical reading room).
   const storyPlan = React.useMemo(() => deriveStoryMotion(
     scenes, subtitles, energyPlan.scenes, fps,
-    activeTheme.formatPack, width < height,
+    activeTheme.formatPack, height / width >= 1.5,
   ), [scenes, subtitles, energyPlan, fps, width, height, activeTheme.formatPack]);
   const cutPlan = React.useMemo(() => baseCutPlan.map((cut, i) => {
     if (i === 0 || i === scenes.length) return cut;
@@ -3279,6 +3274,10 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
                 ratingMax={scene.ratingMax}
                 sourceDomain={scene.sourceDomain}
                 storyBeat={storyPlan[index]}
+                incomingMetric={index > 0 && storyPlan[index - 1].kind === "metric" && storyPlan[index].kind !== "legacy"
+                  ? sharedMetric(scenes[index - 1], scene) : undefined}
+                outgoingMetric={index + 1 < scenes.length && storyPlan[index].kind === "metric" && storyPlan[index + 1].kind !== "legacy"
+                  ? sharedMetric(scene, scenes[index + 1]) : undefined}
                 storySubject={
                   index > 0 && storyPlan[index - 1].kind !== "legacy" && sharedSubject(scenes[index - 1], scene) ||
                   index + 1 < scenes.length && storyPlan[index + 1].kind !== "legacy" && sharedSubject(scene, scenes[index + 1]) || undefined

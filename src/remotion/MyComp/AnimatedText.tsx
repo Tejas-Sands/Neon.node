@@ -10,6 +10,8 @@ import { loadFont as loadSora } from "@remotion/google-fonts/Sora";
 import { loadFont as loadBricolage } from "@remotion/google-fonts/BricolageGrotesque";
 import { loadFont as loadFraunces } from "@remotion/google-fonts/Fraunces";
 import { loadFont as loadJetBrains } from "@remotion/google-fonts/JetBrainsMono";
+import { loadFont as loadGeist } from "@remotion/google-fonts/Geist";
+import { loadFont as loadNewsreader } from "@remotion/google-fonts/Newsreader";
 import { FINISH_TOKENS, inkOn, withAlpha, type Finish } from "./looks";
 import { haloFilter } from "./contrast";
 
@@ -55,6 +57,9 @@ const fontJetBrains = loadJetBrains("normal", {
   subsets: ["latin"],
   weights: ["500", "700"],
 });
+// House typography is render-only: old props remain valid, no backend enum changes.
+const fontGeist = loadGeist("normal", {subsets: ["latin"], weights: ["500", "600", "700"]});
+const fontNewsreader = loadNewsreader("normal", {subsets: ["latin"], weights: ["500", "600"]});
 
 const GLITCH_CHARS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
@@ -82,7 +87,9 @@ type TextAnimationMode =
   | "pop-cascade"
   | "none";
 
-type FontFamilyName =
+export type FontFamilyName =
+  | "Geist"
+  | "Newsreader"
   | "Share Tech Mono"
   | "Orbitron"
   | "Inter"
@@ -227,6 +234,8 @@ export const FONT_METRICS: Record<
     bodyWeight: number;
   }
 > = {
+  Geist: {trackTitleEm: -0.035, trackBodyEm: 0, lineHeight: 1.08, displayWeight: 700, bodyWeight: 500},
+  Newsreader: {trackTitleEm: -0.02, trackBodyEm: 0, lineHeight: 1.08, displayWeight: 600, bodyWeight: 500},
   "Share Tech Mono": { trackTitleEm: 0.02, trackBodyEm: 0.01, lineHeight: 1.18, displayWeight: 400, bodyWeight: 400 },
   Orbitron: { trackTitleEm: 0.045, trackBodyEm: 0.02, lineHeight: 1.16, displayWeight: 900, bodyWeight: 700 },
   Inter: { trackTitleEm: -0.01, trackBodyEm: 0, lineHeight: 1.12, displayWeight: 800, bodyWeight: 600 },
@@ -243,6 +252,8 @@ export const FONT_METRICS: Record<
 /** Map font family name to the loaded font CSS family string */
 export const getFontFamily = (fontFamilyName: FontFamilyName): string => {
   switch (fontFamilyName) {
+    case "Geist": return fontGeist.fontFamily;
+    case "Newsreader": return fontNewsreader.fontFamily;
     case "Share Tech Mono":
       return fontShareTech.fontFamily;
     case "Orbitron":

@@ -15,7 +15,7 @@ export interface StoryBeat {
   synced: boolean;
 }
 export const storyCutStyle = <T extends string>(style: T, a: StoryScene, b: StoryScene, before: StoryBeat, after: StoryBeat): T | "none" =>
-  before.kind !== "legacy" && after.kind !== "legacy" && sharedSubject(a, b) ? "none" : style;
+  before.kind !== "legacy" && after.kind !== "legacy" && (sharedSubject(a, b) || sharedMetric(a, b)) ? "none" : style;
 export const storyMusicVolume = (frame: number, revealFrame: number): number => {
   const distance = frame - revealFrame;
   const dip = distance < 0 ? Math.max(0, 1 + distance / 12) : Math.max(0, 1 - distance / 18);
@@ -44,6 +44,7 @@ export function deriveStoryMotion(
     if (!enabled || i === 0 || i === scenes.length - 1 || energy[i]?.still ||
         pack === "quiz-reveal" || pack === "data-rankings" ||
         copy.length > 220 || copy.split(/\s+/).some(word => word.length > 30) ||
+        (scene.title?.length ?? 0) > 54 || (scene.leftLabel?.length ?? 0) > 40 || (scene.rightLabel?.length ?? 0) > 40 ||
         !scene.text.trim() || earliest > lastReveal) return beat;
     if (scene.type === "metric") beat.kind = "metric";
     else if (scene.type === "comparison" && (scene.secondaryText || scene.subtitle)) beat.kind = "comparison";
@@ -102,6 +103,33 @@ export const storyProgress = (frame: number, revealFrame: number, still: boolean
   if (still) return 1;
   const t = Math.min(1, Math.max(0, (frame - revealFrame) / 24));
   return 1 - (1 - t) ** 3;
+};
+
+/** Arrive, read, transform, then dock a repeated fact at the cut. No idle drift. */
+export const storyStage = (frame: number, duration: number, cue: number,
+  energy: {landEnd: number; kineticStart: number; still: boolean}) => {
+  if (energy.still) return {enter: 1, reveal: 1, dock: 0};
+  const ease = (start: number, length: number) => {
+    const t = Math.min(1, Math.max(0, (frame - start) / Math.max(1, length)));
+    return 1 - (1 - t) ** 3;
+  };
+  const revealAt = Math.max(energy.landEnd, energy.kineticStart, cue);
+  // The last legal cue is duration-25. Docking then has its own 18-frame
+  // window; waiting another 24 frames would strand the metric at the cut.
+  const dockAt = Math.max(revealAt, duration - 19);
+  return {enter: ease(0, Math.min(22, energy.landEnd)),
+    reveal: ease(revealAt, 24), dock: ease(dockAt, duration - 1 - dockAt)};
+};
+
+/** Only carry an entire, literal metric, including its unit/sign. No inferred
+ * equivalence (40% is not 40ms), and no arbitrary number pulled from prose. */
+export const sharedMetric = (a: StoryScene, b: StoryScene): string | undefined => {
+  if (b.type === "metric") return undefined;
+  const value = a.text.trim();
+  if (!/^[$€£]?[+-]?\d[\d,.]*(?:%|x|×|ms|GB|MB|TB|-bit)?$/.test(value)) return undefined;
+  const next = [b.title, b.text, b.secondaryText, b.subtitle, b.leftLabel, b.rightLabel]
+    .filter(Boolean).join(" ").split(/\s+/);
+  return next.includes(value) ? value : undefined;
 };
 
 // Small exact speech matcher; unsupported decimals/large values use the safe
