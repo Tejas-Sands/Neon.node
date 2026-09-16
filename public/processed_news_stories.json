@@ -1858,5 +1858,14 @@
   ],
   "ts": 1789557412,
   "session": "gh-eac00a"
+ },
+ {
+  "id": "49724488",
+  "title": "Salesforce Global Outage",
+  "norm": "salesforce global outage",
+  "subject_norm": "salesforce global outage",
+  "entities": [],
+  "ts": 1789569491,
+  "session": "gh-d83e82"
  }
 ]
