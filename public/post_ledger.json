@@ -5500,7 +5500,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1818,
-      "fetched_at": 1789445705
+      "fetched_at": 1789557412
      },
      "snap72": {
       "views": 5,
@@ -5633,7 +5633,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1778,
-      "fetched_at": 1789445705
+      "fetched_at": 1789557412
      },
      "snap72": {
       "views": 8,
@@ -5699,7 +5699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1789445705
+      "fetched_at": 1789557412
      },
      "snap72": {
       "views": 4,
@@ -5764,7 +5764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1789445705
+      "fetched_at": 1789557412
      },
      "snap72": {
       "views": 114,
@@ -5830,7 +5830,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1789445705
+      "fetched_at": 1789557412
      },
      "snap72": {
       "views": 3,
@@ -5898,7 +5898,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2238,
-      "fetched_at": 1789445705
+      "fetched_at": 1789557412
      },
      "snap72": {
       "views": 0,
@@ -6031,7 +6031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1789445705
+      "fetched_at": 1789557412
      },
      "snap72": {
       "views": 2,
@@ -6096,7 +6096,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2142,
-      "fetched_at": 1789445705
+      "fetched_at": 1789557412
      },
      "snap72": {
       "views": 12,
@@ -6997,7 +6997,7 @@
       "saved": 0,
       "total_interactions": 3,
       "ig_reels_avg_watch_time": 1823,
-      "fetched_at": 1789445705
+      "fetched_at": 1789557412
      },
      "snap72": {
       "views": 144,
@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1789445705
+      "fetched_at": 1789557412
      },
      "snap72": {
       "views": 1,
@@ -8493,7 +8493,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1789396206
+      "fetched_at": 1789557412
      },
      "snap72": {
       "views": 6,
@@ -8764,7 +8764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1034,
-      "fetched_at": 1789396206
+      "fetched_at": 1789557412
      },
      "snap72": {
       "views": 109,
@@ -9038,9 +9038,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 760,
-      "fetched_at": 1789396206
+      "fetched_at": 1789557412
      },
-     "snap72": null,
+     "snap72": {
+      "views": 2,
+      "reach": 2,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 760,
+      "fetched_at": 1789557412
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -9095,9 +9105,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 294,
-      "fetched_at": 1789396206
+      "fetched_at": 1789557412
      },
-     "snap72": null,
+     "snap72": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 294,
+      "fetched_at": 1789557412
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -9378,7 +9398,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 6,
+      "reach": 6,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5589,
+      "fetched_at": 1789557412
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -9468,6 +9498,60 @@
     "instagram": {
      "id": "18136921345537434",
      "posted_at": 1789539459
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789557341,
+   "posted_hour_utc": 11,
+   "channel": "news",
+   "topic": {
+    "title": "Show HN: Capsule \u2013 Single-file web apps that save their data into SQLite",
+    "subject": "Capsule single-file web apps",
+    "url": "https://withcapsule.app/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 6.59,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Apps inside a single file",
+    "angle": "Capsule packages UI, media, and SQLite data into a single portable file that runs anywhere without cloud servers.",
+    "insight": "Developers can distribute interactive tools as self-contained documents, eliminating hosting costs and cloud database setup entirely.",
+    "judge": "plan"
+   },
+   "style_pack": "cherry-blossom",
+   "format_pack": "facts-explainer",
+   "seed": 1492610889,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 9,
+   "scene_count": 4,
+   "video_seconds": 22.0,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "sqlite"
+    ]
+   },
+   "session": "gh-eac00a",
+   "platforms": {
+    "instagram": {
+     "id": "18105143315620118",
+     "posted_at": 1789557409
     }
    },
    "metrics": {

@@ -1845,5 +1845,18 @@
   ],
   "ts": 1789539463,
   "session": "gh-23566d"
+ },
+ {
+  "id": "49712278",
+  "title": "Show HN: Capsule \u2013 Single-file web apps that save their data into SQLite",
+  "norm": "show hn capsule single file web apps that save their data into sqlite",
+  "subject_norm": "capsule single file web apps",
+  "entities": [
+   "capsule",
+   "single-file",
+   "sqlite"
+  ],
+  "ts": 1789557412,
+  "session": "gh-eac00a"
  }
 ]
