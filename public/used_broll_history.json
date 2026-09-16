@@ -2,55 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-34909848",
-   "ts": 1787671744,
-   "session": "gh-c55b3c",
-   "query": "neural network visualization code motion",
-   "scene": 1
-  },
-  {
-   "id": "pexels-17356514",
-   "ts": 1787671744,
-   "session": "gh-c55b3c",
-   "query": "gpu processor chip closeup rotating",
-   "scene": 2
-  },
-  {
-   "id": "pexels-34582174",
-   "ts": 1787671744,
-   "session": "gh-c55b3c",
-   "query": "gpu processor chip closeup rotating",
-   "scene": 2
-  },
-  {
-   "id": "pexels-7252267",
-   "ts": 1787671744,
-   "session": "gh-c55b3c",
-   "query": "data center memory modules blinking",
-   "scene": 3
-  },
-  {
-   "id": "pexels-16863222",
-   "ts": 1787671744,
-   "session": "gh-c55b3c",
-   "query": "data center memory modules blinking",
-   "scene": 3
-  },
-  {
-   "id": "pexels-7423951",
-   "ts": 1787671744,
-   "session": "gh-c55b3c",
-   "query": "circuit board traces glowing motion",
-   "scene": 4
-  },
-  {
-   "id": "pexels-26655775",
-   "ts": 1787671744,
-   "session": "gh-c55b3c",
-   "query": "circuit board traces glowing motion",
-   "scene": 4
-  },
-  {
    "id": "pexels-8347247",
    "ts": 1787671744,
    "session": "gh-c55b3c",
@@ -2800,6 +2751,55 @@
    "session": "gh-f024ba",
    "query": "trading chart screen moving",
    "scene": 3
+  },
+  {
+   "id": "pexels-36950732",
+   "ts": 1789539408,
+   "session": "gh-23566d",
+   "query": "terminal code typing screen",
+   "scene": 0
+  },
+  {
+   "id": "pexels-5090780",
+   "ts": 1789539408,
+   "session": "gh-23566d",
+   "query": "data center server racks blinking",
+   "scene": 1
+  },
+  {
+   "id": "pexels-35062463",
+   "ts": 1789539408,
+   "session": "gh-23566d",
+   "query": "neural network data nodes moving",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7579561",
+   "ts": 1789539408,
+   "session": "gh-23566d",
+   "query": "stock market ticker numbers moving",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35235434",
+   "ts": 1789539408,
+   "session": "gh-23566d",
+   "query": "software debugging interface ui",
+   "scene": 4
+  },
+  {
+   "id": "pexels-6803592",
+   "ts": 1789539408,
+   "session": "gh-23566d",
+   "query": "developer typing terminal command line",
+   "scene": 5
+  },
+  {
+   "id": "pexels-5925283",
+   "ts": 1789539408,
+   "session": "gh-23566d",
+   "query": "developer typing terminal command line",
+   "scene": 5
   }
  ]
 }

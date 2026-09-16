@@ -1834,5 +1834,16 @@
   ],
   "ts": 1789482089,
   "session": "gh-f024ba"
+ },
+ {
+  "id": "49717558",
+  "title": "Introducing System One Models and Jev",
+  "norm": "introducing system one models and jev",
+  "subject_norm": "typesafe ai jev model",
+  "entities": [
+   "typesafe"
+  ],
+  "ts": 1789539463,
+  "session": "gh-23566d"
  }
 ]

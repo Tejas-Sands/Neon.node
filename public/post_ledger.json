@@ -4768,7 +4768,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 980,
-      "fetched_at": 1789396206
+      "fetched_at": 1789539463
      },
      "snap72": {
       "views": 15,
@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1789396206
+      "fetched_at": 1789539463
      },
      "snap72": {
       "views": 9,
@@ -4967,7 +4967,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3060,
-      "fetched_at": 1789396206
+      "fetched_at": 1789539463
      },
      "snap72": {
       "views": 7,
@@ -5169,7 +5169,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5297,
-      "fetched_at": 1789396206
+      "fetched_at": 1789539463
      },
      "snap72": {
       "views": 7,
@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1789396206
+      "fetched_at": 1789539463
      },
      "snap72": {
       "views": 7,
@@ -5434,7 +5434,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5193,
-      "fetched_at": 1789396206
+      "fetched_at": 1789539463
      },
      "snap72": {
       "views": 12,
@@ -5567,7 +5567,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1789396206
+      "fetched_at": 1789539463
      },
      "snap72": {
       "views": 8,
@@ -6234,7 +6234,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2886,
-      "fetched_at": 1789396206
+      "fetched_at": 1789539463
      },
      "snap72": {
       "views": 4,
@@ -6482,7 +6482,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1082,
-      "fetched_at": 1789396206
+      "fetched_at": 1789539463
      },
      "snap72": {
       "views": 112,
@@ -7957,7 +7957,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3536,
-      "fetched_at": 1789396206
+      "fetched_at": 1789539463
      },
      "snap72": {
       "views": 6,
@@ -8629,7 +8629,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9140,
-      "fetched_at": 1789376390
+      "fetched_at": 1789539463
      },
      "snap72": {
       "views": 9,
@@ -8694,7 +8694,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1789376390
+      "fetched_at": 1789539463
      },
      "snap72": {
       "views": 48,
@@ -8969,9 +8969,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789376390
+      "fetched_at": 1789539463
      },
-     "snap72": null,
+     "snap72": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1789539463
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -9252,7 +9262,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1789539463
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -9301,7 +9321,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 12899,
+      "fetched_at": 1789539463
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -9391,6 +9421,53 @@
     "instagram": {
      "id": "17951384502266488",
      "posted_at": 1789482086
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789539408,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Introducing System One Models and Jev",
+    "subject": "TypeSafe AI Jev model",
+    "url": "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+    "source": "hn",
+    "keywords": [
+     "model"
+    ],
+    "viral_score": 9.41,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Jev Drops AI Chat",
+    "angle": "Former OpenAI researcher Diogo Almeida launches TypeSafe AI with Jev, a new System One model designed to output structured decisions instead of chat text, cutting costs and eliminating hallucinations for software automation.",
+    "insight": "By trading away open-ended text generation for rigid type-safe outputs, automation infrastructure can finally bypass slow, expensive LLMs.",
+    "judge": "plan"
+   },
+   "style_pack": "clean-cobalt",
+   "format_pack": "legacy-news",
+   "seed": 2049628581,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "BROKEN-ASSUMPTION",
+   "style_epoch": 9,
+   "scene_count": 6,
+   "video_seconds": 40.4,
+   "experiment": null,
+   "ledger_rev": 2,
+   "session": "gh-23566d",
+   "platforms": {
+    "instagram": {
+     "id": "18136921345537434",
+     "posted_at": 1789539459
     }
    },
    "metrics": {
