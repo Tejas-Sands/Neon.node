@@ -1,0 +1,18 @@
+{
+  "scenes": [
+    {"type":"hero","title":"MEMORY LIMIT","text":"What makes a model fit?","imageUrl":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='1920'%3E%3Crect width='1080' height='1920' fill='%231b3040'/%3E%3Cpath d='M80 0V1920M400 0V1920M720 0V1920M1000 0V1920' stroke='%23344c64' stroke-width='40'/%3E%3C/svg%3E","durationInFrames":120},
+    {"type":"split","title":"MODEL MEMORY","text":"Quantization compresses model weights","secondaryText":"Precision is the tradeoff","imageUrl":"","durationInFrames":150},
+    {"type":"metric","title":"MODEL MEMORY","text":"40%","secondaryText":"Synthetic test value, not a benchmark","imageUrl":"","durationInFrames":150},
+    {"type":"comparison","title":"THE TRADEOFF","leftLabel":"Full precision","text":"More memory","rightLabel":"Quantized weights","secondaryText":"Less memory","imageUrl":"","durationInFrames":150},
+    {"type":"split","title":"CHECK THE TRADEOFF","text":"Test quality on your workload","imageUrl":"","durationInFrames":90}
+  ],
+  "theme":{"primaryColor":"#91f7c2","secondaryColor":"#82b8ff","overlayType":"clean","fontFamilyName":"Space Grotesk","musicTrack":"none","transitionStyle":"push-up","aspectRatio":"9:16","seed":11},
+  "subtitles":[
+    {"text":"Quantization","start":4.1,"end":4.5},
+    {"text":"compresses","start":6.8,"end":7.2},
+    {"text":"forty","start":12.2,"end":12.4},
+    {"text":"percent","start":12.4,"end":12.7},
+    {"text":"less","start":17.8,"end":18.2},
+    {"text":"memory","start":18.2,"end":18.6}
+  ]
+}

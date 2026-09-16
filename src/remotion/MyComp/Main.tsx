@@ -51,6 +51,8 @@ import {
 import { deriveCutPlan, WHOOSH_CUTS } from "./transitions";
 import { deriveEnergy, type SceneEnergy } from "./energy";
 import { framesPerBeat } from "./beat";
+import { deriveStoryMotion, sharedSubject, storyCutStyle, storyMusicVolume, type StoryBeat } from "./storyMotion";
+import { StoryScene } from "./StoryScene";
 import { deriveMicroDetails, type MicroDetailConfig } from "./microDetails";
 import { derivePolish } from "./polish";
 import { PolishStack, CutCover } from "./PolishLayers";
@@ -303,6 +305,8 @@ const DynamicScene: React.FC<{
   ratingMax?: number;
   // Source attribution (backend-set, scene 0 only) — "via theverge.com".
   sourceDomain?: string;
+  storyBeat?: StoryBeat;
+  storySubject?: string;
 }> = ({
   imageUrl,
   videoUrl,
@@ -337,6 +341,8 @@ const DynamicScene: React.FC<{
   ratingValue,
   ratingMax,
   sourceDomain,
+  storyBeat,
+  storySubject,
 }) => {
   const frame = useCurrentFrame();
   const { fps, width: frameW, height: frameH } = useVideoConfig();
@@ -991,6 +997,23 @@ const DynamicScene: React.FC<{
   // ========================================================================
   // SCENE TYPE RENDERERS (redesigned)
   // ========================================================================
+
+  // Story-directed body layouts share one art direction and one dominant
+  // action. Keep the legacy hook/ending and all format-pack reveal contracts.
+  if (storyBeat && storyBeat.kind !== "legacy") {
+    return (
+      <AbsoluteFill>
+        <StoryScene
+          scene={{text, title, subtitle, secondaryText, leftLabel, rightLabel, imageUrl}}
+          beat={storyBeat} energy={energy} palette={palette}
+          accent={themeProp.primaryColor} font={theme.fontFamilyName} subject={storySubject}
+        />
+        <SceneImpactFrame primaryColor={themeProp.primaryColor} secondaryColor={themeProp.secondaryColor}
+          durationInFrames={durationInFrames} sceneIndex={sceneIndex} totalScenes={totalScenes}
+          seed={seed} showProgressBar={look.showProgressBar} showSceneCounter={false} />
+      </AbsoluteFill>
+    );
+  }
 
   // --- HERO scene (full-bleed cinematic opener) ---
   if (type === "hero") {
@@ -2967,7 +2990,8 @@ const FollowChip: React.FC<{
 };
 
 export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.infer<typeof CompositionProps>) => {
-  const { fps } = useVideoConfig();
+  const { fps, width, height } = useVideoConfig();
+  const currentFrame = useCurrentFrame();
   const resolvedVoiceoverUrl = React.useMemo(() => {
     if (!voiceoverUrl) return "";
     if (!voiceoverUrl.startsWith("http://") && !voiceoverUrl.startsWith("https://")) {
@@ -3036,7 +3060,7 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
   // Per-BOUNDARY cut plan: both sides of every cut share one spec, so exit
   // and enter motion are complementary (a real edit, not two uncoordinated
   // edge animations). Derived render-side from the seed — no schema changes.
-  const cutPlan = React.useMemo(
+  const baseCutPlan = React.useMemo(
     () =>
       deriveCutPlan(
         (activeTheme.seed ?? 0) >>> 0,
@@ -3080,6 +3104,20 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
       ),
     [activeTheme.seed, scenes, loopEnding, beatFrames, epochLevelOffset],
   );
+
+  // Render-side only: existing scheduled props opt in automatically. The
+  // portrait safe-zone design leaves landscape and square layouts alone.
+  const storyPlan = React.useMemo(() => deriveStoryMotion(
+    scenes, subtitles, energyPlan.scenes, fps,
+    activeTheme.formatPack, width < height,
+  ), [scenes, subtitles, energyPlan, fps, width, height, activeTheme.formatPack]);
+  const cutPlan = React.useMemo(() => baseCutPlan.map((cut, i) => {
+    if (i === 0 || i === scenes.length) return cut;
+    return {...cut, style: storyCutStyle(cut.style, scenes[i - 1], scenes[i], storyPlan[i - 1], storyPlan[i])};
+  }), [baseCutPlan, scenes, storyPlan]);
+  const activeSceneIndex = Math.max(0, scenes.findIndex((_, i) => currentFrame < sceneStarts[i + 1]));
+  const activeStory = storyPlan[activeSceneIndex];
+  const isDirected = activeStory.kind !== "legacy";
 
   // Seed-driven finishing layers (grain, leaks, letterbox, edge frame, ...)
   // matched to the look so they read as designed, not random.
@@ -3143,7 +3181,7 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
       {activeTheme.musicTrack !== "none" && (
         <Audio
           src={staticFile(MUSIC_MAP[activeTheme.musicTrack!])}
-          volume={0.2}
+          volume={isDirected ? storyMusicVolume(currentFrame - sceneStarts[activeSceneIndex], activeStory.revealFrame) : 0.2}
           loop
         />
       )}
@@ -3178,8 +3216,15 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
                 ) : null
               )
             )}
-            {look.motion !== "calm" && (scene.type === "metric" || scene.type === "countdown") && (
+            {look.motion !== "calm" && storyPlan[index].kind === "legacy" && (scene.type === "metric" || scene.type === "countdown") && (
               <Audio src={staticFile("sfx/pop.wav")} volume={0.35} />
+            )}
+            {/* One restrained accent at the main action, no competing entry
+                pop/stat burst. Assets already ship in CI; no new downloads. */}
+            {look.motion !== "calm" && storyPlan[index].kind !== "legacy" && (
+              <Sequence from={storyPlan[index].revealFrame} durationInFrames={Math.min(18, scene.durationInFrames - storyPlan[index].revealFrame)} layout="none">
+                <Audio src={staticFile(storyPlan[index].kind === "compression" ? "sfx/pop.wav" : "sfx/tick.wav")} volume={0.22} />
+              </Sequence>
             )}
             {/* Brand ident on the outro card — deliberately NOT gated on
                 look.motion: the sonic signature is part of the brand, not
@@ -3233,6 +3278,11 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
                 ratingValue={scene.ratingValue}
                 ratingMax={scene.ratingMax}
                 sourceDomain={scene.sourceDomain}
+                storyBeat={storyPlan[index]}
+                storySubject={
+                  index > 0 && storyPlan[index - 1].kind !== "legacy" && sharedSubject(scenes[index - 1], scene) ||
+                  index + 1 < scenes.length && storyPlan[index + 1].kind !== "legacy" && sharedSubject(scene, scenes[index + 1]) || undefined
+                }
               />
             </SceneTransition>
           </Series.Sequence>
@@ -3241,7 +3291,7 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
 
       {/* Global Theme Overlay wrapper with customizable opacity.
           Minimal/editorial looks damp the HUD so it doesn't fight the design. */}
-      <div style={{ position: "absolute", inset: 0, opacity: (activeTheme.overlayOpacity ?? 1) * (look.mutedHud ? 0.4 : 1) }}>
+      <div style={{ position: "absolute", inset: 0, opacity: isDirected ? 0 : (activeTheme.overlayOpacity ?? 1) * (look.mutedHud ? 0.4 : 1) }}>
         <HudOverlay
           primaryColor={activeTheme.primaryColor}
           secondaryColor={activeTheme.secondaryColor}
