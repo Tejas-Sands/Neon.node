@@ -78,6 +78,7 @@ import time
 import random
 import threading
 import requests
+from growth_strategy import audience_directive, growth_metadata, prefer_audience_candidates
 from fastapi import FastAPI, HTTPException, BackgroundTasks, Security, Depends, Query
 from fastapi.security import APIKeyHeader, HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.staticfiles import StaticFiles
@@ -3541,6 +3542,9 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
     user_prompt = build_user_prompt(req.prompt) + build_variety_directive(
         video_seed, is_auto_channel, meta_out=variety_meta,
         format_pack=pack_cfg["name"])
+    growth_brief = audience_directive() if is_auto_channel else ""
+    if growth_brief and growth_brief not in user_prompt:
+        user_prompt += growth_brief
 
     # Scene lengths auto-sync to speech, so a script with skimpy voiceovers
     # collapses the whole video (weak fallback models writing 10-word lines
@@ -5044,6 +5048,9 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
             "experiment": _assign_experiment(session_id),
             "ledger_rev": 2,
         }
+        growth = growth_metadata(ledger_topic) if is_auto_channel else {}
+        if growth:
+            render_status_store[session_id]["ledger_meta"]["growth"] = growth
 
     # Trigger background Instagram posting if configured
     ig_cfg = pipeline_cfg.instagram
@@ -8116,7 +8123,7 @@ CONCRETENESS CONTRACT: this video covers THIS story only, END-TO-END. The scenes
 (3) REAL numbers — if the article text contains figures, weave at least two of them into the scenes; NEVER invent any;
 (4) WHY it matters — who is affected and what changes now.
 BANNED: generic filler everyone already knows ('technology is evolving fast', 'this will change everything', 'tools make life easier') AND generic advice to the viewer ('do this', 'you should', 'try these tips') — this is a news story, not a tutorial. Every sentence must carry information specific to THIS story.
-{length_block}"""
+{length_block}{audience_directive()}"""
 
 
 @app.post("/render/hn-news", dependencies=[Depends(verify_api_key)])
@@ -8513,6 +8520,7 @@ def filter_and_pick_story(candidates: list, history: list, rng: random.Random,
                       "re-admitting cooled candidates rather than falling to a repeat.")
 
     if fresh:
+        fresh = prefer_audience_candidates(fresh)
         fresh.sort(key=lambda c: c["_score"], reverse=True)
         if len(fresh) < 3:
             print(f"[TopicSelect] WARNING: thin fresh pool ({len(fresh)} candidate(s) "
@@ -10174,6 +10182,7 @@ HARD REQUIREMENT — the subject must be ONE named, concrete thing: a specific p
 CANDIDATES:
 {listing}
 
+{audience_directive()}
 Return ONLY this JSON (no other text):
 {{"pick": <candidate number>, "subject": "<2-5 word searchable topic>", "angle": "<the specific viral angle in one vivid sentence>", "hook": "<a scroll-stopping first line, max 8 words>", "facts": ["<2-4 concrete facts from the item: what it is/does, a real number or spec, what changed>"], "insight": "<the one non-obvious takeaway — who is affected and what changes now, one sentence>", "format": "explainer|hot-take|news|comparison", "title": "<punchy 5-9 word video title>", "why": "<why this will perform, one short phrase>"}}"""
 
@@ -10269,6 +10278,7 @@ ARTICLE TEXT (scraped; may be partial or empty):
 
 Plan ONE vertical short video that covers this story END-TO-END: what happened, how it actually works, why it matters, and the single most valuable thing a tech viewer learns.
 
+{audience_directive()}
 HARD REQUIREMENT — the video's subject must be ONE named, concrete thing: a specific product, release, model, company move, incident, or research result. If this article is a vague think-piece, opinion essay, advice/how-to/listicle, or roundup with no nameable concrete subject, return {{"subject": ""}} and nothing else.
 
 "facts" rules: COPY 2-5 concrete specifics (numbers, versions, names, dates, what changed) accurately from the ARTICLE TEXT above. Never add specifics from memory. Each fact under 20 words.
@@ -10544,6 +10554,7 @@ def select_viral_topic(kind: str, processed: list, session_id: str = "TopicEngin
         print(f"[TopicEngine] All candidates already processed (kind={kind}).")
         return None
 
+    scored = prefer_audience_candidates(scored)
     scored.sort(key=lambda x: x["_score"], reverse=True)
     shortlist = scored[: max(3, shortlist_size)]
     print(f"[TopicEngine] {len(candidates)} candidates -> top {len(shortlist)} "
@@ -10618,7 +10629,7 @@ def build_viral_topic_prompt(plan: dict) -> str:
         "Make tech enthusiasts and developers stop scrolling, feel a jolt of curiosity or surprise, and want to share it. "
         "End with one punchy takeaway that rewards watching to the end."
     )
-    return " ".join(parts)
+    return " ".join(parts) + audience_directive()
 
 
 def run_news_scheduler():

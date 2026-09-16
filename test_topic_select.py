@@ -5,7 +5,7 @@ Topic Selection — Regression Tests (B2/B3)
 Locks the flag-gated selection upgrades in filter_and_pick_story and the
 entity machinery around it:
 
-  1. DEFAULT ENV = LEGACY, bit-for-bit: weighted-random over the top 5 with
+  1. GROWTH_STRATEGY=off = LEGACY, bit-for-bit: weighted-random over the top 5 with
      weight = score**2, 3-word-head dedup, no freshness gate, no cooldown.
   2. TOPIC_PICK_MODE=argmax is deterministic: same candidates → same pick,
      regardless of the rng, and it is always the max-score candidate.
@@ -38,6 +38,10 @@ import tempfile
 import time
 
 import main
+
+# These pins test the original popularity/cooldown policy in isolation.
+# Audience-on selection and gate precedence live in test_growth_strategy.py.
+os.environ["GROWTH_STRATEGY"] = "off"
 
 VERBOSE = "-v" in sys.argv
 FAILURES = []
