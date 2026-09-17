@@ -5035,7 +5035,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1296,
-      "fetched_at": 1789482089
+      "fetched_at": 1789619338
      },
      "snap72": {
       "views": 5,
@@ -5101,7 +5101,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1276,
-      "fetched_at": 1789482089
+      "fetched_at": 1789619338
      },
      "snap72": {
       "views": 42,
@@ -5237,7 +5237,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1568,
-      "fetched_at": 1789482089
+      "fetched_at": 1789619338
      },
      "snap72": {
       "views": 1,
@@ -5304,7 +5304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5887,
-      "fetched_at": 1789482089
+      "fetched_at": 1789619338
      },
      "snap72": {
       "views": 10,
@@ -6685,7 +6685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1019,
-      "fetched_at": 1789482089
+      "fetched_at": 1789619338
      },
      "snap72": {
       "views": 155,
@@ -6753,7 +6753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7175,
-      "fetched_at": 1789482089
+      "fetched_at": 1789619338
      },
      "snap72": {
       "views": 10,
@@ -6818,7 +6818,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1203,
-      "fetched_at": 1789482089
+      "fetched_at": 1789619338
      },
      "snap72": {
       "views": 31,
@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1789482089
+      "fetched_at": 1789619338
      },
      "snap72": {
       "views": 3,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1789482089
+      "fetched_at": 1789619338
      },
      "snap72": {
       "views": 30,
@@ -7826,7 +7826,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789459780
+      "fetched_at": 1789619338
      },
      "snap72": {
       "views": 0,
@@ -7892,7 +7892,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1789459780
+      "fetched_at": 1789619338
      },
      "snap72": {
       "views": 1,
@@ -8091,7 +8091,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1549,
-      "fetched_at": 1789482089
+      "fetched_at": 1789619338
      },
      "snap72": {
       "views": 4,
@@ -8294,7 +8294,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1733,
-      "fetched_at": 1789459780
+      "fetched_at": 1789619338
      },
      "snap72": {
       "views": 4,
@@ -8360,7 +8360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 715,
-      "fetched_at": 1789459780
+      "fetched_at": 1789619338
      },
      "snap72": {
       "views": 3,
@@ -9173,9 +9173,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1538,
-      "fetched_at": 1789459780
+      "fetched_at": 1789619338
      },
-     "snap72": null,
+     "snap72": {
+      "views": 3,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1538,
+      "fetched_at": 1789619338
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -9616,6 +9626,62 @@
     "instagram": {
      "id": "17951825022038536",
      "posted_at": 1789569488
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789619270,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "Training a 4B model to produce 81% faster query plans than Postgres",
+    "subject": "Qwen 4B Postgres query optimizer",
+    "url": "https://rohanbansal.com/qorl",
+    "source": "hn",
+    "keywords": [
+     "model"
+    ],
+    "viral_score": 8.84,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "4B Model Beats Postgres",
+    "angle": "How training a small 4B language model with reinforcement learning produces query plans that run 81 percent faster than Postgres default plans.",
+    "insight": "Developers struggling with NP-hard join ordering can leverage language models trained via reinforcement learning to generate significantly faster execution plans.",
+    "judge": "plan"
+   },
+   "style_pack": "royal-violet",
+   "format_pack": "legacy-news",
+   "seed": 385711913,
+   "voice": "en-US-JennyNeural",
+   "hook_type": "SHOCK-STAT",
+   "style_epoch": 9,
+   "scene_count": 6,
+   "video_seconds": 42.4,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "postgres"
+    ]
+   },
+   "session": "gh-d75a8e",
+   "platforms": {
+    "instagram": {
+     "id": "18115168531801519",
+     "posted_at": 1789619335
     }
    },
    "metrics": {

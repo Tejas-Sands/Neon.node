@@ -1867,5 +1867,17 @@
   "entities": [],
   "ts": 1789569491,
   "session": "gh-d83e82"
+ },
+ {
+  "id": "49731285",
+  "title": "Training a 4B model to produce 81% faster query plans than Postgres",
+  "norm": "training a 4b model to produce 81 faster query plans than postgres",
+  "subject_norm": "qwen 4b postgres query optimizer",
+  "entities": [
+   "postgresql",
+   "qwen"
+  ],
+  "ts": 1789619338,
+  "session": "gh-d75a8e"
  }
 ]
