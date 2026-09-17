@@ -1891,5 +1891,16 @@
   ],
   "ts": 1789635375,
   "session": "gh-3ccb68"
+ },
+ {
+  "id": "49733726",
+  "title": "HarnessTax: How Much Does the Harness Matter for Coding Agents?",
+  "norm": "harnesstax how much does the harness matter for coding agents",
+  "subject_norm": "harnesstax coding agents",
+  "entities": [
+   "harnesstax"
+  ],
+  "ts": 1789650940,
+  "session": "gh-83778d"
  }
 ]

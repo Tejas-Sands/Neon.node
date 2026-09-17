@@ -5500,7 +5500,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1818,
-      "fetched_at": 1789557412
+      "fetched_at": 1789650940
      },
      "snap72": {
       "views": 5,
@@ -5633,7 +5633,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1778,
-      "fetched_at": 1789557412
+      "fetched_at": 1789650940
      },
      "snap72": {
       "views": 8,
@@ -5699,7 +5699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1789557412
+      "fetched_at": 1789650940
      },
      "snap72": {
       "views": 4,
@@ -5764,7 +5764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1789557412
+      "fetched_at": 1789650940
      },
      "snap72": {
       "views": 114,
@@ -5830,7 +5830,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1789557412
+      "fetched_at": 1789650940
      },
      "snap72": {
       "views": 3,
@@ -5898,7 +5898,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2238,
-      "fetched_at": 1789557412
+      "fetched_at": 1789650940
      },
      "snap72": {
       "views": 0,
@@ -6031,7 +6031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1789557412
+      "fetched_at": 1789650940
      },
      "snap72": {
       "views": 2,
@@ -6096,7 +6096,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2142,
-      "fetched_at": 1789557412
+      "fetched_at": 1789650940
      },
      "snap72": {
       "views": 12,
@@ -6997,7 +6997,7 @@
       "saved": 0,
       "total_interactions": 3,
       "ig_reels_avg_watch_time": 1823,
-      "fetched_at": 1789557412
+      "fetched_at": 1789650940
      },
      "snap72": {
       "views": 144,
@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1789557412
+      "fetched_at": 1789650940
      },
      "snap72": {
       "views": 1,
@@ -8694,7 +8694,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1789539463
+      "fetched_at": 1789650940
      },
      "snap72": {
       "views": 48,
@@ -8969,7 +8969,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789539463
+      "fetched_at": 1789650940
      },
      "snap72": {
       "views": 0,
@@ -9310,10 +9310,20 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789539463
+      "ig_reels_avg_watch_time": 3706,
+      "fetched_at": 1789650940
      },
-     "snap72": null,
+     "snap72": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3706,
+      "fetched_at": 1789650940
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -9370,9 +9380,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 12899,
-      "fetched_at": 1789539463
+      "fetched_at": 1789650940
      },
-     "snap72": null,
+     "snap72": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 12899,
+      "fetched_at": 1789650940
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -9596,7 +9616,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 20007,
+      "fetched_at": 1789650940
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -9757,6 +9787,61 @@
     "instagram": {
      "id": "18134659972724797",
      "posted_at": 1789635372
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789650853,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "HarnessTax: How Much Does the Harness Matter for Coding Agents?",
+    "subject": "HarnessTax coding agents",
+    "url": "https://harnesstax.github.io/",
+    "source": "hn",
+    "keywords": [
+     "agent",
+     "how"
+    ],
+    "viral_score": 7.92,
+    "sources": [],
+    "display_title": "HarnessTax Coding Agents",
+    "angle": "Analyzing how much the surrounding harness actually matters for the performance of coding agents.",
+    "insight": "Builders optimizing AI coding tools must evaluate harness overhead because the surrounding wrapper heavily dictates real-world execution success.",
+    "judge": "plan"
+   },
+   "style_pack": "editorial-serif",
+   "format_pack": "facts-explainer",
+   "seed": 1602539263,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 9,
+   "scene_count": 4,
+   "video_seconds": 26.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "coding agents"
+    ]
+   },
+   "session": "gh-83778d",
+   "platforms": {
+    "instagram": {
+     "id": "17994673620023811",
+     "posted_at": 1789650937
     }
    },
    "metrics": {
