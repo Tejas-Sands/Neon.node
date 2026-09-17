@@ -2,48 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-8266177",
-   "ts": 1787823610,
-   "session": "gh-dee290",
-   "query": "developer typing code laptop",
-   "scene": 3
-  },
-  {
-   "id": "pexels-26655457",
-   "ts": 1787823610,
-   "session": "gh-dee290",
-   "query": "data flowing network nodes motion",
-   "scene": 4
-  },
-  {
-   "id": "pexels-6660936",
-   "ts": 1787823610,
-   "session": "gh-dee290",
-   "query": "chip manufacturing closeup motion",
-   "scene": 5
-  },
-  {
-   "id": "pexels-5532771",
-   "ts": 1787823610,
-   "session": "gh-dee290",
-   "query": "chip manufacturing closeup motion",
-   "scene": 5
-  },
-  {
-   "id": "pexels-5473915",
-   "ts": 1787839001,
-   "session": "gh-46e9f9",
-   "query": "terminal window typing code neon",
-   "scene": 0
-  },
-  {
-   "id": "pexels-37700770",
-   "ts": 1787839001,
-   "session": "gh-46e9f9",
-   "query": "data center servers blinking lights",
-   "scene": 1
-  },
-  {
    "id": "pexels-34993294",
    "ts": 1787839001,
    "session": "gh-46e9f9",
@@ -2800,6 +2758,48 @@
    "session": "gh-d75a8e",
    "query": "developer hands typing mechanical keyboard",
    "scene": 5
+  },
+  {
+   "id": "pexels-38993329",
+   "ts": 1789635297,
+   "session": "gh-3ccb68",
+   "query": "terminal typing code green",
+   "scene": 0
+  },
+  {
+   "id": "pexels-15440318",
+   "ts": 1789635297,
+   "session": "gh-3ccb68",
+   "query": "gpu graphics card glowing",
+   "scene": 1
+  },
+  {
+   "id": "pexels-9945022",
+   "ts": 1789635297,
+   "session": "gh-3ccb68",
+   "query": "server room blinking lights",
+   "scene": 2
+  },
+  {
+   "id": "pexels-34280527",
+   "ts": 1789635297,
+   "session": "gh-3ccb68",
+   "query": "server room blinking lights",
+   "scene": 2
+  },
+  {
+   "id": "pexels-5483083",
+   "ts": 1789635297,
+   "session": "gh-3ccb68",
+   "query": "developer laptop screen scrolling",
+   "scene": 3
+  },
+  {
+   "id": "pexels-5647338",
+   "ts": 1789635297,
+   "session": "gh-3ccb68",
+   "query": "circuit board macro motion",
+   "scene": 4
   }
  ]
 }

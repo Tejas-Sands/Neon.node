@@ -4836,7 +4836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 952,
-      "fetched_at": 1789539463
+      "fetched_at": 1789635375
      },
      "snap72": {
       "views": 9,
@@ -4967,7 +4967,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3060,
-      "fetched_at": 1789539463
+      "fetched_at": 1789635375
      },
      "snap72": {
       "views": 7,
@@ -5169,7 +5169,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5297,
-      "fetched_at": 1789539463
+      "fetched_at": 1789635375
      },
      "snap72": {
       "views": 7,
@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1789539463
+      "fetched_at": 1789635375
      },
      "snap72": {
       "views": 7,
@@ -5434,7 +5434,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5193,
-      "fetched_at": 1789539463
+      "fetched_at": 1789635375
      },
      "snap72": {
       "views": 12,
@@ -5567,7 +5567,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1789539463
+      "fetched_at": 1789635375
      },
      "snap72": {
       "views": 8,
@@ -6234,7 +6234,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2886,
-      "fetched_at": 1789539463
+      "fetched_at": 1789635375
      },
      "snap72": {
       "views": 4,
@@ -6482,7 +6482,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1082,
-      "fetched_at": 1789539463
+      "fetched_at": 1789635375
      },
      "snap72": {
       "views": 112,
@@ -7957,7 +7957,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3536,
-      "fetched_at": 1789539463
+      "fetched_at": 1789635375
      },
      "snap72": {
       "views": 6,
@@ -8428,7 +8428,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 854,
-      "fetched_at": 1789482089
+      "fetched_at": 1789635375
      },
      "snap72": {
       "views": 3,
@@ -8561,7 +8561,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 865,
-      "fetched_at": 1789482089
+      "fetched_at": 1789635375
      },
      "snap72": {
       "views": 4,
@@ -8629,7 +8629,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9140,
-      "fetched_at": 1789539463
+      "fetched_at": 1789635375
      },
      "snap72": {
       "views": 9,
@@ -8900,7 +8900,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789482089
+      "fetched_at": 1789635375
      },
      "snap72": {
       "views": 0,
@@ -9241,9 +9241,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5867,
-      "fetched_at": 1789482089
+      "fetched_at": 1789635375
      },
-     "snap72": null,
+     "snap72": {
+      "views": 3,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5867,
+      "fetched_at": 1789635375
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -9522,7 +9532,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 3,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1480,
+      "fetched_at": 1789635375
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -9682,6 +9702,61 @@
     "instagram": {
      "id": "18115168531801519",
      "posted_at": 1789619335
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789635297,
+   "posted_hour_utc": 8,
+   "channel": "news",
+   "topic": {
+    "title": "Nvidia announces native GPU programming in Rust",
+    "subject": "Nvidia CUDA Rust",
+    "url": "https://developer.nvidia.com/blog/introducing-cuda-rust-two-tracks-for-writing-gpu-kernels/",
+    "source": "hn",
+    "keywords": [
+     "nvidia",
+     "announc"
+    ],
+    "viral_score": 9.83,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Nvidia Native GPU Rust",
+    "angle": "Nvidia is introducing native GPU programming in Rust with CUDA Rust, closing the gap where GPU kernels previously had to be written in other languages.",
+    "insight": "Systems builders can now write GPU kernels natively in Rust without C++ wrappers, catching entire classes of bugs at compile time through custom codegen backend cuda-oxide.",
+    "judge": "plan"
+   },
+   "style_pack": "toxic-lime",
+   "format_pack": "facts-explainer",
+   "seed": 1561223073,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 9,
+   "scene_count": 5,
+   "video_seconds": 26.6,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-3ccb68",
+   "platforms": {
+    "instagram": {
+     "id": "18134659972724797",
+     "posted_at": 1789635372
     }
    },
    "metrics": {

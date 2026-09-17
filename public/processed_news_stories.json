@@ -1879,5 +1879,17 @@
   ],
   "ts": 1789619338,
   "session": "gh-d75a8e"
+ },
+ {
+  "id": "49724881",
+  "title": "Nvidia announces native GPU programming in Rust",
+  "norm": "nvidia announces native gpu programming in rust",
+  "subject_norm": "nvidia cuda rust",
+  "entities": [
+   "nvidia",
+   "rust"
+  ],
+  "ts": 1789635375,
+  "session": "gh-3ccb68"
  }
 ]
