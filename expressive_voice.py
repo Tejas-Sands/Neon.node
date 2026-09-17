@@ -86,19 +86,25 @@ def _alignment_model():
     return WhisperModel('small', device='cpu', compute_type='int8', cpu_threads=2)
 
 
+def build_speech_prompt(text, rate='+12%'):
+    from tts_providers import edge_rate_to_speed
+    target_wpm = round(170 * edge_rate_to_speed(rate) / 1.12)
+    return (
+        'Read the following exact words as a young, conversational tech creator '
+        'talking to one friend. Make the opening sentence immediate and surprising '
+        'like a scroll-stopping hook, then settle into lively but credible delivery. '
+        'Give reactions audible surprise and questions a curious upward inflection. '
+        'Vary stress and pitch; do not shout. '
+        f'Brisk pace, about {target_wpm} words per minute. '
+        'Do not read these directions. Transcript: ' + text
+    )
+
+
 def synthesize(text, output, voice='Leda', rate='+12%'):
     key = os.environ.get('GEMINI_API_KEY', '').strip()
     if not key:
         raise ValueError('GEMINI_API_KEY is required for expressive speech')
-    from tts_providers import edge_rate_to_speed
-    target_wpm = round(170 * edge_rate_to_speed(rate) / 1.12)
-    prompt = (
-        'Read the following exact words as a young, conversational tech creator '
-        'talking to one friend. Lively but credible. Give reactions audible surprise '
-        'and questions a curious upward inflection. Vary stress and pitch; do not '
-        f'shout. Brisk pace, about {target_wpm} words per minute. '
-        'Do not read these directions. Transcript: ' + text
-    )
+    prompt = build_speech_prompt(text, rate)
     payload = {'contents': [{'parts': [{'text': prompt}]}], 'generationConfig': {
         'responseModalities': ['AUDIO'], 'speechConfig': {'voiceConfig': {
             'prebuiltVoiceConfig': {'voiceName': voice}}}}}

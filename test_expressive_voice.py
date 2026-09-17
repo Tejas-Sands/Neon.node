@@ -11,6 +11,20 @@ from tts_providers import resolve_tts_engine
 
 
 class ExpressiveVoiceTests(unittest.TestCase):
+    def test_gemini_voice_rotation_is_seeded_and_explicit_voice_wins(self):
+        import main
+        first = main.select_gemini_voice('voice-rotation-a')
+        self.assertEqual(first, main.select_gemini_voice('voice-rotation-a'))
+        choices = {main.select_gemini_voice(f'voice-rotation-{i}') for i in range(24)}
+        self.assertGreater(len(choices), 1)
+        self.assertTrue(choices <= set(main.GEMINI_VOICE_POOL))
+        self.assertEqual(main.select_gemini_voice('voice-rotation-a', 'gemini:Leda'), 'Leda')
+
+    def test_gemini_prompt_calls_for_immediate_opening_hook(self):
+        prompt = voice.build_speech_prompt('Three tools just changed your build.', '+12%')
+        self.assertIn('opening sentence', prompt)
+        self.assertIn('immediate', prompt)
+
     def test_transcript_matches_but_preserves_script_spelling(self):
         words = [dict(text="Here's", start=0.0, end=.3),
                  dict(text='the', start=.3, end=.5),

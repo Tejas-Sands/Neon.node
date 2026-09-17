@@ -211,6 +211,24 @@ VOICE_POOL = [
     "en-US-EmmaMultilingualNeural",    # cheerful, clear, conversational
 ]
 
+# Gemini's expressive voices are rotated per reel, not per scene, so a whole
+# narration still sounds like one person. These are deliberately biased toward
+# bright, lively, youthful, friendly and casual voices for hook experiments.
+GEMINI_VOICE_POOL = [
+    "Leda", "Puck", "Zephyr", "Aoede", "Fenrir", "Achird", "Sadachbia",
+]
+
+
+def select_gemini_voice(session_id: str, requested: Optional[str] = None) -> str:
+    explicit = (requested or os.environ.get("VOICEOVER_VOICE", "")).strip()
+    if explicit:
+        return explicit.removeprefix("gemini:")
+    rnd = random.Random(_derive_seed(session_id))
+    selected, mode = _feedback_weighted_choice(
+        GEMINI_VOICE_POOL, lambda value: "gemini:" + value, "voices", rnd, get_feedback_stats())
+    print(f"[{session_id}] Seeded Gemini narrator for this video: {selected} ({mode})")
+    return selected
+
 # VOICE_IDENTITY=consistent uses Aria at natural pitch by default. The pool
 # below remains available with VOICE_IDENTITY=rotate. VOICE_STYLE=cheerful
 # (the default since 2026-08-09) swaps that optional narrator pool
@@ -7482,7 +7500,7 @@ async def _generate_voiceover_with_engine(
     # Explicit request/env pins win. Edge defaults to a consistent narrator;
     # Kokoro and the opt-in Edge rotation retain their seeded voice pools.
     if engine == "gemini":
-        resolved_voice = (voice or os.environ.get("VOICEOVER_VOICE") or "gemini:Leda").strip().removeprefix("gemini:")
+        resolved_voice = select_gemini_voice(session_id, voice)
         render_status_store.setdefault(session_id, {})["resolved_voice"] = "gemini:" + resolved_voice
         render_status_store[session_id]["tts_provider"] = "gemini"
         if (pitch or os.environ.get("VOICEOVER_PITCH", "").strip()) not in (None, "", "+0Hz"):

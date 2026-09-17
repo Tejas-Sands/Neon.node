@@ -1628,14 +1628,54 @@ const DynamicScene: React.FC<{
     // Quiz-pack OptionGrid skin: lettered A/B/C/D badges, bigger option
     // type, centered block, seeded badge/entrance variety (packs.ts). The
     // grid stays NEUTRAL — correctIndex is never highlighted here; the
-    // reveal scene carries the answer. Absent formatPack = legacy list,
-    // byte-identical.
+    // reveal scene carries the answer. Absent formatPack uses the editorial
+    // board below; quiz rows keep their existing contract.
     const isQuizGrid = theme.formatPack === "quiz-reveal";
     const packSkin = isQuizGrid ? derivePackSkin((theme.seed ?? 0) >>> 0) : null;
     // 6-12 frames between rows is the professional band for list reveals —
     // duration-proportional stagger ballooned to 1.5s gaps on long scenes.
     const framesPerItem = Math.floor(durationInFrames * 0.55 / items.length);
     const itemStagger = Math.min(12, Math.max(6, framesPerItem));
+
+    if (!isQuizGrid) {
+      return (
+        <AbsoluteFill>
+          {BackgroundLayer}
+          {SharedLayers}
+          <div style={{ position: "absolute", top: "14%", left: "7%", right: "7%", bottom: "12%", zIndex: 20,
+            display: "flex", flexDirection: "column", gap: "20px", padding: "28px 26px 26px",
+            background: `linear-gradient(145deg, ${palette.ink}f2, ${ft.panelBg(palette)})`,
+            border: `1px solid ${palette.edge}`, borderTop: `5px solid ${theme.secondaryColor}`,
+            borderRadius: `${Math.max(18, ft.radiusPanel)}px`, boxShadow: `0 18px 60px rgba(0,0,0,0.42)` }}>
+            {title && <div style={{ color: theme.secondaryColor, fontFamily: getFontFamily(theme.fontFamilyName),
+              fontSize: `${fs(24)}px`, fontWeight: FONT_METRICS[theme.fontFamilyName].displayWeight,
+              letterSpacing: "0.12em", textTransform: "uppercase" }}>{title}</div>}
+            <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column", gap: "14px" }}>
+              {items.map((item, i) => {
+                const itemStart = 10 + i * itemStagger;
+                const itemProgress = spring({ fps, frame: Math.max(0, frame - itemStart),
+                  config: { damping: 16, stiffness: Math.round(110 * sMul) }, durationInFrames: 16 });
+                const color = i % 2 === 0 ? theme.primaryColor : theme.secondaryColor;
+                return <div key={i} style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", gap: "20px",
+                  opacity: itemProgress, transform: `translateY(${interpolate(itemProgress, [0, 1], [20, 0])}px)`,
+                  padding: "18px 22px", background: i % 2 === 0 ? "rgba(255,255,255,0.075)" : "rgba(255,255,255,0.045)",
+                  border: `1px solid ${color}55`, borderLeft: `8px solid ${color}`, borderRadius: "14px" }}>
+                  <div style={{ width: "58px", height: "58px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center",
+                    borderRadius: "14px", background: `${color}22`, border: `2px solid ${color}`, color,
+                    fontFamily: getFontFamily(theme.fontFamilyName), fontSize: `${fs(27)}px`, fontWeight: FONT_METRICS[theme.fontFamilyName].displayWeight }}>
+                    {i + 1}
+                  </div>
+                  <div style={{ color: "#f7f9fc", fontFamily: getFontFamily(theme.fontFamilyName),
+                    fontSize: `${fs(34)}px`, fontWeight: FONT_METRICS[theme.fontFamilyName].displayWeight, lineHeight: 1.18 }}>
+                    {item}
+                  </div>
+                </div>;
+              })}
+            </div>
+          </div>
+        </AbsoluteFill>
+      );
+    }
 
     return (
       <AbsoluteFill>
