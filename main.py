@@ -211,7 +211,7 @@ VOICE_POOL = [
     "en-US-EmmaMultilingualNeural",    # cheerful, clear, conversational
 ]
 
-# VOICE_IDENTITY=consistent uses Jenny at natural pitch by default. The pool
+# VOICE_IDENTITY=consistent uses Aria at natural pitch by default. The pool
 # below remains available with VOICE_IDENTITY=rotate. VOICE_STYLE=cheerful
 # (the default since 2026-08-09) swaps that optional narrator pool
 # to the EXPRESSIVE non-multilingual voices — the Multilingual set reads
@@ -2998,7 +2998,9 @@ _SPOKEN_RATE_BY_ENGINE = {
 }
 
 
-def _estimate_spoken_seconds(scenes: List[dict], engine: Optional[str] = None) -> float:
+def _estimate_spoken_seconds(scenes: List[dict], engine: Optional[str] = None,
+                             rate: Optional[str] = None, voice: Optional[str] = None,
+                             pacing: Optional[str] = None) -> float:
     """Estimate how long the script's narration runs when spoken.
 
     CALIBRATED against real scripts, not a synthetic sentence. Synthesising two
@@ -3039,10 +3041,20 @@ def _estimate_spoken_seconds(scenes: List[dict], engine: Optional[str] = None) -
     multilingual pool's 3.159. Constant transferred corpus-relatively:
     2.33 * 3.321/3.159 = 2.45.
     """
-    wps, leadin = _SPOKEN_RATE_BY_ENGINE.get(
-        engine or resolve_tts_engine(None), _SPOKEN_RATE_BY_ENGINE["edge"])
+    from voice_pacing import reading_frames
+    engine = engine or resolve_tts_engine(voice)
+    wps, leadin = _SPOKEN_RATE_BY_ENGINE.get(engine, _SPOKEN_RATE_BY_ENGINE["edge"])
+    tight = (pacing or os.environ.get("VOICE_PACING", "tight")) != "legacy"
+    if tight and engine == "edge" and VOICE_STYLE != "legacy" and os.environ.get("VOICE_IDENTITY", "consistent") != "rotate":
+        # 2026-09-17: three source-backed fixtures, normalized to +5%.
+        # Jenny: 158 words at 2.680 wps; selected Aria: 156 at 2.583 (+12%).
+        # See docs/VOICE_MOTION_REVIEW.md. Other voices retain pool calibration.
+        narrator = voice or os.environ.get("VOICEOVER_VOICE") or "en-US-AriaNeural"
+        wps = {"en-US-JennyNeural": 2.52, "en-US-AriaNeural": 2.42}.get(narrator, wps)
+    wps *= edge_rate_to_speed(rate or os.environ.get("VOICEOVER_RATE", "+12%")) / 1.05
     total_words = 0
     spoken_scenes = 0
+    fitted_seconds = 0.0
     for scene in scenes:
         if not isinstance(scene, dict):
             continue
@@ -3051,6 +3063,9 @@ def _estimate_spoken_seconds(scenes: List[dict], engine: Optional[str] = None) -
         total_words += words
         if words:
             spoken_scenes += 1
+            fitted_seconds += max(words / wps + .18, reading_frames(scene) / 30)
+    if tight:
+        return fitted_seconds
     return total_words / wps + leadin * spoken_scenes
 
 
@@ -3634,7 +3649,8 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
             last_gate_reasons = []
             attempt += 1
             continue
-        est_sec = _estimate_spoken_seconds(candidate.get("scenes", []))
+        est_sec = _estimate_spoken_seconds(candidate.get("scenes", []),
+                                           rate=pipeline_cfg.voiceRate, voice=pipeline_cfg.voice)
         last_est_sec = est_sec
         band_dist = max(min_spoken_sec - est_sec, 0.0) + max(est_sec - max_spoken_sec, 0.0)
         if ENABLE_SCRIPT_GATE:
@@ -7449,9 +7465,10 @@ async def _generate_voiceover_with_engine(
     """One full-video synthesis pass on ONE engine. Everything downstream of
     synthesis — duration refit, subtitle offsets, empty-audio guard, failure
     accounting, mixing, REQUIRE_VOICEOVER aborts — is engine-shared and
-    unchanged from the historical edge-tts implementation."""
+    shared by both engines; VOICE_PACING=legacy retains the historical refit."""
     print(f"[{session_id}] Starting free neural voiceover and karaoke subtitle alignment ({engine})...")
     import edge_tts
+    from voice_pacing import fit_frames, reading_frames, prepare_audio
 
     # Explicit request/env pins win. Edge defaults to a consistent narrator;
     # Kokoro and the opt-in Edge rotation retain their seeded voice pools.
@@ -7473,7 +7490,7 @@ async def _generate_voiceover_with_engine(
         # Keep provider selection and the existing failure recovery unchanged.
         consistent_voice = VOICE_STYLE != "legacy" and os.environ.get("VOICE_IDENTITY", "consistent") != "rotate"
         if not resolved_voice and consistent_voice:
-            resolved_voice = "en-US-JennyNeural"
+            resolved_voice = "en-US-AriaNeural"
         if not resolved_voice:
             # Feedback-weighted rotation: identical to the legacy rnd.choice on
             # cold start; with enough scored posts, better-performing narrators get
@@ -7490,9 +7507,9 @@ async def _generate_voiceover_with_engine(
         # Recorded so the post ledger can attribute performance to the narrator.
         render_status_store.setdefault(session_id, {})["resolved_voice"] = resolved_voice
         render_status_store[session_id]["tts_provider"] = "edge"
-    # +10% read as hurried, which is most of what "sounds like a robot"
-    # actually is. +5% keeps the pace tight for a Reel without the rush.
-    resolved_rate = rate or os.environ.get("VOICEOVER_RATE", "+5%")
+    # Native rate preserves word alignment. Explicit request/environment pins
+    # win; +12% is the faster review candidate, not a promise of naturalness.
+    resolved_rate = rate or os.environ.get("VOICEOVER_RATE", "+12%")
     # Pitch: request param > env/Variable > per-voice cheerful lift > flat.
     # Pitch shifts don't change duration, so the spoken-rate calibration is
     # unaffected. (If per-scene failover swaps the narrator mid-video, the
@@ -7532,6 +7549,11 @@ async def _generate_voiceover_with_engine(
                 kokoro_batch, resolved_voice, kokoro_speed, session_id)
 
     temp_audio_files = []
+    raw_audio_files = []
+    timing_rows = []
+    render_status_store[session_id]["voice_scene_timings"] = timing_rows
+    render_status_store[session_id]["resolved_rate"] = resolved_rate
+    render_status_store[session_id]["resolved_pitch"] = resolved_pitch
     offsets = []
     global_subtitles = []
     current_time_offset = 0.0
@@ -7607,16 +7629,22 @@ async def _generate_voiceover_with_engine(
                 if not synth_ok:
                     raise Exception(f"All TTS voices failed for scene {idx+1}: {last_tts_err}")
 
-            # Auto-adjust scene duration to match speech duration.
-            # PACING: only a short tail of silence after the last word before the
-            # cut — a long tail leaves every scene lingering on dead air, which is
-            # what makes these feel slow/slideshow-y. 0.35s covers the word's
-            # decay and gives one beat before the whoosh-cut into the next scene.
-            SCENE_TAIL_PAD_SEC = 0.35
             max_word_end = max((w["end"] for w in scene_words), default=0.0)
             if max_word_end > 0.0:
-                spoken_sec = max_word_end + SCENE_TAIL_PAD_SEC
-                scene["durationInFrames"] = max(int(spoken_sec * 30), 90)
+                if os.environ.get("VOICE_PACING", "tight") == "legacy":
+                    spoken_sec = max_word_end + 0.35
+                    scene["durationInFrames"] = max(int(spoken_sec * 30), 90)
+                    measured = {"trim_start": 0.0, "seconds": spoken_sec}
+                else:
+                    paced_path, scene_words, measured = prepare_audio(scene_audio_filepath, scene_words)
+                    raw_audio_files.append(scene_audio_filepath)
+                    scene_audio_filepath = paced_path
+                    spoken_sec = max(measured["seconds"], max(w["end"] for w in scene_words))
+                    scene["durationInFrames"] = fit_frames(spoken_sec, reading_frames(scene))
+                timing_rows.append(dict(measured, scene=idx, voice=resolved_voice,
+                                        rate=resolved_rate, pitch=resolved_pitch,
+                                        first_word=scene_words[0]["start"], last_word=scene_words[-1]["end"],
+                                        duration_frames=scene["durationInFrames"]))
                 print(f"[{session_id}] Scene {idx+1} auto-adjusted to {scene['durationInFrames']} frames ({spoken_sec:.2f}s) to match speech.")
             else:
                 max_word_end = scene.get("durationInFrames", 175) / 30.0
@@ -7646,7 +7674,7 @@ async def _generate_voiceover_with_engine(
                     pass
 
     def _cleanup_temp_tracks():
-        for file_path in temp_audio_files:
+        for file_path in temp_audio_files + raw_audio_files:
             if os.path.exists(file_path):
                 try:
                     os.remove(file_path)

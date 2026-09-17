@@ -34,7 +34,9 @@ export function deriveStoryMotion(
     const duration = Math.max(1, scene.durationInFrames ?? 150);
     const start = sceneStart;
     sceneStart += duration;
-    const lastReveal = Math.max(0, duration - 25);
+    // A 12–24-frame transform needs a further 24 frames of settled reading.
+    // Late words are still captioned; they must not force an unreadable reveal.
+    const lastReveal = Math.max(0, duration - 36);
     const earliest = Math.max(energy[i]?.landEnd ?? 26, energy[i]?.kineticStart ?? duration / 2);
     const fallback = Math.min(lastReveal, Math.round(earliest));
     const beat: StoryBeat = {kind: "legacy", revealFrame: fallback, synced: false};
@@ -114,11 +116,12 @@ export const storyStage = (frame: number, duration: number, cue: number,
     return 1 - (1 - t) ** 3;
   };
   const revealAt = Math.max(energy.landEnd, energy.kineticStart, cue);
-  // The last legal cue is duration-25. Docking then has its own 18-frame
-  // window; waiting another 24 frames would strand the metric at the cut.
+  // Reveal eligibility reserves its own settling/reading window. Docking
+  // has a separate final 18-frame window and never starts mid-transform.
   const dockAt = Math.max(revealAt, duration - 19);
   return {enter: ease(0, Math.min(22, energy.landEnd)),
-    reveal: ease(revealAt, 24), dock: ease(dockAt, duration - 1 - dockAt)};
+    reveal: ease(revealAt, Math.min(24, duration - revealAt - 24)),
+    dock: ease(dockAt, duration - 1 - dockAt)};
 };
 
 /** Only carry an entire, literal metric, including its unit/sign. No inferred

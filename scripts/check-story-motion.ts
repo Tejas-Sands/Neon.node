@@ -94,3 +94,13 @@ assert.equal(deriveStoryMotion([scenes[0], {type: "split", text: "A detail", tit
 assert.equal(deriveStoryMotion([scenes[0], {type: "comparison", text: "Before", secondaryText: "After", leftLabel: "Long label ".repeat(6), durationInFrames: 150}, scenes[3]], [], energy, 30)[1].kind,
   "legacy", "long comparison labels cannot overflow fixed panel slots");
 console.log("editorial-motion: all assertions passed");
+
+// A late spoken number must not trigger a reveal with no settled reading hold.
+const lateMetric = deriveStoryMotion(scenes, [
+  {text: 'forty', start: (270 + 118) / 30, end: (270 + 122) / 30},
+  {text: 'percent', start: (270 + 122) / 30, end: (270 + 126) / 30},
+], energy, 30)[2];
+assert.equal(lateMetric.synced, false, 'skip a cue that would consume the final reading hold');
+assert.ok(lateMetric.revealFrame + 48 <= 150, '24-frame action plus 24-frame settled hold');
+const briefScenes = [scenes[0], {type: 'metric', text: '32-bit', durationInFrames: 60}, scenes[3]];
+assert.equal(deriveStoryMotion(briefScenes, [], [energy[0], {kineticStart: 40, landEnd: 26, still: false}, energy[3]], 30)[1].kind, 'legacy');

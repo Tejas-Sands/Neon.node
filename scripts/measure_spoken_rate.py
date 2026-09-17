@@ -33,11 +33,15 @@ Baseline @ rate=+5% pitch=+2Hz (2026-08-09, this corpus):
     Ava 3.06 wps | Emma 3.28 | Andrew 3.03 | Brian 3.25 | pool-weighted 3.16
 """
 import asyncio
+import argparse
+import json
+from pathlib import Path
 import os
 import sys
 
 import edge_tts
 
+# Keep +5% as the historical measurement reference; pass --rate for fixtures.
 RATE = os.environ.get("VOICEOVER_RATE", "+5%")
 LEADIN = 0.35  # pinned to SCENE_TAIL_PAD_SEC — measured, not fit (see above)
 
@@ -51,7 +55,7 @@ VOICES = {
     "en-US-GuyNeural": (1, "+4Hz"),
 }
 if os.environ.get("VOICE_IDENTITY", "consistent") != "rotate":
-    VOICES = {"en-US-JennyNeural": (1, "+0Hz")}
+    VOICES = {"en-US-AriaNeural": (1, "+0Hz")}
 
 # The two SYSTEM_PROMPT few-shot scripts' voiceovers (post spoken-warmth pass,
 # 2026-08-09) — real scene-length distribution, not synthetic sentences.
@@ -89,6 +93,53 @@ async def scene_seconds(text: str, voice: str, voice_pitch: str) -> float:
 
 
 async def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--fixture", action="append", type=Path, default=[])
+    parser.add_argument("--voice", default="en-US-AriaNeural")
+    parser.add_argument("--rate", default=RATE)
+    parser.add_argument("--pitch", default="+0Hz")
+    parser.add_argument("--timings", action="append", type=Path, default=[])
+    args = parser.parse_args()
+    if args.timings:
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+        from main import _estimate_spoken_seconds
+        total_words = total_seconds = 0
+        for path in args.timings:
+            report = json.loads(path.read_text())
+            props = json.loads(Path(report["props"]).read_text())
+            actual = report["timeline_seconds"]
+            estimated = _estimate_spoken_seconds(props["scenes"], report["provider"],
+                rate=report["rate"], voice=report["resolved_voice"], pacing=report["pacing"])
+            rows = report.get("per_scene", [])
+            if not rows:
+                raise ValueError("Timing report has no per-scene measurements")
+            words = sum(len(s.get("voiceover", s.get("text", "")).split()) for s in props["scenes"])
+            raw = sum(row["last_word"] + row["trim_start"] for row in rows)
+            total_words += words
+            total_seconds += raw
+            error = (estimated / actual - 1) * 100
+            print(f"{report['label']}: estimated={estimated:.2f}s actual={actual:.2f}s error={error:+.1f}% wps={words/raw:.3f}")
+        print(f"Corpus: {total_words} words / {total_seconds:.3f}s = {total_words/total_seconds:.3f} wps (requested rate)")
+        return 0
+    if args.fixture:
+        import edge_tts
+        total_words = total_seconds = 0
+        for path in args.fixture:
+            for scene in json.loads(path.read_text())["scenes"]:
+                text = scene.get("voiceover") or scene.get("text") or ""
+                if not text.strip():
+                    continue
+                last = 0.0
+                async for chunk in edge_tts.Communicate(text, args.voice, rate=args.rate,
+                                                       pitch=args.pitch, boundary="WordBoundary").stream():
+                    if chunk["type"] == "WordBoundary":
+                        last = max(last, (chunk["offset"] + chunk["duration"]) / 1e7)
+                if last <= 0:
+                    raise RuntimeError("No native word boundaries")
+                total_words += len(text.split())
+                total_seconds += last
+        print(f"{args.voice} rate={args.rate} pitch={args.pitch}: {total_words/total_seconds:.3f} wps over {total_words} words")
+        return 0
     print(f"rate={RATE} leadin(pinned)={LEADIN}")
     weighted_wps = weight_total = 0.0
     for voice, (weight, voice_pitch) in VOICES.items():

@@ -1,0 +1,118 @@
+{
+  "quantization": {
+    "source": "https://huggingface.co/docs/transformers/quantization/overview",
+    "scenes": [
+      {
+        "type": "hero",
+        "title": "4-BIT WEIGHTS",
+        "text": "Less memory. What's the tradeoff?",
+        "voiceover": "Four-bit weights shrink storage. Does your answer change?"
+      },
+      {
+        "type": "metric",
+        "title": "FULL PRECISION",
+        "text": "32-bit",
+        "secondaryText": "Storage for one full-precision weight",
+        "voiceover": "Full precision can store each weight in thirty-two bits."
+      },
+      {
+        "type": "split",
+        "title": "SMALLER WEIGHTS",
+        "text": "Quantization compresses model weights",
+        "secondaryText": "4-bit storage \u00b7 illustrated",
+        "voiceover": "Quantization uses fewer bits per weight. Four, in this example."
+      },
+      {
+        "type": "comparison",
+        "title": "THE TRADEOFF",
+        "leftLabel": "Full precision",
+        "text": "More weight storage",
+        "rightLabel": "Quantized",
+        "secondaryText": "Less precision",
+        "voiceover": "Smaller doesn't mean identical. Less precision can change the result."
+      },
+      {
+        "type": "split",
+        "title": "TEST YOUR TASK",
+        "text": "Memory saved versus answer quality",
+        "voiceover": "Compare memory saved and answer quality on your own task."
+      }
+    ]
+  },
+  "scripts": {
+    "source": "https://docs.astral.sh/uv/guides/scripts/",
+    "scenes": [
+      {
+        "type": "hero",
+        "title": "DEPENDENCIES INCLUDED",
+        "text": "One script carries its requirements",
+        "voiceover": "Your script lists dependencies. Can uv install them?"
+      },
+      {
+        "type": "metric",
+        "title": "PYTHON REQUIREMENT",
+        "text": "3.12",
+        "secondaryText": "Example minimum Python version",
+        "voiceover": "Your script can declare dependencies and require Python three point twelve."
+      },
+      {
+        "type": "split",
+        "title": "ISOLATED ENVIRONMENT",
+        "text": "uv reads the script metadata",
+        "secondaryText": "Dependencies installed in a script environment",
+        "voiceover": "Run it with uv. It prepares an environment from that metadata."
+      },
+      {
+        "type": "split",
+        "title": "ONE DETAIL MATTERS",
+        "text": "Script metadata overrides project dependencies",
+        "voiceover": "Here's the catch: inline metadata means the project's dependencies are ignored."
+      },
+      {
+        "type": "split",
+        "title": "MAKE IT REPEATABLE",
+        "text": "Declare the script's own dependencies",
+        "voiceover": "List what your script actually needs, so its environment travels with it."
+      }
+    ]
+  },
+  "lockfiles": {
+    "source": "https://docs.npmjs.com/cli/v11/commands/npm-ci",
+    "scenes": [
+      {
+        "type": "hero",
+        "title": "INSTALL REFUSED",
+        "text": "A lockfile mismatch stops CI",
+        "voiceover": "Your install can fail before the build. Check the lockfile."
+      },
+      {
+        "type": "metric",
+        "title": "FROZEN INSTALL",
+        "text": "0",
+        "secondaryText": "Lockfile updates from npm ci",
+        "voiceover": "Npm ci makes zero lockfile updates. It expects the files to agree."
+      },
+      {
+        "type": "comparison",
+        "title": "WHEN FILES DISAGREE",
+        "leftLabel": "npm install",
+        "text": "Can update the lockfile",
+        "rightLabel": "npm ci",
+        "secondaryText": "Exits with an error",
+        "voiceover": "If package settings and the lockfile disagree, ci stops. That's deliberate."
+      },
+      {
+        "type": "split",
+        "title": "CLEAN START",
+        "text": "Existing node_modules is removed",
+        "voiceover": "And it removes existing node modules before installing the locked dependencies."
+      },
+      {
+        "type": "split",
+        "title": "CHECK BOTH FILES",
+        "text": "Commit package changes with their lockfile",
+        "voiceover": "Keep package changes and their lockfile together. Your CI install checks both."
+      }
+    ]
+  }
+}

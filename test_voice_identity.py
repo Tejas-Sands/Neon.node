@@ -35,7 +35,7 @@ class VoiceIdentityTests(unittest.TestCase):
         return calls[0]
 
     def setUp(self):
-        self.env = patch.dict(os.environ, {"VOICE_IDENTITY": "consistent", "VOICEOVER_VOICE": "",
+        self.env = patch.dict(os.environ, {"VOICE_PACING": "legacy", "VOICE_IDENTITY": "consistent", "VOICEOVER_VOICE": "",
                                           "VOICEOVER_PITCH": "", "VOICEOVER_RATE": "+5%"})
         self.env.start()
         self.addCleanup(self.env.stop)
@@ -46,7 +46,7 @@ class VoiceIdentityTests(unittest.TestCase):
     def test_different_sessions_keep_one_natural_pitch_narrator(self):
         for session in ("identity-a", "identity-b", "identity-c"):
             voice, settings = self.synthesize(session)
-            self.assertEqual(voice, "en-US-JennyNeural")
+            self.assertEqual(voice, "en-US-AriaNeural")
             self.assertEqual(settings["pitch"], "+0Hz")
             self.assertEqual(settings["boundary"], "WordBoundary")
 
