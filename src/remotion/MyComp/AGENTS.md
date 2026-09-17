@@ -9,9 +9,14 @@
 ## CURRENT IMPLEMENTATION MAP — Brag fusion (2026-09-17)
 
 The root [plan](../../../docs/superpowers/plans/2026-09-17-voice-and-brag-motion.md)
-and [review record](../../../docs/VOICE_MOTION_REVIEW.md) describe the local
-implementation and rendered checks. No deployment has occurred. Narration is
-Aria at +12% by user selection; always use its newly measured timestamps.
+and [review record](../../../docs/VOICE_MOTION_REVIEW.md) describe the original
+implementation, deployed at `41493b3d`. CUDA run `35201843090` used Aria +5%.
+The [follow-up](../../../docs/superpowers/plans/2026-09-17-expressive-voice-smooth-cuts.md)
+adds Leda delivery and smoother cuts, approved for main and scheduled rollout.
+The first scheduled output still needs review. Always use final audio
+timestamps. `Main.tsx` extends visual tails and offsets the next sequence by the
+same amount; nested audio sequences retain original windows. `transitions.ts`
+caps overlap at ten frames and excludes hard cuts and quiz/ranking packs.
 
 | Existing owner | Responsibility for the adaptation |
 | --- | --- |

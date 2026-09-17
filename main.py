@@ -2995,6 +2995,7 @@ _SPOKEN_RATE_BY_ENGINE = {
     # script length (~5%) — acceptable for a kill-switch state.
     "edge": (2.45, 0.35),
     "kokoro": (2.40, 0.40),
+    "gemini": (2.40, 0.35),  # Conservative provisional estimate; actual audio always refits.
 }
 
 
@@ -7430,25 +7431,31 @@ async def generate_voiceover_and_alignment(
     auto-adjusted scene durations, and a mixed final track.
 
     TTS_PROVIDER=kokoro routes to the Kokoro-82M batch worker (native word
-    timestamps, side Python interpreter); ANY kokoro failure restarts the
+    timestamps, side Python interpreter). TTS_PROVIDER=gemini uses expressive
+    Leda with transcript-checked acoustic alignment. ANY provider failure restarts the
     WHOLE video on edge-tts — engines never mix mid-video (a mid-video
     narrator swap reads as broken, the same lesson as the sticky voice
     failover). Default engine "edge" keeps the native WordBoundary path."""
     engine = resolve_tts_engine(voice)
-    if engine == "kokoro":
-        # Snapshot planned durations: a failed kokoro pass may already have
+    if engine in ("kokoro", "gemini"):
+        # Snapshot planned durations: a failed provider pass may already have
         # refit some scenes to its own audio; the edge restart must refit
-        # from the same planned baseline, not kokoro leftovers.
+        # from the same planned baseline, not failed-provider leftovers.
         planned = [s.get("durationInFrames") for s in scenes]
         try:
             return await _generate_voiceover_with_engine(
-                "kokoro", scenes, session_id, public_dir, voice, rate, pitch)
-        except Exception as kok_err:
-            print(f"[{session_id}] Kokoro TTS failed ({kok_err}) — restarting the whole "
+                engine, scenes, session_id, public_dir, voice, rate, pitch)
+        except Exception as provider_err:
+            render_status_store.setdefault(session_id, {})["tts_fallback_reason"] = str(provider_err)
+            print(f"[{session_id}] {engine} TTS failed ({provider_err}) — restarting the whole "
                   f"video on edge-tts (engines never mix mid-video).")
             for s, d in zip(scenes, planned):
                 if d is not None:
                     s["durationInFrames"] = d
+                else:
+                    s.pop("durationInFrames", None)
+            if engine == "gemini":
+                voice = "en-US-AriaNeural"
     return await _generate_voiceover_with_engine(
         "edge", scenes, session_id, public_dir, voice, rate, pitch)
 
@@ -7465,14 +7472,22 @@ async def _generate_voiceover_with_engine(
     """One full-video synthesis pass on ONE engine. Everything downstream of
     synthesis — duration refit, subtitle offsets, empty-audio guard, failure
     accounting, mixing, REQUIRE_VOICEOVER aborts — is engine-shared and
-    shared by both engines; VOICE_PACING=legacy retains the historical refit."""
-    print(f"[{session_id}] Starting free neural voiceover and karaoke subtitle alignment ({engine})...")
+    shared by all engines; VOICE_PACING=legacy retains the historical refit."""
+    print(f"[{session_id}] Starting neural voiceover and karaoke subtitle alignment ({engine})...")
     import edge_tts
     from voice_pacing import fit_frames, reading_frames, prepare_audio
+    render_status_store.setdefault(session_id, {})["voice_rate_control"] = (
+        "prompt guidance, not native speed" if engine == "gemini" else "native speed")
 
     # Explicit request/env pins win. Edge defaults to a consistent narrator;
     # Kokoro and the opt-in Edge rotation retain their seeded voice pools.
-    if engine == "kokoro":
+    if engine == "gemini":
+        resolved_voice = (voice or os.environ.get("VOICEOVER_VOICE") or "gemini:Leda").strip().removeprefix("gemini:")
+        render_status_store.setdefault(session_id, {})["resolved_voice"] = "gemini:" + resolved_voice
+        render_status_store[session_id]["tts_provider"] = "gemini"
+        if (pitch or os.environ.get("VOICEOVER_PITCH", "").strip()) not in (None, "", "+0Hz"):
+            raise ValueError("Gemini speech does not support an explicit pitch shift")
+    elif engine == "kokoro":
         resolved_voice = (voice or os.environ.get("VOICEOVER_VOICE", "")).strip()
         if resolved_voice and not is_kokoro_voice(resolved_voice):
             resolved_voice = ""
@@ -7516,7 +7531,9 @@ async def _generate_voiceover_with_engine(
     # original voice's lift is kept — a rare emergency path, and a constant
     # pitch beats an audible mid-video jump.)
     env_pitch = os.environ.get("VOICEOVER_PITCH", "").strip()
-    if pitch:
+    if engine == "gemini":
+        resolved_pitch = "+0Hz"
+    elif pitch:
         resolved_pitch = pitch
     elif env_pitch:
         resolved_pitch = env_pitch
@@ -7527,29 +7544,31 @@ async def _generate_voiceover_with_engine(
     else:
         resolved_pitch = "+0Hz"
 
-    # Kokoro synthesizes every spoken scene in ONE worker subprocess (the
-    # ~330MB model loads once per video); the shared per-scene loop below
-    # then consumes the precomputed results exactly like a synth call.
-    kokoro_results = {}
-    if engine == "kokoro":
-        kokoro_speed = edge_rate_to_speed(resolved_rate)
-        kokoro_batch = []
+    # Batch providers synthesize the whole narration once, then the shared
+    # per-scene fitter consumes their audio and measured word intervals.
+    provider_results = {}
+    speech_batch = []
+    if engine in ("kokoro", "gemini"):
         for b_idx, b_scene in enumerate(scenes):
             b_text = (b_scene.get("voiceover", "").strip() or b_scene.get("text", "").strip())
             if b_text:
-                kokoro_batch.append({
+                speech_batch.append({
                     "idx": b_idx,
                     "text": b_text.replace("|", " ").strip(),
                     "out_path": os.path.join(public_dir, f"temp-{session_id}-scene-{b_idx}.wav"),
                 })
-        if kokoro_batch:
-            print(f"[{session_id}] Kokoro: synthesizing {len(kokoro_batch)} scenes "
-                  f"(voice={resolved_voice}, speed={edge_rate_to_speed(resolved_rate):.2f})...")
-            kokoro_results = synthesize_scenes_kokoro(
-                kokoro_batch, resolved_voice, kokoro_speed, session_id)
+        if speech_batch:
+            if engine == "gemini":
+                from expressive_voice import synthesize_scenes
+                provider_results = synthesize_scenes(speech_batch, voice=resolved_voice, rate=resolved_rate)
+            else:
+                print(f"[{session_id}] Kokoro: synthesizing {len(speech_batch)} scenes "
+                      f"(voice={resolved_voice}, speed={edge_rate_to_speed(resolved_rate):.2f})...")
+                provider_results = synthesize_scenes_kokoro(
+                    speech_batch, resolved_voice, edge_rate_to_speed(resolved_rate), session_id)
 
     temp_audio_files = []
-    raw_audio_files = []
+    raw_audio_files = [item["out_path"] for item in speech_batch]
     timing_rows = []
     render_status_store[session_id]["voice_scene_timings"] = timing_rows
     render_status_store[session_id]["resolved_rate"] = resolved_rate
@@ -7567,19 +7586,18 @@ async def _generate_voiceover_with_engine(
             continue
         
         scene_text_cleaned = scene_text.replace("|", " ").strip()
-        scene_audio_filename = f"temp-{session_id}-scene-{idx}." + ("wav" if engine == "kokoro" else "mp3")
+        scene_audio_filename = f"temp-{session_id}-scene-{idx}." + ("mp3" if engine == "edge" else "wav")
         scene_audio_filepath = os.path.join(public_dir, scene_audio_filename)
 
         try:
-            if engine == "kokoro":
-                # Batch results were synthesized above. A hole here is
-                # systemic (local model, no flaky network), so it fails this
+            if engine in ("kokoro", "gemini"):
+                # Batch results were synthesized above. A hole fails this
                 # pass and the wrapper restarts the whole video on edge-tts —
                 # per-scene voice failover would just mix engines.
-                kok_res = kokoro_results.get(idx) or {"error": "scene missing from kokoro batch"}
-                if "words" not in kok_res:
-                    raise Exception(f"kokoro synthesis failed: {kok_res.get('error', 'unknown')}")
-                scene_words = kok_res["words"]
+                result = provider_results.get(idx) or {"error": "scene missing from speech batch"}
+                if "words" not in result:
+                    raise Exception(f"{engine} synthesis failed: {result.get('error', 'unknown')}")
+                scene_words = result["words"]
                 if not scene_words or os.path.getsize(scene_audio_filepath) < 1024:
                     raise Exception("TTS returned empty/near-empty audio")
             else:
@@ -7673,6 +7691,9 @@ async def _generate_voiceover_with_engine(
                 except:
                     pass
 
+            if engine == "gemini":
+                break  # No more API requests after a quota/alignment failure.
+
     def _cleanup_temp_tracks():
         for file_path in temp_audio_files + raw_audio_files:
             if os.path.exists(file_path):
@@ -7683,7 +7704,7 @@ async def _generate_voiceover_with_engine(
 
     # A scene that lost its narration is a hole the viewer hears. Refuse to
     # continue rather than ship a video whose voice drops out mid-way.
-    if failed_scenes and REQUIRE_VOICEOVER:
+    if failed_scenes and (REQUIRE_VOICEOVER or engine == "gemini"):
         _cleanup_temp_tracks()
         failed_desc = ", ".join(f"scene {i + 1} ({err})" for i, err in failed_scenes)
         raise Exception(f"Voiceover synthesis failed for {failed_desc} — aborting so no partially-narrated video is posted.")

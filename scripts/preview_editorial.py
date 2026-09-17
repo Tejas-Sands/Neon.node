@@ -69,7 +69,7 @@ async def audition(props, source, label, voice, rate, pitch, pacing):
                               **inspect_audio(path)))
         original_mix(files, offsets, output)
 
-    engine = "kokoro" if voice.startswith(("af_", "am_")) else "edge"
+    engine = "gemini" if voice.startswith("gemini:") else "kokoro" if voice.startswith(("af_", "am_")) else "edge"
     with patch.dict(os.environ, {"VOICE_PACING": pacing}), patch.object(renderer, "mix_scene_audios", inspect_mix):
         name, words = await renderer._generate_voiceover_with_engine(
             engine, props["scenes"], label, str(ROOT / "public"), voice=voice, rate=rate, pitch=pitch)
@@ -87,6 +87,7 @@ async def audition(props, source, label, voice, rate, pitch, pacing):
     status = renderer.render_status_store[label]
     report = dict(label=label, source=source, requested_voice=voice,
                   resolved_voice=status.get("resolved_voice"), provider=status.get("tts_provider"),
+                  rate_control=status.get("voice_rate_control"),
                   rate=rate, pitch=pitch, pacing=pacing, clips=clips,
                   per_scene=status.get("voice_scene_timings", []),
                   timeline_seconds=sum(s["durationInFrames"] for s in props["scenes"]) / 30,

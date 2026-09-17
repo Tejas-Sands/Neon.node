@@ -48,7 +48,7 @@ import {
   readableGlow,
   videoZones,
 } from "./contrast";
-import { deriveCutPlan, WHOOSH_CUTS } from "./transitions";
+import { deriveCutPlan, WHOOSH_CUTS, transitionOverlapFrames } from "./transitions";
 import { deriveEnergy, type SceneEnergy } from "./energy";
 import { framesPerBeat } from "./beat";
 import { deriveStoryMotion, sharedSubject, sharedMetric, storyCutStyle, storyMusicVolume, type StoryBeat } from "./storyMotion";
@@ -3110,6 +3110,9 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
     if (i === 0 || i === scenes.length) return cut;
     return {...cut, style: storyCutStyle(cut.style, scenes[i - 1], scenes[i], storyPlan[i - 1], storyPlan[i])};
   }), [baseCutPlan, scenes, storyPlan]);
+  const overlaps = cutPlan.map((cut, i) => i > 0 && i < scenes.length
+    ? transitionOverlapFrames(cut.style, scenes[i - 1].durationInFrames,
+      scenes[i].durationInFrames, activeTheme.formatPack) : 0);
   const activeSceneIndex = Math.max(0, scenes.findIndex((_, i) => currentFrame < sceneStarts[i + 1]));
   const activeStory = storyPlan[activeSceneIndex];
   const isDirected = activeStory.kind !== "legacy";
@@ -3186,9 +3189,12 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
         {scenes.map((scene, index) => (
           <Series.Sequence
             key={index}
-            durationInFrames={scene.durationInFrames}
+            durationInFrames={scene.durationInFrames + overlaps[index + 1]}
+            offset={-overlaps[index]}
             layout="none"
           >
+            {/* Only visuals overlap. Keep every scene's audio window unchanged. */}
+            <Sequence durationInFrames={scene.durationInFrames} layout="none">
             {/* Audio pattern-interrupts: impact under the hook punch, pop
                 under animated stats — but a whoosh ONLY under the heavy
                 dressed cuts (the cut plan makes those every ~3rd boundary).
@@ -3230,8 +3236,9 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
                 <Audio src={staticFile("sfx/sting.wav")} volume={0.4} />
               </Sequence>
             )}
+            </Sequence>
             <SceneTransition
-              durationInFrames={scene.durationInFrames}
+              durationInFrames={scene.durationInFrames + overlaps[index + 1]}
               transitionStyle={activeTheme.transitionStyle!}
               sceneIndex={index}
               seed={activeTheme.seed}

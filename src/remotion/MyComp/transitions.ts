@@ -62,6 +62,14 @@ export interface CutSpec {
   intensity: number;
 }
 
+/** Visual tail only: incoming speech, captions and scene starts never move. */
+export function transitionOverlapFrames(style: CutStyleName, outgoingFrames: number,
+  incomingFrames: number, formatPack?: string): number {
+  if (style === "none" || style === "punch-in" ||
+      formatPack === "quiz-reveal" || formatPack === "data-rankings") return 0;
+  return Math.max(0, Math.min(10, Math.floor(outgoingFrames / 3), Math.floor(incomingFrames / 3)));
+}
+
 // Cuts loud enough to justify a whoosh. Soft dissolves/burns whooshing on
 // every boundary is the #1 amateur SFX tell — Main.tsx plays the whoosh only
 // for these, which the sparse cut plan already caps at ~2-3 per video.

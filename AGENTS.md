@@ -9,8 +9,22 @@
 
 The user reports that timely news still earns weak results, the narrator sounds
 too professional/slow, and Brag's animation style is a reference worth adapting.
-The plan is now implemented locally on `feat/voice-brag-motion`; it is not deployed.
-The user selected **Aria at +12%** after the matched voice auditions.
+The original plan was merged as `41493b3d`; deployed run `35201843090` used
+that revision, with **Aria at +5%** confirmed in its logs. The user originally
+selected Aria at +12%, then approved the **expressive Gemini Leda** audition
+after reporting flat reactions in the CUDA reel at about 17 seconds.
+
+The user approved promoting `fix/smooth-cuts-expressive-voice` to `main` and
+activating Leda for scheduled reels on 2026-09-17. Rollout settings are
+`TTS_PROVIDER=gemini`, `VOICEOVER_RATE=+12%`, `VOICEOVER_PITCH=+0Hz` through
+the existing repository Variables. The first scheduled result still needs review.
+Read [follow-up plan](docs/superpowers/plans/2026-09-17-expressive-voice-smooth-cuts.md).
+Use `TTS_PROVIDER=gemini` to opt in (existing Gemini key; account quota/billing
+applies). Leda uses delivery instructions, not native Edge rate/pitch controls.
+Word timings must come from real audio and pass a transcript check. Any failed
+scene restarts the entire narration on Edge Aria; never mix providers mid-video.
+Transition refinement overlaps only outgoing visuals, at most ten frames;
+speech/caption starts stay fixed. Quiz/ranking reveals remain excluded.
 
 - Read [design](docs/superpowers/specs/2026-09-17-voice-and-brag-motion-design.md)
   and [implementation plan](docs/superpowers/plans/2026-09-17-voice-and-brag-motion.md)
@@ -20,10 +34,12 @@ The user selected **Aria at +12%** after the matched voice auditions.
   Being early is useful; each story must also explain a supported consequence
   for the viewer and provide useful evidence immediately after the hook.
 - Prioritize matched voice auditions and measured pacing over adding effects.
-  Local defaults are Aria, natural pitch, `+12%`, `VOICE_PACING=tight`. Tight
+  Edge fallback defaults are Aria, natural pitch, `+12%`, `VOICE_PACING=tight`.
+  Leda is the approved scheduled primary. Tight
   fitting trims exterior silence, preserves word alignment and uses actual audio
   coverage plus reading floors. `VOICE_PACING=legacy` retains the old 90-frame /
-  0.35s fitting. CI still exports `+5%` unless its existing Variable overrides it.
+  0.35s fitting. Set the existing CI rate Variable explicitly: its unset fallback
+  remains `+5%`.
   Inspect resolved settings and audio; local defaults do not establish deployment.
 - Brag is a Hyperframes-based storytelling skill, not a Remotion component
   library. Adapt its focused typography, concrete demonstrations and purposeful
@@ -181,7 +197,9 @@ This is the **"wait, REALLY?"** scene. It must contain the most technically surp
 
 ### The TTS Prosody Cheat Sheet
 
-The current free Edge-TTS integration has no emotion control. Punctuation can
+The Edge-TTS fallback has no emotion control. The opt-in Gemini Leda provider
+accepts delivery instructions; the user approved its audition, not a guarantee
+that every future generation will sound right. Punctuation can
 influence phrasing, but does not guarantee an emotional performance. The table
 below describes writing intentions; verify the result with real audio auditions.
 

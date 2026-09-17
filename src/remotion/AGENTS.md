@@ -10,9 +10,14 @@
 
 Read the root [design](../../docs/superpowers/specs/2026-09-17-voice-and-brag-motion-design.md)
 and [plan](../../docs/superpowers/plans/2026-09-17-voice-and-brag-motion.md).
-The adaptation is implemented and rendered locally inside Remotion. Read the
-[review record](../../docs/VOICE_MOTION_REVIEW.md); deployment and audience
-validation remain pending. The user selected Aria at +12% for narration.
+The original adaptation shipped at `41493b3d`; CUDA run `35201843090` used it
+with Aria +5%. Read the [review record](../../docs/VOICE_MOTION_REVIEW.md) and
+[follow-up plan](../../docs/superpowers/plans/2026-09-17-expressive-voice-smooth-cuts.md).
+The user approved promoting expressive Leda and smoother cuts to main for the
+next scheduled reels. Review the first scheduled output before claiming results.
+Overlap outgoing visuals by at most ten frames at eligible dressed cuts. Keep
+scene starts, audio windows, captions and total duration unchanged. Never overlap
+quiz/ranking reveals; keep cover and still-ending behavior.
 
 - Extend existing `MyComp/StoryScene.tsx` and `MyComp/storyMotion.ts` first.
   They already implement statement/metric/comparison/compression direction,

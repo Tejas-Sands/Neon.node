@@ -7,9 +7,11 @@ Engines:
             Python >=3.10 interpreter (KOKORO_PYTHON). Batch: one subprocess
             per VIDEO so the ~330MB model loads once. Native word timestamps
             (seconds) in the exact shape the karaoke layer consumes.
+  gemini  — opt-in expressive Leda; existing API key, CPU word alignment and
+            strict transcript validation in expressive_voice.py.
 
 Engine rules (do not weaken):
-  * Engines NEVER mix within one video — a kokoro failure triggers a full
+  * Engines NEVER mix within one video — a kokoro/gemini failure triggers a full
     edge-tts restart of the whole video in main.py (mixed narrators read as
     broken; this mirrors the sticky-voice failover lesson).
   * Ledger voice keys are namespaced ("kokoro:af_heart") so the feedback
@@ -51,9 +53,15 @@ def is_kokoro_voice(name):
 
 def resolve_tts_engine(forced_voice=None):
     """Which engine this video uses. Defaults to edge; kokoro only when
+    Gemini is opt-in via TTS_PROVIDER=gemini or a gemini: voice prefix.
     TTS_PROVIDER=kokoro AND the side interpreter exists AND no edge-style
     voice was forced (a forced edge voice pins the edge engine)."""
     provider = (os.environ.get("TTS_PROVIDER") or "edge").strip().lower()
+    forced = (forced_voice or os.environ.get("VOICEOVER_VOICE", "")).strip()
+    if forced.startswith("gemini:"):
+        return "gemini"
+    if provider == "gemini":
+        return "edge" if forced else "gemini"
     if provider != "kokoro":
         return "edge"
     forced = (forced_voice or os.environ.get("VOICEOVER_VOICE", "")).strip()

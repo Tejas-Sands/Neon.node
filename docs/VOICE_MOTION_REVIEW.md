@@ -1,5 +1,85 @@
 # Voice and motion review — 2026-09-17
 
+**Follow-up status:** Original work was merged as `41493b3d` and verified in
+deployed run `35201843090` (CUDA reel; Aria **+5%** in logs). The user then
+approved the expressive Leda audition, then authorized promotion to main and
+activation for scheduled reels on 2026-09-17. The first scheduled output with
+the new provider and visual-tail refinement still needs review. See the
+[follow-up plan](superpowers/plans/2026-09-17-expressive-voice-smooth-cuts.md).
+
+## Expressive Leda and transition follow-up
+
+Playable local artifacts:
+
+- [Matched voice/transition review page](../out/review/expressive-motion.html).
+- Exact reaction line: [Leda](../out/voice-review/cuda-leda/3.wav) and
+  [Aria +5%](../out/voice-review/cuda-aria/3.wav).
+- Full matched narration: [Leda](../public/voiceover-cuda-leda.mp3) and
+  [Aria +5%](../public/voiceover-cuda-aria.mp3).
+- Motion: [before](../out/review/transitions-before.mp4) and
+  [after](../out/review/transitions-after.mp4), identical footage/copy/seed,
+  540×960, 270 frames / 9.00 seconds. The boundary at six seconds shows the
+  formerly blank frame covered by continuing outgoing footage. Cover and
+  final-frame samples retain their compositions; no narration is in this pair.
+
+The user approved the initial [directed Leda audition](../out/voice-review/expressive/leda-directed.wav).
+That is preference evidence; the exact CUDA retake and whole mix still need
+human listening. The original published CUDA wording is used only as a matched
+voice reference, not a newly fact-checked or publication-ready script.
+
+The final five-scene Leda narration passed transcript validation and shared
+trim/fitting/mix processing: 23.67s versus Aria +5% at 22.00s. The flagged line
+is 3.78s of decoded Leda audio versus 3.48s of Aria. This is an expressiveness
+candidate, not a measured speed improvement. Gemini's +12% setting directs a
+target pace (about 170 WPM); it is not Edge's native speed control. The existing
+duration estimator remains provisional for Leda, and actual audio always refits.
+
+Short standalone requests exposed real failures: added text and incomplete
+`OTHER` responses were rejected. The base.en recognizer also hallucinated an
+extra word on a quiet tail; the small model recovered the exact speech. Final
+implementation synthesizes the whole narration once, then splits PCM only
+between measured scene-word intervals. The successful whole-narration audio
+was retained and reprocessed after fixing ASR's spaced decimal `8 .0`; no words
+were removed to make it pass. Unsupported spelling differences conservatively
+fall back. Strict comparison preserves signs, currencies, C++/C# and word
+boundaries; it must never turn a contradictory transcript into intended captions.
+
+Failure handling restores original planned durations, removes partial batch
+files and restarts the entire video with Edge Aria. A quota failure makes no
+further Gemini requests. Provider, resolved voice, rate-control type and fallback
+reason are recorded. The preview command calls Gemini directly so fallback
+cannot masquerade as an expressive audition.
+
+Verification: 22 voice/alignment/pacing/identity tests, provider tests, full
+TypeScript checking, deterministic story and transition checks, text safety,
+contrast, and all six cover seeds passed. Batch tests cover one synthesis call,
+acoustic splitting and cleanup. Independent review found symbol normalization
+and stale fallback metadata issues; both were corrected. AST comparison limits
+changed `main.py` functions to the two voice-generation functions; posting paths
+and workflow files are unchanged.
+
+Approved activation after code rollout: existing exported `TTS_PROVIDER=gemini`,
+existing Gemini key, `VOICEOVER_RATE=+12%`, and `VOICEOVER_PITCH=+0Hz`.
+Use repository Variables; no workflow, schedule or billing changes. Chatterbox
+is not implemented in this rollout. Gemini's
+[speech API](https://ai.google.dev/gemini-api/docs/speech-generation) accepts
+delivery instructions; its [free tier](https://ai.google.dev/gemini-api/docs/pricing)
+has quotas, and actual billing depends on the existing account tier. CPU alignment
+uses the installed faster-whisper package and downloads the small model on first
+use. Preview-service failures remain possible; automatic full-video fallback is
+part of the implementation, not proof of service reliability or better reach.
+
+Reproduce a local expressive audition with the existing helper (Gemini key
+must already be in the environment):
+
+```bash
+python3 scripts/preview_editorial.py --story quantization --voice gemini:Leda --rate=+12% --pacing tight --label quantization-leda
+python3 -m unittest test_expressive_voice test_voice_identity test_voice_pacing
+```
+
+## Original implementation record
+
+The record below describes the original pre-rollout review, retained as history.
 Implemented locally on `feat/voice-brag-motion`, based on `e8acdf26`.
 This record covers local implementation and validation. Publishing the branch
 does not deploy it; no runtime configuration change or posting was performed.
