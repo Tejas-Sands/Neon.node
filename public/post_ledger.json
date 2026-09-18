@@ -5964,7 +5964,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1596,
-      "fetched_at": 1789569491
+      "fetched_at": 1789709803
      },
      "snap72": {
       "views": 2,
@@ -6165,7 +6165,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 718,
-      "fetched_at": 1789569491
+      "fetched_at": 1789709803
      },
      "snap72": {
       "views": 4,
@@ -6416,7 +6416,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4974,
-      "fetched_at": 1789569491
+      "fetched_at": 1789709803
      },
      "snap72": {
       "views": 4,
@@ -6550,7 +6550,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2032,
-      "fetched_at": 1789569491
+      "fetched_at": 1789709803
      },
      "snap72": {
       "views": 38,
@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789569491
+      "fetched_at": 1789709803
      },
      "snap72": {
       "views": 0,
@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789569491
+      "fetched_at": 1789709803
      },
      "snap72": {
       "views": 0,
@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1789569491
+      "fetched_at": 1789709803
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1789569491
+      "fetched_at": 1789709803
      },
      "snap72": {
       "views": 6,
@@ -8493,7 +8493,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1789557412
+      "fetched_at": 1789709803
      },
      "snap72": {
       "views": 6,
@@ -8764,7 +8764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1034,
-      "fetched_at": 1789557412
+      "fetched_at": 1789709803
      },
      "snap72": {
       "views": 109,
@@ -9038,7 +9038,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 760,
-      "fetched_at": 1789557412
+      "fetched_at": 1789709803
      },
      "snap72": {
       "views": 2,
@@ -9105,7 +9105,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 294,
-      "fetched_at": 1789557412
+      "fetched_at": 1789709803
      },
      "snap72": {
       "views": 1,
@@ -9447,9 +9447,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5589,
-      "fetched_at": 1789557412
+      "fetched_at": 1789709803
      },
-     "snap72": null,
+     "snap72": {
+      "views": 6,
+      "reach": 6,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5589,
+      "fetched_at": 1789709803
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -9680,7 +9690,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 10178,
+      "fetched_at": 1789709803
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -9736,7 +9756,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 20,
+      "reach": 20,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5304,
+      "fetched_at": 1789709803
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -9842,6 +9872,62 @@
     "instagram": {
      "id": "17994673620023811",
      "posted_at": 1789650937
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789709748,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Claude Code relaunches Projects to manage multiple AI agents in the cloud",
+    "subject": "Claude Code Projects",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/997134/anthropic-claude-code-projects",
+    "source": "rss:theverge",
+    "keywords": [
+     "ai",
+     "claude",
+     "agent"
+    ],
+    "viral_score": 8.25,
+    "sources": [],
+    "display_title": "Claude Code Multi Agent Cloud",
+    "angle": "Anthropic revamped Claude Code Projects to let a coordinator agent manage multiple parallel cloud threads with shared memory and automated merge conflict resolution.",
+    "insight": "Multi-agent coding shifts developer workflows from writing code to managing merge conflicts across parallel cloud branches.",
+    "judge": "plan"
+   },
+   "style_pack": "burgundy-luxe",
+   "format_pack": "facts-explainer",
+   "seed": 599203897,
+   "voice": "gemini:Achird",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 10,
+   "scene_count": 5,
+   "video_seconds": 25.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "claude code"
+    ]
+   },
+   "session": "gh-13bdd9",
+   "platforms": {
+    "instagram": {
+     "id": "18088469636664502",
+     "posted_at": 1789709800
     }
    },
    "metrics": {
