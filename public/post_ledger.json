@@ -4967,7 +4967,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3060,
-      "fetched_at": 1789635375
+      "fetched_at": 1789736894
      },
      "snap72": {
       "views": 7,
@@ -5169,7 +5169,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5297,
-      "fetched_at": 1789635375
+      "fetched_at": 1789736894
      },
      "snap72": {
       "views": 7,
@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1789635375
+      "fetched_at": 1789736894
      },
      "snap72": {
       "views": 7,
@@ -5434,7 +5434,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5193,
-      "fetched_at": 1789635375
+      "fetched_at": 1789736894
      },
      "snap72": {
       "views": 12,
@@ -5567,7 +5567,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1789635375
+      "fetched_at": 1789736894
      },
      "snap72": {
       "views": 8,
@@ -6234,7 +6234,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2886,
-      "fetched_at": 1789635375
+      "fetched_at": 1789736894
      },
      "snap72": {
       "views": 4,
@@ -6482,7 +6482,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1082,
-      "fetched_at": 1789635375
+      "fetched_at": 1789736894
      },
      "snap72": {
       "views": 112,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1789619338
+      "fetched_at": 1789736894
      },
      "snap72": {
       "views": 30,
@@ -7826,7 +7826,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789619338
+      "fetched_at": 1789736894
      },
      "snap72": {
       "views": 0,
@@ -7892,7 +7892,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1789619338
+      "fetched_at": 1789736894
      },
      "snap72": {
       "views": 1,
@@ -8091,7 +8091,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1549,
-      "fetched_at": 1789619338
+      "fetched_at": 1789736894
      },
      "snap72": {
       "views": 4,
@@ -8294,7 +8294,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1733,
-      "fetched_at": 1789619338
+      "fetched_at": 1789736894
      },
      "snap72": {
       "views": 4,
@@ -8360,7 +8360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 715,
-      "fetched_at": 1789619338
+      "fetched_at": 1789736894
      },
      "snap72": {
       "views": 3,
@@ -9173,7 +9173,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1538,
-      "fetched_at": 1789619338
+      "fetched_at": 1789736894
      },
      "snap72": {
       "views": 3,
@@ -9831,7 +9831,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 5,
+      "reach": 4,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 9325,
+      "fetched_at": 1789736894
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -9992,6 +10002,58 @@
     "instagram": {
      "id": "18012020357950810",
      "posted_at": 1789720257
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789736802,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "Flet 1.0 \u2013 Build cross-platform apps in Python",
+    "subject": "Flet 1.0 Python cross-platform apps",
+    "url": "https://flet.dev/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 6.7,
+    "sources": [],
+    "display_title": "Flet 1.0 Python Apps",
+    "angle": "Flet 1.0 launches to let developers build cross-platform web, desktop, and mobile apps entirely in Python without frontend experience.",
+    "insight": "Python developers can now ship native mobile and desktop apps without touching JavaScript or Swift, trading complex frontend stacks for a single codebase.",
+    "judge": "plan"
+   },
+   "style_pack": "coral-pop",
+   "format_pack": "legacy-news",
+   "seed": 124855401,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "SHOCK-STAT",
+   "style_epoch": 10,
+   "scene_count": 6,
+   "video_seconds": 38.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "python"
+    ]
+   },
+   "session": "gh-f96880",
+   "platforms": {
+    "instagram": {
+     "id": "18005514848991374",
+     "posted_at": 1789736891
     }
    },
    "metrics": {

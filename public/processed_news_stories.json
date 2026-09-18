@@ -1925,5 +1925,18 @@
   ],
   "ts": 1789720261,
   "session": "gh-728944"
+ },
+ {
+  "id": "49746290",
+  "title": "Flet 1.0 \u2013 Build cross-platform apps in Python",
+  "norm": "flet 1 0 build cross platform apps in python",
+  "subject_norm": "flet 1 0 python cross platform apps",
+  "entities": [
+   "python",
+   "build",
+   "flet"
+  ],
+  "ts": 1789736894,
+  "session": "gh-f96880"
  }
 ]
