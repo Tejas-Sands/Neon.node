@@ -1938,5 +1938,17 @@
   ],
   "ts": 1789736894,
   "session": "gh-f96880"
+ },
+ {
+  "id": "lob:eyg3oe",
+  "title": "Flock cameras are riddled with security vulnerabilities and hard-coded credentials",
+  "norm": "flock cameras are riddled with security vulnerabilities and hard coded credentials",
+  "subject_norm": "flock alpr camera vulnerabilities",
+  "entities": [
+   "flock",
+   "alpr"
+  ],
+  "ts": 1789797216,
+  "session": "gh-d15b83"
  }
 ]

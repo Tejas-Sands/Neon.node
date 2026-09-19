@@ -5500,7 +5500,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1818,
-      "fetched_at": 1789650940
+      "fetched_at": 1789797216
      },
      "snap72": {
       "views": 5,
@@ -5633,7 +5633,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1778,
-      "fetched_at": 1789650940
+      "fetched_at": 1789797216
      },
      "snap72": {
       "views": 8,
@@ -5699,7 +5699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1789650940
+      "fetched_at": 1789797216
      },
      "snap72": {
       "views": 4,
@@ -5764,7 +5764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1789650940
+      "fetched_at": 1789797216
      },
      "snap72": {
       "views": 114,
@@ -5830,7 +5830,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1789650940
+      "fetched_at": 1789797216
      },
      "snap72": {
       "views": 3,
@@ -5898,7 +5898,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2238,
-      "fetched_at": 1789650940
+      "fetched_at": 1789797216
      },
      "snap72": {
       "views": 0,
@@ -7957,7 +7957,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3536,
-      "fetched_at": 1789635375
+      "fetched_at": 1789797216
      },
      "snap72": {
       "views": 6,
@@ -8428,7 +8428,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 854,
-      "fetched_at": 1789635375
+      "fetched_at": 1789797216
      },
      "snap72": {
       "views": 3,
@@ -8561,7 +8561,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 865,
-      "fetched_at": 1789635375
+      "fetched_at": 1789797216
      },
      "snap72": {
       "views": 4,
@@ -8629,7 +8629,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9140,
-      "fetched_at": 1789635375
+      "fetched_at": 1789797216
      },
      "snap72": {
       "views": 9,
@@ -8900,7 +8900,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789635375
+      "fetched_at": 1789797216
      },
      "snap72": {
       "views": 0,
@@ -9241,7 +9241,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5867,
-      "fetched_at": 1789635375
+      "fetched_at": 1789797216
      },
      "snap72": {
       "views": 3,
@@ -9581,9 +9581,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1480,
-      "fetched_at": 1789635375
+      "fetched_at": 1789797216
      },
-     "snap72": null,
+     "snap72": {
+      "views": 3,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1480,
+      "fetched_at": 1789797216
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -9896,7 +9906,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 13671,
+      "fetched_at": 1789797216
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -9952,7 +9972,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 68,
+      "reach": 57,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3637,
+      "fetched_at": 1789797216
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -10054,6 +10084,60 @@
     "instagram": {
      "id": "18005514848991374",
      "posted_at": 1789736891
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789797147,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Flock cameras are riddled with security vulnerabilities and hard-coded credentials",
+    "subject": "Flock ALPR camera vulnerabilities",
+    "url": "https://micahflee.com/flock-cameras-are-riddled-with-security-vulnerabilities-and-hard-coded-credentials/",
+    "source": "lobsters",
+    "keywords": [
+     "vulnerab"
+    ],
+    "viral_score": 6.34,
+    "sources": [],
+    "display_title": "Flock cameras run 2018 Android",
+    "angle": "Hackers reverse-engineered a seized Flock ALPR camera firmware image to expose hard-coded credentials and years-old unpatched software components.",
+    "insight": "Developers building critical physical security infrastructure must ensure underlying embedded dependencies receive active kernel and OS updates, rather than shipping outdated legacy codebases.",
+    "judge": "plan"
+   },
+   "style_pack": "lavender-haze",
+   "format_pack": "legacy-news",
+   "seed": 928852165,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "SHOCK-STAT",
+   "style_epoch": 10,
+   "scene_count": 6,
+   "video_seconds": 55.1,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "before-it-breaks",
+    "signals": [
+     "vulnerabilities"
+    ]
+   },
+   "session": "gh-d15b83",
+   "platforms": {
+    "instagram": {
+     "id": "17905646940561321",
+     "posted_at": 1789797213
     }
    },
    "metrics": {
