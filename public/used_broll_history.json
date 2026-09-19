@@ -2,48 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-7606624",
-   "ts": 1788011028,
-   "session": "gh-c6490d",
-   "query": "code editor lines scrolling fast",
-   "scene": 1
-  },
-  {
-   "id": "pexels-3403583",
-   "ts": 1788011028,
-   "session": "gh-c6490d",
-   "query": "data center servers blinking lights",
-   "scene": 2
-  },
-  {
-   "id": "pexels-38901937",
-   "ts": 1788011028,
-   "session": "gh-c6490d",
-   "query": "data center servers blinking lights",
-   "scene": 2
-  },
-  {
-   "id": "pexels-32536829",
-   "ts": 1788011028,
-   "session": "gh-c6490d",
-   "query": "security dashboard charts loading",
-   "scene": 3
-  },
-  {
-   "id": "pexels-8480283",
-   "ts": 1788011028,
-   "session": "gh-c6490d",
-   "query": "security dashboard charts loading",
-   "scene": 3
-  },
-  {
-   "id": "pexels-38697709",
-   "ts": 1788011028,
-   "session": "gh-c6490d",
-   "query": "network packets cyber attack visualization",
-   "scene": 4
-  },
-  {
    "id": "pexels-7088468",
    "ts": 1788011028,
    "session": "gh-c6490d",
@@ -2800,6 +2758,48 @@
    "session": "gh-d15b83",
    "query": "microchip processor close up glowing traces",
    "scene": 5
+  },
+  {
+   "id": "pexels-5473800",
+   "ts": 1789824942,
+   "session": "gh-10f0cb",
+   "query": "terminal hacking code red screen",
+   "scene": 0
+  },
+  {
+   "id": "pexels-7681473",
+   "ts": 1789824942,
+   "session": "gh-10f0cb",
+   "query": "stock ticker numbers changing screen",
+   "scene": 1
+  },
+  {
+   "id": "pexels-39425812",
+   "ts": 1789824942,
+   "session": "gh-10f0cb",
+   "query": "timer countdown interface digital blue",
+   "scene": 2
+  },
+  {
+   "id": "pexels-34773624",
+   "ts": 1789824942,
+   "session": "gh-10f0cb",
+   "query": "timer countdown interface digital blue",
+   "scene": 2
+  },
+  {
+   "id": "pexels-38879271",
+   "ts": 1789824942,
+   "session": "gh-10f0cb",
+   "query": "server room dark lights blinking",
+   "scene": 3
+  },
+  {
+   "id": "pexels-8480284",
+   "ts": 1789824942,
+   "session": "gh-10f0cb",
+   "query": "security dashboard graphs monitoring",
+   "scene": 4
   }
  ]
 }

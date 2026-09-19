@@ -1961,5 +1961,16 @@
   ],
   "ts": 1789805807,
   "session": "gh-a19a48"
+ },
+ {
+  "id": "49759466",
+  "title": "Korea raises data breach fines to 10% of revenue",
+  "norm": "korea raises data breach fines to 10 of revenue",
+  "subject_norm": "korea data breach fines",
+  "entities": [
+   "korea"
+  ],
+  "ts": 1789825030,
+  "session": "gh-10f0cb"
  }
 ]

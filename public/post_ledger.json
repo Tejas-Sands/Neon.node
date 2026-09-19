@@ -5237,7 +5237,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1568,
-      "fetched_at": 1789720261
+      "fetched_at": 1789825030
      },
      "snap72": {
       "views": 1,
@@ -5304,7 +5304,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5887,
-      "fetched_at": 1789720261
+      "fetched_at": 1789825030
      },
      "snap72": {
       "views": 10,
@@ -6685,7 +6685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1019,
-      "fetched_at": 1789720261
+      "fetched_at": 1789825030
      },
      "snap72": {
       "views": 155,
@@ -6753,7 +6753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7175,
-      "fetched_at": 1789720261
+      "fetched_at": 1789825030
      },
      "snap72": {
       "views": 10,
@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1789709803
+      "fetched_at": 1789825030
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1789709803
+      "fetched_at": 1789825030
      },
      "snap72": {
       "views": 6,
@@ -8493,7 +8493,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1789709803
+      "fetched_at": 1789825030
      },
      "snap72": {
       "views": 6,
@@ -8764,7 +8764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1034,
-      "fetched_at": 1789709803
+      "fetched_at": 1789825030
      },
      "snap72": {
       "views": 109,
@@ -9038,7 +9038,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 760,
-      "fetched_at": 1789709803
+      "fetched_at": 1789825030
      },
      "snap72": {
       "views": 2,
@@ -9105,7 +9105,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 294,
-      "fetched_at": 1789709803
+      "fetched_at": 1789825030
      },
      "snap72": {
       "views": 1,
@@ -9447,7 +9447,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5589,
-      "fetched_at": 1789709803
+      "fetched_at": 1789825030
      },
      "snap72": {
       "views": 6,
@@ -9729,9 +9729,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 10178,
-      "fetched_at": 1789709803
+      "fetched_at": 1789825030
      },
-     "snap72": null,
+     "snap72": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 10178,
+      "fetched_at": 1789825030
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -9795,9 +9805,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5304,
-      "fetched_at": 1789709803
+      "fetched_at": 1789825030
      },
-     "snap72": null,
+     "snap72": {
+      "views": 20,
+      "reach": 20,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5304,
+      "fetched_at": 1789825030
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -10046,7 +10066,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 7,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 7090,
+      "fetched_at": 1789825030
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -10098,7 +10128,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 17,
+      "reach": 16,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5527,
+      "fetched_at": 1789825030
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -10203,6 +10243,60 @@
     "instagram": {
      "id": "17952437793033366",
      "posted_at": 1789805804
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789824942,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "Korea raises data breach fines to 10% of revenue",
+    "subject": "Korea data breach fines",
+    "url": "https://www.koreajoongangdaily.com/business/korea-raises-data-breach-fines-to-10-of-revenue/12869899",
+    "source": "hn",
+    "keywords": [
+     "breach"
+    ],
+    "viral_score": 9.13,
+    "sources": [],
+    "display_title": "Korea 10 Percent Revenue Fines",
+    "angle": "South Korea's revised privacy act raises maximum data breach penalties from 3 percent to 10 percent of annual revenue for gross negligence.",
+    "insight": "Companies that budget for data protection and security staff can cut these massive new regulatory fines by up to 40 percent.",
+    "judge": "plan"
+   },
+   "style_pack": "synth-sunset",
+   "format_pack": "facts-explainer",
+   "seed": 1351311891,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 10,
+   "scene_count": 5,
+   "video_seconds": 29.9,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "before-it-breaks",
+    "signals": [
+     "data breach"
+    ]
+   },
+   "session": "gh-10f0cb",
+   "platforms": {
+    "instagram": {
+     "id": "18094818983207086",
+     "posted_at": 1789825027
     }
    },
    "metrics": {
