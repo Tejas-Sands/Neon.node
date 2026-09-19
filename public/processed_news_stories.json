@@ -1950,5 +1950,16 @@
   ],
   "ts": 1789797216,
   "session": "gh-d15b83"
+ },
+ {
+  "id": "49761432",
+  "title": "How OpenAI Used Its Own LLMs to Design Its Jalape\u00f1o Chip",
+  "norm": "how openai used its own llms to design its jalape o chip",
+  "subject_norm": "openai jalape o chip",
+  "entities": [
+   "openai"
+  ],
+  "ts": 1789805807,
+  "session": "gh-a19a48"
  }
 ]

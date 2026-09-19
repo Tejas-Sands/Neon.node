@@ -5964,7 +5964,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1596,
-      "fetched_at": 1789709803
+      "fetched_at": 1789805807
      },
      "snap72": {
       "views": 2,
@@ -6031,7 +6031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1789650940
+      "fetched_at": 1789805807
      },
      "snap72": {
       "views": 2,
@@ -6096,7 +6096,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2142,
-      "fetched_at": 1789650940
+      "fetched_at": 1789805807
      },
      "snap72": {
       "views": 12,
@@ -6165,7 +6165,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 718,
-      "fetched_at": 1789709803
+      "fetched_at": 1789805807
      },
      "snap72": {
       "views": 4,
@@ -6416,7 +6416,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4974,
-      "fetched_at": 1789709803
+      "fetched_at": 1789805807
      },
      "snap72": {
       "views": 4,
@@ -6550,7 +6550,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2032,
-      "fetched_at": 1789709803
+      "fetched_at": 1789805807
      },
      "snap72": {
       "views": 38,
@@ -6997,7 +6997,7 @@
       "saved": 0,
       "total_interactions": 3,
       "ig_reels_avg_watch_time": 1823,
-      "fetched_at": 1789650940
+      "fetched_at": 1789805807
      },
      "snap72": {
       "views": 144,
@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789709803
+      "fetched_at": 1789805807
      },
      "snap72": {
       "views": 0,
@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1789650940
+      "fetched_at": 1789805807
      },
      "snap72": {
       "views": 1,
@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789709803
+      "fetched_at": 1789805807
      },
      "snap72": {
       "views": 0,
@@ -8694,7 +8694,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1789650940
+      "fetched_at": 1789805807
      },
      "snap72": {
       "views": 48,
@@ -8969,7 +8969,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789650940
+      "fetched_at": 1789805807
      },
      "snap72": {
       "views": 0,
@@ -9311,7 +9311,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3706,
-      "fetched_at": 1789650940
+      "fetched_at": 1789805807
      },
      "snap72": {
       "views": 0,
@@ -9380,7 +9380,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 12899,
-      "fetched_at": 1789650940
+      "fetched_at": 1789805807
      },
      "snap72": {
       "views": 1,
@@ -9655,9 +9655,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 20007,
-      "fetched_at": 1789650940
+      "fetched_at": 1789805807
      },
-     "snap72": null,
+     "snap72": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 20007,
+      "fetched_at": 1789805807
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -10138,6 +10148,61 @@
     "instagram": {
      "id": "17905646940561321",
      "posted_at": 1789797213
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789805726,
+   "posted_hour_utc": 8,
+   "channel": "news",
+   "topic": {
+    "title": "How OpenAI Used Its Own LLMs to Design Its Jalape\u00f1o Chip",
+    "subject": "OpenAI Jalape\u00f1o Chip",
+    "url": "https://spectrum.ieee.org/llms-for-chip-design",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "llm",
+     "openai",
+     "how"
+    ],
+    "viral_score": 11.26,
+    "sources": [],
+    "display_title": "OpenAI Jalape\u00f1o Chip Design",
+    "angle": "OpenAI used its own LLMs to design its debut AI accelerator chip, Jalape\u00f1o, cutting development time to under 20 months with a tiny engineering team.",
+    "insight": "AI-assisted chip design drastically compresses hardware timelines for small engineering teams, though heavy reliance on implementation partners like Broadcom remains essential for success.",
+    "judge": "plan"
+   },
+   "style_pack": "aurora-teal",
+   "format_pack": "quiz-reveal",
+   "seed": 922725603,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-QUIZ-REVEAL",
+   "style_epoch": 10,
+   "scene_count": 4,
+   "video_seconds": 17.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-a19a48",
+   "platforms": {
+    "instagram": {
+     "id": "17952437793033366",
+     "posted_at": 1789805804
     }
    },
    "metrics": {
