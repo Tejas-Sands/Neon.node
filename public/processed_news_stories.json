@@ -1997,5 +1997,17 @@
   ],
   "ts": 1789902948,
   "session": "gh-fea07a"
+ },
+ {
+  "id": "49766611",
+  "title": "Tin: full-text search for Postgres",
+  "norm": "tin full text search for postgres",
+  "subject_norm": "tin postgres extension",
+  "entities": [
+   "postgresql",
+   "tin"
+  ],
+  "ts": 1789913555,
+  "session": "gh-1c0d64"
  }
 ]

@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-5921200",
-   "ts": 1788068967,
-   "session": "gh-1e1630",
-   "query": "data center servers blinking lights",
-   "scene": 3
-  },
-  {
-   "id": "pexels-4985363",
-   "ts": 1788068967,
-   "session": "gh-1e1630",
-   "query": "breaking news studio monitor background",
-   "scene": 4
-  },
-  {
-   "id": "pexels-26340947",
-   "ts": 1788068967,
-   "session": "gh-1e1630",
-   "query": "breaking news studio monitor background",
-   "scene": 4
-  },
-  {
-   "id": "pexels-36558125",
-   "ts": 1788068967,
-   "session": "gh-1e1630",
-   "query": "security camera rotating city street",
-   "scene": 5
-  },
-  {
-   "id": "pexels-36628017",
-   "ts": 1788078860,
-   "session": "gh-56d853",
-   "query": "terminal typing commands screen",
-   "scene": 0
-  },
-  {
-   "id": "pexels-5647324",
-   "ts": 1788078860,
-   "session": "gh-56d853",
-   "query": "terminal typing commands screen",
-   "scene": 0
-  },
-  {
-   "id": "pexels-29267591",
-   "ts": 1788078860,
-   "session": "gh-56d853",
-   "query": "code editor screen scrolling",
-   "scene": 1
-  },
-  {
-   "id": "pexels-8472307",
-   "ts": 1788078860,
-   "session": "gh-56d853",
-   "query": "developer laptop closeup",
-   "scene": 2
-  },
-  {
-   "id": "pexels-33841806",
-   "ts": 1788078860,
-   "session": "gh-56d853",
-   "query": "developer laptop closeup",
-   "scene": 2
-  },
-  {
    "id": "pexels-38454843",
    "ts": 1788078860,
    "session": "gh-56d853",
@@ -2800,6 +2737,69 @@
    "session": "gh-fea07a",
    "query": "developer laptop code",
    "scene": 4
+  },
+  {
+   "id": "pexels-8721926",
+   "ts": 1789912751,
+   "session": "gh-1c0d64",
+   "query": "terminal typing commands code",
+   "scene": 0
+  },
+  {
+   "id": "pexels-36805468",
+   "ts": 1789912751,
+   "session": "gh-1c0d64",
+   "query": "data center servers gpu",
+   "scene": 1
+  },
+  {
+   "id": "pexels-16561467",
+   "ts": 1789912751,
+   "session": "gh-1c0d64",
+   "query": "data center servers gpu",
+   "scene": 1
+  },
+  {
+   "id": "pexels-35114237",
+   "ts": 1789912751,
+   "session": "gh-1c0d64",
+   "query": "network traffic data flow screen",
+   "scene": 2
+  },
+  {
+   "id": "pexels-35095187",
+   "ts": 1789912751,
+   "session": "gh-1c0d64",
+   "query": "network traffic data flow screen",
+   "scene": 2
+  },
+  {
+   "id": "pexels-6528789",
+   "ts": 1789912751,
+   "session": "gh-1c0d64",
+   "query": "chip manufacturing closeup silicon",
+   "scene": 3
+  },
+  {
+   "id": "pexels-7271367",
+   "ts": 1789912751,
+   "session": "gh-1c0d64",
+   "query": "server rack lights flashing",
+   "scene": 4
+  },
+  {
+   "id": "pexels-7311792",
+   "ts": 1789912751,
+   "session": "gh-1c0d64",
+   "query": "server rack lights flashing",
+   "scene": 4
+  },
+  {
+   "id": "pexels-5377697",
+   "ts": 1789912751,
+   "session": "gh-1c0d64",
+   "query": "code editor screen scrolling",
+   "scene": 5
   }
  ]
 }
