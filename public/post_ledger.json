@@ -5500,7 +5500,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1818,
-      "fetched_at": 1789797216
+      "fetched_at": 1789902948
      },
      "snap72": {
       "views": 5,
@@ -5633,7 +5633,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1778,
-      "fetched_at": 1789797216
+      "fetched_at": 1789902948
      },
      "snap72": {
       "views": 8,
@@ -5699,7 +5699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 947,
-      "fetched_at": 1789797216
+      "fetched_at": 1789902948
      },
      "snap72": {
       "views": 4,
@@ -5764,7 +5764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1789797216
+      "fetched_at": 1789902948
      },
      "snap72": {
       "views": 114,
@@ -5830,7 +5830,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1789797216
+      "fetched_at": 1789902948
      },
      "snap72": {
       "views": 3,
@@ -5898,7 +5898,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2238,
-      "fetched_at": 1789797216
+      "fetched_at": 1789902948
      },
      "snap72": {
       "views": 0,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1789736894
+      "fetched_at": 1789902948
      },
      "snap72": {
       "views": 30,
@@ -7826,7 +7826,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789736894
+      "fetched_at": 1789902948
      },
      "snap72": {
       "views": 0,
@@ -7892,7 +7892,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1789736894
+      "fetched_at": 1789902948
      },
      "snap72": {
       "views": 1,
@@ -8091,7 +8091,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1549,
-      "fetched_at": 1789736894
+      "fetched_at": 1789902948
      },
      "snap72": {
       "views": 4,
@@ -8294,7 +8294,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1733,
-      "fetched_at": 1789736894
+      "fetched_at": 1789902948
      },
      "snap72": {
       "views": 4,
@@ -8360,7 +8360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 715,
-      "fetched_at": 1789736894
+      "fetched_at": 1789902948
      },
      "snap72": {
       "views": 3,
@@ -9173,7 +9173,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1538,
-      "fetched_at": 1789736894
+      "fetched_at": 1789902948
      },
      "snap72": {
       "views": 3,
@@ -9880,9 +9880,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9325,
-      "fetched_at": 1789736894
+      "fetched_at": 1789902948
      },
-     "snap72": null,
+     "snap72": {
+      "views": 5,
+      "reach": 4,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 9325,
+      "fetched_at": 1789902948
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -10257,7 +10267,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 29,
+      "reach": 27,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2498,
+      "fetched_at": 1789902948
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -10362,6 +10382,60 @@
     "instagram": {
      "id": "17965814457192348",
      "posted_at": 1789886032
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789902876,
+   "posted_hour_utc": 11,
+   "channel": "news",
+   "topic": {
+    "title": "Btrfs/ZFS/bcachefs under workloads classic benchmarks skip",
+    "subject": "Btrfs ZFS bcachefs workloads",
+    "url": "https://bartosz.fenski.pl/modern-fs-benchmark/",
+    "source": "hn",
+    "keywords": [
+     "benchmark"
+    ],
+    "viral_score": 7.5,
+    "sources": [],
+    "display_title": "Filesystem Benchmarks Skip Real Workloads",
+    "angle": "Classic benchmarks skip real-world workloads for modern filesystems like Btrfs, ZFS, and bcachefs, masking how they actually perform under stress.",
+    "insight": "Standard file system benchmarks ignore heavy concurrent workloads, meaning your production database or container host will hit unseen bottlenecks on Btrfs, ZFS, or bcachefs.",
+    "judge": "plan"
+   },
+   "style_pack": "mint-aqua",
+   "format_pack": "facts-explainer",
+   "seed": 1581233794,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 10,
+   "scene_count": 5,
+   "video_seconds": 28.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "know-the-trade-off",
+    "signals": [
+     "benchmarks"
+    ]
+   },
+   "session": "gh-fea07a",
+   "platforms": {
+    "instagram": {
+     "id": "17992739378841509",
+     "posted_at": 1789902945
     }
    },
    "metrics": {
