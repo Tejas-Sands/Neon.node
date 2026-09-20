@@ -5369,7 +5369,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1063,
-      "fetched_at": 1789736894
+      "fetched_at": 1789886035
      },
      "snap72": {
       "views": 7,
@@ -5434,7 +5434,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5193,
-      "fetched_at": 1789736894
+      "fetched_at": 1789886035
      },
      "snap72": {
       "views": 12,
@@ -5567,7 +5567,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1789736894
+      "fetched_at": 1789886035
      },
      "snap72": {
       "views": 8,
@@ -6234,7 +6234,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2886,
-      "fetched_at": 1789736894
+      "fetched_at": 1789886035
      },
      "snap72": {
       "views": 4,
@@ -6482,7 +6482,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1082,
-      "fetched_at": 1789736894
+      "fetched_at": 1789886035
      },
      "snap72": {
       "views": 112,
@@ -6818,7 +6818,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1203,
-      "fetched_at": 1789720261
+      "fetched_at": 1789886035
      },
      "snap72": {
       "views": 31,
@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1789720261
+      "fetched_at": 1789886035
      },
      "snap72": {
       "views": 3,
@@ -7628,7 +7628,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 828,
-      "fetched_at": 1789720261
+      "fetched_at": 1789886035
      },
      "snap72": {
       "views": 2,
@@ -7759,7 +7759,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1789720261
+      "fetched_at": 1789886035
      },
      "snap72": {
       "views": 16,
@@ -8024,7 +8024,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1385,
-      "fetched_at": 1789720261
+      "fetched_at": 1789886035
      },
      "snap72": {
       "views": 13,
@@ -8159,7 +8159,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6066,
-      "fetched_at": 1789720261
+      "fetched_at": 1789886035
      },
      "snap72": {
       "views": 10,
@@ -8225,7 +8225,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 992,
-      "fetched_at": 1789720261
+      "fetched_at": 1789886035
      },
      "snap72": {
       "views": 127,
@@ -8832,7 +8832,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1369,
-      "fetched_at": 1789720261
+      "fetched_at": 1789886035
      },
      "snap72": {
       "views": 57,
@@ -9514,7 +9514,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9315,
-      "fetched_at": 1789720261
+      "fetched_at": 1789886035
      },
      "snap72": {
       "views": 1,
@@ -10192,7 +10192,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 16,
+      "reach": 16,
+      "likes": 0,
+      "comments": 0,
+      "shares": 1,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 6118,
+      "fetched_at": 1789886035
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -10297,6 +10307,61 @@
     "instagram": {
      "id": "18094818983207086",
      "posted_at": 1789825027
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789885983,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Claude Code now reads AGENTS.md if there is no Claude.md",
+    "subject": "Claude Code",
+    "url": "https://code.claude.com/docs/en/changelog",
+    "source": "hn",
+    "keywords": [
+     "claude",
+     "agent"
+    ],
+    "viral_score": 10.48,
+    "sources": [],
+    "display_title": "Claude Code AGENTS md",
+    "angle": "Claude Code now reads AGENTS.md for context when no Claude.md file is found.",
+    "insight": "Standardizing on AGENTS.md allows multi-agent tools to share the same repository instructions without duplication.",
+    "judge": "plan"
+   },
+   "style_pack": "cosmic-fantasy",
+   "format_pack": "quiz-reveal",
+   "seed": 621164582,
+   "voice": "gemini:Zephyr",
+   "hook_type": "PACK-QUIZ-REVEAL",
+   "style_epoch": 10,
+   "scene_count": 4,
+   "video_seconds": 20.0,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "claude code"
+    ]
+   },
+   "session": "gh-2c688e",
+   "platforms": {
+    "instagram": {
+     "id": "17965814457192348",
+     "posted_at": 1789886032
     }
    },
    "metrics": {

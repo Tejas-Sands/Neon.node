@@ -1972,5 +1972,18 @@
   ],
   "ts": 1789825030,
   "session": "gh-10f0cb"
+ },
+ {
+  "id": "49760187",
+  "title": "Claude Code now reads AGENTS.md if there is no Claude.md",
+  "norm": "claude code now reads agents md if there is no claude md",
+  "subject_norm": "claude code",
+  "entities": [
+   "anthropic",
+   "agents.md",
+   "claude.md"
+  ],
+  "ts": 1789886035,
+  "session": "gh-2c688e"
  }
 ]
