@@ -6550,7 +6550,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2032,
-      "fetched_at": 1789805807
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 38,
@@ -6685,7 +6685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1019,
-      "fetched_at": 1789825030
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 155,
@@ -6753,7 +6753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7175,
-      "fetched_at": 1789825030
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 10,
@@ -6997,7 +6997,7 @@
       "saved": 0,
       "total_interactions": 3,
       "ig_reels_avg_watch_time": 1823,
-      "fetched_at": 1789805807
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 144,
@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789805807
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 0,
@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1789805807
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 1,
@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789805807
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 0,
@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1789825030
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1789825030
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 6,
@@ -8493,7 +8493,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1789825030
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 6,
@@ -8694,7 +8694,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1789805807
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 48,
@@ -8969,7 +8969,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789805807
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 0,
@@ -9311,7 +9311,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3706,
-      "fetched_at": 1789805807
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 0,
@@ -9380,7 +9380,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 12899,
-      "fetched_at": 1789805807
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 1,
@@ -9655,7 +9655,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 20007,
-      "fetched_at": 1789805807
+      "fetched_at": 1789963688
      },
      "snap72": {
       "views": 0,
@@ -10466,6 +10466,60 @@
     "instagram": {
      "id": "17992739378841509",
      "posted_at": 1789902945
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789963630,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "Bill to Ban Private Equity from Owning Medical Practices",
+    "subject": "Warren private equity medical ban",
+    "url": "https://truthout.org/articles/warren-introduces-bill-to-ban-private-equity-from-owning-medical-practices/",
+    "source": "hn",
+    "keywords": [
+     "ban"
+    ],
+    "viral_score": 9.73,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Wall street medical practice ban",
+    "angle": "Democrats introduced a bill to ban private equity from owning medical practices to curb surging healthcare costs.",
+    "insight": "When private equity acquires medical practices, profit motives replace patient care, directly driving up costs for developers and tech workers relying on job-based health plans.",
+    "judge": "plan"
+   },
+   "style_pack": "sunset-peach",
+   "format_pack": "facts-explainer",
+   "seed": 1366738979,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 10,
+   "scene_count": 5,
+   "video_seconds": 24.9,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-90d023",
+   "platforms": {
+    "instagram": {
+     "id": "17901055197597905",
+     "posted_at": 1789963684
     }
    },
    "metrics": {
