@@ -2018,5 +2018,16 @@
   "entities": [],
   "ts": 1789963688,
   "session": "gh-90d023"
+ },
+ {
+  "id": "49776729",
+  "title": "ChatGPT now knows what you do on other websites via ad collector",
+  "norm": "chatgpt now knows what you do on other websites via ad collector",
+  "subject_norm": "openai ad tracker cookie",
+  "entities": [
+   "openai"
+  ],
+  "ts": 1789982211,
+  "session": "gh-c7d453"
  }
 ]

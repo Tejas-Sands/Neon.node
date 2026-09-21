@@ -5434,7 +5434,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5193,
-      "fetched_at": 1789886035
+      "fetched_at": 1789982211
      },
      "snap72": {
       "views": 12,
@@ -5567,7 +5567,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1251,
-      "fetched_at": 1789886035
+      "fetched_at": 1789982211
      },
      "snap72": {
       "views": 8,
@@ -6234,7 +6234,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2886,
-      "fetched_at": 1789886035
+      "fetched_at": 1789982211
      },
      "snap72": {
       "views": 4,
@@ -6482,7 +6482,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1082,
-      "fetched_at": 1789886035
+      "fetched_at": 1789982211
      },
      "snap72": {
       "views": 112,
@@ -6818,7 +6818,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1203,
-      "fetched_at": 1789886035
+      "fetched_at": 1789982211
      },
      "snap72": {
       "views": 31,
@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1789886035
+      "fetched_at": 1789982211
      },
      "snap72": {
       "views": 3,
@@ -8764,7 +8764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1034,
-      "fetched_at": 1789825030
+      "fetched_at": 1789982211
      },
      "snap72": {
       "views": 109,
@@ -9038,7 +9038,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 760,
-      "fetched_at": 1789825030
+      "fetched_at": 1789982211
      },
      "snap72": {
       "views": 2,
@@ -9105,7 +9105,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 294,
-      "fetched_at": 1789825030
+      "fetched_at": 1789982211
      },
      "snap72": {
       "views": 1,
@@ -9447,7 +9447,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5589,
-      "fetched_at": 1789825030
+      "fetched_at": 1789982211
      },
      "snap72": {
       "views": 6,
@@ -9729,7 +9729,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 10178,
-      "fetched_at": 1789825030
+      "fetched_at": 1789982211
      },
      "snap72": {
       "views": 1,
@@ -9805,7 +9805,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5304,
-      "fetched_at": 1789825030
+      "fetched_at": 1789982211
      },
      "snap72": {
       "views": 20,
@@ -10105,9 +10105,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7090,
-      "fetched_at": 1789825030
+      "fetched_at": 1789982211
      },
-     "snap72": null,
+     "snap72": {
+      "views": 7,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 7090,
+      "fetched_at": 1789982211
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -10167,9 +10177,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5527,
-      "fetched_at": 1789825030
+      "fetched_at": 1789982211
      },
-     "snap72": null,
+     "snap72": {
+      "views": 17,
+      "reach": 16,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5527,
+      "fetched_at": 1789982211
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -10416,7 +10436,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 10,
+      "reach": 10,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1579,
+      "fetched_at": 1789982211
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -10520,6 +10550,62 @@
     "instagram": {
      "id": "17901055197597905",
      "posted_at": 1789963684
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1789982117,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "ChatGPT now knows what you do on other websites via ad collector",
+    "subject": "OpenAI ad tracker cookie",
+    "url": "https://www.buchodi.com/chatgpt-now-knows-what-you-do-on-other-websites-via-ad-collector/",
+    "source": "hn",
+    "keywords": [
+     "gpt",
+     "chatgpt"
+    ],
+    "viral_score": 12.22,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "OpenAI Tracks You Across The Web",
+    "angle": "OpenAI is tracking user activity across external advertiser websites using a cross-site cookie tied directly to ChatGPT accounts.",
+    "insight": "Developers and users must assume that interacting with OpenAI ad ecosystem pixels binds external web browsing behaviors directly back to authenticated AI accounts.",
+    "judge": "plan"
+   },
+   "style_pack": "crimson-mono",
+   "format_pack": "legacy-news",
+   "seed": 326878338,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "BROKEN-ASSUMPTION",
+   "style_epoch": 10,
+   "scene_count": 6,
+   "video_seconds": 48.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-c7d453",
+   "platforms": {
+    "instagram": {
+     "id": "18408058111090837",
+     "posted_at": 1789982208
     }
    },
    "metrics": {
