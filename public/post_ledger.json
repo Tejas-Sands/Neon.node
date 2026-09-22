@@ -5964,7 +5964,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1596,
-      "fetched_at": 1789913555
+      "fetched_at": 1790052335
      },
      "snap72": {
       "views": 2,
@@ -6031,7 +6031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1789913555
+      "fetched_at": 1790052335
      },
      "snap72": {
       "views": 2,
@@ -6096,7 +6096,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2142,
-      "fetched_at": 1789913555
+      "fetched_at": 1790052335
      },
      "snap72": {
       "views": 12,
@@ -6165,7 +6165,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 718,
-      "fetched_at": 1789913555
+      "fetched_at": 1790052335
      },
      "snap72": {
       "views": 4,
@@ -6416,7 +6416,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4974,
-      "fetched_at": 1789913555
+      "fetched_at": 1790052335
      },
      "snap72": {
       "views": 4,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1789902948
+      "fetched_at": 1790052335
      },
      "snap72": {
       "views": 30,
@@ -7826,7 +7826,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789902948
+      "fetched_at": 1790052335
      },
      "snap72": {
       "views": 0,
@@ -7892,7 +7892,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1789902948
+      "fetched_at": 1790052335
      },
      "snap72": {
       "views": 1,
@@ -8091,7 +8091,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1549,
-      "fetched_at": 1789902948
+      "fetched_at": 1790052335
      },
      "snap72": {
       "views": 4,
@@ -8294,7 +8294,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1733,
-      "fetched_at": 1789902948
+      "fetched_at": 1790052335
      },
      "snap72": {
       "views": 4,
@@ -8360,7 +8360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 715,
-      "fetched_at": 1789902948
+      "fetched_at": 1790052335
      },
      "snap72": {
       "views": 3,
@@ -9173,7 +9173,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1538,
-      "fetched_at": 1789902948
+      "fetched_at": 1790052335
      },
      "snap72": {
       "views": 3,
@@ -9880,7 +9880,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9325,
-      "fetched_at": 1789902948
+      "fetched_at": 1790052335
      },
      "snap72": {
       "views": 5,
@@ -10326,9 +10326,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2498,
-      "fetched_at": 1789902948
+      "fetched_at": 1790052335
      },
-     "snap72": null,
+     "snap72": {
+      "views": 29,
+      "reach": 27,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2498,
+      "fetched_at": 1790052335
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -10574,7 +10584,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 15,
+      "reach": 15,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1389,
+      "fetched_at": 1790052335
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -10679,6 +10699,58 @@
     "instagram": {
      "id": "18078483044343562",
      "posted_at": 1789996102
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790052276,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "Python Workers are now generally available",
+    "subject": "Cloudflare Python Workers GA",
+    "url": "https://blog.cloudflare.com/python-workers-ga/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 6.26,
+    "sources": [],
+    "display_title": "Python Workers Now Generally Available",
+    "angle": "Cloudflare brings Python to general availability with zero JS glue code and native ASGI support.",
+    "insight": "Python developers can run native FastAPI, Django, and Flask apps on Cloudflare without manual type conversions at the RPC boundary.",
+    "judge": "plan"
+   },
+   "style_pack": "sage-botanical",
+   "format_pack": "facts-explainer",
+   "seed": 1785110691,
+   "voice": "gemini:Aoede",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 11,
+   "scene_count": 4,
+   "video_seconds": 24.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "python"
+    ]
+   },
+   "session": "gh-a718d7",
+   "platforms": {
+    "instagram": {
+     "id": "18622233280052995",
+     "posted_at": 1790052332
     }
    },
    "metrics": {
