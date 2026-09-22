@@ -6550,7 +6550,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2032,
-      "fetched_at": 1789963688
+      "fetched_at": 1790072971
      },
      "snap72": {
       "views": 38,
@@ -6685,7 +6685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1019,
-      "fetched_at": 1789963688
+      "fetched_at": 1790072971
      },
      "snap72": {
       "views": 155,
@@ -6753,7 +6753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7175,
-      "fetched_at": 1789963688
+      "fetched_at": 1790072971
      },
      "snap72": {
       "views": 10,
@@ -6997,7 +6997,7 @@
       "saved": 0,
       "total_interactions": 3,
       "ig_reels_avg_watch_time": 1823,
-      "fetched_at": 1789963688
+      "fetched_at": 1790072971
      },
      "snap72": {
       "views": 144,
@@ -7957,7 +7957,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3536,
-      "fetched_at": 1789913555
+      "fetched_at": 1790072971
      },
      "snap72": {
       "views": 6,
@@ -8428,7 +8428,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 854,
-      "fetched_at": 1789913555
+      "fetched_at": 1790072971
      },
      "snap72": {
       "views": 3,
@@ -8561,7 +8561,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 865,
-      "fetched_at": 1789913555
+      "fetched_at": 1790072971
      },
      "snap72": {
       "views": 4,
@@ -8629,7 +8629,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9140,
-      "fetched_at": 1789913555
+      "fetched_at": 1790072971
      },
      "snap72": {
       "views": 9,
@@ -8900,7 +8900,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789913555
+      "fetched_at": 1790072971
      },
      "snap72": {
       "views": 0,
@@ -9241,7 +9241,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5867,
-      "fetched_at": 1789913555
+      "fetched_at": 1790072971
      },
      "snap72": {
       "views": 3,
@@ -9581,7 +9581,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1480,
-      "fetched_at": 1789913555
+      "fetched_at": 1790072971
      },
      "snap72": {
       "views": 3,
@@ -9955,7 +9955,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 13671,
-      "fetched_at": 1789913555
+      "fetched_at": 1790072971
      },
      "snap72": {
       "views": 0,
@@ -10031,7 +10031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3637,
-      "fetched_at": 1789913555
+      "fetched_at": 1790072971
      },
      "snap72": {
       "views": 68,
@@ -10400,9 +10400,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3543,
-      "fetched_at": 1789913555
+      "fetched_at": 1790072971
      },
-     "snap72": null,
+     "snap72": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3543,
+      "fetched_at": 1790072971
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -10650,7 +10660,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 26,
+      "reach": 21,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5252,
+      "fetched_at": 1790072971
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -10751,6 +10771,60 @@
     "instagram": {
      "id": "18622233280052995",
      "posted_at": 1790052332
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790072870,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "NASA\u2019s Mars Sample Return mission is dead",
+    "subject": "NASA Mars Sample Return mission",
+    "url": "https://www.science.org/content/article/nasa-s-mars-sample-return-mission-dead",
+    "source": "hn",
+    "keywords": [
+     "is dead"
+    ],
+    "viral_score": 9.45,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "NASA Mars mission cancelled",
+    "angle": "NASA cancels its flagship Mars Sample Return mission due to budget overruns and timeline delays.",
+    "insight": "Space agencies are abandoning ambitious hardware pipelines for cheaper, faster modular alternatives.",
+    "judge": "plan"
+   },
+   "style_pack": "cosmic-fantasy",
+   "format_pack": "legacy-news",
+   "seed": 1976361990,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "BROKEN-ASSUMPTION",
+   "style_epoch": 11,
+   "scene_count": 6,
+   "video_seconds": 56.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-d21284",
+   "platforms": {
+    "instagram": {
+     "id": "18116473924772610",
+     "posted_at": 1790072967
     }
    },
    "metrics": {

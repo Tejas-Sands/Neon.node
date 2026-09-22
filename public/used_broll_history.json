@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-8100338",
-   "ts": 1788188078,
-   "session": "gh-66d90c",
-   "query": "color grading panel wheels scopes",
-   "scene": 1
-  },
-  {
-   "id": "pexels-8201291",
-   "ts": 1788188078,
-   "session": "gh-66d90c",
-   "query": "waveform monitor video scopes graph",
-   "scene": 2
-  },
-  {
-   "id": "pexels-35063152",
-   "ts": 1788188078,
-   "session": "gh-66d90c",
-   "query": "neural network wireframe motion graphic",
-   "scene": 3
-  },
-  {
-   "id": "pexels-38870355",
-   "ts": 1788188078,
-   "session": "gh-66d90c",
-   "query": "software interface dark mode dashboard",
-   "scene": 4
-  },
-  {
-   "id": "pexels-6266253",
-   "ts": 1788244769,
-   "session": "gh-7f5100",
-   "query": "terminal scrolling code error screen",
-   "scene": 0
-  },
-  {
-   "id": "pexels-34449249",
-   "ts": 1788244769,
-   "session": "gh-7f5100",
-   "query": "data center server racks blinking lights",
-   "scene": 1
-  },
-  {
-   "id": "pexels-15439756",
-   "ts": 1788244769,
-   "session": "gh-7f5100",
-   "query": "data center server racks blinking lights",
-   "scene": 1
-  },
-  {
-   "id": "pexels-6963412",
-   "ts": 1788244769,
-   "session": "gh-7f5100",
-   "query": "code editor typing syntax highlighting",
-   "scene": 2
-  },
-  {
-   "id": "pexels-36632263",
-   "ts": 1788244769,
-   "session": "gh-7f5100",
-   "query": "dashboard UI loading spinner error state",
-   "scene": 3
-  },
-  {
    "id": "pexels-8746938",
    "ts": 1788244769,
    "session": "gh-7f5100",
@@ -2800,6 +2737,69 @@
    "session": "gh-a718d7",
    "query": "network traffic dashboard motion",
    "scene": 3
+  },
+  {
+   "id": "pexels-37005709",
+   "ts": 1790072870,
+   "session": "gh-d21284",
+   "query": "spacecraft mars surface animation red dust",
+   "scene": 0
+  },
+  {
+   "id": "pexels-35497884",
+   "ts": 1790072870,
+   "session": "gh-d21284",
+   "query": "data center servers blinking lights room",
+   "scene": 1
+  },
+  {
+   "id": "pexels-8879950",
+   "ts": 1790072870,
+   "session": "gh-d21284",
+   "query": "data center servers blinking lights room",
+   "scene": 1
+  },
+  {
+   "id": "pexels-7679396",
+   "ts": 1790072870,
+   "session": "gh-d21284",
+   "query": "trading chart screen numbers glowing",
+   "scene": 2
+  },
+  {
+   "id": "pexels-35606106",
+   "ts": 1790072870,
+   "session": "gh-d21284",
+   "query": "trading chart screen numbers glowing",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7579567",
+   "ts": 1790072870,
+   "session": "gh-d21284",
+   "query": "control room screens monitoring telemetry",
+   "scene": 3
+  },
+  {
+   "id": "pexels-8087025",
+   "ts": 1790072870,
+   "session": "gh-d21284",
+   "query": "robot arm working manufacturing facility",
+   "scene": 4
+  },
+  {
+   "id": "pexels-5758682",
+   "ts": 1790072870,
+   "session": "gh-d21284",
+   "query": "rocket engine test firing flame",
+   "scene": 5
+  },
+  {
+   "id": "pexels-5988900",
+   "ts": 1790072870,
+   "session": "gh-d21284",
+   "query": "rocket engine test firing flame",
+   "scene": 5
   }
  ]
 }

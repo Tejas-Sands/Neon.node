@@ -2049,5 +2049,14 @@
   ],
   "ts": 1790052335,
   "session": "gh-a718d7"
+ },
+ {
+  "id": "49791939",
+  "title": "NASA\u2019s Mars Sample Return mission is dead",
+  "norm": "nasa s mars sample return mission is dead",
+  "subject_norm": "nasa mars sample return mission",
+  "entities": [],
+  "ts": 1790072971,
+  "session": "gh-d21284"
  }
 ]
