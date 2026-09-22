@@ -6234,7 +6234,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2886,
-      "fetched_at": 1789982211
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 4,
@@ -6482,7 +6482,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1082,
-      "fetched_at": 1789982211
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 112,
@@ -6818,7 +6818,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1203,
-      "fetched_at": 1789982211
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 31,
@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789963688
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 0,
@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1789963688
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 1,
@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789963688
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 0,
@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1789963688
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1789963688
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 6,
@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1789982211
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 3,
@@ -8493,7 +8493,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1789963688
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 6,
@@ -8694,7 +8694,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1789963688
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 48,
@@ -8969,7 +8969,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1789963688
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 0,
@@ -9311,7 +9311,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3706,
-      "fetched_at": 1789963688
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 0,
@@ -9380,7 +9380,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 12899,
-      "fetched_at": 1789963688
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 1,
@@ -9655,7 +9655,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 20007,
-      "fetched_at": 1789963688
+      "fetched_at": 1790082379
      },
      "snap72": {
       "views": 0,
@@ -10825,6 +10825,60 @@
     "instagram": {
      "id": "18116473924772610",
      "posted_at": 1790072967
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790082270,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "I said no and Apple said yes",
+    "subject": "macOS 27 Apple Intelligence",
+    "url": "https://dbushell.com/2026/09/22/apple-intelligence/",
+    "source": "hn",
+    "keywords": [
+     "apple"
+    ],
+    "viral_score": 9.27,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Apple Erased The Off Switch",
+    "angle": "Apple's macOS 27 upgrade forcefully re-enabled AI features, stripping out the user's ability to opt out and leaving unkillable processes behind.",
+    "insight": "Developers and power users cannot truly opt out of new OS-level AI features when vendors hide controls behind parental locks and leave background processes running.",
+    "judge": "plan"
+   },
+   "style_pack": "cherry-blossom",
+   "format_pack": "facts-explainer",
+   "seed": 1873003697,
+   "voice": "gemini:Fenrir",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 11,
+   "scene_count": 4,
+   "video_seconds": 22.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-2a56b1",
+   "platforms": {
+    "instagram": {
+     "id": "17965770150192243",
+     "posted_at": 1790082376
     }
    },
    "metrics": {

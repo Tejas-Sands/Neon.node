@@ -2058,5 +2058,17 @@
   "entities": [],
   "ts": 1790072971,
   "session": "gh-d21284"
+ },
+ {
+  "id": "49797982",
+  "title": "I said no and Apple said yes",
+  "norm": "i said no and apple said yes",
+  "subject_norm": "macos 27 apple intelligence",
+  "entities": [
+   "apple",
+   "intelligence"
+  ],
+  "ts": 1790082379,
+  "session": "gh-2a56b1"
  }
 ]

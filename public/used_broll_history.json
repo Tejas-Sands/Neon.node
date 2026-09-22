@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-8746938",
-   "ts": 1788244769,
-   "session": "gh-7f5100",
-   "query": "dashboard UI loading spinner error state",
-   "scene": 3
-  },
-  {
-   "id": "pexels-5805638",
-   "ts": 1788244769,
-   "session": "gh-7f5100",
-   "query": "settings toggle switch interface click",
-   "scene": 4
-  },
-  {
-   "id": "pexels-7679831",
-   "ts": 1788244769,
-   "session": "gh-7f5100",
-   "query": "developer scrolling documentation laptop screen",
-   "scene": 5
-  },
-  {
-   "id": "pexels-6573992",
-   "ts": 1788244769,
-   "session": "gh-7f5100",
-   "query": "developer scrolling documentation laptop screen",
-   "scene": 5
-  },
-  {
-   "id": "pexels-6354772",
-   "ts": 1788256185,
-   "session": "gh-d54f50",
-   "query": "server rack lights closeup dark",
-   "scene": 0
-  },
-  {
    "id": "pexels-18069700",
    "ts": 1788256185,
    "session": "gh-d54f50",
@@ -2800,6 +2765,41 @@
    "session": "gh-d21284",
    "query": "rocket engine test firing flame",
    "scene": 5
+  },
+  {
+   "id": "pexels-5981845",
+   "ts": 1790082270,
+   "session": "gh-2a56b1",
+   "query": "terminal screen scrolling code text",
+   "scene": 0
+  },
+  {
+   "id": "pexels-38993368",
+   "ts": 1790082270,
+   "session": "gh-2a56b1",
+   "query": "ssd storage capacity chart dashboard",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5083553",
+   "ts": 1790082270,
+   "session": "gh-2a56b1",
+   "query": "system monitor cpu processes list",
+   "scene": 2
+  },
+  {
+   "id": "pexels-35790161",
+   "ts": 1790082270,
+   "session": "gh-2a56b1",
+   "query": "macos settings toggle switches interface",
+   "scene": 3
+  },
+  {
+   "id": "pexels-10374886",
+   "ts": 1790082270,
+   "session": "gh-2a56b1",
+   "query": "macos settings toggle switches interface",
+   "scene": 3
   }
  ]
 }
