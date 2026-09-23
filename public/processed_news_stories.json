@@ -2070,5 +2070,18 @@
   ],
   "ts": 1790082379,
   "session": "gh-2a56b1"
+ },
+ {
+  "id": "49808023",
+  "title": "Microsoft killed FoxPro in 2007. Anyway, here's FoxPro revived",
+  "norm": "microsoft killed foxpro in 2007 anyway here s foxpro revived",
+  "subject_norm": "foxdev studio",
+  "entities": [
+   "microsoft",
+   "foxpro",
+   "foxdev"
+  ],
+  "ts": 1790141271,
+  "session": "gh-2b3051"
  }
 ]

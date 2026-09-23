@@ -5764,7 +5764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1789996104
+      "fetched_at": 1790141271
      },
      "snap72": {
       "views": 114,
@@ -5830,7 +5830,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1011,
-      "fetched_at": 1789996104
+      "fetched_at": 1790141271
      },
      "snap72": {
       "views": 3,
@@ -5898,7 +5898,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2238,
-      "fetched_at": 1789996104
+      "fetched_at": 1790141271
      },
      "snap72": {
       "views": 0,
@@ -7628,7 +7628,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 828,
-      "fetched_at": 1789996104
+      "fetched_at": 1790141271
      },
      "snap72": {
       "views": 2,
@@ -8764,7 +8764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1034,
-      "fetched_at": 1789982211
+      "fetched_at": 1790141271
      },
      "snap72": {
       "views": 109,
@@ -9038,7 +9038,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 760,
-      "fetched_at": 1789982211
+      "fetched_at": 1790141271
      },
      "snap72": {
       "views": 2,
@@ -9105,7 +9105,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 294,
-      "fetched_at": 1789982211
+      "fetched_at": 1790141271
      },
      "snap72": {
       "views": 1,
@@ -9447,7 +9447,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5589,
-      "fetched_at": 1789982211
+      "fetched_at": 1790141271
      },
      "snap72": {
       "views": 6,
@@ -9729,7 +9729,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 10178,
-      "fetched_at": 1789982211
+      "fetched_at": 1790141271
      },
      "snap72": {
       "views": 1,
@@ -9805,7 +9805,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5304,
-      "fetched_at": 1789982211
+      "fetched_at": 1790141271
      },
      "snap72": {
       "views": 20,
@@ -10105,7 +10105,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7090,
-      "fetched_at": 1789982211
+      "fetched_at": 1790141271
      },
      "snap72": {
       "views": 7,
@@ -10177,7 +10177,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5527,
-      "fetched_at": 1789982211
+      "fetched_at": 1790141271
      },
      "snap72": {
       "views": 17,
@@ -10474,10 +10474,20 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1579,
-      "fetched_at": 1789982211
+      "ig_reels_avg_watch_time": 1773,
+      "fetched_at": 1790141271
      },
-     "snap72": null,
+     "snap72": {
+      "views": 10,
+      "reach": 10,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1773,
+      "fetched_at": 1790141271
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -10723,7 +10733,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 10,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5416,
+      "fetched_at": 1790141271
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -10775,7 +10795,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 5,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5706,
+      "fetched_at": 1790141271
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -10879,6 +10909,59 @@
     "instagram": {
      "id": "17965770150192243",
      "posted_at": 1790082376
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790141214,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Microsoft killed FoxPro in 2007. Anyway, here's FoxPro revived",
+    "subject": "FoxDev Studio",
+    "url": "https://foxscript.org/",
+    "source": "hn",
+    "keywords": [
+     "killed",
+     "microsoft"
+    ],
+    "viral_score": 10.72,
+    "sources": [],
+    "display_title": "FoxPro revived in 64-bit",
+    "angle": "FoxDev Studio revives Visual FoxPro apps in 64-bit with Rust and WebAssembly, lifting the old 2GB database limit.",
+    "insight": "Legacy 32-bit apps break the 2GB database barrier once rewritten in modern 64-bit runtimes.",
+    "judge": "plan"
+   },
+   "style_pack": "aurora-teal",
+   "format_pack": "legacy-news",
+   "seed": 2049969721,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "STAKES-REVEAL",
+   "style_epoch": 11,
+   "scene_count": 4,
+   "video_seconds": 27.9,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-2b3051",
+   "platforms": {
+    "instagram": {
+     "id": "17998906661812349",
+     "posted_at": 1790141268
     }
    },
    "metrics": {
