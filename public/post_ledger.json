@@ -6550,7 +6550,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2032,
-      "fetched_at": 1790072971
+      "fetched_at": 1790172916
      },
      "snap72": {
       "views": 38,
@@ -6685,7 +6685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1019,
-      "fetched_at": 1790072971
+      "fetched_at": 1790172916
      },
      "snap72": {
       "views": 155,
@@ -6753,7 +6753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7175,
-      "fetched_at": 1790072971
+      "fetched_at": 1790172916
      },
      "snap72": {
       "views": 10,
@@ -6997,7 +6997,7 @@
       "saved": 0,
       "total_interactions": 3,
       "ig_reels_avg_watch_time": 1823,
-      "fetched_at": 1790072971
+      "fetched_at": 1790172916
      },
      "snap72": {
       "views": 144,
@@ -7826,7 +7826,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790052335
+      "fetched_at": 1790172916
      },
      "snap72": {
       "views": 0,
@@ -7892,7 +7892,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1790052335
+      "fetched_at": 1790172916
      },
      "snap72": {
       "views": 1,
@@ -7957,7 +7957,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3536,
-      "fetched_at": 1790072971
+      "fetched_at": 1790172916
      },
      "snap72": {
       "views": 6,
@@ -8091,7 +8091,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1549,
-      "fetched_at": 1790052335
+      "fetched_at": 1790172916
      },
      "snap72": {
       "views": 4,
@@ -8294,7 +8294,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1733,
-      "fetched_at": 1790052335
+      "fetched_at": 1790172916
      },
      "snap72": {
       "views": 4,
@@ -8360,7 +8360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 715,
-      "fetched_at": 1790052335
+      "fetched_at": 1790172916
      },
      "snap72": {
       "views": 3,
@@ -9173,7 +9173,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1538,
-      "fetched_at": 1790052335
+      "fetched_at": 1790172916
      },
      "snap72": {
       "views": 3,
@@ -9880,7 +9880,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9325,
-      "fetched_at": 1790052335
+      "fetched_at": 1790172916
      },
      "snap72": {
       "views": 5,
@@ -10326,7 +10326,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2498,
-      "fetched_at": 1790052335
+      "fetched_at": 1790172916
      },
      "snap72": {
       "views": 29,
@@ -10623,9 +10623,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1389,
-      "fetched_at": 1790052335
+      "fetched_at": 1790172916
      },
-     "snap72": null,
+     "snap72": {
+      "views": 15,
+      "reach": 15,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1389,
+      "fetched_at": 1790172916
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -10933,7 +10943,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 13,
+      "reach": 10,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 6927,
+      "fetched_at": 1790172916
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -11038,6 +11058,60 @@
     "instagram": {
      "id": "17988320439116701",
      "posted_at": 1790160094
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790172840,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "'We hacked the FBI:' Hackers say they have data on all FBI employees",
+    "subject": "ShinyHunters FBI Data Breach",
+    "url": "https://www.404media.co/we-hacked-the-fbi-hackers-say-they-have-data-on-all-fbi-employees/",
+    "source": "hn",
+    "keywords": [
+     "hacked"
+    ],
+    "viral_score": 9.36,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "FBI Database Completely Hacked",
+    "angle": "ShinyHunters claims a massive breach of FBI-related services, compromising personal data on all agency employees and applicants.",
+    "insight": "When central law enforcement databases are compromised, the failure of upstream access controls directly threatens the physical safety of field agents and exposes critical national security workflows.",
+    "judge": "plan"
+   },
+   "style_pack": "ember-gold",
+   "format_pack": "facts-explainer",
+   "seed": 970392274,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 11,
+   "scene_count": 5,
+   "video_seconds": 27.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-e39e8d",
+   "platforms": {
+    "instagram": {
+     "id": "18088336004678908",
+     "posted_at": 1790172914
     }
    },
    "metrics": {
