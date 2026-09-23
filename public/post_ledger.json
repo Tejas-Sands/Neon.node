@@ -5964,7 +5964,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1596,
-      "fetched_at": 1790052335
+      "fetched_at": 1790160096
      },
      "snap72": {
       "views": 2,
@@ -6031,7 +6031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1121,
-      "fetched_at": 1790052335
+      "fetched_at": 1790160096
      },
      "snap72": {
       "views": 2,
@@ -6096,7 +6096,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2142,
-      "fetched_at": 1790052335
+      "fetched_at": 1790160096
      },
      "snap72": {
       "views": 12,
@@ -6165,7 +6165,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 718,
-      "fetched_at": 1790052335
+      "fetched_at": 1790160096
      },
      "snap72": {
       "views": 4,
@@ -6416,7 +6416,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4974,
-      "fetched_at": 1790052335
+      "fetched_at": 1790160096
      },
      "snap72": {
       "views": 4,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1790052335
+      "fetched_at": 1790160096
      },
      "snap72": {
       "views": 30,
@@ -7759,7 +7759,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1789996104
+      "fetched_at": 1790160096
      },
      "snap72": {
       "views": 16,
@@ -8024,7 +8024,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1385,
-      "fetched_at": 1789996104
+      "fetched_at": 1790160096
      },
      "snap72": {
       "views": 13,
@@ -8159,7 +8159,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6066,
-      "fetched_at": 1789996104
+      "fetched_at": 1790160096
      },
      "snap72": {
       "views": 10,
@@ -8225,7 +8225,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 992,
-      "fetched_at": 1789996104
+      "fetched_at": 1790160096
      },
      "snap72": {
       "views": 127,
@@ -8832,7 +8832,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1369,
-      "fetched_at": 1789996104
+      "fetched_at": 1790160096
      },
      "snap72": {
       "views": 57,
@@ -9514,7 +9514,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9315,
-      "fetched_at": 1789996104
+      "fetched_at": 1790160096
      },
      "snap72": {
       "views": 1,
@@ -10251,7 +10251,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6118,
-      "fetched_at": 1789996104
+      "fetched_at": 1790160096
      },
      "snap72": {
       "views": 16,
@@ -10549,9 +10549,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1832,
-      "fetched_at": 1789996104
+      "fetched_at": 1790160096
      },
-     "snap72": null,
+     "snap72": {
+      "views": 16,
+      "reach": 15,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1832,
+      "fetched_at": 1790160096
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -10859,7 +10869,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 8,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1747,
+      "fetched_at": 1790160096
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -10962,6 +10982,62 @@
     "instagram": {
      "id": "17998906661812349",
      "posted_at": 1790141268
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790160012,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "OpenAI GPT\u20136 Astra breaks Enigma message that has resisted solution since 2005",
+    "subject": "GPT-6 Astra Enigma break",
+    "url": "https://www.cryptocellar.org/bgac/the-mvueh-break.html",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "gpt",
+     "openai"
+    ],
+    "viral_score": 12.15,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "GPT-6 Astra Breaks Enigma",
+    "angle": "OpenAI GPT-6 Astra independently cracked a WWII Enigma message that had resisted solution since 2005 by writing its own simulation code and using a known plaintext crib.",
+    "insight": "AI agents can now autonomously select complex unsolved cryptographic targets, write custom simulation software, and execute multi-step brute-force attacks without human algorithmic guidance.",
+    "judge": "plan"
+   },
+   "style_pack": "burgundy-luxe",
+   "format_pack": "facts-explainer",
+   "seed": 1079622660,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 11,
+   "scene_count": 5,
+   "video_seconds": 28.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-d05d95",
+   "platforms": {
+    "instagram": {
+     "id": "17988320439116701",
+     "posted_at": 1790160094
     }
    },
    "metrics": {

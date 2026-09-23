@@ -2,48 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-36824993",
-   "ts": 1788268291,
-   "session": "gh-74305d",
-   "query": "trading chart screen moving data",
-   "scene": 2
-  },
-  {
-   "id": "pexels-34433115",
-   "ts": 1788268291,
-   "session": "gh-74305d",
-   "query": "trading chart screen moving data",
-   "scene": 2
-  },
-  {
-   "id": "pexels-6755151",
-   "ts": 1788268291,
-   "session": "gh-74305d",
-   "query": "circuit board macro motion electronics",
-   "scene": 3
-  },
-  {
-   "id": "pexels-35205646",
-   "ts": 1788268291,
-   "session": "gh-74305d",
-   "query": "server racks blinking data center",
-   "scene": 4
-  },
-  {
-   "id": "pexels-18069164",
-   "ts": 1788268291,
-   "session": "gh-74305d",
-   "query": "network firewall security animation",
-   "scene": 5
-  },
-  {
-   "id": "pexels-34516350",
-   "ts": 1788334065,
-   "session": "gh-81696d",
-   "query": "gpu chip macro lighting motion",
-   "scene": 0
-  },
-  {
    "id": "pexels-4709299",
    "ts": 1788334065,
    "session": "gh-81696d",
@@ -2800,6 +2758,48 @@
    "session": "gh-2b3051",
    "query": "database query terminal execution",
    "scene": 3
+  },
+  {
+   "id": "pexels-5377987",
+   "ts": 1790160012,
+   "session": "gh-d05d95",
+   "query": "terminal hacking code green",
+   "scene": 0
+  },
+  {
+   "id": "pexels-8086291",
+   "ts": 1790160012,
+   "session": "gh-d05d95",
+   "query": "server room dark lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5495901",
+   "ts": 1790160012,
+   "session": "gh-d05d95",
+   "query": "developer laptop code night",
+   "scene": 2
+  },
+  {
+   "id": "pexels-12893579",
+   "ts": 1790160012,
+   "session": "gh-d05d95",
+   "query": "code editor screen scrolling",
+   "scene": 3
+  },
+  {
+   "id": "pexels-38410502",
+   "ts": 1790160012,
+   "session": "gh-d05d95",
+   "query": "code editor screen scrolling",
+   "scene": 3
+  },
+  {
+   "id": "pexels-7580284",
+   "ts": 1790160012,
+   "session": "gh-d05d95",
+   "query": "data center servers gpu",
+   "scene": 4
   }
  ]
 }
