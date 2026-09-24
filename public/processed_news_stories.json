@@ -2123,5 +2123,14 @@
   ],
   "ts": 1790223275,
   "session": "gh-08263e"
+ },
+ {
+  "id": "lob:ad5vwg",
+  "title": "Radicle: Disclosure of Vulnerability in the Network Protocol",
+  "norm": "radicle disclosure of vulnerability in the network protocol",
+  "subject_norm": "radicle network protocol vulnerability",
+  "entities": [],
+  "ts": 1790241053,
+  "session": "gh-79d7f7"
  }
 ]

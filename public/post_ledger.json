@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790082379
+      "fetched_at": 1790241053
      },
      "snap72": {
       "views": 0,
@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1790082379
+      "fetched_at": 1790241053
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1790082379
+      "fetched_at": 1790241053
      },
      "snap72": {
       "views": 6,
@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1790082379
+      "fetched_at": 1790241053
      },
      "snap72": {
       "views": 3,
@@ -7628,7 +7628,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 828,
-      "fetched_at": 1790141271
+      "fetched_at": 1790241053
      },
      "snap72": {
       "views": 2,
@@ -8493,7 +8493,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1790082379
+      "fetched_at": 1790241053
      },
      "snap72": {
       "views": 6,
@@ -8694,7 +8694,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1790082379
+      "fetched_at": 1790241053
      },
      "snap72": {
       "views": 48,
@@ -8764,7 +8764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1034,
-      "fetched_at": 1790141271
+      "fetched_at": 1790241053
      },
      "snap72": {
       "views": 109,
@@ -8969,7 +8969,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790082379
+      "fetched_at": 1790241053
      },
      "snap72": {
       "views": 0,
@@ -9038,7 +9038,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 760,
-      "fetched_at": 1790141271
+      "fetched_at": 1790241053
      },
      "snap72": {
       "views": 2,
@@ -9105,7 +9105,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 294,
-      "fetched_at": 1790141271
+      "fetched_at": 1790241053
      },
      "snap72": {
       "views": 1,
@@ -9311,7 +9311,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3706,
-      "fetched_at": 1790082379
+      "fetched_at": 1790241053
      },
      "snap72": {
       "views": 0,
@@ -9380,7 +9380,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 12899,
-      "fetched_at": 1790082379
+      "fetched_at": 1790241053
      },
      "snap72": {
       "views": 1,
@@ -9655,7 +9655,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 20007,
-      "fetched_at": 1790082379
+      "fetched_at": 1790241053
      },
      "snap72": {
       "views": 0,
@@ -11016,7 +11016,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 4,
+      "reach": 4,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2365,
+      "fetched_at": 1790241053
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -11177,6 +11187,60 @@
     "instagram": {
      "id": "18111134501332251",
      "posted_at": 1790223272
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790240923,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "Radicle: Disclosure of Vulnerability in the Network Protocol",
+    "subject": "Radicle Network Protocol Vulnerability",
+    "url": "https://radicle.dev/2026/09/23/disclosure-of-vulnerability-in-network-protocol.html",
+    "source": "lobsters",
+    "keywords": [
+     "vulnerab"
+    ],
+    "viral_score": 7.28,
+    "sources": [],
+    "display_title": "Radicle Private Repos Exposed",
+    "angle": "Every version of Radicle is vulnerable to unencrypted network traffic, requiring developers to immediately block private repositories.",
+    "insight": "Developers using local-first code collaboration must manually block private repositories right now because an upcoming protocol fix will introduce a breaking major version.",
+    "judge": "plan"
+   },
+   "style_pack": "sage-botanical",
+   "format_pack": "facts-explainer",
+   "seed": 557496536,
+   "voice": "gemini:Aoede",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 11,
+   "scene_count": 4,
+   "video_seconds": 23.0,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "before-it-breaks",
+    "signals": [
+     "vulnerability"
+    ]
+   },
+   "session": "gh-79d7f7",
+   "platforms": {
+    "instagram": {
+     "id": "18148669537546951",
+     "posted_at": 1790241050
     }
    },
    "metrics": {
