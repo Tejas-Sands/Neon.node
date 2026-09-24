@@ -6096,7 +6096,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2142,
-      "fetched_at": 1790160096
+      "fetched_at": 1790254484
      },
      "snap72": {
       "views": 12,
@@ -6165,7 +6165,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 718,
-      "fetched_at": 1790160096
+      "fetched_at": 1790254484
      },
      "snap72": {
       "views": 4,
@@ -6416,7 +6416,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4974,
-      "fetched_at": 1790160096
+      "fetched_at": 1790254484
      },
      "snap72": {
       "views": 4,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1790160096
+      "fetched_at": 1790254484
      },
      "snap72": {
       "views": 30,
@@ -7759,7 +7759,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1790160096
+      "fetched_at": 1790254484
      },
      "snap72": {
       "views": 16,
@@ -8024,7 +8024,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1385,
-      "fetched_at": 1790160096
+      "fetched_at": 1790254484
      },
      "snap72": {
       "views": 13,
@@ -9447,7 +9447,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5589,
-      "fetched_at": 1790141271
+      "fetched_at": 1790254484
      },
      "snap72": {
       "views": 6,
@@ -9729,7 +9729,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 10178,
-      "fetched_at": 1790141271
+      "fetched_at": 1790254484
      },
      "snap72": {
       "views": 1,
@@ -9805,7 +9805,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5304,
-      "fetched_at": 1790141271
+      "fetched_at": 1790254484
      },
      "snap72": {
       "views": 20,
@@ -10105,7 +10105,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7090,
-      "fetched_at": 1790141271
+      "fetched_at": 1790254484
      },
      "snap72": {
       "views": 7,
@@ -10177,7 +10177,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5527,
-      "fetched_at": 1790141271
+      "fetched_at": 1790254484
      },
      "snap72": {
       "views": 17,
@@ -10475,7 +10475,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1773,
-      "fetched_at": 1790141271
+      "fetched_at": 1790254484
      },
      "snap72": {
       "views": 10,
@@ -10772,9 +10772,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5416,
-      "fetched_at": 1790141271
+      "fetched_at": 1790254484
      },
-     "snap72": null,
+     "snap72": {
+      "views": 10,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5416,
+      "fetched_at": 1790254484
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -10834,9 +10844,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5706,
-      "fetched_at": 1790141271
+      "fetched_at": 1790254484
      },
-     "snap72": null,
+     "snap72": {
+      "views": 5,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5706,
+      "fetched_at": 1790254484
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -11082,7 +11102,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1623,
+      "fetched_at": 1790254484
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -11241,6 +11271,58 @@
     "instagram": {
      "id": "18148669537546951",
      "posted_at": 1790241050
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790254425,
+   "posted_hour_utc": 12,
+   "channel": "news",
+   "topic": {
+    "title": "Jev in 25 Lines of Python",
+    "subject": "Jev in Python",
+    "url": "https://www.nobodywho.ai/posts/jev-in-25-lines/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 7.77,
+    "sources": [],
+    "display_title": "Jev in 25 lines",
+    "angle": "A satirical look at Jev reveals how local python scripts handle prompt loading and logit massaging without sending data elsewhere.",
+    "insight": "Developers building privacy-first local AI workflows can implement basic logit manipulation in minimal python without external API dependencies.",
+    "judge": "plan"
+   },
+   "style_pack": "desert-dune",
+   "format_pack": "quiz-reveal",
+   "seed": 1305473922,
+   "voice": "gemini:Achird",
+   "hook_type": "PACK-QUIZ-REVEAL",
+   "style_epoch": 11,
+   "scene_count": 4,
+   "video_seconds": 14.8,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "python"
+    ]
+   },
+   "session": "gh-14baa6",
+   "platforms": {
+    "instagram": {
+     "id": "18006693977996159",
+     "posted_at": 1790254481
     }
    },
    "metrics": {
