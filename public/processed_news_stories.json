@@ -2111,5 +2111,17 @@
   ],
   "ts": 1790172916,
   "session": "gh-e39e8d"
+ },
+ {
+  "id": "49814947",
+  "title": "Claude Code reads AGENTS.md only when telemetry is on [fixed]",
+  "norm": "claude code reads agents md only when telemetry is on fixed",
+  "subject_norm": "claude code agents md telemetry bug",
+  "entities": [
+   "anthropic",
+   "agents.md"
+  ],
+  "ts": 1790223275,
+  "session": "gh-08263e"
  }
 ]

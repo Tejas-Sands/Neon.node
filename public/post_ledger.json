@@ -6234,7 +6234,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2886,
-      "fetched_at": 1790082379
+      "fetched_at": 1790223275
      },
      "snap72": {
       "views": 4,
@@ -6482,7 +6482,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1082,
-      "fetched_at": 1790082379
+      "fetched_at": 1790223275
      },
      "snap72": {
       "views": 112,
@@ -6818,7 +6818,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1203,
-      "fetched_at": 1790082379
+      "fetched_at": 1790223275
      },
      "snap72": {
       "views": 31,
@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790082379
+      "fetched_at": 1790223275
      },
      "snap72": {
       "views": 0,
@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1790082379
+      "fetched_at": 1790223275
      },
      "snap72": {
       "views": 1,
@@ -8428,7 +8428,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 854,
-      "fetched_at": 1790072971
+      "fetched_at": 1790223275
      },
      "snap72": {
       "views": 3,
@@ -8561,7 +8561,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 865,
-      "fetched_at": 1790072971
+      "fetched_at": 1790223275
      },
      "snap72": {
       "views": 4,
@@ -8629,7 +8629,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9140,
-      "fetched_at": 1790072971
+      "fetched_at": 1790223275
      },
      "snap72": {
       "views": 9,
@@ -8900,7 +8900,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790072971
+      "fetched_at": 1790223275
      },
      "snap72": {
       "views": 0,
@@ -9241,7 +9241,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5867,
-      "fetched_at": 1790072971
+      "fetched_at": 1790223275
      },
      "snap72": {
       "views": 3,
@@ -9581,7 +9581,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1480,
-      "fetched_at": 1790072971
+      "fetched_at": 1790223275
      },
      "snap72": {
       "views": 3,
@@ -9955,7 +9955,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 13671,
-      "fetched_at": 1790072971
+      "fetched_at": 1790223275
      },
      "snap72": {
       "views": 0,
@@ -10031,7 +10031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3637,
-      "fetched_at": 1790072971
+      "fetched_at": 1790223275
      },
      "snap72": {
       "views": 68,
@@ -10400,7 +10400,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3543,
-      "fetched_at": 1790072971
+      "fetched_at": 1790223275
      },
      "snap72": {
       "views": 1,
@@ -10699,9 +10699,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5252,
-      "fetched_at": 1790072971
+      "fetched_at": 1790223275
      },
-     "snap72": null,
+     "snap72": {
+      "views": 26,
+      "reach": 21,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5252,
+      "fetched_at": 1790223275
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -11112,6 +11122,61 @@
     "instagram": {
      "id": "18088336004678908",
      "posted_at": 1790172914
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790223224,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "Claude Code reads AGENTS.md only when telemetry is on [fixed]",
+    "subject": "Claude Code AGENTS.md telemetry bug",
+    "url": "https://blog.szypowi.cz/p/claude-code-reads-agents.md-only-when-telemetry-is-on/",
+    "source": "hn",
+    "keywords": [
+     "claude",
+     "agent"
+    ],
+    "viral_score": 10.17,
+    "sources": [],
+    "display_title": "Claude Code telemetry blocks local files",
+    "angle": "How Claude Code silently breaks local instruction loading when telemetry is turned off.",
+    "insight": "Developers who disable telemetry to protect data find their local configuration files completely ignored without any warning.",
+    "judge": "plan"
+   },
+   "style_pack": "coral-pop",
+   "format_pack": "quiz-reveal",
+   "seed": 1367608204,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-QUIZ-REVEAL",
+   "style_epoch": 11,
+   "scene_count": 4,
+   "video_seconds": 20.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "claude code"
+    ]
+   },
+   "session": "gh-08263e",
+   "platforms": {
+    "instagram": {
+     "id": "18111134501332251",
+     "posted_at": 1790223272
     }
    },
    "metrics": {
