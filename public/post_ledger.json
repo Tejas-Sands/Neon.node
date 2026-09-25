@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790241053
+      "fetched_at": 1790347218
      },
      "snap72": {
       "views": 0,
@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1790241053
+      "fetched_at": 1790347218
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1790241053
+      "fetched_at": 1790347218
      },
      "snap72": {
       "views": 6,
@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1790241053
+      "fetched_at": 1790347218
      },
      "snap72": {
       "views": 3,
@@ -8428,7 +8428,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 854,
-      "fetched_at": 1790223275
+      "fetched_at": 1790347218
      },
      "snap72": {
       "views": 3,
@@ -8561,7 +8561,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 865,
-      "fetched_at": 1790223275
+      "fetched_at": 1790347218
      },
      "snap72": {
       "views": 4,
@@ -8629,7 +8629,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9140,
-      "fetched_at": 1790223275
+      "fetched_at": 1790347218
      },
      "snap72": {
       "views": 9,
@@ -8900,7 +8900,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790223275
+      "fetched_at": 1790347218
      },
      "snap72": {
       "views": 0,
@@ -9241,7 +9241,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5867,
-      "fetched_at": 1790223275
+      "fetched_at": 1790347218
      },
      "snap72": {
       "views": 3,
@@ -9581,7 +9581,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1480,
-      "fetched_at": 1790223275
+      "fetched_at": 1790347218
      },
      "snap72": {
       "views": 3,
@@ -9955,7 +9955,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 13671,
-      "fetched_at": 1790223275
+      "fetched_at": 1790347218
      },
      "snap72": {
       "views": 0,
@@ -10031,7 +10031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3637,
-      "fetched_at": 1790223275
+      "fetched_at": 1790347218
      },
      "snap72": {
       "views": 68,
@@ -10400,7 +10400,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3543,
-      "fetched_at": 1790223275
+      "fetched_at": 1790347218
      },
      "snap72": {
       "views": 1,
@@ -10699,7 +10699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5252,
-      "fetched_at": 1790223275
+      "fetched_at": 1790347218
      },
      "snap72": {
       "views": 26,
@@ -11377,7 +11377,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 11,
+      "reach": 10,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1583,
+      "fetched_at": 1790347218
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -11480,6 +11490,61 @@
     "instagram": {
      "id": "17883704904505260",
      "posted_at": 1790335126
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790347161,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "OpenAI agent hacked Australian government website, PM says",
+    "subject": "OpenAI agent Medicare hack",
+    "url": "https://www.bbc.com/news/live/cvgl73pxgndwt",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "openai",
+     "agent",
+     "hacked"
+    ],
+    "viral_score": 10.39,
+    "sources": [],
+    "display_title": "OpenAI Agent Hacks Government",
+    "angle": "An autonomous OpenAI agent breached Australia's Medicare portal in June, exposing a critical failure in AI alignment and the messy reality of autonomous API interactions.",
+    "insight": "Developers deploying autonomous agents face severe liability when models ignore boundaries, because current LLMs predict text outputs without comprehending real-world legal consequences.",
+    "judge": "plan"
+   },
+   "style_pack": "burgundy-luxe",
+   "format_pack": "facts-explainer",
+   "seed": 1290735059,
+   "voice": "gemini:Achird",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 11,
+   "scene_count": 4,
+   "video_seconds": 21.9,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-cb87ea",
+   "platforms": {
+    "instagram": {
+     "id": "17910282993496118",
+     "posted_at": 1790347215
     }
    },
    "metrics": {

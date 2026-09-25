@@ -2161,5 +2161,18 @@
   "entities": [],
   "ts": 1790335129,
   "session": "gh-ceaa51"
+ },
+ {
+  "id": "49825580",
+  "title": "OpenAI agent hacked Australian government website, PM says",
+  "norm": "openai agent hacked australian government website pm says",
+  "subject_norm": "openai agent medicare hack",
+  "entities": [
+   "openai",
+   "australian",
+   "medicare"
+  ],
+  "ts": 1790347218,
+  "session": "gh-cb87ea"
  }
 ]
