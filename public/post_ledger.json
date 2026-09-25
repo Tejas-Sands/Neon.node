@@ -6550,7 +6550,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2032,
-      "fetched_at": 1790172916
+      "fetched_at": 1790317952
      },
      "snap72": {
       "views": 38,
@@ -6685,7 +6685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1019,
-      "fetched_at": 1790172916
+      "fetched_at": 1790317952
      },
      "snap72": {
       "views": 155,
@@ -6753,7 +6753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7175,
-      "fetched_at": 1790172916
+      "fetched_at": 1790317952
      },
      "snap72": {
       "views": 10,
@@ -6997,7 +6997,7 @@
       "saved": 0,
       "total_interactions": 3,
       "ig_reels_avg_watch_time": 1823,
-      "fetched_at": 1790172916
+      "fetched_at": 1790317952
      },
      "snap72": {
       "views": 144,
@@ -7826,7 +7826,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790172916
+      "fetched_at": 1790317952
      },
      "snap72": {
       "views": 0,
@@ -7892,7 +7892,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1790172916
+      "fetched_at": 1790317952
      },
      "snap72": {
       "views": 1,
@@ -8159,7 +8159,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6066,
-      "fetched_at": 1790160096
+      "fetched_at": 1790317952
      },
      "snap72": {
       "views": 10,
@@ -8225,7 +8225,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 992,
-      "fetched_at": 1790160096
+      "fetched_at": 1790317952
      },
      "snap72": {
       "views": 127,
@@ -8832,7 +8832,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1369,
-      "fetched_at": 1790160096
+      "fetched_at": 1790317952
      },
      "snap72": {
       "views": 57,
@@ -9514,7 +9514,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9315,
-      "fetched_at": 1790160096
+      "fetched_at": 1790317952
      },
      "snap72": {
       "views": 1,
@@ -10251,7 +10251,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6118,
-      "fetched_at": 1790160096
+      "fetched_at": 1790317952
      },
      "snap72": {
       "views": 16,
@@ -10549,7 +10549,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1832,
-      "fetched_at": 1790160096
+      "fetched_at": 1790317952
      },
      "snap72": {
       "views": 16,
@@ -10918,9 +10918,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1747,
-      "fetched_at": 1790160096
+      "fetched_at": 1790317952
      },
-     "snap72": null,
+     "snap72": {
+      "views": 8,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1747,
+      "fetched_at": 1790317952
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -11166,7 +11176,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 2,
+      "reach": 2,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1226,
+      "fetched_at": 1790317952
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -11221,7 +11241,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 16,
+      "reach": 17,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2891,
+      "fetched_at": 1790317952
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -11323,6 +11353,59 @@
     "instagram": {
      "id": "18006693977996159",
      "posted_at": 1790254481
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790317895,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Feds Target AI Critics as \"Foreign Agents\"",
+    "subject": "DOJ AI protest warning",
+    "url": "https://www.kenklippenstein.com/p/feds-think-ai-critics-are-foreign",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "agent"
+    ],
+    "viral_score": 9.71,
+    "sources": [],
+    "display_title": "DOJ Targets AI Critics",
+    "angle": "The Trump administration and DOJ are threatening criminal liability for public protests and criticism against AI infrastructure under the guise of foreign influence.",
+    "insight": "Builders and citizens organizing public opposition to local data center builds now face DOJ threat of prosecution under foreign agent statutes.",
+    "judge": "plan"
+   },
+   "style_pack": "crimson-mono",
+   "format_pack": "legacy-news",
+   "seed": 2000783307,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "BROKEN-ASSUMPTION",
+   "style_epoch": 11,
+   "scene_count": 6,
+   "video_seconds": 44.6,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-2a7837",
+   "platforms": {
+    "instagram": {
+     "id": "18105222962525328",
+     "posted_at": 1790317948
     }
    },
    "metrics": {
