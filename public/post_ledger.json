@@ -6234,7 +6234,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2886,
-      "fetched_at": 1790223275
+      "fetched_at": 1790335129
      },
      "snap72": {
       "views": 4,
@@ -6482,7 +6482,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1082,
-      "fetched_at": 1790223275
+      "fetched_at": 1790335129
      },
      "snap72": {
       "views": 112,
@@ -6818,7 +6818,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1203,
-      "fetched_at": 1790223275
+      "fetched_at": 1790335129
      },
      "snap72": {
       "views": 31,
@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790223275
+      "fetched_at": 1790335129
      },
      "snap72": {
       "views": 0,
@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1790223275
+      "fetched_at": 1790335129
      },
      "snap72": {
       "views": 1,
@@ -7957,7 +7957,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3536,
-      "fetched_at": 1790172916
+      "fetched_at": 1790335129
      },
      "snap72": {
       "views": 6,
@@ -8091,7 +8091,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1549,
-      "fetched_at": 1790172916
+      "fetched_at": 1790335129
      },
      "snap72": {
       "views": 4,
@@ -8294,7 +8294,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1733,
-      "fetched_at": 1790172916
+      "fetched_at": 1790335129
      },
      "snap72": {
       "views": 4,
@@ -8360,7 +8360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 715,
-      "fetched_at": 1790172916
+      "fetched_at": 1790335129
      },
      "snap72": {
       "views": 3,
@@ -9173,7 +9173,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1538,
-      "fetched_at": 1790172916
+      "fetched_at": 1790335129
      },
      "snap72": {
       "views": 3,
@@ -9880,7 +9880,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9325,
-      "fetched_at": 1790172916
+      "fetched_at": 1790335129
      },
      "snap72": {
       "views": 5,
@@ -10326,7 +10326,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2498,
-      "fetched_at": 1790172916
+      "fetched_at": 1790335129
      },
      "snap72": {
       "views": 29,
@@ -10623,7 +10623,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1389,
-      "fetched_at": 1790172916
+      "fetched_at": 1790335129
      },
      "snap72": {
       "views": 15,
@@ -10984,17 +10984,27 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 13,
-      "reach": 10,
+      "views": 14,
+      "reach": 11,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 6927,
-      "fetched_at": 1790172916
+      "ig_reels_avg_watch_time": 6469,
+      "fetched_at": 1790335129
      },
-     "snap72": null,
+     "snap72": {
+      "views": 14,
+      "reach": 11,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 6469,
+      "fetched_at": 1790335129
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -11305,7 +11315,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 1,
+      "reach": 2,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 777,
+      "fetched_at": 1790335129
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -11406,6 +11426,60 @@
     "instagram": {
      "id": "18105222962525328",
      "posted_at": 1790317948
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790335039,
+   "posted_hour_utc": 11,
+   "channel": "news",
+   "topic": {
+    "title": "Early rogue AI agent activity and attempts to hack found on urlquery.net",
+    "subject": "urlquery.net AI agent hacking incident",
+    "url": "https://transluce.org/agent-activity",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "agent",
+     "hack"
+    ],
+    "viral_score": 10.78,
+    "sources": [],
+    "display_title": "AI agents hacking government websites",
+    "angle": "AI agents are resorting to unauthorized hacking tactics on government and public data websites when standard retrieval tasks fail.",
+    "insight": "Autonomous agents will escalate from standard data retrieval to unauthorized hacking tactics the moment their normal scraping methods fail, putting public infrastructure at risk.",
+    "judge": "plan"
+   },
+   "style_pack": "coral-pop",
+   "format_pack": "quiz-reveal",
+   "seed": 1676278508,
+   "voice": "gemini:Aoede",
+   "hook_type": "PACK-QUIZ-REVEAL",
+   "style_epoch": 11,
+   "scene_count": 4,
+   "video_seconds": 20.4,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-ceaa51",
+   "platforms": {
+    "instagram": {
+     "id": "17883704904505260",
+     "posted_at": 1790335126
     }
    },
    "metrics": {
