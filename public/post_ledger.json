@@ -6165,7 +6165,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 718,
-      "fetched_at": 1790254484
+      "fetched_at": 1790402870
      },
      "snap72": {
       "views": 4,
@@ -6416,7 +6416,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4974,
-      "fetched_at": 1790254484
+      "fetched_at": 1790402870
      },
      "snap72": {
       "views": 4,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1790254484
+      "fetched_at": 1790402870
      },
      "snap72": {
       "views": 30,
@@ -7628,7 +7628,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 828,
-      "fetched_at": 1790241053
+      "fetched_at": 1790402870
      },
      "snap72": {
       "views": 2,
@@ -7759,7 +7759,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1790254484
+      "fetched_at": 1790402870
      },
      "snap72": {
       "views": 16,
@@ -8493,7 +8493,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1790241053
+      "fetched_at": 1790402870
      },
      "snap72": {
       "views": 6,
@@ -8694,7 +8694,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1790241053
+      "fetched_at": 1790402870
      },
      "snap72": {
       "views": 48,
@@ -8756,15 +8756,15 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 109,
-      "reach": 109,
+      "views": 110,
+      "reach": 110,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1034,
-      "fetched_at": 1790241053
+      "ig_reels_avg_watch_time": 1070,
+      "fetched_at": 1790402870
      },
      "snap72": {
       "views": 109,
@@ -8969,7 +8969,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790241053
+      "fetched_at": 1790402870
      },
      "snap72": {
       "views": 0,
@@ -9038,7 +9038,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 760,
-      "fetched_at": 1790241053
+      "fetched_at": 1790402870
      },
      "snap72": {
       "views": 2,
@@ -9105,7 +9105,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 294,
-      "fetched_at": 1790241053
+      "fetched_at": 1790402870
      },
      "snap72": {
       "views": 1,
@@ -9311,7 +9311,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3706,
-      "fetched_at": 1790241053
+      "fetched_at": 1790402870
      },
      "snap72": {
       "views": 0,
@@ -9380,7 +9380,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 12899,
-      "fetched_at": 1790241053
+      "fetched_at": 1790402870
      },
      "snap72": {
       "views": 1,
@@ -9655,7 +9655,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 20007,
-      "fetched_at": 1790241053
+      "fetched_at": 1790402870
      },
      "snap72": {
       "views": 0,
@@ -11059,15 +11059,25 @@
      "latest": {
       "views": 4,
       "reach": 4,
-      "likes": 0,
+      "likes": 1,
       "comments": 0,
       "shares": 0,
       "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2365,
-      "fetched_at": 1790241053
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 2272,
+      "fetched_at": 1790402870
      },
-     "snap72": null,
+     "snap72": {
+      "views": 4,
+      "reach": 4,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 2272,
+      "fetched_at": 1790402870
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -11545,6 +11555,61 @@
     "instagram": {
      "id": "17910282993496118",
      "posted_at": 1790347215
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790402806,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Ollaya \u2013 Ollama for open-source, Jev-style decision models",
+    "subject": "Ollaya decision models",
+    "url": "https://ollaya.dev/",
+    "source": "hn",
+    "keywords": [
+     "model",
+     "open-sourc"
+    ],
+    "viral_score": 9.6,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Ollaya local decision models",
+    "angle": "Ollaya brings sub-10ms Jev-style decision models to local hardware via ONNX Runtime, skipping token generation entirely.",
+    "insight": "Developers can now run high-throughput calibrated decision models locally in milliseconds without API metering or per-token bills.",
+    "judge": "plan"
+   },
+   "style_pack": "mint-aqua",
+   "format_pack": "legacy-news",
+   "seed": 950320744,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "SHOCK-STAT",
+   "style_epoch": 12,
+   "scene_count": 6,
+   "video_seconds": 48.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-33f30d",
+   "platforms": {
+    "instagram": {
+     "id": "18127109183496207",
+     "posted_at": 1790402867
     }
    },
    "metrics": {

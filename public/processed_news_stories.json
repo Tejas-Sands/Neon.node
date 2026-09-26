@@ -2174,5 +2174,18 @@
   ],
   "ts": 1790347218,
   "session": "gh-cb87ea"
+ },
+ {
+  "id": "49848269",
+  "title": "Ollaya \u2013 Ollama for open-source, Jev-style decision models",
+  "norm": "ollaya ollama for open source jev style decision models",
+  "subject_norm": "ollaya decision models",
+  "entities": [
+   "ollama",
+   "jev-style",
+   "ollaya"
+  ],
+  "ts": 1790402870,
+  "session": "gh-33f30d"
  }
 ]
