@@ -6550,7 +6550,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2032,
-      "fetched_at": 1790317952
+      "fetched_at": 1790421419
      },
      "snap72": {
       "views": 38,
@@ -6685,7 +6685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1019,
-      "fetched_at": 1790317952
+      "fetched_at": 1790421419
      },
      "snap72": {
       "views": 155,
@@ -6753,7 +6753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7175,
-      "fetched_at": 1790317952
+      "fetched_at": 1790421419
      },
      "snap72": {
       "views": 10,
@@ -6997,7 +6997,7 @@
       "saved": 0,
       "total_interactions": 3,
       "ig_reels_avg_watch_time": 1823,
-      "fetched_at": 1790317952
+      "fetched_at": 1790421419
      },
      "snap72": {
       "views": 144,
@@ -8024,7 +8024,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1385,
-      "fetched_at": 1790254484
+      "fetched_at": 1790421419
      },
      "snap72": {
       "views": 13,
@@ -9447,7 +9447,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5589,
-      "fetched_at": 1790254484
+      "fetched_at": 1790421419
      },
      "snap72": {
       "views": 6,
@@ -9729,7 +9729,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 10178,
-      "fetched_at": 1790254484
+      "fetched_at": 1790421419
      },
      "snap72": {
       "views": 1,
@@ -9805,7 +9805,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5304,
-      "fetched_at": 1790254484
+      "fetched_at": 1790421419
      },
      "snap72": {
       "views": 20,
@@ -10105,7 +10105,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7090,
-      "fetched_at": 1790254484
+      "fetched_at": 1790421419
      },
      "snap72": {
       "views": 7,
@@ -10177,7 +10177,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5527,
-      "fetched_at": 1790254484
+      "fetched_at": 1790421419
      },
      "snap72": {
       "views": 17,
@@ -10475,7 +10475,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1773,
-      "fetched_at": 1790254484
+      "fetched_at": 1790421419
      },
      "snap72": {
       "views": 10,
@@ -10772,7 +10772,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5416,
-      "fetched_at": 1790254484
+      "fetched_at": 1790421419
      },
      "snap72": {
       "views": 10,
@@ -10844,7 +10844,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5706,
-      "fetched_at": 1790254484
+      "fetched_at": 1790421419
      },
      "snap72": {
       "views": 5,
@@ -11133,17 +11133,27 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 0,
-      "reach": 0,
-      "likes": 0,
+      "views": 2,
+      "reach": 1,
+      "likes": 1,
       "comments": 0,
       "shares": 0,
       "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1623,
-      "fetched_at": 1790254484
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 2918,
+      "fetched_at": 1790421419
      },
-     "snap72": null,
+     "snap72": {
+      "views": 2,
+      "reach": 1,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 2918,
+      "fetched_at": 1790421419
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -11450,7 +11460,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 3,
+      "reach": 4,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 7911,
+      "fetched_at": 1790421419
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -11610,6 +11630,60 @@
     "instagram": {
      "id": "18127109183496207",
      "posted_at": 1790402867
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790421315,
+   "posted_hour_utc": 11,
+   "channel": "news",
+   "topic": {
+    "title": "Plan mode is dead",
+    "subject": "Nuanced coding app",
+    "url": "https://www.aymannadeem.com/artificial/intelligence,/developer/tools/2026/09/24/plan-mode-is-dead.html",
+    "source": "hn",
+    "keywords": [
+     "is dead"
+    ],
+    "viral_score": 9.02,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Nuanced App Plan Mode Failed",
+    "angle": "The creator of the AI coding app Nuanced explains why dedicated plan modes are becoming obsolete as autonomous multi-agent systems scale.",
+    "insight": "As parallel coding agents scale, traditional plan modes fail to help humans maintain a mental model of rapidly changing software systems, forcing a shift toward new abstraction layers.",
+    "judge": "plan"
+   },
+   "style_pack": "rosewood-vintage",
+   "format_pack": "facts-explainer",
+   "seed": 1825433306,
+   "voice": "gemini:Sadachbia",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 12,
+   "scene_count": 5,
+   "video_seconds": 28.6,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-fa4c3d",
+   "platforms": {
+    "instagram": {
+     "id": "17914428207458052",
+     "posted_at": 1790421416
     }
    },
    "metrics": {

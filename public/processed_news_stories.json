@@ -2187,5 +2187,16 @@
   ],
   "ts": 1790402870,
   "session": "gh-33f30d"
+ },
+ {
+  "id": "49840054",
+  "title": "Plan mode is dead",
+  "norm": "plan mode is dead",
+  "subject_norm": "nuanced coding app",
+  "entities": [
+   "nuanced"
+  ],
+  "ts": 1790421419,
+  "session": "gh-fa4c3d"
  }
 ]

@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-35772615",
-   "ts": 1788502271,
-   "session": "gh-df9128",
-   "query": "chip manufacturing closeup macro motion",
-   "scene": 1
-  },
-  {
-   "id": "pexels-8721653",
-   "ts": 1788502271,
-   "session": "gh-df9128",
-   "query": "terminal typing commands fast code",
-   "scene": 2
-  },
-  {
-   "id": "pexels-38902001",
-   "ts": 1788502271,
-   "session": "gh-df9128",
-   "query": "code editor screen scrolling lines",
-   "scene": 3
-  },
-  {
-   "id": "pexels-33314914",
-   "ts": 1788502271,
-   "session": "gh-df9128",
-   "query": "code editor screen scrolling lines",
-   "scene": 3
-  },
-  {
-   "id": "pexels-17555904",
-   "ts": 1788502271,
-   "session": "gh-df9128",
-   "query": "neural network visualization motion nodes",
-   "scene": 4
-  },
-  {
    "id": "pexels-34336742",
    "ts": 1788502271,
    "session": "gh-df9128",
@@ -2800,6 +2765,41 @@
    "session": "gh-33f30d",
    "query": "developer typing terminal command",
    "scene": 5
+  },
+  {
+   "id": "pexels-38868670",
+   "ts": 1790421315,
+   "session": "gh-fa4c3d",
+   "query": "terminal code scrolling fast",
+   "scene": 0
+  },
+  {
+   "id": "pexels-39625195",
+   "ts": 1790421315,
+   "session": "gh-fa4c3d",
+   "query": "server room flashing lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5495899",
+   "ts": 1790421315,
+   "session": "gh-fa4c3d",
+   "query": "code editor multiple windows",
+   "scene": 2
+  },
+  {
+   "id": "pexels-15283162",
+   "ts": 1790421315,
+   "session": "gh-fa4c3d",
+   "query": "microchip processor close up",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35163081",
+   "ts": 1790421315,
+   "session": "gh-fa4c3d",
+   "query": "neural network data flow motion",
+   "scene": 4
   }
  ]
 }
