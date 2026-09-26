@@ -6482,7 +6482,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1082,
-      "fetched_at": 1790335129
+      "fetched_at": 1790431490
      },
      "snap72": {
       "views": 112,
@@ -6818,7 +6818,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1203,
-      "fetched_at": 1790335129
+      "fetched_at": 1790431490
      },
      "snap72": {
       "views": 31,
@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790335129
+      "fetched_at": 1790431490
      },
      "snap72": {
       "views": 0,
@@ -7826,7 +7826,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790317952
+      "fetched_at": 1790431490
      },
      "snap72": {
       "views": 0,
@@ -7892,7 +7892,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1790317952
+      "fetched_at": 1790431490
      },
      "snap72": {
       "views": 1,
@@ -8159,7 +8159,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6066,
-      "fetched_at": 1790317952
+      "fetched_at": 1790431490
      },
      "snap72": {
       "views": 10,
@@ -8225,7 +8225,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 992,
-      "fetched_at": 1790317952
+      "fetched_at": 1790431490
      },
      "snap72": {
       "views": 127,
@@ -8832,7 +8832,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1369,
-      "fetched_at": 1790317952
+      "fetched_at": 1790431490
      },
      "snap72": {
       "views": 57,
@@ -9514,7 +9514,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9315,
-      "fetched_at": 1790317952
+      "fetched_at": 1790431490
      },
      "snap72": {
       "views": 1,
@@ -10251,7 +10251,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6118,
-      "fetched_at": 1790317952
+      "fetched_at": 1790431490
      },
      "snap72": {
       "views": 16,
@@ -10549,7 +10549,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1832,
-      "fetched_at": 1790317952
+      "fetched_at": 1790431490
      },
      "snap72": {
       "views": 16,
@@ -10918,7 +10918,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1747,
-      "fetched_at": 1790317952
+      "fetched_at": 1790431490
      },
      "snap72": {
       "views": 8,
@@ -11209,15 +11209,25 @@
      "latest": {
       "views": 2,
       "reach": 2,
-      "likes": 0,
+      "likes": 1,
       "comments": 0,
       "shares": 0,
       "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1226,
-      "fetched_at": 1790317952
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1184,
+      "fetched_at": 1790431490
      },
-     "snap72": null,
+     "snap72": {
+      "views": 2,
+      "reach": 2,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1184,
+      "fetched_at": 1790431490
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -11279,10 +11289,20 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2891,
-      "fetched_at": 1790317952
+      "ig_reels_avg_watch_time": 2772,
+      "fetched_at": 1790431490
      },
-     "snap72": null,
+     "snap72": {
+      "views": 16,
+      "reach": 17,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2772,
+      "fetched_at": 1790431490
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -11524,7 +11544,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 8,
+      "reach": 8,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 3184,
+      "fetched_at": 1790431490
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -11684,6 +11714,59 @@
     "instagram": {
      "id": "17914428207458052",
      "posted_at": 1790421416
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790431424,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "Breaking Up with Google Play: Why Conversations Is Now Free",
+    "subject": "Conversations XMPP client",
+    "url": "https://gultsch.de/posts/breaking-up-with-google-play/",
+    "source": "hn",
+    "keywords": [
+     "why",
+     "google"
+    ],
+    "viral_score": 8.95,
+    "sources": [],
+    "display_title": "Conversations App Drops Google",
+    "angle": "After twelve years of app store friction and arbitrary delays, the creator of the Android messaging client Conversations has made the app free to bypass Google Play entirely.",
+    "insight": "Indie developers relying on app stores for basic income face catastrophic operational friction from automated moderation, forcing radical shifts to direct distribution models.",
+    "judge": "plan"
+   },
+   "style_pack": "aurora-teal",
+   "format_pack": "legacy-news",
+   "seed": 1128739654,
+   "voice": "gemini:Zephyr",
+   "hook_type": "STAKES-REVEAL",
+   "style_epoch": 12,
+   "scene_count": 6,
+   "video_seconds": 54.4,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-19e575",
+   "platforms": {
+    "instagram": {
+     "id": "18100015901056963",
+     "posted_at": 1790431487
     }
    },
    "metrics": {
