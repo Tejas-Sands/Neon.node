@@ -6416,7 +6416,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4974,
-      "fetched_at": 1790402870
+      "fetched_at": 1790504309
      },
      "snap72": {
       "views": 4,
@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1790347218
+      "fetched_at": 1790504309
      },
      "snap72": {
       "views": 3,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1790402870
+      "fetched_at": 1790504309
      },
      "snap72": {
       "views": 30,
@@ -8428,7 +8428,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 854,
-      "fetched_at": 1790347218
+      "fetched_at": 1790504309
      },
      "snap72": {
       "views": 3,
@@ -8561,7 +8561,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 865,
-      "fetched_at": 1790347218
+      "fetched_at": 1790504309
      },
      "snap72": {
       "views": 4,
@@ -8629,7 +8629,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9140,
-      "fetched_at": 1790347218
+      "fetched_at": 1790504309
      },
      "snap72": {
       "views": 9,
@@ -8900,7 +8900,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790347218
+      "fetched_at": 1790504309
      },
      "snap72": {
       "views": 0,
@@ -9241,7 +9241,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5867,
-      "fetched_at": 1790347218
+      "fetched_at": 1790504309
      },
      "snap72": {
       "views": 3,
@@ -9581,7 +9581,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1480,
-      "fetched_at": 1790347218
+      "fetched_at": 1790504309
      },
      "snap72": {
       "views": 3,
@@ -9955,7 +9955,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 13671,
-      "fetched_at": 1790347218
+      "fetched_at": 1790504309
      },
      "snap72": {
       "views": 0,
@@ -10031,7 +10031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3637,
-      "fetched_at": 1790347218
+      "fetched_at": 1790504309
      },
      "snap72": {
       "views": 68,
@@ -10400,7 +10400,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3543,
-      "fetched_at": 1790347218
+      "fetched_at": 1790504309
      },
      "snap72": {
       "views": 1,
@@ -10699,7 +10699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5252,
-      "fetched_at": 1790347218
+      "fetched_at": 1790504309
      },
      "snap72": {
       "views": 26,
@@ -11435,10 +11435,20 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1583,
-      "fetched_at": 1790347218
+      "ig_reels_avg_watch_time": 1530,
+      "fetched_at": 1790504309
      },
-     "snap72": null,
+     "snap72": {
+      "views": 11,
+      "reach": 10,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1530,
+      "fetched_at": 1790504309
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -11684,7 +11694,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1790504309
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -11841,6 +11861,58 @@
     "instagram": {
      "id": "17958271260218613",
      "posted_at": 1790483284
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790504204,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "Valve Introduces Pyrowave Video Codec In Beta For Low Latency Streaming",
+    "subject": "Valve Pyrowave Video Codec",
+    "url": "https://www.phoronix.com/news/Valve-Steam-Beta-Pyrowave",
+    "source": "lobsters",
+    "keywords": [],
+    "viral_score": 4.76,
+    "sources": [],
+    "display_title": "Valve Pyrowave Video Codec Beta",
+    "angle": "Valve is testing the Pyrowave video codec in beta to achieve ultra-low latency streaming for developers.",
+    "insight": "Developers building real-time interactive video systems can now leverage low-latency streaming codecs directly from Valve's new beta.",
+    "judge": "plan"
+   },
+   "style_pack": "mono-brutalist",
+   "format_pack": "legacy-news",
+   "seed": 463501697,
+   "voice": "gemini:Achird",
+   "hook_type": "STAKES-REVEAL",
+   "style_epoch": 12,
+   "scene_count": 6,
+   "video_seconds": 45.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "know-the-trade-off",
+    "signals": [
+     "latency"
+    ]
+   },
+   "session": "gh-0566d3",
+   "platforms": {
+    "instagram": {
+     "id": "18115705816993790",
+     "posted_at": 1790504306
     }
    },
    "metrics": {

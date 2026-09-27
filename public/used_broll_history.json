@@ -2,62 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-8802320",
-   "ts": 1788599686,
-   "session": "gh-d226bc",
-   "query": "shopping app search interface scrolling",
-   "scene": 0
-  },
-  {
-   "id": "pexels-6549980",
-   "ts": 1788599686,
-   "session": "gh-d226bc",
-   "query": "data center server racks blinking",
-   "scene": 1
-  },
-  {
-   "id": "pexels-4543502",
-   "ts": 1788599686,
-   "session": "gh-d226bc",
-   "query": "data center server racks blinking",
-   "scene": 1
-  },
-  {
-   "id": "pexels-38431825",
-   "ts": 1788599686,
-   "session": "gh-d226bc",
-   "query": "ecommerce price chart rising animation",
-   "scene": 2
-  },
-  {
-   "id": "pexels-38993368",
-   "ts": 1788599686,
-   "session": "gh-d226bc",
-   "query": "ecommerce price chart rising animation",
-   "scene": 2
-  },
-  {
-   "id": "pexels-7579575",
-   "ts": 1788599686,
-   "session": "gh-d226bc",
-   "query": "stock market chart green red lines",
-   "scene": 3
-  },
-  {
-   "id": "pexels-12898223",
-   "ts": 1788599686,
-   "session": "gh-d226bc",
-   "query": "terminal code scrolling matrix green",
-   "scene": 4
-  },
-  {
-   "id": "pexels-34459460",
-   "ts": 1788599686,
-   "session": "gh-d226bc",
-   "query": "terminal code scrolling matrix green",
-   "scene": 4
-  },
-  {
    "id": "pexels-6611945",
    "ts": 1788599686,
    "session": "gh-d226bc",
@@ -2799,6 +2743,62 @@
    "ts": 1790483213,
    "session": "gh-1b1c23",
    "query": "developer laptop code editing",
+   "scene": 5
+  },
+  {
+   "id": "pexels-34578211",
+   "ts": 1790504204,
+   "session": "gh-0566d3",
+   "query": "terminal typing code green matrix",
+   "scene": 0
+  },
+  {
+   "id": "pexels-38870359",
+   "ts": 1790504204,
+   "session": "gh-0566d3",
+   "query": "network packets data flow dashboard",
+   "scene": 1
+  },
+  {
+   "id": "pexels-39458721",
+   "ts": 1790504204,
+   "session": "gh-0566d3",
+   "query": "network packets data flow dashboard",
+   "scene": 1
+  },
+  {
+   "id": "pexels-12913395",
+   "ts": 1790504204,
+   "session": "gh-0566d3",
+   "query": "code editor screen scrolling",
+   "scene": 2
+  },
+  {
+   "id": "pexels-9017889",
+   "ts": 1790504204,
+   "session": "gh-0566d3",
+   "query": "server rack blinking lights motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35424378",
+   "ts": 1790504204,
+   "session": "gh-0566d3",
+   "query": "server rack blinking lights motion",
+   "scene": 3
+  },
+  {
+   "id": "pexels-39425816",
+   "ts": 1790504204,
+   "session": "gh-0566d3",
+   "query": "developer hands typing keyboard closeup",
+   "scene": 4
+  },
+  {
+   "id": "pexels-16561458",
+   "ts": 1790504204,
+   "session": "gh-0566d3",
+   "query": "data center servers gpu motion",
    "scene": 5
   }
  ]
