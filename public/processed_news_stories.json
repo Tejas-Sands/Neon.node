@@ -2231,5 +2231,16 @@
   "entities": [],
   "ts": 1790504309,
   "session": "gh-0566d3"
+ },
+ {
+  "id": "49863864",
+  "title": "OpenAI Feared \"Optics\" of what might appear on Hacker News",
+  "norm": "openai feared optics of what might appear on hacker news",
+  "subject_norm": "authors guild v openai",
+  "entities": [
+   "openai"
+  ],
+  "ts": 1790523224,
+  "session": "gh-063744"
  }
 ]
