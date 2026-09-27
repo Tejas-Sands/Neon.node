@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1790335129
+      "fetched_at": 1790483287
      },
      "snap72": {
       "views": 1,
@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790347218
+      "fetched_at": 1790483287
      },
      "snap72": {
       "views": 0,
@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1790347218
+      "fetched_at": 1790483287
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1790347218
+      "fetched_at": 1790483287
      },
      "snap72": {
       "views": 6,
@@ -7957,7 +7957,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3536,
-      "fetched_at": 1790335129
+      "fetched_at": 1790483287
      },
      "snap72": {
       "views": 6,
@@ -8091,7 +8091,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1549,
-      "fetched_at": 1790335129
+      "fetched_at": 1790483287
      },
      "snap72": {
       "views": 4,
@@ -8294,7 +8294,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1733,
-      "fetched_at": 1790335129
+      "fetched_at": 1790483287
      },
      "snap72": {
       "views": 4,
@@ -8360,7 +8360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 715,
-      "fetched_at": 1790335129
+      "fetched_at": 1790483287
      },
      "snap72": {
       "views": 3,
@@ -9173,7 +9173,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1538,
-      "fetched_at": 1790335129
+      "fetched_at": 1790483287
      },
      "snap72": {
       "views": 3,
@@ -9880,7 +9880,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9325,
-      "fetched_at": 1790335129
+      "fetched_at": 1790483287
      },
      "snap72": {
       "views": 5,
@@ -10326,7 +10326,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2498,
-      "fetched_at": 1790335129
+      "fetched_at": 1790483287
      },
      "snap72": {
       "views": 29,
@@ -10623,7 +10623,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1389,
-      "fetched_at": 1790335129
+      "fetched_at": 1790483287
      },
      "snap72": {
       "views": 15,
@@ -10986,13 +10986,13 @@
      "latest": {
       "views": 14,
       "reach": 11,
-      "likes": 0,
+      "likes": 1,
       "comments": 0,
       "shares": 0,
       "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 6469,
-      "fetched_at": 1790335129
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 6193,
+      "fetched_at": 1790483287
      },
      "snap72": {
       "views": 14,
@@ -11358,15 +11358,25 @@
      "latest": {
       "views": 1,
       "reach": 2,
-      "likes": 0,
+      "likes": 1,
       "comments": 0,
       "shares": 0,
       "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 777,
-      "fetched_at": 1790335129
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 645,
+      "fetched_at": 1790483287
      },
-     "snap72": null,
+     "snap72": {
+      "views": 1,
+      "reach": 2,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 645,
+      "fetched_at": 1790483287
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -11609,7 +11619,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 122,
+      "reach": 100,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2332,
+      "fetched_at": 1790483287
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -11767,6 +11787,60 @@
     "instagram": {
      "id": "18100015901056963",
      "posted_at": 1790431487
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790483213,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "Drawgent: Coding agent on a live Excalidraw canvas",
+    "subject": "Drawgent coding agent on Excalidraw",
+    "url": "https://tangled.org/yanndegat.tngl.sh/drawgent",
+    "source": "hn",
+    "keywords": [
+     "agent"
+    ],
+    "viral_score": 7.13,
+    "sources": [],
+    "display_title": "Drawgent Control AI With Drawings",
+    "angle": "Drawgent bridges local coding agents like Claude Code directly to an Excalidraw whiteboard so you can edit code visually.",
+    "insight": "Developers can now direct local coding agents using live Excalidraw laser gestures and whiteboard notes instead of terminal prompts.",
+    "judge": "plan"
+   },
+   "style_pack": "ocean-breeze",
+   "format_pack": "legacy-news",
+   "seed": 1794857505,
+   "voice": "gemini:Achird",
+   "hook_type": "STAKES-REVEAL",
+   "style_epoch": 12,
+   "scene_count": 6,
+   "video_seconds": 47.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "coding agent"
+    ]
+   },
+   "session": "gh-1b1c23",
+   "platforms": {
+    "instagram": {
+     "id": "17958271260218613",
+     "posted_at": 1790483284
     }
    },
    "metrics": {
