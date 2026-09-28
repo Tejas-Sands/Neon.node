@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790483287
+      "fetched_at": 1790600953
      },
      "snap72": {
       "views": 0,
@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1790483287
+      "fetched_at": 1790600953
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1790483287
+      "fetched_at": 1790600953
      },
      "snap72": {
       "views": 6,
@@ -7957,7 +7957,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3536,
-      "fetched_at": 1790483287
+      "fetched_at": 1790600953
      },
      "snap72": {
       "views": 6,
@@ -8091,7 +8091,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1549,
-      "fetched_at": 1790483287
+      "fetched_at": 1790600953
      },
      "snap72": {
       "views": 4,
@@ -8294,7 +8294,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1733,
-      "fetched_at": 1790483287
+      "fetched_at": 1790600953
      },
      "snap72": {
       "views": 4,
@@ -8360,7 +8360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 715,
-      "fetched_at": 1790483287
+      "fetched_at": 1790600953
      },
      "snap72": {
       "views": 3,
@@ -9173,7 +9173,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1538,
-      "fetched_at": 1790483287
+      "fetched_at": 1790600953
      },
      "snap72": {
       "views": 3,
@@ -9880,7 +9880,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9325,
-      "fetched_at": 1790483287
+      "fetched_at": 1790600953
      },
      "snap72": {
       "views": 5,
@@ -10326,7 +10326,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2498,
-      "fetched_at": 1790483287
+      "fetched_at": 1790600953
      },
      "snap72": {
       "views": 29,
@@ -10623,7 +10623,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1389,
-      "fetched_at": 1790483287
+      "fetched_at": 1790600953
      },
      "snap72": {
       "views": 15,
@@ -10992,7 +10992,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6193,
-      "fetched_at": 1790483287
+      "fetched_at": 1790600953
      },
      "snap72": {
       "views": 14,
@@ -11364,7 +11364,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 645,
-      "fetched_at": 1790483287
+      "fetched_at": 1790600953
      },
      "snap72": {
       "views": 1,
@@ -11658,9 +11658,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2332,
-      "fetched_at": 1790483287
+      "fetched_at": 1790600953
      },
-     "snap72": null,
+     "snap72": {
+      "views": 122,
+      "reach": 100,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2332,
+      "fetched_at": 1790600953
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -11967,7 +11977,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 10,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 836,
+      "fetched_at": 1790600953
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12071,6 +12091,61 @@
     "instagram": {
      "id": "18033819164895847",
      "posted_at": 1790586614
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790600875,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "AI companies in race to demonstrate their model most threatening to humanity",
+    "subject": "AI safety race",
+    "url": "https://thecivilian.co.nz/2026/09/27/ai-companies-in-fierce-arms-race-to-demonstrate-their-model-is-the-most-existentially-threatening-to-humanity/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "model"
+    ],
+    "viral_score": 9.52,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "AI safety arms race",
+    "angle": "Major AI labs are shifting their marketing strategy from performance benchmarks to existential risk demonstrations to secure regulatory dominance.",
+    "insight": "Builders should expect future model releases to be gated by 'safety' demonstrations that prioritize regulatory compliance over raw developer utility.",
+    "judge": "plan"
+   },
+   "style_pack": "mint-aqua",
+   "format_pack": "legacy-news",
+   "seed": 1661864021,
+   "voice": "gemini:Puck",
+   "hook_type": "BROKEN-ASSUMPTION",
+   "style_epoch": 12,
+   "scene_count": 6,
+   "video_seconds": 47.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-c0327c",
+   "platforms": {
+    "instagram": {
+     "id": "18097350287435915",
+     "posted_at": 1790600949
     }
    },
    "metrics": {
