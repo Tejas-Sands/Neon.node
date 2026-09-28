@@ -2242,5 +2242,16 @@
   ],
   "ts": 1790523224,
   "session": "gh-063744"
+ },
+ {
+  "id": "49872723",
+  "title": "Owed a billion dollars in Nvidia stock",
+  "norm": "owed a billion dollars in nvidia stock",
+  "subject_norm": "nvidia stock option dispute",
+  "entities": [
+   "nvidia"
+  ],
+  "ts": 1790569591,
+  "session": "gh-f8298d"
  }
 ]
