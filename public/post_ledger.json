@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790431490
+      "fetched_at": 1790586617
      },
      "snap72": {
       "views": 0,
@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1790483287
+      "fetched_at": 1790586617
      },
      "snap72": {
       "views": 1,
@@ -7826,7 +7826,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790431490
+      "fetched_at": 1790586617
      },
      "snap72": {
       "views": 0,
@@ -7892,7 +7892,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1790431490
+      "fetched_at": 1790586617
      },
      "snap72": {
       "views": 1,
@@ -8159,7 +8159,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6066,
-      "fetched_at": 1790431490
+      "fetched_at": 1790586617
      },
      "snap72": {
       "views": 10,
@@ -8225,7 +8225,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 992,
-      "fetched_at": 1790431490
+      "fetched_at": 1790586617
      },
      "snap72": {
       "views": 127,
@@ -8832,7 +8832,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1369,
-      "fetched_at": 1790431490
+      "fetched_at": 1790586617
      },
      "snap72": {
       "views": 57,
@@ -9514,7 +9514,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9315,
-      "fetched_at": 1790431490
+      "fetched_at": 1790586617
      },
      "snap72": {
       "views": 1,
@@ -10251,7 +10251,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6118,
-      "fetched_at": 1790431490
+      "fetched_at": 1790586617
      },
      "snap72": {
       "views": 16,
@@ -10549,7 +10549,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1832,
-      "fetched_at": 1790431490
+      "fetched_at": 1790586617
      },
      "snap72": {
       "views": 16,
@@ -10918,7 +10918,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1747,
-      "fetched_at": 1790431490
+      "fetched_at": 1790586617
      },
      "snap72": {
       "views": 8,
@@ -11215,7 +11215,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1184,
-      "fetched_at": 1790431490
+      "fetched_at": 1790586617
      },
      "snap72": {
       "views": 2,
@@ -11290,7 +11290,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2772,
-      "fetched_at": 1790431490
+      "fetched_at": 1790586617
      },
      "snap72": {
       "views": 16,
@@ -11583,9 +11583,19 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3184,
-      "fetched_at": 1790431490
+      "fetched_at": 1790586617
      },
-     "snap72": null,
+     "snap72": {
+      "views": 8,
+      "reach": 8,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 3184,
+      "fetched_at": 1790586617
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -11895,7 +11905,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 56,
+      "reach": 49,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2328,
+      "fetched_at": 1790586617
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -11998,6 +12018,59 @@
     "instagram": {
      "id": "18115558178050281",
      "posted_at": 1790569588
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790586507,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "There are no \"rogue\" AI agents",
+    "subject": "AI agents",
+    "url": "https://eoinhiggins.substack.com/p/there-are-no-rogue-ai-agents",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "agent"
+    ],
+    "viral_score": 9.92,
+    "sources": [],
+    "display_title": "AI agents are never rogue",
+    "angle": "The headline reveals that there are no truly rogue AI agents, meaning every unexpected failure stems from developer logic or prompt design rather than emergent machine rebellion.",
+    "insight": "Builders must debug system prompts and API routing instead of blaming autonomous drift when outputs fail.",
+    "judge": "plan"
+   },
+   "style_pack": "ocean-breeze",
+   "format_pack": "facts-explainer",
+   "seed": 976283632,
+   "voice": "gemini:Achird",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 12,
+   "scene_count": 5,
+   "video_seconds": 28.6,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-0fa255",
+   "platforms": {
+    "instagram": {
+     "id": "18033819164895847",
+     "posted_at": 1790586614
     }
    },
    "metrics": {

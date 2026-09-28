@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-6140558",
-   "ts": 1788691496,
-   "session": "gh-a5bdc6",
-   "query": "mobile app ui screen swiping",
-   "scene": 4
-  },
-  {
-   "id": "pexels-9559150",
-   "ts": 1788691496,
-   "session": "gh-a5bdc6",
-   "query": "mobile app ui screen swiping",
-   "scene": 4
-  },
-  {
-   "id": "pexels-38697705",
-   "ts": 1788706700,
-   "session": "gh-c575bf",
-   "query": "server data center green laser lines",
-   "scene": 0
-  },
-  {
-   "id": "pexels-6755168",
-   "ts": 1788706700,
-   "session": "gh-c575bf",
-   "query": "server data center green laser lines",
-   "scene": 0
-  },
-  {
-   "id": "pexels-5752041",
-   "ts": 1788706700,
-   "session": "gh-c575bf",
-   "query": "microscope slide lab equipment close",
-   "scene": 1
-  },
-  {
    "id": "pexels-8533274",
    "ts": 1788706700,
    "session": "gh-c575bf",
@@ -2800,6 +2765,41 @@
    "session": "gh-f8298d",
    "query": "developer working late office",
    "scene": 6
+  },
+  {
+   "id": "pexels-5377683",
+   "ts": 1790586507,
+   "session": "gh-0fa255",
+   "query": "terminal typing code green",
+   "scene": 0
+  },
+  {
+   "id": "pexels-38870320",
+   "ts": 1790586507,
+   "session": "gh-0fa255",
+   "query": "data center servers gpu",
+   "scene": 1
+  },
+  {
+   "id": "pexels-38901962",
+   "ts": 1790586507,
+   "session": "gh-0fa255",
+   "query": "code editor screen scrolling",
+   "scene": 2
+  },
+  {
+   "id": "pexels-6930234",
+   "ts": 1790586507,
+   "session": "gh-0fa255",
+   "query": "network traffic dashboard monitor",
+   "scene": 3
+  },
+  {
+   "id": "pexels-37680395",
+   "ts": 1790586507,
+   "session": "gh-0fa255",
+   "query": "developer terminal scrolling logs",
+   "scene": 4
   }
  ]
 }
