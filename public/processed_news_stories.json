@@ -2289,5 +2289,14 @@
   "entities": [],
   "ts": 1790676759,
   "session": "gh-40762c"
+ },
+ {
+  "id": "49890226",
+  "title": "AI companies leak data to advertisers [pdf]",
+  "norm": "ai companies leak data to advertisers pdf",
+  "subject_norm": "ai companies leak data",
+  "entities": [],
+  "ts": 1790688370,
+  "session": "gh-772fb3"
  }
 ]
