@@ -7628,7 +7628,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 828,
-      "fetched_at": 1790523224
+      "fetched_at": 1790676759
      },
      "snap72": {
       "views": 2,
@@ -7759,7 +7759,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1790523224
+      "fetched_at": 1790676759
      },
      "snap72": {
       "views": 16,
@@ -8493,7 +8493,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1790523224
+      "fetched_at": 1790676759
      },
      "snap72": {
       "views": 6,
@@ -8694,7 +8694,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1790523224
+      "fetched_at": 1790676759
      },
      "snap72": {
       "views": 48,
@@ -8764,7 +8764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1070,
-      "fetched_at": 1790523224
+      "fetched_at": 1790676759
      },
      "snap72": {
       "views": 109,
@@ -8969,7 +8969,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790523224
+      "fetched_at": 1790676759
      },
      "snap72": {
       "views": 0,
@@ -9038,7 +9038,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 760,
-      "fetched_at": 1790523224
+      "fetched_at": 1790676759
      },
      "snap72": {
       "views": 2,
@@ -9105,7 +9105,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 294,
-      "fetched_at": 1790523224
+      "fetched_at": 1790676759
      },
      "snap72": {
       "views": 1,
@@ -9311,7 +9311,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3706,
-      "fetched_at": 1790523224
+      "fetched_at": 1790676759
      },
      "snap72": {
       "views": 0,
@@ -9380,7 +9380,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 12899,
-      "fetched_at": 1790523224
+      "fetched_at": 1790676759
      },
      "snap72": {
       "views": 1,
@@ -9655,7 +9655,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 20007,
-      "fetched_at": 1790523224
+      "fetched_at": 1790676759
      },
      "snap72": {
       "views": 0,
@@ -11065,7 +11065,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2272,
-      "fetched_at": 1790523224
+      "fetched_at": 1790676759
      },
      "snap72": {
       "views": 4,
@@ -11807,9 +11807,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1045,
-      "fetched_at": 1790523224
+      "fetched_at": 1790676759
      },
-     "snap72": null,
+     "snap72": {
+      "views": 8,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1045,
+      "fetched_at": 1790676759
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -11869,10 +11879,20 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790523224
+      "ig_reels_avg_watch_time": 18084,
+      "fetched_at": 1790676759
      },
-     "snap72": null,
+     "snap72": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 18084,
+      "fetched_at": 1790676759
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12115,7 +12135,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 24,
+      "reach": 22,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 2263,
+      "fetched_at": 1790676759
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12218,6 +12248,60 @@
     "instagram": {
      "id": "18137287507550518",
      "posted_at": 1790660845
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790676686,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "Source: Inference provider Modal Labs closing in on $750M round at $15.75B valuation",
+    "subject": "Modal Labs $15.75B Valuation",
+    "url": "https://techcrunch.com/2026/09/28/source-inference-provider-modal-labs-closing-in-on-750m-round-at-15-75b-valuation/",
+    "source": "rss:techcrunch",
+    "keywords": [
+     "$"
+    ],
+    "viral_score": 4.57,
+    "sources": [],
+    "display_title": "Modal Labs Hits $15B",
+    "angle": "Modal Labs is nearing a $750 million funding round at a $15.75 billion valuation as demand for AI inference infrastructure soars.",
+    "insight": "AI inference providers are commanding massive valuations despite thin margins caused by high compute leasing costs.",
+    "judge": "plan"
+   },
+   "style_pack": "cyber-neon",
+   "format_pack": "facts-explainer",
+   "seed": 1475933659,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 12,
+   "scene_count": 5,
+   "video_seconds": 37.1,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "know-the-trade-off",
+    "signals": [
+     "inference"
+    ]
+   },
+   "session": "gh-40762c",
+   "platforms": {
+    "instagram": {
+     "id": "18130238957504291",
+     "posted_at": 1790676753
     }
    },
    "metrics": {
