@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1790504309
+      "fetched_at": 1790660848
      },
      "snap72": {
       "views": 3,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1790504309
+      "fetched_at": 1790660848
      },
      "snap72": {
       "views": 30,
@@ -8428,7 +8428,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 854,
-      "fetched_at": 1790504309
+      "fetched_at": 1790660848
      },
      "snap72": {
       "views": 3,
@@ -8561,7 +8561,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 865,
-      "fetched_at": 1790504309
+      "fetched_at": 1790660848
      },
      "snap72": {
       "views": 4,
@@ -8629,7 +8629,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9140,
-      "fetched_at": 1790504309
+      "fetched_at": 1790660848
      },
      "snap72": {
       "views": 9,
@@ -8900,7 +8900,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790504309
+      "fetched_at": 1790660848
      },
      "snap72": {
       "views": 0,
@@ -9241,7 +9241,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5867,
-      "fetched_at": 1790504309
+      "fetched_at": 1790660848
      },
      "snap72": {
       "views": 3,
@@ -9581,7 +9581,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1480,
-      "fetched_at": 1790504309
+      "fetched_at": 1790660848
      },
      "snap72": {
       "views": 3,
@@ -9955,7 +9955,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 13671,
-      "fetched_at": 1790504309
+      "fetched_at": 1790660848
      },
      "snap72": {
       "views": 0,
@@ -10031,7 +10031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3637,
-      "fetched_at": 1790504309
+      "fetched_at": 1790660848
      },
      "snap72": {
       "views": 68,
@@ -10400,7 +10400,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3543,
-      "fetched_at": 1790504309
+      "fetched_at": 1790660848
      },
      "snap72": {
       "views": 1,
@@ -10699,7 +10699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5252,
-      "fetched_at": 1790504309
+      "fetched_at": 1790660848
      },
      "snap72": {
       "views": 26,
@@ -11436,7 +11436,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1530,
-      "fetched_at": 1790504309
+      "fetched_at": 1790660848
      },
      "snap72": {
       "views": 11,
@@ -11733,9 +11733,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790504309
+      "fetched_at": 1790660848
      },
-     "snap72": null,
+     "snap72": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1790660848
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12042,7 +12052,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 20,
+      "reach": 20,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 4007,
+      "fetched_at": 1790660848
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12146,6 +12166,58 @@
     "instagram": {
      "id": "18097350287435915",
      "posted_at": 1790600949
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790660793,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Cf: The Agentic CLI for the Cloudflare API",
+    "subject": "Cloudflare cf CLI",
+    "url": "https://blog.cloudflare.com/cloudflare-cf-cli-launch/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 6.34,
+    "sources": [],
+    "display_title": "Cloudflare cf CLI",
+    "angle": "Cloudflare built a new agent-first CLI called cf that expands API coverage from Wrangler's 280 operations to over 3,000 operations using OpenAPI schema generation.",
+    "insight": "Traditional hand-built CLI commands create inconsistent developer experiences for agents, whereas schema-generated CLI tools let AI cleanly scale to thousands of distinct backend API operations.",
+    "judge": "plan"
+   },
+   "style_pack": "slate-editorial",
+   "format_pack": "facts-explainer",
+   "seed": 208268646,
+   "voice": "gemini:Sadachbia",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 12,
+   "scene_count": 4,
+   "video_seconds": 28.8,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "api"
+    ]
+   },
+   "session": "gh-45ec96",
+   "platforms": {
+    "instagram": {
+     "id": "18137287507550518",
+     "posted_at": 1790660845
     }
    },
    "metrics": {
