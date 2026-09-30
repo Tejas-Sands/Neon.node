@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1790660848
+      "fetched_at": 1790782082
      },
      "snap72": {
       "views": 3,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1790660848
+      "fetched_at": 1790782082
      },
      "snap72": {
       "views": 30,
@@ -8428,7 +8428,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 854,
-      "fetched_at": 1790660848
+      "fetched_at": 1790782082
      },
      "snap72": {
       "views": 3,
@@ -8561,7 +8561,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 865,
-      "fetched_at": 1790660848
+      "fetched_at": 1790782082
      },
      "snap72": {
       "views": 4,
@@ -8629,7 +8629,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9140,
-      "fetched_at": 1790660848
+      "fetched_at": 1790782082
      },
      "snap72": {
       "views": 9,
@@ -8900,7 +8900,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790660848
+      "fetched_at": 1790782082
      },
      "snap72": {
       "views": 0,
@@ -9241,7 +9241,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5867,
-      "fetched_at": 1790660848
+      "fetched_at": 1790782082
      },
      "snap72": {
       "views": 3,
@@ -9581,7 +9581,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1480,
-      "fetched_at": 1790660848
+      "fetched_at": 1790782082
      },
      "snap72": {
       "views": 3,
@@ -9955,7 +9955,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 13671,
-      "fetched_at": 1790660848
+      "fetched_at": 1790782082
      },
      "snap72": {
       "views": 0,
@@ -10031,7 +10031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3637,
-      "fetched_at": 1790660848
+      "fetched_at": 1790782082
      },
      "snap72": {
       "views": 68,
@@ -10400,7 +10400,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3543,
-      "fetched_at": 1790660848
+      "fetched_at": 1790782082
      },
      "snap72": {
       "views": 1,
@@ -10699,7 +10699,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5252,
-      "fetched_at": 1790660848
+      "fetched_at": 1790782082
      },
      "snap72": {
       "views": 26,
@@ -11436,7 +11436,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1530,
-      "fetched_at": 1790660848
+      "fetched_at": 1790782082
      },
      "snap72": {
       "views": 11,
@@ -11733,7 +11733,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790660848
+      "fetched_at": 1790782082
      },
      "snap72": {
       "views": 0,
@@ -12409,7 +12409,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 1,
+      "reach": 1,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 2,
+      "ig_reels_avg_watch_time": 6145,
+      "fetched_at": 1790782082
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12512,6 +12522,60 @@
     "instagram": {
      "id": "18344041549286087",
      "posted_at": 1790765998
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790782012,
+   "posted_hour_utc": 15,
+   "channel": "news",
+   "topic": {
+    "title": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price",
+    "subject": "GPT 6.1 Sol",
+    "url": "https://openai.com/index/introducing-gpt-6-1-sol/",
+    "source": "hn",
+    "keywords": [
+     "gpt"
+    ],
+    "viral_score": 10.39,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "GPT 6.1 Sol Model",
+    "angle": "GPT 6.1 Sol delivers near-Astra intelligence at one-fifth of the previous cost, changing API economics for builders.",
+    "insight": "High-tier reasoning is now viable for high-volume API pipelines without premium pricing.",
+    "judge": "plan"
+   },
+   "style_pack": "cherry-blossom",
+   "format_pack": "facts-explainer",
+   "seed": 1189402398,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 13,
+   "scene_count": 4,
+   "video_seconds": 21.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-d594a4",
+   "platforms": {
+    "instagram": {
+     "id": "18140040754542344",
+     "posted_at": 1790782078
     }
    },
    "metrics": {

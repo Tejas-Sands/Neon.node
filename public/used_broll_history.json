@@ -2,34 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-35544532",
-   "ts": 1788875559,
-   "session": "gh-edfdb9",
-   "query": "financial charts dashboard scrolling ui",
-   "scene": 2
-  },
-  {
-   "id": "pexels-38502680",
-   "ts": 1788875559,
-   "session": "gh-edfdb9",
-   "query": "network traffic glowing packets motion",
-   "scene": 3
-  },
-  {
-   "id": "pexels-9520978",
-   "ts": 1788875559,
-   "session": "gh-edfdb9",
-   "query": "code editor typing lines rapidly",
-   "scene": 4
-  },
-  {
-   "id": "pexels-34342945",
-   "ts": 1788875559,
-   "session": "gh-edfdb9",
-   "query": "digital network grid abstract motion",
-   "scene": 5
-  },
-  {
    "id": "pexels-36314952",
    "ts": 1788875559,
    "session": "gh-edfdb9",
@@ -2800,6 +2772,34 @@
    "session": "gh-d7ad46",
    "query": "chip manufacturing closeup",
    "scene": 5
+  },
+  {
+   "id": "pexels-4785259",
+   "ts": 1790782012,
+   "session": "gh-d594a4",
+   "query": "terminal code scrolling dark background",
+   "scene": 0
+  },
+  {
+   "id": "pexels-38901929",
+   "ts": 1790782012,
+   "session": "gh-d594a4",
+   "query": "data center gpu racks blinking lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-37050264",
+   "ts": 1790782012,
+   "session": "gh-d594a4",
+   "query": "chip architecture glowing traces motion",
+   "scene": 2
+  },
+  {
+   "id": "pexels-38992857",
+   "ts": 1790782012,
+   "session": "gh-d594a4",
+   "query": "network data packets moving dashboard",
+   "scene": 3
   }
  ]
 }
