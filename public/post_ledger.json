@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790600953
+      "fetched_at": 1790747995
      },
      "snap72": {
       "views": 0,
@@ -7826,7 +7826,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790586617
+      "fetched_at": 1790747995
      },
      "snap72": {
       "views": 0,
@@ -7892,7 +7892,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1790586617
+      "fetched_at": 1790747995
      },
      "snap72": {
       "views": 1,
@@ -8159,7 +8159,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6066,
-      "fetched_at": 1790586617
+      "fetched_at": 1790747995
      },
      "snap72": {
       "views": 10,
@@ -8225,7 +8225,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 992,
-      "fetched_at": 1790586617
+      "fetched_at": 1790747995
      },
      "snap72": {
       "views": 127,
@@ -8832,7 +8832,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1369,
-      "fetched_at": 1790586617
+      "fetched_at": 1790747995
      },
      "snap72": {
       "views": 57,
@@ -9514,7 +9514,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9315,
-      "fetched_at": 1790586617
+      "fetched_at": 1790747995
      },
      "snap72": {
       "views": 1,
@@ -10251,7 +10251,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6118,
-      "fetched_at": 1790586617
+      "fetched_at": 1790747995
      },
      "snap72": {
       "views": 16,
@@ -10549,7 +10549,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1832,
-      "fetched_at": 1790586617
+      "fetched_at": 1790747995
      },
      "snap72": {
       "views": 16,
@@ -10918,7 +10918,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1747,
-      "fetched_at": 1790586617
+      "fetched_at": 1790747995
      },
      "snap72": {
       "views": 8,
@@ -11215,7 +11215,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1184,
-      "fetched_at": 1790586617
+      "fetched_at": 1790747995
      },
      "snap72": {
       "views": 2,
@@ -11290,7 +11290,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2772,
-      "fetched_at": 1790586617
+      "fetched_at": 1790747995
      },
      "snap72": {
       "views": 16,
@@ -11583,7 +11583,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3184,
-      "fetched_at": 1790586617
+      "fetched_at": 1790747995
      },
      "snap72": {
       "views": 8,
@@ -11954,9 +11954,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2328,
-      "fetched_at": 1790586617
+      "fetched_at": 1790747995
      },
-     "snap72": null,
+     "snap72": {
+      "views": 56,
+      "reach": 49,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2328,
+      "fetched_at": 1790747995
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12262,7 +12272,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 6,
+      "reach": 5,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1718,
+      "fetched_at": 1790747995
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12365,6 +12385,58 @@
     "instagram": {
      "id": "17910201492518811",
      "posted_at": 1790688367
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790747929,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "Razer\u2019s low-latency wireless gaming keyboard is almost half off",
+    "subject": "Razer DeathStalker V2 Pro TKL",
+    "url": "https://www.theverge.com/gadgets/1002087/razer-deathstalker-v2-pro-tkl-witcher-3-remastered-deal-sale",
+    "source": "rss:theverge",
+    "keywords": [],
+    "viral_score": 3.59,
+    "sources": [],
+    "display_title": "Razer TKL Keyboard Half Off",
+    "angle": "A high-end competitive wireless gaming keyboard drops significantly in price while offering optical switches and specialized input features.",
+    "insight": "Competitive players gain faster optical switch actuation and desk space, but must mind firmware features like Snap Tap that face tournament bans.",
+    "judge": "plan"
+   },
+   "style_pack": "synth-sunset",
+   "format_pack": "legacy-news",
+   "seed": 556878831,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "SHOCK-STAT",
+   "style_epoch": 13,
+   "scene_count": 6,
+   "video_seconds": 37.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "know-the-trade-off",
+    "signals": [
+     "latency"
+    ]
+   },
+   "session": "gh-71d92e",
+   "platforms": {
+    "instagram": {
+     "id": "18113204158839782",
+     "posted_at": 1790747992
     }
    },
    "metrics": {

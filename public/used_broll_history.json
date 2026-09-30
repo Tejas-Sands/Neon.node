@@ -2,55 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-32259631",
-   "ts": 1788786537,
-   "session": "gh-bbecea",
-   "query": "terminal typing code commands",
-   "scene": 2
-  },
-  {
-   "id": "pexels-6633341",
-   "ts": 1788786537,
-   "session": "gh-bbecea",
-   "query": "terminal typing code commands",
-   "scene": 2
-  },
-  {
-   "id": "pexels-17144481",
-   "ts": 1788786537,
-   "session": "gh-bbecea",
-   "query": "network nodes digital security motion",
-   "scene": 3
-  },
-  {
-   "id": "pexels-37342578",
-   "ts": 1788786537,
-   "session": "gh-bbecea",
-   "query": "network nodes digital security motion",
-   "scene": 3
-  },
-  {
-   "id": "pexels-36320055",
-   "ts": 1788858477,
-   "session": "gh-135e08",
-   "query": "server data center lights motion",
-   "scene": 0
-  },
-  {
-   "id": "pexels-34336609",
-   "ts": 1788858477,
-   "session": "gh-135e08",
-   "query": "global network data nodes glowing",
-   "scene": 1
-  },
-  {
-   "id": "pexels-39241964",
-   "ts": 1788858477,
-   "session": "gh-135e08",
-   "query": "global network data nodes glowing",
-   "scene": 1
-  },
-  {
    "id": "pexels-34775736",
    "ts": 1788858477,
    "session": "gh-135e08",
@@ -2800,6 +2751,55 @@
    "session": "gh-772fb3",
    "query": "developer typing code editor",
    "scene": 3
+  },
+  {
+   "id": "pexels-5647320",
+   "ts": 1790747929,
+   "session": "gh-71d92e",
+   "query": "mechanical keyboard switches closeup macro",
+   "scene": 0
+  },
+  {
+   "id": "pexels-6931577",
+   "ts": 1790747929,
+   "session": "gh-71d92e",
+   "query": "ecommerce dashboard price ticker screen",
+   "scene": 1
+  },
+  {
+   "id": "pexels-7230995",
+   "ts": 1790747929,
+   "session": "gh-71d92e",
+   "query": "microchip motherboard electronic components",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7230305",
+   "ts": 1790747929,
+   "session": "gh-71d92e",
+   "query": "power battery charging status screen",
+   "scene": 3
+  },
+  {
+   "id": "pexels-7914858",
+   "ts": 1790747929,
+   "session": "gh-71d92e",
+   "query": "gamer playing competitive esports match",
+   "scene": 4
+  },
+  {
+   "id": "pexels-9071003",
+   "ts": 1790747929,
+   "session": "gh-71d92e",
+   "query": "gaming tournament stage screen lights",
+   "scene": 5
+  },
+  {
+   "id": "pexels-7914797",
+   "ts": 1790747929,
+   "session": "gh-71d92e",
+   "query": "gaming tournament stage screen lights",
+   "scene": 5
   }
  ]
 }
