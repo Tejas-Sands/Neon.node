@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1790600953
+      "fetched_at": 1790766001
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1790600953
+      "fetched_at": 1790766001
      },
      "snap72": {
       "views": 6,
@@ -7957,7 +7957,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3536,
-      "fetched_at": 1790600953
+      "fetched_at": 1790766001
      },
      "snap72": {
       "views": 6,
@@ -8091,7 +8091,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1549,
-      "fetched_at": 1790600953
+      "fetched_at": 1790766001
      },
      "snap72": {
       "views": 4,
@@ -8294,7 +8294,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1733,
-      "fetched_at": 1790600953
+      "fetched_at": 1790766001
      },
      "snap72": {
       "views": 4,
@@ -8360,7 +8360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 715,
-      "fetched_at": 1790600953
+      "fetched_at": 1790766001
      },
      "snap72": {
       "views": 3,
@@ -9173,7 +9173,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1538,
-      "fetched_at": 1790600953
+      "fetched_at": 1790766001
      },
      "snap72": {
       "views": 3,
@@ -9880,7 +9880,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9325,
-      "fetched_at": 1790600953
+      "fetched_at": 1790766001
      },
      "snap72": {
       "views": 5,
@@ -10326,7 +10326,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2498,
-      "fetched_at": 1790600953
+      "fetched_at": 1790766001
      },
      "snap72": {
       "views": 29,
@@ -10623,7 +10623,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1389,
-      "fetched_at": 1790600953
+      "fetched_at": 1790766001
      },
      "snap72": {
       "views": 15,
@@ -10992,7 +10992,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6193,
-      "fetched_at": 1790600953
+      "fetched_at": 1790766001
      },
      "snap72": {
       "views": 14,
@@ -11364,7 +11364,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 645,
-      "fetched_at": 1790600953
+      "fetched_at": 1790766001
      },
      "snap72": {
       "views": 1,
@@ -11658,7 +11658,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2332,
-      "fetched_at": 1790600953
+      "fetched_at": 1790766001
      },
      "snap72": {
       "views": 122,
@@ -12026,9 +12026,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 836,
-      "fetched_at": 1790600953
+      "fetched_at": 1790766001
      },
-     "snap72": null,
+     "snap72": {
+      "views": 10,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 836,
+      "fetched_at": 1790766001
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12336,7 +12346,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 3,
+      "reach": 3,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1250,
+      "fetched_at": 1790766001
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12437,6 +12457,61 @@
     "instagram": {
      "id": "18113204158839782",
      "posted_at": 1790747992
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790765906,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "How to speed up the Rust compiler in September 2026",
+    "subject": "Rust compiler performance",
+    "url": "https://nnethercote.github.io/2026/09/30/how-to-speed-up-the-rust-compiler-in-september-2026.html",
+    "source": "lobsters",
+    "keywords": [
+     "how"
+    ],
+    "viral_score": 3.47,
+    "sources": [],
+    "display_title": "Rust Compiler 4 Percent Faster",
+    "angle": "The Rust compiler just achieved a 4.57% mean wall-time reduction across benchmarks in two months thanks to LLVM upgrades and PGO.",
+    "insight": "Major LLVM upgrades and PGO optimizations can deliver sweeping speedups even in mature compilers, directly benefiting heavy dependency builds like serde.",
+    "judge": "plan"
+   },
+   "style_pack": "sunset-peach",
+   "format_pack": "legacy-news",
+   "seed": 881462140,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "STAKES-REVEAL",
+   "style_epoch": 13,
+   "scene_count": 6,
+   "video_seconds": 41.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "compiler",
+     "rust compiler"
+    ]
+   },
+   "session": "gh-d7ad46",
+   "platforms": {
+    "instagram": {
+     "id": "18344041549286087",
+     "posted_at": 1790765998
     }
    },
    "metrics": {

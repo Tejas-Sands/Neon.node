@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-34775736",
-   "ts": 1788858477,
-   "session": "gh-135e08",
-   "query": "chip manufacturing cleanroom macro",
-   "scene": 2
-  },
-  {
-   "id": "pexels-8170068",
-   "ts": 1788858477,
-   "session": "gh-135e08",
-   "query": "chip manufacturing cleanroom macro",
-   "scene": 2
-  },
-  {
-   "id": "pexels-29380116",
-   "ts": 1788858477,
-   "session": "gh-135e08",
-   "query": "code editor terminal scrolling fast",
-   "scene": 3
-  },
-  {
-   "id": "pexels-3713695",
-   "ts": 1788858477,
-   "session": "gh-135e08",
-   "query": "server room dark blue lights",
-   "scene": 4
-  },
-  {
-   "id": "pexels-36791028",
-   "ts": 1788858477,
-   "session": "gh-135e08",
-   "query": "server room dark blue lights",
-   "scene": 4
-  },
-  {
-   "id": "pexels-35050095",
-   "ts": 1788875559,
-   "session": "gh-edfdb9",
-   "query": "terminal scrolling green error logs",
-   "scene": 0
-  },
-  {
-   "id": "pexels-6955614",
-   "ts": 1788875559,
-   "session": "gh-edfdb9",
-   "query": "terminal scrolling green error logs",
-   "scene": 0
-  },
-  {
-   "id": "pexels-32115649",
-   "ts": 1788875559,
-   "session": "gh-edfdb9",
-   "query": "data center servers blinking lights",
-   "scene": 1
-  },
-  {
-   "id": "pexels-18184655",
-   "ts": 1788875559,
-   "session": "gh-edfdb9",
-   "query": "data center servers blinking lights",
-   "scene": 1
-  },
-  {
    "id": "pexels-35544532",
    "ts": 1788875559,
    "session": "gh-edfdb9",
@@ -2799,6 +2736,69 @@
    "ts": 1790747929,
    "session": "gh-71d92e",
    "query": "gaming tournament stage screen lights",
+   "scene": 5
+  },
+  {
+   "id": "pexels-5473913",
+   "ts": 1790765906,
+   "session": "gh-d7ad46",
+   "query": "terminal typing code fast",
+   "scene": 0
+  },
+  {
+   "id": "pexels-7579943",
+   "ts": 1790765906,
+   "session": "gh-d7ad46",
+   "query": "data center servers gpu",
+   "scene": 1
+  },
+  {
+   "id": "pexels-16561462",
+   "ts": 1790765906,
+   "session": "gh-d7ad46",
+   "query": "data center servers gpu",
+   "scene": 1
+  },
+  {
+   "id": "pexels-5473803",
+   "ts": 1790765906,
+   "session": "gh-d7ad46",
+   "query": "code editor screen scrolling",
+   "scene": 2
+  },
+  {
+   "id": "pexels-8100345",
+   "ts": 1790765906,
+   "session": "gh-d7ad46",
+   "query": "code editor screen scrolling",
+   "scene": 2
+  },
+  {
+   "id": "pexels-35417379",
+   "ts": 1790765906,
+   "session": "gh-d7ad46",
+   "query": "dashboard data metrics moving",
+   "scene": 3
+  },
+  {
+   "id": "pexels-35002915",
+   "ts": 1790765906,
+   "session": "gh-d7ad46",
+   "query": "neural network visualization motion",
+   "scene": 4
+  },
+  {
+   "id": "pexels-4822121",
+   "ts": 1790765906,
+   "session": "gh-d7ad46",
+   "query": "chip manufacturing closeup",
+   "scene": 5
+  },
+  {
+   "id": "pexels-15439758",
+   "ts": 1790765906,
+   "session": "gh-d7ad46",
+   "query": "chip manufacturing closeup",
    "scene": 5
   }
  ]

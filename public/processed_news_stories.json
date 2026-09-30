@@ -2312,5 +2312,17 @@
   ],
   "ts": 1790747995,
   "session": "gh-71d92e"
+ },
+ {
+  "id": "lob:odrfgk",
+  "title": "How to speed up the Rust compiler in September 2026",
+  "norm": "how to speed up the rust compiler in september 2026",
+  "subject_norm": "rust compiler performance",
+  "entities": [
+   "rust",
+   "september"
+  ],
+  "ts": 1790766001,
+  "session": "gh-d7ad46"
  }
 ]
