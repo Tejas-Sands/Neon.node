@@ -2337,5 +2337,16 @@
   ],
   "ts": 1790782082,
   "session": "gh-d594a4"
+ },
+ {
+  "id": "49911995",
+  "title": "Launch HN: Magnitude (YC S25) \u2013 Self-optimizing inference engine for agents",
+  "norm": "launch hn magnitude yc s25 self optimizing inference engine for agents",
+  "subject_norm": "magnitude inference engine",
+  "entities": [
+   "s25"
+  ],
+  "ts": 1790826565,
+  "session": "gh-b998c2"
  }
 ]

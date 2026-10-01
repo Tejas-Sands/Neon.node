@@ -7628,7 +7628,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 828,
-      "fetched_at": 1790676759
+      "fetched_at": 1790826565
      },
      "snap72": {
       "views": 2,
@@ -7759,7 +7759,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1790676759
+      "fetched_at": 1790826565
      },
      "snap72": {
       "views": 16,
@@ -8493,7 +8493,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1790676759
+      "fetched_at": 1790826565
      },
      "snap72": {
       "views": 6,
@@ -8694,7 +8694,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1790676759
+      "fetched_at": 1790826565
      },
      "snap72": {
       "views": 48,
@@ -8764,7 +8764,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1070,
-      "fetched_at": 1790676759
+      "fetched_at": 1790826565
      },
      "snap72": {
       "views": 109,
@@ -8969,7 +8969,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790676759
+      "fetched_at": 1790826565
      },
      "snap72": {
       "views": 0,
@@ -9038,7 +9038,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 760,
-      "fetched_at": 1790676759
+      "fetched_at": 1790826565
      },
      "snap72": {
       "views": 2,
@@ -9105,7 +9105,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 294,
-      "fetched_at": 1790676759
+      "fetched_at": 1790826565
      },
      "snap72": {
       "views": 1,
@@ -9311,7 +9311,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3706,
-      "fetched_at": 1790676759
+      "fetched_at": 1790826565
      },
      "snap72": {
       "views": 0,
@@ -9380,7 +9380,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 12899,
-      "fetched_at": 1790676759
+      "fetched_at": 1790826565
      },
      "snap72": {
       "views": 1,
@@ -9655,7 +9655,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 20007,
-      "fetched_at": 1790676759
+      "fetched_at": 1790826565
      },
      "snap72": {
       "views": 0,
@@ -11065,7 +11065,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2272,
-      "fetched_at": 1790676759
+      "fetched_at": 1790826565
      },
      "snap72": {
       "views": 4,
@@ -11807,7 +11807,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1045,
-      "fetched_at": 1790676759
+      "fetched_at": 1790826565
      },
      "snap72": {
       "views": 8,
@@ -11880,7 +11880,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 18084,
-      "fetched_at": 1790676759
+      "fetched_at": 1790826565
      },
      "snap72": {
       "views": 0,
@@ -12101,9 +12101,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4007,
-      "fetched_at": 1790660848
+      "fetched_at": 1790826565
      },
-     "snap72": null,
+     "snap72": {
+      "views": 20,
+      "reach": 20,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 4007,
+      "fetched_at": 1790826565
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12576,6 +12586,61 @@
     "instagram": {
      "id": "18140040754542344",
      "posted_at": 1790782078
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790826512,
+   "posted_hour_utc": 3,
+   "channel": "news",
+   "topic": {
+    "title": "Launch HN: Magnitude (YC S25) \u2013 Self-optimizing inference engine for agents",
+    "subject": "Magnitude inference engine",
+    "url": "https://github.com/magnitudedev/magnitude",
+    "source": "hn",
+    "keywords": [
+     "agent",
+     "launch"
+    ],
+    "viral_score": 9.3,
+    "sources": [],
+    "display_title": "Magnitude Runs Open Models Faster",
+    "angle": "Magnitude is a new open-source inference engine that tunes its kernels directly on your device hardware, making local agent models run up to 2x faster than llama.cpp.",
+    "insight": "Generalist inference engines leave hardware performance on the table because Magnitude compiles and tunes its kernels directly on your exact chip before execution.",
+    "judge": "plan"
+   },
+   "style_pack": "sage-botanical",
+   "format_pack": "legacy-news",
+   "seed": 1010145912,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "BROKEN-ASSUMPTION",
+   "style_epoch": 13,
+   "scene_count": 6,
+   "video_seconds": 59.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "know-the-trade-off",
+    "signals": [
+     "inference"
+    ]
+   },
+   "session": "gh-b998c2",
+   "platforms": {
+    "instagram": {
+     "id": "18131180965829104",
+     "posted_at": 1790826561
     }
    },
    "metrics": {
