@@ -2348,5 +2348,16 @@
   ],
   "ts": 1790826565,
   "session": "gh-b998c2"
+ },
+ {
+  "id": "rss:d95f3d7ee390",
+  "title": "Hackers stole millions of US military personnel records during months-long data breach",
+  "norm": "hackers stole millions of us military personnel records during months long data breach",
+  "subject_norm": "pentagon personnel records data breach",
+  "entities": [
+   "pentagon"
+  ],
+  "ts": 1790843452,
+  "session": "gh-f5444b"
  }
 ]

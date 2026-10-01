@@ -7155,7 +7155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790688370
+      "fetched_at": 1790843452
      },
      "snap72": {
       "views": 0,
@@ -7221,7 +7221,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4299,
-      "fetched_at": 1790688370
+      "fetched_at": 1790843452
      },
      "snap72": {
       "views": 1,
@@ -8024,7 +8024,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1385,
-      "fetched_at": 1790688370
+      "fetched_at": 1790843452
      },
      "snap72": {
       "views": 13,
@@ -9447,7 +9447,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5589,
-      "fetched_at": 1790688370
+      "fetched_at": 1790843452
      },
      "snap72": {
       "views": 6,
@@ -9729,7 +9729,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 10178,
-      "fetched_at": 1790688370
+      "fetched_at": 1790843452
      },
      "snap72": {
       "views": 1,
@@ -9805,7 +9805,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5304,
-      "fetched_at": 1790688370
+      "fetched_at": 1790843452
      },
      "snap72": {
       "views": 20,
@@ -10105,7 +10105,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7090,
-      "fetched_at": 1790688370
+      "fetched_at": 1790843452
      },
      "snap72": {
       "views": 7,
@@ -10177,7 +10177,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5527,
-      "fetched_at": 1790688370
+      "fetched_at": 1790843452
      },
      "snap72": {
       "views": 17,
@@ -10475,7 +10475,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1773,
-      "fetched_at": 1790688370
+      "fetched_at": 1790843452
      },
      "snap72": {
       "views": 10,
@@ -10772,7 +10772,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5416,
-      "fetched_at": 1790688370
+      "fetched_at": 1790843452
      },
      "snap72": {
       "views": 10,
@@ -10844,7 +10844,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5706,
-      "fetched_at": 1790688370
+      "fetched_at": 1790843452
      },
      "snap72": {
       "views": 5,
@@ -11141,7 +11141,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2918,
-      "fetched_at": 1790688370
+      "fetched_at": 1790843452
      },
      "snap72": {
       "views": 2,
@@ -11509,7 +11509,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 7911,
-      "fetched_at": 1790688370
+      "fetched_at": 1790843452
      },
      "snap72": {
       "views": 3,
@@ -12168,15 +12168,25 @@
      "latest": {
       "views": 24,
       "reach": 22,
-      "likes": 0,
+      "likes": 1,
       "comments": 0,
       "shares": 0,
       "saved": 0,
-      "total_interactions": 1,
-      "ig_reels_avg_watch_time": 2263,
-      "fetched_at": 1790676759
+      "total_interactions": 2,
+      "ig_reels_avg_watch_time": 2306,
+      "fetched_at": 1790843452
      },
-     "snap72": null,
+     "snap72": {
+      "views": 24,
+      "reach": 22,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 2,
+      "ig_reels_avg_watch_time": 2306,
+      "fetched_at": 1790843452
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12481,7 +12491,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 7,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1242,
+      "fetched_at": 1790843452
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12641,6 +12661,62 @@
     "instagram": {
      "id": "18131180965829104",
      "posted_at": 1790826561
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790843392,
+   "posted_hour_utc": 8,
+   "channel": "news",
+   "topic": {
+    "title": "Hackers stole millions of US military personnel records during months-long data breach",
+    "subject": "Pentagon personnel records data breach",
+    "url": "https://techcrunch.com/2026/09/30/hackers-stole-millions-of-us-military-personnel-records-during-months-long-data-breach/",
+    "source": "rss:techcrunch",
+    "keywords": [
+     "breach",
+     "million",
+     "record"
+    ],
+    "viral_score": 7.36,
+    "sources": [],
+    "display_title": "Pentagon Data Breach Exposes Millions",
+    "angle": "An unencrypted file-sharing system vulnerability exposed 3.1 million military personnel records over several months.",
+    "insight": "Federal identity management systems are failing basic security hygiene, leaving millions vulnerable to foreign targeting.",
+    "judge": "plan"
+   },
+   "style_pack": "synth-sunset",
+   "format_pack": "facts-explainer",
+   "seed": 1446825736,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 13,
+   "scene_count": 5,
+   "video_seconds": 29.8,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "before-it-breaks",
+    "signals": [
+     "data breach"
+    ]
+   },
+   "session": "gh-f5444b",
+   "platforms": {
+    "instagram": {
+     "id": "17898700566671858",
+     "posted_at": 1790843449
     }
    },
    "metrics": {
