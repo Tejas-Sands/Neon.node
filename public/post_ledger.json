@@ -7289,7 +7289,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790747995
+      "fetched_at": 1790861925
      },
      "snap72": {
       "views": 0,
@@ -7826,7 +7826,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790747995
+      "fetched_at": 1790861925
      },
      "snap72": {
       "views": 0,
@@ -7892,7 +7892,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1790747995
+      "fetched_at": 1790861925
      },
      "snap72": {
       "views": 1,
@@ -8159,7 +8159,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6066,
-      "fetched_at": 1790747995
+      "fetched_at": 1790861925
      },
      "snap72": {
       "views": 10,
@@ -8225,7 +8225,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 992,
-      "fetched_at": 1790747995
+      "fetched_at": 1790861925
      },
      "snap72": {
       "views": 127,
@@ -8832,7 +8832,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1369,
-      "fetched_at": 1790747995
+      "fetched_at": 1790861925
      },
      "snap72": {
       "views": 57,
@@ -9514,7 +9514,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9315,
-      "fetched_at": 1790747995
+      "fetched_at": 1790861925
      },
      "snap72": {
       "views": 1,
@@ -10251,7 +10251,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6118,
-      "fetched_at": 1790747995
+      "fetched_at": 1790861925
      },
      "snap72": {
       "views": 16,
@@ -10549,7 +10549,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1832,
-      "fetched_at": 1790747995
+      "fetched_at": 1790861925
      },
      "snap72": {
       "views": 16,
@@ -10918,7 +10918,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1747,
-      "fetched_at": 1790747995
+      "fetched_at": 1790861925
      },
      "snap72": {
       "views": 8,
@@ -11215,7 +11215,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1184,
-      "fetched_at": 1790747995
+      "fetched_at": 1790861925
      },
      "snap72": {
       "views": 2,
@@ -11290,7 +11290,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2772,
-      "fetched_at": 1790747995
+      "fetched_at": 1790861925
      },
      "snap72": {
       "views": 16,
@@ -11583,7 +11583,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3184,
-      "fetched_at": 1790747995
+      "fetched_at": 1790861925
      },
      "snap72": {
       "views": 8,
@@ -12243,15 +12243,25 @@
      "latest": {
       "views": 2,
       "reach": 2,
-      "likes": 0,
+      "likes": 1,
       "comments": 0,
       "shares": 0,
       "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1567,
-      "fetched_at": 1790688370
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1557,
+      "fetched_at": 1790861925
      },
-     "snap72": null,
+     "snap72": {
+      "views": 2,
+      "reach": 2,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1557,
+      "fetched_at": 1790861925
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12556,7 +12566,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 6,
+      "reach": 4,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3495,
+      "fetched_at": 1790861925
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12717,6 +12737,58 @@
     "instagram": {
      "id": "17898700566671858",
      "posted_at": 1790843449
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790861854,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "EDG C/C++ Compiler Project",
+    "subject": "EDG C/C++ Compiler Project",
+    "url": "https://github.com/edgcpp/compiler",
+    "source": "lobsters",
+    "keywords": [],
+    "viral_score": 4.51,
+    "sources": [],
+    "display_title": "EDG C/C++ Compiler Open Sourced",
+    "angle": "The legendary EDG C/C++ front end is now open source, offering extreme configurability and parsing compatibility for developers.",
+    "insight": "Developers building custom C++ products or source-to-source tools can now directly leverage EDG's legendary parsing compatibility for Clang, GCC, and MSVC.",
+    "judge": "plan"
+   },
+   "style_pack": "terracotta-earth",
+   "format_pack": "quiz-reveal",
+   "seed": 307844938,
+   "voice": "gemini:Aoede",
+   "hook_type": "PACK-QUIZ-REVEAL",
+   "style_epoch": 13,
+   "scene_count": 4,
+   "video_seconds": 20.0,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "compiler"
+    ]
+   },
+   "session": "gh-aaf5ac",
+   "platforms": {
+    "instagram": {
+     "id": "18212884177366325",
+     "posted_at": 1790861921
     }
    },
    "metrics": {
