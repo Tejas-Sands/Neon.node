@@ -2389,5 +2389,16 @@
   "entities": [],
   "ts": 1790934034,
   "session": "gh-c83993"
+ },
+ {
+  "id": "lob:uuu6us",
+  "title": "The hidden design compromises of Docker layers",
+  "norm": "the hidden design compromises of docker layers",
+  "subject_norm": "docker layers",
+  "entities": [
+   "docker"
+  ],
+  "ts": 1790952024,
+  "session": "gh-a8d15e"
  }
 ]

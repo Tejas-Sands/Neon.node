@@ -2,61 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1784799890,
-   "posted_hour_utc": 9,
-   "channel": "news",
-   "topic": {
-    "title": "Are AI labs pelicanmaxxing?",
-    "subject": "Are AI labs pelicanmaxxing?",
-    "url": "https://dylancastillo.co/posts/pelicanmaxxing.html",
-    "source": "hn",
-    "keywords": [
-     "ai"
-    ],
-    "viral_score": 8.94
-   },
-   "style_pack": "terracotta-earth",
-   "seed": 241842663,
-   "voice": "en-US-GuyNeural",
-   "hook_type": "NEGATIVE WARNING",
-   "scene_count": 5,
-   "video_seconds": 29.0,
-   "session": "gh-29b139",
-   "platforms": {
-    "instagram": {
-     "id": "17918131911419901",
-     "posted_at": 1784799952
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 101,
-      "reach": 99,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1601,
-      "fetched_at": 1787295615
-     },
-     "snap72": {
-      "views": 101,
-      "reach": 99,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1784999217
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1784809450,
    "posted_hour_utc": 12,
    "channel": "news",
@@ -7628,7 +7573,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 828,
-      "fetched_at": 1790826565
+      "fetched_at": 1790952024
      },
      "snap72": {
       "views": 2,
@@ -7759,7 +7704,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1790826565
+      "fetched_at": 1790952024
      },
      "snap72": {
       "views": 16,
@@ -8493,7 +8438,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1790826565
+      "fetched_at": 1790952024
      },
      "snap72": {
       "views": 6,
@@ -8694,7 +8639,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1790826565
+      "fetched_at": 1790952024
      },
      "snap72": {
       "views": 48,
@@ -8764,7 +8709,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1070,
-      "fetched_at": 1790826565
+      "fetched_at": 1790952024
      },
      "snap72": {
       "views": 109,
@@ -8969,7 +8914,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790826565
+      "fetched_at": 1790952024
      },
      "snap72": {
       "views": 0,
@@ -9038,7 +8983,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 760,
-      "fetched_at": 1790826565
+      "fetched_at": 1790952024
      },
      "snap72": {
       "views": 2,
@@ -9105,7 +9050,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 294,
-      "fetched_at": 1790826565
+      "fetched_at": 1790952024
      },
      "snap72": {
       "views": 1,
@@ -9311,7 +9256,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3706,
-      "fetched_at": 1790826565
+      "fetched_at": 1790952024
      },
      "snap72": {
       "views": 0,
@@ -10400,7 +10345,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3543,
-      "fetched_at": 1790782082
+      "fetched_at": 1790952024
      },
      "snap72": {
       "views": 1,
@@ -10699,7 +10644,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5252,
-      "fetched_at": 1790782082
+      "fetched_at": 1790952024
      },
      "snap72": {
       "views": 26,
@@ -11436,7 +11381,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1530,
-      "fetched_at": 1790782082
+      "fetched_at": 1790952024
      },
      "snap72": {
       "views": 11,
@@ -11733,7 +11678,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790782082
+      "fetched_at": 1790952024
      },
      "snap72": {
       "views": 0,
@@ -12468,9 +12413,19 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 6145,
-      "fetched_at": 1790782082
+      "fetched_at": 1790952024
      },
-     "snap72": null,
+     "snap72": {
+      "views": 1,
+      "reach": 1,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 2,
+      "ig_reels_avg_watch_time": 6145,
+      "fetched_at": 1790952024
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12843,7 +12798,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 6,
+      "reach": 6,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1947,
+      "fetched_at": 1790952024
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12948,6 +12913,60 @@
     "instagram": {
      "id": "18122801779740206",
      "posted_at": 1790934031
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790951957,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "The hidden design compromises of Docker layers",
+    "subject": "Docker layers",
+    "url": "https://loige.co/hidden-design-compromises-of-docker-layers/",
+    "source": "lobsters",
+    "keywords": [
+     "hidden"
+    ],
+    "viral_score": 4.76,
+    "sources": [],
+    "display_title": "Docker layers use tar hacks",
+    "angle": "Explaining how Docker layers use tar archives and magic filenames to handle file deletions, revealing a hidden design compromise.",
+    "insight": "Docker layers rely on tar archives and magic whiteout files to simulate filesystem diffs, causing impedance mismatches when reusing old tech for containerization.",
+    "judge": "plan"
+   },
+   "style_pack": "coral-pop",
+   "format_pack": "facts-explainer",
+   "seed": 1715675527,
+   "voice": "gemini:Aoede",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 13,
+   "scene_count": 5,
+   "video_seconds": 29.8,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "docker"
+    ]
+   },
+   "session": "gh-a8d15e",
+   "platforms": {
+    "instagram": {
+     "id": "17989422767865390",
+     "posted_at": 1790952021
     }
    },
    "metrics": {
