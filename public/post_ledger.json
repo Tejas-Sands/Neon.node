@@ -7356,7 +7356,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1528,
-      "fetched_at": 1790766001
+      "fetched_at": 1790922513
      },
      "snap72": {
       "views": 23,
@@ -7424,7 +7424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2046,
-      "fetched_at": 1790766001
+      "fetched_at": 1790922513
      },
      "snap72": {
       "views": 6,
@@ -7957,7 +7957,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3536,
-      "fetched_at": 1790766001
+      "fetched_at": 1790922513
      },
      "snap72": {
       "views": 6,
@@ -8091,7 +8091,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1549,
-      "fetched_at": 1790766001
+      "fetched_at": 1790922513
      },
      "snap72": {
       "views": 4,
@@ -8294,7 +8294,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1733,
-      "fetched_at": 1790766001
+      "fetched_at": 1790922513
      },
      "snap72": {
       "views": 4,
@@ -8360,7 +8360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 715,
-      "fetched_at": 1790766001
+      "fetched_at": 1790922513
      },
      "snap72": {
       "views": 3,
@@ -9173,7 +9173,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1538,
-      "fetched_at": 1790766001
+      "fetched_at": 1790922513
      },
      "snap72": {
       "views": 3,
@@ -9880,7 +9880,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9325,
-      "fetched_at": 1790766001
+      "fetched_at": 1790922513
      },
      "snap72": {
       "views": 5,
@@ -10326,7 +10326,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2498,
-      "fetched_at": 1790766001
+      "fetched_at": 1790922513
      },
      "snap72": {
       "views": 29,
@@ -10623,7 +10623,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1389,
-      "fetched_at": 1790766001
+      "fetched_at": 1790922513
      },
      "snap72": {
       "views": 15,
@@ -10992,7 +10992,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6193,
-      "fetched_at": 1790766001
+      "fetched_at": 1790922513
      },
      "snap72": {
       "views": 14,
@@ -11954,7 +11954,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2328,
-      "fetched_at": 1790747995
+      "fetched_at": 1790922513
      },
      "snap72": {
       "views": 56,
@@ -12321,9 +12321,19 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1718,
-      "fetched_at": 1790747995
+      "fetched_at": 1790922513
      },
-     "snap72": null,
+     "snap72": {
+      "views": 6,
+      "reach": 5,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1718,
+      "fetched_at": 1790922513
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12630,7 +12640,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1790922513
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12685,7 +12705,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 26,
+      "reach": 16,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1394,
+      "fetched_at": 1790922513
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12789,6 +12819,61 @@
     "instagram": {
      "id": "18212884177366325",
      "posted_at": 1790861921
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790922457,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Several vulnerabilities have been discovered in the Linux kernel",
+    "subject": "Debian Linux kernel vulnerabilities",
+    "url": "https://lwn.net/Articles/1097401/",
+    "source": "hn",
+    "keywords": [
+     "vulnerab",
+     "discover"
+    ],
+    "viral_score": 10.05,
+    "sources": [],
+    "display_title": "Linux Kernel Has 100+ Vulnerabilities",
+    "angle": "A massive Debian security advisory exposes dozens of new vulnerabilities across the Linux kernel, requiring immediate patching for system administrators.",
+    "insight": "Large-scale kernel advisories mean infrastructure maintainers must prioritize rapid patch deployment over feature updates to avoid zero-day exposure.",
+    "judge": "plan"
+   },
+   "style_pack": "coral-pop",
+   "format_pack": "legacy-news",
+   "seed": 1666128817,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "BROKEN-ASSUMPTION",
+   "style_epoch": 13,
+   "scene_count": 6,
+   "video_seconds": 48.1,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "before-it-breaks",
+    "signals": [
+     "vulnerabilities"
+    ]
+   },
+   "session": "gh-7711b0",
+   "platforms": {
+    "instagram": {
+     "id": "18565333642079819",
+     "posted_at": 1790922510
     }
    },
    "metrics": {

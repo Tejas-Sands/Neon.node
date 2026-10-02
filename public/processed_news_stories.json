@@ -2368,5 +2368,17 @@
   "entities": [],
   "ts": 1790861925,
   "session": "gh-aaf5ac"
+ },
+ {
+  "id": "49928121",
+  "title": "Several vulnerabilities have been discovered in the Linux kernel",
+  "norm": "several vulnerabilities have been discovered in the linux kernel",
+  "subject_norm": "debian linux kernel vulnerabilities",
+  "entities": [
+   "linux",
+   "debian"
+  ],
+  "ts": 1790922513,
+  "session": "gh-7711b0"
  }
 ]
