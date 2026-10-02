@@ -2380,5 +2380,14 @@
   ],
   "ts": 1790922513,
   "session": "gh-7711b0"
+ },
+ {
+  "id": "49923466",
+  "title": "RIP, vector database",
+  "norm": "rip vector database",
+  "subject_norm": "turbopuffer v3 storage architecture",
+  "entities": [],
+  "ts": 1790934034,
+  "session": "gh-c83993"
  }
 ]

@@ -7490,7 +7490,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1678,
-      "fetched_at": 1790782082
+      "fetched_at": 1790934034
      },
      "snap72": {
       "views": 3,
@@ -7557,7 +7557,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1790782082
+      "fetched_at": 1790934034
      },
      "snap72": {
       "views": 30,
@@ -8428,7 +8428,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 854,
-      "fetched_at": 1790782082
+      "fetched_at": 1790934034
      },
      "snap72": {
       "views": 3,
@@ -8561,7 +8561,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 865,
-      "fetched_at": 1790782082
+      "fetched_at": 1790934034
      },
      "snap72": {
       "views": 4,
@@ -8629,7 +8629,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9140,
-      "fetched_at": 1790782082
+      "fetched_at": 1790934034
      },
      "snap72": {
       "views": 9,
@@ -8900,7 +8900,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790782082
+      "fetched_at": 1790934034
      },
      "snap72": {
       "views": 0,
@@ -9241,7 +9241,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5867,
-      "fetched_at": 1790782082
+      "fetched_at": 1790934034
      },
      "snap72": {
       "views": 3,
@@ -9581,7 +9581,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1480,
-      "fetched_at": 1790782082
+      "fetched_at": 1790934034
      },
      "snap72": {
       "views": 3,
@@ -9955,7 +9955,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 13671,
-      "fetched_at": 1790782082
+      "fetched_at": 1790934034
      },
      "snap72": {
       "views": 0,
@@ -10031,7 +10031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3637,
-      "fetched_at": 1790782082
+      "fetched_at": 1790934034
      },
      "snap72": {
       "views": 68,
@@ -11364,7 +11364,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 645,
-      "fetched_at": 1790766001
+      "fetched_at": 1790934034
      },
      "snap72": {
       "views": 1,
@@ -11658,7 +11658,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2332,
-      "fetched_at": 1790766001
+      "fetched_at": 1790934034
      },
      "snap72": {
       "views": 122,
@@ -12026,7 +12026,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 836,
-      "fetched_at": 1790766001
+      "fetched_at": 1790934034
      },
      "snap72": {
       "views": 10,
@@ -12395,9 +12395,19 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1250,
-      "fetched_at": 1790766001
+      "fetched_at": 1790934034
      },
-     "snap72": null,
+     "snap72": {
+      "views": 3,
+      "reach": 3,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1250,
+      "fetched_at": 1790934034
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12771,7 +12781,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 30,
+      "reach": 23,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 2855,
+      "fetched_at": 1790934034
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12874,6 +12894,60 @@
     "instagram": {
      "id": "18565333642079819",
      "posted_at": 1790922510
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790933922,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "RIP, vector database",
+    "subject": "turbopuffer v3 storage architecture",
+    "url": "https://turbopuffer.com/blog/rip-vector-database",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 6.88,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Turbopuffer Kills Vector Database",
+    "angle": "Turbopuffer is abandoning its vector-primary storage architecture in v3 to make ANN a secondary index and speed up SQL and general queries.",
+    "insight": "Developers building hybrid search engines can stop forcing relational data into vector indexes as storage engines pivot to treat ANN as a secondary index.",
+    "judge": "plan"
+   },
+   "style_pack": "desert-dune",
+   "format_pack": "legacy-news",
+   "seed": 906401988,
+   "voice": "gemini:Achird",
+   "hook_type": "STAKES-REVEAL",
+   "style_epoch": 13,
+   "scene_count": 5,
+   "video_seconds": 44.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "database"
+    ]
+   },
+   "session": "gh-c83993",
+   "platforms": {
+    "instagram": {
+     "id": "18122801779740206",
+     "posted_at": 1790934031
     }
    },
    "metrics": {
