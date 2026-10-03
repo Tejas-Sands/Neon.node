@@ -2414,5 +2414,18 @@
   ],
   "ts": 1790998589,
   "session": "gh-dbbcc0"
+ },
+ {
+  "id": "rss:58571d5add74",
+  "title": "Someone got Doom in an SQL database",
+  "norm": "someone got doom in an sql database",
+  "subject_norm": "sqldoom",
+  "entities": [
+   "doom",
+   "sql",
+   "sqldoom"
+  ],
+  "ts": 1791013589,
+  "session": "gh-898992"
  }
 ]

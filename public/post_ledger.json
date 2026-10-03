@@ -2,62 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1784824109,
-   "posted_hour_utc": 16,
-   "channel": "news",
-   "topic": {
-    "title": "OpenAI\u2019s accidental attack against Hugging Face is science fiction that happened",
-    "subject": "OpenAI\u2019s accidental attack against Hugging Face is science fiction that happened",
-    "url": "https://simonwillison.net/2026/Jul/22/openai-cyberattack/",
-    "source": "hn",
-    "keywords": [
-     "ai",
-     "openai"
-    ],
-    "viral_score": 9.73
-   },
-   "style_pack": "ember-gold",
-   "seed": 1290509625,
-   "voice": "en-US-AndrewNeural",
-   "hook_type": "PAIN-POINT 'YOU'",
-   "scene_count": 6,
-   "video_seconds": 35.0,
-   "session": "gh-1bde4f",
-   "platforms": {
-    "instagram": {
-     "id": "18107958476085700",
-     "posted_at": 1784824336
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 109,
-      "reach": 99,
-      "likes": 1,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 1,
-      "ig_reels_avg_watch_time": 2582,
-      "fetched_at": 1787392024
-     },
-     "snap72": {
-      "views": 109,
-      "reach": 99,
-      "likes": 1,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 1,
-      "fetched_at": 1785048914
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1784871120,
    "posted_hour_utc": 5,
    "channel": "news",
@@ -7716,7 +7660,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790861925
+      "fetched_at": 1791013589
      },
      "snap72": {
       "views": 0,
@@ -7782,7 +7726,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1790861925
+      "fetched_at": 1791013589
      },
      "snap72": {
       "views": 1,
@@ -8049,7 +7993,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6066,
-      "fetched_at": 1790861925
+      "fetched_at": 1791013589
      },
      "snap72": {
       "views": 10,
@@ -8115,7 +8059,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 992,
-      "fetched_at": 1790861925
+      "fetched_at": 1791013589
      },
      "snap72": {
       "views": 127,
@@ -8722,7 +8666,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1369,
-      "fetched_at": 1790861925
+      "fetched_at": 1791013589
      },
      "snap72": {
       "views": 57,
@@ -9404,7 +9348,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9315,
-      "fetched_at": 1790861925
+      "fetched_at": 1791013589
      },
      "snap72": {
       "views": 1,
@@ -10141,7 +10085,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6118,
-      "fetched_at": 1790861925
+      "fetched_at": 1791013589
      },
      "snap72": {
       "views": 16,
@@ -10439,7 +10383,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1832,
-      "fetched_at": 1790861925
+      "fetched_at": 1791013589
      },
      "snap72": {
       "views": 16,
@@ -10808,7 +10752,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1747,
-      "fetched_at": 1790861925
+      "fetched_at": 1791013589
      },
      "snap72": {
       "views": 8,
@@ -11031,7 +10975,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2918,
-      "fetched_at": 1790843452
+      "fetched_at": 1791013589
      },
      "snap72": {
       "views": 2,
@@ -11105,7 +11049,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1184,
-      "fetched_at": 1790861925
+      "fetched_at": 1791013589
      },
      "snap72": {
       "views": 2,
@@ -11399,7 +11343,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 7911,
-      "fetched_at": 1790843452
+      "fetched_at": 1791013589
      },
      "snap72": {
       "views": 3,
@@ -12064,7 +12008,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 2306,
-      "fetched_at": 1790843452
+      "fetched_at": 1791013589
      },
      "snap72": {
       "views": 24,
@@ -12430,9 +12374,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1242,
-      "fetched_at": 1790843452
+      "fetched_at": 1791013589
      },
-     "snap72": null,
+     "snap72": {
+      "views": 7,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1242,
+      "fetched_at": 1791013589
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12808,7 +12762,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 12,
+      "reach": 11,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1024,
+      "fetched_at": 1791013589
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12966,6 +12930,58 @@
     "instagram": {
      "id": "17884496286687186",
      "posted_at": 1790998585
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791013527,
+   "posted_hour_utc": 7,
+   "channel": "news",
+   "topic": {
+    "title": "Someone got Doom in an SQL database",
+    "subject": "SQLDoom",
+    "url": "https://arstechnica.com/gaming/2026/10/can-it-run-doom-sql-database-edition/",
+    "source": "rss:arstechnica",
+    "keywords": [],
+    "viral_score": 4.35,
+    "sources": [],
+    "display_title": "Doom running inside SQL database",
+    "angle": "Lukas Vogel built SQLDoom, running full-color Doom inside CedarDB tables using 1,300 lines of SQL and common table expressions.",
+    "insight": "Treating game state as a transactional database snapshot eliminates multiplayer physics sync bugs and race conditions entirely.",
+    "judge": "plan"
+   },
+   "style_pack": "mono-brutalist",
+   "format_pack": "legacy-news",
+   "seed": 333505484,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "STAKES-REVEAL",
+   "style_epoch": 13,
+   "scene_count": 7,
+   "video_seconds": 54.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "database"
+    ]
+   },
+   "session": "gh-898992",
+   "platforms": {
+    "instagram": {
+     "id": "17962968870205665",
+     "posted_at": 1791013585
     }
    },
    "metrics": {
