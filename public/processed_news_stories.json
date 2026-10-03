@@ -2427,5 +2427,17 @@
   ],
   "ts": 1791013589,
   "session": "gh-898992"
+ },
+ {
+  "id": "lob:cpf8w6",
+  "title": "Rust for CPython (Python Language Summit 2026)",
+  "norm": "rust for cpython python language summit 2026",
+  "subject_norm": "rust for cpython",
+  "entities": [
+   "rust",
+   "python"
+  ],
+  "ts": 1791036335,
+  "session": "gh-6f6922"
  }
 ]
