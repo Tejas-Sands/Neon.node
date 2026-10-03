@@ -2400,5 +2400,19 @@
   ],
   "ts": 1790952024,
   "session": "gh-a8d15e"
+ },
+ {
+  "id": "49936575",
+  "title": "From the creator of Redis; run LLM locally with ds4",
+  "norm": "from the creator of redis run llm locally with ds4",
+  "subject_norm": "dwarfstar 4 local inference engine",
+  "entities": [
+   "redis",
+   "llm",
+   "ds4",
+   "dwarfstar"
+  ],
+  "ts": 1790998589,
+  "session": "gh-dbbcc0"
  }
 ]

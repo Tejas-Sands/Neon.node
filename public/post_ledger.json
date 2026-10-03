@@ -2,61 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1784809450,
-   "posted_hour_utc": 12,
-   "channel": "news",
-   "topic": {
-    "title": "Quality non-fiction books are the antithesis of AI slop",
-    "subject": "Quality non-fiction books are the antithesis of AI slop",
-    "url": "https://resobscura.substack.com/p/quality-non-fiction-books-are-the",
-    "source": "hn",
-    "keywords": [
-     "ai"
-    ],
-    "viral_score": 8.54
-   },
-   "style_pack": "cosmic-fantasy",
-   "seed": 1008036357,
-   "voice": "en-US-ChristopherNeural",
-   "hook_type": "BOLD PROMISE",
-   "scene_count": 6,
-   "video_seconds": 34.3,
-   "session": "gh-ecda7d",
-   "platforms": {
-    "instagram": {
-     "id": "17979975054025839",
-     "posted_at": 1784809521
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 103,
-      "reach": 103,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1325,
-      "fetched_at": 1787392024
-     },
-     "snap72": {
-      "views": 103,
-      "reach": 103,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1784999217
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1784824109,
    "posted_hour_utc": 16,
    "channel": "news",
@@ -7969,7 +7914,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1385,
-      "fetched_at": 1790843452
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 13,
@@ -9325,7 +9270,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 12899,
-      "fetched_at": 1790826565
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 1,
@@ -9392,7 +9337,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5589,
-      "fetched_at": 1790843452
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 6,
@@ -9600,7 +9545,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 20007,
-      "fetched_at": 1790826565
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 0,
@@ -9674,7 +9619,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 10178,
-      "fetched_at": 1790843452
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 1,
@@ -9750,7 +9695,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5304,
-      "fetched_at": 1790843452
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 20,
@@ -10050,7 +9995,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7090,
-      "fetched_at": 1790843452
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 7,
@@ -10122,7 +10067,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5527,
-      "fetched_at": 1790843452
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 17,
@@ -10420,7 +10365,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1773,
-      "fetched_at": 1790843452
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 10,
@@ -10717,7 +10662,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5416,
-      "fetched_at": 1790843452
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 10,
@@ -10789,7 +10734,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5706,
-      "fetched_at": 1790843452
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 5,
@@ -11010,7 +10955,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2272,
-      "fetched_at": 1790826565
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 4,
@@ -11752,7 +11697,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1045,
-      "fetched_at": 1790826565
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 8,
@@ -11825,7 +11770,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 18084,
-      "fetched_at": 1790826565
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 0,
@@ -12046,7 +11991,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4007,
-      "fetched_at": 1790826565
+      "fetched_at": 1790998589
      },
      "snap72": {
       "views": 20,
@@ -12967,6 +12912,60 @@
     "instagram": {
      "id": "17989422767865390",
      "posted_at": 1790952021
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1790998507,
+   "posted_hour_utc": 3,
+   "channel": "news",
+   "topic": {
+    "title": "From the creator of Redis; run LLM locally with ds4",
+    "subject": "DwarfStar 4 local inference engine",
+    "url": "https://dwarfstar.sh/",
+    "source": "hn",
+    "keywords": [
+     "llm"
+    ],
+    "viral_score": 8.83,
+    "sources": [],
+    "display_title": "Run DeepSeek locally on Mac",
+    "angle": "The creator of Redis built DwarfStar 4, a narrow C inference engine to run massive MoE models like DeepSeek V4 and Qwen locally on high-memory Mac, CUDA, and ROCm hardware.",
+    "insight": "By using asymmetric quantization on routed experts and saving long prefixes to SSD, developers can run large mixture-of-experts models locally on 64GB to 128GB machines.",
+    "judge": "plan"
+   },
+   "style_pack": "desert-dune",
+   "format_pack": "facts-explainer",
+   "seed": 444812189,
+   "voice": "gemini:Achird",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 13,
+   "scene_count": 5,
+   "video_seconds": 27.8,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "redis"
+    ]
+   },
+   "session": "gh-dbbcc0",
+   "platforms": {
+    "instagram": {
+     "id": "17884496286687186",
+     "posted_at": 1790998585
     }
    },
    "metrics": {

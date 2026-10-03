@@ -2,48 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-4872944",
-   "ts": 1789046230,
-   "session": "gh-bf20a4",
-   "query": "credit card online checkout screen",
-   "scene": 1
-  },
-  {
-   "id": "pexels-7691585",
-   "ts": 1789046230,
-   "session": "gh-bf20a4",
-   "query": "financial graph moving screen",
-   "scene": 2
-  },
-  {
-   "id": "pexels-8141714",
-   "ts": 1789046230,
-   "session": "gh-bf20a4",
-   "query": "financial graph moving screen",
-   "scene": 2
-  },
-  {
-   "id": "pexels-7989854",
-   "ts": 1789046230,
-   "session": "gh-bf20a4",
-   "query": "terminal code scrolling screen",
-   "scene": 3
-  },
-  {
-   "id": "pexels-37339322",
-   "ts": 1789046230,
-   "session": "gh-bf20a4",
-   "query": "tablet screen glowing closeup",
-   "scene": 4
-  },
-  {
-   "id": "pexels-38470559",
-   "ts": 1789046230,
-   "session": "gh-bf20a4",
-   "query": "tablet screen glowing closeup",
-   "scene": 4
-  },
-  {
    "id": "pexels-7688613",
    "ts": 1789046230,
    "session": "gh-bf20a4",
@@ -2799,6 +2757,48 @@
    "ts": 1790951957,
    "session": "gh-a8d15e",
    "query": "developer coding screen scrolling",
+   "scene": 4
+  },
+  {
+   "id": "pexels-8682965",
+   "ts": 1790998507,
+   "session": "gh-dbbcc0",
+   "query": "terminal typing commands",
+   "scene": 0
+  },
+  {
+   "id": "pexels-20523328",
+   "ts": 1790998507,
+   "session": "gh-dbbcc0",
+   "query": "server data center lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-38431825",
+   "ts": 1790998507,
+   "session": "gh-dbbcc0",
+   "query": "server data center lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-26953415",
+   "ts": 1790998507,
+   "session": "gh-dbbcc0",
+   "query": "code editor screen scrolling",
+   "scene": 2
+  },
+  {
+   "id": "pexels-6974127",
+   "ts": 1790998507,
+   "session": "gh-dbbcc0",
+   "query": "developer laptop closeup",
+   "scene": 3
+  },
+  {
+   "id": "pexels-7231303",
+   "ts": 1790998507,
+   "session": "gh-dbbcc0",
+   "query": "circuit board macro motion",
    "scene": 4
   }
  ]
