@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-5377532",
-   "ts": 1789118567,
-   "session": "gh-9eb823",
-   "query": "developer typing code dark office",
-   "scene": 1
-  },
-  {
-   "id": "pexels-8516376",
-   "ts": 1789118567,
-   "session": "gh-9eb823",
-   "query": "microchip processor close up motion",
-   "scene": 2
-  },
-  {
-   "id": "pexels-5387436",
-   "ts": 1789118567,
-   "session": "gh-9eb823",
-   "query": "server rack flashing lights loop",
-   "scene": 3
-  },
-  {
-   "id": "pexels-15283162",
-   "ts": 1789118567,
-   "session": "gh-9eb823",
-   "query": "server rack flashing lights loop",
-   "scene": 3
-  },
-  {
-   "id": "pexels-34912747",
-   "ts": 1789118567,
-   "session": "gh-9eb823",
-   "query": "neural network nodes glowing data",
-   "scene": 4
-  },
-  {
    "id": "pexels-34996611",
    "ts": 1789118567,
    "session": "gh-9eb823",
@@ -2800,6 +2765,41 @@
    "session": "gh-898992",
    "query": "github code repository interface scrolling",
    "scene": 6
+  },
+  {
+   "id": "pexels-30284959",
+   "ts": 1791089845,
+   "session": "gh-66f2f7",
+   "query": "terminal typing code lines scrolling",
+   "scene": 0
+  },
+  {
+   "id": "pexels-10405280",
+   "ts": 1791089845,
+   "session": "gh-66f2f7",
+   "query": "data center servers blinking lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-7679837",
+   "ts": 1791089845,
+   "session": "gh-66f2f7",
+   "query": "hands typing code editor laptop",
+   "scene": 2
+  },
+  {
+   "id": "pexels-12139633",
+   "ts": 1791089845,
+   "session": "gh-66f2f7",
+   "query": "file explorer code editor scrolling",
+   "scene": 3
+  },
+  {
+   "id": "pexels-5473800",
+   "ts": 1791089845,
+   "session": "gh-66f2f7",
+   "query": "code compilation success terminal",
+   "scene": 4
   }
  ]
 }

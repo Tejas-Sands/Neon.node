@@ -2,61 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1784874259,
-   "posted_hour_utc": 6,
-   "channel": "news",
-   "topic": {
-    "title": "Startup founders urge U.S. government not to shut off Chinese open weight AI",
-    "subject": "Startup founders urge U.S. government not to shut off Chinese open weight AI",
-    "url": "https://www.politico.com/news/2026/07/22/startup-founders-urge-trump-not-to-shut-off-chinese-open-weight-ai-01008992",
-    "source": "hn",
-    "keywords": [
-     "ai"
-    ],
-    "viral_score": 9.34
-   },
-   "style_pack": "aurora-teal",
-   "seed": 108173874,
-   "voice": "en-US-ChristopherNeural",
-   "hook_type": "TIMEFRAME-COMPRESSION",
-   "scene_count": 6,
-   "video_seconds": 34.8,
-   "session": "gh-b7118e",
-   "platforms": {
-    "instagram": {
-     "id": "18442534042192771",
-     "posted_at": 1784874315
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 119,
-      "reach": 109,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 4061,
-      "fetched_at": 1787404650
-     },
-     "snap72": {
-      "views": 119,
-      "reach": 109,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785073800
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1784885206,
    "posted_hour_utc": 9,
    "channel": "news",
@@ -7334,7 +7279,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1287,
-      "fetched_at": 1790934034
+      "fetched_at": 1791089920
      },
      "snap72": {
       "views": 30,
@@ -8205,7 +8150,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 854,
-      "fetched_at": 1790934034
+      "fetched_at": 1791089920
      },
      "snap72": {
       "views": 3,
@@ -8338,7 +8283,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 865,
-      "fetched_at": 1790934034
+      "fetched_at": 1791089920
      },
      "snap72": {
       "views": 4,
@@ -8406,7 +8351,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9140,
-      "fetched_at": 1790934034
+      "fetched_at": 1791089920
      },
      "snap72": {
       "views": 9,
@@ -8677,7 +8622,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790934034
+      "fetched_at": 1791089920
      },
      "snap72": {
       "views": 0,
@@ -9018,7 +8963,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5867,
-      "fetched_at": 1790934034
+      "fetched_at": 1791089920
      },
      "snap72": {
       "views": 3,
@@ -9358,7 +9303,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1480,
-      "fetched_at": 1790934034
+      "fetched_at": 1791089920
      },
      "snap72": {
       "views": 3,
@@ -9732,7 +9677,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 13671,
-      "fetched_at": 1790934034
+      "fetched_at": 1791089920
      },
      "snap72": {
       "views": 0,
@@ -9808,7 +9753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3637,
-      "fetched_at": 1790934034
+      "fetched_at": 1791089920
      },
      "snap72": {
       "views": 68,
@@ -11141,7 +11086,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 645,
-      "fetched_at": 1790934034
+      "fetched_at": 1791089920
      },
      "snap72": {
       "views": 1,
@@ -12098,7 +12043,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1718,
-      "fetched_at": 1790922513
+      "fetched_at": 1791089920
      },
      "snap72": {
       "views": 6,
@@ -12466,9 +12411,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790922513
+      "fetched_at": 1791089920
      },
-     "snap72": null,
+     "snap72": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1791089920
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12531,9 +12486,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1394,
-      "fetched_at": 1790922513
+      "fetched_at": 1791089920
      },
-     "snap72": null,
+     "snap72": {
+      "views": 26,
+      "reach": 16,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1394,
+      "fetched_at": 1791089920
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12843,7 +12808,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 33,
+      "reach": 28,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 1,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1279,
+      "fetched_at": 1791089920
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12897,7 +12872,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 8,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2154,
+      "fetched_at": 1791089920
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12997,6 +12982,60 @@
     "instagram": {
      "id": "17992415679047244",
      "posted_at": 1791036332
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791089845,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "Getting the most out of Opus 5.5 in Claude and Claude Code",
+    "subject": "Opus 5.5 in Claude",
+    "url": "https://claude.dev/blog/getting-the-most-out-of-opus-5-5/",
+    "source": "hn",
+    "keywords": [
+     "claude"
+    ],
+    "viral_score": 9.41,
+    "sources": [],
+    "display_title": "Opus 5.5 Prompting Changes",
+    "angle": "Developers using Opus 5.5 must change their prompting habits because the model thinks before every reply and runs longer on its own.",
+    "insight": "Removing explicit thinking instructions saves time because Opus 5.5 always thinks before replying, meaning developers need to focus on clear finish lines and interruption rules instead.",
+    "judge": "plan"
+   },
+   "style_pack": "burgundy-luxe",
+   "format_pack": "facts-explainer",
+   "seed": 1876398863,
+   "voice": "gemini:Achird",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 14,
+   "scene_count": 5,
+   "video_seconds": 24.0,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "claude code"
+    ]
+   },
+   "session": "gh-66f2f7",
+   "platforms": {
+    "instagram": {
+     "id": "17962820442001041",
+     "posted_at": 1791089917
     }
    },
    "metrics": {
