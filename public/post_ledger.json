@@ -2,61 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1784885206,
-   "posted_hour_utc": 9,
-   "channel": "news",
-   "topic": {
-    "title": "Software rendering in 500 lines of bare C++",
-    "subject": "Software rendering in 500 lines of bare C++",
-    "url": "https://haqr.eu/tinyrenderer/",
-    "source": "hn",
-    "keywords": [
-     "war"
-    ],
-    "viral_score": 8.14
-   },
-   "style_pack": "rosewood-vintage",
-   "seed": 322010795,
-   "voice": "en-US-BrianNeural",
-   "hook_type": "PATTERN-INTERRUPT",
-   "scene_count": 5,
-   "video_seconds": 30.7,
-   "session": "gh-576bfe",
-   "platforms": {
-    "instagram": {
-     "id": "17995446353972777",
-     "posted_at": 1784885267
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 120,
-      "reach": 109,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2813,
-      "fetched_at": 1787404650
-     },
-     "snap72": {
-      "views": 120,
-      "reach": 109,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785073800
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1784895809,
    "posted_hour_utc": 12,
    "channel": "news",
@@ -7350,7 +7295,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 828,
-      "fetched_at": 1790952024
+      "fetched_at": 1791108979
      },
      "snap72": {
       "views": 2,
@@ -7481,7 +7426,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1655,
-      "fetched_at": 1790952024
+      "fetched_at": 1791108979
      },
      "snap72": {
       "views": 16,
@@ -8215,7 +8160,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1790952024
+      "fetched_at": 1791108979
      },
      "snap72": {
       "views": 6,
@@ -8416,7 +8361,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1790952024
+      "fetched_at": 1791108979
      },
      "snap72": {
       "views": 48,
@@ -8486,7 +8431,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1070,
-      "fetched_at": 1790952024
+      "fetched_at": 1791108979
      },
      "snap72": {
       "views": 109,
@@ -8691,7 +8636,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790952024
+      "fetched_at": 1791108979
      },
      "snap72": {
       "views": 0,
@@ -8760,7 +8705,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 760,
-      "fetched_at": 1790952024
+      "fetched_at": 1791108979
      },
      "snap72": {
       "views": 2,
@@ -8827,7 +8772,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 294,
-      "fetched_at": 1790952024
+      "fetched_at": 1791108979
      },
      "snap72": {
       "views": 1,
@@ -9033,7 +8978,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3706,
-      "fetched_at": 1790952024
+      "fetched_at": 1791108979
      },
      "snap72": {
       "views": 0,
@@ -10122,7 +10067,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3543,
-      "fetched_at": 1790952024
+      "fetched_at": 1791108979
      },
      "snap72": {
       "views": 1,
@@ -11380,7 +11325,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2332,
-      "fetched_at": 1790934034
+      "fetched_at": 1791108979
      },
      "snap72": {
       "views": 122,
@@ -11748,7 +11693,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 836,
-      "fetched_at": 1790934034
+      "fetched_at": 1791108979
      },
      "snap72": {
       "views": 10,
@@ -12117,7 +12062,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1250,
-      "fetched_at": 1790934034
+      "fetched_at": 1791108979
      },
      "snap72": {
       "views": 3,
@@ -12562,9 +12507,19 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2855,
-      "fetched_at": 1790934034
+      "fetched_at": 1791108979
      },
-     "snap72": null,
+     "snap72": {
+      "views": 30,
+      "reach": 23,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 2855,
+      "fetched_at": 1791108979
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12934,7 +12889,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 31,
+      "reach": 26,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3542,
+      "fetched_at": 1791108979
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13036,6 +13001,61 @@
     "instagram": {
      "id": "17962820442001041",
      "posted_at": 1791089917
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791108911,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "Kolibri: A Sovereign Open-Weight Model",
+    "subject": "Kolibri Open-Weight Model",
+    "url": "https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/",
+    "source": "hn",
+    "keywords": [
+     "model"
+    ],
+    "viral_score": 9.92,
+    "sources": [
+     "hackernews",
+     "lobsters"
+    ],
+    "display_title": "Kolibri 78B Open Model",
+    "angle": "A new 78B English-German open-weight model with a 1M token context window targets sovereign, regulated enterprise workloads.",
+    "insight": "Regulated industries can run localized 78B models on-premise without third-party data exposure, provided they adopt specialized 3B active Mixture-of-Experts architectures.",
+    "judge": "plan"
+   },
+   "style_pack": "matrix-green",
+   "format_pack": "facts-explainer",
+   "seed": 43766093,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 14,
+   "scene_count": 5,
+   "video_seconds": 34.1,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-c7769c",
+   "platforms": {
+    "instagram": {
+     "id": "18115611062104506",
+     "posted_at": 1791108975
     }
    },
    "metrics": {
