@@ -2460,5 +2460,17 @@
   "entities": [],
   "ts": 1791108979,
   "session": "gh-c7769c"
+ },
+ {
+  "id": "49946228",
+  "title": "LeCun has \"zero concerns\" about AI wiping out humanity, recent \"rogue\" incidents",
+  "norm": "lecun has zero concerns about ai wiping out humanity recent rogue incidents",
+  "subject_norm": "yann lecun ai doom",
+  "entities": [
+   "lecun",
+   "yann"
+  ],
+  "ts": 1791124152,
+  "session": "gh-2a3420"
  }
 ]

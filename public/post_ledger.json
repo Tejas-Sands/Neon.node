@@ -2,61 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1784895809,
-   "posted_hour_utc": 12,
-   "channel": "news",
-   "topic": {
-    "title": "Writing by hand is good for your brain",
-    "subject": "Writing by hand is good for your brain",
-    "url": "https://nealstephenson.substack.com/p/writing-by-hand-is-good-for-your",
-    "source": "hn",
-    "keywords": [
-     "ai"
-    ],
-    "viral_score": 9.81
-   },
-   "style_pack": "mint-aqua",
-   "seed": 483934355,
-   "voice": "en-US-AndrewNeural",
-   "hook_type": "MISTAKE CALLOUT",
-   "scene_count": 6,
-   "video_seconds": 36.5,
-   "session": "gh-e95eff",
-   "platforms": {
-    "instagram": {
-     "id": "18209201419345115",
-     "posted_at": 1784895883
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 115,
-      "reach": 100,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 1,
-      "total_interactions": 1,
-      "ig_reels_avg_watch_time": 3877,
-      "fetched_at": 1787404650
-     },
-     "snap72": {
-      "views": 114,
-      "reach": 99,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 1,
-      "total_interactions": 1,
-      "fetched_at": 1785082451
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1784907142,
    "posted_hour_utc": 15,
    "channel": "news",
@@ -7691,7 +7636,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1385,
-      "fetched_at": 1790998589
+      "fetched_at": 1791124152
      },
      "snap72": {
       "views": 13,
@@ -9047,7 +8992,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 12899,
-      "fetched_at": 1790998589
+      "fetched_at": 1791124152
      },
      "snap72": {
       "views": 1,
@@ -9114,7 +9059,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5589,
-      "fetched_at": 1790998589
+      "fetched_at": 1791124152
      },
      "snap72": {
       "views": 6,
@@ -9322,7 +9267,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 20007,
-      "fetched_at": 1790998589
+      "fetched_at": 1791124152
      },
      "snap72": {
       "views": 0,
@@ -9396,7 +9341,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 10178,
-      "fetched_at": 1790998589
+      "fetched_at": 1791124152
      },
      "snap72": {
       "views": 1,
@@ -9472,7 +9417,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5304,
-      "fetched_at": 1790998589
+      "fetched_at": 1791124152
      },
      "snap72": {
       "views": 20,
@@ -9772,7 +9717,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7090,
-      "fetched_at": 1790998589
+      "fetched_at": 1791124152
      },
      "snap72": {
       "views": 7,
@@ -9844,7 +9789,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5527,
-      "fetched_at": 1790998589
+      "fetched_at": 1791124152
      },
      "snap72": {
       "views": 17,
@@ -10142,7 +10087,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1773,
-      "fetched_at": 1790998589
+      "fetched_at": 1791124152
      },
      "snap72": {
       "views": 10,
@@ -10366,7 +10311,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5252,
-      "fetched_at": 1790952024
+      "fetched_at": 1791124152
      },
      "snap72": {
       "views": 26,
@@ -11103,7 +11048,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1530,
-      "fetched_at": 1790952024
+      "fetched_at": 1791124152
      },
      "snap72": {
       "views": 11,
@@ -11400,7 +11345,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1790952024
+      "fetched_at": 1791124152
      },
      "snap72": {
       "views": 0,
@@ -12135,7 +12080,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 6145,
-      "fetched_at": 1790952024
+      "fetched_at": 1791124152
      },
      "snap72": {
       "views": 1,
@@ -12579,9 +12524,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1947,
-      "fetched_at": 1790952024
+      "fetched_at": 1791124152
      },
-     "snap72": null,
+     "snap72": {
+      "views": 6,
+      "reach": 6,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1947,
+      "fetched_at": 1791124152
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12951,7 +12906,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 17,
+      "reach": 15,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1351,
+      "fetched_at": 1791124152
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13056,6 +13021,61 @@
     "instagram": {
      "id": "18115611062104506",
      "posted_at": 1791108975
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791124090,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "LeCun has \"zero concerns\" about AI wiping out humanity, recent \"rogue\" incidents",
+    "subject": "Yann LeCun AI doom",
+    "url": "https://fortune.com/2026/10/01/ai-godfather-yann-lecun-has-zero-concerns-about-human-extinction-says-anthropic-ceo-dario-amodei-is-deuded/",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "incident"
+    ],
+    "viral_score": 9.57,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "AI Doom Is Not Real",
+    "angle": "Turing Award winner Yann LeCun dismisses AI doom fears, attributing recent rogue agent incidents entirely to poor human sandbox design.",
+    "insight": "Builders must focus on rigorous sandbox design and cybersecurity rather than existential panic, as rogue agent incidents stem from poor engineering.",
+    "judge": "plan"
+   },
+   "style_pack": "burgundy-luxe",
+   "format_pack": "facts-explainer",
+   "seed": 1196411916,
+   "voice": "en-US-AriaNeural",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 14,
+   "scene_count": 5,
+   "video_seconds": 28.9,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "session": "gh-2a3420",
+   "platforms": {
+    "instagram": {
+     "id": "18128608984778954",
+     "posted_at": 1791124148
     }
    },
    "metrics": {
