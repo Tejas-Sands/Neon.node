@@ -2,6 +2,82 @@
 
 ## October 5 opening repair
 
+### Non-Gemini follow-up: Emma and continuous Edge narration
+
+The owner reports robotic delivery persists when Gemini is not used. The
+expressive directions live solely in the Gemini provider. Edge's old consistent
+default was Aria, with independent scene requests and only native rate/pitch.
+A reproducible later-scene failure also mixed the initial narrator with a
+fallback narrator in one reel.
+
+Local repair changes the consistent Edge default and Gemini recovery to Emma
+at natural pitch. Explicit request/environment voice, rate and pitch pins still
+win; seeded rotation and Gemini Leda selection remain available. Tight
+multi-scene Edge narration uses one complete performance, native word boundaries,
+strict transcript validation, and PCM cuts in measured quiet intervals of at
+least 20ms between scene words. No speech is discarded or sped up. A failed
+Edge voice retries every word on the next voice. Missing words, invalid timings
+or unsafe cuts fail before rendering. Legacy pacing retains the historical
+per-scene path; `VOICE_FLOW=per-scene` also permits a matched tight comparison.
+The process-only flow key is not exported by CI; its code default applies.
+
+Matched samples at **+12%, +0Hz, tight**:
+
+| Narration | Voice/flow | Total | Opening |
+| --- | --- | --- | --- |
+| uv scripts | Aria/per-scene | 20.27s | 3.90s |
+| uv scripts | Aria/continuous | 20.30s | 3.90s |
+| uv scripts | Emma/continuous | 19.07s | 3.33s |
+| Quantization | Emma/continuous | 17.30s | 3.30s |
+| npm lockfiles | Emma/continuous | 21.17s | 3.40s |
+
+All Emma scenes fit the opening/body limits, longest body 4.57s; native-derived
+captions remain inside the fitted timelines. The 156-word Emma corpus measured
+2.798 words/s at +12%, normalized to a +5% estimator reference of 2.62.
+Estimated runtime errors were +4.2%, +2.4% and -1.1%, respectively.
+Whole-story Aria was essentially unchanged in duration; this comparison does
+not establish an audible expressiveness gain from context alone. Emma replaces
+the reported robotic narrator, but naturalness still needs human listening.
+The free Edge endpoint supports rate/pitch/volume, not emotion/style SSML
+([upstream documentation](https://github.com/rany2/edge-tts#custom-ssml)).
+
+Listen at `out/voice-review/edge-flow/index.html`, or play
+`public/voiceover-scripts-edge-before.mp3` and
+`public/voiceover-scripts-edge-emma.mp3`. The latter is the candidate default.
+Artifacts are ignored local files. No remote settings or workflows were changed;
+CI's existing rate Variable still wins over the Python +12% default. These are
+local previews, not newly published stories or measured reach improvements.
+
+Reproduce:
+
+```bash
+python3 scripts/preview_editorial.py --story scripts --voice en-US-AriaNeural --flow per-scene --rate=+12% --label scripts-edge-before
+python3 scripts/preview_editorial.py --story scripts --voice en-US-EmmaNeural --flow continuous --rate=+12% --label scripts-edge-emma
+python3 -m unittest discover
+```
+
+The October 5 opening repair below predates this fallback voice replacement.
+
+Validation: 60 discovered unit tests passed, plus the six required regression
+scripts (format packs, feedback scoring, TTS providers, script gate, topic judge
+and captions) and TypeScript checking. Audio checks verified all five comparison
+mixes and subtitle bounds. Independent review found an audition-matrix flow
+override was ignored; it now reaches synthesis and separate comparison files.
+AST/file comparison confirms only voice/estimator functions changed in `main.py`
+and all protected publishing files remain unchanged. Human listening and
+production rollout remain pending.
+
+Rollout authorization: the owner approved deployment of this repair on
+October 5. Promote the verified code to `main` for the next normal scheduled
+checkout; do not manually dispatch a reel. Existing `TTS_PROVIDER=gemini`
+continues selecting Leda when available, with Emma on provider failure;
+`TTS_PROVIDER=edge` uses Emma directly. Preserve the existing rate/pitch
+Variables and cadence. Readback using the repository owner's configured GitHub
+account verified `TTS_PROVIDER=gemini`, `VOICEOVER_RATE=+12%` and
+`VOICEOVER_PITCH=+0Hz`; identity/style use the workflow's consistent/cheerful
+defaults. The initial HTTP 403 came from a different active GitHub account.
+The first scheduled output with this revision still requires log/audio review.
+
 The owner reports green Account Status and authorized the audit's repairs.
 Production runs inspected: `37263088838`, `37208876821`, `37128150200`,
 `36811633995`. All four published successfully; their metrics sweeps reported

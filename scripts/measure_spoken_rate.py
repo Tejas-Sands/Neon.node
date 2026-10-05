@@ -55,7 +55,7 @@ VOICES = {
     "en-US-GuyNeural": (1, "+4Hz"),
 }
 if os.environ.get("VOICE_IDENTITY", "consistent") != "rotate":
-    VOICES = {"en-US-AriaNeural": (1, "+0Hz")}
+    VOICES = {"en-US-EmmaNeural": (1, "+0Hz")}
 
 # The two SYSTEM_PROMPT few-shot scripts' voiceovers (post spoken-warmth pass,
 # 2026-08-09) — real scene-length distribution, not synthetic sentences.
@@ -95,7 +95,7 @@ async def scene_seconds(text: str, voice: str, voice_pitch: str) -> float:
 async def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--fixture", action="append", type=Path, default=[])
-    parser.add_argument("--voice", default="en-US-AriaNeural")
+    parser.add_argument("--voice", default="en-US-EmmaNeural")
     parser.add_argument("--rate", default=RATE)
     parser.add_argument("--pitch", default="+0Hz")
     parser.add_argument("--timings", action="append", type=Path, default=[])

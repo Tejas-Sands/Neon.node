@@ -50,7 +50,7 @@ def load_props(story, fixture=None):
     return props, sample["source"]
 
 
-async def audition(props, source, label, voice, rate, pitch, pacing):
+async def audition(props, source, label, voice, rate, pitch, pacing, flow='continuous'):
     if not re.fullmatch(r"[a-z0-9-]+", label):
         raise ValueError("label must contain only lowercase letters, digits and hyphens")
     props = copy.deepcopy(props)
@@ -70,7 +70,7 @@ async def audition(props, source, label, voice, rate, pitch, pacing):
         original_mix(files, offsets, output)
 
     engine = "gemini" if voice.startswith("gemini:") else "kokoro" if voice.startswith(("af_", "am_")) else "edge"
-    with patch.dict(os.environ, {"VOICE_PACING": pacing}), patch.object(renderer, "mix_scene_audios", inspect_mix):
+    with patch.dict(os.environ, {"VOICE_PACING": pacing, "VOICE_FLOW": flow}), patch.object(renderer, "mix_scene_audios", inspect_mix):
         name, words = await renderer._generate_voiceover_with_engine(
             engine, props["scenes"], label, str(ROOT / "public"), voice=voice, rate=rate, pitch=pitch)
     props.update(voiceoverUrl=name, subtitles=words)
@@ -88,6 +88,7 @@ async def audition(props, source, label, voice, rate, pitch, pacing):
     report = dict(label=label, source=source, requested_voice=voice,
                   resolved_voice=status.get("resolved_voice"), provider=status.get("tts_provider"),
                   rate_control=status.get("voice_rate_control"),
+                  flow=status.get("voice_flow"),
                   rate=rate, pitch=pitch, pacing=pacing, clips=clips,
                   per_scene=status.get("voice_scene_timings", []),
                   timeline_seconds=sum(s["durationInFrames"] for s in props["scenes"]) / 30,
@@ -139,6 +140,7 @@ async def run(args):
         write_review_page()
         return
     props, source = load_props(args.story, args.fixture)
+    flow = getattr(args, 'flow', 'continuous')
     if args.auditions:
         candidates = [("control", "en-US-JennyNeural", "+5%"),
                       ("jenny-fast", "en-US-JennyNeural", "+12%"),
@@ -151,11 +153,12 @@ async def run(args):
         else:
             print("Kokoro unavailable: no configured side interpreter.")
         reports = []
+        matrix = args.story + "-" + args.pacing + ("-per-scene" if flow == 'per-scene' else '')
         for label, voice, rate in candidates:
-            reports.append(await audition(props, source, args.story + "-" + args.pacing + "-" + label, voice, rate, "+0Hz", args.pacing))
-        (ROOT / "out/voice-review" / (args.story + "-" + args.pacing + "-auditions.json")).write_text(json.dumps(reports, indent=2) + "\n")
+            reports.append(await audition(props, source, matrix + "-" + label, voice, rate, "+0Hz", args.pacing, flow))
+        (ROOT / "out/voice-review" / (matrix + "-auditions.json")).write_text(json.dumps(reports, indent=2) + "\n")
     else:
-        await audition(props, source, args.label, args.voice, args.rate, args.pitch, args.pacing)
+        await audition(props, source, args.label, args.voice, args.rate, args.pitch, args.pacing, flow)
 
 
 if __name__ == "__main__":
@@ -165,8 +168,9 @@ if __name__ == "__main__":
     parser.add_argument("--story", choices=["quantization", "scripts", "lockfiles"], default="quantization")
     parser.add_argument("--fixture", type=Path)
     parser.add_argument("--label", default="editorial-preview")
-    parser.add_argument("--voice", default="en-US-AriaNeural")
+    parser.add_argument("--voice", default=renderer.DEFAULT_EDGE_VOICE)
     parser.add_argument("--rate", default="+12%")
     parser.add_argument("--pitch", default="+0Hz")
     parser.add_argument("--pacing", choices=["legacy", "tight"], default="tight")
+    parser.add_argument("--flow", choices=["continuous", "per-scene"], default="continuous")
     asyncio.run(run(parser.parse_args()))

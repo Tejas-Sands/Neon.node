@@ -1,8 +1,9 @@
 """TTS provider seam (M2) — Python 3.9-safe, imported by main.py.
 
 Engines:
-  edge    — edge-tts (historical default). Synthesis stays inline in
-            main.generate_voiceover_and_alignment, byte-for-byte.
+  edge    — key-free Emma by default. Tight multi-scene delivery uses
+            edge_voice.py for continuous narration and silent acoustic cuts;
+            legacy pacing/per-scene comparisons keep the inline path.
   kokoro  — Kokoro-82M via scripts/kokoro_tts_worker.py running under a SIDE
             Python >=3.10 interpreter (KOKORO_PYTHON). Batch: one subprocess
             per VIDEO so the ~330MB model loads once. Native word timestamps

@@ -140,7 +140,7 @@ class ExpressiveVoiceTests(unittest.TestCase):
             return ('fallback.mp3', [])
         with patch.object(main, '_generate_voiceover_with_engine', render):
             asyncio.run(main.generate_voiceover_and_alignment([dict(text='Hello', durationInFrames=150)], 'expressive-failure', '/tmp', voice='gemini:Leda'))
-        self.assertEqual(calls, [('gemini', 150, 'gemini:Leda'), ('edge', 150, 'en-US-AriaNeural')])
+        self.assertEqual(calls, [('gemini', 150, 'gemini:Leda'), ('edge', 150, 'en-US-EmmaNeural')])
 
 
 if __name__ == '__main__': unittest.main()

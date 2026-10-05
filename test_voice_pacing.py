@@ -76,7 +76,9 @@ class VoicePacingTests(unittest.TestCase):
                 yield {'type': 'audio', 'data': clip_bytes()}
                 yield {'type': 'WordBoundary', 'text': 'Your', 'offset': 4000000, 'duration': 4000000}
                 yield {'type': 'WordBoundary', 'text': 'model', 'offset': 9000000, 'duration': 5000000}
-        with tempfile.TemporaryDirectory() as directory, patch.dict(os.environ, {'VOICE_PACING': 'tight', 'VOICEOVER_RATE': '+5%'}):
+        # Exercise the retained per-scene fitter; test_edge_voice covers the
+        # continuous performance and its native boundary partitioning.
+        with tempfile.TemporaryDirectory() as directory, patch.dict(os.environ, {'VOICE_PACING': 'tight', 'VOICEOVER_RATE': '+5%', 'VOICE_FLOW': 'per-scene'}):
             scenes = [{'text': 'Your model', 'durationInFrames': 150} for _ in range(2)]
             with patch('edge_tts.Communicate', Speech):
                 name, words = asyncio.run(main._generate_voiceover_with_engine(
@@ -110,7 +112,7 @@ class VoicePacingTests(unittest.TestCase):
                                 {'text': '', 'voiceover': '', 'durationInFrames': 30},
                                 {'text': 'Your model'}]}
             report = asyncio.run(review.audition(props, 'local fixture', 'silent-review',
-                                'en-US-JennyNeural', '+12%', '+0Hz', 'tight'))
+                                'en-US-JennyNeural', '+12%', '+0Hz', 'tight', flow='per-scene'))
             self.assertEqual([c['scene'] for c in report['clips']], [0, 2])
             self.assertEqual(report['clips'][1]['offset'], 3)
             self.assertAlmostEqual(report['clips'][1]['last_word'], 1.06, places=2)
@@ -119,16 +121,19 @@ class VoicePacingTests(unittest.TestCase):
         from scripts import preview_editorial as review
         from argparse import Namespace
         labels = []
+        flows = []
         async def capture(props, source, label, *args):
             labels.append(label)
+            flows.append(args[-1])
             return {'label': label}
         with tempfile.TemporaryDirectory() as directory, patch.object(review, 'ROOT', Path(directory)), patch.object(review, 'audition', capture), patch.object(review, 'load_props', return_value=({}, 'local')), patch.object(review, 'kokoro_python', return_value=''):
             output = Path(directory) / 'out/voice-review'; output.mkdir(parents=True)
-            for pacing_mode in ('legacy', 'tight'):
+            for pacing_mode, flow_mode in (('legacy', 'continuous'), ('tight', 'continuous'), ('tight', 'per-scene')):
                 asyncio.run(review.run(Namespace(report=False, story='quantization', fixture=None,
-                                                auditions=True, pacing=pacing_mode)))
-            self.assertEqual(len(set(labels)), 12)
-            self.assertEqual(len(list(output.glob('*-auditions.json'))), 2)
+                                                auditions=True, pacing=pacing_mode, flow=flow_mode)))
+            self.assertEqual(len(set(labels)), 18)
+            self.assertEqual(flows[-6:], ['per-scene'] * 6)
+            self.assertEqual(len(list(output.glob('*-auditions.json'))), 3)
 
 
 if __name__ == '__main__': unittest.main()

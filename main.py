@@ -232,7 +232,12 @@ def select_gemini_voice(session_id: str, requested: Optional[str] = None) -> str
     print(f"[{session_id}] Seeded Gemini narrator for this video: {selected} ({mode})")
     return selected
 
-# VOICE_IDENTITY=consistent uses Aria at natural pitch by default. The pool
+# Key-free consistent narrator, shared by direct Edge and Gemini recovery.
+# October 5: Emma at natural pitch replaces the reported robotic Aria default.
+# Native delivery remains limited; listening acceptance is recorded separately.
+DEFAULT_EDGE_VOICE = "en-US-EmmaNeural"
+
+# VOICE_IDENTITY=consistent uses Emma at natural pitch by default. The pool
 # below remains available with VOICE_IDENTITY=rotate. VOICE_STYLE=cheerful
 # (the default since 2026-08-09) swaps that optional narrator pool
 # to the EXPRESSIVE non-multilingual voices — the Multilingual set reads
@@ -323,7 +328,7 @@ from format_packs import LEGACY_PACK, resolve_pack, runtime_revision_notes
 
 # TTS provider seam (tts_providers.py): TTS_PROVIDER=kokoro routes synthesis
 # to the Kokoro-82M worker under a side Python >=3.10 interpreter; default
-# "edge" keeps the historical edge-tts path byte-for-byte. Engines never mix
+# "edge" uses continuous native word-boundary speech in tight mode. Engines never mix
 # within one video.
 from tts_providers import (KOKORO_VOICE_POOL, edge_rate_to_speed,
                            is_kokoro_voice, resolve_tts_engine,
@@ -3071,8 +3076,11 @@ def _estimate_spoken_seconds(scenes: List[dict], engine: Optional[str] = None,
         # 2026-09-17: three source-backed fixtures, normalized to +5%.
         # Jenny: 158 words at 2.680 wps; selected Aria: 156 at 2.583 (+12%).
         # See docs/VOICE_MOTION_REVIEW.md. Other voices retain pool calibration.
-        narrator = voice or os.environ.get("VOICEOVER_VOICE") or "en-US-AriaNeural"
-        wps = {"en-US-JennyNeural": 2.52, "en-US-AriaNeural": 2.42}.get(narrator, wps)
+        narrator = voice or os.environ.get("VOICEOVER_VOICE") or DEFAULT_EDGE_VOICE
+        # Emma: 156 words over three continuous, source-backed fixtures;
+        # 2.798 wps at +12%, normalized to the +5% calibration reference.
+        wps = {"en-US-JennyNeural": 2.52, "en-US-AriaNeural": 2.42,
+               "en-US-EmmaNeural": 2.62}.get(narrator, wps)
     wps *= edge_rate_to_speed(rate or os.environ.get("VOICEOVER_RATE", "+12%")) / 1.05
     total_words = 0
     spoken_scenes = 0
@@ -7655,7 +7663,7 @@ async def generate_voiceover_and_alignment(
                 else:
                     s.pop("durationInFrames", None)
             if engine == "gemini":
-                voice = "en-US-AriaNeural"
+                voice = DEFAULT_EDGE_VOICE
     return await _generate_voiceover_with_engine(
         "edge", scenes, session_id, public_dir, voice, rate, pitch)
 
@@ -7702,10 +7710,10 @@ async def _generate_voiceover_with_engine(
     else:
         resolved_voice = (voice or os.environ.get("VOICEOVER_VOICE", "")).strip()
         # One channel voice unless explicitly auditioning the old rotation.
-        # Keep provider selection and the existing failure recovery unchanged.
+        # Explicit voice pins and the opt-in legacy rotation stay available.
         consistent_voice = VOICE_STYLE != "legacy" and os.environ.get("VOICE_IDENTITY", "consistent") != "rotate"
         if not resolved_voice and consistent_voice:
-            resolved_voice = "en-US-AriaNeural"
+            resolved_voice = DEFAULT_EDGE_VOICE
         if not resolved_voice:
             # Feedback-weighted rotation: identical to the legacy rnd.choice on
             # cold start; with enough scored posts, better-performing narrators get
@@ -7744,11 +7752,21 @@ async def _generate_voiceover_with_engine(
     else:
         resolved_pitch = "+0Hz"
 
+    # Tight Edge delivery retains the whole story's conversational context.
+    # Legacy pacing keeps the historical independent scene requests.
+    edge_continuous = (
+        engine == "edge"
+        and os.environ.get("VOICE_FLOW", "continuous") != "per-scene"
+        and os.environ.get("VOICE_PACING", "tight") != "legacy"
+        and sum(bool(s.get("voiceover", "").strip() or s.get("text", "").strip()) for s in scenes) > 1
+    )
+    batched = engine in ("kokoro", "gemini") or edge_continuous
+    render_status_store[session_id]["voice_flow"] = "continuous" if edge_continuous or engine == "gemini" else "per-scene"
     # Batch providers synthesize the whole narration once, then the shared
     # per-scene fitter consumes their audio and measured word intervals.
     provider_results = {}
     speech_batch = []
-    if engine in ("kokoro", "gemini"):
+    if batched:
         for b_idx, b_scene in enumerate(scenes):
             b_text = (b_scene.get("voiceover", "").strip() or b_scene.get("text", "").strip())
             if b_text:
@@ -7761,11 +7779,17 @@ async def _generate_voiceover_with_engine(
             if engine == "gemini":
                 from expressive_voice import synthesize_scenes
                 provider_results = synthesize_scenes(speech_batch, voice=resolved_voice, rate=resolved_rate)
-            else:
+            elif engine == "kokoro":
                 print(f"[{session_id}] Kokoro: synthesizing {len(speech_batch)} scenes "
                       f"(voice={resolved_voice}, speed={edge_rate_to_speed(resolved_rate):.2f})...")
                 provider_results = synthesize_scenes_kokoro(
                     speech_batch, resolved_voice, edge_rate_to_speed(resolved_rate), session_id)
+            else:
+                from edge_voice import synthesize_scenes
+                candidates = [resolved_voice] + [v for v in VOICE_POOL if v != resolved_voice]
+                provider_results, resolved_voice = await synthesize_scenes(
+                    speech_batch, candidates[:3], rate=resolved_rate, pitch=resolved_pitch)
+                render_status_store[session_id]["resolved_voice"] = resolved_voice
 
     temp_audio_files = []
     raw_audio_files = [item["out_path"] for item in speech_batch]
@@ -7786,14 +7810,13 @@ async def _generate_voiceover_with_engine(
             continue
         
         scene_text_cleaned = scene_text.replace("|", " ").strip()
-        scene_audio_filename = f"temp-{session_id}-scene-{idx}." + ("mp3" if engine == "edge" else "wav")
+        scene_audio_filename = f"temp-{session_id}-scene-{idx}." + ("wav" if batched else "mp3")
         scene_audio_filepath = os.path.join(public_dir, scene_audio_filename)
 
         try:
-            if engine in ("kokoro", "gemini"):
-                # Batch results were synthesized above. A hole fails this
-                # pass and the wrapper restarts the whole video on edge-tts —
-                # per-scene voice failover would just mix engines.
+            if batched:
+                # Batch results were synthesized above. A hole fails the pass;
+                # provider recovery must never mix engines or narrators.
                 result = provider_results.get(idx) or {"error": "scene missing from speech batch"}
                 if "words" not in result:
                     raise Exception(f"{engine} synthesis failed: {result.get('error', 'unknown')}")
