@@ -94,7 +94,8 @@ def build_report(ledger, now, days=30):
             continue
         growth = _dict(entry.get("growth"))
         topic = _dict(entry.get("topic"))
-        pillar = growth.get("pillar") or classify_topic(topic.get("title", ""))["pillar"]
+        pillar = growth.get("pillar") or classify_topic(
+            topic.get("title", ""), strategy=growth.get("strategy") or "builders-v1")["pillar"]
         strategy = growth.get("strategy") or "historical-untagged"
         rows.append({"snapshot": snap, "age_hours": (fetched - posted) / 3600,
                      "cohort": str(strategy) + " / " + str(pillar),

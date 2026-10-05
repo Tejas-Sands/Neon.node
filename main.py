@@ -78,7 +78,8 @@ import time
 import random
 import threading
 import requests
-from growth_strategy import audience_directive, growth_metadata, prefer_audience_candidates
+from growth_strategy import audience_directive, growth_metadata, prefer_audience_candidates, active_strategy
+from editorial_evidence import verified_excerpt, excerpt_matches
 from retention import RetentionError, repair_targets, preserves_claim
 from fastapi import FastAPI, HTTPException, BackgroundTasks, Security, Depends, Query
 from fastapi.security import APIKeyHeader, HTTPBearer, HTTPAuthorizationCredentials
@@ -3367,6 +3368,11 @@ def _script_vagueness_reasons(script: dict, source_prompt: str = "",
     if len(scenes) < 2:
         return hard, soft
 
+    excerpt = (topic_meta or {}).get("source_excerpt", "")
+    if excerpt and format_pack not in ("quiz-reveal", "data-rankings"):
+        if scenes[1].get("type") != "split" or not excerpt_matches(scenes[1].get("text"), excerpt):
+            hard.append("first body scene must be split with the exact verified source excerpt as text; do not paraphrase or truncate the quote")
+
     def _fields(s: dict) -> list:
         return [str(s.get(f) or "") for f in ("voiceover", "text", "title", "subtitle", "secondaryText")]
 
@@ -3833,6 +3839,10 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
     
     def get_fallback_local_image(theme_name: str, scene_idx: int, tech_only: bool = False) -> bytes:
         import urllib.request
+        if is_auto_channel and active_strategy() == "everyday-v1":
+            # Missing subject imagery must not turn a factual story into a
+            # random fantasy photo. Let the existing vector background show.
+            return base64.b64decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=")
         t_normalized = theme_name.lower().replace(" ", "_")
         known_themes = [
             "cyberpunk_alley", "neon_city", "misty_forest", "deep_space",
@@ -4454,9 +4464,9 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
 
     scenes_with_images = []
     overlay_type = parsed_script["theme"].get("overlayType", "clean")
-    # Auto tech/news channels anchor EVERY asset search (stills AND b-roll) in
-    # the tech domain, so an abstract LLM query can't pull nature imagery.
-    is_tech_channel = session_id.startswith(TECH_SESSION_PREFIXES)
+    # The broader audience needs imagery from the subject's own domain.
+    # Factual jobs still have a neutral fallback above when sourcing fails.
+    is_tech_channel = session_id.startswith(TECH_SESSION_PREFIXES) and active_strategy() != "everyday-v1"
 
     for idx, scene in enumerate(parsed_script["scenes"]):
         raw_search_query = scene.get("searchQuery") or req.prompt
@@ -4544,7 +4554,10 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
         # deliberately NOT in the whitelist loop above and needs no prompt /
         # ALLOWED_* sync (same 2-sync contract as correctIndex). A news
         # account that shows its source reads as a publication, not a bot.
-        if idx == 0 and getattr(req, "topic_meta", None):
+        is_source_scene = (idx == 1 and scene.get("type") == "split"
+                           and pack_cfg["name"] not in ("quiz-reveal", "data-rankings")
+                           and excerpt_matches(scene.get("text"), (req.topic_meta or {}).get("source_excerpt")))
+        if (idx == 0 or is_source_scene) and getattr(req, "topic_meta", None):
             src_url = str((req.topic_meta or {}).get("url") or "")
             if src_url:
                 try:
@@ -8250,6 +8263,14 @@ def build_hn_news_prompt(title: str, body: str, seed: Optional[int] = None,
     middle_count = rnd.choice(mc_options)
     middle_beats = beat_pool[:middle_count]
 
+    # Preserve all seeded draws; content determines the first useful beat.
+    # A copied sentence is evidence, not a fake screenshot or product demo.
+    source_excerpt = (plan or {}).get("source_excerpt", "")
+    if source_excerpt:
+        middle_beats[0] = ("split", f'Visible source evidence: set text EXACTLY to {json.dumps(source_excerpt)}. Use a short title, no subtitle or secondaryText. Narration explains what this proves for the viewer without repeating the quote verbatim.')
+    elif active_strategy() == "everyday-v1":
+        middle_beats[0] = ("split", "Immediately show the strongest concrete source-backed detail answering the hook. Explain who it affects; do not repeat the announcement.")
+
     closer_type = rnd.choice(["cta", "hero", "split"])
 
     # Judge-plan garnish: the seeded HOOK_PATTERNS line governs the hook's
@@ -8346,7 +8367,7 @@ TONE (MANDATORY): narrate like a knowledgeable friend who found something genuin
 LENGTH (HARD CONSTRAINT — this is a {int(lo_s)}-{int(hi_s)} SECOND video): the summed "voiceover" across ALL scenes must be {lo_w}-{hi_w} words TOTAL, across {sc_lo}-{sc_hi} scenes — roughly {per_lo}-{per_hi} words per scene. Write ONE crisp sentence per scene; never two. Cut every clause that does not carry a specific from the article. At least TWO scenes must still carry a real figure copied from the source.
 """
 
-    return f"""Create a highly engaging, fast-paced vertical (9:16) tech-news video summarizing this trending Hacker News article.
+    return f"""Create a clear, engaging vertical (9:16) video explaining this sourced story to the audience specified below.
 
 NEWS SOURCE DETAILS:
 - Headline/Title: {title}
@@ -8354,13 +8375,13 @@ NEWS SOURCE DETAILS:
 {content_snippet}
 
 {editorial_block}PLATFORM: Vertical 9:16 Reels/Shorts. Set "aspectRatio":"9:16".
-(The visual theme — colors, overlay, font, music — is applied automatically by the renderer, so you may pick any tasteful tech-appropriate values; focus your energy on the writing and structure below.)
+(The visual theme — colors, overlay, font, music — is applied automatically by the renderer; focus on the writing and structure below.)
 
 SCENE OUTLINE (follow this structure, but write ORIGINAL, specific copy):
 - Core Instruction: Tell this as a STORY that escalates — hook, why it matters, the surprising detail, then a satisfying takeaway — not a list of facts.
 {outline}
-- Give EACH scene a different textAnimation. Keep on-screen "text" to a short label (a keyword or number); put the actual sentence in the "voiceover" — never the same words in both.
-- Give EACH scene a "videoQuery": 2-4 keywords for a TECH MOTION b-roll clip that shows this story's real subject in action (a terminal, code on screen, a dashboard, data-center racks, a chip, a robot, network traffic) — topic-relevant motion, never a generic abstract loop. Use a different videoQuery per scene, and never reuse the same main noun in two videoQuery values within one video.
+- Give EACH scene a different textAnimation. Keep on-screen "text" to a short label (a keyword or number), EXCEPT a required literal source excerpt must remain complete. Put the explanation in the "voiceover" — do not read the screen verbatim.
+- Give EACH scene a "videoQuery": 2-4 keywords for footage of the story's actual subject (a phone, device, telescope, battery, experiment, or a terminal when the story really concerns code). Match the subject's real domain. Stock footage illustrates context; never imply it records this particular event. Use varied shots without forcing unrelated objects into the story.
 {tone_block}
 NO-REPETITION (this is the #1 thing that makes these videos feel cheap): name the product/company from the headline in the HOOK scene ONLY. After that, refer to it as "it" / "the tool" / "the team" — do NOT restate the headline in later scenes. The subtitles show every spoken word for the whole video, so a repeated line is read and heard 5-6 times. Every scene must add information the earlier scenes did NOT state.
 
@@ -8369,7 +8390,7 @@ CONCRETENESS CONTRACT: this video covers THIS story only, END-TO-END. The scenes
 (2) HOW it actually works — the mechanism or cause behind the headline, pulled from the article text above (the one detail that makes a viewer say "oh, THAT'S how");
 (3) REAL numbers — if the article text contains figures, weave at least two of them into the scenes; NEVER invent any;
 (4) WHY it matters — who is affected and what changes now.
-BANNED: generic filler everyone already knows ('technology is evolving fast', 'this will change everything', 'tools make life easier') AND generic advice to the viewer ('do this', 'you should', 'try these tips') — this is a news story, not a tutorial. Every sentence must carry information specific to THIS story.
+BANNED: generic filler ('technology is evolving fast', 'this will change everything', 'tools make life easier') and advice without support in THIS source. A documented action or mitigation is welcome after explaining the evidence; never invent steps. Every sentence must carry information specific to THIS story.
 {length_block}{audience_directive()}"""
 
 
@@ -10076,6 +10097,8 @@ def score_virality(c: dict) -> float:
     # Advice/listicle-shaped titles get a flat penalty regardless of keyword
     # matches (see _ADVICE_TITLE_RE above) — news over advice.
     class_adj = -1.5 if _ADVICE_TITLE_RE.search(c.get("title", "")) else 0.0
+    if active_strategy() == "everyday-v1" and c.get("source") == "rss:ftc":
+        class_adj = 0.0  # A named consumer warning may legitimately be advice.
 
     # Source-trust prior (B4): engagement-less candidates (RSS) carry
     # trust*2.2 + any corroboration boost. Absent field → bit-identical
@@ -10088,6 +10111,8 @@ def score_virality(c: dict) -> float:
 def _gather_candidates(kind: str) -> list:
     """Pull and normalize candidates from the trending sources for a channel kind."""
     candidates: list = []
+    if active_strategy() == "everyday-v1":
+        candidates += get_rss_candidates()
     if kind == "news":
         candidates += _hn_to_candidates(get_hacker_news_frontpage(min_score=120, limit=12))
         candidates += get_lobsters_hottest(12)
@@ -10135,6 +10160,11 @@ CI_RSS_FEEDS = [
     ("rss:theverge", "https://www.theverge.com/rss/index.xml"),
     ("rss:techcrunch", "https://techcrunch.com/feed/"),
     ("rss:arstechnica", "https://feeds.arstechnica.com/arstechnica/index"),
+    # Public first-party feeds read successfully on 2026-10-05. Existing
+    # per-feed failure handling and freshness/dedup checks still apply.
+    ("rss:nasa", "https://www.nasa.gov/feed/"),
+    ("rss:ftc", "https://www.consumer.ftc.gov/blog/rss"),
+    ("rss:google", "https://blog.google/rss/"),
     # Vendor feeds stay commented until a manual workflow_dispatch dry-run
     # confirms they're reachable from Actions runners (vendor CDNs sometimes
     # 403 datacenter UAs). Uncomment + dry-run to enable.
@@ -10185,8 +10215,20 @@ def _parse_rss(xml_text: str, feed_key: str, limit: int = 10) -> list:
                 except (TypeError, ValueError):
                     pass
         else:
-            title = (it.findtext("title") or "").strip()
+            title_node = it.find("title")
+            title = "".join(title_node.itertext()).strip() if title_node is not None else ""
             url = (it.findtext("link") or "").strip()
+            # FTC currently emits an HTML anchor in title and a percent-
+            # encoded anchor as link. Read the publisher's actual article URL.
+            if feed_key == "rss:ftc":
+                from urllib.parse import unquote, urlparse
+                anchor = title_node.find("a") if title_node is not None else None
+                candidate_url = anchor.get("href", "") if anchor is not None else ""
+                if not candidate_url:
+                    match = re.search(r'href=[\"\'](https?://[^\"\']+)', unquote(url))
+                    candidate_url = match.group(1) if match else ""
+                if urlparse(candidate_url).hostname in ("consumer.ftc.gov", "www.consumer.ftc.gov"):
+                    url = candidate_url
             date_s = it.findtext("pubDate") or ""
             age = 24.0
             if date_s:
@@ -10200,6 +10242,9 @@ def _parse_rss(xml_text: str, feed_key: str, limit: int = 10) -> list:
                     age = max(0.1, (now - dt.timestamp()) / 3600.0)
                 except (TypeError, ValueError):
                     pass
+        # FTC's RSS titles contain HTML links, unlike most publisher feeds.
+        import html
+        title = html.unescape(re.sub(r"<[^>]+>", "", title)).strip()
         if not title or not url:
             continue
         out.append({
@@ -10414,15 +10459,17 @@ def _llm_rank_and_angle(shortlist: list, kind: str, session_id: str) -> Optional
         "breaking-tech-news reels" if kind == "news"
         else "a tech education / hot-take channel"
     )
+    if active_strategy() == "everyday-v1":
+        audience = "an everyday tech and science channel for curious non-specialists"
     system = (
         "You are a viral short-form video producer for YouTube Shorts and Instagram Reels. "
         "You pick topics that STOP THE SCROLL and get shared, and you write killer hooks. "
         "You only ever answer with strict JSON."
     )
-    user = f"""Below are real trending tech items with engagement data, ranked by an initial virality model.
+    user = f"""Below are sourced stories with available engagement data, ranked by an initial selection heuristic.
 Pick the SINGLE most CONSEQUENTIAL story to turn into a 20-40 second vertical video for {audience}: a breakthrough, a major release, a real incident/outage/breach, or a research result — something that HAPPENED, with a clear "so what" the video can state. A recognizable/searchable subject and a strong curiosity hook still matter, but importance beats debate-bait.
 
-REJECT advice, listicles, how-tos, tutorials, roundups and opinion pieces ("how to", "tips", "N ways to", "why you should", "a guide to", "best practices", "thoughts on", "Ask HN", polls) — pick news, not advice. If every candidate is advice-shaped, pick the one closest to a concrete event.
+REJECT unsupported opinion, generic tips, discount roundups and company gossip. A documented scam warning, practical product change or scientific explanation can qualify when it has a named subject and concrete evidence. Evaluate the substance, not whether its headline begins with "how".
 
 HARD REQUIREMENT — the subject must be ONE named, concrete thing: a specific product, tool, library, release, gadget, company move, or incident. NEVER an abstract theme or life advice ("AI is changing everything", "good tools boost productivity" = instant reject). The viewer must learn something they can name, search, and try.
 
@@ -10515,7 +10562,7 @@ def plan_story_angle(title: str, body: str, url: str = "",
     """
     body_snippet = (body or "").strip()[:3000]
     system = (
-        "You are a short-form tech video editor. You turn ONE news article into a "
+        "You are a short-form video editor. You turn ONE sourced article into a "
         "tight 30-second video plan with a real insight. You only ever answer with strict JSON."
     )
     user = f"""ARTICLE HEADLINE: {title}
@@ -10523,12 +10570,14 @@ def plan_story_angle(title: str, body: str, url: str = "",
 ARTICLE TEXT (scraped; may be partial or empty):
 {body_snippet or "No article text available — judge from the headline only."}
 
-Plan ONE vertical short video that covers this story END-TO-END: what happened, how it actually works, why it matters, and the single most valuable thing a tech viewer learns.
+Plan ONE vertical short video: what happened, the visible evidence, how it works, and one valuable thing the viewer learns.
 
 {audience_directive()}
-HARD REQUIREMENT — the video's subject must be ONE named, concrete thing: a specific product, release, model, company move, incident, or research result. If this article is a vague think-piece, opinion essay, advice/how-to/listicle, or roundup with no nameable concrete subject, return {{"subject": ""}} and nothing else.
+HARD REQUIREMENT — the subject must be ONE named, concrete product change, documented scam, incident, discovery or research result. A useful explanation or advisory qualifies when supported by specifics. If there is no concrete subject or useful evidence, return {{"subject": ""}} and nothing else. Do not inflate a narrow benchmark into an entire product slowdown or a laboratory result into a consumer breakthrough.
 
 "facts" rules: COPY 2-5 concrete specifics (numbers, versions, names, dates, what changed) accurately from the ARTICLE TEXT above. Never add specifics from memory. Each fact under 20 words.
+
+"source_excerpt": optionally COPY ONE complete sentence of 5-14 words from ARTICLE TEXT that establishes the story's useful detail. Keep its punctuation and every qualifier. It will be shown as a source excerpt in the first body scene. Use an empty string when no short complete sentence works; never shorten, paraphrase or stitch quotes.
 
 "display_title" is the THUMBNAIL. It is rendered as the hook card and Instagram publishes that first frame as the reel's cover, so it is the whole tap decision — it is read at the size of a thumbnail, before any audio, by someone who has never heard of this topic. Write it as a cover line, not a headline:
 - MAX 6 WORDS. Shorter wins; 3-4 words is ideal.
@@ -10537,7 +10586,7 @@ HARD REQUIREMENT — the video's subject must be ONE named, concrete thing: a sp
 - Plain English a general tech viewer knows. No insider jargon, no forum in-jokes, no source-outlet phrasing.
 
 Return ONLY this JSON (no other text):
-{{"subject": "<2-5 word searchable topic>", "display_title": "<thumbnail cover line, max 6 words, concrete noun first, no trailing punctuation>", "angle": "<one sentence: the story of the video>", "hook": "<scroll-stopping first line, max 8 words>", "insight": "<the one non-obvious takeaway — who is affected and what changes now, one sentence>", "facts": ["..."], "format": "news|explainer|comparison"}}"""
+{{"subject": "<2-5 word searchable topic>", "display_title": "<thumbnail cover line, max 6 words, concrete noun first, no trailing punctuation>", "angle": "<one sentence: the story of the video>", "hook": "<scroll-stopping first line, max 8 words>", "insight": "<who is affected and what changes, including scope>", "source_excerpt": "<short complete sentence copied verbatim, or empty>", "facts": ["..."], "format": "news|explainer|comparison"}}"""
 
     try:
         # 800, not 450: the judge JSON itself fits in ~300 tokens, but on
@@ -10605,6 +10654,7 @@ Return ONLY this JSON (no other text):
         "facts": facts,
         "format": fmt,
         "url": url,
+        "source_excerpt": verified_excerpt(plan.get("source_excerpt"), body or ""),
     }
     print(f"[TopicJudge] Plan: subject='{result['subject']}' "
           f"insight='{result['insight'][:80]}' facts={len(facts)}")

@@ -35,8 +35,9 @@ export const StoryScene: React.FC<{
   const metric = beat.kind === "metric";
   const comparison = beat.kind === "comparison";
   const compression = beat.kind === "compression";
+  const source = beat.kind === "statement" && Boolean(scene.sourceDomain);
   const headlineFont: FontFamilyName = "Geist";
-  const mainSize = (metric ? 280 : comparison ? 92 : 144) * unit;
+  const mainSize = (metric ? 280 : comparison ? 92 : source ? 88 : 144) * unit;
   // One dominant surface, not a card floating inside another frame. Accent
   // fills use the existing luminance floor so dark ink remains readable.
   const dark = compression || comparison;
@@ -75,6 +76,7 @@ export const StoryScene: React.FC<{
       justifyContent: "space-between", alignItems: "center", color: foreground,
       fontFamily: BRAND.family, fontWeight: BRAND.strongWeight, fontSize: 23 * unit, letterSpacing: "0.08em"}}>
       <span>NEON NODE</span>
+      {source && <span style={{...labelStyle, fontSize: 20 * unit}}>SOURCE EXCERPT</span>}
     </div>
     {incomingMetric && !outgoingMetric && <div style={{position: "absolute", left: left + pad, top: chipY,
       ...typeStyle("Geist", dockSize), color: paper, background: palette.ink, fontVariantNumeric: "tabular-nums"}}>{incomingMetric}</div>}
@@ -83,7 +85,7 @@ export const StoryScene: React.FC<{
       background: surface, color: foreground}}>
       <div style={{position: "absolute", left: pad, top: pad, right: pad, ...labelStyle,
         fontSize: fitStoryFont(scene.title || subject || "THE DETAIL", 24 * unit, inner),
-        color: dark ? color : ink}}>{scene.title || subject || "THE DETAIL"}</div>
+        color: dark ? color : ink}}>{source ? scene.sourceDomain : scene.title || subject || "THE DETAIL"}</div>
 
       {comparison ? <div style={{position: "absolute", left: pad, right: pad, top: 110 * unit, bottom: pad,
         display: "flex", flexDirection: "column", gap: 22 * unit}}>
@@ -94,14 +96,21 @@ export const StoryScene: React.FC<{
           return <div key={i} style={{flex: 1, padding: 24 * unit, minHeight: 0,
             background: i ? "#25313b" : paper, color: i ? paper : ink,
             transform: i ? `translateX(${(1 - reveal) * 48 * unit}px)` : "none",
-            borderLeft: i ? `${6 * unit}px solid ${color}` : `${6 * unit}px solid transparent`}}>
+            borderLeft: `${6 * unit}px solid ${i ? color : "#b5b9bb"}`,
+            boxShadow: i ? `${-12 * unit * reveal}px ${12 * unit * reveal}px 0 ${withAlpha(color, 0.15)}` : "none"}}>
             {side.label && <div style={{...labelStyle, fontSize: fitStoryFont(side.label, 26 * unit, inner - 48 * unit), marginBottom: 16 * unit}}>{side.label}</div>}
             <div style={{...typeStyle("Geist", fitStoryFont(side.value, mainSize * sideFit, inner - 48 * unit)), ...arrival}}>{side.value}</div>
           </div>;
         })}
       </div> : <div style={{position: "absolute", left: pad, right: pad, top: 112 * unit, bottom: pad,
         display: "flex", flexDirection: "column", justifyContent: metric ? "flex-end" : "center", gap: 28 * unit}}>
-        {!metric && <div style={{...typeStyle(headlineFont, fitStoryFont(scene.text, mainSize * fit, inner)), ...arrival}}>{scene.text}</div>}
+        {!metric && <div style={{...typeStyle(headlineFont, fitStoryFont(scene.text, mainSize * fit, inner)), ...arrival,
+          position: "relative", paddingLeft: source ? 26 * unit : 0,
+          borderLeft: source ? `${6 * unit}px solid ${ink}` : undefined}}>
+          {source && <div style={{position: "absolute", inset: 0, background: withAlpha(color, 0.3),
+            transform: `scaleX(${reveal})`, transformOrigin: "left center"}} />}
+          <span style={{position: "relative"}}>{scene.text}</span>
+        </div>}
         {compression && <div style={{height: 270 * unit, flexShrink: 0}}>
           <svg viewBox="0 0 820 225" width="100%" height={225 * unit} aria-label="Compression schematic, not to scale">
             <rect x="4" y="4" width="812" height="212" rx="12" fill="none" stroke={withAlpha(color, 0.3)} strokeWidth="2" />

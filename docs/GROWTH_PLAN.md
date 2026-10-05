@@ -1,5 +1,51 @@
 # Neon Node: audience growth plan
 
+## Current audience — everyday tech and science (October 5, 2026)
+
+The owner approved a broader audience after the retention repair and explicitly
+chose everyday tech and science. The original builder plan below is historical;
+its audience restriction is superseded. Its measurement floors, truthful
+grounding, experiment isolation and publishing boundaries remain in force.
+
+**Promise: one surprising change, visible evidence, and what it means to you.**
+
+| Series | Subjects | Useful payoff |
+| --- | --- | --- |
+| Protect yourself | QR scams, account safety, privacy, phishing | Recognize the mechanism and a documented protective action |
+| Daily life | Phones, useful apps, practical AI, subscriptions, accessibility | Understand what changed and its device/region/rollout limits |
+| World explained | Space, energy, batteries, oceans, physical phenomena | Understand a surprising mechanism with real evidence |
+
+`everyday-v1` is the default preference among eligible candidates. The existing
+freshness, duplicate and cooldown gates run first. No-match fallback is retained
+and logged; keyword matches are still only a proxy. Promotion/funding titles
+do not receive this preference. The editorial judge evaluates actual source
+text; a current feed entry is not proof that its underlying event is new.
+
+NASA, FTC consumer alerts and Google's product blog supplement existing RSS
+publishers. Feed errors remain isolated. FTC advice-shaped alerts are allowed;
+general tips, unsupported predictions and company disputes remain poor fits.
+First-party announcements are attributed claims, never independent tests.
+
+The first body scene delivers evidence immediately. The judge may select a
+complete 5–14-word sentence from the article. Exact text validation rejects
+partial, rewritten or ambiguously terminated excerpts. The script gate keeps
+accepted excerpts verbatim and the renderer attributes them, including its
+legacy fallback. If no suitable excerpt exists, use a source-backed metric,
+comparison or explanation. Never invent a product screenshot or demonstration.
+
+Local preview: `python3 scripts/preview_everyday.py` and
+`bash scripts/render_preview.sh public/test-everyday-qr.json out/everyday-review/qr.mp4`.
+The preview uses a September advisory as an example, not a fresh scheduled pick.
+It calls narration helpers only. The voice flag can select the existing Aria
+fallback; default is approved Leda and requires the existing provider key.
+
+The ledger tags the new audience separately from `builders-v1`. Continue
+reporting mature snapshots and coverage; preserve any runtime experiment.
+Several editorial/visual changes ship together, so this cohort cannot isolate
+the causal effect of an individual change. No reach improvement is established.
+
+## Historical builder strategy
+
 Start: the first deployed run carrying `growth.strategy = builders-v1`.
 Review after 30 days of publishing, extending the window when observations
 are sparse. This is a positioning hypothesis, not a promise of virality.

@@ -8,6 +8,7 @@ export interface StoryScene {
   leftLabel?: string;
   rightLabel?: string;
   durationInFrames?: number;
+  sourceDomain?: string;
 }
 export interface StoryBeat {
   kind: "legacy" | "statement" | "metric" | "comparison" | "compression";
@@ -55,7 +56,7 @@ export function deriveStoryMotion(
       // ponytail: precision-first English heuristic, not a mechanism parser.
       // Only illustrate an explicit compression claim; everything else stays
       // typographic. A future grounded storyboard can cover other mechanisms.
-      if (/\b(compress(?:es|ed|ion|ing)?|quantiz(?:ation|ed|ing))\b/i.test(copy) &&
+      if (!scene.sourceDomain && /\b(compress(?:es|ed|ion|ing)?|quantiz(?:ation|ed|ing))\b/i.test(copy) &&
           /\b(memory|weights|model|storage|data)\b/i.test(copy) &&
           !/\b(no|not|never|without|cannot|\w+n['’]t|uncompressed)\b/i.test(copy)) {
         beat.kind = "compression";

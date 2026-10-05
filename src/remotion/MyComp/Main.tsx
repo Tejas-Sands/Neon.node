@@ -407,11 +407,13 @@ const DynamicScene: React.FC<{
   // Without this the column simply grew downward: four populated blocks, or a
   // title long enough to wrap to three lines, pushed the final block underneath
   // the caption and it was silently covered.
+  const heroTitleSize = sceneIndex === 0 ? 88 : theme.overlayType === "vhs-glitch" ? 54 : 62;
+  const heroBodySize = sceneIndex === 0 ? 48 : theme.overlayType === "vhs-glitch" ? 36 : 40;
   const heroStackInput = {
     slots: [
-      ...(title ? [{ text: title, basePx: theme.overlayType === "vhs-glitch" ? 54 : 62 }] : []),
+      ...(title ? [{ text: title, basePx: heroTitleSize }] : []),
       // AnimatedText's own default when no fontSize is passed.
-      ...(text ? [{ text, basePx: theme.overlayType === "vhs-glitch" ? 36 : 40 }] : []),
+      ...(text ? [{ text, basePx: heroBodySize }] : []),
       ...(subtitle ? [{ text: subtitle, basePx: theme.overlayType === "vhs-glitch" ? 26 : 30 }] : []),
     ],
     fontScale: fscale,
@@ -934,7 +936,7 @@ const DynamicScene: React.FC<{
           before the first cut. Brand chrome face + ink plate (TEXT_ZONES:
           alpha-plate) — a news account that cites its source reads as a
           publication, not a bot. */}
-      {sceneIndex === 0 && sourceDomain && (() => {
+      {(sceneIndex === 0 || type === "split") && sourceDomain && (() => {
         const chipIn = interpolate(frame, [40, 52], [0, 1], {
           extrapolateLeft: "clamp",
           extrapolateRight: "clamp",
@@ -997,7 +999,7 @@ const DynamicScene: React.FC<{
     return (
       <AbsoluteFill>
         <StoryScene
-          scene={{text, title, subtitle, secondaryText, leftLabel, rightLabel, imageUrl, durationInFrames}}
+          scene={{text, title, subtitle, secondaryText, leftLabel, rightLabel, imageUrl, durationInFrames, sourceDomain}}
           beat={storyBeat} energy={energy} palette={palette}
           accent={themeProp.primaryColor} subject={storySubject}
           incomingMetric={incomingMetric} outgoingMetric={outgoingMetric}
@@ -1117,11 +1119,11 @@ const DynamicScene: React.FC<{
                 // Hook title renders statically — typewriter/decode animations
                 // hide the text during the exact frames that decide the scroll
                 animationMode={sceneIndex === 0 ? "none" : animMode}
-                fontSize={theme.overlayType === "vhs-glitch" ? 54 : 62}
+                fontSize={heroTitleSize}
                 fontScale={fscale * heroFit}
                 textCase={look.titleCase}
                 align={textAlignMode}
-                treatment={titleTreatment}
+                treatment={sceneIndex === 0 ? "solid" : titleTreatment}
                 springMul={sMul}
                 finish={finish}
                 landingPop={micro.has("landing-pop")}
@@ -1174,8 +1176,8 @@ const DynamicScene: React.FC<{
             />
           )}
           {text && (
-            <div style={{ opacity: bodyEntrance, transform: `translateY(${bodyY}px)` }}>
-              <AnimatedText text={text} glowColor={theme.primaryColor} fontFamilyName={theme.fontFamilyName} overlayType={theme.overlayType} animationMode={animMode} fontScale={fscale * heroFit} textCase={look.titleCase} align={textAlignMode} springMul={sMul} finish={finish} landingPop={micro.has("landing-pop")} emphasisSweep={micro.has("emphasis-sweep")} sweepFrame={energy.kineticStart} statHitFrame={energy.kineticStart} />
+            <div style={{ opacity: sceneIndex === 0 ? 1 : bodyEntrance, transform: `translateY(${sceneIndex === 0 ? 0 : bodyY}px)` }}>
+              <AnimatedText text={text} glowColor={theme.primaryColor} fontFamilyName={theme.fontFamilyName} overlayType={theme.overlayType} animationMode={sceneIndex === 0 ? "none" : animMode} fontSize={heroBodySize} fontScale={fscale * heroFit} textCase={look.titleCase} align={textAlignMode} springMul={sMul} finish={finish} landingPop={micro.has("landing-pop")} emphasisSweep={micro.has("emphasis-sweep")} sweepFrame={energy.kineticStart} statHitFrame={energy.kineticStart} />
             </div>
           )}
           {subtitle && (
@@ -2291,7 +2293,7 @@ const DynamicScene: React.FC<{
             <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#febc2e" }} />
             <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#28c840" }} />
             <div style={{ flex: 1, marginLeft: "12px", padding: "6px 14px", borderRadius: "8px", background: "rgba(255,255,255,0.06)", fontSize: "18px", color: "rgba(255,255,255,0.6)", fontFamily: BRAND_MONO.family, fontWeight: BRAND_MONO.weight, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-              {title ? title.toLowerCase().replace(/\s+/g, "") + ".app" : "preview.app"}
+              ILLUSTRATION{title ? ` · ${title}` : " · Example interface"}
             </div>
           </div>
           {/* Body */}
@@ -2754,9 +2756,9 @@ const KaraokeSubtitles: React.FC<{
             // Style 1: Karaoke Block / Pill — constant padding so the line
             // never reflows; only the background color animates.
             wordStyle = {
-              color: isActive || isPast ? "#ffffff" : "rgba(255, 255, 255, 0.4)",
+              color: isActive ? inkOn(theme.secondaryColor) : isPast ? "#ffffff" : "rgba(255, 255, 255, 0.4)",
               backgroundColor: isActive
-                ? `${theme.secondaryColor}${alphaHex(wordT)}`
+                ? theme.secondaryColor
                 : "transparent",
               padding: "4px 12px",
               borderRadius: "8px",

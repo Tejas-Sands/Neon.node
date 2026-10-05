@@ -537,6 +537,7 @@ def main():
                         "display_title": (plan or {}).get("display_title", ""),
                         "angle": (plan or {}).get("angle", ""),
                         "insight": (plan or {}).get("insight", ""),
+                        "source_excerpt": (plan or {}).get("source_excerpt", ""),
                         "judge": "plan" if plan else "none",
                     }
                     if best is not None else None

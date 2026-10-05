@@ -7,6 +7,23 @@
 
 ## CURRENT REPAIR — Enforced opening and audio budgets (2026-10-05)
 
+The user subsequently approved broadening beyond niche developer news and
+explicitly selected **everyday tech and science**. This supersedes the older
+builder-only audience requirement below. Default `everyday-v1` covers useful
+apps/devices, privacy/scams, practical AI, and accessible science. Keep one
+recognizable consequence or discovery, source evidence and a useful payoff.
+`GROWTH_STRATEGY=builders-v1` retains the previous preference; `off` disables
+audience preference. Do not expand into unrelated general-news drama.
+See `docs/EVERYDAY_REVIEW.md` and the current section of `docs/GROWTH_PLAN.md`.
+
+The first body scene may show a short complete source sentence, validated
+against article text. Never silently paraphrase a labelled excerpt. Source
+cards are typeset quotations, not screenshots or independent demonstrations.
+Unsupported/missing excerpts fall back to grounded metric/comparison/copy.
+Historical article dates must never be presented as a new event merely
+because a feed republishes them. Actual demonstrations still require authentic
+source assets; simulated interfaces must visibly say ILLUSTRATION.
+
 The user reports Account Status is green and authorized repairs after the view
 audit. The Oct 5 production ledger had 73 mature snapshots in the last 30 days,
 median six views; only 14 posts cleared the view floor for watch analysis
