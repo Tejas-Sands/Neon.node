@@ -2472,5 +2472,17 @@
   ],
   "ts": 1791124152,
   "session": "gh-2a3420"
+ },
+ {
+  "id": "lob:ul9krj",
+  "title": "Hacking the Go compiler to efficiently map IPv4 to IPv6",
+  "norm": "hacking the go compiler to efficiently map ipv4 to ipv6",
+  "subject_norm": "go compiler ipv4 mapping",
+  "entities": [
+   "ipv4",
+   "ipv6"
+  ],
+  "ts": 1791174601,
+  "session": "gh-7f612c"
  }
 ]

@@ -2,59 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1784907142,
-   "posted_hour_utc": 15,
-   "channel": "news",
-   "topic": {
-    "title": "It's getting harder to focus every day",
-    "subject": "It's getting harder to focus every day",
-    "url": "https://glyphack.com/attention/",
-    "source": "hn",
-    "keywords": [],
-    "viral_score": 7.65
-   },
-   "style_pack": "sunset-peach",
-   "seed": 166801755,
-   "voice": "en-US-EmmaNeural",
-   "hook_type": "HIGH-STAKES BENCHMARK",
-   "scene_count": 6,
-   "video_seconds": 35.7,
-   "session": "gh-479297",
-   "platforms": {
-    "instagram": {
-     "id": "17900771634493579",
-     "posted_at": 1784907201
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 151,
-      "reach": 137,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1764,
-      "fetched_at": 1787461714
-     },
-     "snap72": {
-      "views": 151,
-      "reach": 137,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785124247
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1784915456,
    "posted_hour_utc": 17,
    "channel": "news",
@@ -7438,7 +7385,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1791013589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 0,
@@ -7504,7 +7451,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 302,
-      "fetched_at": 1791013589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 1,
@@ -7771,7 +7718,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6066,
-      "fetched_at": 1791013589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 10,
@@ -7837,7 +7784,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 992,
-      "fetched_at": 1791013589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 127,
@@ -8444,7 +8391,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1369,
-      "fetched_at": 1791013589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 57,
@@ -9126,7 +9073,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9315,
-      "fetched_at": 1791013589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 1,
@@ -9863,7 +9810,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6118,
-      "fetched_at": 1791013589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 16,
@@ -10161,7 +10108,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1832,
-      "fetched_at": 1791013589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 16,
@@ -10384,7 +10331,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5416,
-      "fetched_at": 1790998589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 10,
@@ -10456,7 +10403,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5706,
-      "fetched_at": 1790998589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 5,
@@ -10530,7 +10477,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1747,
-      "fetched_at": 1791013589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 8,
@@ -10677,7 +10624,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2272,
-      "fetched_at": 1790998589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 4,
@@ -11419,7 +11366,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1045,
-      "fetched_at": 1790998589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 8,
@@ -11492,7 +11439,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 18084,
-      "fetched_at": 1790998589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 0,
@@ -11713,7 +11660,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4007,
-      "fetched_at": 1790998589
+      "fetched_at": 1791174601
      },
      "snap72": {
       "views": 20,
@@ -13076,6 +13023,58 @@
     "instagram": {
      "id": "18128608984778954",
      "posted_at": 1791124148
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791174545,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "Hacking the Go compiler to efficiently map IPv4 to IPv6",
+    "subject": "Go compiler IPv4 mapping",
+    "url": "https://vincent.bernat.ch/en/blog/2026-go-netip-addrto6",
+    "source": "lobsters",
+    "keywords": [],
+    "viral_score": 4.39,
+    "sources": [],
+    "display_title": "Go Compiler Eight Times Slower",
+    "angle": "How Go maintainers' preferred IPv4 to IPv6 mapping pattern is eight times slower than native methods due to compiler optimization limits.",
+    "insight": "Developers writing idiomatic wrappers for netip.Addr suffer a severe 7.14 ns performance penalty over standard library implementations until the compiler learns to optimize away redundant array pack and unpack cycles.",
+    "judge": "plan"
+   },
+   "style_pack": "editorial-serif",
+   "format_pack": "facts-explainer",
+   "seed": 104823932,
+   "voice": "gemini:Zephyr",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 14,
+   "scene_count": 5,
+   "video_seconds": 34.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "builders-v1",
+    "audience": "developers and hands-on AI builders",
+    "classification": "title-keyword-proxy",
+    "pillar": "build-with-it",
+    "signals": [
+     "compiler"
+    ]
+   },
+   "session": "gh-7f612c",
+   "platforms": {
+    "instagram": {
+     "id": "17960863512233047",
+     "posted_at": 1791174598
     }
    },
    "metrics": {
