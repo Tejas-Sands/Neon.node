@@ -79,6 +79,32 @@ are external actions and are not performed by this implementation.
 
 ## Measurement and experiment discipline
 
+### October 5 repair cohort
+
+The owner reports recommendation eligibility is green. The current production
+ledger (remote revision `193db6d9`) contains 73 usable mature snapshots in the
+30-day review: median six views, 14 watch observations above the view floor
+with median 2.33 seconds, and zero saves/shares on the 13 observations above
+both exposure floors. Nine recent posts in the latest calendar week were not
+yet represented by mature snapshots. This remains a sparse observational
+baseline, not a causal diagnosis or evidence that a specific voice won.
+
+The opening repair adds `retention.revision=opening-v1`, actual hook and maximum
+scene seconds, repair count, resolved voice and fallback reason to the existing
+ledger metadata. The offline report shows separate revision cohorts alongside
+the original strategy/format/experiment grouping. Missing tags are `untracked`;
+never infer that an untagged historical reel passed the new timing checks.
+Use the same maturity/exposure floors below. Review scheduled outputs first,
+then compare mature distributions after at least 20 measured posts in the new
+cohort; watch and utility endpoints need their own coverage. Improvements in
+code compliance are not evidence of an improvement in audience attention.
+
+Title matching now requires workflow context for ambiguous words such as
+latency, inference and data breach. Consumer discounts and funding headlines
+should not masquerade as builder evidence because of those words alone. This
+is still a vocabulary proxy with the existing no-match fallback, not a semantic
+guarantee that every selected story fits. Inspect actual source-backed payoffs.
+
 Run `python3 growth_report.py --days 30`. This is offline and read-only. For
 machine-readable results add `--json`; use `--as-of 2026-09-16T00:00:00Z` for a
 reproducible review. `--days 0` includes the entire retained ledger. The ledger

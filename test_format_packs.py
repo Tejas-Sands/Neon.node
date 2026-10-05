@@ -3,10 +3,9 @@
 Format-Pack Scaffolding — Regression Tests
 ==========================================
 Locks the M0 contract: with no FORMAT_PACK set (or the legacy pack named),
-every pack-aware seam in the pipeline behaves BIT-FOR-BIT as before
-format_packs.py existed. The legacy runtime-revision strings and the legacy
-creative brief are byte-pinned here, because they are prompt surface for
-small models — silent drift changes script behavior in production.
+pack selection and runtime bands retain their prior semantics. The October 5
+repair intentionally narrows legacy expansion word budgets to protect the hook.
+Prompt contracts are pinned here because silent drift changes small-model output.
 
 Usage:
   python test_format_packs.py          # run all, exit 0/1
@@ -66,13 +65,11 @@ check("facts-explainer scenes 4-5 (3.0s/scene floor at 20s)", fe["scenes"] == (4
 check("facts-explainer has no outro (runtime == band exactly)", fe["outro"] is False)
 
 # --- 2. Legacy revision-note byte pins ------------------------------------------
-# These literals are the EXACT strings the pre-pack retry loop appended
-# (main.py, CRITICAL REVISION branches). Pinned against raw literals here —
-# not against format_packs constants — so a drift in either place fails.
+# Pin the corrected expansion guidance independently of the implementation.
 print("[runtime_revision_notes]")
 LEGACY_EXPAND_PIN = (
-    "when spoken — the video MUST run longer. Write 6-8 scenes and give EVERY scene a \"voiceover\" of "
-    "20-35 words (two full sentences is ideal) so the summed narration lasts 40-55 seconds. Do NOT pad "
+    "when spoken — the video needs more substantive explanation. Write 6-8 scenes: "
+    "a 6-9-word hook (never over 12), then 10-18 words per body scene, targeting 40-55 seconds. Do NOT pad "
     "with repetition or filler — every added sentence must contribute a new concrete fact or detail."
 )
 LEGACY_TIGHTEN_PIN = (
@@ -81,7 +78,7 @@ LEGACY_TIGHTEN_PIN = (
 )
 legacy_cfg = format_packs.resolve_pack(None)
 exp, tig = format_packs.runtime_revision_notes(legacy_cfg, main.MIN_SPOKEN_SEC, main.MAX_SPOKEN_SEC)
-check("legacy expand note byte-identical", exp == LEGACY_EXPAND_PIN,
+check("legacy expand respects hook and body word budgets", exp == LEGACY_EXPAND_PIN,
       f"got: {exp[:80]}...")
 check("legacy tighten note byte-identical", tig == LEGACY_TIGHTEN_PIN,
       f"got: {tig[:80]}...")
@@ -167,7 +164,7 @@ def _with_llm(reply_json):
     return real
 
 
-GOOD_QUIZ = ('{"question": "How low did Postgres 18 sharded p99 latency go", '
+GOOD_QUIZ = ('{"question": "How low is Postgres 18 p99 latency", '
              '"options": ["40 milliseconds", "400 milliseconds", "4 seconds"], '
              '"answer_index": 0, '
              '"answer_fact": "The new release cuts p99 latency to 40 milliseconds across 12 shards."}')

@@ -5,6 +5,27 @@
 
 ---
 
+## CURRENT REPAIR — Enforced opening and audio budgets (2026-10-05)
+
+The user reports Account Status is green and authorized repairs after the view
+audit. The Oct 5 production ledger had 73 mature snapshots in the last 30 days,
+median six views; only 14 posts cleared the view floor for watch analysis
+(median average watch 2.33s). Three of four inspected runs had 5–6s openings.
+These observations do not establish the cause of Instagram distribution.
+
+Opening word limits now fail the script gate. Automated narration checks the
+actual fitted timeline: hook at most 120 frames; other scenes at most 250.
+`retention.py` and `_generate_retention_voiceover` allow at most two targeted
+copy repairs, then regenerate the entire narration and alignment. Never clip
+audio, weaken transcript matching, remove claim qualifiers to meet timing, or
+ship a failed last attempt. Verified quiz/ranking bodies remain immutable;
+unrepairable source briefs or visual reading floors fail before publication.
+Consistent Gemini identity selects approved Leda; explicit pins and
+`VOICE_IDENTITY=rotate` retain their meaning. Existing fallback stays intact.
+`retention.revision=opening-v1` records the repair cohort without overwriting
+any configured experiment. See `docs/VOICE_MOTION_REVIEW.md` for validation and
+rollout state. Publishing functions, workflows and cadence remain protected.
+
 ## CURRENT WORK — Voice pace + Brag-inspired motion (2026-09-17)
 
 The user reports that timely news still earns weak results, the narrator sounds

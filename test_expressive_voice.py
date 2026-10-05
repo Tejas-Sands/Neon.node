@@ -13,12 +13,22 @@ from tts_providers import resolve_tts_engine
 class ExpressiveVoiceTests(unittest.TestCase):
     def test_gemini_voice_rotation_is_seeded_and_explicit_voice_wins(self):
         import main
-        first = main.select_gemini_voice('voice-rotation-a')
-        self.assertEqual(first, main.select_gemini_voice('voice-rotation-a'))
-        choices = {main.select_gemini_voice(f'voice-rotation-{i}') for i in range(24)}
+        with patch.dict(os.environ, {'VOICE_IDENTITY': 'rotate', 'VOICEOVER_VOICE': ''}):
+            first = main.select_gemini_voice('voice-rotation-a')
+            self.assertEqual(first, main.select_gemini_voice('voice-rotation-a'))
+            choices = {main.select_gemini_voice(f'voice-rotation-{i}') for i in range(24)}
         self.assertGreater(len(choices), 1)
         self.assertTrue(choices <= set(main.GEMINI_VOICE_POOL))
         self.assertEqual(main.select_gemini_voice('voice-rotation-a', 'gemini:Leda'), 'Leda')
+
+    def test_consistent_gemini_uses_approved_leda_and_respects_pins(self):
+        import main
+        with patch.dict(os.environ, {'VOICE_IDENTITY': 'consistent', 'VOICEOVER_VOICE': ''}):
+            for session in ('voice-a', 'voice-b', 'voice-c'):
+                self.assertEqual(main.select_gemini_voice(session), 'Leda')
+            self.assertEqual(main.select_gemini_voice('voice-a', 'gemini:Puck'), 'Puck')
+        with patch.dict(os.environ, {'VOICEOVER_VOICE': 'gemini:Aoede'}):
+            self.assertEqual(main.select_gemini_voice('voice-a'), 'Aoede')
 
     def test_gemini_prompt_calls_for_immediate_opening_hook(self):
         prompt = voice.build_speech_prompt('Three tools just changed your build.', '+12%')

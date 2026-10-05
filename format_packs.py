@@ -102,12 +102,10 @@ def resolve_pack(name):
     return out
 
 
-# The legacy runtime-revision strings, verbatim from the pre-pack retry loop.
-# They are BYTE-PINNED by test_format_packs.py: the legacy path's corrective
-# re-asks must never drift, or small-model behavior silently changes.
+# Legacy retains its runtime band; expansion must respect the opening budget.
 _LEGACY_EXPAND_NOTE = (
-    "when spoken — the video MUST run longer. Write 6-8 scenes and give EVERY scene a \"voiceover\" of "
-    "20-35 words (two full sentences is ideal) so the summed narration lasts 40-55 seconds. Do NOT pad "
+    "when spoken — the video needs more substantive explanation. Write 6-8 scenes: "
+    "a 6-9-word hook (never over 12), then 10-18 words per body scene, targeting 40-55 seconds. Do NOT pad "
     "with repetition or filler — every added sentence must contribute a new concrete fact or detail."
 )
 _LEGACY_TIGHTEN_NOTE = (
@@ -136,7 +134,7 @@ THE QUIZ (verified data — use EXACTLY these, verbatim):
 - PROOF: {brief['answer_fact']}
 
 SCENE OUTLINE (follow exactly — 4 scenes):
-- Scene 1 (HOOK): type "hero". On-screen "text" = the QUESTION verbatim. "voiceover" speaks the question plus one short stakes line, max 16 words total. The answer must NOT appear.
+- Scene 1 (HOOK): type "hero". On-screen "text" = the QUESTION verbatim (max 8 words). "voiceover" speaks ONLY the question, max 12 words. The answer must NOT appear.
 - Scene 2 (OPTIONS): type "list". "listItems" = the OPTIONS verbatim, one per item. "voiceover" reads the options and challenges the viewer to pick one, max 18 words. "title" = a 2-3 word label like "YOUR OPTIONS" — never the question again.
 - Scene 3 (COUNTDOWN): type "countdown", countFrom 3, countTo 1, durationInFrames 90, "voiceover" = "" (empty string — music only).
 - Scene 4 (REVEAL): type "metric". "text" = the CORRECT ANSWER verbatim. "secondaryText" = the PROOF sentence. "voiceover" = the PROOF sentence (numbers spelled out). "title" = a 2-3 word label like "THE ANSWER".
@@ -157,7 +155,7 @@ THE DATA (verified — use EXACTLY these values, never invent or round):
 - WHY IT MATTERS: {brief.get('insight') or ''}
 
 SCENE OUTLINE (follow exactly — 4 scenes):
-- Scene 1 (HOOK): type "hero". Tease the ranking WITHOUT naming the leader (the "#1 is not who you think" energy). Max 8 on-screen words; "voiceover" max 14 words.
+- Scene 1 (HOOK): type "hero". Tease the ranking WITHOUT naming the leader (the "#1 is not who you think" energy). Max 8 on-screen words; "voiceover" aim 6-9 words, never over 12.
 - Scene 2 (SETUP): type "split". One line on WHAT was measured and HOW, from the story. No numbers yet.
 - Scene 3 (CHART): type "bar-chart". "chartData" = the SERIES verbatim as {{"label","value"}} pairs. "voiceover" walks the ranking WITHOUT the leader's name.
 - Scene 4 (REVEAL): type "metric". "text" = the leader's label. "voiceover" names the leader + its exact value, then lands WHY IT MATTERS in one sentence.

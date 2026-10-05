@@ -44,6 +44,22 @@ class GrowthStrategyTests(unittest.TestCase):
             self.assertEqual(growth.audience_directive(), "")
             self.assertEqual(growth.growth_metadata(rows[1]), {})
 
+    def test_broad_keywords_need_a_builder_context(self):
+        for title in (
+            "Razer’s low-latency wireless gaming keyboard is almost half off",
+            "Inference provider Modal Labs closing $750M round at $15.75B valuation",
+            "Hackers stole millions of US military personnel records in data breach",
+        ):
+            self.assertEqual(growth.classify_topic(title)['pillar'], 'unclassified', title)
+        for title in (
+            "Redis benchmark cuts query latency",
+            "Modal inference API pricing changes",
+            "Data breach exposes npm package publishing tokens",
+            "Open-weight model runs locally with 8GB RAM",
+            "Go compiler maps IPv4 to IPv6",
+        ):
+            self.assertNotEqual(growth.classify_topic(title)['pillar'], 'unclassified', title)
+
     def test_production_selector_prefers_fit_after_dedup(self):
         rows = [dict(title="OpenAI CEO controversy", engagement=2000, comments=900,
                      age_hours=2, _hn_id="a"),

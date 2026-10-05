@@ -1,5 +1,54 @@
 # Voice and motion review — 2026-09-17
 
+## October 5 opening repair
+
+The owner reports green Account Status and authorized the audit's repairs.
+Production runs inspected: `37263088838`, `37208876821`, `37128150200`,
+`36811633995`. All four published successfully; their metrics sweeps reported
+no authentication failures. Three had opening scenes of 5.27s, 5.13s and 6.00s.
+The October 5 reel had a 9.77s final scene. Logs explicitly shipped hook-length
+warnings after retries; the quiz and ranking prompts contradicted the 12-word
+rule. These are reproducible content-pipeline failures, not proof of the cause
+of low distribution.
+
+The repair makes opening copy limits hard, aligns conflicting writing budgets,
+and checks actual fitted audio before rendering. At most two targeted copy
+repairs are allowed; each accepted edit regenerates the full narration and
+captions. Assets and scene structure stay fixed. Existing fabrication,
+grounding and repetition checks still run, plus conservative preservation of
+negation, modality, quantities and scope. This is not a semantic fact checker:
+it may reject a valid paraphrase rather than silently weaken a source claim.
+Verified quiz/ranking bodies cannot be rewritten by the timing repair. Long
+planned visual floors are rejected before synthesis, not clamped under speech.
+
+Gemini now respects `VOICE_IDENTITY=consistent` with Leda; the seven-voice pool
+is used only in rotate mode. Explicit voice pins still win. A provider fallback
+stays pinned on repair so failed Gemini alignment does not restart paid requests
+on each attempt. Kokoro's ledger namespace is removed before provider routing.
+
+Validation: 54 unit tests and nine existing regression scripts passed (script
+gate, format packs, experiments, feedback scoring, topic judge/selection/intake,
+TTS routing and captions). Independent review identified and verified fixes for
+claim-strengthening rewrites, stale sequential-layout floors, and Kokoro retry
+routing. The protected dispatch region is byte-identical to the starting code.
+No live publishing test was run.
+
+The first live audio probe exposed model edits to unrequested scenes; those
+were rejected and the prompt was narrowed to editable scenes only. The final
+lockfile fixture passed after two repair requests: **23.27s** total,
+**3.30s** opening, longest scene **5.37s**, subtitles within the final timeline.
+The second Gemini synthesis failed transcript validation and correctly restarted
+the entire narration on Aria +12%. This verifies real timing/fallback behavior;
+it does not establish consistent Gemini reliability or perceptual acceptance.
+Human listening remains pending.
+
+Local artifacts: `out/retention-review/lockfiles.json`,
+`public/test-retention-lockfiles.json`, `public/voiceover-retention-lockfiles.mp3`.
+Reproduce with `python3 scripts/preview_retention.py --story lockfiles` using
+existing API credentials in the environment. The helper never calls a publishing
+entry point. Rollout targets the next normal scheduled run on main; the first
+scheduled result and mature audience metrics still need review.
+
 **Follow-up status:** Original work was merged as `41493b3d` and verified in
 deployed run `35201843090` (CUDA reel; Aria **+5%** in logs). The user then
 approved the expressive Leda audition, then authorized promotion to main and

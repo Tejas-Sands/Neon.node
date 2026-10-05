@@ -386,10 +386,10 @@ def run_retention_cases():
     long_hook = copy.deepcopy(base)
     long_hook["scenes"][0]["voiceover"] = (
         "Three times faster writes just landed in Postgres eighteen, and your busiest database gets the payoff immediately.")
-    _, soft = main._script_vagueness_reasons(
+    hard, _ = main._script_vagueness_reasons(
         long_hook, topic_meta={"subject": "Postgres 18"})
-    if not any("hook voiceover" in reason for reason in soft):
-        failures.append(f"retention gate accepted a hook over 12 words: {soft}")
+    if not any("hook voiceover" in reason for reason in hard):
+        failures.append(f"retention gate accepted a hook over 12 words: {hard}")
 
     no_viewer = copy.deepcopy(base)
     for item in no_viewer["scenes"]:
@@ -402,10 +402,10 @@ def run_retention_cases():
     unreadable = copy.deepcopy(base)
     unreadable["scenes"][0]["title"] = "POSTGRES EIGHTEEN CHANGES DATABASE WRITES"
     unreadable["scenes"][0]["text"] = "YOUR BUSIEST DATABASE UPDATES NOW RUN THREE TIMES FASTER"
-    _, soft = main._script_vagueness_reasons(
+    hard, _ = main._script_vagueness_reasons(
         unreadable, topic_meta={"subject": "Postgres 18"})
-    if sum("hook on-screen" in reason for reason in soft) != 2:
-        failures.append(f"retention gate missed hook title/text scan limits: {soft}")
+    if sum("hook on-screen" in reason for reason in hard) != 2:
+        failures.append(f"retention gate missed hook title/text scan limits: {hard}")
 
     rewardless = copy.deepcopy(base)
     rewardless["scenes"][-1]["voiceover"] = "Follow Neon Node for more tech videos."

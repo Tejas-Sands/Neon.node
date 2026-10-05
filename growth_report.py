@@ -100,11 +100,13 @@ def build_report(ledger, now, days=30):
                      "cohort": str(strategy) + " / " + str(pillar),
                      "strategy": str(strategy),
                      "format": str(entry.get("format_pack") or "legacy-news"),
+                     "retention_revision": str(_dict(entry.get("retention")).get("revision") or "untracked"),
                      "experiment": _dict(entry.get("experiment"))})
 
-    cohorts, experiments = {}, {}
+    cohorts, experiments, retention_revisions = {}, {}, {}
     for row in rows:
         cohorts.setdefault(row["cohort"], []).append(row)
+        retention_revisions.setdefault(row["retention_revision"], []).append(row)
         exp = row["experiment"]
         if exp.get("name") and exp.get("arm"):
             key = " / ".join((row["strategy"], str(exp["name"]), str(exp["arm"]), row["format"]))
@@ -115,6 +117,7 @@ def build_report(ledger, now, days=30):
             "overall": _summarize(rows),
             "cohorts": {k: _summarize(v) for k, v in sorted(cohorts.items())},
             "experiments": {k: _summarize(v) for k, v in sorted(experiments.items())},
+            "retention_revisions": {k: _summarize(v) for k, v in sorted(retention_revisions.items())},
             "limits": [
                 "Local saved ledger, not a live account audit; missing metrics are unknown.",
                 "48h–7d collection window is approximate age matching, not exactly 72h.",
@@ -140,6 +143,7 @@ def format_report(report):
              "| --- | ---: | --- | --- | --- | --- | --- |"]
     groups = [("Overall", report["overall"])] + list(report["cohorts"].items())
     groups += [("Experiment: " + key, val) for key, val in report["experiments"].items()]
+    groups += [("Retention revision: " + key, val) for key, val in report["retention_revisions"].items()]
     for label, group in groups:
         cells = [value(group[k]) for k in ("views", "watch_seconds", "shares_per_1000_reached",
                                          "saves_per_1000_reached")]

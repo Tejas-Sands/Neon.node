@@ -30,6 +30,7 @@ PILLARS = {
         "developer tool", "coding agent", "coding agents", "codebase",
         "codebases", "local model", "local models", "open weights",
         "claude code", "tailwind", "webassembly", "linux kernel",
+        "open-weight", "open-weights", "llm locally", "model runs locally",
     ),
 }
 _SIGNALS = {
@@ -37,6 +38,15 @@ _SIGNALS = {
              for term in terms]
     for pillar, terms in PILLARS.items()
 }
+# These words describe consumer products, funding stories and general incidents
+# too. Require technical context before treating them as an audience match.
+_BROAD_SIGNALS = {"latency", "inference", "benchmark", "benchmarks", "throughput",
+                  "vulnerability", "vulnerabilities", "outage", "data breach"}
+_WORKFLOW_CONTEXT = re.compile(
+    r"\b(?:llm|model|models|query|queries|compute|memory|network|protocol|"
+    r"server|servers|build|builds|software|code|package|packages|pipeline|"
+    r"training|runtime|runtimes|linux|cloudflare|aws|azure)\b", re.I)
+_BUSINESS_ONLY = re.compile(r"\b(?:valuation|funding|fundrais\w*|raises?|round)\b", re.I)
 
 
 def enabled():
@@ -46,8 +56,13 @@ def enabled():
 
 def classify_topic(text):
     """Infer a series from workflow terms; usable retrospectively when disabled."""
+    text = str(text or "")
+    workflow = any(pattern.search(text) for _, pattern in _SIGNALS["build-with-it"])
+    context = workflow or bool(_WORKFLOW_CONTEXT.search(text))
     for pillar, patterns in _SIGNALS.items():
-        matched = [term for term, pattern in patterns if pattern.search(str(text or ""))]
+        matched = [term for term, pattern in patterns if pattern.search(text)
+                   and (term not in _BROAD_SIGNALS or
+                        (context and (workflow or not _BUSINESS_ONLY.search(text))))]
         if matched:
             return {"pillar": pillar, "signals": matched}
     return {"pillar": "unclassified", "signals": []}

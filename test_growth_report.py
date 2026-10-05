@@ -16,6 +16,14 @@ def entry(views=100, reach=80, **metrics):
 
 
 class GrowthReportTests(unittest.TestCase):
+    def test_retention_revision_keeps_old_and_new_results_separate(self):
+        old, new = entry(views=6), entry(views=12)
+        new['retention'] = {'revision': 'opening-v1', 'hook_seconds': 3.5}
+        report = build_report({'entries': [old, new]}, NOW)
+        self.assertIn('retention_revisions', report)
+        self.assertEqual(report['retention_revisions']['untracked']['views']['median'], 6)
+        self.assertEqual(report['retention_revisions']['opening-v1']['views']['median'], 12)
+
     def test_rates_watch_units_and_zero_are_observations(self):
         ledger = {"entries": [entry(shares=2, saved=0, ig_reels_avg_watch_time=2500)]}
         before = copy.deepcopy(ledger)
