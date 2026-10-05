@@ -2,61 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1784915456,
-   "posted_hour_utc": 17,
-   "channel": "news",
-   "topic": {
-    "title": "Claude Opus 5",
-    "subject": "Claude Opus 5",
-    "url": "https://www.anthropic.com/claude-opus-5-system-card",
-    "source": "hn",
-    "keywords": [
-     "claude"
-    ],
-    "viral_score": 9.4
-   },
-   "style_pack": "synth-sunset",
-   "seed": 2114135365,
-   "voice": "en-US-BrianNeural",
-   "hook_type": "SHOCK-STAT",
-   "scene_count": 6,
-   "video_seconds": 35.5,
-   "session": "gh-7e5b47",
-   "platforms": {
-    "instagram": {
-     "id": "18098399183611306",
-     "posted_at": 1784915506
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 125,
-      "reach": 113,
-      "likes": 1,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 1,
-      "ig_reels_avg_watch_time": 2233,
-      "fetched_at": 1787461714
-     },
-     "snap72": {
-      "views": 125,
-      "reach": 113,
-      "likes": 1,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 1,
-      "fetched_at": 1785137545
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1784959616,
    "posted_hour_utc": 6,
    "channel": "news",
@@ -7516,7 +7461,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3536,
-      "fetched_at": 1791036335
+      "fetched_at": 1791214289
      },
      "snap72": {
       "views": 6,
@@ -7650,7 +7595,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1549,
-      "fetched_at": 1791036335
+      "fetched_at": 1791214289
      },
      "snap72": {
       "views": 4,
@@ -7853,7 +7798,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1733,
-      "fetched_at": 1791036335
+      "fetched_at": 1791214289
      },
      "snap72": {
       "views": 4,
@@ -7919,7 +7864,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 715,
-      "fetched_at": 1791036335
+      "fetched_at": 1791214289
      },
      "snap72": {
       "views": 3,
@@ -8732,7 +8677,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1538,
-      "fetched_at": 1791036335
+      "fetched_at": 1791214289
      },
      "snap72": {
       "views": 3,
@@ -9439,7 +9384,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9325,
-      "fetched_at": 1791036335
+      "fetched_at": 1791214289
      },
      "snap72": {
       "views": 5,
@@ -10700,7 +10645,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2918,
-      "fetched_at": 1791013589
+      "fetched_at": 1791214289
      },
      "snap72": {
       "views": 2,
@@ -10774,7 +10719,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1184,
-      "fetched_at": 1791013589
+      "fetched_at": 1791214289
      },
      "snap72": {
       "views": 2,
@@ -11068,7 +11013,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 7911,
-      "fetched_at": 1791013589
+      "fetched_at": 1791214289
      },
      "snap72": {
       "views": 3,
@@ -11733,7 +11678,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 2306,
-      "fetched_at": 1791013589
+      "fetched_at": 1791214289
      },
      "snap72": {
       "views": 24,
@@ -12099,7 +12044,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1242,
-      "fetched_at": 1791013589
+      "fetched_at": 1791214289
      },
      "snap72": {
       "views": 7,
@@ -12546,9 +12491,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1024,
-      "fetched_at": 1791013589
+      "fetched_at": 1791214289
      },
-     "snap72": null,
+     "snap72": {
+      "views": 12,
+      "reach": 11,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1024,
+      "fetched_at": 1791214289
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12917,7 +12872,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 11,
+      "reach": 11,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2130,
+      "fetched_at": 1791214289
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -12972,7 +12937,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 3,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 586,
+      "fetched_at": 1791214289
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13027,7 +13002,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 34,
+      "reach": 29,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1383,
+      "fetched_at": 1791214289
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13075,6 +13060,71 @@
     "instagram": {
      "id": "17960863512233047",
      "posted_at": 1791174598
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791214164,
+   "posted_hour_utc": 15,
+   "channel": "news",
+   "topic": {
+    "title": "Denmark Data Breach Exposes 8.8M People's Personal Data",
+    "subject": "Denmark CPR Data Breach",
+    "url": "https://www.cpr.dk/cpr-nyt/nyhedsarkiv/2026/okt/omfattende-uautoriseret-adgang-til-borgeres-cpr-oplysninger",
+    "source": "hn",
+    "keywords": [
+     "breach"
+    ],
+    "viral_score": 10.29,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "8.8 Million Personal Records Exposed",
+    "angle": "An authorized business loophole exposed nearly the entire population of Denmark's central personal registry.",
+    "insight": "Anyone registered in Denmark's CPR system except those with name and address protection had their data exposed when a company's legal access was abused.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "synth-sunset",
+   "format_pack": "legacy-news",
+   "seed": 7267238,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "SHOCK-STAT",
+   "style_epoch": 14,
+   "scene_count": 5,
+   "video_seconds": 32.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "protect-yourself",
+    "signals": [
+     "data breach"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 0,
+    "hook_seconds": 3.433,
+    "longest_scene_seconds": 7.7,
+    "voice": "en-US-EmmaNeural",
+    "fallback_reason": "Expressive speech transcript differs from the script"
+   },
+   "session": "gh-f18624",
+   "platforms": {
+    "instagram": {
+     "id": "18132033871754155",
+     "posted_at": 1791214286
     }
    },
    "metrics": {
