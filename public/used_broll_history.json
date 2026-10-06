@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-34149137",
-   "ts": 1789294366,
-   "session": "gh-7935bb",
-   "query": "network latency dashboard screen ui",
-   "scene": 4
-  },
-  {
-   "id": "pexels-7660185",
-   "ts": 1789294366,
-   "session": "gh-7935bb",
-   "query": "developer typing code laptop closeup",
-   "scene": 5
-  },
-  {
-   "id": "pexels-7989668",
-   "ts": 1789306100,
-   "session": "gh-507fae",
-   "query": "terminal code editor scrolling screen",
-   "scene": 0
-  },
-  {
-   "id": "pexels-7593273",
-   "ts": 1789306100,
-   "session": "gh-507fae",
-   "query": "codebase directory tree file scrolling",
-   "scene": 1
-  },
-  {
-   "id": "pexels-34651697",
-   "ts": 1789306100,
-   "session": "gh-507fae",
-   "query": "codebase directory tree file scrolling",
-   "scene": 1
-  },
-  {
    "id": "pexels-38992894",
    "ts": 1789306100,
    "session": "gh-507fae",
@@ -2800,6 +2765,41 @@
    "session": "gh-5e6c5f",
    "query": "scrolling social media feed smartphone",
    "scene": 5
+  },
+  {
+   "id": "pexels-6279147",
+   "ts": 1791291226,
+   "session": "gh-185c7c",
+   "query": "smartphone screen glowing closeup",
+   "scene": 0
+  },
+  {
+   "id": "pexels-6279146",
+   "ts": 1791291226,
+   "session": "gh-185c7c",
+   "query": "person holding new smartphone",
+   "scene": 1
+  },
+  {
+   "id": "pexels-7605074",
+   "ts": 1791291226,
+   "session": "gh-185c7c",
+   "query": "typing on laptop keyboard",
+   "scene": 2
+  },
+  {
+   "id": "pexels-5082599",
+   "ts": 1791291226,
+   "session": "gh-185c7c",
+   "query": "scrolling on mobile screen",
+   "scene": 3
+  },
+  {
+   "id": "pexels-3198273",
+   "ts": 1791291226,
+   "session": "gh-185c7c",
+   "query": "taking photo with phone camera",
+   "scene": 4
   }
  ]
 }

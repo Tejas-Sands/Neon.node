@@ -2,61 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1784980942,
-   "posted_hour_utc": 12,
-   "channel": "news",
-   "topic": {
-    "title": "Kimi K3 exploited the latest Redis server",
-    "subject": "Kimi K3 exploited the latest Redis server",
-    "url": "https://twitter.com/fried_rice/status/2080059356322918777",
-    "source": "hn",
-    "keywords": [
-     "exploit"
-    ],
-    "viral_score": 7.93
-   },
-   "style_pack": "mono-brutalist",
-   "seed": 637609174,
-   "voice": "en-US-AriaNeural",
-   "hook_type": "INSIDER SECRET",
-   "scene_count": 6,
-   "video_seconds": 36.8,
-   "session": "gh-edc87e",
-   "platforms": {
-    "instagram": {
-     "id": "18325103461272363",
-     "posted_at": 1784981005
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 122,
-      "reach": 108,
-      "likes": 2,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 2,
-      "ig_reels_avg_watch_time": 2106,
-      "fetched_at": 1787572514
-     },
-     "snap72": {
-      "views": 120,
-      "reach": 107,
-      "likes": 2,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 2,
-      "fetched_at": 1785162623
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1784991900,
    "posted_hour_utc": 15,
    "channel": "news",
@@ -7937,7 +7882,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1791108979
+      "fetched_at": 1791291290
      },
      "snap72": {
       "views": 6,
@@ -8138,7 +8083,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1791108979
+      "fetched_at": 1791291290
      },
      "snap72": {
       "views": 48,
@@ -8208,7 +8153,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1070,
-      "fetched_at": 1791108979
+      "fetched_at": 1791291290
      },
      "snap72": {
       "views": 109,
@@ -8413,7 +8358,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1791108979
+      "fetched_at": 1791291290
      },
      "snap72": {
       "views": 0,
@@ -8482,7 +8427,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 760,
-      "fetched_at": 1791108979
+      "fetched_at": 1791291290
      },
      "snap72": {
       "views": 2,
@@ -8549,7 +8494,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 294,
-      "fetched_at": 1791108979
+      "fetched_at": 1791291290
      },
      "snap72": {
       "views": 1,
@@ -9399,7 +9344,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 13671,
-      "fetched_at": 1791089920
+      "fetched_at": 1791291290
      },
      "snap72": {
       "views": 0,
@@ -9475,7 +9420,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3637,
-      "fetched_at": 1791089920
+      "fetched_at": 1791291290
      },
      "snap72": {
       "views": 68,
@@ -10808,7 +10753,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 645,
-      "fetched_at": 1791089920
+      "fetched_at": 1791291290
      },
      "snap72": {
       "views": 1,
@@ -11765,7 +11710,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1718,
-      "fetched_at": 1791089920
+      "fetched_at": 1791291290
      },
      "snap72": {
       "views": 6,
@@ -12133,7 +12078,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1791089920
+      "fetched_at": 1791291290
      },
      "snap72": {
       "views": 0,
@@ -12208,7 +12153,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1394,
-      "fetched_at": 1791089920
+      "fetched_at": 1791291290
      },
      "snap72": {
       "views": 26,
@@ -12579,9 +12524,19 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1279,
-      "fetched_at": 1791089920
+      "fetched_at": 1791291290
      },
-     "snap72": null,
+     "snap72": {
+      "views": 33,
+      "reach": 28,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 1,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 1279,
+      "fetched_at": 1791291290
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12643,9 +12598,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2154,
-      "fetched_at": 1791089920
+      "fetched_at": 1791291290
      },
-     "snap72": null,
+     "snap72": {
+      "views": 8,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2154,
+      "fetched_at": 1791291290
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13014,7 +12979,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 12,
+      "reach": 10,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2931,
+      "fetched_at": 1791291290
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13141,6 +13116,69 @@
     "instagram": {
      "id": "18126751774878143",
      "posted_at": 1791259731
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791291226,
+   "posted_hour_utc": 12,
+   "channel": "news",
+   "topic": {
+    "title": "The Pixel 11 Pro and Pro XL phones are $250 off",
+    "subject": "Pixel 11 Pro sale",
+    "url": "https://www.theverge.com/gadgets/1003856/pixel-11-pro-xl-amazon-prime-day-deal-sale",
+    "source": "rss:theverge",
+    "keywords": [
+     "$"
+    ],
+    "viral_score": 5.76,
+    "sources": [],
+    "display_title": "Pixel 11 Pro Price Cut",
+    "angle": "The Pixel 11 Pro is currently selling for less than the launch price of the base model.",
+    "insight": "Buyers during the Amazon sale get the Pro model and its superior cameras for just a hundred dollar premium over the regular version.",
+    "source_excerpt": "The Pro now costs less than the non-Pro did at launch.",
+    "judge": "plan"
+   },
+   "style_pack": "sunset-peach",
+   "format_pack": "facts-explainer",
+   "seed": 2139555070,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 14,
+   "scene_count": 5,
+   "video_seconds": 23.1,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "daily-life",
+    "signals": [
+     "phones"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 0,
+    "hook_seconds": 3.933,
+    "longest_scene_seconds": 5.7,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-185c7c",
+   "platforms": {
+    "instagram": {
+     "id": "18118913467995752",
+     "posted_at": 1791291287
     }
    },
    "metrics": {
