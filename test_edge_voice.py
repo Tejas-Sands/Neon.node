@@ -76,14 +76,19 @@ class EdgeVoiceTests(unittest.TestCase):
         self.assertNotEqual(timings[0]['voice'], 'en-US-AriaNeural')
         self.assertTrue(all(r[0] == 'Hello there. Great, right?' for r in requests))
 
-    def test_missing_gemini_key_recovers_with_complete_key_free_emma(self):
+    def test_missing_gemini_key_recovers_with_complete_key_free_ava(self):
         with patch.dict(os.environ, {'GEMINI_API_KEY': ''}):
             requests, timings = self.render(wrapper=True)
         self.assertEqual([r[0] for r in requests], ['Hello there. Great, right?'])
-        self.assertEqual({t['voice'] for t in timings}, {'en-US-EmmaNeural'})
+        self.assertEqual({t['voice'] for t in timings}, {'en-US-AvaNeural'})
         status = main.render_status_store['edge-flow-test']
         self.assertEqual(status['tts_provider'], 'edge')
         self.assertIn('GEMINI_API_KEY', status['tts_fallback_reason'])
+
+    def test_failed_selected_voice_recovers_with_the_conversational_fallback(self):
+        requests, timings = self.render(fail=True)
+        self.assertEqual({t['voice'] for t in timings}, {'en-US-AvaNeural'})
+        self.assertEqual([r[1] for r in requests], ['en-US-AriaNeural', 'en-US-AvaNeural'])
 
     def test_split_retains_every_pcm_sample_and_silent_scene_indices(self):
         import edge_voice

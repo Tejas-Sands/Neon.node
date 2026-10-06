@@ -86,6 +86,9 @@ export const SceneSchema = z.object({
    * ALLOWED_* sync. Safely ignored when absent.
    */
   sourceDomain: z.string().optional(),
+  /** Backend-only: a dated, confirmed high-impact source event. Never LLM
+   * authored or inferred from feed age. Only the opening uses the graphic. */
+  newsAlert: z.boolean().optional(),
   // Countdown scene fields
   countFrom: z.number().optional(),
   countTo: z.number().optional(),

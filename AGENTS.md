@@ -5,6 +5,34 @@
 
 ---
 
+## CURRENT REPAIR — Expressive fallback and breaking opener (2026-10-06)
+
+The user selected the matched **non-multilingual Ava** audition over Emma.
+Consistent Edge defaults and whole-video Gemini recovery now use
+`en-US-AvaNeural`, natural pitch and the existing `+12%` default. Explicit
+voice/rate/pitch pins and rotation still win. Continuous recovery prefers
+Ava, Emma and Aria rather than the retired multilingual pool. Earlier
+Aria/Emma defaults below describe their historical rollouts.
+
+Leda remains the approved Gemini primary. Updated delivery directions retain
+the exact transcript. One unprimed alignment recheck uses the same audio and
+the same strict word comparison. A performance mismatch or transient network
+failure allows **one complete retake**, then the whole narration restarts on
+Edge. Quota/auth errors immediately use the existing fallback. Never accept
+changed claims or missing qualifiers to keep a Gemini recording.
+
+`newsAlert` is optional source-derived metadata, not an LLM visual instruction.
+Only confirmed consequential events with a source event date within 72 hours
+qualify; undated, speculative, ordinary and historical republished stories
+keep the normal hook. The portrait-only BREAKING NEWS ribbon accompanies the
+existing HookPunch with no extra intro time. Its accent respects reading and
+kinetic windows. Body emphasis uses literal visible words and real word
+timings. Preserve the cover, caption clearance, still ending and quiz/ranking
+protection. Local historical animation demos must be visibly labelled.
+
+See `docs/VOICE_MOTION_REVIEW.md` for local audio, render evidence and deployment
+state. Publishing paths and scheduled settings remain protected.
+
 ## CURRENT REPAIR — Enforced opening and audio budgets (2026-10-05)
 
 The user subsequently approved broadening beyond niche developer news and

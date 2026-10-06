@@ -9,8 +9,15 @@ import json
 import math
 import os
 import re
+import time
+from urllib.error import HTTPError, URLError
+from http.client import IncompleteRead, RemoteDisconnected
 import urllib.request
 import wave
+
+
+class SpeechPerformanceError(ValueError):
+    """A complete retake may fix delivery; quotas/configuration may not."""
 
 
 def _canonical(text):
@@ -59,7 +66,15 @@ def align_script(text, words, seconds):
             spans.append((len(heard), len(normalized), start, end))
         heard = normalized
     if not heard or _canonical(' '.join(w['text'] for w in words)) != _canonical(text):
-        raise ValueError('Expressive speech transcript differs from the script')
+        # Short diagnostics make production fallback actionable. The acceptance
+        # comparison stays exact, including numbers, signs and negations.
+        expected = _canonical(text).split()
+        actual = _canonical(' '.join(w['text'] for w in words)).split()
+        at = next((i for i, pair in enumerate(zip(expected, actual)) if pair[0] != pair[1]),
+                  min(len(expected), len(actual)))
+        raise SpeechPerformanceError('Expressive speech transcript differs from the script '
+            f'at word {at + 1}: expected {" ".join(expected[at:at+5])!r}, '
+            f'heard {" ".join(actual[at:at+5])!r}')
     result, offset = [], 0
     for token in text.split():
         size = len(_canonical(token).replace(' ', ''))
@@ -88,15 +103,21 @@ def _alignment_model():
 
 def build_speech_prompt(text, rate='+12%'):
     from tts_providers import edge_rate_to_speed
-    target_wpm = round(170 * edge_rate_to_speed(rate) / 1.12)
+    target_wpm = round(185 * edge_rate_to_speed(rate) / 1.12)
     return (
-        'Read the following exact words as a young, conversational tech creator '
-        'talking to one friend. Make the opening sentence immediate and surprising '
-        'like a scroll-stopping hook, then settle into lively but credible delivery. '
-        'Give reactions audible surprise and questions a curious upward inflection. '
-        'Vary stress and pitch; do not shout. '
-        f'Brisk pace, about {target_wpm} words per minute. '
-        'Do not read these directions. Transcript: ' + text
+        'AUDIO PROFILE: Lively, warm tech-and-science creator telling one friend '
+        'something surprising. A close, clear conversational voice.\n'
+        'SCENE: One connected short story for a phone viewer.\n'
+        "DIRECTOR'S NOTES: Make the opening sentence immediate: land its first "
+        'three words with conviction, with no introductory breath or long pause. '
+        'Settle into a clear explanation, then brighten and lean in at the most '
+        'surprising fact. Give the written reaction audible surprise and questions '
+        'a curious upward inflection. Finish with a confident, useful payoff. '
+        'Use connected phrasing, varied stress and natural pitch; avoid a repeated '
+        'sentence-ending drop, news-anchor cadence, singsong delivery or shouting. '
+        f'Brisk pace, about {target_wpm} words per minute; brief punctuation pauses. '
+        'Speak ONLY the exact transcript below. Do not add reactions, filler, '
+        'stage directions or a sign-off.\nTRANSCRIPT:\n' + text
     )
 
 
@@ -116,7 +137,9 @@ def synthesize(text, output, voice='Leda', rate='+12%'):
         data = json.load(response)
     candidate = (data.get('candidates') or [{}])[0]
     if candidate.get('finishReason') != 'STOP':
-        raise ValueError(f"Expressive speech did not complete ({candidate.get('finishReason', 'no candidate')})")
+        reason = candidate.get('finishReason', 'no candidate')
+        error = SpeechPerformanceError if reason in ('OTHER', 'MAX_TOKENS') else ValueError
+        raise error(f'Expressive speech did not complete ({reason})')
     audio = [p['inlineData'] for p in candidate.get('content', {}).get('parts', []) if 'inlineData' in p]
     if len(audio) != 1 or not audio[0].get('mimeType', '').startswith('audio/L16') or 'rate=24000' not in audio[0]['mimeType']:
         raise ValueError('Unexpected expressive speech audio format')
@@ -129,10 +152,20 @@ def synthesize(text, output, voice='Leda', rate='+12%'):
         wav.setsampwidth(2)
         wav.setframerate(24000)
         wav.writeframes(pcm)
-    segments, _ = _alignment_model().transcribe(output, language='en', word_timestamps=True,
-        beam_size=5, condition_on_previous_text=False, initial_prompt=text)
-    words = [dict(text=w.word.strip(), start=w.start, end=w.end) for segment in segments for w in segment.words]
-    return align_script(text, words, seconds)
+    for attempt in range(2):
+        # Re-decode the same audio once without transcript priming. This can
+        # resolve an ASR error without spending another API request, but neither
+        # pass may discard mismatched words or manufacture word timestamps.
+        segments, _ = _alignment_model().transcribe(output, language='en', word_timestamps=True,
+            beam_size=5 if attempt == 0 else 8, condition_on_previous_text=False,
+            initial_prompt=text if attempt == 0 else None)
+        words = [dict(text=w.word.strip(), start=w.start, end=w.end) for segment in segments for w in segment.words]
+        try:
+            return align_script(text, words, seconds)
+        except SpeechPerformanceError as error:
+            if attempt:
+                raise
+            print(f'[TTS] Gemini alignment recheck on the same audio: {error}')
 
 
 def synthesize_scenes(batch, voice='Leda', rate='+12%'):
@@ -145,7 +178,20 @@ def synthesize_scenes(batch, voice='Leda', rate='+12%'):
         return {}
     full_path = batch[0]['out_path'] + '.full.wav'
     try:
-        words = synthesize(' '.join(s['text'] for s in batch), full_path, voice=voice, rate=rate)
+        for attempt in range(2):
+            try:
+                words = synthesize(' '.join(s['text'] for s in batch), full_path, voice=voice, rate=rate)
+                break
+            except (SpeechPerformanceError, URLError, TimeoutError, ConnectionError, IncompleteRead, RemoteDisconnected) as error:
+                transient = (isinstance(error, (URLError, TimeoutError, ConnectionError, IncompleteRead, RemoteDisconnected))
+                    and (not isinstance(error, HTTPError) or error.code in (408, 500, 502, 503, 504)))
+                if attempt or not (transient or isinstance(error, SpeechPerformanceError)):
+                    raise  # Quota/auth/config failures make no further requests.
+                if os.path.exists(full_path):
+                    os.remove(full_path)
+                print(f'[TTS] Gemini complete retake 1/1 ({voice}): {error}')
+                if transient:
+                    time.sleep(1)
         groups, cursor = [], 0
         for scene in batch:
             target = sum(bool(_canonical(token)) for token in scene['text'].split())

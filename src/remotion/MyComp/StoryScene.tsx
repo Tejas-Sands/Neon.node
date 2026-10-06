@@ -36,6 +36,8 @@ export const StoryScene: React.FC<{
   const comparison = beat.kind === "comparison";
   const compression = beat.kind === "compression";
   const source = beat.kind === "statement" && Boolean(scene.sourceDomain);
+  const textParts = scene.text.split(/(\s+)/);
+  const focusIndex = textParts.indexOf(beat.focusWord ?? "");
   const headlineFont: FontFamilyName = "Geist";
   const mainSize = (metric ? 280 : comparison ? 92 : source ? 88 : 144) * unit;
   // One dominant surface, not a card floating inside another frame. Accent
@@ -95,7 +97,9 @@ export const StoryScene: React.FC<{
             lineHeight: 1.08, gapPx: 16 * unit});
           return <div key={i} style={{flex: 1, padding: 24 * unit, minHeight: 0,
             background: i ? "#25313b" : paper, color: i ? paper : ink,
-            transform: i ? `translateX(${(1 - reveal) * 48 * unit}px)` : "none",
+            transformOrigin: "left center",
+            transform: i ? `translateX(${(1 - reveal) * 48 * unit}px) scale(${0.96 + 0.04 * reveal})` : `scale(${1 - 0.025 * reveal})`,
+            opacity: i ? 1 : 1 - 0.18 * reveal,
             borderLeft: `${6 * unit}px solid ${i ? color : "#b5b9bb"}`,
             boxShadow: i ? `${-12 * unit * reveal}px ${12 * unit * reveal}px 0 ${withAlpha(color, 0.15)}` : "none"}}>
             {side.label && <div style={{...labelStyle, fontSize: fitStoryFont(side.label, 26 * unit, inner - 48 * unit), marginBottom: 16 * unit}}>{side.label}</div>}
@@ -109,7 +113,10 @@ export const StoryScene: React.FC<{
           borderLeft: source ? `${6 * unit}px solid ${ink}` : undefined}}>
           {source && <div style={{position: "absolute", inset: 0, background: withAlpha(color, 0.3),
             transform: `scaleX(${reveal})`, transformOrigin: "left center"}} />}
-          <span style={{position: "relative"}}>{scene.text}</span>
+          <span style={{position: "relative"}}>{textParts.map((part, i) => i === focusIndex
+            ? <span key={i} style={{whiteSpace: "nowrap", background: withAlpha(color, reveal * 0.55),
+                boxShadow: `0 ${5 * unit * reveal}px 0 ${ink}`}}>{part}</span>
+            : part)}</span>
         </div>}
         {compression && <div style={{height: 270 * unit, flexShrink: 0}}>
           <svg viewBox="0 0 820 225" width="100%" height={225 * unit} aria-label="Compression schematic, not to scale">

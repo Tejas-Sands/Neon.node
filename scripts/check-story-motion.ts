@@ -19,6 +19,11 @@ const words = [
   {text: "percent", start: 12.4, end: 12.7},
 ];
 const plan = deriveStoryMotion(scenes, words, energy, 30);
+const statement = deriveStoryMotion([
+  scenes[0], {type: "split", title: "ACCOUNT SAFETY", text: "Stickers redirect your payment", durationInFrames: 150}, scenes[3],
+], [{text: "redirect", start: 6.6, end: 6.9}], energy, 30)[1];
+assert.equal((statement as typeof statement & {focusWord?: string}).focusWord, "redirect",
+  "statement emphasis belongs to a literal visible word with a measured speech cue");
 assert.equal(plan[0].kind, "legacy", "the hook is never replaced");
 assert.equal(plan[1].kind, "compression");
 assert.equal(plan[1].revealFrame, 84, "global word timestamp becomes a scene-local cue");

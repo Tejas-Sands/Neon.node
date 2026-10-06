@@ -1,7 +1,7 @@
 """TTS provider seam (M2) — Python 3.9-safe, imported by main.py.
 
 Engines:
-  edge    — key-free Emma by default. Tight multi-scene delivery uses
+  edge    — key-free Ava by default. Tight multi-scene delivery uses
             edge_voice.py for continuous narration and silent acoustic cuts;
             legacy pacing/per-scene comparisons keep the inline path.
   kokoro  — Kokoro-82M via scripts/kokoro_tts_worker.py running under a SIDE

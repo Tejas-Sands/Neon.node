@@ -1,16 +1,95 @@
 """The expressive provider must earn its captions from the actual audio."""
 import os
 import asyncio
+import base64
+import io
+import json
 from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
+from types import SimpleNamespace
+from urllib.error import HTTPError
+from http.client import IncompleteRead, RemoteDisconnected
 
 import expressive_voice as voice
 from tts_providers import resolve_tts_engine
 
 
 class ExpressiveVoiceTests(unittest.TestCase):
+    def response(self):
+        return io.BytesIO(json.dumps({'candidates': [{'finishReason': 'STOP',
+            'content': {'parts': [{'inlineData': {'mimeType': 'audio/L16;rate=24000',
+                'data': base64.b64encode(b'\0\0' * 72000).decode()}}]}}]}).encode())
+
+    def recognizer(self, texts):
+        def transcribe(path, **settings):
+            text = next(texts)
+            words = [SimpleNamespace(word=t, start=.1 + i * .5, end=.4 + i * .5)
+                     for i, t in enumerate(text.split())]
+            return [SimpleNamespace(words=words)], None
+        return SimpleNamespace(transcribe=transcribe)
+
+    def test_a_recognizer_tail_hallucination_is_rechecked_without_new_speech(self):
+        # A noisy ASR pass must not force a different narrator when a second
+        # acoustic decode of the SAME performance matches the exact script.
+        with tempfile.TemporaryDirectory() as directory, patch.dict(os.environ, {'GEMINI_API_KEY': 'test'}), \
+             patch.object(voice.urllib.request, 'urlopen', return_value=self.response()) as api, \
+             patch.object(voice, '_alignment_model', return_value=self.recognizer(iter(['Hello there. Nice.', 'Hello there.']))):
+            words = voice.synthesize('Hello there.', str(Path(directory) / 'speech.wav'))
+            self.assertEqual([w['text'] for w in words], ['Hello', 'there.'])
+            self.assertEqual(api.call_count, 1)
+
+    def test_transient_service_failure_recovers_a_complete_gemini_performance(self):
+        with tempfile.TemporaryDirectory() as directory, patch.dict(os.environ, {'GEMINI_API_KEY': 'test'}), \
+             patch.object(voice.urllib.request, 'urlopen', side_effect=[HTTPError('https://example.com', 503, 'busy', {}, None), self.response()]), \
+             patch.object(voice, '_alignment_model', return_value=self.recognizer(iter(['Hello there. Great, right?']))):
+            batch = [dict(idx=i, text=t, out_path=str(Path(directory) / f'{i}.wav'))
+                     for i, t in enumerate(('Hello there.', 'Great, right?'))]
+            result = voice.synthesize_scenes(batch)
+            self.assertEqual([w['text'] for i in (0, 1) for w in result[i]['words']],
+                             ['Hello', 'there.', 'Great,', 'right?'])
+            self.assertEqual(len(list(Path(directory).iterdir())), 2)
+
+    def test_failed_performance_gets_one_complete_retake_and_never_accepts_changed_words(self):
+        with tempfile.TemporaryDirectory() as directory, patch.dict(os.environ, {'GEMINI_API_KEY': 'test'}), \
+             patch.object(voice.urllib.request, 'urlopen', side_effect=[self.response(), self.response()]) as api, \
+             patch.object(voice, '_alignment_model', return_value=self.recognizer(iter(['It can run.', 'It can run.', "It can't run."]))):
+            batch = [dict(idx=0, text="It can't run.", out_path=str(Path(directory) / '0.wav'))]
+            result = voice.synthesize_scenes(batch)
+            self.assertEqual([w['text'] for w in result[0]['words']], ['It', "can't", 'run.'])
+            self.assertEqual(api.call_count, 2)
+            self.assertFalse(list(Path(directory).glob('*.full.wav')))
+
+    def test_interrupted_response_body_retries_the_complete_performance_once(self):
+        class InterruptedBody(io.BytesIO):
+            def read(self, *args):
+                raise IncompleteRead(b'partial', 1024)
+
+        for failure in (InterruptedBody(), RemoteDisconnected('closed'), ConnectionResetError('reset')):
+            with self.subTest(failure=type(failure).__name__), tempfile.TemporaryDirectory() as directory, \
+                 patch.dict(os.environ, {'GEMINI_API_KEY': 'test'}), \
+                 patch.object(voice.urllib.request, 'urlopen', side_effect=[failure, self.response()]) as api, \
+                 patch.object(voice, '_alignment_model', return_value=self.recognizer(iter(['Hello there.']))):
+                result = voice.synthesize_scenes([dict(idx=0, text='Hello there.', out_path=str(Path(directory) / '0.wav'))])
+                self.assertEqual([w['text'] for w in result[0]['words']], ['Hello', 'there.'])
+                self.assertEqual(api.call_count, 2)
+                self.assertEqual([p.name for p in Path(directory).iterdir()], ['0.wav'])
+
+    def test_quota_and_repeated_mismatch_are_bounded_and_leave_no_partial_audio(self):
+        for failures, transcripts, expected_requests in [
+            ([HTTPError('https://example.com', 429, 'quota', {}, None)], [], 1),
+            ([self.response(), self.response()], ['It can run.'] * 4, 2),
+        ]:
+            with self.subTest(expected_requests=expected_requests), tempfile.TemporaryDirectory() as directory, \
+                 patch.dict(os.environ, {'GEMINI_API_KEY': 'test'}), \
+                 patch.object(voice.urllib.request, 'urlopen', side_effect=failures) as api, \
+                 patch.object(voice, '_alignment_model', return_value=self.recognizer(iter(transcripts))):
+                with self.assertRaises((ValueError, HTTPError)):
+                    voice.synthesize_scenes([dict(idx=0, text="It can't run.", out_path=str(Path(directory) / '0.wav'))])
+                self.assertEqual(api.call_count, expected_requests)
+                self.assertEqual(list(Path(directory).iterdir()), [])
+
     def test_gemini_voice_rotation_is_seeded_and_explicit_voice_wins(self):
         import main
         with patch.dict(os.environ, {'VOICE_IDENTITY': 'rotate', 'VOICEOVER_VOICE': ''}):
@@ -140,7 +219,7 @@ class ExpressiveVoiceTests(unittest.TestCase):
             return ('fallback.mp3', [])
         with patch.object(main, '_generate_voiceover_with_engine', render):
             asyncio.run(main.generate_voiceover_and_alignment([dict(text='Hello', durationInFrames=150)], 'expressive-failure', '/tmp', voice='gemini:Leda'))
-        self.assertEqual(calls, [('gemini', 150, 'gemini:Leda'), ('edge', 150, 'en-US-EmmaNeural')])
+        self.assertEqual(calls, [('gemini', 150, 'gemini:Leda'), ('edge', 150, 'en-US-AvaNeural')])
 
 
 if __name__ == '__main__': unittest.main()

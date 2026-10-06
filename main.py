@@ -79,7 +79,7 @@ import random
 import threading
 import requests
 from growth_strategy import audience_directive, growth_metadata, prefer_audience_candidates, active_strategy
-from editorial_evidence import verified_excerpt, excerpt_matches
+from editorial_evidence import verified_excerpt, excerpt_matches, news_alert
 from retention import RetentionError, repair_targets, preserves_claim
 from fastapi import FastAPI, HTTPException, BackgroundTasks, Security, Depends, Query
 from fastapi.security import APIKeyHeader, HTTPBearer, HTTPAuthorizationCredentials
@@ -233,11 +233,11 @@ def select_gemini_voice(session_id: str, requested: Optional[str] = None) -> str
     return selected
 
 # Key-free consistent narrator, shared by direct Edge and Gemini recovery.
-# October 5: Emma at natural pitch replaces the reported robotic Aria default.
-# Native delivery remains limited; listening acceptance is recorded separately.
-DEFAULT_EDGE_VOICE = "en-US-EmmaNeural"
+# October 6: the user selected the matched non-multilingual Ava audition.
+# Continuous delivery and natural pitch apply to the whole performance.
+DEFAULT_EDGE_VOICE = "en-US-AvaNeural"
 
-# VOICE_IDENTITY=consistent uses Emma at natural pitch by default. The pool
+# VOICE_IDENTITY=consistent uses Ava at natural pitch by default. The pool
 # below remains available with VOICE_IDENTITY=rotate. VOICE_STYLE=cheerful
 # (the default since 2026-08-09) swaps that optional narrator pool
 # to the EXPRESSIVE non-multilingual voices — the Multilingual set reads
@@ -3077,10 +3077,10 @@ def _estimate_spoken_seconds(scenes: List[dict], engine: Optional[str] = None,
         # Jenny: 158 words at 2.680 wps; selected Aria: 156 at 2.583 (+12%).
         # See docs/VOICE_MOTION_REVIEW.md. Other voices retain pool calibration.
         narrator = voice or os.environ.get("VOICEOVER_VOICE") or DEFAULT_EDGE_VOICE
-        # Emma: 156 words over three continuous, source-backed fixtures;
-        # 2.798 wps at +12%, normalized to the +5% calibration reference.
+        # Continuous source-backed fixtures (156 words): Emma 2.798 wps,
+        # Ava 2.819 at +12%, normalized to the +5% calibration reference.
         wps = {"en-US-JennyNeural": 2.52, "en-US-AriaNeural": 2.42,
-               "en-US-EmmaNeural": 2.62}.get(narrator, wps)
+               "en-US-EmmaNeural": 2.62, "en-US-AvaNeural": 2.64}.get(narrator, wps)
     wps *= edge_rate_to_speed(rate or os.environ.get("VOICEOVER_RATE", "+12%")) / 1.05
     total_words = 0
     spoken_scenes = 0
@@ -4577,6 +4577,12 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
                         scene_data["sourceDomain"] = dom
                 except Exception:
                     pass
+
+        # Source-derived event metadata only. The LLM cannot author urgency;
+        # the render layer owns the graphic, animation and sound treatment.
+        if (idx == 0 and pack_cfg["name"] not in ("quiz-reveal", "data-rankings")
+                and news_alert(req.topic_meta, req.prompt or "")):
+            scene_data["newsAlert"] = True
 
         # === STOCK VIDEO B-ROLL: scenes get real motion clips ===
         # Motion can support the opening hook and later narration when it stays
@@ -7786,7 +7792,9 @@ async def _generate_voiceover_with_engine(
                     speech_batch, resolved_voice, edge_rate_to_speed(resolved_rate), session_id)
             else:
                 from edge_voice import synthesize_scenes
-                candidates = [resolved_voice] + [v for v in VOICE_POOL if v != resolved_voice]
+                recovery_pool = ([DEFAULT_EDGE_VOICE, "en-US-EmmaNeural", "en-US-AriaNeural"]
+                                 if consistent_voice else VOICE_POOL)
+                candidates = list(dict.fromkeys([resolved_voice] + recovery_pool))
                 provider_results, resolved_voice = await synthesize_scenes(
                     speech_batch, candidates[:3], rate=resolved_rate, pitch=resolved_pitch)
                 render_status_store[session_id]["resolved_voice"] = resolved_voice

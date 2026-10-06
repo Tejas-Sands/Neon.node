@@ -46,7 +46,7 @@ class VoiceIdentityTests(unittest.TestCase):
     def test_different_sessions_keep_one_natural_pitch_narrator(self):
         for session in ("identity-a", "identity-b", "identity-c"):
             voice, settings = self.synthesize(session)
-            self.assertEqual(voice, "en-US-EmmaNeural")
+            self.assertEqual(voice, "en-US-AvaNeural")
             self.assertEqual(settings["pitch"], "+0Hz")
             self.assertEqual(settings["boundary"], "WordBoundary")
 

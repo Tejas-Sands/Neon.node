@@ -53,6 +53,7 @@ import { deriveEnergy, type SceneEnergy } from "./energy";
 import { framesPerBeat } from "./beat";
 import { deriveStoryMotion, sharedSubject, sharedMetric, storyCutStyle, storyMusicVolume, type StoryBeat } from "./storyMotion";
 import { StoryScene } from "./StoryScene";
+import { BreakingNews } from "./BreakingNews";
 import { deriveMicroDetails, type MicroDetailConfig } from "./microDetails";
 import { derivePolish } from "./polish";
 import { PolishStack, CutCover } from "./PolishLayers";
@@ -294,6 +295,7 @@ const DynamicScene: React.FC<{
   ratingMax?: number;
   // Source attribution (backend-set, scene 0 only) — "via theverge.com".
   sourceDomain?: string;
+  newsAlert?: boolean;
   storyBeat?: StoryBeat;
   storySubject?: string;
   incomingMetric?: string;
@@ -332,6 +334,7 @@ const DynamicScene: React.FC<{
   ratingValue,
   ratingMax,
   sourceDomain,
+  newsAlert,
   storyBeat,
   storySubject,
   incomingMetric,
@@ -397,8 +400,10 @@ const DynamicScene: React.FC<{
     : { alignItems: "center", textAlign: "center", padding: "0 8%" };
   // Vertical anchor (top %) per layout for the hero stack; split/cta derive
   // their own from these so blocks never collide with subtitles (bottom 24%).
-  const heroTop =
-    textLayout === "banner-low" ? 52 : textLayout === "top-ticker" ? 10 : look.heroAnchor;
+  const hasNewsAlert = sceneIndex === 0 && newsAlert === true && frameH / frameW >= 1.5
+    && theme.formatPack !== "quiz-reveal" && theme.formatPack !== "data-rankings";
+  const heroAnchor = textLayout === "banner-low" ? 52 : textLayout === "top-ticker" ? 10 : look.heroAnchor;
+  const heroTop = hasNewsAlert ? Math.max(24, heroAnchor) : heroAnchor;
 
   // The caption band is pinned at bottom:24% (zIndex 40) and always paints over
   // the text stack, so the stack has to end above it. 70% leaves ~2% of air
@@ -434,7 +439,7 @@ const DynamicScene: React.FC<{
   const heroNeedPct = (100 * stackHeightAt(heroStackInput, 1)) / frameH;
   const heroTopFit = Math.min(
     heroTop,
-    Math.max(HERO_TOP_MIN_PCT, HERO_BOTTOM_LIMIT_PCT - heroNeedPct),
+    Math.max(hasNewsAlert ? 24 : HERO_TOP_MIN_PCT, HERO_BOTTOM_LIMIT_PCT - heroNeedPct),
   );
   // Scale is the LAST resort, and only for a stack so tall it overflows even
   // from the highest anchor.
@@ -931,6 +936,7 @@ const DynamicScene: React.FC<{
       {sceneIndex === 0 && (
         <HookPunch primaryColor={theme.primaryColor} secondaryColor={theme.secondaryColor} seed={seed} />
       )}
+      {hasNewsAlert && <BreakingNews durationInFrames={durationInFrames} energy={energy} />}
       {/* Source-attribution chip (Q30:b — scene 1 only). Enters at frame 40,
           AFTER the hook lands (frame-2 readability untouched), exits well
           before the first cut. Brand chrome face + ink plate (TEXT_ZONES:
@@ -3322,6 +3328,7 @@ export const Main = ({ scenes, theme, pipeline, voiceoverUrl, subtitles }: z.inf
                 ratingValue={scene.ratingValue}
                 ratingMax={scene.ratingMax}
                 sourceDomain={scene.sourceDomain}
+                newsAlert={scene.newsAlert}
                 storyBeat={storyPlan[index]}
                 incomingMetric={index > 0 && storyPlan[index - 1].kind === "metric" && storyPlan[index].kind !== "legacy"
                   ? sharedMetric(scenes[index - 1], scene) : undefined}

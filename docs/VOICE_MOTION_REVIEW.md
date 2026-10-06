@@ -1,5 +1,87 @@
 # Voice and motion review — 2026-09-17
 
+## October 6 voice recovery and breaking opener
+
+The owner selected **Ava** after listening to matched uv-script Ava/Emma
+auditions. The consistent key-free narrator and Gemini recovery now use
+non-multilingual `en-US-AvaNeural`, natural pitch and continuous narration.
+Explicit pins and optional rotation retain their meaning. Continuous fallback
+tries conversational Ava/Emma/Aria, restarting the entire performance each
+time. This supersedes the October 5 Emma default below.
+
+The October 6 scheduled run `37411648700` at `6cfa3d6259f54ccc62cc5b61bb02350a8c87324e`
+requested Gemini Leda, failed strict transcript matching, and regenerated on
+Emma at +12%, +0Hz. Its overlong opening was repaired from 155 to 98 frames.
+The provider error was a transcript mismatch; the logs do not establish a
+speech quota failure. No distribution diagnosis follows from this observation.
+
+Gemini's delivery prompt now specifies connected conversational phrasing,
+variable emphasis, a brighter written surprise and a useful composed close,
+with an explicit exact-word-only transcript. The 185 words/minute prompt
+target at +12% is guidance, not native rate control. A second CPU alignment
+pass on the **same audio**, without transcript priming, retains the existing
+exact word/number/negation guard. A bad performance or transient transport/
+HTTP 5xx allows one complete same-voice retake; quota 429/auth errors fall
+straight back. Persistent mismatch restarts on Edge. Failed recordings and
+partial scene files are removed. No scene mixes providers or trims speech.
+
+Actual continuous Ava auditions at **+12%, +0Hz, tight**:
+
+| Source-backed narration | Total | Opening | Longest body |
+| --- | --- | --- | --- |
+| uv scripts | 19.03s | 3.10s | 4.63s |
+| Quantization | 17.77s | 3.20s | 4.17s |
+| npm lockfiles | 21.57s | 3.30s | 4.77s |
+
+All native word timelines passed strict validation and fitted scene bounds.
+The 156-word corpus measured 2.819 words/s, normalized to a +5% estimator
+reference of 2.64. Matched real Leda uv auditions both passed transcript
+validation: previous prompt 20.60s (3.67s opening), new prompt 21.13s (3.83s).
+These do not demonstrate a Gemini speed gain or a future success rate; human
+listening beyond the accepted Ava audition remains useful.
+
+Motion adds a source-qualified portrait **BREAKING NEWS** ribbon, readable on
+the cover, with a single coordinated hit/sheen after the reading/kinetic
+gate and a short exit. Existing HookPunch is unchanged; no intro seconds or
+new sound asset were added. Statements emphasize a literal visible word at a
+real matching spoken cue; comparisons mildly shift focus to the second fact
+while both facts remain readable. Source-card quotations, final still frames,
+quiz/ranking reveals, scene/audio starts and seeded draw order are preserved.
+
+Eligibility is deliberately conservative: a real source URL, matching headline
+and original article evidence for a confirmed security emergency, major outage
+or first/record discovery, and an event date within 72h are required. A feed
+timestamp or generated adjective cannot establish urgency. Future, historical,
+speculative and undated stories keep their ordinary hook. Relative "today"
+requires an independently dated source URL. The flag is assembled with source
+metadata, not requested from the script model.
+
+Local artifacts: `out/captivating-review/after.mp4` is a matched-audio animation
+example; the September FTC story is visibly marked **HISTORICAL DESIGN DEMO ·
+NOT CURRENT NEWS**, and its news flag is a local demonstration override.
+`public/voiceover-scripts-ava-oct6.mp3` is the selected fallback audition;
+`public/voiceover-scripts-leda-before-oct6.mp3` and
+`public/voiceover-scripts-leda-after-oct6.mp3` compare Gemini prompts.
+Timing manifests live in `out/voice-review/*-oct6/timing.json`. These ignored
+artifacts are previews, not new publications. A production run using this
+repair still needs review; existing repository Variables/workflows determine CI.
+
+The combined **Ava + updated motion** example is
+`out/captivating-review/ava-preview.mp4`: 19.37s, opening 2.13s, all four scenes
+inside the measured frame limits. `out/captivating-review/index.html` includes
+this preview, the matched animation pair and the voice comparisons.
+
+Validation: **72 discovered unit tests passed**, including six news-eligibility
+tests and response-read interruption recovery. All six required regression
+scripts plus experiment/topic-source checks passed. TypeScript checking,
+story/editorial-motion assertions, contrast checks and the text-safety scan
+passed; all six cover seeds passed. Actual mixed-audio/subtitle bounds passed
+for the three Ava fixtures, both Leda auditions and the combined preview.
+Independent review reproduced historical-report and novelty false positives;
+first reporting verbs now fail closed, and cross-year dates use the actual
+72-hour window. The reviewer rechecked those fixes and approved the changes.
+AST comparison confirms the protected publishing functions are unchanged.
+
 ## October 5 opening repair
 
 ### Non-Gemini follow-up: Emma and continuous Edge narration

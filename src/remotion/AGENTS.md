@@ -6,6 +6,17 @@
 
 ---
 
+## CURRENT DIRECTION — Breaking opener and spoken emphasis (2026-10-06)
+
+Source-qualified `newsAlert` enables a portrait hook ribbon in
+`MyComp/BreakingNews.tsx`. Keep it readable at frame zero and reserve headline
+space before stack fitting. HookPunch continues to supply the initial impact;
+the ribbon's single accent follows the existing reading/kinetic schedule.
+No added opening seconds, caption shifts or random draws. Exclude quizzes
+and rankings. Statement emphasis highlights a literal word at its measured
+spoken cue; comparison emphasis keeps both values readable. Source quotations
+and the still ending retain their existing behavior.
+
 ## CURRENT DIRECTION — Brag reference (2026-09-17)
 
 Read the root [design](../../docs/superpowers/specs/2026-09-17-voice-and-brag-motion-design.md)

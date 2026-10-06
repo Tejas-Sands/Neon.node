@@ -14,6 +14,8 @@ export interface StoryBeat {
   kind: "legacy" | "statement" | "metric" | "comparison" | "compression";
   revealFrame: number;
   synced: boolean;
+  /** Exact visible word, only when its speech cue fits the reading window. */
+  focusWord?: string;
 }
 export const storyCutStyle = <T extends string>(style: T, a: StoryScene, b: StoryScene, before: StoryBeat, after: StoryBeat): T | "none" =>
   before.kind !== "legacy" && after.kind !== "legacy" && (sharedSubject(a, b) || sharedMetric(a, b)) ? "none" : style;
@@ -82,7 +84,11 @@ export function deriveStoryMotion(
       const match = beat.kind === "metric" ? numericMatch : beat.kind === "compression"
         ? /^(compress(?:es|ed|ion|ing)?|quantiz(?:ation|ed|ing))$/.test(token)
         : targets.includes(token) && token.length >= 5;
-      if (match) return {...beat, revealFrame: localFrame, synced: true};
+      if (match) {
+        const focusWord = beat.kind === "statement" && !scene.sourceDomain
+          ? scene.text.split(/\s+/).find(w => normalize(w) === token) : undefined;
+        return {...beat, revealFrame: localFrame, synced: true, ...(focusWord ? {focusWord} : {})};
+      }
     }
     return beat;
   });
