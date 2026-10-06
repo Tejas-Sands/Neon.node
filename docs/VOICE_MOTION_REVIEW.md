@@ -1,5 +1,53 @@
 # Voice and motion review — 2026-09-17
 
+## October 6 rejected timing-repair follow-up
+
+Scheduled run [37425999288](https://github.com/Tejas-Sands/Neon.node/actions/runs/37425999288)
+used `447e66c4` and completed Gemini Leda narration. Its opening fitted to
+137 frames, above the 120-frame limit. Both subsequent copy edits exceeded
+the measured eight-word target; the run aborted before rendering/publishing.
+Text generation fell back to Gemini Flash Lite after Flash truncation/quota
+errors, but those errors did not prevent either repair response. This was a
+pacing-recovery failure, not evidence of missing narration or a posting fault.
+
+The October 5 repair loop repeated the original prompt after a rejected edit
+and discarded its detailed cause. It also invited changes to every opening
+label even when only speech needed shortening. A local source reconstruction
+exposed an unnecessary label paraphrase that removed `not` and was correctly
+rejected by the conservative claim guard.
+
+The follow-up supplies inclusive per-scene word limits and the exact previous
+rejection, including the scene, field, drafts and counted budget where relevant.
+Timing-only repairs authorize narration alone; opening labels become editable
+only when their own word limits are exceeded. The validator enforces the same
+field list. Exhausted repairs retain the last diagnostic. The two-request cap,
+claim checks, source grounding, full narration/alignment regeneration, rejected
+audio deletion, narrator pins and immutable quiz/ranking bodies are preserved.
+
+Local audio evidence uses the same source repository, not the unavailable
+failed-run script/recording. Gemini Flash Lite received an injected nine-word
+rejection and returned a six-word narration edit without changing the labels.
+Actual Leda speech passed strict transcript validation: **98-frame / 3.267s
+opening**, longest scene **155 frames / 5.167s**, **16.60s** fitted timeline;
+caption bounds passed and no provider fallback was needed. The narration
+wrapper needed no further edits after that direct copy probe. An earlier
+eight-word Leda probe took 143 frames; word counts alone cannot guarantee timing.
+Human listening and the next production result remain unverified.
+
+Artifacts: `out/retention-review/removemacai-oct6.json`,
+`out/retention-review/removemacai-oct6-patches.json`, and
+`public/voiceover-retention-removemacai-oct6.mp3`. These are local audio checks,
+not publications. Regression coverage recreates the 137-frame/eight-word
+failure, rejection feedback, fresh narration, label protection, qualifier
+diagnostics and final-failure cleanup. Validation: **77 discovered unit tests**,
+all nine content/selection regression scripts and TypeScript checking passed;
+independent review ran 30 targeted tests and found no blocking issue. AST
+comparison limits the backend diff to the two retention-repair functions.
+No publishing functions, workflows,
+repository Variables or schedules changed. The owner requested deployment on
+October 6. Rollout targets the next normal scheduled checkout of `main`; its
+first production result still needs review.
+
 ## October 6 voice recovery and breaking opener
 
 The owner selected **Ava** after listening to matched uv-script Ava/Emma

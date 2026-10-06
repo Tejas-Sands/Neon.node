@@ -102,6 +102,102 @@ class RetentionTests(unittest.TestCase):
                     story(), 'retention-failure', directory, format_pack='facts-explainer', max_seconds=30))
             self.assertFalse(Path(directory, 'narration.mp3').exists())
 
+    def test_rejected_word_budget_is_explained_before_the_second_repair(self):
+        scenes = story()
+        scenes[0].update(title='REMOVEMACAI', text='Models stay on disk',
+                         voiceover='Turning off Apple Intelligence leaves its downloaded models on your Mac.')
+        over_budget = 'Turning off Apple Intelligence keeps models on your Mac.'
+        repaired = 'Turning off Apple Intelligence keeps models on disk.'
+        prompts, spoken = [], []
+
+        def edit(**kwargs):
+            prompt = kwargs['user_prompt']
+            prompts.append(prompt)
+            # An editor needs the failed draft and its counted error to correct
+            # it. Repeating the original request reproduces the production abort.
+            corrected = over_budget in prompt and '9 words' in prompt and 'max 8' in prompt
+            return json.dumps({'scenes': [{'scene': 0,
+                                          'voiceover': repaired if corrected else over_budget}]})
+
+        async def synth(items, session, directory, **kwargs):
+            spoken.append(items[0]['voiceover'])
+            items[0]['durationInFrames'] = 137 if len(spoken) == 1 else 105
+            main.render_status_store.setdefault(session, {})['resolved_voice'] = 'gemini:Leda'
+            Path(directory, 'narration.mp3').write_bytes(str(len(spoken)).encode())
+            return 'narration.mp3', [dict(text=items[0]['voiceover'], start=0, end=3.4)]
+
+        with tempfile.TemporaryDirectory() as directory, patch.object(
+                main, 'generate_voiceover_and_alignment', synth), patch.object(
+                main, 'query_llm_with_failover', side_effect=edit):
+            try:
+                name, words = asyncio.run(main._generate_retention_voiceover(
+                    scenes, 'retention-rejected-budget', directory,
+                    topic_meta={'subject': 'RemoveMacAI'}, max_seconds=70))
+            except main.RetentionError as error:
+                self.fail(f'A correctable word-budget rejection aborted narration: {error}')
+            self.assertEqual(Path(directory, name).read_bytes(), b'2')
+        self.assertEqual(len(prompts), 2)
+        self.assertEqual(spoken, ['Turning off Apple Intelligence leaves its downloaded models on your Mac.', repaired])
+        self.assertEqual(scenes[0]['durationInFrames'], 105)
+        self.assertEqual(words[0]['text'], repaired)
+        self.assertEqual(main.render_status_store['retention-rejected-budget']['retention']['repairs'], 2)
+
+    def test_exhausted_repairs_report_the_rejected_scene_and_word_counts(self):
+        scenes = story()
+        scenes[0].update(title='REMOVEMACAI', text='Models stay on disk',
+                         voiceover='Turning off Apple Intelligence leaves its downloaded models on your Mac.')
+        response = json.dumps({'scenes': [{'scene': 0,
+            'voiceover': 'Turning off Apple Intelligence keeps models on your Mac.'}]})
+
+        async def synth(items, session, directory, **kwargs):
+            items[0]['durationInFrames'] = 137
+            Path(directory, 'narration.mp3').write_bytes(b'overlong')
+            return 'narration.mp3', []
+
+        with tempfile.TemporaryDirectory() as directory, patch.object(
+                main, 'generate_voiceover_and_alignment', synth), patch.object(
+                main, 'query_llm_with_failover', return_value=response):
+            with self.assertRaises(main.RetentionError) as failure:
+                asyncio.run(main._generate_retention_voiceover(
+                    scenes, 'retention-rejected-counts', directory, max_seconds=70))
+            self.assertFalse(Path(directory, 'narration.mp3').exists())
+        self.assertIn('scene 0', str(failure.exception))
+        self.assertIn('9 words', str(failure.exception))
+        self.assertIn('max 8', str(failure.exception))
+        self.assertEqual(scenes[0]['voiceover'], 'Turning off Apple Intelligence leaves its downloaded models on your Mac.')
+
+    def test_timing_repair_cannot_rewrite_already_compliant_hook_labels(self):
+        scenes = story()
+        response = {'scenes': [{'scene': 0, 'voiceover': 'Writes can skip second lookups.',
+                               'text': 'Skip an index lookup'}]}
+        with patch.object(main, 'query_llm_with_failover', return_value=json.dumps(response)):
+            with self.assertRaisesRegex(main.RetentionError, 'protected.*text'):
+                main._revise_retention_copy(scenes, {0: 8}, '', 'retention-labels', 'facts-explainer')
+        self.assertEqual(scenes, story())
+
+    def test_over_budget_hook_labels_can_still_be_shortened(self):
+        scenes = story()
+        scenes[0].update(title='REMOVEMACAI',
+                         text="Downloaded Apple Intelligence models stay on your Mac's disk.")
+        response = {'scenes': [{'scene': 0, 'voiceover': 'Writes can skip second lookups.',
+                               'text': "Apple Intelligence models stay on your Mac's disk."}]}
+        with patch.object(main, 'query_llm_with_failover', return_value=json.dumps(response)):
+            main._revise_retention_copy(scenes, {0: 8}, '', 'retention-label-budget', 'facts-explainer')
+        self.assertEqual(scenes[0]['text'], "Apple Intelligence models stay on your Mac's disk.")
+
+    def test_qualifier_rejection_identifies_the_field_and_both_drafts(self):
+        scenes = story()
+        rejected = 'Your database writes skip another index lookup.'
+        response = {'scenes': [{'scene': 0, 'voiceover': rejected}]}
+        with patch.object(main, 'query_llm_with_failover', return_value=json.dumps(response)):
+            with self.assertRaises(main.RetentionError) as failure:
+                main._revise_retention_copy(scenes, {0: 8}, '', 'retention-qualifier-feedback', 'facts-explainer')
+        self.assertIn('scene 0', str(failure.exception))
+        self.assertIn('voiceover', str(failure.exception))
+        self.assertIn(scenes[0]['voiceover'], str(failure.exception))
+        self.assertIn(rejected, str(failure.exception))
+        self.assertEqual(scenes, story())
+
     def test_copy_failure_after_pack_rebuild_is_checked_before_synthesis(self):
         self.assertTrue(hasattr(main, '_generate_retention_voiceover'))
         scenes = story()
@@ -160,7 +256,7 @@ class RetentionTests(unittest.TestCase):
         response = {'scenes': [{'scene': 0, 'voiceover': scenes[0]['voiceover'],
                                'text': 'Your model runs locally'}]}
         with patch.object(main, 'query_llm_with_failover', return_value=json.dumps(response)):
-            with self.assertRaisesRegex(ValueError, 'qualifier|scope|meaning'):
+            with self.assertRaisesRegex(ValueError, 'protected|qualifier|scope|meaning'):
                 main._revise_retention_copy(scenes, {0: 12}, '', 'retention-visible', 'facts-explainer')
 
     def test_kokoro_identity_survives_a_repair(self):
