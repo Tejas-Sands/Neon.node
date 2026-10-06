@@ -2,66 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1784959616,
-   "posted_hour_utc": 6,
-   "channel": "news",
-   "topic": {
-    "title": "Nvidia, Microsoft, Meta warn against overregulating open-weight models",
-    "subject": "Nvidia, Microsoft, Meta warn against overregulating open-weight models",
-    "url": "https://www.cnbc.com/2026/07/24/nvidia-microsoft-meta-open-weight-ai-models.html",
-    "source": "hn",
-    "keywords": [
-     "ai",
-     "model",
-     "war",
-     "microsoft",
-     "meta",
-     "nvidia"
-    ],
-    "viral_score": 11.66
-   },
-   "style_pack": "crimson-mono",
-   "seed": 423242639,
-   "voice": "en-US-AndrewNeural",
-   "hook_type": "INSIDER SECRET",
-   "scene_count": 6,
-   "video_seconds": 35.3,
-   "session": "gh-b7057d",
-   "platforms": {
-    "instagram": {
-     "id": "18331984957264320",
-     "posted_at": 1784959676
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 118,
-      "reach": 106,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 3856,
-      "fetched_at": 1787477795
-     },
-     "snap72": {
-      "views": 118,
-      "reach": 106,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785137545
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1784980942,
    "posted_hour_utc": 12,
    "channel": "news",
@@ -7932,7 +7872,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 854,
-      "fetched_at": 1791089920
+      "fetched_at": 1791259734
      },
      "snap72": {
       "views": 3,
@@ -8065,7 +8005,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 865,
-      "fetched_at": 1791089920
+      "fetched_at": 1791259734
      },
      "snap72": {
       "views": 4,
@@ -8133,7 +8073,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9140,
-      "fetched_at": 1791089920
+      "fetched_at": 1791259734
      },
      "snap72": {
       "views": 9,
@@ -8404,7 +8344,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1791089920
+      "fetched_at": 1791259734
      },
      "snap72": {
       "views": 0,
@@ -8745,7 +8685,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5867,
-      "fetched_at": 1791089920
+      "fetched_at": 1791259734
      },
      "snap72": {
       "views": 3,
@@ -9085,7 +9025,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1480,
-      "fetched_at": 1791089920
+      "fetched_at": 1791259734
      },
      "snap72": {
       "views": 3,
@@ -9830,7 +9770,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2498,
-      "fetched_at": 1791036335
+      "fetched_at": 1791259734
      },
      "snap72": {
       "views": 29,
@@ -10127,7 +10067,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1389,
-      "fetched_at": 1791036335
+      "fetched_at": 1791259734
      },
      "snap72": {
       "views": 15,
@@ -10496,7 +10436,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6193,
-      "fetched_at": 1791036335
+      "fetched_at": 1791259734
      },
      "snap72": {
       "views": 14,
@@ -10794,7 +10734,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2772,
-      "fetched_at": 1791036335
+      "fetched_at": 1791259734
      },
      "snap72": {
       "views": 16,
@@ -11087,7 +11027,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3184,
-      "fetched_at": 1791036335
+      "fetched_at": 1791259734
      },
      "snap72": {
       "views": 8,
@@ -11458,7 +11398,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2328,
-      "fetched_at": 1791036335
+      "fetched_at": 1791259734
      },
      "snap72": {
       "views": 56,
@@ -11753,7 +11693,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1557,
-      "fetched_at": 1791036335
+      "fetched_at": 1791259734
      },
      "snap72": {
       "views": 2,
@@ -12111,15 +12051,15 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 6,
+      "views": 8,
       "reach": 4,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 3495,
-      "fetched_at": 1791036335
+      "ig_reels_avg_watch_time": 4578,
+      "fetched_at": 1791259734
      },
      "snap72": {
       "views": 6,
@@ -12565,9 +12505,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1266,
-      "fetched_at": 1791036335
+      "fetched_at": 1791259734
      },
-     "snap72": null,
+     "snap72": {
+      "views": 24,
+      "reach": 20,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1266,
+      "fetched_at": 1791259734
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13125,6 +13075,72 @@
     "instagram": {
      "id": "18132033871754155",
      "posted_at": 1791214286
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791259681,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "ChatGPT is adding real cartoonists' signatures to fake New Yorker cartoons",
+    "subject": "ChatGPT fake New Yorker cartoons",
+    "url": "https://www.niemanlab.org/2026/10/chatgpt-is-adding-real-cartoonists-signatures-to-fake-new-yorker-cartoons/",
+    "source": "hn",
+    "keywords": [
+     "gpt",
+     "chatgpt"
+    ],
+    "viral_score": 11.57,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Fake New Yorker Cartoons",
+    "angle": "ChatGPT is generating fake New Yorker cartoons that include real cartoonists' signatures.",
+    "insight": "Anyone viewing AI-generated cartoons online may unknowingly encounter forged artist signatures, impacting attribution and original creators.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "synth-sunset",
+   "format_pack": "legacy-news",
+   "seed": 680795831,
+   "voice": "en-US-EmmaNeural",
+   "hook_type": "SHOCK-STAT",
+   "style_epoch": 14,
+   "scene_count": 6,
+   "video_seconds": 40.8,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "daily-life",
+    "signals": [
+     "chatgpt"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 1,
+    "hook_seconds": 3.267,
+    "longest_scene_seconds": 7.9,
+    "voice": "en-US-EmmaNeural",
+    "fallback_reason": "Expressive speech transcript differs from the script"
+   },
+   "session": "gh-5e6c5f",
+   "platforms": {
+    "instagram": {
+     "id": "18126751774878143",
+     "posted_at": 1791259731
     }
    },
    "metrics": {

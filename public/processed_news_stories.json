@@ -2493,5 +2493,17 @@
   "entities": [],
   "ts": 1791214289,
   "session": "gh-f18624"
+ },
+ {
+  "id": "49971846",
+  "title": "ChatGPT is adding real cartoonists' signatures to fake New Yorker cartoons",
+  "norm": "chatgpt is adding real cartoonists signatures to fake new yorker cartoons",
+  "subject_norm": "chatgpt fake new yorker cartoons",
+  "entities": [
+   "openai",
+   "yorker"
+  ],
+  "ts": 1791259734,
+  "session": "gh-5e6c5f"
  }
 ]
