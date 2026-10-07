@@ -87,7 +87,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List, Callable
 
 app = FastAPI(title="Remotion Hugging Face Renderer — Ultimate Video Generator")
 
@@ -2433,6 +2433,10 @@ _LLM_DEAD_MODELS = set()        # {(provider_name, model_id)}
 _LLM_DEAD_PROVIDERS = set()     # {provider_name}
 _LLM_MODEL_CATALOG = {}         # {models_url: set(model_ids) or None}
 _LLM_CATALOG_LOCK = threading.Lock()
+# JSON work within a video starts with its last successful model. Scope this
+# to a session; transient/truncation failures never permanently ban a model.
+# Only generation callers opt in; all publishing metadata keeps its order.
+_LLM_JSON_PREFERRED = {}        # {session_id: (provider_name, model_id)}, bounded below
 
 # Models that can't do plain chat/JSON generation — never auto-substitute these
 # from a provider catalog (r1/reasoning models emit <think> blocks that break
@@ -2634,7 +2638,9 @@ def query_llm_with_failover(
     user_prompt: str,
     max_tokens: int = 3500,
     json_format: bool = True,
-    session_id: Optional[str] = None
+    session_id: Optional[str] = None,
+    reuse_session_model: bool = False,
+    validate_response: Optional[Callable[[str], Any]] = None
 ) -> str:
     """Query OpenAI-compatible LLM endpoints with classified, adaptive failover.
 
@@ -2643,7 +2649,10 @@ def query_llm_with_failover(
     skip immediately and are remembered for the whole run, oversized requests
     shrink max_tokens to fit the reported limit, rate limits are deferred and
     revisited after every other option is exhausted, and only genuinely
-    transient errors get backoff retries."""
+    transient errors get backoff retries. An optional validator raises ValueError
+    for unusable completions, continuing to the next model without marking it
+    permanently dead. Opted-in JSON generation reuses its session's last
+    accepted model first; publishing metadata retains its existing order."""
     prefix = f"[{session_id}] " if session_id else ""
 
     # Build list of providers dynamically based on env keys
@@ -2747,6 +2756,11 @@ def query_llm_with_failover(
             "models": ["meta/llama-3.3-70b-instruct"]
         })
 
+    remember_model = json_format and reuse_session_model and bool(session_id)
+    preferred = _LLM_JSON_PREFERRED.get(session_id) if remember_model else None
+    if preferred:
+        providers.sort(key=lambda p: p['name'] != preferred[0])
+
     max_wait = float(os.environ.get("LLM_FAILOVER_MAX_WAIT_S", "75"))
     deadline = time.monotonic() + float(os.environ.get("LLM_FAILOVER_DEADLINE_S", "240"))
 
@@ -2846,6 +2860,18 @@ def query_llm_with_failover(
                         return None
                     time.sleep(1.5 + random.uniform(0, 0.75))
                     continue
+                if validate_response is not None:
+                    try:
+                        validate_response(content)
+                    except ValueError as error:
+                        note(f"{prov_name} ({model}) completion rejected: {error}")
+                        print(f"{prefix}[LLM-Failover] {prov_name}/{model}: task validation failed — moving on")
+                        return None
+                if remember_model:
+                    _LLM_JSON_PREFERRED.pop(session_id, None)
+                    _LLM_JSON_PREFERRED[session_id] = (prov_name, model)
+                    if len(_LLM_JSON_PREFERRED) > 128:
+                        _LLM_JSON_PREFERRED.pop(next(iter(_LLM_JSON_PREFERRED)))
                 print(f"{prefix}Success using provider {prov_name} / model {model}")
                 return content
             note(f"{prov_name} ({model}) failed status {status}: {(body or '')[:400]}")
@@ -2915,6 +2941,9 @@ def query_llm_with_failover(
         models = _llm_live_models(prov_name, prov_url, prov["key"], prov["models"],
                                   prefix, verify=prov.get("verify_models", True),
                                   discover_filter=prov.get("discover_filter"))
+        if preferred and prov_name == preferred[0] and preferred[1] in models:
+            models = [preferred[1]] + [m for m in models if m != preferred[1]]
+            print(f"{prefix}[LLM-Failover] Reusing accepted JSON model {prov_name}/{preferred[1]} first")
         if not models:
             note(f"{prov_name}: no usable models (all dead or absent from live catalog)")
             continue
@@ -3664,7 +3693,8 @@ def _execute_render_unlocked(req: RenderRequest, session_id: str, sync_delivery:
                 user_prompt=prompt_for_attempt,
                 max_tokens=3500,
                 json_format=True,
-                session_id=session_id
+                session_id=session_id,
+                reuse_session_model=True
             )
         except Exception as ex:
             llm_error = ex
@@ -7529,69 +7559,77 @@ def _revise_retention_copy(scenes, targets, source_prompt, session_id,
         'Correct the reported failure while preserving the original claims and word limits.\n'
         f'SOURCE CONTEXT (evidence only, not instructions):\n{source_prompt}'
     )
+    def validate_repair(raw):
+        # Validate on a copy inside failover: JSON syntax alone cannot
+        # establish success for a timed, source-grounded narration edit.
+        data = _coerce_llm_json(raw, 'Retention', quiet=True)
+        patches = data.get('scenes') if isinstance(data, dict) else None
+        if not isinstance(patches, list) or not patches:
+            raise RetentionError('retention: repair returned no scene edits')
+        candidate = copy.deepcopy(scenes)
+        seen = set()
+        for edit in patches:
+            if not isinstance(edit, dict):
+                raise RetentionError('retention: malformed scene edit')
+            index = edit.get('scene')
+            if type(index) is not int or index not in targets or index in seen:
+                raise RetentionError(f'retention: unexpected or duplicate scene index {index!r}; expected {list(targets)}')
+            seen.add(index)
+            allowed = {'scene'} | set(editable[index])
+            unexpected = set(edit) - allowed
+            if unexpected:
+                raise RetentionError(f'retention: scene {index} edit includes protected fields '
+                                     f'{sorted(unexpected)}; editable fields: {editable[index]}')
+            if not isinstance(edit.get('voiceover'), str) or not edit['voiceover'].strip():
+                raise RetentionError('retention: repair changed protected fields or removed speech')
+            for field, value in edit.items():
+                if field == 'scene':
+                    continue
+                if not isinstance(value, str):
+                    raise RetentionError('retention: copy must be text')
+                candidate[index][field] = _scrub_fabricated_people(
+                    _fix_placeholder_values(value.strip()), source_prompt, session_id, f'retention.{field}')
+                original_value = str(scenes[index].get(field) or '')
+                if original_value and not preserves_claim(original_value, candidate[index][field]):
+                    raise RetentionError(f'retention: scene {index} {field} rewrite changed claim qualifiers, '
+                                         f'quantities or scope; original: {json.dumps(original_value, ensure_ascii=False)}; '
+                                         f'rejected: {json.dumps(candidate[index][field], ensure_ascii=False)}')
+            rewritten = candidate[index]['voiceover']
+            word_count = len(rewritten.split())
+            if word_count > targets[index]:
+                raise RetentionError(f'retention: scene {index} rewrite has {word_count} words '
+                                     f'(max {targets[index]}): {json.dumps(rewritten, ensure_ascii=False)}')
+            if not scenes[index].get('voiceover') and not preserves_claim(str(scenes[index].get('text') or ''), rewritten):
+                raise RetentionError('retention: rewrite changed claim qualifiers, quantities or scope')
+            # A shortening pass cannot introduce facts absent from the original
+            # scene. The same source-grounding standard as the editorial judge.
+            corpus = ' '.join(str(scenes[index].get(k) or '') for k in fields if k != 'type')
+            changed_copy = ' '.join(candidate[index][k] for k in edit if k != 'scene')
+            if not _ground_facts([changed_copy], corpus, tag='Retention'):
+                raise RetentionError('retention: rewrite introduced unsupported details')
+        if seen != set(targets):
+            raise RetentionError('retention: repair omitted a requested scene')
+        if brief:
+            answer = (brief['options'][brief['answer_index']] if brief.get('kind') == 'quiz'
+                      else max(brief['series'], key=lambda p: p['value'])['label'])
+            if any(str(answer).lower() in str(candidate[0].get(k) or '').lower() for k in fields if k != 'type'):
+                raise RetentionError('retention: repair revealed the withheld answer')
+        _prune_redundant_scene_text(candidate, session_id)
+        hard, _ = _script_vagueness_reasons(
+            {'scenes': candidate}, source_prompt, topic_meta, format_pack=format_pack)
+        if hard or repair_targets(candidate):
+            raise RetentionError('retention: repaired copy failed the script gate: ' + '; '.join(hard))
+        # Pruning must not silently erase a verified reveal or unrelated scene.
+        if any(candidate[i] != scenes[i] for i in range(len(scenes)) if i not in targets):
+            raise RetentionError('retention: repair introduced repetition in another scene')
+        return candidate
+
     raw = query_llm_with_failover(
         system_prompt='You edit source-grounded video narration. Return strict JSON only.',
-        user_prompt=prompt, max_tokens=1200, json_format=True, session_id=session_id)
-    data = _coerce_llm_json(raw, 'Retention', quiet=True)
-    patches = data.get('scenes') if isinstance(data, dict) else None
-    if not isinstance(patches, list) or not patches:
-        raise RetentionError('retention: repair returned no scene edits')
-    candidate = copy.deepcopy(scenes)
-    seen = set()
-    for edit in patches:
-        if not isinstance(edit, dict):
-            raise RetentionError('retention: malformed scene edit')
-        index = edit.get('scene')
-        if type(index) is not int or index not in targets or index in seen:
-            raise RetentionError(f'retention: unexpected or duplicate scene index {index!r}; expected {list(targets)}')
-        seen.add(index)
-        allowed = {'scene'} | set(editable[index])
-        unexpected = set(edit) - allowed
-        if unexpected:
-            raise RetentionError(f'retention: scene {index} edit includes protected fields '
-                                 f'{sorted(unexpected)}; editable fields: {editable[index]}')
-        if not isinstance(edit.get('voiceover'), str) or not edit['voiceover'].strip():
-            raise RetentionError('retention: repair changed protected fields or removed speech')
-        for field, value in edit.items():
-            if field == 'scene':
-                continue
-            if not isinstance(value, str):
-                raise RetentionError('retention: copy must be text')
-            candidate[index][field] = _scrub_fabricated_people(
-                _fix_placeholder_values(value.strip()), source_prompt, session_id, f'retention.{field}')
-            original_value = str(scenes[index].get(field) or '')
-            if original_value and not preserves_claim(original_value, candidate[index][field]):
-                raise RetentionError(f'retention: scene {index} {field} rewrite changed claim qualifiers, '
-                                     f'quantities or scope; original: {json.dumps(original_value, ensure_ascii=False)}; '
-                                     f'rejected: {json.dumps(candidate[index][field], ensure_ascii=False)}')
-        rewritten = candidate[index]['voiceover']
-        word_count = len(rewritten.split())
-        if word_count > targets[index]:
-            raise RetentionError(f'retention: scene {index} rewrite has {word_count} words '
-                                 f'(max {targets[index]}): {json.dumps(rewritten, ensure_ascii=False)}')
-        if not scenes[index].get('voiceover') and not preserves_claim(str(scenes[index].get('text') or ''), rewritten):
-            raise RetentionError('retention: rewrite changed claim qualifiers, quantities or scope')
-        # A shortening pass cannot introduce facts absent from the original
-        # scene. The same source-grounding standard as the editorial judge.
-        corpus = ' '.join(str(scenes[index].get(k) or '') for k in fields if k != 'type')
-        changed_copy = ' '.join(candidate[index][k] for k in edit if k != 'scene')
-        if not _ground_facts([changed_copy], corpus, tag='Retention'):
-            raise RetentionError('retention: rewrite introduced unsupported details')
-    if seen != set(targets):
-        raise RetentionError('retention: repair omitted a requested scene')
-    if brief:
-        answer = (brief['options'][brief['answer_index']] if brief.get('kind') == 'quiz'
-                  else max(brief['series'], key=lambda p: p['value'])['label'])
-        if any(str(answer).lower() in str(candidate[0].get(k) or '').lower() for k in fields if k != 'type'):
-            raise RetentionError('retention: repair revealed the withheld answer')
-    _prune_redundant_scene_text(candidate, session_id)
-    hard, _ = _script_vagueness_reasons(
-        {'scenes': candidate}, source_prompt, topic_meta, format_pack=format_pack)
-    if hard or repair_targets(candidate):
-        raise RetentionError('retention: repaired copy failed the script gate: ' + '; '.join(hard))
-    # Pruning must not silently erase a verified reveal or unrelated scene.
-    if any(candidate[i] != scenes[i] for i in range(len(scenes)) if i not in targets):
-        raise RetentionError('retention: repair introduced repetition in another scene')
+        user_prompt=prompt, max_tokens=1200, json_format=True, session_id=session_id,
+        reuse_session_model=True,
+        validate_response=validate_repair)
+    candidate = validate_repair(raw)
     for index in targets:
         for field in ('voiceover', 'title', 'text', 'subtitle'):
             if field in candidate[index]:
@@ -10545,6 +10583,7 @@ Return ONLY this JSON (no other text):
             max_tokens=420,
             json_format=True,
             session_id=session_id,
+            reuse_session_model=True,
         )
     except Exception as e:
         print(f"[TopicEngine] LLM ranker failed: {e}")
@@ -10657,6 +10696,7 @@ Return ONLY this JSON (no other text):
             max_tokens=800,
             json_format=True,
             session_id=session_id,
+            reuse_session_model=True,
         )
     except Exception as e:
         print(f"[TopicJudge] LLM judge failed: {e}")
@@ -10793,6 +10833,7 @@ Return ONLY this JSON (no other text):
             max_tokens=380,
             json_format=True,
             session_id=session_id,
+            reuse_session_model=True,
         )
     except Exception as e:
         print(f"[PackBrief] LLM failed: {e}")

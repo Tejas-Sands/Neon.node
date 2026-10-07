@@ -1,5 +1,52 @@
 # Voice and motion review — 2026-09-17
 
+## October 7 semantic repair failover
+
+The supplied CI log recovered from Gemini text-generation overload/truncation
+and regenerated narration on Ava after Leda failed transcript matching. It
+then measured a **304-frame / 10.13s** body scene. Both targeted copy responses
+contained the same **25-word** sentence against a **17-word** repair budget,
+so the guard correctly aborted before rendering/publishing. The previous
+feedback fix is present in this checkout; corrective feedback alone did not
+make the returned edit usable. The log does not provide the original full
+script/audio or a workflow run URL.
+
+The remaining gap was the success boundary: the LLM helper accepted parseable
+JSON before the retention validator ran, preventing other available models
+from attempting a valid edit. Retention now passes its complete existing
+validator into the provider sweep. Each response is checked on a deep copy;
+over-budget edits, changed qualifiers, protected fields, unsupported details,
+omitted scenes and withheld-answer leaks advance to another model. Only a
+fully valid patch updates the caller. Semantic rejection does not permanently
+blacklist a model. The existing deadline/provider retries and **two copy-repair
+passes** remain; accepted edits regenerate the entire narration/alignment, and
+exhausted edits still abort with rejected audio removed.
+
+Topic planning, pack briefs, script generation and retention edits explicitly
+opt in to remembering the last accepted JSON model for the same video. Later
+calls try that model first, avoiding repeated primary overload/truncation when
+the fallback works. Preferences are capped at 128 sessions, and a failing
+preferred model still uses the remaining chain. The helper defaults to the
+previous ordering; Instagram/Facebook captions and YouTube metadata do not
+opt in. No publishing functions, workflows, schedules, repository Variables,
+voice settings or transcript checks changed.
+
+Offline HTTP-boundary coverage recreates the supplied 25-word rejection,
+accepts a different model's **16-word** edit and verifies whole-video
+resynthesis. Further cases check qualifier protection, exhaustion/cleanup,
+provider recovery, session isolation, and actual YouTube metadata ordering.
+Provider responses and acoustic synthesis are mocked; this is regression
+evidence, not a live provider, listening or production rollout result.
+Validation: **85 discovered unit tests**, script/topic regression scripts and
+**45 caption-gate checks** passed. Independent read-only review passed 26
+targeted tests and additional deferred-rate-limit/cache-eviction probes, with
+no remaining findings. AST comparison limits changes to the LLM helper,
+retention editor and four generation functions that opt in to session reuse;
+all other top-level functions are unchanged. The owner authorized pushing the
+fix to `main` on October 7. Rollout targets the next normal scheduled checkout;
+no extra workflow dispatch or publication is requested. The first production
+result remains unverified.
+
 ## October 6 rejected timing-repair follow-up
 
 Scheduled run [37425999288](https://github.com/Tejas-Sands/Neon.node/actions/runs/37425999288)
