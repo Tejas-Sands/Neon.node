@@ -2,59 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1784991900,
-   "posted_hour_utc": 15,
-   "channel": "news",
-   "topic": {
-    "title": "Android May Soon Restrict On-Device ADB",
-    "subject": "Android May Soon Restrict On-Device ADB",
-    "url": "https://kitsumed.github.io/blog/posts/android-may-soon-restrict-on-device-adb/",
-    "source": "hn",
-    "keywords": [],
-    "viral_score": 7.81
-   },
-   "style_pack": "cosmic-fantasy",
-   "seed": 1773572990,
-   "voice": "en-US-ChristopherNeural",
-   "hook_type": "BOLD PROMISE",
-   "scene_count": 6,
-   "video_seconds": 36.0,
-   "session": "gh-5c8d89",
-   "platforms": {
-    "instagram": {
-     "id": "18069073322443480",
-     "posted_at": 1784991958
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 118,
-      "reach": 110,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1164,
-      "fetched_at": 1787550368
-     },
-     "snap72": {
-      "views": 116,
-      "reach": 110,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785261692
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1784999147,
    "posted_hour_utc": 17,
    "channel": "news",
@@ -7413,7 +7360,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1385,
-      "fetched_at": 1791124152
+      "fetched_at": 1791366348
      },
      "snap72": {
       "views": 13,
@@ -8700,7 +8647,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3706,
-      "fetched_at": 1791108979
+      "fetched_at": 1791366348
      },
      "snap72": {
       "views": 0,
@@ -8769,7 +8716,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 12899,
-      "fetched_at": 1791124152
+      "fetched_at": 1791366348
      },
      "snap72": {
       "views": 1,
@@ -8836,7 +8783,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5589,
-      "fetched_at": 1791124152
+      "fetched_at": 1791366348
      },
      "snap72": {
       "views": 6,
@@ -9044,7 +8991,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 20007,
-      "fetched_at": 1791124152
+      "fetched_at": 1791366348
      },
      "snap72": {
       "views": 0,
@@ -9118,7 +9065,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 10178,
-      "fetched_at": 1791124152
+      "fetched_at": 1791366348
      },
      "snap72": {
       "views": 1,
@@ -9194,7 +9141,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5304,
-      "fetched_at": 1791124152
+      "fetched_at": 1791366348
      },
      "snap72": {
       "views": 20,
@@ -9789,7 +9736,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3543,
-      "fetched_at": 1791108979
+      "fetched_at": 1791366348
      },
      "snap72": {
       "views": 1,
@@ -11047,7 +10994,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2332,
-      "fetched_at": 1791108979
+      "fetched_at": 1791366348
      },
      "snap72": {
       "views": 122,
@@ -11415,7 +11362,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 836,
-      "fetched_at": 1791108979
+      "fetched_at": 1791366348
      },
      "snap72": {
       "views": 10,
@@ -11784,7 +11731,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1250,
-      "fetched_at": 1791108979
+      "fetched_at": 1791366348
      },
      "snap72": {
       "views": 3,
@@ -12228,8 +12175,8 @@
       "shares": 0,
       "saved": 0,
       "total_interactions": 1,
-      "ig_reels_avg_watch_time": 2855,
-      "fetched_at": 1791108979
+      "ig_reels_avg_watch_time": 2939,
+      "fetched_at": 1791366348
      },
      "snap72": {
       "views": 30,
@@ -12662,17 +12609,27 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 31,
-      "reach": 26,
+      "views": 33,
+      "reach": 27,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 3542,
-      "fetched_at": 1791108979
+      "ig_reels_avg_watch_time": 3498,
+      "fetched_at": 1791366348
      },
-     "snap72": null,
+     "snap72": {
+      "views": 33,
+      "reach": 27,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3498,
+      "fetched_at": 1791366348
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13054,7 +13011,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 5,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2260,
+      "fetched_at": 1791366348
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13120,7 +13087,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 10,
+      "reach": 9,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 10446,
+      "fetched_at": 1791366348
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13179,6 +13156,70 @@
     "instagram": {
      "id": "18118913467995752",
      "posted_at": 1791291287
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791366230,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "Tesla\u2019s Model 3 and Model Y can be a backup battery for your house",
+    "subject": "Tesla Model 3 backup battery",
+    "url": "https://www.theverge.com/transportation/1006193/tesla-model-3-model-y-powershare-home-backup",
+    "source": "rss:theverge",
+    "keywords": [
+     "model",
+     "tesla"
+    ],
+    "viral_score": 5.12,
+    "sources": [],
+    "display_title": "Tesla EV Home Backup",
+    "angle": "Tesla expands its Powershare Home Backup feature to Model 3 and Model Y vehicles, allowing them to power a house for over two days when paired with a Powerwall 3.",
+    "insight": "Model 3 and Model Y owners in the US and Puerto Rico with new cars ordered since October 1st and a Powerwall 3 can now use vehicle-to-home backup power for over two days, though older models and regions like Canada lack support.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "mono-brutalist",
+   "format_pack": "quiz-reveal",
+   "seed": 1031543655,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-QUIZ-REVEAL",
+   "style_epoch": 14,
+   "scene_count": 4,
+   "video_seconds": 16.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "daily-life",
+    "signals": [
+     "battery"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 0,
+    "hook_seconds": 2.533,
+    "longest_scene_seconds": 6.0,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-8f59b2",
+   "platforms": {
+    "instagram": {
+     "id": "18096358088539424",
+     "posted_at": 1791366344
     }
    },
    "metrics": {
