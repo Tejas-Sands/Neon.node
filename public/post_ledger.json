@@ -2,62 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785066677,
-   "posted_hour_utc": 11,
-   "channel": "news",
-   "topic": {
-    "title": "The new rules of context engineering for Claude 5 generation models",
-    "subject": "The new rules of context engineering for Claude 5 generation models",
-    "url": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models",
-    "source": "hn",
-    "keywords": [
-     "claude",
-     "model"
-    ],
-    "viral_score": 9.89
-   },
-   "style_pack": "sage-botanical",
-   "seed": 1208334348,
-   "voice": "en-US-GuyNeural",
-   "hook_type": "BREAKING-NEWS",
-   "scene_count": 6,
-   "video_seconds": 37.3,
-   "session": "gh-6a92ae",
-   "platforms": {
-    "instagram": {
-     "id": "18106597351859978",
-     "posted_at": 1785066749
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 112,
-      "reach": 103,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2982,
-      "fetched_at": 1787572514
-     },
-     "snap72": {
-      "views": 112,
-      "reach": 103,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785248454
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785073609,
    "posted_hour_utc": 13,
    "channel": "news",
@@ -7656,7 +7600,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 854,
-      "fetched_at": 1791259734
+      "fetched_at": 1791467165
      },
      "snap72": {
       "views": 3,
@@ -7789,7 +7733,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 865,
-      "fetched_at": 1791259734
+      "fetched_at": 1791467165
      },
      "snap72": {
       "views": 4,
@@ -7857,7 +7801,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9140,
-      "fetched_at": 1791259734
+      "fetched_at": 1791467165
      },
      "snap72": {
       "views": 9,
@@ -8128,7 +8072,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1791259734
+      "fetched_at": 1791467165
      },
      "snap72": {
       "views": 0,
@@ -8469,7 +8413,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5867,
-      "fetched_at": 1791259734
+      "fetched_at": 1791467165
      },
      "snap72": {
       "views": 3,
@@ -8809,7 +8753,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1480,
-      "fetched_at": 1791259734
+      "fetched_at": 1791467165
      },
      "snap72": {
       "views": 3,
@@ -9554,7 +9498,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2498,
-      "fetched_at": 1791259734
+      "fetched_at": 1791467165
      },
      "snap72": {
       "views": 29,
@@ -9851,7 +9795,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1389,
-      "fetched_at": 1791259734
+      "fetched_at": 1791467165
      },
      "snap72": {
       "views": 15,
@@ -10737,7 +10681,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 7911,
-      "fetched_at": 1791214289
+      "fetched_at": 1791467165
      },
      "snap72": {
       "views": 3,
@@ -11402,7 +11346,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 2306,
-      "fetched_at": 1791214289
+      "fetched_at": 1791467165
      },
      "snap72": {
       "views": 24,
@@ -11768,7 +11712,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1242,
-      "fetched_at": 1791214289
+      "fetched_at": 1791467165
      },
      "snap72": {
       "views": 7,
@@ -12215,7 +12159,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1024,
-      "fetched_at": 1791214289
+      "fetched_at": 1791467165
      },
      "snap72": {
       "views": 12,
@@ -12655,9 +12599,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2130,
-      "fetched_at": 1791214289
+      "fetched_at": 1791467165
      },
-     "snap72": null,
+     "snap72": {
+      "views": 11,
+      "reach": 11,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2130,
+      "fetched_at": 1791467165
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12720,9 +12674,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 586,
-      "fetched_at": 1791214289
+      "fetched_at": 1791467165
      },
-     "snap72": null,
+     "snap72": {
+      "views": 3,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 586,
+      "fetched_at": 1791467165
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12785,9 +12749,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1383,
-      "fetched_at": 1791214289
+      "fetched_at": 1791467165
      },
-     "snap72": null,
+     "snap72": {
+      "views": 34,
+      "reach": 29,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1383,
+      "fetched_at": 1791467165
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13270,6 +13244,70 @@
     "instagram": {
      "id": "18564193750077651",
      "posted_at": 1791455853
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791467085,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "Nvidia's big bet on physical AI aims for safer robotaxis, humanoid robots",
+    "subject": "Nvidia Halos Robotics Safety",
+    "url": "https://arstechnica.com/ai/2026/10/nvidias-big-bet-on-physical-ai-aims-for-safer-robotaxis-humanoid-robots/",
+    "source": "rss:arstechnica",
+    "keywords": [
+     "ai",
+     "nvidia"
+    ],
+    "viral_score": 7.16,
+    "sources": [],
+    "display_title": "Nvidia Halos Robot Safety",
+    "angle": "Nvidia is building a mandatory full-stack safety system for humanoid robots and robotaxis to prevent physical harm.",
+    "insight": "Developers building autonomous vehicles and factory robots can use Nvidia's Halos safety architecture to monitor hardware and isolate critical tasks.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "cherry-blossom",
+   "format_pack": "legacy-news",
+   "seed": 622737884,
+   "voice": "en-US-AvaNeural",
+   "hook_type": "SHOCK-STAT",
+   "style_epoch": 15,
+   "scene_count": 4,
+   "video_seconds": 29.0,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "world-explained",
+    "signals": [
+     "robots"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 0,
+    "hook_seconds": 3.833,
+    "longest_scene_seconds": 8.167,
+    "voice": "en-US-AvaNeural",
+    "fallback_reason": "Invalid expressive speech alignment"
+   },
+   "session": "gh-e8b3f9",
+   "platforms": {
+    "instagram": {
+     "id": "17901950502373994",
+     "posted_at": 1791467162
     }
    },
    "metrics": {
