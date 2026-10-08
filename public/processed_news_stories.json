@@ -2526,5 +2526,17 @@
   ],
   "ts": 1791366348,
   "session": "gh-8f59b2"
+ },
+ {
+  "id": "rss:876648c3358f",
+  "title": "ChatGPT\u2019s \u2018Intelligent UI\u2019 update fills its responses with pictures, charts, and buttons",
+  "norm": "chatgpt s intelligent ui update fills its responses with pictures charts and buttons",
+  "subject_norm": "chatgpt intelligent ui update",
+  "entities": [
+   "openai",
+   "intelligent"
+  ],
+  "ts": 1791437803,
+  "session": "gh-c2efb4"
  }
 ]

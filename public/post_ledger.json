@@ -2,59 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1784999147,
-   "posted_hour_utc": 17,
-   "channel": "news",
-   "topic": {
-    "title": "Hannah Fry Wins the Leelavati Prize in 2026 for Mathematics Outreach",
-    "subject": "Hannah Fry Wins the Leelavati Prize in 2026 for Mathematics Outreach",
-    "url": "https://www.maths.cam.ac.uk/features/professor-hannah-fry-wins-leelavati-prize",
-    "source": "hn",
-    "keywords": [],
-    "viral_score": 7.53
-   },
-   "style_pack": "clean-cobalt",
-   "seed": 742959224,
-   "voice": "en-US-ChristopherNeural",
-   "hook_type": "URGENCY",
-   "scene_count": 5,
-   "video_seconds": 28.7,
-   "session": "gh-f3290c",
-   "platforms": {
-    "instagram": {
-     "id": "18084719453207743",
-     "posted_at": 1784999203
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 160,
-      "reach": 148,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1228,
-      "fetched_at": 1787572514
-     },
-     "snap72": {
-      "views": 159,
-      "reach": 148,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785261692
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785058219,
    "posted_hour_utc": 9,
    "channel": "news",
@@ -7495,7 +7442,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 6066,
-      "fetched_at": 1791174601
+      "fetched_at": 1791437803
      },
      "snap72": {
       "views": 10,
@@ -7561,7 +7508,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 992,
-      "fetched_at": 1791174601
+      "fetched_at": 1791437803
      },
      "snap72": {
       "views": 127,
@@ -8168,7 +8115,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1369,
-      "fetched_at": 1791174601
+      "fetched_at": 1791437803
      },
      "snap72": {
       "views": 57,
@@ -8850,7 +8797,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9315,
-      "fetched_at": 1791174601
+      "fetched_at": 1791437803
      },
      "snap72": {
       "views": 1,
@@ -9441,7 +9388,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7090,
-      "fetched_at": 1791124152
+      "fetched_at": 1791437803
      },
      "snap72": {
       "views": 7,
@@ -9513,7 +9460,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5527,
-      "fetched_at": 1791124152
+      "fetched_at": 1791437803
      },
      "snap72": {
       "views": 17,
@@ -9587,7 +9534,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6118,
-      "fetched_at": 1791174601
+      "fetched_at": 1791437803
      },
      "snap72": {
       "views": 16,
@@ -9811,7 +9758,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1773,
-      "fetched_at": 1791124152
+      "fetched_at": 1791437803
      },
      "snap72": {
       "views": 10,
@@ -10035,7 +9982,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5252,
-      "fetched_at": 1791124152
+      "fetched_at": 1791437803
      },
      "snap72": {
       "views": 26,
@@ -10772,7 +10719,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1530,
-      "fetched_at": 1791124152
+      "fetched_at": 1791437803
      },
      "snap72": {
       "views": 11,
@@ -11069,7 +11016,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1791124152
+      "fetched_at": 1791437803
      },
      "snap72": {
       "views": 0,
@@ -11804,7 +11751,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 6145,
-      "fetched_at": 1791124152
+      "fetched_at": 1791437803
      },
      "snap72": {
       "views": 1,
@@ -12248,7 +12195,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1947,
-      "fetched_at": 1791124152
+      "fetched_at": 1791437803
      },
      "snap72": {
       "views": 6,
@@ -12689,9 +12636,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1351,
-      "fetched_at": 1791124152
+      "fetched_at": 1791437803
      },
-     "snap72": null,
+     "snap72": {
+      "views": 17,
+      "reach": 15,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1351,
+      "fetched_at": 1791437803
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13160,7 +13117,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 10,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2497,
+      "fetched_at": 1791437803
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13220,6 +13187,70 @@
     "instagram": {
      "id": "18096358088539424",
      "posted_at": 1791366344
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791437730,
+   "posted_hour_utc": 5,
+   "channel": "news",
+   "topic": {
+    "title": "ChatGPT\u2019s \u2018Intelligent UI\u2019 update fills its responses with pictures, charts, and buttons",
+    "subject": "ChatGPT Intelligent UI update",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1007276/openai-chatgpt-intelligent-ui-gpt-6",
+    "source": "rss:theverge",
+    "keywords": [
+     "gpt",
+     "chatgpt"
+    ],
+    "viral_score": 7.84,
+    "sources": [],
+    "display_title": "ChatGPT gets interactive visuals",
+    "angle": "OpenAI's GPT-6 update brings interactive visuals like buttons and calculators directly into ChatGPT conversations.",
+    "insight": "Plus, Pro, and Enterprise users get GPT-6 with interactive UI immediately, while free users get it on Thursday.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "slate-editorial",
+   "format_pack": "legacy-news",
+   "seed": 1668299152,
+   "voice": "en-US-AvaNeural",
+   "hook_type": "STAKES-REVEAL",
+   "style_epoch": 15,
+   "scene_count": 6,
+   "video_seconds": 40.6,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "daily-life",
+    "signals": [
+     "chatgpt"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 0,
+    "hook_seconds": 4.0,
+    "longest_scene_seconds": 7.233,
+    "voice": "en-US-AvaNeural",
+    "fallback_reason": "Expressive speech transcript differs from the script at word 1: expected 'chatgpt now replies with interactive', heard 'chat gpt now replies with'"
+   },
+   "session": "gh-c2efb4",
+   "platforms": {
+    "instagram": {
+     "id": "18041640110821578",
+     "posted_at": 1791437799
     }
    },
    "metrics": {

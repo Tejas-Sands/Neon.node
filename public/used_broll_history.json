@@ -2,69 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-38992894",
-   "ts": 1789306100,
-   "session": "gh-507fae",
-   "query": "software testing dashboard metrics",
-   "scene": 2
-  },
-  {
-   "id": "pexels-7580269",
-   "ts": 1789306100,
-   "session": "gh-507fae",
-   "query": "code debugging terminal output",
-   "scene": 3
-  },
-  {
-   "id": "pexels-26953415",
-   "ts": 1789306100,
-   "session": "gh-507fae",
-   "query": "code debugging terminal output",
-   "scene": 3
-  },
-  {
-   "id": "pexels-7767523",
-   "ts": 1789306100,
-   "session": "gh-507fae",
-   "query": "data center server racks blinking",
-   "scene": 4
-  },
-  {
-   "id": "pexels-16929615",
-   "ts": 1789306100,
-   "session": "gh-507fae",
-   "query": "data center server racks blinking",
-   "scene": 4
-  },
-  {
-   "id": "pexels-15439750",
-   "ts": 1789361774,
-   "session": "gh-997f2c",
-   "query": "chip architecture closeup macro",
-   "scene": 0
-  },
-  {
-   "id": "pexels-5871854",
-   "ts": 1789361774,
-   "session": "gh-997f2c",
-   "query": "code editor scrolling lines",
-   "scene": 1
-  },
-  {
-   "id": "pexels-5647324",
-   "ts": 1789361774,
-   "session": "gh-997f2c",
-   "query": "terminal typing commands screen",
-   "scene": 2
-  },
-  {
-   "id": "pexels-36588601",
-   "ts": 1789361774,
-   "session": "gh-997f2c",
-   "query": "processor silicon wafer rotation",
-   "scene": 3
-  },
-  {
    "id": "pexels-35878194",
    "ts": 1789361774,
    "session": "gh-997f2c",
@@ -2800,6 +2737,69 @@
    "session": "gh-185c7c",
    "query": "taking photo with phone camera",
    "scene": 4
+  },
+  {
+   "id": "pexels-9558964",
+   "ts": 1791437730,
+   "session": "gh-c2efb4",
+   "query": "smartphone screen chat application ui",
+   "scene": 0
+  },
+  {
+   "id": "pexels-18068805",
+   "ts": 1791437730,
+   "session": "gh-c2efb4",
+   "query": "data dashboard charts rendering motion",
+   "scene": 1
+  },
+  {
+   "id": "pexels-38410502",
+   "ts": 1791437730,
+   "session": "gh-c2efb4",
+   "query": "interactive UI elements scrolling mobile",
+   "scene": 2
+  },
+  {
+   "id": "pexels-6611951",
+   "ts": 1791437730,
+   "session": "gh-c2efb4",
+   "query": "interactive UI elements scrolling mobile",
+   "scene": 2
+  },
+  {
+   "id": "pexels-8926982",
+   "ts": 1791437730,
+   "session": "gh-c2efb4",
+   "query": "calculator mobile app ui interaction",
+   "scene": 3
+  },
+  {
+   "id": "pexels-36392049",
+   "ts": 1791437730,
+   "session": "gh-c2efb4",
+   "query": "data center servers spinning lights",
+   "scene": 4
+  },
+  {
+   "id": "pexels-39767743",
+   "ts": 1791437730,
+   "session": "gh-c2efb4",
+   "query": "data center servers spinning lights",
+   "scene": 4
+  },
+  {
+   "id": "pexels-5083551",
+   "ts": 1791437730,
+   "session": "gh-c2efb4",
+   "query": "smartphone notification alert screen",
+   "scene": 5
+  },
+  {
+   "id": "pexels-6612204",
+   "ts": 1791437730,
+   "session": "gh-c2efb4",
+   "query": "smartphone notification alert screen",
+   "scene": 5
   }
  ]
 }
