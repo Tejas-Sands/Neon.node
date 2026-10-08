@@ -2,34 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-35878194",
-   "ts": 1789361774,
-   "session": "gh-997f2c",
-   "query": "data center server racks panning",
-   "scene": 4
-  },
-  {
-   "id": "pexels-38410501",
-   "ts": 1789376323,
-   "session": "gh-e56bd7",
-   "query": "web browser screen scrolling",
-   "scene": 0
-  },
-  {
-   "id": "pexels-6931577",
-   "ts": 1789376323,
-   "session": "gh-e56bd7",
-   "query": "data charts screen moving",
-   "scene": 1
-  },
-  {
-   "id": "pexels-5925288",
-   "ts": 1789376323,
-   "session": "gh-e56bd7",
-   "query": "terminal typing rust code",
-   "scene": 2
-  },
-  {
    "id": "pexels-27385370",
    "ts": 1789376323,
    "session": "gh-e56bd7",
@@ -2800,6 +2772,34 @@
    "session": "gh-c2efb4",
    "query": "smartphone notification alert screen",
    "scene": 5
+  },
+  {
+   "id": "pexels-6153466",
+   "ts": 1791455740,
+   "session": "gh-383946",
+   "query": "robot arm working factory motion",
+   "scene": 0
+  },
+  {
+   "id": "pexels-38454843",
+   "ts": 1791455740,
+   "session": "gh-383946",
+   "query": "data center servers gpu",
+   "scene": 1
+  },
+  {
+   "id": "pexels-13929685",
+   "ts": 1791455740,
+   "session": "gh-383946",
+   "query": "smartphone recording video closeup",
+   "scene": 2
+  },
+  {
+   "id": "pexels-13737147",
+   "ts": 1791455740,
+   "session": "gh-383946",
+   "query": "person making coffee kitchen closeup",
+   "scene": 3
   }
  ]
 }

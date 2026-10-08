@@ -2,61 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785058219,
-   "posted_hour_utc": 9,
-   "channel": "news",
-   "topic": {
-    "title": "LLM Usage in Debian: Three Proposals",
-    "subject": "LLM Usage in Debian: Three Proposals",
-    "url": "https://www.debian.org/vote/2026/vote_002",
-    "source": "hn",
-    "keywords": [
-     "llm"
-    ],
-    "viral_score": 8.07
-   },
-   "style_pack": "lavender-haze",
-   "seed": 364093209,
-   "voice": "en-US-AndrewNeural",
-   "hook_type": "INSIDER SECRET",
-   "scene_count": 6,
-   "video_seconds": 37.0,
-   "session": "gh-6ec7c9",
-   "platforms": {
-    "instagram": {
-     "id": "18091192478101049",
-     "posted_at": 1785058280
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 111,
-      "reach": 100,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 6074,
-      "fetched_at": 1787572514
-     },
-     "snap72": {
-      "views": 111,
-      "reach": 100,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785239820
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785066677,
    "posted_hour_utc": 11,
    "channel": "news",
@@ -7577,7 +7522,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1733,
-      "fetched_at": 1791214289
+      "fetched_at": 1791455857
      },
      "snap72": {
       "views": 4,
@@ -7643,7 +7588,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 715,
-      "fetched_at": 1791214289
+      "fetched_at": 1791455857
      },
      "snap72": {
       "views": 3,
@@ -8456,7 +8401,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1538,
-      "fetched_at": 1791214289
+      "fetched_at": 1791455857
      },
      "snap72": {
       "views": 3,
@@ -9163,7 +9108,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9325,
-      "fetched_at": 1791214289
+      "fetched_at": 1791455857
      },
      "snap72": {
       "views": 5,
@@ -9832,7 +9777,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1832,
-      "fetched_at": 1791174601
+      "fetched_at": 1791455857
      },
      "snap72": {
       "views": 16,
@@ -10055,7 +10000,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5416,
-      "fetched_at": 1791174601
+      "fetched_at": 1791455857
      },
      "snap72": {
       "views": 10,
@@ -10127,7 +10072,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5706,
-      "fetched_at": 1791174601
+      "fetched_at": 1791455857
      },
      "snap72": {
       "views": 5,
@@ -10201,7 +10146,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1747,
-      "fetched_at": 1791174601
+      "fetched_at": 1791455857
      },
      "snap72": {
       "views": 8,
@@ -10348,7 +10293,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2272,
-      "fetched_at": 1791174601
+      "fetched_at": 1791455857
      },
      "snap72": {
       "views": 4,
@@ -10424,7 +10369,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2918,
-      "fetched_at": 1791214289
+      "fetched_at": 1791455857
      },
      "snap72": {
       "views": 2,
@@ -10498,7 +10443,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1184,
-      "fetched_at": 1791214289
+      "fetched_at": 1791455857
      },
      "snap72": {
       "views": 2,
@@ -11090,7 +11035,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1045,
-      "fetched_at": 1791174601
+      "fetched_at": 1791455857
      },
      "snap72": {
       "views": 8,
@@ -11163,7 +11108,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 18084,
-      "fetched_at": 1791174601
+      "fetched_at": 1791455857
      },
      "snap72": {
       "views": 0,
@@ -11384,7 +11329,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4007,
-      "fetched_at": 1791174601
+      "fetched_at": 1791455857
      },
      "snap72": {
       "views": 20,
@@ -13191,7 +13136,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 5,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3471,
+      "fetched_at": 1791455857
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13251,6 +13206,70 @@
     "instagram": {
      "id": "18041640110821578",
      "posted_at": 1791437799
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791455740,
+   "posted_hour_utc": 10,
+   "channel": "news",
+   "topic": {
+    "title": "Robot data startup Mecka AI nabs $60M from Sequoia",
+    "subject": "Mecka AI robot training",
+    "url": "https://techcrunch.com/2026/10/07/robot-data-startup-mecka-ai-nabs-60m-from-sequoia/",
+    "source": "rss:techcrunch",
+    "keywords": [
+     "ai",
+     "$"
+    ],
+    "viral_score": 6.89,
+    "sources": [],
+    "display_title": "Robot Training Data Startup",
+    "angle": "Mecka AI raises $60 million to collect human motion data for training humanoid robots using everyday tasks.",
+    "insight": "Startups are paying humans to record everyday tasks like making coffee to build training data for humanoid robots.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "synth-sunset",
+   "format_pack": "facts-explainer",
+   "seed": 1723867481,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 15,
+   "scene_count": 4,
+   "video_seconds": 22.0,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "world-explained",
+    "signals": [
+     "robot"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 1,
+    "hook_seconds": 3.2,
+    "longest_scene_seconds": 6.667,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-383946",
+   "platforms": {
+    "instagram": {
+     "id": "18564193750077651",
+     "posted_at": 1791455853
     }
    },
    "metrics": {
