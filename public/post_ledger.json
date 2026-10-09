@@ -2,61 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785082373,
-   "posted_hour_utc": 16,
-   "channel": "news",
-   "topic": {
-    "title": "GrapheneOS protections against data extraction from locked devices",
-    "subject": "GrapheneOS protections against data extraction from locked devices",
-    "url": "https://discuss.grapheneos.org/d/40700-grapheneos-protections-against-data-extraction-from-locked-devices",
-    "source": "hn",
-    "keywords": [
-     "ai"
-    ],
-    "viral_score": 8.95
-   },
-   "style_pack": "ember-gold",
-   "seed": 45665908,
-   "voice": "en-US-AndrewMultilingualNeural",
-   "hook_type": "CURIOSITY GAP",
-   "scene_count": 6,
-   "video_seconds": 35.3,
-   "session": "gh-6b6623",
-   "platforms": {
-    "instagram": {
-     "id": "18088823819396137",
-     "posted_at": 1785082438
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 125,
-      "reach": 104,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2463,
-      "fetched_at": 1787672587
-     },
-     "snap72": {
-      "views": 125,
-      "reach": 104,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785261692
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785124171,
    "posted_hour_utc": 3,
    "channel": "news",
@@ -8425,7 +8370,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3706,
-      "fetched_at": 1791366348
+      "fetched_at": 1791535517
      },
      "snap72": {
       "views": 0,
@@ -8494,7 +8439,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 12899,
-      "fetched_at": 1791366348
+      "fetched_at": 1791535517
      },
      "snap72": {
       "views": 1,
@@ -8561,7 +8506,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5589,
-      "fetched_at": 1791366348
+      "fetched_at": 1791535517
      },
      "snap72": {
       "views": 6,
@@ -8769,7 +8714,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 20007,
-      "fetched_at": 1791366348
+      "fetched_at": 1791535517
      },
      "snap72": {
       "views": 0,
@@ -8843,7 +8788,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 10178,
-      "fetched_at": 1791366348
+      "fetched_at": 1791535517
      },
      "snap72": {
       "views": 1,
@@ -8919,7 +8864,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5304,
-      "fetched_at": 1791366348
+      "fetched_at": 1791535517
      },
      "snap72": {
       "views": 20,
@@ -9514,7 +9459,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3543,
-      "fetched_at": 1791366348
+      "fetched_at": 1791535517
      },
      "snap72": {
       "views": 1,
@@ -10478,7 +10423,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 645,
-      "fetched_at": 1791291290
+      "fetched_at": 1791535517
      },
      "snap72": {
       "views": 1,
@@ -11435,7 +11380,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1718,
-      "fetched_at": 1791291290
+      "fetched_at": 1791535517
      },
      "snap72": {
       "views": 6,
@@ -11803,7 +11748,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1791291290
+      "fetched_at": 1791535517
      },
      "snap72": {
       "views": 0,
@@ -11878,7 +11823,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1394,
-      "fetched_at": 1791291290
+      "fetched_at": 1791535517
      },
      "snap72": {
       "views": 26,
@@ -12249,7 +12194,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1279,
-      "fetched_at": 1791291290
+      "fetched_at": 1791535517
      },
      "snap72": {
       "views": 33,
@@ -12323,7 +12268,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2154,
-      "fetched_at": 1791291290
+      "fetched_at": 1791535517
      },
      "snap72": {
       "views": 8,
@@ -12763,9 +12708,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2931,
-      "fetched_at": 1791291290
+      "fetched_at": 1791535517
      },
-     "snap72": null,
+     "snap72": {
+      "views": 12,
+      "reach": 10,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2931,
+      "fetched_at": 1791535517
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13126,7 +13081,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 12,
+      "reach": 7,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1241,
+      "fetched_at": 1791535517
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13315,6 +13280,67 @@
     "instagram": {
      "id": "18111636071126547",
      "posted_at": 1791519320
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791535458,
+   "posted_hour_utc": 8,
+   "channel": "news",
+   "topic": {
+    "title": "4-hour battery storage is cheaper to install than gas turbines all across globe",
+    "subject": "4-hour battery storage",
+    "url": "https://www.solarpowerworldonline.com/2026/10/4-hour-battery-storage-is-cheaper-to-install-than-gas-turbines-all-across-globe/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 6.91,
+    "sources": [],
+    "display_title": "Batteries Beat Gas Turbines",
+    "angle": "Four-hour battery storage has officially become cheaper to install than open-cycle gas turbines across all 43 markets modeled globally.",
+    "insight": "Utility operators and energy markets globally are seeing battery storage outpace gas peaking plants on cost, driven by manufacturing scale and fuel volatility.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "sage-botanical",
+   "format_pack": "facts-explainer",
+   "seed": 621765627,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 15,
+   "scene_count": 5,
+   "video_seconds": 23.1,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "daily-life",
+    "signals": [
+     "battery"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 0,
+    "hook_seconds": 3.267,
+    "longest_scene_seconds": 5.5,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-b4f5fa",
+   "platforms": {
+    "instagram": {
+     "id": "18593267368067073",
+     "posted_at": 1791535514
     }
    },
    "metrics": {
