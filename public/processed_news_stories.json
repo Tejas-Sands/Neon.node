@@ -2561,5 +2561,16 @@
   ],
   "ts": 1791467165,
   "session": "gh-e8b3f9"
+ },
+ {
+  "id": "49995495",
+  "title": "Man discovers his parents' coffee machine used 1TB of data in 10 days",
+  "norm": "man discovers his parents coffee machine used 1tb of data in 10 days",
+  "subject_norm": "smart coffee machine data leak",
+  "entities": [
+   "smart"
+  ],
+  "ts": 1791519323,
+  "session": "gh-1a5825"
  }
 ]

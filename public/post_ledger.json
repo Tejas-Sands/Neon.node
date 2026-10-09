@@ -2,64 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785073609,
-   "posted_hour_utc": 13,
-   "channel": "news",
-   "topic": {
-    "title": "DeepSeek pause fundraise after comments on compute gap to US leaked (transcript) [pdf]",
-    "subject": "DeepSeek pause fundraise after comments on compute gap to US leaked (transcript) [pdf]",
-    "url": "https://github.com/demo-zexuan/liang-wenfeng-investor-meeting-2026-7-22/blob/master/%E6%A2%81%E6%96%87%E9%94%8B%E6%8A%95%E8%B5%84%E8%80%85%E4%BA%A4%E6%B5%81%E4%BC%9A-%E6%96%87%E5%AD%97%E7%A8%BF_1_18_translate_20260723201651.pdf",
-    "source": "hn",
-    "keywords": [
-     "ai",
-     "deepseek",
-     "leak",
-     "leaked"
-    ],
-    "viral_score": 10.45
-   },
-   "style_pack": "cosmic-fantasy",
-   "seed": 1963729492,
-   "voice": "en-US-AvaMultilingualNeural",
-   "hook_type": "BOLD PROMISE",
-   "scene_count": 5,
-   "video_seconds": 27.8,
-   "session": "gh-f58c69",
-   "platforms": {
-    "instagram": {
-     "id": "18608323627060667",
-     "posted_at": 1785073668
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 124,
-      "reach": 121,
-      "likes": 1,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 1,
-      "ig_reels_avg_watch_time": 1745,
-      "fetched_at": 1787572514
-     },
-     "snap72": {
-      "views": 124,
-      "reach": 121,
-      "likes": 1,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 1,
-      "fetched_at": 1785257197
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785082373,
    "posted_hour_utc": 16,
    "channel": "news",
@@ -7665,7 +7607,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 817,
-      "fetched_at": 1791291290
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 6,
@@ -7866,7 +7808,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1791291290
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 48,
@@ -7936,7 +7878,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1070,
-      "fetched_at": 1791291290
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 109,
@@ -8141,7 +8083,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1791291290
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 0,
@@ -8210,7 +8152,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 760,
-      "fetched_at": 1791291290
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 2,
@@ -8277,7 +8219,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 294,
-      "fetched_at": 1791291290
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 1,
@@ -9127,7 +9069,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 13671,
-      "fetched_at": 1791291290
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 0,
@@ -9203,7 +9145,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3637,
-      "fetched_at": 1791291290
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 68,
@@ -10164,7 +10106,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6193,
-      "fetched_at": 1791259734
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 14,
@@ -10462,7 +10404,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2772,
-      "fetched_at": 1791259734
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 16,
@@ -10755,7 +10697,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3184,
-      "fetched_at": 1791259734
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 8,
@@ -11126,7 +11068,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2328,
-      "fetched_at": 1791259734
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 56,
@@ -11421,7 +11363,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1557,
-      "fetched_at": 1791259734
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 2,
@@ -11787,7 +11729,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4578,
-      "fetched_at": 1791259734
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 6,
@@ -12233,7 +12175,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1266,
-      "fetched_at": 1791259734
+      "fetched_at": 1791519323
      },
      "snap72": {
       "views": 24,
@@ -13308,6 +13250,71 @@
     "instagram": {
      "id": "17901950502373994",
      "posted_at": 1791467162
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791519229,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "Man discovers his parents' coffee machine used 1TB of data in 10 days",
+    "subject": "Smart coffee machine data leak",
+    "url": "https://www.dexerto.com/entertainment/man-discovers-his-parents-coffee-machine-used-1tb-of-data-in-10-days-3416399/",
+    "source": "hn",
+    "keywords": [
+     "discover"
+    ],
+    "viral_score": 8.45,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Coffee machine used 1TB data",
+    "angle": "An IT professional discovered his parents' smart coffee maker used one terabyte of data in ten days due to an internal network bug.",
+    "insight": "Smart home appliance owners should monitor network traffic, as malfunctioning IoT devices can overwhelm local Wi-Fi networks.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "sage-botanical",
+   "format_pack": "facts-explainer",
+   "seed": 1763098435,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 15,
+   "scene_count": 5,
+   "video_seconds": 26.9,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "world-explained",
+    "signals": [
+     "discovers"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 0,
+    "hook_seconds": 3.6,
+    "longest_scene_seconds": 7.033,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-1a5825",
+   "platforms": {
+    "instagram": {
+     "id": "18111636071126547",
+     "posted_at": 1791519320
     }
    },
    "metrics": {
