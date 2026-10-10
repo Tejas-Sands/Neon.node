@@ -2,61 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785130648,
-   "posted_hour_utc": 5,
-   "channel": "news",
-   "topic": {
-    "title": "US citizen charged after GrapheneOS phone wipes during airport search",
-    "subject": "US citizen charged after GrapheneOS phone wipes during airport search",
-    "url": "https://www.techspot.com/news/113236-us-prosecutors-charge-atlanta-man-after-grapheneos-phone.html",
-    "source": "hn",
-    "keywords": [
-     "ai"
-    ],
-    "viral_score": 9.63
-   },
-   "style_pack": "editorial-serif",
-   "seed": 448790177,
-   "voice": "en-US-EmmaMultilingualNeural",
-   "hook_type": "HYPER-SPECIFIC RELATABILITY",
-   "scene_count": 5,
-   "video_seconds": 29.0,
-   "session": "gh-bf8954",
-   "platforms": {
-    "instagram": {
-     "id": "17930311080127147",
-     "posted_at": 1785130716
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 106,
-      "reach": 101,
-      "likes": 1,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 1,
-      "ig_reels_avg_watch_time": 3552,
-      "fetched_at": 1787637713
-     },
-     "snap72": {
-      "views": 106,
-      "reach": 101,
-      "likes": 1,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 1,
-      "fetched_at": 1785509446
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785137481,
    "posted_hour_utc": 7,
    "channel": "news",
@@ -8177,7 +8122,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1538,
-      "fetched_at": 1791455857
+      "fetched_at": 1791647874
      },
      "snap72": {
       "views": 3,
@@ -8884,7 +8829,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9325,
-      "fetched_at": 1791455857
+      "fetched_at": 1791647874
      },
      "snap72": {
       "views": 5,
@@ -9255,7 +9200,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6118,
-      "fetched_at": 1791437803
+      "fetched_at": 1791647874
      },
      "snap72": {
       "views": 16,
@@ -9479,7 +9424,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1773,
-      "fetched_at": 1791437803
+      "fetched_at": 1791647874
      },
      "snap72": {
       "views": 10,
@@ -9553,7 +9498,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1832,
-      "fetched_at": 1791455857
+      "fetched_at": 1791647874
      },
      "snap72": {
       "views": 16,
@@ -9703,7 +9648,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5252,
-      "fetched_at": 1791437803
+      "fetched_at": 1791647874
      },
      "snap72": {
       "views": 26,
@@ -9776,7 +9721,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5416,
-      "fetched_at": 1791455857
+      "fetched_at": 1791647874
      },
      "snap72": {
       "views": 10,
@@ -9848,7 +9793,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5706,
-      "fetched_at": 1791455857
+      "fetched_at": 1791647874
      },
      "snap72": {
       "views": 5,
@@ -9922,7 +9867,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1747,
-      "fetched_at": 1791455857
+      "fetched_at": 1791647874
      },
      "snap72": {
       "views": 8,
@@ -10440,7 +10385,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1530,
-      "fetched_at": 1791437803
+      "fetched_at": 1791647874
      },
      "snap72": {
       "views": 11,
@@ -10737,7 +10682,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1791437803
+      "fetched_at": 1791647874
      },
      "snap72": {
       "views": 0,
@@ -11472,7 +11417,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 6145,
-      "fetched_at": 1791437803
+      "fetched_at": 1791647874
      },
      "snap72": {
       "views": 1,
@@ -11916,7 +11861,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1947,
-      "fetched_at": 1791437803
+      "fetched_at": 1791647874
      },
      "snap72": {
       "views": 6,
@@ -12357,7 +12302,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1351,
-      "fetched_at": 1791437803
+      "fetched_at": 1791647874
      },
      "snap72": {
       "views": 17,
@@ -12907,9 +12852,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2497,
-      "fetched_at": 1791437803
+      "fetched_at": 1791647874
      },
-     "snap72": null,
+     "snap72": {
+      "views": 10,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2497,
+      "fetched_at": 1791647874
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13419,6 +13374,70 @@
     "instagram": {
      "id": "18125400287486078",
      "posted_at": 1791631754
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791647804,
+   "posted_hour_utc": 15,
+   "channel": "news",
+   "topic": {
+    "title": "AI agent makers are promising privacy \u2014 will they deliver?",
+    "subject": "Meta Muse AI privacy",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1009051/privacy-ai-agent-promises-openai-meta-muse-dots",
+    "source": "rss:theverge",
+    "keywords": [
+     "ai",
+     "agent"
+    ],
+    "viral_score": 6.8,
+    "sources": [],
+    "display_title": "Meta Muse AI Privacy Trap",
+    "angle": "Tech companies promise total privacy for new AI agents, but their own data collection proves otherwise.",
+    "insight": "Everyday users sharing personal data with AI agents like Meta's Muse face hidden data collection and security vulnerabilities despite promises of secure isolation.",
+    "source_excerpt": "Meta positioned its Muse agent as a safer alternative to OpenClaw.",
+    "judge": "plan"
+   },
+   "style_pack": "rosewood-vintage",
+   "format_pack": "legacy-news",
+   "seed": 1646499789,
+   "voice": "en-US-AvaNeural",
+   "hook_type": "STAKES-REVEAL",
+   "style_epoch": 15,
+   "scene_count": 6,
+   "video_seconds": 37.1,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "protect-yourself",
+    "signals": [
+     "privacy"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 0,
+    "hook_seconds": 2.233,
+    "longest_scene_seconds": 7.3,
+    "voice": "en-US-AvaNeural",
+    "fallback_reason": "Expressive speech transcript differs from the script at word 35: expected 'six hundred thousand daily active', heard '600 zero daily active users'"
+   },
+   "session": "gh-3120d3",
+   "platforms": {
+    "instagram": {
+     "id": "18122880428475558",
+     "posted_at": 1791647870
     }
    },
    "metrics": {

@@ -2,62 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-35062463",
-   "ts": 1789539408,
-   "session": "gh-23566d",
-   "query": "neural network data nodes moving",
-   "scene": 2
-  },
-  {
-   "id": "pexels-7579561",
-   "ts": 1789539408,
-   "session": "gh-23566d",
-   "query": "stock market ticker numbers moving",
-   "scene": 3
-  },
-  {
-   "id": "pexels-35235434",
-   "ts": 1789539408,
-   "session": "gh-23566d",
-   "query": "software debugging interface ui",
-   "scene": 4
-  },
-  {
-   "id": "pexels-6803592",
-   "ts": 1789539408,
-   "session": "gh-23566d",
-   "query": "developer typing terminal command line",
-   "scene": 5
-  },
-  {
-   "id": "pexels-5925283",
-   "ts": 1789539408,
-   "session": "gh-23566d",
-   "query": "developer typing terminal command line",
-   "scene": 5
-  },
-  {
-   "id": "pexels-5077072",
-   "ts": 1789557341,
-   "session": "gh-eac00a",
-   "query": "phone screen UI tapping",
-   "scene": 0
-  },
-  {
-   "id": "pexels-34573354",
-   "ts": 1789557341,
-   "session": "gh-eac00a",
-   "query": "terminal typing code screen",
-   "scene": 1
-  },
-  {
-   "id": "pexels-30284959",
-   "ts": 1789557341,
-   "session": "gh-eac00a",
-   "query": "developer laptop code scrolling",
-   "scene": 2
-  },
-  {
    "id": "pexels-17356513",
    "ts": 1789557341,
    "session": "gh-eac00a",
@@ -2800,6 +2744,62 @@
    "session": "gh-858967",
    "query": "code editor typing lines software",
    "scene": 4
+  },
+  {
+   "id": "pexels-9898435",
+   "ts": 1791647804,
+   "session": "gh-3120d3",
+   "query": "smartphone screen security lock biometric animation",
+   "scene": 0
+  },
+  {
+   "id": "pexels-5495899",
+   "ts": 1791647804,
+   "session": "gh-3120d3",
+   "query": "virtual machine server code terminal",
+   "scene": 1
+  },
+  {
+   "id": "pexels-38870327",
+   "ts": 1791647804,
+   "session": "gh-3120d3",
+   "query": "mobile app interface scrolling charts",
+   "scene": 2
+  },
+  {
+   "id": "pexels-36825049",
+   "ts": 1791647804,
+   "session": "gh-3120d3",
+   "query": "mobile app interface scrolling charts",
+   "scene": 2
+  },
+  {
+   "id": "pexels-17807173",
+   "ts": 1791647804,
+   "session": "gh-3120d3",
+   "query": "settings toggle switch app ui",
+   "scene": 3
+  },
+  {
+   "id": "pexels-5378125",
+   "ts": 1791647804,
+   "session": "gh-3120d3",
+   "query": "cyber security warning terminal screen",
+   "scene": 4
+  },
+  {
+   "id": "pexels-26060699",
+   "ts": 1791647804,
+   "session": "gh-3120d3",
+   "query": "data stream security shield digital graphics",
+   "scene": 5
+  },
+  {
+   "id": "pexels-7874813",
+   "ts": 1791647804,
+   "session": "gh-3120d3",
+   "query": "data stream security shield digital graphics",
+   "scene": 5
   }
  ]
 }
