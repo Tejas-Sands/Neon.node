@@ -2,61 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785124171,
-   "posted_hour_utc": 3,
-   "channel": "news",
-   "topic": {
-    "title": "The New AI Superpowers: Focus and Followthrough",
-    "subject": "The New AI Superpowers: Focus and Followthrough",
-    "url": "https://www.rickmanelius.com/p/the-new-ai-superpowers-focus-and",
-    "source": "hn",
-    "keywords": [
-     "ai"
-    ],
-    "viral_score": 8.21
-   },
-   "style_pack": "clean-cobalt",
-   "seed": 2108638777,
-   "voice": "en-US-BrianMultilingualNeural",
-   "hook_type": "MISTAKE CALLOUT",
-   "scene_count": 5,
-   "video_seconds": 30.3,
-   "session": "gh-5ac7c2",
-   "platforms": {
-    "instagram": {
-     "id": "18336666493250638",
-     "posted_at": 1785124244
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 116,
-      "reach": 106,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2815,
-      "fetched_at": 1787672587
-     },
-     "snap72": {
-      "views": 116,
-      "reach": 106,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785509446
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785130648,
    "posted_hour_utc": 5,
    "channel": "news",
@@ -7891,7 +7836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1369,
-      "fetched_at": 1791437803
+      "fetched_at": 1791631757
      },
      "snap72": {
       "views": 57,
@@ -8573,7 +8518,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9315,
-      "fetched_at": 1791437803
+      "fetched_at": 1791631757
      },
      "snap72": {
       "views": 1,
@@ -9164,7 +9109,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7090,
-      "fetched_at": 1791437803
+      "fetched_at": 1791631757
      },
      "snap72": {
       "views": 7,
@@ -9236,7 +9181,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5527,
-      "fetched_at": 1791437803
+      "fetched_at": 1791631757
      },
      "snap72": {
       "views": 17,
@@ -10717,7 +10662,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2332,
-      "fetched_at": 1791366348
+      "fetched_at": 1791631757
      },
      "snap72": {
       "views": 122,
@@ -11085,7 +11030,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 836,
-      "fetched_at": 1791366348
+      "fetched_at": 1791631757
      },
      "snap72": {
       "views": 10,
@@ -11454,7 +11399,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1250,
-      "fetched_at": 1791366348
+      "fetched_at": 1791631757
      },
      "snap72": {
       "views": 3,
@@ -11899,7 +11844,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2939,
-      "fetched_at": 1791366348
+      "fetched_at": 1791631757
      },
      "snap72": {
       "views": 30,
@@ -12340,7 +12285,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3498,
-      "fetched_at": 1791366348
+      "fetched_at": 1791631757
      },
      "snap72": {
       "views": 33,
@@ -12793,9 +12738,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2260,
-      "fetched_at": 1791366348
+      "fetched_at": 1791631757
      },
-     "snap72": null,
+     "snap72": {
+      "views": 5,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2260,
+      "fetched_at": 1791631757
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -12861,17 +12816,27 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 10,
-      "reach": 9,
+      "views": 11,
+      "reach": 10,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 10446,
-      "fetched_at": 1791366348
+      "ig_reels_avg_watch_time": 11700,
+      "fetched_at": 1791631757
      },
-     "snap72": null,
+     "snap72": {
+      "views": 11,
+      "reach": 10,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 11700,
+      "fetched_at": 1791631757
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13155,8 +13120,28 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
-     "snap72": null,
+     "latest": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5722,
+      "fetched_at": 1791631757
+     },
+     "snap72": {
+      "views": 1,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5722,
+      "fetched_at": 1791631757
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13219,7 +13204,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 10,
+      "reach": 9,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2354,
+      "fetched_at": 1791631757
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13284,7 +13279,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 158,
+      "reach": 143,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 1,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 7605,
+      "fetched_at": 1791631757
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13341,6 +13346,79 @@
     "instagram": {
      "id": "18593267368067073",
      "posted_at": 1791535514
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": {
+      "views": 48,
+      "reach": 46,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 3601,
+      "fetched_at": 1791631757
+     },
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791631637,
+   "posted_hour_utc": 11,
+   "channel": "news",
+   "topic": {
+    "title": "Show HN: Carrier-Explode: iPhone, Pixel and Galaxy carrier settings decoded",
+    "subject": "Carrier Explode carrier settings",
+    "url": "https://carrierexplode.com/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 6.63,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Hidden carrier settings decoded",
+    "angle": "A new tool lets anyone look up and compare hidden carrier settings across iPhone, Pixel, and Galaxy devices.",
+    "insight": "Everyday users and developers can finally look up exact APNs, VoLTE, Wi-Fi Calling, and 5G capabilities across iPhone, Pixel, and Galaxy firmware to see what each carrier actually supports.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "cherry-blossom",
+   "format_pack": "legacy-news",
+   "seed": 2029892524,
+   "voice": "en-US-AvaNeural",
+   "hook_type": "SHOCK-STAT",
+   "style_epoch": 15,
+   "scene_count": 5,
+   "video_seconds": 33.1,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "daily-life",
+    "signals": [
+     "iphone"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 1,
+    "hook_seconds": 2.3,
+    "longest_scene_seconds": 7.433,
+    "voice": "en-US-AvaNeural",
+    "fallback_reason": "Expressive speech transcript differs from the script at word 75: expected 'volte wifi calling and fiveg', heard 'volting wifi calling and fiveg'"
+   },
+   "session": "gh-858967",
+   "platforms": {
+    "instagram": {
+     "id": "18125400287486078",
+     "posted_at": 1791631754
     }
    },
    "metrics": {
