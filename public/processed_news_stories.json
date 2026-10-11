@@ -2607,5 +2607,17 @@
   ],
   "ts": 1791647874,
   "session": "gh-3120d3"
+ },
+ {
+  "id": "50031269",
+  "title": "`123456' password used in Danish CPR data breach",
+  "norm": "123456 password used in danish cpr data breach",
+  "subject_norm": "danish cpr data breach",
+  "entities": [
+   "danish",
+   "cpr"
+  ],
+  "ts": 1791694571,
+  "session": "gh-c05518"
  }
 ]
