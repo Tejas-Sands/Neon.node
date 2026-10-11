@@ -2,59 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785148120,
-   "posted_hour_utc": 10,
-   "channel": "news",
-   "topic": {
-    "title": "Htmx 4.0, the first JavaScript library to release exclusively on the Game Boy",
-    "subject": "Htmx 4.0, the first JavaScript library to release exclusively on the Game Boy",
-    "url": "https://swag.htmx.org/en-cad/products/htmx-4-the-game",
-    "source": "hn",
-    "keywords": [],
-    "viral_score": 7.19
-   },
-   "style_pack": "cosmic-fantasy",
-   "seed": 914394461,
-   "voice": "en-US-BrianMultilingualNeural",
-   "hook_type": "MISTAKE CALLOUT",
-   "scene_count": 6,
-   "video_seconds": 36.0,
-   "session": "gh-110123",
-   "platforms": {
-    "instagram": {
-     "id": "18132601606622806",
-     "posted_at": 1785148174
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 117,
-      "reach": 101,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1491,
-      "fetched_at": 1787637713
-     },
-     "snap72": {
-      "views": 117,
-      "reach": 101,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785509446
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785155834,
    "posted_hour_utc": 12,
    "channel": "news",
@@ -7588,7 +7535,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 946,
-      "fetched_at": 1791519323
+      "fetched_at": 1791724491
      },
      "snap72": {
       "views": 48,
@@ -7658,7 +7605,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1070,
-      "fetched_at": 1791519323
+      "fetched_at": 1791724491
      },
      "snap72": {
       "views": 109,
@@ -7863,7 +7810,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1791519323
+      "fetched_at": 1791724491
      },
      "snap72": {
       "views": 0,
@@ -7932,7 +7879,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 760,
-      "fetched_at": 1791519323
+      "fetched_at": 1791724491
      },
      "snap72": {
       "views": 2,
@@ -7999,7 +7946,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 294,
-      "fetched_at": 1791519323
+      "fetched_at": 1791724491
      },
      "snap72": {
       "views": 1,
@@ -8849,7 +8796,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 13671,
-      "fetched_at": 1791519323
+      "fetched_at": 1791724491
      },
      "snap72": {
       "views": 0,
@@ -8925,7 +8872,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3637,
-      "fetched_at": 1791519323
+      "fetched_at": 1791724491
      },
      "snap72": {
       "views": 68,
@@ -9886,7 +9833,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6193,
-      "fetched_at": 1791519323
+      "fetched_at": 1791724491
      },
      "snap72": {
       "views": 14,
@@ -11068,7 +11015,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 2306,
-      "fetched_at": 1791467165
+      "fetched_at": 1791724491
      },
      "snap72": {
       "views": 24,
@@ -11434,7 +11381,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1242,
-      "fetched_at": 1791467165
+      "fetched_at": 1791724491
      },
      "snap72": {
       "views": 7,
@@ -11881,7 +11828,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1024,
-      "fetched_at": 1791467165
+      "fetched_at": 1791724491
      },
      "snap72": {
       "views": 12,
@@ -12321,7 +12268,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2130,
-      "fetched_at": 1791467165
+      "fetched_at": 1791724491
      },
      "snap72": {
       "views": 11,
@@ -12396,7 +12343,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 586,
-      "fetched_at": 1791467165
+      "fetched_at": 1791724491
      },
      "snap72": {
       "views": 3,
@@ -12463,15 +12410,15 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 34,
-      "reach": 29,
+      "views": 35,
+      "reach": 30,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1383,
-      "fetched_at": 1791467165
+      "ig_reels_avg_watch_time": 1497,
+      "fetched_at": 1791724491
      },
      "snap72": {
       "views": 34,
@@ -13333,7 +13280,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 69,
+      "reach": 62,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2271,
+      "fetched_at": 1791724491
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13457,6 +13414,70 @@
     "instagram": {
      "id": "17896102995416545",
      "posted_at": 1791694568
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791724433,
+   "posted_hour_utc": 13,
+   "channel": "news",
+   "topic": {
+    "title": "Talorys \u2013 A self-hosted personal AI agent on Cloudflare's free tier",
+    "subject": "Talorys self-hosted AI agent",
+    "url": "https://github.com/rociiu/talorys",
+    "source": "hn",
+    "keywords": [
+     "ai",
+     "agent"
+    ],
+    "viral_score": 9.15,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Talorys Free Personal AI",
+    "angle": "How to run your own personal AI assistant entirely inside a free Cloudflare account without developer tracking.",
+    "insight": "Users can host a private AI agent on Cloudflare's free tier that manages tasks and reminders without sending telemetry or data to developers.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "terracotta-earth",
+   "format_pack": "facts-explainer",
+   "seed": 1438347760,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 15,
+   "scene_count": 4,
+   "video_seconds": 21.3,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "unclassified",
+    "signals": []
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 1,
+    "hook_seconds": 3.6,
+    "longest_scene_seconds": 6.7,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-634451",
+   "platforms": {
+    "instagram": {
+     "id": "17980149465067673",
+     "posted_at": 1791724488
     }
    },
    "metrics": {

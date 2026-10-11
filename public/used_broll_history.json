@@ -2,34 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-5377991",
-   "ts": 1789569437,
-   "session": "gh-d83e82",
-   "query": "code editor screen glitching",
-   "scene": 4
-  },
-  {
-   "id": "pexels-19532053",
-   "ts": 1789619270,
-   "session": "gh-d75a8e",
-   "query": "terminal scrolling fast code screen",
-   "scene": 0
-  },
-  {
-   "id": "pexels-37616121",
-   "ts": 1789619270,
-   "session": "gh-d75a8e",
-   "query": "data center servers cpu closeup",
-   "scene": 1
-  },
-  {
-   "id": "pexels-38899338",
-   "ts": 1789619270,
-   "session": "gh-d75a8e",
-   "query": "gpu cluster computing metrics dashboard",
-   "scene": 2
-  },
-  {
    "id": "pexels-36628017",
    "ts": 1789619270,
    "session": "gh-d75a8e",
@@ -2800,6 +2772,34 @@
    "session": "gh-c05518",
    "query": "digital security lock screen motion",
    "scene": 4
+  },
+  {
+   "id": "pexels-38697709",
+   "ts": 1791724433,
+   "session": "gh-634451",
+   "query": "data center servers glowing",
+   "scene": 0
+  },
+  {
+   "id": "pexels-5377694",
+   "ts": 1791724433,
+   "session": "gh-634451",
+   "query": "terminal typing code screen",
+   "scene": 1
+  },
+  {
+   "id": "pexels-7687751",
+   "ts": 1791724433,
+   "session": "gh-634451",
+   "query": "dashboard graphs data moving",
+   "scene": 2
+  },
+  {
+   "id": "pexels-8720747",
+   "ts": 1791724433,
+   "session": "gh-634451",
+   "query": "developer typing terminal closeup",
+   "scene": 3
   }
  ]
 }
