@@ -2,59 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785155834,
-   "posted_hour_utc": 12,
-   "channel": "news",
-   "topic": {
-    "title": "Scriptc by Vercel: TypeScript-to-Native compiler, no JavaScript engine in binary",
-    "subject": "Scriptc by Vercel: TypeScript-to-Native compiler, no JavaScript engine in binary",
-    "url": "https://github.com/vercel-labs/scriptc",
-    "source": "hn",
-    "keywords": [],
-    "viral_score": 6.79
-   },
-   "style_pack": "desert-dune",
-   "seed": 951273321,
-   "voice": "en-US-EmmaMultilingualNeural",
-   "hook_type": "CHALLENGE-DARE",
-   "scene_count": 5,
-   "video_seconds": 30.7,
-   "session": "gh-504af6",
-   "platforms": {
-    "instagram": {
-     "id": "17895475044560201",
-     "posted_at": 1785155897
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 122,
-      "reach": 109,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 1,
-      "total_interactions": 1,
-      "ig_reels_avg_watch_time": 4006,
-      "fetched_at": 1787672587
-     },
-     "snap72": {
-      "views": 122,
-      "reach": 109,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 1,
-      "total_interactions": 1,
-      "fetched_at": 1785509446
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785162529,
    "posted_hour_utc": 14,
    "channel": "news",
@@ -8152,7 +8099,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3706,
-      "fetched_at": 1791535517
+      "fetched_at": 1791971768
      },
      "snap72": {
       "views": 0,
@@ -8221,7 +8168,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 12899,
-      "fetched_at": 1791535517
+      "fetched_at": 1791971768
      },
      "snap72": {
       "views": 1,
@@ -8288,7 +8235,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5589,
-      "fetched_at": 1791535517
+      "fetched_at": 1791971768
      },
      "snap72": {
       "views": 6,
@@ -8496,7 +8443,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 20007,
-      "fetched_at": 1791535517
+      "fetched_at": 1791971768
      },
      "snap72": {
       "views": 0,
@@ -8570,7 +8517,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 10178,
-      "fetched_at": 1791535517
+      "fetched_at": 1791971768
      },
      "snap72": {
       "views": 1,
@@ -8646,7 +8593,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5304,
-      "fetched_at": 1791535517
+      "fetched_at": 1791971768
      },
      "snap72": {
       "views": 20,
@@ -10131,7 +10078,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2772,
-      "fetched_at": 1791519323
+      "fetched_at": 1791971768
      },
      "snap72": {
       "views": 16,
@@ -10424,7 +10371,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3184,
-      "fetched_at": 1791519323
+      "fetched_at": 1791971768
      },
      "snap72": {
       "views": 8,
@@ -10795,7 +10742,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2328,
-      "fetched_at": 1791519323
+      "fetched_at": 1791971768
      },
      "snap72": {
       "views": 56,
@@ -11090,7 +11037,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1557,
-      "fetched_at": 1791519323
+      "fetched_at": 1791971768
      },
      "snap72": {
       "views": 2,
@@ -11456,7 +11403,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4578,
-      "fetched_at": 1791519323
+      "fetched_at": 1791971768
      },
      "snap72": {
       "views": 6,
@@ -11902,7 +11849,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1266,
-      "fetched_at": 1791519323
+      "fetched_at": 1791971768
      },
      "snap72": {
       "views": 24,
@@ -13354,8 +13301,28 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
-     "snap72": null,
+     "latest": {
+      "views": 33,
+      "reach": 30,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2568,
+      "fetched_at": 1791971768
+     },
+     "snap72": {
+      "views": 33,
+      "reach": 30,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2568,
+      "fetched_at": 1791971768
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13418,8 +13385,28 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
-     "snap72": null,
+     "latest": {
+      "views": 50,
+      "reach": 46,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1979,
+      "fetched_at": 1791971768
+     },
+     "snap72": {
+      "views": 50,
+      "reach": 46,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1979,
+      "fetched_at": 1791971768
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13478,6 +13465,91 @@
     "instagram": {
      "id": "17980149465067673",
      "posted_at": 1791724488
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": {
+      "views": 69,
+      "reach": 61,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1179,
+      "fetched_at": 1791971768
+     },
+     "snap72": {
+      "views": 69,
+      "reach": 61,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1179,
+      "fetched_at": 1791971768
+     },
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1791971692,
+   "posted_hour_utc": 9,
+   "channel": "news",
+   "topic": {
+    "title": "We\u2019re powering European scientific discovery with advanced AI compute and frontier models.",
+    "subject": "Google AI for Science",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/were-powering-european-scientific-discovery-with-advanced-ai-compute-and-frontier-models/",
+    "source": "rss:google",
+    "keywords": [
+     "ai",
+     "model",
+     "discover"
+    ],
+    "viral_score": 8.17,
+    "sources": [],
+    "display_title": "AI models for European scientists",
+    "angle": "Google is giving top European researchers free access to frontier AI models and compute credits to accelerate scientific discovery.",
+    "insight": "Up to 200 top European researchers gain direct access to advanced tools and compute credits to bridge the region's compute gap.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "slate-editorial",
+   "format_pack": "facts-explainer",
+   "seed": 301871841,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 16,
+   "scene_count": 5,
+   "video_seconds": 27.1,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "world-explained",
+    "signals": [
+     "discovery"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 1,
+    "hook_seconds": 3.4,
+    "longest_scene_seconds": 6.967,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-c7e52e",
+   "platforms": {
+    "instagram": {
+     "id": "18139905106528628",
+     "posted_at": 1791971765
     }
    },
    "metrics": {

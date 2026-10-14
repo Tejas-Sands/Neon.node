@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-36628017",
-   "ts": 1789619270,
-   "session": "gh-d75a8e",
-   "query": "code scrolling terminal window macro",
-   "scene": 3
-  },
-  {
-   "id": "pexels-37671328",
-   "ts": 1789619270,
-   "session": "gh-d75a8e",
-   "query": "network traffic chart animation screen",
-   "scene": 4
-  },
-  {
-   "id": "pexels-35417493",
-   "ts": 1789619270,
-   "session": "gh-d75a8e",
-   "query": "network traffic chart animation screen",
-   "scene": 4
-  },
-  {
-   "id": "pexels-9573904",
-   "ts": 1789619270,
-   "session": "gh-d75a8e",
-   "query": "developer hands typing mechanical keyboard",
-   "scene": 5
-  },
-  {
-   "id": "pexels-38993329",
-   "ts": 1789635297,
-   "session": "gh-3ccb68",
-   "query": "terminal typing code green",
-   "scene": 0
-  },
-  {
    "id": "pexels-15440318",
    "ts": 1789635297,
    "session": "gh-3ccb68",
@@ -2800,6 +2765,41 @@
    "session": "gh-634451",
    "query": "developer typing terminal closeup",
    "scene": 3
+  },
+  {
+   "id": "pexels-6120117",
+   "ts": 1791971692,
+   "session": "gh-c7e52e",
+   "query": "scientific lab monitors data graphs",
+   "scene": 0
+  },
+  {
+   "id": "pexels-12330892",
+   "ts": 1791971692,
+   "session": "gh-c7e52e",
+   "query": "supercomputer server room lights",
+   "scene": 1
+  },
+  {
+   "id": "pexels-34868658",
+   "ts": 1791971692,
+   "session": "gh-c7e52e",
+   "query": "dna strand rotation digital graphic",
+   "scene": 2
+  },
+  {
+   "id": "pexels-6931577",
+   "ts": 1791971692,
+   "session": "gh-c7e52e",
+   "query": "financial metrics data scrolling screen",
+   "scene": 3
+  },
+  {
+   "id": "pexels-39428970",
+   "ts": 1791971692,
+   "session": "gh-c7e52e",
+   "query": "earth globe rotation satellite view",
+   "scene": 4
   }
  ]
 }

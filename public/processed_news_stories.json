@@ -2631,5 +2631,18 @@
   ],
   "ts": 1791724491,
   "session": "gh-634451"
+ },
+ {
+  "id": "rss:2c4a2fc3b5cc",
+  "title": "We\u2019re powering European scientific discovery with advanced AI compute and frontier models.",
+  "norm": "we re powering european scientific discovery with advanced ai compute and frontier models",
+  "subject_norm": "google ai for science",
+  "entities": [
+   "google",
+   "european",
+   "science"
+  ],
+  "ts": 1791971768,
+  "session": "gh-c7e52e"
  }
 ]
