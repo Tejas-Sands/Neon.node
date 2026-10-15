@@ -2655,5 +2655,16 @@
   ],
   "ts": 1792036572,
   "session": "gh-38b938"
+ },
+ {
+  "id": "rss:88ac6d1c3f06",
+  "title": "Eight states sue OpenAI, saying ChatGPT isn\u2019t safe for kids",
+  "norm": "eight states sue openai saying chatgpt isn t safe for kids",
+  "subject_norm": "openai sued by eight states",
+  "entities": [
+   "openai"
+  ],
+  "ts": 1792047349,
+  "session": "gh-013e5a"
  }
 ]

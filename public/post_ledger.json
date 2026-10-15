@@ -2,59 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785170288,
-   "posted_hour_utc": 16,
-   "channel": "news",
-   "topic": {
-    "title": "Kimi-K3 Technical Report [pdf]",
-    "subject": "Kimi-K3 Technical Report [pdf]",
-    "url": "https://github.com/MoonshotAI/Kimi-K3/blob/main/k3_tech_report.pdf",
-    "source": "hn",
-    "keywords": [],
-    "viral_score": 6.96
-   },
-   "style_pack": "crimson-mono",
-   "seed": 1608124691,
-   "voice": "en-US-BrianMultilingualNeural",
-   "hook_type": "PAIN-POINT 'YOU'",
-   "scene_count": 6,
-   "video_seconds": 36.0,
-   "session": "gh-6727fb",
-   "platforms": {
-    "instagram": {
-     "id": "18115061489301640",
-     "posted_at": 1785170342
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 122,
-      "reach": 109,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1873,
-      "fetched_at": 1787672587
-     },
-     "snap72": {
-      "views": 122,
-      "reach": 109,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785509446
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785209568,
    "posted_hour_utc": 3,
    "channel": "news",
@@ -8613,7 +8560,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9325,
-      "fetched_at": 1791647874
+      "fetched_at": 1792047349
      },
      "snap72": {
       "views": 5,
@@ -8984,7 +8931,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6118,
-      "fetched_at": 1791647874
+      "fetched_at": 1792047349
      },
      "snap72": {
       "views": 16,
@@ -9208,7 +9155,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1773,
-      "fetched_at": 1791647874
+      "fetched_at": 1792047349
      },
      "snap72": {
       "views": 10,
@@ -9282,7 +9229,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1832,
-      "fetched_at": 1791647874
+      "fetched_at": 1792047349
      },
      "snap72": {
       "views": 16,
@@ -9432,7 +9379,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5252,
-      "fetched_at": 1791647874
+      "fetched_at": 1792047349
      },
      "snap72": {
       "views": 26,
@@ -9505,7 +9452,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5416,
-      "fetched_at": 1791647874
+      "fetched_at": 1792047349
      },
      "snap72": {
       "views": 10,
@@ -9577,7 +9524,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5706,
-      "fetched_at": 1791647874
+      "fetched_at": 1792047349
      },
      "snap72": {
       "views": 5,
@@ -11573,7 +11520,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2939,
-      "fetched_at": 1791631757
+      "fetched_at": 1792047349
      },
      "snap72": {
       "views": 30,
@@ -12014,7 +11961,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3498,
-      "fetched_at": 1791631757
+      "fetched_at": 1792047349
      },
      "snap72": {
       "views": 33,
@@ -12467,7 +12414,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2260,
-      "fetched_at": 1791631757
+      "fetched_at": 1792047349
      },
      "snap72": {
       "views": 5,
@@ -12553,7 +12500,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 11700,
-      "fetched_at": 1791631757
+      "fetched_at": 1792047349
      },
      "snap72": {
       "views": 11,
@@ -12880,15 +12827,15 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 1,
-      "reach": 1,
+      "views": 2,
+      "reach": 2,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 5722,
-      "fetched_at": 1791631757
+      "ig_reels_avg_watch_time": 4571,
+      "fetched_at": 1792047349
      },
      "snap72": {
       "views": 1,
@@ -12972,9 +12919,19 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2354,
-      "fetched_at": 1791631757
+      "fetched_at": 1792047349
      },
-     "snap72": null,
+     "snap72": {
+      "views": 10,
+      "reach": 9,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2354,
+      "fetched_at": 1792047349
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13047,9 +13004,19 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 7605,
-      "fetched_at": 1791631757
+      "fetched_at": 1792047349
      },
-     "snap72": null,
+     "snap72": {
+      "views": 158,
+      "reach": 143,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 1,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 7605,
+      "fetched_at": 1792047349
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13118,9 +13085,19 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3601,
-      "fetched_at": 1791631757
+      "fetched_at": 1792047349
      },
-     "snap72": null,
+     "snap72": {
+      "views": 48,
+      "reach": 46,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 3601,
+      "fetched_at": 1792047349
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13568,6 +13545,73 @@
     "instagram": {
      "id": "18385499464224124",
      "posted_at": 1792036568
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1792047262,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Eight states sue OpenAI, saying ChatGPT isn\u2019t safe for kids",
+    "subject": "OpenAI sued by eight states",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1011500/openai-state-lawsuits-chatgpt-safety",
+    "source": "rss:theverge",
+    "keywords": [
+     "ai",
+     "gpt",
+     "chatgpt",
+     "openai",
+     "sue"
+    ],
+    "viral_score": 7.99,
+    "sources": [],
+    "display_title": "OpenAI Sued By Eight States",
+    "angle": "Eight US states are suing OpenAI, alleging that ChatGPT is marketed as safe for youth while putting vulnerable users at risk.",
+    "insight": "Parents and minor users are affected by alleged safety failures in ChatGPT, as states push for civil penalties and data deletion.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "royal-violet",
+   "format_pack": "quiz-reveal",
+   "seed": 571266321,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-QUIZ-REVEAL",
+   "style_epoch": 16,
+   "scene_count": 4,
+   "video_seconds": 18.9,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "daily-life",
+    "signals": [
+     "chatgpt"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 1,
+    "hook_seconds": 3.2,
+    "longest_scene_seconds": 6.867,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-013e5a",
+   "platforms": {
+    "instagram": {
+     "id": "17955074769033257",
+     "posted_at": 1792047344
     }
    },
    "metrics": {
