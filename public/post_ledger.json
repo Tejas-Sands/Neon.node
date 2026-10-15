@@ -2,61 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785162529,
-   "posted_hour_utc": 14,
-   "channel": "news",
-   "topic": {
-    "title": "How is the Bun Rewrite in Rust going?",
-    "subject": "How is the Bun Rewrite in Rust going?",
-    "url": "https://lockwood.dev/ai/2026/07/27/how-is-the-bun-rewrite-in-rust-going.html",
-    "source": "hn",
-    "keywords": [
-     "how"
-    ],
-    "viral_score": 7.69
-   },
-   "style_pack": "cherry-blossom",
-   "seed": 1465898498,
-   "voice": "en-US-AvaMultilingualNeural",
-   "hook_type": "HYPER-SPECIFIC RELATABILITY",
-   "scene_count": 5,
-   "video_seconds": 28.2,
-   "session": "gh-448753",
-   "platforms": {
-    "instagram": {
-     "id": "18609954919007993",
-     "posted_at": 1785162620
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 126,
-      "reach": 112,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 1,
-      "total_interactions": 1,
-      "ig_reels_avg_watch_time": 1816,
-      "fetched_at": 1787672587
-     },
-     "snap72": {
-      "views": 126,
-      "reach": 112,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 1,
-      "total_interactions": 1,
-      "fetched_at": 1785556105
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785170288,
    "posted_hour_utc": 16,
    "channel": "news",
@@ -8302,7 +8247,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 9315,
-      "fetched_at": 1791631757
+      "fetched_at": 1792036572
      },
      "snap72": {
       "views": 1,
@@ -8893,7 +8838,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7090,
-      "fetched_at": 1791631757
+      "fetched_at": 1792036572
      },
      "snap72": {
       "views": 7,
@@ -8965,7 +8910,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5527,
-      "fetched_at": 1791631757
+      "fetched_at": 1792036572
      },
      "snap72": {
       "views": 17,
@@ -9188,7 +9133,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3543,
-      "fetched_at": 1791535517
+      "fetched_at": 1792036572
      },
      "snap72": {
       "views": 1,
@@ -10152,7 +10097,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 645,
-      "fetched_at": 1791535517
+      "fetched_at": 1792036572
      },
      "snap72": {
       "views": 1,
@@ -10446,7 +10391,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2332,
-      "fetched_at": 1791631757
+      "fetched_at": 1792036572
      },
      "snap72": {
       "views": 122,
@@ -10814,7 +10759,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 836,
-      "fetched_at": 1791631757
+      "fetched_at": 1792036572
      },
      "snap72": {
       "views": 10,
@@ -11109,7 +11054,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1718,
-      "fetched_at": 1791535517
+      "fetched_at": 1792036572
      },
      "snap72": {
       "views": 6,
@@ -11183,7 +11128,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1250,
-      "fetched_at": 1791631757
+      "fetched_at": 1792036572
      },
      "snap72": {
       "views": 3,
@@ -11477,7 +11422,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1791535517
+      "fetched_at": 1792036572
      },
      "snap72": {
       "views": 0,
@@ -11545,14 +11490,14 @@
     "instagram": {
      "latest": {
       "views": 26,
-      "reach": 16,
+      "reach": 17,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1394,
-      "fetched_at": 1791535517
+      "fetched_at": 1792036572
      },
      "snap72": {
       "views": 26,
@@ -11923,7 +11868,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1279,
-      "fetched_at": 1791535517
+      "fetched_at": 1792036572
      },
      "snap72": {
       "views": 33,
@@ -11997,7 +11942,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2154,
-      "fetched_at": 1791535517
+      "fetched_at": 1792036572
      },
      "snap72": {
       "views": 8,
@@ -12437,7 +12382,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2931,
-      "fetched_at": 1791535517
+      "fetched_at": 1792036572
      },
      "snap72": {
       "views": 12,
@@ -12851,17 +12796,27 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 12,
-      "reach": 7,
+      "views": 15,
+      "reach": 8,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1241,
-      "fetched_at": 1791535517
+      "ig_reels_avg_watch_time": 4249,
+      "fetched_at": 1792036572
      },
-     "snap72": null,
+     "snap72": {
+      "views": 15,
+      "reach": 8,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 4249,
+      "fetched_at": 1792036572
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13550,6 +13505,69 @@
     "instagram": {
      "id": "18139905106528628",
      "posted_at": 1791971765
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1792036475,
+   "posted_hour_utc": 3,
+   "channel": "news",
+   "topic": {
+    "title": "Passkeys are not a trap",
+    "subject": "Passkeys attestation security",
+    "url": "https://scotthelme.co.uk/passkeys-are-not-a-trap/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 8.08,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Passkeys Are Not A Trap",
+    "angle": "A viral post claims passkeys let websites lock you into approved software, but actual WebAuthn rules prove synced passkeys share no such data.",
+    "insight": "Everyday web users relying on synced passkeys in password managers do not share device attestation data with websites.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "ocean-breeze",
+   "format_pack": "facts-explainer",
+   "seed": 2017197236,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 16,
+   "scene_count": 5,
+   "video_seconds": 28.4,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "protect-yourself",
+    "signals": [
+     "passkeys"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 0,
+    "hook_seconds": 2.9,
+    "longest_scene_seconds": 6.933,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-38b938",
+   "platforms": {
+    "instagram": {
+     "id": "18385499464224124",
+     "posted_at": 1792036568
     }
    },
    "metrics": {

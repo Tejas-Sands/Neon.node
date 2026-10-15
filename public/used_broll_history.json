@@ -2,41 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-15440318",
-   "ts": 1789635297,
-   "session": "gh-3ccb68",
-   "query": "gpu graphics card glowing",
-   "scene": 1
-  },
-  {
-   "id": "pexels-9945022",
-   "ts": 1789635297,
-   "session": "gh-3ccb68",
-   "query": "server room blinking lights",
-   "scene": 2
-  },
-  {
-   "id": "pexels-34280527",
-   "ts": 1789635297,
-   "session": "gh-3ccb68",
-   "query": "server room blinking lights",
-   "scene": 2
-  },
-  {
-   "id": "pexels-5483083",
-   "ts": 1789635297,
-   "session": "gh-3ccb68",
-   "query": "developer laptop screen scrolling",
-   "scene": 3
-  },
-  {
-   "id": "pexels-5647338",
-   "ts": 1789635297,
-   "session": "gh-3ccb68",
-   "query": "circuit board macro motion",
-   "scene": 4
-  },
-  {
    "id": "pexels-35281906",
    "ts": 1789650853,
    "session": "gh-83778d",
@@ -2799,6 +2764,41 @@
    "ts": 1791971692,
    "session": "gh-c7e52e",
    "query": "earth globe rotation satellite view",
+   "scene": 4
+  },
+  {
+   "id": "pexels-33314914",
+   "ts": 1792036475,
+   "session": "gh-38b938",
+   "query": "smartphone screen security lock",
+   "scene": 0
+  },
+  {
+   "id": "pexels-7279035",
+   "ts": 1792036475,
+   "session": "gh-38b938",
+   "query": "person tapping smartphone screen",
+   "scene": 1
+  },
+  {
+   "id": "pexels-4318554",
+   "ts": 1792036475,
+   "session": "gh-38b938",
+   "query": "password manager app scrolling ui",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7681471",
+   "ts": 1792036475,
+   "session": "gh-38b938",
+   "query": "plugging usb security key into laptop",
+   "scene": 3
+  },
+  {
+   "id": "pexels-3625771",
+   "ts": 1792036475,
+   "session": "gh-38b938",
+   "query": "secure lock animation phone screen",
    "scene": 4
   }
  ]
