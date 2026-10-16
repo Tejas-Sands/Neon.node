@@ -2,61 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785216474,
-   "posted_hour_utc": 5,
-   "channel": "news",
-   "topic": {
-    "title": "Self-contained highly-portable Python distributions",
-    "subject": "Self-contained highly-portable Python distributions",
-    "url": "https://gregoryszorc.com/docs/python-build-standalone/main/",
-    "source": "hn",
-    "keywords": [
-     "ai"
-    ],
-    "viral_score": 7.95
-   },
-   "style_pack": "mint-aqua",
-   "seed": 240022366,
-   "voice": "en-US-AndrewMultilingualNeural",
-   "hook_type": "CURIOSITY GAP",
-   "scene_count": 6,
-   "video_seconds": 35.2,
-   "session": "gh-d2147a",
-   "platforms": {
-    "instagram": {
-     "id": "18473943340108953",
-     "posted_at": 1785216576
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 16,
-      "reach": 14,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1749,
-      "fetched_at": 1787672587
-     },
-     "snap72": {
-      "views": 16,
-      "reach": 14,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785492558
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785224436,
    "posted_hour_utc": 7,
    "channel": "news",
@@ -8579,7 +8524,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 13671,
-      "fetched_at": 1791724491
+      "fetched_at": 1792137315
      },
      "snap72": {
       "views": 0,
@@ -8655,7 +8600,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3637,
-      "fetched_at": 1791724491
+      "fetched_at": 1792137315
      },
      "snap72": {
       "views": 68,
@@ -9616,7 +9561,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6193,
-      "fetched_at": 1791724491
+      "fetched_at": 1792137315
      },
      "snap72": {
       "views": 14,
@@ -10133,7 +10078,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 7911,
-      "fetched_at": 1791694571
+      "fetched_at": 1792137315
      },
      "snap72": {
       "views": 3,
@@ -10431,7 +10376,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1045,
-      "fetched_at": 1791694571
+      "fetched_at": 1792137315
      },
      "snap72": {
       "views": 8,
@@ -10504,7 +10449,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 18084,
-      "fetched_at": 1791694571
+      "fetched_at": 1792137315
      },
      "snap72": {
       "views": 0,
@@ -10725,7 +10670,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4007,
-      "fetched_at": 1791694571
+      "fetched_at": 1792137315
      },
      "snap72": {
       "views": 20,
@@ -10798,7 +10743,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 2306,
-      "fetched_at": 1791724491
+      "fetched_at": 1792137315
      },
      "snap72": {
       "views": 24,
@@ -11164,7 +11109,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1242,
-      "fetched_at": 1791724491
+      "fetched_at": 1792137315
      },
      "snap72": {
       "views": 7,
@@ -11611,7 +11556,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1024,
-      "fetched_at": 1791724491
+      "fetched_at": 1792137315
      },
      "snap72": {
       "views": 12,
@@ -12051,7 +11996,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2130,
-      "fetched_at": 1791724491
+      "fetched_at": 1792137315
      },
      "snap72": {
       "views": 11,
@@ -12126,7 +12071,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 586,
-      "fetched_at": 1791724491
+      "fetched_at": 1792137315
      },
      "snap72": {
       "views": 3,
@@ -12201,7 +12146,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1497,
-      "fetched_at": 1791724491
+      "fetched_at": 1792137315
      },
      "snap72": {
       "views": 34,
@@ -12611,7 +12556,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3603,
-      "fetched_at": 1791694571
+      "fetched_at": 1792137315
      },
      "snap72": {
       "views": 6,
@@ -13580,7 +13525,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2336,
+      "fetched_at": 1792137315
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13637,6 +13592,67 @@
     "instagram": {
      "id": "18205337584375516",
      "posted_at": 1792124059
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1792137257,
+   "posted_hour_utc": 7,
+   "channel": "news",
+   "topic": {
+    "title": "APOD: 2026 October 16 \u2013 Chasing the International Space Station",
+    "subject": "Falcon 9 chasing ISS",
+    "url": "https://science.nasa.gov/image-article/apod-2026-october-16-chasing-the-international-space-station/",
+    "source": "rss:nasa",
+    "keywords": [],
+    "viral_score": 4.68,
+    "sources": [],
+    "display_title": "Falcon 9 Chases ISS",
+    "angle": "A stunning timelapse reveals a Falcon 9 rocket launching from Florida and explicitly chasing the International Space Station across the predawn sky.",
+    "insight": "Space enthusiasts can witness orbital mechanics in action when a timed commercial rocket launch aligns precisely with the International Space Station's trajectory.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "cyber-neon",
+   "format_pack": "facts-explainer",
+   "seed": 1355592562,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 17,
+   "scene_count": 5,
+   "video_seconds": 25.2,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "world-explained",
+    "signals": [
+     "space"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 0,
+    "hook_seconds": 4.0,
+    "longest_scene_seconds": 5.733,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-087ced",
+   "platforms": {
+    "instagram": {
+     "id": "17905827753578134",
+     "posted_at": 1792137311
     }
    },
    "metrics": {
