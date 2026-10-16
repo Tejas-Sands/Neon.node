@@ -2,62 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785209568,
-   "posted_hour_utc": 3,
-   "channel": "news",
-   "topic": {
-    "title": "Netflix employee fired for sharing personal details in retreat trust exercise",
-    "subject": "Netflix employee fired for sharing personal details in retreat trust exercise",
-    "url": "https://nypost.com/2026/07/26/us-news/netflix-exec-goes-ballistic-after-being-fired-for-stunning-trust-exercise-confession-at-retreat-suit/",
-    "source": "hn",
-    "keywords": [
-     "ai",
-     "fired"
-    ],
-    "viral_score": 10.4
-   },
-   "style_pack": "terracotta-earth",
-   "seed": 2002934825,
-   "voice": "en-US-BrianMultilingualNeural",
-   "hook_type": "URGENCY",
-   "scene_count": 6,
-   "video_seconds": 35.3,
-   "session": "gh-f1166f",
-   "platforms": {
-    "instagram": {
-     "id": "18132487660622468",
-     "posted_at": 1785209643
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 0,
-      "reach": 0,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 9931,
-      "fetched_at": 1786429326
-     },
-     "snap72": {
-      "views": 0,
-      "reach": 0,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785492558
-     },
-     "deleted": true,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785216474,
    "posted_hour_utc": 5,
    "channel": "news",
@@ -8261,7 +8205,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1480,
-      "fetched_at": 1791694571
+      "fetched_at": 1792124063
      },
      "snap72": {
       "views": 3,
@@ -9006,7 +8950,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2498,
-      "fetched_at": 1791694571
+      "fetched_at": 1792124063
      },
      "snap72": {
       "views": 29,
@@ -9303,7 +9247,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1389,
-      "fetched_at": 1791694571
+      "fetched_at": 1792124063
      },
      "snap72": {
       "views": 15,
@@ -9598,7 +9542,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1747,
-      "fetched_at": 1791647874
+      "fetched_at": 1792124063
      },
      "snap72": {
       "views": 8,
@@ -9745,7 +9689,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2272,
-      "fetched_at": 1791694571
+      "fetched_at": 1792124063
      },
      "snap72": {
       "views": 4,
@@ -9821,7 +9765,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2918,
-      "fetched_at": 1791694571
+      "fetched_at": 1792124063
      },
      "snap72": {
       "views": 2,
@@ -9895,7 +9839,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1184,
-      "fetched_at": 1791694571
+      "fetched_at": 1792124063
      },
      "snap72": {
       "views": 2,
@@ -10116,7 +10060,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1530,
-      "fetched_at": 1791647874
+      "fetched_at": 1792124063
      },
      "snap72": {
       "views": 11,
@@ -10413,7 +10357,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1791647874
+      "fetched_at": 1792124063
      },
      "snap72": {
       "views": 0,
@@ -11148,7 +11092,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 6145,
-      "fetched_at": 1791647874
+      "fetched_at": 1792124063
      },
      "snap72": {
       "views": 1,
@@ -11592,7 +11536,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1947,
-      "fetched_at": 1791647874
+      "fetched_at": 1792124063
      },
      "snap72": {
       "views": 6,
@@ -12033,7 +11977,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1351,
-      "fetched_at": 1791647874
+      "fetched_at": 1792124063
      },
      "snap72": {
       "views": 17,
@@ -12583,7 +12527,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2497,
-      "fetched_at": 1791647874
+      "fetched_at": 1792124063
      },
      "snap72": {
       "views": 10,
@@ -13486,7 +13430,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 14,
+      "reach": 14,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1693,
+      "fetched_at": 1792124063
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13549,7 +13503,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 29,
+      "reach": 23,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2806,
+      "fetched_at": 1792124063
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13612,6 +13576,67 @@
     "instagram": {
      "id": "17955074769033257",
      "posted_at": 1792047344
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1792124004,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "Check if a text message is a scam using Circle to Search.",
+    "subject": "Circle to Search scam detector",
+    "url": "https://blog.google/innovation-and-ai/technology/safety-security/circle-to-search-android-text-message-scams/",
+    "source": "rss:google",
+    "keywords": [],
+    "viral_score": 4.7,
+    "sources": [],
+    "display_title": "Circle suspicious text messages",
+    "angle": "Android users can use Circle to Search to instantly analyze suspicious text messages for scam red flags before clicking links.",
+    "insight": "Android users can long-press the home button or navigation bar to activate Circle to Search, circling a suspicious text message to review an AI Overview for guidance, red flags, and suggested next steps.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "toxic-lime",
+   "format_pack": "facts-explainer",
+   "seed": 1892584313,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 17,
+   "scene_count": 4,
+   "video_seconds": 20.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "protect-yourself",
+    "signals": [
+     "scam"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 0,
+    "hook_seconds": 3.4,
+    "longest_scene_seconds": 6.5,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-fc6be2",
+   "platforms": {
+    "instagram": {
+     "id": "18205337584375516",
+     "posted_at": 1792124059
     }
    },
    "metrics": {

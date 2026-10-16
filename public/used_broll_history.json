@@ -2,34 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-35281906",
-   "ts": 1789650853,
-   "session": "gh-83778d",
-   "query": "terminal typing commands motion",
-   "scene": 0
-  },
-  {
-   "id": "pexels-7989731",
-   "ts": 1789650853,
-   "session": "gh-83778d",
-   "query": "code editor screen scrolling",
-   "scene": 1
-  },
-  {
-   "id": "pexels-28560983",
-   "ts": 1789650853,
-   "session": "gh-83778d",
-   "query": "server room dark lights blinking",
-   "scene": 2
-  },
-  {
-   "id": "pexels-5212604",
-   "ts": 1789650853,
-   "session": "gh-83778d",
-   "query": "developer typing code laptop",
-   "scene": 3
-  },
-  {
    "id": "pexels-34124550",
    "ts": 1789650853,
    "session": "gh-83778d",
@@ -2800,6 +2772,34 @@
    "session": "gh-38b938",
    "query": "secure lock animation phone screen",
    "scene": 4
+  },
+  {
+   "id": "pexels-9558523",
+   "ts": 1792124004,
+   "session": "gh-fc6be2",
+   "query": "person holding smartphone screen closeup",
+   "scene": 0
+  },
+  {
+   "id": "pexels-10145286",
+   "ts": 1792124004,
+   "session": "gh-fc6be2",
+   "query": "finger tapping smartphone screen ui",
+   "scene": 1
+  },
+  {
+   "id": "pexels-7568746",
+   "ts": 1792124004,
+   "session": "gh-fc6be2",
+   "query": "user swiping smartphone navigation bar",
+   "scene": 2
+  },
+  {
+   "id": "pexels-8165696",
+   "ts": 1792124004,
+   "session": "gh-fc6be2",
+   "query": "smartphone security alert notification",
+   "scene": 3
   }
  ]
 }
