@@ -2687,5 +2687,16 @@
   "entities": [],
   "ts": 1792137315,
   "session": "gh-087ced"
+ },
+ {
+  "id": "50131256",
+  "title": "Solar surpasses nuclear power globally for first time",
+  "norm": "solar surpasses nuclear power globally for first time",
+  "subject_norm": "solar surpasses nuclear power",
+  "entities": [
+   "solar"
+  ],
+  "ts": 1792304227,
+  "session": "gh-ca7661"
  }
 ]

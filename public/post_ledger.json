@@ -2,61 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785224436,
-   "posted_hour_utc": 7,
-   "channel": "news",
-   "topic": {
-    "title": "Using an open model feels surprisingly good",
-    "subject": "Using an open model feels surprisingly good",
-    "url": "https://matthewsaltz.com/blog/using-an-open-model-feels-surprisingly-good/",
-    "source": "hn",
-    "keywords": [
-     "model"
-    ],
-    "viral_score": 7.51
-   },
-   "style_pack": "cosmic-fantasy",
-   "seed": 1690986713,
-   "voice": "en-US-BrianMultilingualNeural",
-   "hook_type": "MISTAKE CALLOUT",
-   "scene_count": 6,
-   "video_seconds": 34.3,
-   "session": "gh-7d829e",
-   "platforms": {
-    "instagram": {
-     "id": "17976966162070696",
-     "posted_at": 1785224494
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 4,
-      "reach": 3,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1347,
-      "fetched_at": 1786429326
-     },
-     "snap72": {
-      "views": 4,
-      "reach": 3,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785492558
-     },
-     "deleted": true,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785231753,
    "posted_hour_utc": 9,
    "channel": "news",
@@ -8674,7 +8619,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 7090,
-      "fetched_at": 1792036572
+      "fetched_at": 1792304227
      },
      "snap72": {
       "views": 7,
@@ -8746,7 +8691,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5527,
-      "fetched_at": 1792036572
+      "fetched_at": 1792304227
      },
      "snap72": {
       "views": 17,
@@ -8969,7 +8914,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3543,
-      "fetched_at": 1792036572
+      "fetched_at": 1792304227
      },
      "snap72": {
       "views": 1,
@@ -9859,7 +9804,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2772,
-      "fetched_at": 1791971768
+      "fetched_at": 1792304227
      },
      "snap72": {
       "views": 16,
@@ -10152,7 +10097,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3184,
-      "fetched_at": 1791971768
+      "fetched_at": 1792304227
      },
      "snap72": {
       "views": 8,
@@ -10523,7 +10468,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2328,
-      "fetched_at": 1791971768
+      "fetched_at": 1792304227
      },
      "snap72": {
       "views": 56,
@@ -10818,7 +10763,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1557,
-      "fetched_at": 1791971768
+      "fetched_at": 1792304227
      },
      "snap72": {
       "views": 2,
@@ -11184,7 +11129,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4578,
-      "fetched_at": 1791971768
+      "fetched_at": 1792304227
      },
      "snap72": {
       "views": 6,
@@ -11630,7 +11575,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1266,
-      "fetched_at": 1791971768
+      "fetched_at": 1792304227
      },
      "snap72": {
       "views": 24,
@@ -13049,15 +12994,15 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 69,
-      "reach": 62,
+      "views": 70,
+      "reach": 63,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2271,
-      "fetched_at": 1791724491
+      "ig_reels_avg_watch_time": 2264,
+      "fetched_at": 1792304227
      },
      "snap72": null,
      "deleted": false,
@@ -13131,7 +13076,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2568,
-      "fetched_at": 1791971768
+      "fetched_at": 1792304227
      },
      "snap72": {
       "views": 33,
@@ -13215,7 +13160,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1979,
-      "fetched_at": 1791971768
+      "fetched_at": 1792304227
      },
      "snap72": {
       "views": 50,
@@ -13299,7 +13244,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1179,
-      "fetched_at": 1791971768
+      "fetched_at": 1792304227
      },
      "snap72": {
       "views": 69,
@@ -13596,8 +13541,28 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
-     "snap72": null,
+     "latest": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1792304227
+     },
+     "snap72": {
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0,
+      "fetched_at": 1792304227
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13653,6 +13618,79 @@
     "instagram": {
      "id": "17905827753578134",
      "posted_at": 1792137311
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": {
+      "views": 21,
+      "reach": 20,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1802,
+      "fetched_at": 1792304227
+     },
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1792304163,
+   "posted_hour_utc": 6,
+   "channel": "news",
+   "topic": {
+    "title": "Solar surpasses nuclear power globally for first time",
+    "subject": "Solar surpasses nuclear power",
+    "url": "https://www.pv-magazine.com/2026/09/29/solar-surpasses-nuclear-power-globally-for-first-time/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 7.74,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "Solar beats nuclear globally",
+    "angle": "Global solar generation officially exceeded nuclear output for the first time in history.",
+    "insight": "Energy analysts and grid operators worldwide must adapt to rapidly expanding solar and wind infrastructure.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "ember-gold",
+   "format_pack": "data-rankings",
+   "seed": 672028057,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-DATA-RANKINGS",
+   "style_epoch": 17,
+   "scene_count": 4,
+   "video_seconds": 23.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "world-explained",
+    "signals": [
+     "solar"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 1,
+    "hook_seconds": 3.167,
+    "longest_scene_seconds": 8.333,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-ca7661",
+   "platforms": {
+    "instagram": {
+     "id": "17975559426157519",
+     "posted_at": 1792304224
     }
    },
    "metrics": {
