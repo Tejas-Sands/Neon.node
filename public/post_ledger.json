@@ -2,59 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785231753,
-   "posted_hour_utc": 9,
-   "channel": "news",
-   "topic": {
-    "title": "A missing underscore sent innocent man to prison for 18 months",
-    "subject": "A missing underscore sent innocent man to prison for 18 months",
-    "url": "https://arstechnica.com/tech-policy/2026/07/police-missed-one-underscore-and-sent-the-wrong-man-to-prison/",
-    "source": "hn",
-    "keywords": [],
-    "viral_score": 7.61
-   },
-   "style_pack": "forest-moss",
-   "seed": 1569896421,
-   "voice": "en-US-AvaMultilingualNeural",
-   "hook_type": "NEGATIVE WARNING",
-   "scene_count": 5,
-   "video_seconds": 28.7,
-   "session": "gh-93f160",
-   "platforms": {
-    "instagram": {
-     "id": "18124302247742726",
-     "posted_at": 1785231812
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 3,
-      "reach": 3,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 5869,
-      "fetched_at": 1786429326
-     },
-     "snap72": {
-      "views": 3,
-      "reach": 3,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785492558
-     },
-     "deleted": true,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785239656,
    "posted_hour_utc": 11,
    "channel": "news",
@@ -8765,7 +8712,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 6118,
-      "fetched_at": 1792047349
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 16,
@@ -8989,7 +8936,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1773,
-      "fetched_at": 1792047349
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 10,
@@ -9063,7 +9010,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1832,
-      "fetched_at": 1792047349
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 16,
@@ -9213,7 +9160,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5252,
-      "fetched_at": 1792047349
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 26,
@@ -9878,7 +9825,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 645,
-      "fetched_at": 1792036572
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 1,
@@ -10172,7 +10119,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2332,
-      "fetched_at": 1792036572
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 122,
@@ -10540,7 +10487,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 836,
-      "fetched_at": 1792036572
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 10,
@@ -10835,7 +10782,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1718,
-      "fetched_at": 1792036572
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 6,
@@ -10909,7 +10856,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1250,
-      "fetched_at": 1792036572
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 3,
@@ -11203,7 +11150,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1792036572
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 0,
@@ -11278,7 +11225,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1394,
-      "fetched_at": 1792036572
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 26,
@@ -11649,7 +11596,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1279,
-      "fetched_at": 1792036572
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 33,
@@ -11723,7 +11670,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2154,
-      "fetched_at": 1792036572
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 8,
@@ -12163,7 +12110,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2931,
-      "fetched_at": 1792036572
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 12,
@@ -12585,7 +12532,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4249,
-      "fetched_at": 1792036572
+      "fetched_at": 1792383356
      },
      "snap72": {
       "views": 15,
@@ -13691,6 +13638,69 @@
     "instagram": {
      "id": "17975559426157519",
      "posted_at": 1792304224
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1792383296,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "Zuckerberg's Meta Takes Down No Kings Instagram During Protest Day",
+    "subject": "Zuckerberg's Meta Takes Down No Kings Instagram During Protest Day",
+    "url": "https://meidasnews.com/news/zuckerbergs-meta-takes-down-no-kings-instagram-during-massive-protest-day",
+    "source": "hn",
+    "keywords": [
+     "meta"
+    ],
+    "viral_score": 8.29,
+    "sources": [],
+    "display_title": "",
+    "angle": "",
+    "insight": "",
+    "source_excerpt": "",
+    "judge": "none"
+   },
+   "style_pack": "golden-hour",
+   "format_pack": "legacy-news",
+   "seed": 1707318320,
+   "voice": "gemini:Leda",
+   "hook_type": "STAKES-REVEAL",
+   "style_epoch": 17,
+   "scene_count": 4,
+   "video_seconds": 23.7,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "daily-life",
+    "signals": [
+     "instagram"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 1,
+    "hook_seconds": 3.467,
+    "longest_scene_seconds": 6.233,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-d3f7bb",
+   "platforms": {
+    "instagram": {
+     "id": "17951085249053569",
+     "posted_at": 1792383353
     }
    },
    "metrics": {

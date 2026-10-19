@@ -2,34 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-35063152",
-   "ts": 1789709748,
-   "session": "gh-13bdd9",
-   "query": "neural network visualization motion",
-   "scene": 4
-  },
-  {
-   "id": "pexels-35356075",
-   "ts": 1789720065,
-   "session": "gh-728944",
-   "query": "server data center racks flashing",
-   "scene": 0
-  },
-  {
-   "id": "pexels-18069164",
-   "ts": 1789720065,
-   "session": "gh-728944",
-   "query": "microchip gpu processor closeup",
-   "scene": 1
-  },
-  {
-   "id": "pexels-5377268",
-   "ts": 1789720065,
-   "session": "gh-728944",
-   "query": "terminal scrolling code lines",
-   "scene": 2
-  },
-  {
    "id": "pexels-16863222",
    "ts": 1789720065,
    "session": "gh-728944",
@@ -2800,6 +2772,34 @@
    "session": "gh-087ced",
    "query": "telescope night sky stars tracking",
    "scene": 4
+  },
+  {
+   "id": "pexels-3625770",
+   "ts": 1792383296,
+   "session": "gh-d3f7bb",
+   "query": "smartphone social app feed scroll",
+   "scene": 0
+  },
+  {
+   "id": "pexels-15886743",
+   "ts": 1792383296,
+   "session": "gh-d3f7bb",
+   "query": "protest crowd smartphone filming",
+   "scene": 1
+  },
+  {
+   "id": "pexels-9559150",
+   "ts": 1792383296,
+   "session": "gh-d3f7bb",
+   "query": "smartphone app screen glitch",
+   "scene": 2
+  },
+  {
+   "id": "pexels-8165942",
+   "ts": 1792383296,
+   "session": "gh-d3f7bb",
+   "query": "person tapping smartphone screen dark",
+   "scene": 3
   }
  ]
 }
