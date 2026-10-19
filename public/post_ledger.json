@@ -2,59 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785239656,
-   "posted_hour_utc": 11,
-   "channel": "news",
-   "topic": {
-    "title": "Benchmarking Opus 5 on SlopCodeBench",
-    "subject": "Benchmarking Opus 5 on SlopCodeBench",
-    "url": "https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/benchmarking-opus-5-on-slop-code-bench.md",
-    "source": "hn",
-    "keywords": [],
-    "viral_score": 7.28
-   },
-   "style_pack": "burgundy-luxe",
-   "seed": 688631266,
-   "voice": "en-US-EmmaMultilingualNeural",
-   "hook_type": "CHALLENGE-DARE",
-   "scene_count": 7,
-   "video_seconds": 41.3,
-   "session": "gh-a32893",
-   "platforms": {
-    "instagram": {
-     "id": "18149818468512935",
-     "posted_at": 1785239816
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 1,
-      "reach": 1,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 14547,
-      "fetched_at": 1786429326
-     },
-     "snap72": {
-      "views": 1,
-      "reach": 1,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785492558
-     },
-     "deleted": true,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785248364,
    "posted_hour_utc": 14,
    "channel": "news",
@@ -9084,7 +9031,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1389,
-      "fetched_at": 1792124063
+      "fetched_at": 1792414583
      },
      "snap72": {
       "views": 15,
@@ -9233,7 +9180,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5416,
-      "fetched_at": 1792047349
+      "fetched_at": 1792414583
      },
      "snap72": {
       "views": 10,
@@ -9305,7 +9252,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 5706,
-      "fetched_at": 1792047349
+      "fetched_at": 1792414583
      },
      "snap72": {
       "views": 5,
@@ -9379,7 +9326,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1747,
-      "fetched_at": 1792124063
+      "fetched_at": 1792414583
      },
      "snap72": {
       "views": 8,
@@ -9526,7 +9473,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2272,
-      "fetched_at": 1792124063
+      "fetched_at": 1792414583
      },
      "snap72": {
       "views": 4,
@@ -9602,7 +9549,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2918,
-      "fetched_at": 1792124063
+      "fetched_at": 1792414583
      },
      "snap72": {
       "views": 2,
@@ -11301,7 +11248,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 2939,
-      "fetched_at": 1792047349
+      "fetched_at": 1792414583
      },
      "snap72": {
       "views": 30,
@@ -11742,7 +11689,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3498,
-      "fetched_at": 1792047349
+      "fetched_at": 1792414583
      },
      "snap72": {
       "views": 33,
@@ -12195,7 +12142,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2260,
-      "fetched_at": 1792047349
+      "fetched_at": 1792414583
      },
      "snap72": {
       "views": 5,
@@ -12281,7 +12228,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 11700,
-      "fetched_at": 1792047349
+      "fetched_at": 1792414583
      },
      "snap72": {
       "views": 11,
@@ -12616,7 +12563,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4571,
-      "fetched_at": 1792047349
+      "fetched_at": 1792414583
      },
      "snap72": {
       "views": 1,
@@ -12692,15 +12639,15 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 10,
-      "reach": 9,
+      "views": 11,
+      "reach": 10,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2354,
-      "fetched_at": 1792047349
+      "ig_reels_avg_watch_time": 2393,
+      "fetched_at": 1792414583
      },
      "snap72": {
       "views": 10,
@@ -12785,7 +12732,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 7605,
-      "fetched_at": 1792047349
+      "fetched_at": 1792414583
      },
      "snap72": {
       "views": 158,
@@ -12866,7 +12813,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3601,
-      "fetched_at": 1792047349
+      "fetched_at": 1792414583
      },
      "snap72": {
       "views": 48,
@@ -13642,7 +13589,17 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
+     "latest": {
+      "views": 30,
+      "reach": 30,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 834,
+      "fetched_at": 1792414583
+     },
      "snap72": null,
      "deleted": false,
      "fetch_errors": 0
@@ -13701,6 +13658,67 @@
     "instagram": {
      "id": "17951085249053569",
      "posted_at": 1792383353
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1792414510,
+   "posted_hour_utc": 12,
+   "channel": "news",
+   "topic": {
+    "title": "Tor VPN Beta: What we've learned building our own VPN for Android from scratch",
+    "subject": "Tor VPN for Android",
+    "url": "https://blog.torproject.org/tor-vpn-beta/",
+    "source": "lobsters",
+    "keywords": [],
+    "viral_score": 3.5,
+    "sources": [],
+    "display_title": "Tor VPN App",
+    "angle": "Tor built a mobile VPN for Android that isolates each app into its own circuit to prevent cross-tracking and bypass censorship.",
+    "insight": "Android users in censored regions can now route entire device traffic through independent Tor circuits instead of sharing a single tunnel.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "rosewood-vintage",
+   "format_pack": "legacy-news",
+   "seed": 666551122,
+   "voice": "gemini:Leda",
+   "hook_type": "SHOCK-STAT",
+   "style_epoch": 17,
+   "scene_count": 4,
+   "video_seconds": 27.5,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "daily-life",
+    "signals": [
+     "android"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 0,
+    "hook_seconds": 3.6,
+    "longest_scene_seconds": 7.367,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-ca044f",
+   "platforms": {
+    "instagram": {
+     "id": "17929121271179918",
+     "posted_at": 1792414579
     }
    },
    "metrics": {
