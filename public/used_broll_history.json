@@ -2,34 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "pexels-33314914",
-   "ts": 1789797147,
-   "session": "gh-d15b83",
-   "query": "code scrolling terminal window green",
-   "scene": 1
-  },
-  {
-   "id": "pexels-15439756",
-   "ts": 1789797147,
-   "session": "gh-d15b83",
-   "query": "server racks glowing data center loop",
-   "scene": 2
-  },
-  {
-   "id": "pexels-39038431",
-   "ts": 1789797147,
-   "session": "gh-d15b83",
-   "query": "server racks glowing data center loop",
-   "scene": 2
-  },
-  {
-   "id": "pexels-5377694",
-   "ts": 1789797147,
-   "session": "gh-d15b83",
-   "query": "hacking terminal commands scrolling fast",
-   "scene": 3
-  },
-  {
    "id": "pexels-5377775",
    "ts": 1789797147,
    "session": "gh-d15b83",
@@ -2799,6 +2771,34 @@
    "ts": 1792754329,
    "session": "gh-5afce3",
    "query": "mobile phone screen dark close up",
+   "scene": 3
+  },
+  {
+   "id": "pexels-6375965",
+   "ts": 1792765532,
+   "session": "gh-94af8c",
+   "query": "smartphone screen locked notification",
+   "scene": 0
+  },
+  {
+   "id": "pexels-38410502",
+   "ts": 1792765532,
+   "session": "gh-94af8c",
+   "query": "digital code matrix scrolling screen",
+   "scene": 1
+  },
+  {
+   "id": "pexels-6962433",
+   "ts": 1792765532,
+   "session": "gh-94af8c",
+   "query": "typing on smartphone screen closeup",
+   "scene": 2
+  },
+  {
+   "id": "pexels-7846332",
+   "ts": 1792765532,
+   "session": "gh-94af8c",
+   "query": "server rack lights blinking dark",
    "scene": 3
   }
  ]

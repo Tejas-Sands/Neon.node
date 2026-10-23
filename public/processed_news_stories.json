@@ -2745,5 +2745,17 @@
   ],
   "ts": 1792754404,
   "session": "gh-5afce3"
+ },
+ {
+  "id": "50206914",
+  "title": "Dutch government had hacked into Jared Kushner's phone",
+  "norm": "dutch government had hacked into jared kushner s phone",
+  "subject_norm": null,
+  "entities": [
+   "jared",
+   "kushner"
+  ],
+  "ts": 1792765595,
+  "session": "gh-94af8c"
  }
 ]

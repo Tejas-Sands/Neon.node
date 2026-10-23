@@ -2,64 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785492500,
-   "posted_hour_utc": 10,
-   "channel": "news",
-   "topic": {
-    "title": "Show HN: Distilling DeepSeek into GPT-OSS doesn't transfer censorship. Try it",
-    "subject": "Show HN: Distilling DeepSeek into GPT-OSS doesn't transfer censorship. Try it",
-    "url": "https://www.ctgt.ai/research/distillation-censorship-transfer",
-    "source": "hn",
-    "keywords": [
-     "gpt",
-     "deepseek",
-     "how"
-    ],
-    "viral_score": 9.26
-   },
-   "style_pack": "desert-dune",
-   "seed": 1280130583,
-   "voice": "en-US-AvaMultilingualNeural",
-   "hook_type": "BREAKING-NEWS",
-   "scene_count": 5,
-   "video_seconds": 29.7,
-   "session": "gh-5b65c8",
-   "platforms": {
-    "instagram": {
-     "id": "17859339717676599",
-     "posted_at": 1785492554
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 26,
-      "reach": 25,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2706,
-      "fetched_at": 1788011341
-     },
-     "snap72": {
-      "views": 26,
-      "reach": 25,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2957,
-      "fetched_at": 1785754165
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785509354,
    "posted_hour_utc": 14,
    "channel": "news",
@@ -9660,7 +9602,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 645,
-      "fetched_at": 1792383356
+      "fetched_at": 1792765595
      },
      "snap72": {
       "views": 1,
@@ -9954,7 +9896,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2332,
-      "fetched_at": 1792383356
+      "fetched_at": 1792765595
      },
      "snap72": {
       "views": 122,
@@ -10322,7 +10264,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 836,
-      "fetched_at": 1792383356
+      "fetched_at": 1792765595
      },
      "snap72": {
       "views": 10,
@@ -10617,7 +10559,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1718,
-      "fetched_at": 1792383356
+      "fetched_at": 1792765595
      },
      "snap72": {
       "views": 6,
@@ -10691,7 +10633,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1250,
-      "fetched_at": 1792383356
+      "fetched_at": 1792765595
      },
      "snap72": {
       "views": 3,
@@ -10985,7 +10927,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1792383356
+      "fetched_at": 1792765595
      },
      "snap72": {
       "views": 0,
@@ -11060,7 +11002,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1394,
-      "fetched_at": 1792383356
+      "fetched_at": 1792765595
      },
      "snap72": {
       "views": 26,
@@ -11431,7 +11373,7 @@
       "saved": 1,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1279,
-      "fetched_at": 1792383356
+      "fetched_at": 1792765595
      },
      "snap72": {
       "views": 33,
@@ -11505,7 +11447,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2154,
-      "fetched_at": 1792383356
+      "fetched_at": 1792765595
      },
      "snap72": {
       "views": 8,
@@ -11945,7 +11887,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2931,
-      "fetched_at": 1792383356
+      "fetched_at": 1792765595
      },
      "snap72": {
       "views": 12,
@@ -12858,7 +12800,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2568,
-      "fetched_at": 1792304227
+      "fetched_at": 1792765595
      },
      "snap72": {
       "views": 33,
@@ -12942,7 +12884,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1979,
-      "fetched_at": 1792304227
+      "fetched_at": 1792765595
      },
      "snap72": {
       "views": 50,
@@ -13026,7 +12968,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1179,
-      "fetched_at": 1792304227
+      "fetched_at": 1792765595
      },
      "snap72": {
       "views": 69,
@@ -13332,7 +13274,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1792304227
+      "fetched_at": 1792765595
      },
      "snap72": {
       "views": 0,
@@ -13413,7 +13355,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1802,
-      "fetched_at": 1792304227
+      "fetched_at": 1792765595
      },
      "snap72": null,
      "deleted": false,
@@ -13776,6 +13718,69 @@
     "instagram": {
      "id": "18349229818271431",
      "posted_at": 1792754401
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1792765532,
+   "posted_hour_utc": 14,
+   "channel": "news",
+   "topic": {
+    "title": "Dutch government had hacked into Jared Kushner's phone",
+    "subject": "Dutch government had hacked into Jared Kushner's phone",
+    "url": "https://twitter.com/jaredkushner/status/2113376217415958767",
+    "source": "hn",
+    "keywords": [
+     "hacked"
+    ],
+    "viral_score": 9.44,
+    "sources": [],
+    "display_title": "",
+    "angle": "",
+    "insight": "",
+    "source_excerpt": "",
+    "judge": "none"
+   },
+   "style_pack": "citrus-fresh",
+   "format_pack": "facts-explainer",
+   "seed": 1687348588,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 18,
+   "scene_count": 4,
+   "video_seconds": 21.1,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "daily-life",
+    "signals": [
+     "phone"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 1,
+    "hook_seconds": 2.867,
+    "longest_scene_seconds": 6.3,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-94af8c",
+   "platforms": {
+    "instagram": {
+     "id": "18114725000026579",
+     "posted_at": 1792765592
     }
    },
    "metrics": {
