@@ -2,62 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785248364,
-   "posted_hour_utc": 14,
-   "channel": "news",
-   "topic": {
-    "title": "A $500 RL fine-tune of a 9B open model beat frontier models on catalog review",
-    "subject": "A $500 RL fine-tune of a 9B open model beat frontier models on catalog review",
-    "url": "https://fermisense.com/when-machines-take-the-wheel/",
-    "source": "hn",
-    "keywords": [
-     "model",
-     "$"
-    ],
-    "viral_score": 8.52
-   },
-   "style_pack": "citrus-fresh",
-   "seed": 2123161343,
-   "voice": "en-US-EmmaMultilingualNeural",
-   "hook_type": "FORBIDDEN ARCHITECTURE",
-   "scene_count": 5,
-   "video_seconds": 30.0,
-   "session": "gh-53c09e",
-   "platforms": {
-    "instagram": {
-     "id": "17979011337108127",
-     "posted_at": 1785248451
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 0,
-      "reach": 0,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 16364,
-      "fetched_at": 1786443554
-     },
-     "snap72": {
-      "views": 0,
-      "reach": 0,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785492558
-     },
-     "deleted": true,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785257116,
    "posted_hour_utc": 16,
    "channel": "news",
@@ -9623,7 +9567,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1184,
-      "fetched_at": 1792124063
+      "fetched_at": 1792731278
      },
      "snap72": {
       "views": 2,
@@ -9844,7 +9788,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1530,
-      "fetched_at": 1792124063
+      "fetched_at": 1792731278
      },
      "snap72": {
       "views": 11,
@@ -9917,7 +9861,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 7911,
-      "fetched_at": 1792137315
+      "fetched_at": 1792731278
      },
      "snap72": {
       "views": 3,
@@ -10141,7 +10085,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 0,
-      "fetched_at": 1792124063
+      "fetched_at": 1792731278
      },
      "snap72": {
       "views": 0,
@@ -10215,7 +10159,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1045,
-      "fetched_at": 1792137315
+      "fetched_at": 1792731278
      },
      "snap72": {
       "views": 8,
@@ -10288,7 +10232,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 18084,
-      "fetched_at": 1792137315
+      "fetched_at": 1792731278
      },
      "snap72": {
       "views": 0,
@@ -10509,7 +10453,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4007,
-      "fetched_at": 1792137315
+      "fetched_at": 1792731278
      },
      "snap72": {
       "views": 20,
@@ -10876,7 +10820,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 6145,
-      "fetched_at": 1792124063
+      "fetched_at": 1792731278
      },
      "snap72": {
       "views": 1,
@@ -11320,7 +11264,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1947,
-      "fetched_at": 1792124063
+      "fetched_at": 1792731278
      },
      "snap72": {
       "views": 6,
@@ -11761,7 +11705,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1351,
-      "fetched_at": 1792124063
+      "fetched_at": 1792731278
      },
      "snap72": {
       "views": 17,
@@ -12311,7 +12255,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2497,
-      "fetched_at": 1792124063
+      "fetched_at": 1792731278
      },
      "snap72": {
       "views": 10,
@@ -13223,7 +13167,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1693,
-      "fetched_at": 1792124063
+      "fetched_at": 1792731278
      },
      "snap72": null,
      "deleted": false,
@@ -13289,14 +13233,14 @@
     "instagram": {
      "latest": {
       "views": 29,
-      "reach": 23,
+      "reach": 24,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2806,
-      "fetched_at": 1792124063
+      "ig_reels_avg_watch_time": 2738,
+      "fetched_at": 1792731278
      },
      "snap72": null,
      "deleted": false,
@@ -13662,8 +13606,28 @@
    },
    "metrics": {
     "instagram": {
-     "latest": null,
-     "snap72": null,
+     "latest": {
+      "views": 4,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1528,
+      "fetched_at": 1792731278
+     },
+     "snap72": {
+      "views": 4,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1528,
+      "fetched_at": 1792731278
+     },
      "deleted": false,
      "fetch_errors": 0
     }
@@ -13719,6 +13683,90 @@
     "instagram": {
      "id": "17929121271179918",
      "posted_at": 1792414579
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": {
+      "views": 5,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1057,
+      "fetched_at": 1792731278
+     },
+     "snap72": {
+      "views": 5,
+      "reach": 5,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "saved": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1057,
+      "fetched_at": 1792731278
+     },
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1792731212,
+   "posted_hour_utc": 4,
+   "channel": "news",
+   "topic": {
+    "title": "Woman charged with computer fraud due to scam CashApp account being in her name",
+    "subject": "CashApp identity theft scam",
+    "url": "https://www.404media.co/amanda-smith-opened-a-cashapp-in-her-name-she-faces-years-in-prison-cashapp-fraud/",
+    "source": "hn",
+    "keywords": [],
+    "viral_score": 7.63,
+    "sources": [
+     "hackernews"
+    ],
+    "display_title": "CashApp Arrest Trap",
+    "angle": "An identity thief opened a fraudulent CashApp account using a Pennsylvania woman's Social Security number, leading to her wrongful arrest.",
+    "insight": "Anyone whose Social Security number is leaked can have fraudulent financial accounts opened in their name without their knowledge.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "editorial-serif",
+   "format_pack": "quiz-reveal",
+   "seed": 392351964,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-QUIZ-REVEAL",
+   "style_epoch": 18,
+   "scene_count": 4,
+   "video_seconds": 17.8,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "protect-yourself",
+    "signals": [
+     "scam",
+     "fraud"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 1,
+    "hook_seconds": 2.067,
+    "longest_scene_seconds": 6.9,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-623e5d",
+   "platforms": {
+    "instagram": {
+     "id": "17957653494257710",
+     "posted_at": 1792731275
     }
    },
    "metrics": {

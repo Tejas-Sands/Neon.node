@@ -2723,5 +2723,16 @@
   ],
   "ts": 1792414583,
   "session": "gh-ca044f"
+ },
+ {
+  "id": "50194833",
+  "title": "Woman charged with computer fraud due to scam CashApp account being in her name",
+  "norm": "woman charged with computer fraud due to scam cashapp account being in her name",
+  "subject_norm": "cashapp identity theft scam",
+  "entities": [
+   "cashapp"
+  ],
+  "ts": 1792731278,
+  "session": "gh-623e5d"
  }
 ]
