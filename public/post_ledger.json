@@ -2,62 +2,6 @@
  "version": 1,
  "entries": [
   {
-   "ts": 1785257116,
-   "posted_hour_utc": 16,
-   "channel": "news",
-   "topic": {
-    "title": "Google's Beyond Zero: Enterprise Security for the AI Era",
-    "subject": "Google's Beyond Zero: Enterprise Security for the AI Era",
-    "url": "https://spawn-queue.acm.org/doi/10.1145/3819083",
-    "source": "hn",
-    "keywords": [
-     "ai",
-     "google"
-    ],
-    "viral_score": 9.03
-   },
-   "style_pack": "mint-aqua",
-   "seed": 600537624,
-   "voice": "en-US-AndrewMultilingualNeural",
-   "hook_type": "CURIOSITY GAP",
-   "scene_count": 6,
-   "video_seconds": 34.2,
-   "session": "gh-6b5040",
-   "platforms": {
-    "instagram": {
-     "id": "18124489051784246",
-     "posted_at": 1785257193
-    }
-   },
-   "metrics": {
-    "instagram": {
-     "latest": {
-      "views": 14,
-      "reach": 14,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 3139,
-      "fetched_at": 1787823741
-     },
-     "snap72": {
-      "views": 14,
-      "reach": 14,
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "saved": 0,
-      "total_interactions": 0,
-      "fetched_at": 1785492558
-     },
-     "deleted": false,
-     "fetch_errors": 0
-    }
-   }
-  },
-  {
    "ts": 1785492500,
    "posted_hour_utc": 10,
    "channel": "news",
@@ -9642,7 +9586,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2772,
-      "fetched_at": 1792304227
+      "fetched_at": 1792754404
      },
      "snap72": {
       "views": 16,
@@ -9935,7 +9879,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 3184,
-      "fetched_at": 1792304227
+      "fetched_at": 1792754404
      },
      "snap72": {
       "views": 8,
@@ -10306,7 +10250,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2328,
-      "fetched_at": 1792304227
+      "fetched_at": 1792754404
      },
      "snap72": {
       "views": 56,
@@ -10526,7 +10470,7 @@
       "saved": 0,
       "total_interactions": 2,
       "ig_reels_avg_watch_time": 2306,
-      "fetched_at": 1792137315
+      "fetched_at": 1792754404
      },
      "snap72": {
       "views": 24,
@@ -10601,7 +10545,7 @@
       "saved": 0,
       "total_interactions": 1,
       "ig_reels_avg_watch_time": 1557,
-      "fetched_at": 1792304227
+      "fetched_at": 1792754404
      },
      "snap72": {
       "views": 2,
@@ -10892,7 +10836,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1242,
-      "fetched_at": 1792137315
+      "fetched_at": 1792754404
      },
      "snap72": {
       "views": 7,
@@ -10967,7 +10911,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 4578,
-      "fetched_at": 1792304227
+      "fetched_at": 1792754404
      },
      "snap72": {
       "views": 6,
@@ -11339,7 +11283,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1024,
-      "fetched_at": 1792137315
+      "fetched_at": 1792754404
      },
      "snap72": {
       "views": 12,
@@ -11413,7 +11357,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1266,
-      "fetched_at": 1792304227
+      "fetched_at": 1792754404
      },
      "snap72": {
       "views": 24,
@@ -11779,7 +11723,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2130,
-      "fetched_at": 1792137315
+      "fetched_at": 1792754404
      },
      "snap72": {
       "views": 11,
@@ -11854,7 +11798,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 586,
-      "fetched_at": 1792137315
+      "fetched_at": 1792754404
      },
      "snap72": {
       "views": 3,
@@ -11929,7 +11873,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 1497,
-      "fetched_at": 1792137315
+      "fetched_at": 1792754404
      },
      "snap72": {
       "views": 34,
@@ -12339,7 +12283,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 3603,
-      "fetched_at": 1792137315
+      "fetched_at": 1792754404
      },
      "snap72": {
       "views": 6,
@@ -12840,7 +12784,7 @@
       "saved": 0,
       "total_interactions": 0,
       "ig_reels_avg_watch_time": 2264,
-      "fetched_at": 1792304227
+      "fetched_at": 1792754404
      },
      "snap72": null,
      "deleted": false,
@@ -13309,15 +13253,15 @@
    "metrics": {
     "instagram": {
      "latest": {
-      "views": 0,
-      "reach": 0,
+      "views": 1,
+      "reach": 1,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "saved": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2336,
-      "fetched_at": 1792137315
+      "ig_reels_avg_watch_time": 3184,
+      "fetched_at": 1792754404
      },
      "snap72": null,
      "deleted": false,
@@ -13767,6 +13711,71 @@
     "instagram": {
      "id": "17957653494257710",
      "posted_at": 1792731275
+    }
+   },
+   "metrics": {
+    "instagram": {
+     "latest": null,
+     "snap72": null,
+     "deleted": false,
+     "fetch_errors": 0
+    }
+   }
+  },
+  {
+   "ts": 1792754329,
+   "posted_hour_utc": 11,
+   "channel": "news",
+   "topic": {
+    "title": "Jared Kushner Hacked Phone Reveals Secret Negotiations, Millions in Transactions",
+    "subject": "Dutch Intelligence Hacked Kushner iPhone",
+    "url": "https://www.vanityfair.com/story/jared-kushner-hacked-phone-secret-negotiations",
+    "source": "hn",
+    "keywords": [
+     "hacked",
+     "million",
+     "secret"
+    ],
+    "viral_score": 11.41,
+    "sources": [],
+    "display_title": "Dutch Intelligence Hacked Kushner iPhone",
+    "angle": "How Dutch intelligence used a Russian GRU exploit to mirror Jared Kushner's iPhone X.",
+    "insight": "Intelligence agencies can exploit vulnerabilities in state-of-the-art smartphones to monitor screen activity.",
+    "source_excerpt": "",
+    "judge": "plan"
+   },
+   "style_pack": "ocean-breeze",
+   "format_pack": "facts-explainer",
+   "seed": 745813799,
+   "voice": "gemini:Leda",
+   "hook_type": "PACK-FACTS-EXPLAINER",
+   "style_epoch": 18,
+   "scene_count": 4,
+   "video_seconds": 21.0,
+   "experiment": null,
+   "ledger_rev": 2,
+   "growth": {
+    "strategy": "everyday-v1",
+    "audience": "curious everyday people using technology and following science",
+    "classification": "title-keyword-proxy",
+    "pillar": "daily-life",
+    "signals": [
+     "phone"
+    ]
+   },
+   "retention": {
+    "revision": "opening-v1",
+    "repairs": 1,
+    "hook_seconds": 2.733,
+    "longest_scene_seconds": 6.667,
+    "voice": "gemini:Leda",
+    "fallback_reason": null
+   },
+   "session": "gh-5afce3",
+   "platforms": {
+    "instagram": {
+     "id": "18349229818271431",
+     "posted_at": 1792754401
     }
    },
    "metrics": {

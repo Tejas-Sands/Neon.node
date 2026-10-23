@@ -2734,5 +2734,16 @@
   ],
   "ts": 1792731278,
   "session": "gh-623e5d"
+ },
+ {
+  "id": "50201259",
+  "title": "Jared Kushner Hacked Phone Reveals Secret Negotiations, Millions in Transactions",
+  "norm": "jared kushner hacked phone reveals secret negotiations millions in transactions",
+  "subject_norm": "dutch intelligence hacked kushner iphone",
+  "entities": [
+   "apple"
+  ],
+  "ts": 1792754404,
+  "session": "gh-5afce3"
  }
 ]
